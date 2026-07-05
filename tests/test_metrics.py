@@ -81,6 +81,21 @@ class TestExtractionF1:
     def test_empty_both_is_one(self):
         assert extraction_f1([], []).f1 == 1.0
 
+    def test_tolerates_finer_gold_granularity(self):
+        # gold splits agent + dose; the extractor combines them. A combined
+        # pred should still match the gold agent event (token-subset).
+        gold = [self._ev("08:00", "agent", "propofol"),
+                self._ev("08:00", "dose", "120 mg")]
+        pred = [self._ev("08:00", "agent", "propofol 120 mg")]
+        prf = extraction_f1(pred, gold)
+        assert prf.precision == 1.0        # the one pred matched a gold
+        assert prf.recall == 0.5           # only the agent gold was covered
+
+    def test_wrong_dose_still_no_match(self):
+        gold = [self._ev("08:00", "dose", "rocuronium 50 mg")]
+        pred = [self._ev("08:00", "dose", "rocuronium 40 mg")]
+        assert extraction_f1(pred, gold).f1 == 0.0
+
 
 class TestKER:
     def test_all_terms_correct(self):

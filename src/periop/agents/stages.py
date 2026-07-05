@@ -13,7 +13,7 @@ from periop.agents.event_extractor import EventExtractor
 from periop.agents.handoff import HANDOFF_ID, HandoffComposer
 from periop.agents.intraop_record import INTRAOP_RECORD_ID, IntraOpRecordWriter
 from periop.agents.issue_anticipator import IssueAnticipator
-from periop.agents.postop_eval import PostAnesthesiaEvaluator
+from periop.agents.postop_eval import POSTOP_NOTE_ID, PostAnesthesiaEvaluator
 from periop.agents.preop_stage import run_preop_stage
 from periop.schemas import Case
 from periop.tools.ingest import transcript_from_script, transcript_from_voice_notes
@@ -46,7 +46,9 @@ def run_postop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) -> 
 
     HandoffComposer(chat=chat).compose(case)
     PostAnesthesiaEvaluator(chat=chat).write(case)
-    ClaimVerifier(chat=fast_chat).verify(case, HANDOFF_ID)
+    verifier = ClaimVerifier(chat=fast_chat)
+    verifier.verify(case, HANDOFF_ID)
+    verifier.verify(case, POSTOP_NOTE_ID)
     return case
 
 

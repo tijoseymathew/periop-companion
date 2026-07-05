@@ -79,25 +79,36 @@ def _time_bucket(t: str, minutes: int = 5) -> str:
     return str(total // minutes)
 
 
-def _event_key(ev: Event) -> tuple[str, str, str]:
-    return (ev.category.value, _norm_value(ev.value), _time_bucket(ev.t))
+def _value_tokens(value: str) -> frozenset[str]:
+    return frozenset(_norm_value(value).split())
+
+
+def _events_match(a: Event, b: Event) -> bool:
+    """Same category, same 5-min bucket, and one value's tokens contain the
+    other's — so a combined 'propofol 120' matches a gold 'propofol' or a gold
+    'propofol 120', but a wrong dose (40 vs 50) does not."""
+    if a.category is not b.category or _time_bucket(a.t) != _time_bucket(b.t):
+        return False
+    ta, tb = _value_tokens(a.value), _value_tokens(b.value)
+    return ta <= tb or tb <= ta
 
 
 def extraction_f1(pred: Sequence[Event], gold: Sequence[Event]) -> PRF:
-    """Structured event F1: exact match on (category, normalized value, 5-min
-    time bucket)."""
+    """Structured event F1 on (category, value, 5-min bucket) with token-subset
+    value matching, so gold's finer agent/dose split still scores. Greedy
+    one-to-one pairing (each pred matches at most one gold)."""
     if not pred and not gold:
         return PRF(1.0, 1.0)
-    gold_keys = [_event_key(e) for e in gold]
-    pred_keys = [_event_key(e) for e in pred]
-    remaining = list(gold_keys)
+    remaining = list(gold)
     tp = 0
-    for key in pred_keys:
-        if key in remaining:
-            remaining.remove(key)
-            tp += 1
-    precision = tp / len(pred_keys) if pred_keys else (1.0 if not gold_keys else 0.0)
-    recall = tp / len(gold_keys) if gold_keys else (1.0 if not pred_keys else 0.0)
+    for p in pred:
+        for gi, g in enumerate(remaining):
+            if _events_match(p, g):
+                remaining.pop(gi)
+                tp += 1
+                break
+    precision = tp / len(pred) if pred else (1.0 if not gold else 0.0)
+    recall = (len(gold) - len(remaining)) / len(gold) if gold else (1.0 if not pred else 0.0)
     return PRF(precision, recall)
 
 
