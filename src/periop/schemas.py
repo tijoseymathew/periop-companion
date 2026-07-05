@@ -194,3 +194,17 @@ class Case(BaseModel):
 
     def get_artifact(self, artifact_id: str) -> ArtifactRecord | None:
         return next((a for a in self.artifacts if a.artifact_id == artifact_id), None)
+
+    def get_claim(self, ref: str) -> Claim | None:
+        """Resolve a global claim ref ``artifact_id#claim_id`` to its Claim.
+
+        Used by the HandoffComposer, which composes over existing claims
+        rather than raw sources.
+        """
+        artifact_id, sep, claim_id = ref.rpartition("#")
+        if not sep:
+            return None
+        artifact = self.get_artifact(artifact_id)
+        if artifact is None:
+            return None
+        return next((c for c in artifact.claims if c.claim_id == claim_id), None)
