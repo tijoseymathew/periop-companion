@@ -3,6 +3,9 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+# TTS-rendered audio is large (~8.5 MB/case); regenerate with
+# scripts/render_audio.py — the *.segments.json gold manifests are committed
+data/cases/*/audio/*.wav
 # raw profiler traces carry full prompt/response text; commit the distilled
 # reports in evals/profile/ instead
 evals/profile/all_requests_profiler_traces.json

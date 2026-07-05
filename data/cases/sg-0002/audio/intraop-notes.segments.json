@@ -1,0 +1,60 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.647
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "fentanyl fifty micrograms",
+      "t0": 2.997,
+      "t1": 4.762
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "LMA inserted, good seal, ventilating without difficulty",
+      "t0": 5.112,
+      "t1": 8.734
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "eighteen gauge IV cannula placed in left antecubital fossa",
+      "t0": 9.084,
+      "t1": 12.939
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "normal saline running at one hundred fifty milliliters per hour",
+      "t0": 13.289,
+      "t1": 16.725
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "mean arterial pressure dropped to fifty five, gave five hundred milligrams of intravenous fluid bolus",
+      "t0": 17.075,
+      "t1": 22.926
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "mean arterial pressure improved to sixty five",
+      "t0": 23.276,
+      "t1": 26.063
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PROVIDER",
+      "text": "heart rate increased to ninety five, gave ten milligrams of intravenous metoprolol",
+      "t0": 26.413,
+      "t1": 31.614
+    }
+  ]
+}

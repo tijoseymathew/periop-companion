@@ -1,0 +1,46 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "spinal anesthetic administered bupivacaine twenty-five milligrams with fentanyl twenty micrograms",
+      "t0": 0.0,
+      "t1": 5.526
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "propofol infusion started at fifty milligrams per hour",
+      "t0": 5.876,
+      "t1": 8.941
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "endotracheal tube placed, grade one view confirmed",
+      "t0": 9.291,
+      "t1": 12.728
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "eighteen-gauge peripheral IV line placed in left hand",
+      "t0": 13.078,
+      "t1": 16.932
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "one liter of normal saline administered",
+      "t0": 17.282,
+      "t1": 19.511
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "hypotension noted, blood pressure sixty over forty, treated with phenylephrine twenty micrograms",
+      "t0": 19.861,
+      "t1": 25.945
+    }
+  ]
+}

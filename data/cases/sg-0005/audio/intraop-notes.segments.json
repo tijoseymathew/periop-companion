@@ -1,0 +1,67 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.601
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "spinal anesthesia with bupivacaine fifteen milligrams and fentanyl twenty micrograms",
+      "t0": 2.951,
+      "t1": 7.966
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "midazolam three milligrams for sedation",
+      "t0": 8.316,
+      "t1": 10.685
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "tube in, grade one view",
+      "t0": 11.035,
+      "t1": 12.846
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "sixteen gauge IV catheter placed in left radial vein",
+      "t0": 13.196,
+      "t1": 16.632
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "arterial line placed in right radial artery",
+      "t0": 16.982,
+      "t1": 19.769
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "lactated Ringer's solution five hundred milliliters administered",
+      "t0": 20.119,
+      "t1": 23.555
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PROVIDER",
+      "text": "hypotension BP eighty over fifty treated with ephedrine ten milligrams IV and two hundred milliliter fluid bolus",
+      "t0": 23.905,
+      "t1": 31.15
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "tachycardia heart rate one ten treated with esmolol ten milligrams IV",
+      "t0": 31.5,
+      "t1": 35.726
+    }
+  ]
+}

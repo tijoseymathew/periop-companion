@@ -1,0 +1,95 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Hi Mr Tan, how are you feeling now after the surgery? Let me check on you.",
+      "t0": 0.0,
+      "t1": 4.783
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "I\u2019m okay lah, Doctor. Leg is numb but I feel some pain when I move a bit.",
+      "t0": 5.133,
+      "t1": 11.31
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understood. On a scale of 1 to 10, how would you rate your pain right now?",
+      "t0": 11.66,
+      "t1": 16.768
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Maybe 4 or 5? Not too bad, but I can feel it there.",
+      "t0": 17.118,
+      "t1": 20.74
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Alright. Have you felt any nausea or vomiting since waking up?",
+      "t0": 21.09,
+      "t1": 24.62
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "No vomiting, but my stomach feels a bit funny. And I\u2019m very thirsty, Doctor.",
+      "t0": 24.97,
+      "t1": 30.218
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Noted. Are you feeling comfortable with your breathing? Any shortness of breath or chest tightness?",
+      "t0": 30.568,
+      "t1": 36.373
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Breathing is fine, no problem. But my back feels a bit sore from lying down too long.",
+      "t0": 36.722,
+      "t1": 41.924
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Do you remember anything during the surgery? Any sounds or feelings?",
+      "t0": 42.274,
+      "t1": 47.103
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "I think I heard some voices, but it was like a dream. Not very clear, Doctor.",
+      "t0": 47.453,
+      "t1": 51.958
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Thanks for sharing. Any other issues, like dizziness or unusual symptoms linked to your blood pressure or sugar levels?",
+      "t0": 52.308,
+      "t1": 59.506
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "No dizziness, but my legs feel heavy. And I\u2019m worried about my blood sugar, lah. Can I have water soon?",
+      "t0": 59.856,
+      "t1": 66.59
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "We\u2019ll monitor your sugar closely and give you sips of water soon. The heaviness in your legs is normal after spinal anesthesia. Rest well, Mr Tan.",
+      "t0": 66.94,
+      "t1": 75.392
+    }
+  ]
+}

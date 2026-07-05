@@ -1,0 +1,53 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.833
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "tube in, grade one view",
+      "t0": 3.183,
+      "t1": 4.948
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "right radial artery line placed",
+      "t0": 5.298,
+      "t1": 7.294
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "one thousand milliliters of lactated ringers administered",
+      "t0": 7.644,
+      "t1": 10.849
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "mean arterial pressure dropped to fifty, treated with one hundred and fifty micrograms of phenylephrine",
+      "t0": 11.199,
+      "t1": 16.911
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "heart rate increased to one hundred ten, treated with twenty milligrams of labetalol",
+      "t0": 17.261,
+      "t1": 22.137
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "left femoral nerve block performed with twenty milliliters of ropivacaine",
+      "t0": 22.487,
+      "t1": 26.713
+    }
+  ]
+}

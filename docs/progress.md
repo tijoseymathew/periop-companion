@@ -34,7 +34,10 @@ resume from the first unchecked item. Conventions:
 - [x] Scripted pre-op interview / intra-op voice notes / post-op interview (gold
       diarized transcripts)
 - [x] Gold artifacts with claim/provenance annotations
-- [ ] TTS rendering via Magpie TTS NIM (verify current model ID at build time)
+- [x] TTS rendering via Magpie TTS NIM — periop.tools.tts (per-speaker
+      synthesis + concatenation + gold timing manifest) + scripts/render_audio.py;
+      all 5 cases rendered against the self-hosted magpie-tts-multilingual NIM
+      (wavs gitignored, *.segments.json manifests committed)
 - [x] 5 cases end-to-end (data/cases/sg-0001..0005)
 
 ## M2 — Pre-op stage
@@ -90,7 +93,7 @@ resume from the first unchecked item. Conventions:
       (DGX Spark GB10 reference deployment: all four NIMs co-tenant,
       KV-cache-bounded; nano needs the -dgx-spark image variant).
 - [x] Live smoke: reasoning tier verified against spark:8000 (no API key).
-- [ ] TTS client (Magpie, spark:9001) → render case audio (M1 pending item)
+- [x] TTS client (Magpie, spark:9001) → case audio rendered for sg-0001..0005
 - [ ] ASR path (Parakeet, spark:9000) → InterviewTranscriber real path + KER A/B
 
 ## Notes / decisions log
