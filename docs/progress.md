@@ -94,7 +94,11 @@ resume from the first unchecked item. Conventions:
       KV-cache-bounded; nano needs the -dgx-spark image variant).
 - [x] Live smoke: reasoning tier verified against spark:8000 (no API key).
 - [x] TTS client (Magpie, spark:9001) → case audio rendered for sg-0001..0005
-- [ ] ASR path (Parakeet, spark:9000) → InterviewTranscriber real path + KER A/B
+- [x] ASR path (Parakeet gRPC :50051) — periop.tools.asr: offline recognition
+      w/ word timestamps, Sortformer diarization, lexicon word boosting;
+      transcript_source() switches stages to ASR via PERIOP_TRANSCRIBE=asr.
+      Live-verified (16/16 turns, correct roles). scripts/eval_asr.py report
+      pending stable NIM co-tenancy (box was being redeployed mid-run).
 
 ## Notes / decisions log
 
@@ -127,6 +131,15 @@ resume from the first unchecked item. Conventions:
   extractor combines) — TODO: shared convention or looser extraction match;
   (c) distractor leakage into notes — TODO: strengthen relevance filtering;
   (d) post-op note/handoff verification is partial — TODO: verify all artifacts.
+
+- 2026-07-05 (self-hosted session): DGX Spark co-tenancy — the 49B NIM sizes
+  its KV cache for the model's 128k window (24.5 GB) and starved the other
+  three NIMs (nano crash-looped at CUDA init; ASR OOMed at inference).
+  Fix: NIM_MAX_MODEL_LEN=32768 on the reasoning service (periop prompts are
+  far smaller). Also: Parakeet HTTP is plain-text only — diarization and
+  word boosting need the Riva gRPC API (:50051); Magpie synthesize returns
+  complete 22.05 kHz 16-bit wavs; riva config must carry the wav's actual
+  sample rate or Triton rejects the header.
 
 - 2026-07-05: Live reruns surfaced two silent-drop bugs in provenance
   filtering (models citing claims instead of sources; models echoing the

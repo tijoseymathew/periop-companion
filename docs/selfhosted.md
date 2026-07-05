@@ -13,6 +13,7 @@ which is what unblocks scaling the synthetic dataset.
 | `PERIOP_REASONING_BASE_URL` / `PERIOP_FAST_BASE_URL` | Per-tier overrides (win over the generic) |
 | `PERIOP_REASONING_MODEL` / `PERIOP_FAST_MODEL` | Served-model name overrides |
 | `PERIOP_ASR_BASE_URL` / `PERIOP_TTS_BASE_URL` | Speech NIM HTTP endpoints (Parakeet / Magpie) |
+| `PERIOP_ASR_GRPC_URL` | Parakeet Riva gRPC endpoint (diarization + word boosting live here, not on HTTP) |
 
 `NGC_API_KEY` is only required for the hosted endpoint; local NIMs don't
 authenticate. `configs/selfhosted.env` is a sourceable endpoint set:
