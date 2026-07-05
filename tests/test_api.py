@@ -192,6 +192,26 @@ class TestAudio:
         assert resp.status_code == 404
 
 
+class TestStaticUI:
+    def test_serves_built_spa_when_dist_exists(self, store_dirs, tmp_path):
+        out_dir, case_dir = store_dirs
+        dist = tmp_path / "dist"
+        dist.mkdir()
+        (dist / "index.html").write_text("<!doctype html><title>PeriOp Companion — Review</title>")
+        client = TestClient(create_app(out_dir=out_dir, case_dir=case_dir, ui_dist=dist))
+        resp = client.get("/")
+        assert resp.status_code == 200
+        assert "PeriOp Companion" in resp.text
+        # the SPA mount must not shadow the API
+        assert client.get("/api/health").json() == {"status": "ok"}
+
+    def test_no_mount_without_a_build(self, store_dirs, tmp_path):
+        out_dir, case_dir = store_dirs
+        client = TestClient(create_app(out_dir=out_dir, case_dir=case_dir, ui_dist=tmp_path / "missing"))
+        assert client.get("/api/health").status_code == 200
+        assert client.get("/").status_code == 404
+
+
 class TestErrorShape:
     def test_errors_are_json_not_html(self, client):
         resp = client.get("/api/cases/sg-9999")

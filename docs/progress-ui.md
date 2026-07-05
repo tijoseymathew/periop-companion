@@ -41,7 +41,7 @@ Conventions:
       refs), EventsTable, SourcePanel (DocumentView chunk highlight,
       TranscriptView diarized segments), reverse index ("cited by n claims").
       Vitest component tests.
-- [ ] C6 `feat(api+ui)`: FastAPI serves `ui/dist` when present; Playwright
+- [x] C6 `feat(api+ui)`: FastAPI serves `ui/dist` when present; Playwright
       headless e2e (`ui/e2e/`): fixture store via globalSetup, case browse,
       stage tabs, doc-chunk citation click → chunk highlighted in source panel,
       status filter behavior. U1 exit: sg-0002 fully browsable.

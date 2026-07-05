@@ -15,3 +15,6 @@ skills-lock.json
 # UI build outputs
 ui/node_modules/
 ui/dist/
+ui/e2e/.fixture/
+ui/test-results/
+ui/playwright-report/

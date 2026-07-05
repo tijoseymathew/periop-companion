@@ -24,7 +24,12 @@ export default function App() {
   const [activeStage, setActiveStage] = useState<Stage>("Pre-op");
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
   const [highlightedAnchor, setHighlightedAnchor] = useState<string | null>(null);
-  const [activeClaimId, setActiveClaimId] = useState<string | null>(null);
+  // claim ids repeat across artifacts (each artifact numbers its own claims),
+  // so the active claim must be tracked per artifact
+  const [activeClaim, setActiveClaim] = useState<{
+    artifactId: string;
+    claimId: string;
+  } | null>(null);
 
   useEffect(() => {
     fetchCases()
@@ -45,7 +50,7 @@ export default function App() {
         setActiveStage("Pre-op");
         setActiveSourceId(c.sources[0]?.source_id ?? null);
         setHighlightedAnchor(null);
-        setActiveClaimId(null);
+        setActiveClaim(null);
       })
       .catch((e) => setError(String(e)));
     return () => {
@@ -74,7 +79,7 @@ export default function App() {
   function jumpToClaim(artifactId: string, claimId: string) {
     const group = groups.find((g) => g.artifacts.some((a) => a.artifact_id === artifactId));
     if (group) setActiveStage(group.stage);
-    setActiveClaimId(claimId);
+    setActiveClaim({ artifactId, claimId });
     requestAnimationFrame(() => {
       document
         .getElementById(claimDomId(artifactId, claimId))
@@ -119,7 +124,11 @@ export default function App() {
                     kase={kase}
                     artifact={artifact}
                     filters={filters}
-                    activeClaimId={activeClaimId}
+                    activeClaimId={
+                      activeClaim?.artifactId === artifact.artifact_id
+                        ? activeClaim.claimId
+                        : null
+                    }
                     onActivateRef={activateRef}
                   />
                 ))}
