@@ -16,7 +16,7 @@ from periop.agents.issue_anticipator import ANTICIPATED_ISSUES_ID, IssueAnticipa
 from periop.agents.postop_eval import POSTOP_NOTE_ID, PostAnesthesiaEvaluator
 from periop.agents.preop_stage import run_preop_stage
 from periop.schemas import Case
-from periop.tools.ingest import transcript_from_script, transcript_from_voice_notes
+from periop.tools.ingest import transcript_source
 
 
 def run_intraop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) -> Case:
@@ -25,7 +25,7 @@ def run_intraop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) ->
 
     notes = case_dir / "scripts" / "intraop-notes.json"
     if notes.exists() and case.get_source("audio:intraop-notes") is None:
-        case.add_source(transcript_from_voice_notes(notes, "audio:intraop-notes"))
+        case.add_source(transcript_source(case_dir, "intraop-notes", "audio:intraop-notes"))
 
     events = EventExtractor(fast_chat=fast_chat, reasoning_chat=chat).extract(
         case, "audio:intraop-notes"
@@ -44,7 +44,7 @@ def run_postop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) -> 
 
     postop = case_dir / "scripts" / "postop-interview.json"
     if postop.exists() and case.get_source("audio:postop-interview") is None:
-        case.add_source(transcript_from_script(postop, "audio:postop-interview"))
+        case.add_source(transcript_source(case_dir, "postop-interview", "audio:postop-interview"))
 
     HandoffComposer(chat=chat).compose(case)
     PostAnesthesiaEvaluator(chat=chat).write(case)

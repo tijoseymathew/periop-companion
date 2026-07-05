@@ -13,6 +13,7 @@ dependencies = [
     "openai>=2.44.0",
     "pydantic>=2.7",
     "python-dotenv>=1.2.2",
+    "nvidia-riva-client>=2.26.0",
 ]
 
 [dependency-groups]

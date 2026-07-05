@@ -9,6 +9,7 @@ Source shape.
 """
 
 import json
+import os
 from pathlib import Path
 
 from periop.schemas import AudioSegment, Case, Source, SourceType
@@ -56,6 +57,33 @@ def transcript_from_voice_notes(notes_path: Path, source_id: str) -> Source:
         source_id,
         [("PROVIDER", f"[{note['t']}] {note['text']}") for note in notes],
     )
+
+
+def transcript_source(case_dir: Path, name: str, source_id: str) -> Source:
+    """Pick the transcript path for one encounter script.
+
+    Gold (deterministic, offline) by default. When ``PERIOP_TRANSCRIBE=asr``
+    and TTS-rendered audio exists (scripts/render_audio.py), the wav goes
+    through the Parakeet NIM instead — diarized for interviews; single-speaker
+    with the anesthesia lexicon boosted for intra-op voice notes. Note the ASR
+    path has no dictation clock times (the gold voice-notes path embeds them),
+    so extracted event times degrade to playback offsets — part of what the
+    audio A/B measures.
+    """
+    case_dir = Path(case_dir)
+    wav = case_dir / "audio" / f"{name}.wav"
+    if os.environ.get("PERIOP_TRANSCRIBE") == "asr" and wav.exists():
+        import periop.tools.asr as asr_mod
+        from periop.agents.lexicon import ANESTHESIA_LEXICON
+
+        intraop = name == "intraop-notes"
+        asr = asr_mod.ParakeetAsr(boosted_words=ANESTHESIA_LEXICON if intraop else None)
+        return asr.transcribe(wav, source_id, diarize=not intraop)
+
+    script = case_dir / "scripts" / f"{name}.json"
+    if name == "intraop-notes":
+        return transcript_from_voice_notes(script, source_id)
+    return transcript_from_script(script, source_id)
 
 
 def _segments_source(source_id: str, turns: list[tuple[str, str]]) -> Source:

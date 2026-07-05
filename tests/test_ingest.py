@@ -7,7 +7,7 @@ behind the same Source shape once TTS audio exists.
 
 from periop.schemas import Case, SourceType
 from periop.synthgen.bundle import write_bundle
-from periop.tools.ingest import ingest_records, transcript_from_script
+from periop.tools.ingest import ingest_records, transcript_from_script, transcript_source
 from periop.tools.chunker import ingest_document
 from tests.test_case_designer import make_design
 from tests.test_personas import make_persona
@@ -81,3 +81,66 @@ class TestTranscriptFromScript:
         a = transcript_from_script(path, source_id="audio:x")
         b = transcript_from_script(path, source_id="audio:x")
         assert a == b
+
+
+class TestTranscriptSource:
+    """Selector between the gold script path and the live ASR path."""
+
+    def test_defaults_to_gold_path(self, case_dir, monkeypatch):
+        monkeypatch.delenv("PERIOP_TRANSCRIBE", raising=False)
+        source = transcript_source(case_dir, "preop-interview", "audio:preop-interview")
+        gold = transcript_from_script(
+            case_dir / "scripts" / "preop-interview.json", "audio:preop-interview"
+        )
+        assert source == gold
+
+    def test_asr_mode_falls_back_to_gold_without_audio(self, case_dir, monkeypatch):
+        monkeypatch.setenv("PERIOP_TRANSCRIBE", "asr")
+        source = transcript_source(case_dir, "preop-interview", "audio:preop-interview")
+        assert source.segments  # gold path produced segments, no ASR attempted
+
+    def test_asr_mode_uses_parakeet_when_audio_exists(self, case_dir, monkeypatch):
+        import periop.tools.asr as asr_mod
+        from periop.schemas import Source
+
+        monkeypatch.setenv("PERIOP_TRANSCRIBE", "asr")
+        (case_dir / "audio").mkdir()
+        (case_dir / "audio" / "preop-interview.wav").write_bytes(b"RIFF")
+        seen = {}
+
+        class FakeAsr:
+            def __init__(self, **kwargs):
+                seen["kwargs"] = kwargs
+
+            def transcribe(self, wav_path, source_id, diarize=True):
+                seen["wav"] = wav_path
+                seen["diarize"] = diarize
+                return Source(source_id=source_id, type=SourceType.AUDIO, segments=[])
+
+        monkeypatch.setattr(asr_mod, "ParakeetAsr", FakeAsr)
+        source = transcript_source(case_dir, "preop-interview", "audio:preop-interview")
+        assert source.source_id == "audio:preop-interview"
+        assert seen["diarize"] is True
+
+    def test_asr_mode_intraop_boosts_lexicon_no_diarization(self, case_dir, monkeypatch):
+        import periop.tools.asr as asr_mod
+        from periop.agents.lexicon import ANESTHESIA_LEXICON
+        from periop.schemas import Source
+
+        monkeypatch.setenv("PERIOP_TRANSCRIBE", "asr")
+        (case_dir / "audio").mkdir()
+        (case_dir / "audio" / "intraop-notes.wav").write_bytes(b"RIFF")
+        seen = {}
+
+        class FakeAsr:
+            def __init__(self, **kwargs):
+                seen["kwargs"] = kwargs
+
+            def transcribe(self, wav_path, source_id, diarize=True):
+                seen["diarize"] = diarize
+                return Source(source_id=source_id, type=SourceType.AUDIO, segments=[])
+
+        monkeypatch.setattr(asr_mod, "ParakeetAsr", FakeAsr)
+        transcript_source(case_dir, "intraop-notes", "audio:intraop-notes")
+        assert seen["kwargs"]["boosted_words"] == ANESTHESIA_LEXICON
+        assert seen["diarize"] is False

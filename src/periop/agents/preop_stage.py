@@ -17,7 +17,7 @@ from periop.agents.claim_verifier import ClaimVerifier
 from periop.agents.gap_analyst import GapAnalyst
 from periop.agents.preop_note import PREOP_NOTE_ID, PreOpNoteWriter
 from periop.schemas import Case
-from periop.tools.ingest import ingest_records, transcript_from_script
+from periop.tools.ingest import ingest_records, transcript_source
 
 
 def run_preop_stage(
@@ -31,7 +31,7 @@ def run_preop_stage(
 
     preop_script = case_dir / "scripts" / "preop-interview.json"
     if preop_script.exists() and case.get_source("audio:preop-interview") is None:
-        case.add_source(transcript_from_script(preop_script, "audio:preop-interview"))
+        case.add_source(transcript_source(case_dir, "preop-interview", "audio:preop-interview"))
 
     PreOpNoteWriter(chat=chat).write(case)
     ClaimVerifier(chat=verifier_chat).verify(case, PREOP_NOTE_ID)
