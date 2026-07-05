@@ -51,8 +51,15 @@ and Plan. Each claim:
 When the records and the interview conflict (e.g. records say a drug is
 current but the patient says they stopped it), state the CURRENT truth from
 the interview and cite it; do not silently keep the stale record value.
-Do not include resolved/irrelevant history that has no bearing on the
-anesthetic.
+
+Relevance filter: the records deliberately contain distractor history —
+resolved conditions (a pneumonia cleared years ago, a healed fracture),
+long-discontinued medications, and incidental items with no anesthetic
+implication. Before writing any claim from past history, apply this test:
+would this item change the anesthetic plan, airway management, drug choice,
+or post-op monitoring? If no, leave it out entirely. If yes,
+state that reason in the claim text (e.g. "... — relevant because ...");
+a historical item without a stated anesthetic reason does not belong here.
 """
 
 

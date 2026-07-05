@@ -118,6 +118,21 @@ class VerifierFakeChat:
         return schema(status=status, rationale="test")
 
 
+class TestRelevanceFiltering:
+    """Distractor leakage (spec §5/§6): records carry deliberately irrelevant
+    history; the writer must exclude it or justify its anesthetic relevance."""
+
+    def test_prompt_carries_relevance_rule_with_examples(self, tmp_path):
+        case = _case_with_interview(tmp_path)
+        chat = FakeChat(WriterOutput(claims=[]))
+        PreOpNoteWriter(chat=chat).write(case)
+        prompt = chat.calls[0]["user"]
+        assert "Relevance filter" in prompt
+        assert "resolved" in prompt and "distractor" in prompt.lower()
+        # the justification requirement is what distractor_leakage measures
+        assert "state that reason in the claim text" in prompt
+
+
 class TestClaimVerifier:
     def _artifact_case(self, tmp_path):
         case = _case_with_interview(tmp_path)

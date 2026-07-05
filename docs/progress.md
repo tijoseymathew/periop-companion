@@ -142,15 +142,17 @@ resume from the first unchecked item. Conventions:
 - ~~Align gold intra-op event granularity with the extractor (or relax
   extraction_f1 to drug-name + time-bucket) — currently reads 0.0.~~ DONE —
   extraction_f1 matches on (category, 5-min bucket, token-subset value).
-- Strengthen the note-writer's relevance filtering so distractors don't leak;
-  measure with distractor_leakage.
+- ~~Strengthen the note-writer's relevance filtering so distractors don't
+  leak; measure with distractor_leakage.~~ DONE — explicit relevance-filter
+  rule (change-the-plan test + justification-in-claim requirement) in the
+  PreOpNoteWriter prompt; re-measure on the scaled eval run.
 - ~~Verify all generated artifacts (post-op note, anticipated issues), not just
   pre-op note + handoff.~~ DONE — every artifact now passes through the
   ClaimVerifier.
 - Scale the dataset to ~30 cases and re-run the eval for stable aggregates.
-- ClaimVerifier treats anticipated issues as entailment checks; risk
-  projections are inferences, so most read "unsupported". Verify the cited
-  evidence instead (does the span support the risk factor, not the
-  prediction), or add an "inference" verdict.
+- ~~ClaimVerifier treats anticipated issues as entailment checks; risk
+  projections are inferences, so most read "unsupported".~~ DONE — added an
+  "inference" verdict via a forward-looking verification mode (judges the
+  risk-factor evidence, not the prediction); wired for anticipated issues.
 - ~~Add a NAT profiler screenshot/report to the README from a traced live
   run.~~ DONE — evals/profile/ + README "Profiling" section.
