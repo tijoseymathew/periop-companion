@@ -12,3 +12,6 @@ evals/profile/all_requests_profiler_traces.json
 evals/profile/workflow_output.json
 .claude/
 skills-lock.json
+# UI build outputs
+ui/node_modules/
+ui/dist/

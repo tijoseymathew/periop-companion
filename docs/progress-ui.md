@@ -30,7 +30,7 @@ Conventions:
 
 ## U1 — Workspace shell
 
-- [ ] C4 `feat(ui)`: SPA scaffold — Vite + React 18 + TS + Tailwind (own semantic
+- [x] C4 `feat(ui)`: SPA scaffold — Vite + React 18 + TS + Tailwind (own semantic
       tokens per spec §6, teal brand) + vitest/jsdom/@testing-library.
       `lib/schema.ts` (zod mirror of periop.schemas — validated against the real
       sg-0002.json fixture), `lib/provenance.ts` (ref parse/resolve, reverse
