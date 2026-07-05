@@ -44,22 +44,34 @@ class GoldArtifacts(BaseModel):
     handoff_claims: list[str] = Field(min_length=3)
 
 
-_STOP = {"patient", "their", "about", "after", "before", "since", "advice"}
+_STOP = {"patient", "their", "about", "after", "before", "since", "advice",
+         "allergy", "allergic", "history", "taking", "stopped", "medication"}
 
 
 def _content_words(text: str) -> set[str]:
-    return {w for w in re.findall(r"[a-z]{5,}", text.lower()) if w not in _STOP}
+    # 4+ letters, truncated to a 5-char stem so morphological variants
+    # ("allergy"/"allergic", "stop"/"stopped") still line up.
+    return {
+        w[:5] for w in re.findall(r"[a-z]{4,}", text.lower()) if w not in _STOP
+    }
 
 
 def reveals_truth(script: InterviewScript, truth: str) -> bool:
-    """Do the non-provider turns carry the defect truth (keyword overlap)?"""
+    """Do the non-provider turns carry the defect truth (keyword overlap)?
+
+    Generic stop words (allergy, medication, …) are dropped so the check keys
+    on the *distinctive* facts (the allergen, the drug, the timing). At least
+    half of those, and always ≥1, must appear in what the patient/caregiver
+    actually says.
+    """
     words = _content_words(truth)
     if not words:
         return True
     spoken = _content_words(
         " ".join(t.text for t in script.turns if t.speaker != "PROVIDER")
     )
-    return len(words & spoken) >= min(2, len(words))
+    needed = max(1, len(words) // 2)
+    return len(words & spoken) >= needed
 
 
 PREOP_PROMPT = """\

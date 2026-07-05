@@ -36,6 +36,7 @@ def complete_cases() -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--rerun", action="store_true", help="re-run pipeline even if cached")
+    parser.add_argument("--only", nargs="*", help="limit to these case ids")
     args = parser.parse_args()
 
     load_dotenv()
@@ -43,8 +44,12 @@ def main() -> None:
     judge = LlmJudge(chat=fast_chat())
     reasoning, fast = reasoning_chat(), fast_chat()
 
+    case_ids = complete_cases()
+    if args.only:
+        case_ids = [c for c in case_ids if c in set(args.only)]
+
     reports = []
-    for case_id in complete_cases():
+    for case_id in case_ids:
         case_dir = CASE_ROOT / case_id
         try:
             if not args.rerun:
