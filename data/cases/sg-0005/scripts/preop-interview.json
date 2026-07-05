@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll go through some questions to ensure you're ready for your knee surgery tomorrow. Let's start with why you're having this operation."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. My right knee's been really bad for years, lah. Osteoarthritis, they said. Can't walk far without pain anymore."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. Do you have any other medical conditions besides osteoarthritis?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, Doctor. I've got high blood pressure, diabetes, and high cholesterol. All controlled with meds, ah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Let's list your medications. What are you currently taking?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Amlodipine 5mg once daily, Metoprolol 50mg twice a day, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg at night, and Aspirin 75mg every morning. Oh, and I stopped Lisinopril last week as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Any known allergies, especially to antibiotics or medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "The records say no allergies, but actually... I had a rash once from penicillin when I was younger. Never told the hospital before, forgot to mention it, lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. Can you describe the rash and when it happened?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It was years ago, maybe 20 years back. Took penicillin for a tooth infection, then got itchy red spots all over. Went away after stopping the medicine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. We'll update your records. Have you eaten or drunk anything since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. I stopped eating after 8 PM last night, just sipped a little water for meds."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had any previous surgeries or anesthesia?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, cataract surgery five years ago. They used spinal anesthesia, and I was awake but sleepy. No problems then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. How's your mobility now? Can you walk with assistance?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I use a walking frame at home. Can't bend the knee properly, so stairs are tough. Need help sometimes, ah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. For tomorrow, we'll use spinal anesthesia with sedation. You'll be comfortable and won't feel pain. Any questions?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, Doctor. Just want to get this done and walk better."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. We'll see you in the holding area tomorrow. Nurses will prep you, and I'll explain the procedure again before we start."
+    }
+  ]
+}

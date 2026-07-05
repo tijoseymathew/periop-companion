@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi Mr Tan, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Quite okay, Doctor. Got some pain at the operation site, but manageable lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Can you rate your pain on a scale of 0 to 10 for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe 3 or 4? Not too bad, but I can feel it when I move."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright. Any nausea or vomiting since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, no vomiting. Stomach feels a bit funny, but I think it's okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Breathing comfortably? Any chest tightness or shortness of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine. No problem with chest, thank God."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Did you experience any awareness or discomfort during the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't remember anything. Slept like a baby, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Any issues with your blood pressure, sugar levels, or heart palpitations?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Blood pressure was a bit high before surgery, but nurses said it's stable now. Sugar was 12 this morning, but I took my medicine. No dizziness or fast heart beats."
+    }
+  ]
+}

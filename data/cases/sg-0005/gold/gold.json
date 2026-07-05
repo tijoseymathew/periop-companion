@@ -1,0 +1,123 @@
+{
+  "questions": [
+    "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "15",
+      "units": "mg",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "midazolam",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "3",
+      "units": "mg",
+      "provenance": []
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "endotracheal tube placed, grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "16G IV catheter placed in left radial vein",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:12",
+      "category": "line",
+      "value": "arterial line placed in right radial artery",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "500 mL lactated Ringer's solution administered",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "Hypotension (BP 80/50 mmHg) treated with ephedrine 10 mg IV and 200 mL fluid bolus",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "Tachycardia (HR 110 bpm) treated with esmolol 10 mg IV",
+      "units": null,
+      "provenance": []
+    }
+  ],
+  "preop_note_claims": [
+    "History of Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, and Osteoarthritis",
+    "Current medications: Amlodipine 5mg daily, Metoprolol 50mg twice daily, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg daily, Aspirin 75mg daily",
+    "Discontinued medication: Lisinopril 10mg daily (stopped)",
+    "Allergy to Penicillin (rash)",
+    "ASA Physical Status: ASA 3 due to controlled comorbidities (Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia)",
+    "Anesthesia plan: Spinal anesthesia with sedation"
+  ],
+  "handoff_claims": [
+    "Key history includes Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, Osteoarthritis, and Penicillin allergy (rash)",
+    "Intraoperative course: Elective total knee arthroplasty under spinal anesthesia with sedation, no complications",
+    "Anticipated postoperative issues: Pain management, glycemic control, and cardiovascular monitoring"
+  ],
+  "distractors": [
+    "Pneumonia resolved 5 years ago",
+    "Distal radius fracture 10 years ago, fully healed",
+    "Omeprazole discontinued 2 years ago for resolved GERD"
+  ]
+}

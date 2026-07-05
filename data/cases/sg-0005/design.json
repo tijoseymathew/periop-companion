@@ -1,0 +1,134 @@
+{
+  "case_id": "sg-0005",
+  "persona_uuid": "b2a78b5343514fa98274dfdbfa568558",
+  "surgery": "Elective total knee arthroplasty",
+  "urgency": "elective",
+  "anesthesia_plan": "Spinal anesthesia with sedation",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia",
+    "Osteoarthritis"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metoprolol",
+      "dose": "50mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Sitagliptin",
+      "dose": "100mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Penicillin allergy (rash)",
+    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved infection with no residual issues"
+    },
+    {
+      "description": "Distal radius fracture 10 years ago, fully healed",
+      "why_irrelevant": "Remote injury with no ongoing complications"
+    },
+    {
+      "description": "Omeprazole discontinued 2 years ago for resolved GERD",
+      "why_irrelevant": "Medication no longer needed for resolved condition"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metoprolol",
+        "dose": "50mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Sitagliptin",
+        "dose": "100mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia resolved 5 years ago",
+      "Distal radius fracture 10 years ago, fully healed",
+      "Omeprazole discontinued 2 years ago for resolved GERD"
+    ],
+    "prior_anesthesia": "Cholecystectomy under general anesthesia 15 years ago, no complications"
+  }
+}

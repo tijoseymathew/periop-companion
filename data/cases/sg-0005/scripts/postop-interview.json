@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi Mr Tan, how are you feeling now after the surgery? Let me check on you."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I’m okay lah, Doctor. Leg is numb but I feel some pain when I move a bit."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. On a scale of 1 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe 4 or 5? Not too bad, but I can feel it there."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright. Have you felt any nausea or vomiting since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No vomiting, but my stomach feels a bit funny. And I’m very thirsty, Doctor."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. Are you feeling comfortable with your breathing? Any shortness of breath or chest tightness?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine, no problem. But my back feels a bit sore from lying down too long."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Do you remember anything during the surgery? Any sounds or feelings?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I think I heard some voices, but it was like a dream. Not very clear, Doctor."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for sharing. Any other issues, like dizziness or unusual symptoms linked to your blood pressure or sugar levels?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No dizziness, but my legs feel heavy. And I’m worried about my blood sugar, lah. Can I have water soon?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We’ll monitor your sugar closely and give you sips of water soon. The heaviness in your legs is normal after spinal anesthesia. Rest well, Mr Tan."
+    }
+  ]
+}

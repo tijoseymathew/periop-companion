@@ -1,0 +1,222 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "spinal anesthesia administered bupivacaine two point five milligrams and fentanyl twenty micrograms"
+    },
+    {
+      "t": "08:10",
+      "text": "eighteen gauge IV catheter placed in left antecubital fossa"
+    },
+    {
+      "t": "08:15",
+      "text": "blood pressure eighty over fifty, ephedrine ten milligrams IV given"
+    },
+    {
+      "t": "08:20",
+      "text": "normal saline bolus one thousand milliliters administered"
+    },
+    {
+      "t": "08:25",
+      "text": "propofol infusion started at fifty micrograms per kilogram per minute"
+    },
+    {
+      "t": "08:30",
+      "text": "blood pressure one hundred fifty over ninety, labetalol ten milligrams IV given"
+    },
+    {
+      "t": "08:35",
+      "text": "maintenance fluids at one hundred milliliters per hour started"
+    },
+    {
+      "t": "08:40",
+      "text": "patient breathing spontaneously, oxygen saturation ninety-eight percent on nasal cannula"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "2.5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "eighteen gauge IV catheter placed in left antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "blood pressure eighty over fifty",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "ephedrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg/kg/min",
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "blood pressure one hundred fifty over ninety",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "fluid",
+      "value": "maintenance fluids",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "100",
+      "units": "mL/hr",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "airway",
+      "value": "patient breathing spontaneously, oxygen saturation ninety-eight percent on nasal cannula",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    }
+  ]
+}

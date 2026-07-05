@@ -1,0 +1,205 @@
+{
+  "questions": [
+    "Have you stopped or changed any medications in the past year, particularly Enalapril?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "2.5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "eighteen gauge IV catheter placed in left antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "blood pressure eighty over fifty",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "ephedrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg/kg/min",
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "blood pressure one hundred fifty over ninety",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "fluid",
+      "value": "maintenance fluids",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "100",
+      "units": "mL/hr",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "airway",
+      "value": "patient breathing spontaneously, oxygen saturation ninety-eight percent on nasal cannula",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History of Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, and Atrial Fibrillation.",
+    "Current medications: Amlodipine 10mg daily, Metoprolol 50mg twice daily, Metformin 500mg thrice daily, Glimepiride 4mg daily, Atorvastatin 20mg daily, Digoxin 0.125mg daily, Warfarin 5mg daily.",
+    "Enalapril 10mg daily discontinued 6 months ago due to persistent dry cough.",
+    "Allergy to Penicillin.",
+    "ASA Physical Status III due to controlled Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, and Atrial Fibrillation.",
+    "Anesthesia plan: Spinal anesthesia with bupivacaine and fentanyl, supplemented with propofol sedation."
+  ],
+  "handoff_claims": [
+    "History of Atrial Fibrillation, Hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia.",
+    "Intraoperative management included spinal anesthesia with bupivacaine and fentanyl, supplemented with propofol sedation.",
+    "Anticipated postoperative issues: Monitoring for hypotension, bleeding risk due to Warfarin, and respiratory depression from propofol."
+  ],
+  "distractors": [
+    "Pneumonia resolved 5 years ago",
+    "Right ulna fracture healed 20 years ago",
+    "Peptic ulcer disease resolved 10 years ago"
+  ]
+}

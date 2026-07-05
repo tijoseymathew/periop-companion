@@ -31,11 +31,11 @@ resume from the first unchecked item. Conventions:
 - [x] CaseDesigner: profile → surgery + comorbidities + meds + planted defect
       + distractor history
 - [x] Prior-records pack generator (GP summary, med list, old anesthetic record)
-- [ ] Scripted pre-op interview / intra-op voice notes / post-op interview (gold
+- [x] Scripted pre-op interview / intra-op voice notes / post-op interview (gold
       diarized transcripts)
-- [ ] Gold artifacts with claim/provenance annotations
+- [x] Gold artifacts with claim/provenance annotations
 - [ ] TTS rendering via Magpie TTS NIM (verify current model ID at build time)
-- [ ] 5 cases end-to-end
+- [x] 5 cases end-to-end (data/cases/sg-0001..0005)
 
 ## M2 — Pre-op stage
 
