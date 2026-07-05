@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { makeCase, makeSummary } from "../../test/fixtures";
@@ -50,6 +50,33 @@ describe("App workspace", () => {
     await waitFor(() =>
       expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true"),
     );
+  });
+
+  it("audio citation click loads the wav and plays the exact clip (U2)", async () => {
+    Object.defineProperty(window.HTMLMediaElement.prototype, "readyState", {
+      configurable: true,
+      get: () => 1,
+    });
+    window.HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
+    window.HTMLMediaElement.prototype.pause = vi.fn();
+    const { container } = render(<App />);
+    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+    await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
+    const audio = container.querySelector("audio")!;
+    expect(audio.getAttribute("src")).toContain("/api/cases/sg-t/audio/audio%3Apreop-interview");
+    await waitFor(() => expect(audio.currentTime).toBe(214.3));
+    expect(audio.play).toHaveBeenCalled();
+  });
+
+  it("degrades to highlight-only when the wav 404s", async () => {
+    const { container } = render(<App />);
+    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+    await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
+    const audio = container.querySelector("audio")!;
+    fireEvent(audio, new Event("error"));
+    expect(await screen.findByText(/timestamp-only/i)).toBeInTheDocument();
+    // the citation still resolves visually
+    expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true");
   });
 
   it("status filter toggle hides matching claims in the ledger", async () => {

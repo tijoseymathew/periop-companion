@@ -2,14 +2,15 @@
  * The review workspace (ui.md §5): one screen, three columns, all state here
  * with useState/useMemo and props down — no router, no store (ui.md §3).
  */
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Stethoscope } from "lucide-react";
 import { ArtifactView } from "../components/ArtifactView";
+import { AudioPlayer, type AudioPlayerHandle } from "../components/AudioPlayer";
 import { CaseList } from "../components/CaseList";
 import { claimDomId } from "../components/ClaimRow";
 import { SourcePanel } from "../components/SourcePanel";
 import { StageTabs } from "../components/StageTabs";
-import { fetchCase, fetchCases } from "../lib/api";
+import { audioUrl, fetchCase, fetchCases } from "../lib/api";
 import { defaultFilters, type StatusFilters } from "../lib/filters";
 import { buildReverseIndex, resolveRef, type CitingClaim } from "../lib/provenance";
 import { groupArtifactsByStage, type Stage } from "../lib/stages";
@@ -31,6 +32,15 @@ export default function App() {
     claimId: string;
   } | null>(null);
 
+  // audio provenance (U2): which recording the player holds, playback
+  // position for transcript follow-along, and sources whose wav 404'd
+  // (degrade to timestamp-only, ui.md §2)
+  const playerRef = useRef<AudioPlayerHandle>(null);
+  const pendingSeekRef = useRef<{ t0: number; t1: number | null } | null>(null);
+  const [loadedAudio, setLoadedAudio] = useState<{ sourceId: string; src: string } | null>(null);
+  const [playerTime, setPlayerTime] = useState<number | null>(null);
+  const [missingAudio, setMissingAudio] = useState<Set<string>>(new Set());
+
   useEffect(() => {
     fetchCases()
       .then((list) => {
@@ -51,6 +61,9 @@ export default function App() {
         setActiveSourceId(c.sources[0]?.source_id ?? null);
         setHighlightedAnchor(null);
         setActiveClaim(null);
+        setLoadedAudio(null);
+        setPlayerTime(null);
+        setMissingAudio(new Set());
       })
       .catch((e) => setError(String(e)));
     return () => {
@@ -65,14 +78,40 @@ export default function App() {
   );
   const activeGroup = groups.find((g) => g.stage === activeStage) ?? groups[0] ?? null;
 
-  /** Claim/chip click: resolve the ref and drive the source panel (ui.md §5.3). */
+  /** Load a source's wav (if needed) then seek/clip once the element exists. */
+  function driveAudio(sourceId: string, t0: number, t1: number | null) {
+    if (!kase || missingAudio.has(sourceId)) return; // timestamp-only mode
+    if (loadedAudio?.sourceId === sourceId) {
+      if (t1 === null) playerRef.current?.seekToTime(t0);
+      else playerRef.current?.playClip(t0, t1);
+    } else {
+      pendingSeekRef.current = { t0, t1 };
+      setLoadedAudio({ sourceId, src: audioUrl(kase.case_id, sourceId) });
+    }
+  }
+
+  // apply a seek/clip that was waiting for the player to (re)load
+  useEffect(() => {
+    const pending = pendingSeekRef.current;
+    if (!loadedAudio || !pending) return;
+    pendingSeekRef.current = null;
+    if (pending.t1 === null) playerRef.current?.seekToTime(pending.t0);
+    else playerRef.current?.playClip(pending.t0, pending.t1);
+  }, [loadedAudio]);
+
+  /**
+   * Claim/chip click (ui.md §5.3): resolve the ref; chunks highlight in the
+   * source panel, segments additionally play the exact clip (v1 §11 step 3).
+   */
   function activateRef(ref: string) {
     if (!kase) return;
     const hit = resolveRef(kase, ref);
     if (!hit) return; // UNRESOLVED — the chip badge is the finding
     setActiveSourceId(hit.source.source_id);
     setHighlightedAnchor(hit.kind === "chunk" ? hit.chunk.chunk_id : hit.segment.seg_id);
-    // audio clip playback arrives with U2
+    if (hit.kind === "segment") {
+      driveAudio(hit.source.source_id, hit.segment.t0, hit.segment.t1);
+    }
   }
 
   /** Reverse-index click: bring the citing claim into view in the ledger. */
@@ -137,21 +176,39 @@ export default function App() {
           )}
         </main>
         <aside className="flex w-96 shrink-0 flex-col border-l border-surface-overlay bg-surface-sunken">
-          {/* audio player slot (h-40) arrives with U2 */}
+          <AudioPlayer
+            ref={playerRef}
+            src={loadedAudio?.src ?? null}
+            label={loadedAudio?.sourceId ?? null}
+            onTimeUpdate={setPlayerTime}
+            onError={() => {
+              if (!loadedAudio) return;
+              // wav not rendered (gitignored) → timestamp-only mode
+              setMissingAudio((prev) => new Set(prev).add(loadedAudio.sourceId));
+              setLoadedAudio(null);
+              setPlayerTime(null);
+            }}
+          />
+          {missingAudio.size > 0 && (
+            <p className="border-b border-surface-overlay px-4 py-1.5 text-xs text-status-unsupported">
+              timestamp-only mode — no rendered wav for{" "}
+              <span className="font-mono">{[...missingAudio].join(", ")}</span>
+            </p>
+          )}
           {kase && (
             <SourcePanel
               kase={kase}
               reverseIndex={reverseIndex}
               activeSourceId={activeSourceId}
               highlightedAnchor={highlightedAnchor}
-              currentTime={null}
-              playingSourceId={null}
+              currentTime={playerTime}
+              playingSourceId={loadedAudio?.sourceId ?? null}
               onSelectSource={(id) => {
                 setActiveSourceId(id);
                 setHighlightedAnchor(null);
               }}
-              onSeekToTime={() => {
-                /* wired to the player in U2 */
+              onSeekToTime={(seconds) => {
+                if (activeSourceId) driveAudio(activeSourceId, seconds, null);
               }}
               onJumpToClaim={jumpToClaim}
             />

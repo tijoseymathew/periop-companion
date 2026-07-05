@@ -48,7 +48,7 @@ Conventions:
 
 ## U2 — Audio provenance
 
-- [ ] C7 `feat(ui)`: AudioPlayer (custom chrome, `seekToTime`/`playClip(t0,t1)`
+- [x] C7 `feat(ui)`: AudioPlayer (custom chrome, `seekToTime`/`playClip(t0,t1)`
       via ref, timeupdate auto-pause, clip-region marker, speed/volume) — clip
       logic vitest-tested against a mocked media element. Claim/chip with audio
       ref → load `/api/.../audio/...`, seek t0, play, pause at t1; transcript
