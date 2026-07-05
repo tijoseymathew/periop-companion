@@ -40,21 +40,45 @@ class StageAgent(BaseAgent):
         )
 
 
-def build_pipeline() -> SequentialAgent:
+def build_pipeline(stages=None) -> SequentialAgent:
+    """Build the ADK SequentialAgent. Defaults to the M0 stubs; pass real
+    (name, Case→Case) stage functions for the production path."""
+    stages = stages or [
+        ("preop_stage", run_preop),
+        ("intraop_stage", run_intraop),
+        ("postop_stage", run_postop),
+    ]
     return SequentialAgent(
         name="periop_pipeline",
         description="Pre-op → intra-op → post-op documentation pipeline",
-        sub_agents=[
-            StageAgent(name="preop_stage", stage_fn=run_preop),
-            StageAgent(name="intraop_stage", stage_fn=run_intraop),
-            StageAgent(name="postop_stage", stage_fn=run_postop),
-        ],
+        sub_agents=[StageAgent(name=name, stage_fn=fn) for name, fn in stages],
     )
 
 
-async def run_case(case: Case) -> Case:
-    """Run one case through the full pipeline; returns the updated Case."""
-    runner = InMemoryRunner(agent=build_pipeline(), app_name="periop")
+def build_case_pipeline(case_dir, chat, fast_chat=None) -> SequentialAgent:
+    """ADK pipeline whose stages run the real agents against ``case_dir``.
+
+    Model tiers are bound into the stage closures; the Case rides in ADK
+    session state so every stage's LLM/tool calls land in the NAT profiler.
+    """
+    from functools import partial
+
+    from periop.agents.stages import run_intraop_stage, run_postop_stage
+    from periop.agents.preop_stage import run_preop_stage
+
+    fast_chat = fast_chat or chat
+    return build_pipeline(
+        [
+            ("preop_stage", lambda c: run_preop_stage(c, case_dir, chat=chat, verifier_chat=fast_chat)),
+            ("intraop_stage", lambda c: run_intraop_stage(c, case_dir, chat=chat, fast_chat=fast_chat)),
+            ("postop_stage", lambda c: run_postop_stage(c, case_dir, chat=chat, fast_chat=fast_chat)),
+        ]
+    )
+
+
+async def run_case(case: Case, pipeline: SequentialAgent | None = None) -> Case:
+    """Run one case through an ADK pipeline (stub by default); returns the Case."""
+    runner = InMemoryRunner(agent=pipeline or build_pipeline(), app_name="periop")
     session = await runner.session_service.create_session(
         app_name="periop",
         user_id="periop",

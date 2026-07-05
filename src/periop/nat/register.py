@@ -21,13 +21,18 @@ class PeriopPipelineConfig(FunctionBaseConfig, name="periop_pipeline"):
 
     case_dir: str = Field(
         default="data/cases",
-        description="Directory holding per-case JSON files (created if missing)",
+        description="Directory holding per-case bundles (records/scripts/gold) and outputs",
+    )
+    stub: bool = Field(
+        default=False,
+        description="Run the M0 no-LLM stub stages instead of the real agents",
     )
 
 
 @register_function(config_type=PeriopPipelineConfig)
 async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
-    from periop.agents.pipeline import run_case
+    from periop.agents.pipeline import build_case_pipeline, run_case
+    from periop.nim import fast_chat, reasoning_chat
 
     store = CaseStore(config.case_dir)
 
@@ -37,10 +42,19 @@ async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
             case = store.load(case_id)
         except KeyError:
             case = Case(case_id=case_id)
-        case = await run_case(case)
+
+        if config.stub:
+            pipeline = None
+        else:
+            case_bundle_dir = Path(config.case_dir) / case_id
+            pipeline = build_case_pipeline(
+                case_bundle_dir, chat=reasoning_chat(), fast_chat=fast_chat()
+            )
+        case = await run_case(case, pipeline=pipeline)
         path = store.save(case)
+        claims = sum(len(a.claims) for a in case.artifacts)
         artifact_ids = ", ".join(a.artifact_id for a in case.artifacts)
-        return f"case {case.case_id}: produced [{artifact_ids}] → {path}"
+        return f"case {case.case_id}: {len(case.artifacts)} artifacts, {claims} claims [{artifact_ids}] → {path}"
 
     yield FunctionInfo.from_fn(
         _run,

@@ -49,13 +49,13 @@ resume from the first unchecked item. Conventions:
 
 ## M3 — Intra-op + post-op
 
-- [ ] VoiceNoteTranscriber (streaming profile + word boosting lexicon)
-- [ ] EventExtractor (nano first pass → super verification, strict JSON schema)
-- [ ] IntraOpRecordWriter
-- [ ] IssueAnticipator (cross-stage provenance)
-- [ ] HandoffComposer (constrained: select/order/rephrase existing claims only)
-- [ ] PostAnesthesiaEvaluator
-- [ ] Full case runs end-to-end
+- [x] VoiceNoteTranscriber — gold path + word-boosting lexicon (streaming Parakeet pending audio)
+- [x] EventExtractor (nano first pass → super verification, strict JSON schema)
+- [x] IntraOpRecordWriter
+- [x] IssueAnticipator (cross-stage provenance)
+- [x] HandoffComposer (constrained: select/order/rephrase existing claims only)
+- [x] PostAnesthesiaEvaluator
+- [x] Full case runs end-to-end (ADK-driven + CLI runner)
 
 ## M4 — Eval harness
 

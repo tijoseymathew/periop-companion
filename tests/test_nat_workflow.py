@@ -24,6 +24,7 @@ def config_file(tmp_path):
 workflow:
   _type: periop_pipeline
   case_dir: {tmp_path / "cases"}
+  stub: true
 """
     )
     return config
