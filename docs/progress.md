@@ -16,7 +16,7 @@ resume from the first unchecked item. Conventions:
 - [x] Repo scaffolding: pyproject (uv), pytest wiring, package layout `src/periop/`
 - [x] Schemas: `Case`, `Source` (document chunks / audio segments), `Claim`,
       `Artifact`, `Event`, provenance references (`source_id#anchor`)
-- [ ] Deterministic chunker: markdown/text → stable, citable chunk IDs
+- [x] Deterministic chunker: markdown/text → stable, citable chunk IDs
 - [ ] Case store: JSON persistence, append-only source registry
 - [ ] NIM client wrapper: OpenAI-compatible chat client for build.nvidia.com
       (reasoning + fast model tiers), mocked in tests
