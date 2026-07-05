@@ -18,6 +18,9 @@ dev = [
     "pytest-asyncio>=0.24",
 ]
 
+[project.entry-points.'nat.components']
+periop = "periop.nat.register"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"

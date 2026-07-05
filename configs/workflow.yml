@@ -1,0 +1,10 @@
+# nat run / nat serve configuration (spec §7).
+#
+#   uv run nat run --config_file configs/workflow.yml --input "sg-0001"
+#
+# The workflow function is registered via the `nat.components` entry point
+# in pyproject.toml (periop.nat.register).
+
+workflow:
+  _type: periop_pipeline
+  case_dir: data/cases

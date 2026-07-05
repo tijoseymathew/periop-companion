@@ -21,9 +21,9 @@ resume from the first unchecked item. Conventions:
 - [x] NIM client wrapper: OpenAI-compatible chat client for build.nvidia.com
       (reasoning + fast model tiers), mocked in tests
 - [x] Live smoke test script (`scripts/smoke_llm.py`) verified with NGC key
-- [ ] ADK stage pipeline stubs (pre-op / intra-op / post-op) runnable end-to-end
+- [x] ADK stage pipeline stubs (pre-op / intra-op / post-op) runnable end-to-end
       with stub tools
-- [ ] NAT wiring: register workflow, `nat run` executes a trivial 3-stage pass
+- [x] NAT wiring: register workflow, `nat run` executes a trivial 3-stage pass
 
 ## M1 — Synthetic data v1
 
