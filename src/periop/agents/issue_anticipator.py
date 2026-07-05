@@ -94,9 +94,11 @@ class IssueAnticipator:
     @staticmethod
     def _resolve_refs(case: Case, refs: list[str]) -> list[str]:
         """Source refs kept as-is; claim refs inherit the claim's provenance;
-        anything else dropped."""
+        anything else dropped. Refs are normalized first — models sometimes
+        echo the display brackets or pad with whitespace."""
         resolved: list[str] = []
         for ref in refs:
+            ref = ref.strip().strip("[]")
             try:
                 case.resolve(ref)
             except (KeyError, ValueError):

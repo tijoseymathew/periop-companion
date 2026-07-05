@@ -145,6 +145,23 @@ class TestIssueAnticipator:
         assert len(artifact.claims) == 1
         assert [str(r) for r in artifact.claims[0].provenance] == ["audio:intraop-notes#s002"]
 
+    def test_bracketed_or_padded_refs_are_normalized(self, case):
+        # the prompt shows refs as "[source#anchor]" — models sometimes echo
+        # the brackets or pad with whitespace; those must still resolve
+        IntraOpRecordWriter(chat=FakeChat(WriterOutput(claims=[]))).write(case, _events())
+        issues = AnticipatedIssues(issues=[
+            AnticipatedIssue(
+                issue="PONV watch.",
+                provenance=["[audio:intraop-notes#s002]", f" {PREOP_NOTE_ID}#c-001 "],
+            )
+        ])
+        artifact = IssueAnticipator(chat=FakeChat(issues)).anticipate(case)
+        assert len(artifact.claims) == 1
+        assert [str(r) for r in artifact.claims[0].provenance] == [
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s001",
+        ]
+
     def test_issue_with_no_resolvable_provenance_is_dropped(self, case):
         IntraOpRecordWriter(chat=FakeChat(WriterOutput(claims=[]))).write(case, _events())
         issues = AnticipatedIssues(issues=[
