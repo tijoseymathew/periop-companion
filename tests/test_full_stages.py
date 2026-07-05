@@ -93,6 +93,19 @@ class TestFullStages:
         assert case.get_artifact(ANTICIPATED_ISSUES_ID) is not None
         assert case.get_source("audio:intraop-notes") is not None
 
+    def test_intraop_stage_verifies_anticipated_issues(self, case_dir):
+        # every generated artifact goes through the ClaimVerifier — the
+        # anticipated-issues claims must not stay unverified (spec §4.3)
+        chat = ScriptedChat()
+        case = Case(case_id="sg-0001")
+        from periop.agents.preop_stage import run_preop_stage
+        run_preop_stage(case, case_dir, chat=chat)
+        run_intraop_stage(case, case_dir, chat=chat, fast_chat=chat)
+        issues = case.get_artifact(ANTICIPATED_ISSUES_ID)
+        assert issues.claims
+        for claim in issues.claims:
+            assert claim.status != ClaimStatus.UNVERIFIED
+
     def test_postop_stage_builds_handoff_and_note(self, case_dir):
         chat = ScriptedChat()
         case = Case(case_id="sg-0001")

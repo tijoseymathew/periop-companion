@@ -12,7 +12,7 @@ from periop.agents.claim_verifier import ClaimVerifier
 from periop.agents.event_extractor import EventExtractor
 from periop.agents.handoff import HANDOFF_ID, HandoffComposer
 from periop.agents.intraop_record import INTRAOP_RECORD_ID, IntraOpRecordWriter
-from periop.agents.issue_anticipator import IssueAnticipator
+from periop.agents.issue_anticipator import ANTICIPATED_ISSUES_ID, IssueAnticipator
 from periop.agents.postop_eval import POSTOP_NOTE_ID, PostAnesthesiaEvaluator
 from periop.agents.preop_stage import run_preop_stage
 from periop.schemas import Case
@@ -31,8 +31,10 @@ def run_intraop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) ->
         case, "audio:intraop-notes"
     )
     IntraOpRecordWriter(chat=chat).write(case, events)
-    ClaimVerifier(chat=fast_chat).verify(case, INTRAOP_RECORD_ID)
     IssueAnticipator(chat=chat).anticipate(case)
+    verifier = ClaimVerifier(chat=fast_chat)
+    verifier.verify(case, INTRAOP_RECORD_ID)
+    verifier.verify(case, ANTICIPATED_ISSUES_ID)
     return case
 
 
