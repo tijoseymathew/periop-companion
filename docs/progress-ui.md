@@ -35,7 +35,7 @@ Conventions:
       `lib/schema.ts` (zod mirror of periop.schemas — validated against the real
       sg-0002.json fixture), `lib/provenance.ts` (ref parse/resolve, reverse
       index). Vitest green; `npm run build` clean.
-- [ ] C5 `feat(ui)`: workspace components — App shell (3-column), CaseList with
+- [x] C5 `feat(ui)`: workspace components — App shell (3-column), CaseList with
       status filters (unsupported/conflicting never hidden by default), StageTabs,
       ArtifactView/ClaimRow/StatusBadge/ProvenanceChip (UNRESOLVED badge on broken
       refs), EventsTable, SourcePanel (DocumentView chunk highlight,
