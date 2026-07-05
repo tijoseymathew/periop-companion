@@ -142,6 +142,28 @@ KER. A/B experiments: word boosting on/off, **Nano vs Super for extraction**,
 constrained vs free-generation handoff. See
 [`evals/report.json`](evals/) for the committed run.
 
+## Profiling (NAT-traced live run)
+
+`nat eval --config_file configs/profile_config.yml` runs the full pipeline
+with the NAT profiler collecting every LLM call (NimChat emits
+LLM_START/LLM_END intermediate steps with token usage, since the ADK plugin
+only hooks litellm). Committed reports from one full case (sg-0001, hosted
+NIMs on build.nvidia.com) live in [`evals/profile/`](evals/profile/):
+
+| | Nemotron Super 49B (reasoning) | Nemotron Nano 9B (fast) |
+|---|---|---|
+| Calls | 7 | 44 |
+| Role | note generation, gap analysis, event verification | per-claim verification, extraction first pass |
+| Avg latency / call | 85.4 s | 8.1 s |
+| p95 latency | 171.5 s | 17.3 s |
+| Tokens (prompt + completion) | 12,833 + 16,251 | 17,717 + 15,814 |
+
+Full case wall-clock: ~16 min, sequential. The bottleneck report
+(`workflow_profiling_report.txt`) confirms the model-tiering story from
+spec §8: Super's reasoning latency dominates (bottleneck score 85.4 vs 8.1),
+while Nano absorbs 86% of the calls at ~10× lower per-call latency — which is
+exactly why verification and the extraction first pass run on the fast tier.
+
 ## Status
 
 M0–M4 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data

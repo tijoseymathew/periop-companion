@@ -1,0 +1,9 @@
+
+
+
+---- BOTTLENECK REPORT ----
+Total distinct operations found: 2
+Overall max concurrency (all ops): 1
+Top 3 Bottlenecks by bottleneck_score (avg_duration * max_concurrency):
+1) LLM 'nvidia/llama-3.3-nemotron-super-49b-v1.5': score=85.37, avg_dur=85.37, max_concurrency=1
+2) LLM 'nvidia/nvidia-nemotron-nano-9b-v2': score=8.14, avg_dur=8.14, max_concurrency=1

@@ -3,3 +3,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+# raw profiler traces carry full prompt/response text; commit the distilled
+# reports in evals/profile/ instead
+evals/profile/all_requests_profiler_traces.json
+evals/profile/workflow_output.json

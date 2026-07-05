@@ -1,0 +1,24 @@
+{
+  "simple_stack_analysis": {
+    "LLM:nvidia/llama-3.3-nemotron-super-49b-v1.5": {
+      "operation_type": "LLM",
+      "operation_name": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+      "usage_count": 7,
+      "avg_duration": 85.36936885969979,
+      "p95_duration": 171.54779825210565,
+      "p99_duration": 192.90177614212033,
+      "max_concurrency": 1,
+      "bottleneck_score": 85.36936885969979
+    },
+    "LLM:nvidia/nvidia-nemotron-nano-9b-v2": {
+      "operation_type": "LLM",
+      "operation_name": "nvidia/nvidia-nemotron-nano-9b-v2",
+      "usage_count": 44,
+      "avg_duration": 8.139123271812092,
+      "p95_duration": 17.252709412574777,
+      "p99_duration": 58.716100494861614,
+      "max_concurrency": 1,
+      "bottleneck_score": 8.139123271812092
+    }
+  }
+}

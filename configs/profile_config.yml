@@ -1,0 +1,25 @@
+# nat eval profiling configuration (spec §6: cost/latency via the NAT
+# profiler — per-stage token usage, per-agent latency, bottleneck analysis).
+#
+#   uv run nat eval --config_file configs/profile_config.yml
+#
+# Runs the full pipeline over the dataset rows (one per case) with the
+# profiler collecting the LLM_START/LLM_END steps NimChat emits, and writes
+# reports under evals/profile/.
+
+workflow:
+  _type: periop_pipeline
+  case_dir: data/cases
+
+eval:
+  general:
+    output_dir: evals/profile
+    dataset:
+      _type: json
+      file_path: configs/profile_dataset.json
+    profiler:
+      base_metrics: true
+      compute_llm_metrics: true
+      csv_exclude_io_text: true
+      bottleneck_analysis:
+        enable_simple_stack: true

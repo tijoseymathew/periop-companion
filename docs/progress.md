@@ -77,7 +77,9 @@ resume from the first unchecked item. Conventions:
       scripts/render_review.py): claims by artifact, status flags, expandable
       cited spans, links into a source registry. Blueprint React frontend
       with audio-clip playback deferred until the TTS→ASR path lands.
-- [ ] Profiler screenshot/report in README (needs a NAT-traced live run)
+- [x] Profiler report in README from a NAT-traced live run (sg-0001 via
+      `nat eval` + configs/profile_config.yml; reports in evals/profile/).
+      Run surfaced the IssueAnticipator claim-ref bug — fixed same session.
 
 ## Notes / decisions log
 
@@ -93,6 +95,15 @@ resume from the first unchecked item. Conventions:
   schema has no `healthcare_persona`/ethnicity fields. Stratified sampling
   runs on age band × sex instead (48 personas, 6 per stratum, seed 42,
   committed at data/synthgen/personas_sample.jsonl, CC-BY-4.0).
+- 2026-07-05 (polish session): Fixed a missing-Path NameError that broke every
+  non-stub `nat run` (stub-only test coverage had hidden it). NAT path now
+  persists processed cases to data/cases/_out like the CLI. NimChat emits
+  LLM_START/LLM_END intermediate steps (token usage included) so the NAT
+  profiler sees our direct OpenAI-client calls — NAT's ADK plugin only
+  instruments litellm. pyproject extras corrected to nvidia-nat[adk,eval,
+  profiler] ("profiling" wasn't a real extra; `nat eval` was missing);
+  langchain-core added because nvidia-nat-eval 1.8.0 imports it without
+  declaring it.
 - 2026-07-05: Full pipeline verified live on sg-0002 (5 artifacts, 50
   provenance-carrying claims across pre-op docs, intra-op voice notes, post-op
   interview). Baseline eval (evals/report.json, evals/README.md) surfaced:
@@ -104,11 +115,14 @@ resume from the first unchecked item. Conventions:
 
 ## Known follow-ups (surfaced by the baseline eval)
 
-- Align gold intra-op event granularity with the extractor (or relax
-  extraction_f1 to drug-name + time-bucket) — currently reads 0.0.
+- ~~Align gold intra-op event granularity with the extractor (or relax
+  extraction_f1 to drug-name + time-bucket) — currently reads 0.0.~~ DONE —
+  extraction_f1 matches on (category, 5-min bucket, token-subset value).
 - Strengthen the note-writer's relevance filtering so distractors don't leak;
   measure with distractor_leakage.
-- Verify all generated artifacts (post-op note, anticipated issues), not just
-  pre-op note + handoff.
+- ~~Verify all generated artifacts (post-op note, anticipated issues), not just
+  pre-op note + handoff.~~ DONE — every artifact now passes through the
+  ClaimVerifier.
 - Scale the dataset to ~30 cases and re-run the eval for stable aggregates.
-- Add a NAT profiler screenshot/report to the README from a traced live run.
+- ~~Add a NAT profiler screenshot/report to the README from a traced live
+  run.~~ DONE — evals/profile/ + README "Profiling" section.
