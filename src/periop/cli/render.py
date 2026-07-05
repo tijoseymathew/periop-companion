@@ -12,6 +12,7 @@ _STATUS_MARK = {
     "unsupported": "?",
     "conflicting": "✗",
     "unverified": "·",
+    "inference": "→",  # risk projection; cited risk factors verified
 }
 
 

@@ -10,3 +10,5 @@ data/cases/*/audio/*.wav
 # reports in evals/profile/ instead
 evals/profile/all_requests_profiler_traces.json
 evals/profile/workflow_output.json
+.claude/
+skills-lock.json

@@ -42,11 +42,16 @@ def provenance_coverage(artifact: ArtifactRecord) -> float:
 
 
 def provenance_precision(artifact: ArtifactRecord) -> float:
-    """Of cited claims, fraction the verifier marked supported."""
+    """Of cited claims, fraction whose citations the verifier validated
+    (supported, or inference with its risk basis supported)."""
     cited = [c for c in artifact.claims if c.provenance]
     if not cited:
         return 1.0
-    supported = sum(1 for c in cited if c.status == ClaimStatus.SUPPORTED)
+    supported = sum(
+        1
+        for c in cited
+        if c.status in (ClaimStatus.SUPPORTED, ClaimStatus.INFERENCE)
+    )
     return supported / len(cited)
 
 
@@ -125,6 +130,29 @@ def keyword_error_rate(hypothesis: str, reference: str, lexicon: Sequence[str]) 
         return 0.0
     errors = sum(1 for term in ref_terms if term.lower() not in hyp)
     return errors / len(ref_terms)
+
+
+def speaker_attribution_accuracy(asr_segments, gold_segments) -> float:
+    """Time-weighted fraction of ASR speech attributed to the right speaker.
+
+    Segments are dicts (or objects) with ``speaker``, ``t0``, ``t1``. Each ASR
+    segment's time is scored against the overlapping gold segments; unmatched
+    ASR time counts as wrong (diarization hallucinated speech).
+    """
+
+    def get(seg, key):
+        return seg[key] if isinstance(seg, dict) else getattr(seg, key)
+
+    total = sum(get(s, "t1") - get(s, "t0") for s in asr_segments)
+    if total <= 0:
+        return 0.0
+    correct = 0.0
+    for a in asr_segments:
+        for g in gold_segments:
+            overlap = min(get(a, "t1"), get(g, "t1")) - max(get(a, "t0"), get(g, "t0"))
+            if overlap > 0 and get(a, "speaker") == get(g, "speaker"):
+                correct += overlap
+    return correct / total
 
 
 # ------------------------------------------------------- semantic set metrics

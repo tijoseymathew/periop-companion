@@ -18,6 +18,7 @@ from periop.evals.metrics import (
     provenance_coverage,
     provenance_precision,
     set_prf,
+    speaker_attribution_accuracy,
 )
 from periop.schemas import ArtifactRecord, Claim, ClaimStatus, Event
 
@@ -172,3 +173,58 @@ class TestJudgeBackedMetrics:
             matches=self._match_by_keyword("pneumonia"),
         )
         assert rate == 0.5  # 1 of 2 distractors leaked
+
+
+class TestSpeakerAttributionAccuracy:
+    def test_perfect_attribution(self):
+        gold = [
+            {"speaker": "PROVIDER", "t0": 0.0, "t1": 2.0},
+            {"speaker": "PATIENT", "t0": 2.5, "t1": 4.0},
+        ]
+        asr = [
+            {"speaker": "PROVIDER", "t0": 0.1, "t1": 1.9},
+            {"speaker": "PATIENT", "t0": 2.6, "t1": 3.9},
+        ]
+        assert speaker_attribution_accuracy(asr, gold) == pytest.approx(1.0)
+
+    def test_swapped_speakers_score_zero(self):
+        gold = [{"speaker": "PROVIDER", "t0": 0.0, "t1": 2.0}]
+        asr = [{"speaker": "PATIENT", "t0": 0.0, "t1": 2.0}]
+        assert speaker_attribution_accuracy(asr, gold) == pytest.approx(0.0)
+
+    def test_partial_overlap_weighted_by_time(self):
+        gold = [
+            {"speaker": "PROVIDER", "t0": 0.0, "t1": 2.0},
+            {"speaker": "PATIENT", "t0": 2.0, "t1": 4.0},
+        ]
+        # one ASR segment spans both gold turns labelled PROVIDER:
+        # 2s correct, 2s wrong -> 0.5
+        asr = [{"speaker": "PROVIDER", "t0": 0.0, "t1": 4.0}]
+        assert speaker_attribution_accuracy(asr, gold) == pytest.approx(0.5)
+
+    def test_empty_inputs(self):
+        assert speaker_attribution_accuracy([], []) == 0.0
+
+
+class TestInferenceStatus:
+    """Forward-looking claims verified as 'inference' (risk basis supported)."""
+
+    def test_provenance_precision_counts_inference_as_valid(self):
+        artifact = ArtifactRecord(
+            artifact_id="note:anticipated-issues",
+            claims=[
+                _claim("c1", "PONV risk elevated.", ["doc:a#c1"], ClaimStatus.INFERENCE),
+                _claim("c2", "Grade 3 view.", ["doc:a#c1"], ClaimStatus.SUPPORTED),
+            ],
+        )
+        assert provenance_precision(artifact) == 1.0
+
+    def test_hallucinated_rate_excludes_inference(self):
+        artifact = ArtifactRecord(
+            artifact_id="note:anticipated-issues",
+            claims=[
+                _claim("c1", "PONV risk elevated.", ["doc:a#c1"], ClaimStatus.INFERENCE),
+                _claim("c2", "Made up.", [], ClaimStatus.UNVERIFIED),
+            ],
+        )
+        assert hallucinated_claim_rate(artifact) == 0.5

@@ -146,6 +146,23 @@ class TestClaimVerifier:
         verifier.verify(case, "note:pre-anesthesia-eval")
         assert "stopped it six days ago" in verifier.chat.calls[0].lower()
 
+    def test_forward_looking_mode_offers_inference_verdict(self, tmp_path):
+        # Anticipated issues are risk projections: the spans can support the
+        # risk factors but never entail the outcome, so entailment-style
+        # verification would read them all "unsupported" (progress.md).
+        case = self._artifact_case(tmp_path)
+        verifier = ClaimVerifier(chat=VerifierFakeChat(["inference", "supported"]))
+        verifier.verify(case, "note:pre-anesthesia-eval", forward_looking=True)
+        claims = case.get_artifact("note:pre-anesthesia-eval").claims
+        assert claims[0].status == ClaimStatus.INFERENCE
+        assert '"inference"' in verifier.chat.calls[0]
+
+    def test_default_mode_does_not_offer_inference(self, tmp_path):
+        case = self._artifact_case(tmp_path)
+        verifier = ClaimVerifier(chat=VerifierFakeChat(["supported", "supported"]))
+        verifier.verify(case, "note:pre-anesthesia-eval")
+        assert '"inference"' not in verifier.chat.calls[0]
+
     def test_unsupported_claims_are_kept_not_dropped(self, tmp_path):
         case = self._artifact_case(tmp_path)
         ClaimVerifier(chat=VerifierFakeChat(["unsupported", "unsupported"])).verify(

@@ -34,7 +34,7 @@ def run_intraop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) ->
     IssueAnticipator(chat=chat).anticipate(case)
     verifier = ClaimVerifier(chat=fast_chat)
     verifier.verify(case, INTRAOP_RECORD_ID)
-    verifier.verify(case, ANTICIPATED_ISSUES_ID)
+    verifier.verify(case, ANTICIPATED_ISSUES_ID, forward_looking=True)
     return case
 
 

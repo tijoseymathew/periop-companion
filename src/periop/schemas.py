@@ -30,6 +30,9 @@ class ClaimStatus(StrEnum):
     SUPPORTED = "supported"
     UNSUPPORTED = "unsupported"
     CONFLICTING = "conflicting"
+    # Forward-looking risk projection: the cited spans support the stated risk
+    # factors, but the projected outcome is an inference, not an entailment.
+    INFERENCE = "inference"
 
 
 class EventCategory(StrEnum):
