@@ -67,11 +67,19 @@ Conventions:
 - [x] C8 `feat(ui)`: copy-as-markdown per artifact (claims as bullets +
       citation footnotes, clipboard API with fallback); keyboard navigation
       between claims (↑/↓ move, Enter activates first ref). Vitest.
-- [ ] C9 `docs`: attribution.md "Review UI" row (adapted vs built-new), README
-      review-UI section (run instructions), final checklist ticks.
+- [x] C9 `docs`: attribution.md "Review UI" row (adapted vs built-new), README
+      review-UI section (run instructions + `docs/images/review-ui.png`
+      captured via headless Playwright), final checklist ticks.
 
 ## Notes / decisions log
 
 - 2026-07-06: Plan committed before implementation so any rate-limit interrupt
   can resume from the first unchecked box. Playwright browsers already cached
   (chromium-1228); pin `@playwright/test` to a matching 1.61.x.
+- 2026-07-06: vitest 2 pins vite 5 — upgraded to vitest 3 to match vite 6.
+- 2026-07-06: e2e caught a real bug C5's unit tests missed: claim ids repeat
+  across artifacts (`c-002` in two notes), so the active claim is tracked as
+  (artifact, claim). Keep e2e locators strict — that strictness found it.
+- 2026-07-06: MVP complete — U0/U1/U2/U4 all green (244 pytest, 64 vitest,
+  10 Playwright e2e). U3 (SSE live runs) intentionally left as the stretch
+  item; resume there if picked up later.

@@ -13,6 +13,7 @@ claim-level provenance. This document records what was reused versus built.
 | Parakeet + Silero VAD + Sortformer offline ASR | Same ASR stack and `offline_recognize` + diarization config; role-mapping (provider/patient) mirrors the blueprint's speaker-tag → role step. |
 | Single-`NVIDIA_API_KEY` hosted default | No GPU required; clone-and-run with one key, exactly as the blueprint's hosted profile. |
 | NIM deployment recipes (stretch) | `deploy/selfhosted/` will reuse the blueprint's Parakeet/LLM NIM compose recipes. |
+| Review UI design & patterns (Apache-2.0 app code, adapted) | Three-column workspace layout and proportions; plain-`<audio>` player with custom chrome and imperative `seekToTime` via `forwardRef`/`useImperativeHandle` (`ui/src/components/AudioPlayer.tsx` notes its lineage); transcript-segment click → seek; semantic color-token styling pattern; clipboard-with-fallback copy. **Excluded**: `@kui/*` and `@nv-brand-assets/*` packages, KUI token values, NVIDIA logos/green/product names — replaced with plain Tailwind (own slate/teal values), lucide-react (MIT), and the "PeriOp Companion — Review" name (spec ui.md §8). |
 
 ## Built new (everything agentic, provenance, synth data, eval)
 
@@ -36,6 +37,12 @@ claim-level provenance. This document records what was reused versus built.
   recall vs gold, hallucinated-claim rate, gap-analysis P/R, distractor
   leakage, structured-extraction F1, clinical-term KER; LLM-judge matcher;
   nano-vs-super A/B.
+- **Review UI substance** (`ui/`, `src/periop/api/`): the claim ledger as the
+  note (read-only by design), claim→clip playback with `playClip(t0, t1)`
+  auto-pause, the chunk/segment reverse index ("cited by n claims"),
+  UNRESOLVED-ref surfacing, timestamp-only degradation for missing wavs, and
+  the FastAPI serving layer with Range support. The blueprint modeled
+  citations but never wired them to a click; that interaction is new work.
 
 ## Model & data provenance
 

@@ -80,6 +80,8 @@ resume from the first unchecked item. Conventions:
       scripts/render_review.py): claims by artifact, status flags, expandable
       cited spans, links into a source registry. Blueprint React frontend
       with audio-clip playback deferred until the TTS→ASR path lands.
+      → landed 2026-07-06 as the full review workspace (specs/ui.md,
+      docs/progress-ui.md): React SPA + FastAPI, claim→clip playback.
 - [x] Profiler report in README from a NAT-traced live run (sg-0001 via
       `nat eval` + configs/profile_config.yml; reports in evals/profile/).
       Run surfaced the IssueAnticipator claim-ref bug — fixed same session.

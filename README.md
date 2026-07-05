@@ -45,7 +45,7 @@ stage-appropriate documentation where each statement is traceable:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  Review UI (adapted ambient-provider React app / NAT UI)    │  ← last / optional
+│  Review UI — React SPA (ui/) + FastAPI layer (periop.api)   │
 ├─────────────────────────────────────────────────────────────┤
 │  NeMo Agent Toolkit — observability & evaluation            │
 │  • nat run / serve / eval   • OTel traces   • token/latency │
@@ -97,6 +97,10 @@ uv run python scripts/run_eval.py
 
 # render the HTML review page for processed cases (offline)
 uv run python scripts/render_review.py sg-0002
+
+# review UI (offline): build the SPA once, then serve UI + API in one process
+(cd ui && npm install && npm run build)
+uv run python -m periop.api            # → http://localhost:8000
 ```
 
 ### Self-hosted NIMs (no API key, no rate limits)
@@ -130,12 +134,30 @@ Each claim renders with its status and cited span — for audio, the speaker and
 The records still list metformin as current; the GapAnalyst catches the
 conflict, and the note states the interview truth and cites it.
 
-The same ledger renders as a self-contained HTML review page
+The same ledger drives the **review UI** ([specs/ui.md](specs/ui.md)) — a
+three-column workspace with the case list, the claim ledger grouped by stage,
+and a provenance panel (documents ⟷ diarized transcripts) with an audio
+player:
+
+![Review UI](docs/images/review-ui.png)
+
+- Click a claim (or a provenance chip): a document citation highlights the
+  exact chunk; an audio citation **plays the exact clip** (`t0`→`t1`,
+  auto-pause) from the cited recording while the transcript follows along.
+- The reverse index ("cited by *n* claims") walks from any chunk/segment back
+  to every claim citing it — a segment cited by both a `supported` and a
+  `conflicting` claim is the record-vs-patient story made legible.
+- No rendered wavs (they are gitignored)? The UI degrades to timestamp-only
+  mode; regenerate audio with `scripts/render_audio.py`.
+- Dev loop: `uv run uvicorn periop.api.app:app --reload` + `cd ui && npm run
+  dev`. Tests: `npm test` (vitest) and `npm run test:e2e` (Playwright,
+  headless, hermetic fixture store — no network).
+
+For zero-dependency review there is still the self-contained static page
 ([`data/cases/_out/sg-0002.html`](data/cases/_out/sg-0002.html), no server
 needed): claims grouped by artifact with unsupported/conflicting ones
 visually flagged, each expandable to its cited spans, and every citation
-linking into a source-registry section — audio citations carry speaker and
-time range, the anchor for clip playback once the TTS→ASR path lands.
+linking into a source-registry section.
 
 ## Synthetic data & sovereign-AI grounding
 
@@ -180,9 +202,12 @@ exactly why verification and the extraction first pass run on the fast tier.
 
 ## Status
 
-M0–M5 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
-pipeline, all agents, eval harness, HTML review UI, NAT-profiled live run).
-Remaining: broader eval dataset (30 cases) and the TTS→ASR audio path. Live
+M0–M6 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
+pipeline, all agents, eval harness, NAT-profiled live run, self-hosted NIM
+path with TTS+ASR). The review UI ([specs/ui.md](specs/ui.md), U0–U2+U4 —
+see [docs/progress-ui.md](docs/progress-ui.md)) ships the claim ledger with
+click-to-play audio provenance; the SSE live-run panel (U3) remains a
+stretch item. Remaining: broader eval dataset (30 cases). Live
 NIM paths (LLM tiers, full case runs, traced profiling) are exercised with an
 NGC key; the ASR/TTS speech NIMs use documented hosted NVCF endpoints (see
 [docs/attribution.md](docs/attribution.md)).
