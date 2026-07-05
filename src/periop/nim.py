@@ -98,12 +98,19 @@ class NimChat:
         temperature: float = 0.2,
         max_retries: int = 2,
         base_url: str | None = None,
+        timeout_s: float | None = None,
     ) -> None:
         if client is None:
             from openai import OpenAI
 
             base_url = base_url or NIM_BASE_URL
-            client = OpenAI(base_url=base_url, api_key=api_key_from_env(base_url))
+            if timeout_s is None:
+                # Self-hosted NIMs on small GPUs can run long generations well
+                # past the openai default; PERIOP_NIM_TIMEOUT_S overrides.
+                timeout_s = float(os.environ.get("PERIOP_NIM_TIMEOUT_S") or 1800)
+            client = OpenAI(
+                base_url=base_url, api_key=api_key_from_env(base_url), timeout=timeout_s
+            )
         self.client = client
         self.model = model
         self.temperature = temperature
