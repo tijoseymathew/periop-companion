@@ -7,9 +7,9 @@ provenance is structural (spec §4.1). Claims whose citations don't resolve
 are dropped before the artifact is committed.
 """
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import provenance_resolves, render_sources
+from periop.agents.context import normalize_refs, provenance_resolves, render_sources
 from periop.schemas import ArtifactRecord, Case, Claim
 
 PREOP_NOTE_ID = "note:pre-anesthesia-eval"
@@ -19,6 +19,8 @@ class WriterClaim(BaseModel):
     text: str = Field(description="One atomic factual statement")
     section: str = Field(description="ASA note section, e.g. History, Medications, Airway, Plan")
     provenance: list[str] = Field(description="source_id#anchor refs supporting the claim")
+
+    _normalize = field_validator("provenance")(staticmethod(normalize_refs))
 
 
 class WriterOutput(BaseModel):

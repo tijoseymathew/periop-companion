@@ -8,9 +8,9 @@ question here.
 
 from enum import StrEnum
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import render_sources
+from periop.agents.context import normalize_refs, render_sources
 from periop.schemas import Case, SourceType
 
 
@@ -26,6 +26,8 @@ class ClarificationQuestion(BaseModel):
     provenance: list[str] = Field(
         description="source_id#chunk refs to the triggering record chunk(s)"
     )
+
+    _normalize = field_validator("provenance")(staticmethod(normalize_refs))
 
 
 class GapQuestions(BaseModel):

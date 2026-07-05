@@ -8,9 +8,9 @@ ref, and models routinely cite the claim. Unresolvable citations are dropped
 per-ref; an issue is dropped only when nothing it cites resolves.
 """
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import render_claims, render_sources
+from periop.agents.context import normalize_refs, render_claims, render_sources
 from periop.agents.intraop_record import INTRAOP_RECORD_ID
 from periop.agents.preop_note import PREOP_NOTE_ID
 from periop.schemas import ArtifactRecord, Case, Claim
@@ -23,6 +23,8 @@ class AnticipatedIssue(BaseModel):
     provenance: list[str] = Field(
         description="source_id#anchor refs to the pre-op AND/OR intra-op evidence"
     )
+
+    _normalize = field_validator("provenance")(staticmethod(normalize_refs))
 
 
 class AnticipatedIssues(BaseModel):
@@ -94,11 +96,10 @@ class IssueAnticipator:
     @staticmethod
     def _resolve_refs(case: Case, refs: list[str]) -> list[str]:
         """Source refs kept as-is; claim refs inherit the claim's provenance;
-        anything else dropped. Refs are normalized first — models sometimes
-        echo the display brackets or pad with whitespace."""
+        anything else dropped. (Refs arrive normalized — AnticipatedIssue
+        strips display brackets/whitespace at validation.)"""
         resolved: list[str] = []
         for ref in refs:
-            ref = ref.strip().strip("[]")
             try:
                 case.resolve(ref)
             except (KeyError, ValueError):

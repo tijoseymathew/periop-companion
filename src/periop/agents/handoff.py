@@ -8,9 +8,9 @@ hallucinated addition) are dropped — this is the demoable hallucination-contro
 property.
 """
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import render_claims
+from periop.agents.context import normalize_refs, render_claims
 from periop.agents.intraop_record import INTRAOP_RECORD_ID
 from periop.agents.issue_anticipator import ANTICIPATED_ISSUES_ID
 from periop.agents.preop_note import PREOP_NOTE_ID
@@ -49,6 +49,8 @@ class HandoffItem(BaseModel):
     source_claims: list[str] = Field(
         description="Global ids (artifact_id#claim_id) of the existing claims this is built from"
     )
+
+    _normalize = field_validator("source_claims")(staticmethod(normalize_refs))
 
 
 class HandoffPlan(BaseModel):

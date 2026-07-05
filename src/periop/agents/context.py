@@ -20,6 +20,17 @@ def render_claims(artifact: ArtifactRecord) -> str:
     )
 
 
+def normalize_refs(refs: list[str]) -> list[str]:
+    """Strip the display brackets/whitespace models echo from prompts.
+
+    Prompts render citable anchors as ``[source_id#anchor]``; structured
+    replies sometimes include the brackets. Apply as a field validator on
+    every model-output provenance/citation field so downstream resolution
+    never silently drops a claim over formatting.
+    """
+    return [r.strip().strip("[]") for r in refs]
+
+
 def provenance_resolves(case: Case, refs: list[str]) -> bool:
     """True if every ref in ``refs`` resolves to a registered anchor."""
     if not refs:

@@ -82,6 +82,19 @@ class TestGapAnalyst:
         assert questions[0].reason == QuestionReason.MISSING
         assert case.open_questions == ["Any prior anesthetic problems?"]
 
+    def test_bracketed_provenance_refs_are_normalized_and_kept(self, case):
+        result = GapQuestions(
+            questions=[
+                ClarificationQuestion(
+                    question="valid but bracket-echoed", reason=QuestionReason.MISSING,
+                    provenance=["[doc:gp-summary#c001]"],
+                ),
+            ]
+        )
+        questions = GapAnalyst(chat=FakeChat(result)).analyze(case)
+        assert len(questions) == 1
+        assert questions[0].provenance == ["doc:gp-summary#c001"]
+
     def test_drops_questions_with_unresolvable_provenance(self, case):
         result = GapQuestions(
             questions=[

@@ -77,6 +77,22 @@ class TestPreOpNoteWriter:
         assert "Is the patient still taking aspirin?" in prompt
         assert "audio:preop-interview#s002" in prompt  # interview cited by anchor
 
+    def test_bracketed_provenance_refs_are_normalized_and_kept(self, tmp_path):
+        # prompts display refs as [source#anchor]; models sometimes echo the
+        # brackets — the claim must survive with the clean ref, not be dropped
+        case = _case_with_interview(tmp_path)
+        out = WriterOutput(
+            claims=[
+                WriterClaim(text="ok", section="X",
+                            provenance=["[doc:gp-summary#c001]", " audio:preop-interview#s002 "]),
+            ]
+        )
+        artifact = PreOpNoteWriter(chat=FakeChat(out)).write(case)
+        assert [str(r) for r in artifact.claims[0].provenance] == [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s002",
+        ]
+
     def test_drops_claims_with_dangling_provenance(self, tmp_path):
         case = _case_with_interview(tmp_path)
         out = WriterOutput(
