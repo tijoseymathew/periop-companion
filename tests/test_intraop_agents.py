@@ -121,6 +121,38 @@ class TestIssueAnticipator:
         assert len(artifact.claims[0].provenance) == 2
         assert case.anticipated_issues == [issues.issues[0].issue]
 
+    def test_claim_refs_inherit_source_provenance(self, case):
+        # Live finding: the prompt shows both claim refs and source refs, and
+        # models often cite the claim (`note:...#c-001`). Those must inherit
+        # the cited claim's source provenance, not be dropped.
+        IntraOpRecordWriter(chat=FakeChat(WriterOutput(claims=[]))).write(case, _events())
+        issues = AnticipatedIssues(issues=[
+            AnticipatedIssue(issue="PONV watch.", provenance=[f"{PREOP_NOTE_ID}#c-001"])
+        ])
+        artifact = IssueAnticipator(chat=FakeChat(issues)).anticipate(case)
+        assert len(artifact.claims) == 1
+        assert [str(r) for r in artifact.claims[0].provenance] == ["audio:intraop-notes#s001"]
+
+    def test_partially_bad_provenance_is_salvaged_not_dropped(self, case):
+        IntraOpRecordWriter(chat=FakeChat(WriterOutput(claims=[]))).write(case, _events())
+        issues = AnticipatedIssues(issues=[
+            AnticipatedIssue(
+                issue="Airway watch.",
+                provenance=["audio:intraop-notes#s002", "doc:ghost#c9"],
+            )
+        ])
+        artifact = IssueAnticipator(chat=FakeChat(issues)).anticipate(case)
+        assert len(artifact.claims) == 1
+        assert [str(r) for r in artifact.claims[0].provenance] == ["audio:intraop-notes#s002"]
+
+    def test_issue_with_no_resolvable_provenance_is_dropped(self, case):
+        IntraOpRecordWriter(chat=FakeChat(WriterOutput(claims=[]))).write(case, _events())
+        issues = AnticipatedIssues(issues=[
+            AnticipatedIssue(issue="Unfounded.", provenance=["doc:ghost#c9"])
+        ])
+        artifact = IssueAnticipator(chat=FakeChat(issues)).anticipate(case)
+        assert artifact.claims == []
+
     def test_prompt_includes_both_stages(self, case):
         IntraOpRecordWriter(chat=FakeChat(WriterOutput(claims=[]))).write(case, _events())
         anticipator = IssueAnticipator(chat=FakeChat(AnticipatedIssues(issues=[])))

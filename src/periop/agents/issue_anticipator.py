@@ -1,14 +1,16 @@
 """IssueAnticipator (spec §3.4 step 4): pre-op + intra-op → anticipated issues.
 
 Each anticipated post-op issue is a claim whose provenance spans BOTH stages
-(e.g. PONV risk from pre-op history + intra-op volatile use). Provenance cites
-underlying source anchors so the issue is auditable; unresolvable citations
-are dropped.
+(e.g. PONV risk from pre-op history + intra-op volatile use). The model may
+cite source spans directly or cite existing claims (``artifact_id#claim_id``),
+which inherit that claim's source provenance — the prompt shows both kinds of
+ref, and models routinely cite the claim. Unresolvable citations are dropped
+per-ref; an issue is dropped only when nothing it cites resolves.
 """
 
 from pydantic import BaseModel, Field
 
-from periop.agents.context import provenance_resolves, render_claims, render_sources
+from periop.agents.context import render_claims, render_sources
 from periop.agents.intraop_record import INTRAOP_RECORD_ID
 from periop.agents.preop_note import PREOP_NOTE_ID
 from periop.schemas import ArtifactRecord, Case, Claim
@@ -47,9 +49,10 @@ Intra-op record claims:
 Source spans (cite these ids as provenance):
 {sources}
 
-Each issue: `issue` (the concern + why), `provenance` (the source id(s) —
-pre-op and/or intra-op — that justify it, exactly as bracketed above). Cite
-evidence from BOTH stages where the risk arises from their combination.
+Each issue: `issue` (the concern + why), `provenance` (the bracketed id(s) —
+source spans and/or claims, pre-op and/or intra-op — that justify it, exactly
+as shown above; citing a claim inherits its provenance). Cite evidence from
+BOTH stages where the risk arises from their combination.
 """
 
 
@@ -74,15 +77,32 @@ class IssueAnticipator:
         out = self.chat.complete_structured(prompt, schema=AnticipatedIssues, system=SYSTEM)
         claims: list[Claim] = []
         for issue in out.issues:
-            if provenance_resolves(case, issue.provenance):
+            provenance = self._resolve_refs(case, issue.provenance)
+            if provenance:
                 claims.append(
                     Claim(
                         claim_id=f"c-{len(claims) + 1:03d}",
                         text=issue.issue,
-                        provenance=issue.provenance,
+                        provenance=provenance,
                     )
                 )
         artifact = ArtifactRecord(artifact_id=ANTICIPATED_ISSUES_ID, claims=claims)
         case.add_artifact(artifact)
         case.anticipated_issues = [c.text for c in claims]
         return artifact
+
+    @staticmethod
+    def _resolve_refs(case: Case, refs: list[str]) -> list[str]:
+        """Source refs kept as-is; claim refs inherit the claim's provenance;
+        anything else dropped."""
+        resolved: list[str] = []
+        for ref in refs:
+            try:
+                case.resolve(ref)
+            except (KeyError, ValueError):
+                cited = case.get_claim(ref)
+                if cited is not None:
+                    resolved.extend(str(r) for r in cited.provenance)
+                continue
+            resolved.append(ref)
+        return list(dict.fromkeys(resolved))
