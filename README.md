@@ -99,6 +99,20 @@ uv run python scripts/run_eval.py
 uv run python scripts/render_review.py sg-0002
 ```
 
+### Self-hosted NIMs (no API key, no rate limits)
+
+The same code runs against locally deployed NIMs — endpoint selection is
+environment-driven (`PERIOP_*_BASE_URL` variables, see `src/periop/nim.py`
+and spec §8.1). With all four NIMs on one GPU box:
+
+```bash
+set -a; source configs/selfhosted.env; set +a   # edit host/ports to taste
+uv run python scripts/smoke_llm.py               # same commands as above
+```
+
+Reference deployment (all four NIMs co-tenant on a single DGX Spark GB10,
+120 GB unified memory) is documented in `docs/selfhosted.md`.
+
 ## Provenance, made tangible
 
 Each claim renders with its status and cited span — for audio, the speaker and

@@ -81,6 +81,18 @@ resume from the first unchecked item. Conventions:
       `nat eval` + configs/profile_config.yml; reports in evals/profile/).
       Run surfaced the IssueAnticipator claim-ref bug — fixed same session.
 
+## M6 — Self-hosted NIMs (unblocks rate-limited tasks)
+
+- [x] Env-driven endpoint resolution in periop.nim (PERIOP_NIM_BASE_URL,
+      per-tier PERIOP_{REASONING,FAST}_BASE_URL / _MODEL overrides; API key
+      optional for non-hosted endpoints). Spec §8.1 added.
+- [x] configs/selfhosted.env + configs/selfhosted.yml + docs/selfhosted.md
+      (DGX Spark GB10 reference deployment: all four NIMs co-tenant,
+      KV-cache-bounded; nano needs the -dgx-spark image variant).
+- [x] Live smoke: reasoning tier verified against spark:8000 (no API key).
+- [ ] TTS client (Magpie, spark:9001) → render case audio (M1 pending item)
+- [ ] ASR path (Parakeet, spark:9000) → InterviewTranscriber real path + KER A/B
+
 ## Notes / decisions log
 
 - 2026-07-05: Project started. Python 3.12 (nvidia-nat 1.8.0 requires <3.14).

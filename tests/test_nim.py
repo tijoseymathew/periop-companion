@@ -12,10 +12,13 @@ from pydantic import BaseModel
 
 from periop.nim import (
     FAST_MODEL,
+    NIM_BASE_URL,
     REASONING_MODEL,
     NimChat,
+    api_key_from_env,
     extract_json,
     strip_reasoning,
+    tier_config,
 )
 
 
@@ -125,3 +128,72 @@ class TestNimChat:
     def test_default_models(self):
         assert REASONING_MODEL == "nvidia/llama-3.3-nemotron-super-49b-v1.5"
         assert "nemotron" in FAST_MODEL
+
+
+# --------------------------------------------- endpoint resolution (spec §8)
+#
+# Hosted build.nvidia.com is the default; self-hosted NIMs (spec M6 /
+# configs/selfhosted.yml) are selected purely via environment variables so
+# no call site changes between hosted and local runs.
+
+
+ENDPOINT_VARS = [
+    "PERIOP_NIM_BASE_URL",
+    "PERIOP_REASONING_BASE_URL",
+    "PERIOP_FAST_BASE_URL",
+    "PERIOP_REASONING_MODEL",
+    "PERIOP_FAST_MODEL",
+]
+
+
+@pytest.fixture(autouse=True)
+def _clean_endpoint_env(monkeypatch):
+    for var in ENDPOINT_VARS:
+        monkeypatch.delenv(var, raising=False)
+
+
+class TestTierConfig:
+    def test_defaults_to_hosted(self):
+        cfg = tier_config("reasoning")
+        assert cfg.base_url == NIM_BASE_URL
+        assert cfg.model == REASONING_MODEL
+        assert tier_config("fast").model == FAST_MODEL
+
+    def test_generic_base_url_applies_to_both_tiers(self, monkeypatch):
+        monkeypatch.setenv("PERIOP_NIM_BASE_URL", "http://spark:8000/v1")
+        assert tier_config("reasoning").base_url == "http://spark:8000/v1"
+        assert tier_config("fast").base_url == "http://spark:8000/v1"
+
+    def test_per_tier_base_url_beats_generic(self, monkeypatch):
+        monkeypatch.setenv("PERIOP_NIM_BASE_URL", "http://spark:8000/v1")
+        monkeypatch.setenv("PERIOP_FAST_BASE_URL", "http://spark:8001/v1")
+        assert tier_config("reasoning").base_url == "http://spark:8000/v1"
+        assert tier_config("fast").base_url == "http://spark:8001/v1"
+
+    def test_model_overrides(self, monkeypatch):
+        monkeypatch.setenv("PERIOP_REASONING_MODEL", "my/served-model")
+        assert tier_config("reasoning").model == "my/served-model"
+        assert tier_config("fast").model == FAST_MODEL
+
+    def test_unknown_tier_rejected(self):
+        with pytest.raises(ValueError):
+            tier_config("turbo")
+
+
+class TestApiKey:
+    def test_required_for_hosted_endpoint(self, monkeypatch):
+        monkeypatch.delenv("NGC_API_KEY", raising=False)
+        monkeypatch.delenv("NVIDIA_API_KEY", raising=False)
+        with pytest.raises(RuntimeError):
+            api_key_from_env(NIM_BASE_URL)
+
+    def test_optional_for_local_endpoint(self, monkeypatch):
+        monkeypatch.delenv("NGC_API_KEY", raising=False)
+        monkeypatch.delenv("NVIDIA_API_KEY", raising=False)
+        key = api_key_from_env("http://spark:8000/v1")
+        assert key  # non-empty placeholder — local NIMs don't authenticate
+
+    def test_env_key_used_when_present(self, monkeypatch):
+        monkeypatch.setenv("NGC_API_KEY", "nvapi-test")
+        assert api_key_from_env(NIM_BASE_URL) == "nvapi-test"
+        assert api_key_from_env("http://spark:8000/v1") == "nvapi-test"

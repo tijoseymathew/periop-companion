@@ -1,0 +1,16 @@
+# nat run / nat serve against self-hosted NIMs (spec §8 stretch / M6).
+#
+# The workflow is identical to configs/workflow.yml — endpoint selection is
+# purely environment-driven (see src/periop/nim.py), so the same code runs
+# hosted or local. Source configs/selfhosted.env (or export the variables)
+# before running:
+#
+#   set -a; source configs/selfhosted.env; set +a
+#   uv run nat run --config_file configs/selfhosted.yml --input "sg-0001"
+#
+# Reference deployment: DGX Spark (GB10, 120 GB unified memory) running all
+# four NIMs via docker compose — see docs/selfhosted.md.
+
+workflow:
+  _type: periop_pipeline
+  case_dir: data/cases
