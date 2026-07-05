@@ -25,7 +25,7 @@ Conventions:
       (Range support; 404 with render_audio.py hint; path traversal rejected;
       source must exist in the case). Env: `PERIOP_OUT_DIR`, `PERIOP_CASE_DIR`.
       `python -m periop.api` entry point. Deps: fastapi, uvicorn (+httpx dev).
-- [ ] C3 `fix(ui)`: static review page gains the missing `inference` claim style
+- [x] C3 `fix(ui)`: static review page gains the missing `inference` claim style
       (glyph/color parity with `periop.cli.render`).
 
 ## U1 — Workspace shell

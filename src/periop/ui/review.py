@@ -26,6 +26,7 @@ h1 { font-size: 1.4rem; } h2 { font-size: 1.1rem; margin-top: 2rem; }
 .claim.unsupported { border-color: #e65100; background: #fff3e0; }
 .claim.conflicting { border-color: #c62828; background: #ffebee; }
 .claim.unverified { border-color: #999; }
+.claim.inference { border-color: #6a1b9a; background: #f3e5f5; }
 .status { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #555; }
 .cite { margin: .3rem 0 .3rem 1rem; font-size: .9rem; }
 .cite blockquote { margin: .2rem 0 .2rem 1rem; color: #333; border-left: 2px solid #ccc; padding-left: .5rem; }

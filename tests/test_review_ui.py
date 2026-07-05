@@ -68,6 +68,17 @@ def case() -> Case:
                     Claim(claim_id="c-101", text="Patient is diabetic.", status="unverified"),
                 ],
             ),
+            ArtifactRecord(
+                artifact_id="note:anticipated-issues",
+                claims=[
+                    Claim(
+                        claim_id="c-201",
+                        text="PONV risk is elevated post-op.",
+                        provenance=["doc:gp-summary#c2"],
+                        status="inference",
+                    ),
+                ],
+            ),
         ],
     )
 
@@ -88,8 +99,15 @@ class TestRenderReviewHtml:
 
     def test_claim_status_is_flagged(self, case):
         html = render_review_html(case)
-        for status in ("supported", "conflicting", "unverified"):
+        for status in ("supported", "conflicting", "unverified", "inference"):
             assert f'class="claim {status}"' in html
+
+    def test_every_claim_status_has_a_style(self, case):
+        # one status vocabulary across CLI, static HTML, and the SPA (ui.md §6):
+        # each ClaimStatus must have its own CSS rule, not fall through to default
+        html = render_review_html(case)
+        for status in ("supported", "unsupported", "conflicting", "unverified", "inference"):
+            assert f".claim.{status}" in html
 
     def test_cited_span_is_revealed_under_the_claim(self, case):
         html = render_review_html(case)
