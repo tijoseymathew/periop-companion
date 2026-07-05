@@ -1,0 +1,32 @@
+{
+  "n_cases": 1,
+  "means": {
+    "preop_provenance_coverage": 1.0,
+    "preop_provenance_precision": 0.7647058823529411,
+    "handoff_provenance_coverage": 1.0,
+    "preop_claim_recall": 0.6,
+    "handoff_claim_recall": 0.6666666666666666,
+    "gap_precision": 0.0,
+    "gap_recall": 0.0,
+    "gap_f1": 0.0,
+    "distractor_leakage": 1.0,
+    "handoff_hallucination_rate": 0.5,
+    "extraction_f1": 0.0
+  },
+  "per_case": [
+    {
+      "case_id": "sg-0002",
+      "preop_provenance_coverage": 1.0,
+      "preop_provenance_precision": 0.7647058823529411,
+      "handoff_provenance_coverage": 1.0,
+      "preop_claim_recall": 0.6,
+      "handoff_claim_recall": 0.6666666666666666,
+      "gap_precision": 0.0,
+      "gap_recall": 0.0,
+      "gap_f1": 0.0,
+      "distractor_leakage": 1.0,
+      "handoff_hallucination_rate": 0.5,
+      "extraction_f1": 0.0
+    }
+  ]
+}

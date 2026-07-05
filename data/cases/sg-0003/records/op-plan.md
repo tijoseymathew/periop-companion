@@ -6,4 +6,4 @@ Elective inguinal hernia repair (elective).
 
 ## Anesthesia
 
-General anesthesia with Laryngeal Mask Airway (LMA)
+Spinal anesthesia with bupivacaine and fentanyl, supplemented with propofol sedation

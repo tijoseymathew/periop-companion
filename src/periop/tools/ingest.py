@@ -50,8 +50,11 @@ def transcript_from_voice_notes(notes_path: Path, source_id: str) -> Source:
     downstream extraction can read it.
     """
     notes = json.loads(Path(notes_path).read_text())["notes"]
+    # Prepend the dictation clock time so downstream event extraction reads the
+    # real time (segment t0/t1 are only synthetic playback offsets).
     return _segments_source(
-        source_id, [("PROVIDER", note["text"]) for note in notes]
+        source_id,
+        [("PROVIDER", f"[{note['t']}] {note['text']}") for note in notes],
     )
 
 

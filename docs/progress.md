@@ -59,18 +59,22 @@ resume from the first unchecked item. Conventions:
 
 ## M4 — Eval harness
 
-- [ ] Custom NAT evaluators: provenance precision/recall, claim recall vs gold,
-      hallucinated-claim rate, gap-analysis P/R, distractor leakage,
-      extraction F1, KER
-- [ ] 30-case dataset
-- [ ] A/B experiments (word boosting, nano vs super, constrained vs free handoff)
-- [ ] `nat eval` report committed
+- [x] Custom evaluators (periop.evals.metrics): provenance precision/coverage,
+      claim recall vs gold, hallucinated-claim rate, gap-analysis P/R,
+      distractor leakage, extraction F1, KER. LLM-judge matcher (evals.judge).
+- [~] 30-case dataset — pipeline + resumable generator in place; 5 cases
+      generated so far (scale up when rate limits allow).
+- [x] A/B experiments: nano vs super extraction (evals.ab). Word-boosting and
+      constrained-vs-free handoff wired via flags; full audio A/B pending TTS.
+- [x] Eval runner (scripts/run_eval.py) → evals/report.json committed.
+      NAT-native evaluator registration documented in configs/eval_config.yml.
 
 ## M5 — Polish
 
-- [ ] README with architecture diagram + quickstart
-- [ ] docs/provenance-design.md, docs/attribution.md
+- [x] README with architecture diagram + quickstart
+- [x] docs/provenance-design.md, docs/attribution.md
 - [ ] Review UI (adapted blueprint frontend) — last, per risk table
+- [ ] Profiler screenshot/report in README (needs a NAT-traced live run)
 
 ## Notes / decisions log
 
@@ -86,3 +90,22 @@ resume from the first unchecked item. Conventions:
   schema has no `healthcare_persona`/ethnicity fields. Stratified sampling
   runs on age band × sex instead (48 personas, 6 per stratum, seed 42,
   committed at data/synthgen/personas_sample.jsonl, CC-BY-4.0).
+- 2026-07-05: Full pipeline verified live on sg-0002 (5 artifacts, 50
+  provenance-carrying claims across pre-op docs, intra-op voice notes, post-op
+  interview). Baseline eval (evals/report.json, evals/README.md) surfaced:
+  (a) a clock-time plumbing bug in transcript_from_voice_notes — FIXED;
+  (b) gold-vs-extraction event granularity mismatch (gold splits agent/dose;
+  extractor combines) — TODO: shared convention or looser extraction match;
+  (c) distractor leakage into notes — TODO: strengthen relevance filtering;
+  (d) post-op note/handoff verification is partial — TODO: verify all artifacts.
+
+## Known follow-ups (surfaced by the baseline eval)
+
+- Align gold intra-op event granularity with the extractor (or relax
+  extraction_f1 to drug-name + time-bucket) — currently reads 0.0.
+- Strengthen the note-writer's relevance filtering so distractors don't leak;
+  measure with distractor_leakage.
+- Verify all generated artifacts (post-op note, anticipated issues), not just
+  pre-op note + handoff.
+- Scale the dataset to ~30 cases and re-run the eval for stable aggregates.
+- Add a NAT profiler screenshot/report to the README from a traced live run.

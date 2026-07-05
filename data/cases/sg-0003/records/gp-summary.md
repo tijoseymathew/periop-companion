@@ -6,26 +6,38 @@
 
 ## Medications
 
-Amlodipine 10 mg Once daily.
+Amlodipine 10mg daily.
 
-Metoprolol 50 mg Twice daily.
+Metoprolol 50mg twice daily.
 
-Metformin 500 mg Three times daily.
+Metformin 500mg thrice daily.
 
-Atorvastatin 20 mg Once daily.
+Glimepiride 4mg daily.
 
-Aspirin 75 mg Once daily.
+Atorvastatin 20mg daily.
 
-Lisinopril 10 mg Once daily.
+Digoxin 0.125mg daily.
+
+Warfarin 5mg daily.
+
+Enalapril 10mg daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin
 
 ## Past History
 
+Hypertension
+
+Type 2 Diabetes Mellitus
+
+Hyperlipidemia
+
+Atrial Fibrillation
+
 Pneumonia resolved 5 years ago
 
-Right wrist fracture healed 10 years ago
+Right ulna fracture healed 20 years ago
 
-GERD resolved, omeprazole discontinued
+Peptic ulcer disease resolved 10 years ago

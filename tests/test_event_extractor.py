@@ -41,7 +41,8 @@ class TestTranscriptFromVoiceNotes:
         src = case.get_source("audio:intraop-notes")
         assert src.type == SourceType.AUDIO
         assert {s.speaker for s in src.segments} == {"PROVIDER"}
-        assert src.segments[0].text.startswith("Induction propofol")
+        # dictation clock time is preserved in the segment text
+        assert src.segments[0].text == "[08:02] Induction propofol one hundred twenty milligrams."
 
     def test_segment_ids_stable(self, case):
         src = case.get_source("audio:intraop-notes")
