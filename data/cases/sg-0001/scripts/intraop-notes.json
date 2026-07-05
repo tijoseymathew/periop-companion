@@ -1,0 +1,138 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "spinal anesthetic administered bupivacaine twenty-five milligrams with fentanyl twenty micrograms"
+    },
+    {
+      "t": "08:05",
+      "text": "propofol infusion started at fifty milligrams per hour"
+    },
+    {
+      "t": "08:10",
+      "text": "endotracheal tube placed, grade one view confirmed"
+    },
+    {
+      "t": "08:15",
+      "text": "eighteen-gauge peripheral IV line placed in left hand"
+    },
+    {
+      "t": "09:00",
+      "text": "one liter of normal saline administered"
+    },
+    {
+      "t": "08:20",
+      "text": "hypotension noted, blood pressure sixty over forty, treated with phenylephrine twenty micrograms"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "50",
+      "units": "mg/hour",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "endotracheal tube placed",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral IV line",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "fluid",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    }
+  ]
+}
