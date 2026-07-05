@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Eh, okay lah. Got some pain here, but manageable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Can you tell me your pain score out of 10? And where exactly is the discomfort?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe 4 or 5? Around the incision site, like a dull ache."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or vomiting since waking up? Breathing comfortably?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No vomiting, but feel a bit queasy. Throat a bit sore, but breathing okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Did you remember anything during the operation? Any awareness?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, slept like a baby. No memory at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "For your diabetes, did the team check your sugar levels? Any episodes of low or high?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "They checked before and after, all normal. No dizziness or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Your blood pressure and cholesterol meds—taken as usual?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, took them this morning before surgery. BP been stable, no issues."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, anything else bothering you? We can adjust pain relief if needed."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think it's all good. Thanks for checking."
+    }
+  ]
+}

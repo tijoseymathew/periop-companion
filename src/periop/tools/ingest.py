@@ -37,17 +37,36 @@ def ingest_records(case: Case, case_dir: Path) -> None:
 def transcript_from_script(script_path: Path, source_id: str) -> Source:
     """Convert a diarized interview script into a timestamped audio Source."""
     turns = json.loads(Path(script_path).read_text())["turns"]
+    return _segments_source(
+        source_id, [(turn["speaker"], turn["text"]) for turn in turns]
+    )
+
+
+def transcript_from_voice_notes(notes_path: Path, source_id: str) -> Source:
+    """Convert intra-op voice notes into a single-speaker audio Source.
+
+    Voice notes are the anesthetist speaking hands-free, so every segment is
+    the PROVIDER; the note's clock time is preserved in the segment text so
+    downstream extraction can read it.
+    """
+    notes = json.loads(Path(notes_path).read_text())["notes"]
+    return _segments_source(
+        source_id, [("PROVIDER", note["text"]) for note in notes]
+    )
+
+
+def _segments_source(source_id: str, turns: list[tuple[str, str]]) -> Source:
     segments: list[AudioSegment] = []
     t = 0.0
-    for i, turn in enumerate(turns, start=1):
-        duration = max(1.0, len(turn["text"].split()) / _WORDS_PER_SEC)
+    for i, (speaker, text) in enumerate(turns, start=1):
+        duration = max(1.0, len(text.split()) / _WORDS_PER_SEC)
         segments.append(
             AudioSegment(
                 seg_id=f"s{i:03d}",
                 t0=round(t, 2),
                 t1=round(t + duration, 2),
-                speaker=turn["speaker"],
-                text=turn["text"],
+                speaker=speaker,
+                text=text,
             )
         )
         t += duration + _INTER_TURN_GAP

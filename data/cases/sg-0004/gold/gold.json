@@ -1,0 +1,142 @@
+{
+  "questions": [
+    "Have you stopped or changed any blood pressure medications in the past year, particularly ACE inhibitors like Lisinopril?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": "milligrams",
+      "provenance": [
+        "doc:op-plan#note1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "doc:op-plan#note1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "right radial artery line placed",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "doc:op-plan#note4"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 50 mmHg",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note5"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": "micrograms",
+      "provenance": [
+        "doc:op-plan#note5"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "150",
+      "units": "mcg",
+      "provenance": [
+        "doc:op-plan#note5"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "event",
+      "value": "heart rate increased to 110 bpm",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note6"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "labetalol",
+      "units": "milligrams",
+      "provenance": [
+        "doc:op-plan#note6"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "20",
+      "units": "mg",
+      "provenance": [
+        "doc:op-plan#note6"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "ropivacaine",
+      "units": "milliliters",
+      "provenance": [
+        "doc:op-plan#note7"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "20",
+      "units": "mL",
+      "provenance": [
+        "doc:op-plan#note7"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History of Hypertension, Type 2 Diabetes Mellitus, Osteoarthritis, Hyperlipidemia",
+    "Current active medications: Metformin 500mg twice daily, Amlodipine 5mg once daily, Metoprolol 25mg once daily, Atorvastatin 20mg once daily",
+    "Lisinopril 10mg once daily discontinued 6 months ago due to persistent dry cough",
+    "No known allergies",
+    "ASA Physical Status III due to controlled systemic diseases (hypertension, diabetes mellitus, hyperlipidemia)",
+    "Airway assessment: normal; Plan: General anesthesia with femoral nerve block for peri-operative analgesia"
+  ],
+  "handoff_claims": [
+    "Key history: Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, Osteoarthritis; current medications include Metformin, Amlodipine, Metoprolol, Atorvastatin",
+    "Intraoperative course: Elective total knee arthroplasty performed under general anesthesia with femoral nerve block",
+    "Anticipated postoperative issues: Pain management via femoral nerve block, potential hypotension, need for glycemic monitoring"
+  ],
+  "distractors": [
+    "Pneumonia resolved in 2018",
+    "Right wrist fracture (healed) from 2012 fall",
+    "Omeprazole 20mg OD discontinued in 2020"
+  ]
+}

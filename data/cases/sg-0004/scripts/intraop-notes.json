@@ -1,0 +1,151 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "right radial artery line placed"
+    },
+    {
+      "t": "08:15",
+      "text": "one thousand milliliters of lactated ringers administered"
+    },
+    {
+      "t": "08:25",
+      "text": "mean arterial pressure dropped to fifty, treated with one hundred and fifty micrograms of phenylephrine"
+    },
+    {
+      "t": "08:35",
+      "text": "heart rate increased to one hundred ten, treated with twenty milligrams of labetalol"
+    },
+    {
+      "t": "08:45",
+      "text": "left femoral nerve block performed with twenty milliliters of ropivacaine"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": "milligrams",
+      "provenance": [
+        "doc:op-plan#note1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "doc:op-plan#note1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "right radial artery line placed",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "doc:op-plan#note4"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 50 mmHg",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note5"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": "micrograms",
+      "provenance": [
+        "doc:op-plan#note5"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "150",
+      "units": "mcg",
+      "provenance": [
+        "doc:op-plan#note5"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "event",
+      "value": "heart rate increased to 110 bpm",
+      "units": null,
+      "provenance": [
+        "doc:op-plan#note6"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "labetalol",
+      "units": "milligrams",
+      "provenance": [
+        "doc:op-plan#note6"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "20",
+      "units": "mg",
+      "provenance": [
+        "doc:op-plan#note6"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "ropivacaine",
+      "units": "milliliters",
+      "provenance": [
+        "doc:op-plan#note7"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "20",
+      "units": "mL",
+      "provenance": [
+        "doc:op-plan#note7"
+      ]
+    }
+  ]
+}

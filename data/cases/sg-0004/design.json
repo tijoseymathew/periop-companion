@@ -1,0 +1,112 @@
+{
+  "case_id": "sg-0004",
+  "persona_uuid": "3608a8922c9f4f309452df3973e22e46",
+  "surgery": "Elective total knee arthroplasty (left)",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with femoral nerve block for peri-operative analgesia",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Osteoarthritis",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Metoprolol",
+      "dose": "25mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed: Metformin 500mg BID, Amlodipine 5mg OD, Metoprolol 25mg OD, Atorvastatin 20mg OD, Lisinopril 10mg OD (active)",
+    "truth": "Lisinopril discontinued 6 months ago due to persistent dry cough; current active medications: Metformin, Amlodipine, Metoprolol, Atorvastatin",
+    "gold_question": "Have you stopped or changed any blood pressure medications in the past year, particularly ACE inhibitors like Lisinopril?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved in 2018",
+      "why_irrelevant": "Remote infection with no residual pulmonary compromise"
+    },
+    {
+      "description": "Right wrist fracture (healed) from 2012 fall",
+      "why_irrelevant": "No ongoing mobility issues or pain"
+    },
+    {
+      "description": "Omeprazole 20mg OD discontinued in 2020",
+      "why_irrelevant": "GERD symptoms resolved post-diet modification"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Metoprolol",
+        "dose": "25mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Osteoarthritis",
+      "Hyperlipidemia",
+      "Pneumonia (2018)",
+      "Right wrist fracture (2012)",
+      "GERD (resolved)"
+    ],
+    "prior_anesthesia": "General anesthesia for cholecystectomy in 2009; no complications reported"
+  }
+}

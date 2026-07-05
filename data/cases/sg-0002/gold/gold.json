@@ -1,0 +1,132 @@
+{
+  "questions": [
+    "Have you stopped or changed any medications in the past year?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA inserted, good seal, ventilating without difficulty",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "line",
+      "value": "eighteen gauge IV cannula placed in left antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "150",
+      "units": "milliliters per hour",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "500",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "mean arterial pressure improved to sixty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "heart rate increased to ninety five",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "10",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#7"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient has a history of Type 2 diabetes mellitus, hypertension, and hyperlipidemia.",
+    "Current medications include Metformin 500mg twice daily, Perindopril 8mg once daily, Indapamide 1.25mg once daily, Atorvastatin 20mg once daily, and Amlodipine 10mg once daily (discontinued 6 months ago due to peripheral edema).",
+    "No known allergies.",
+    "ASA Physical Status Classification II due to well-controlled comorbidities.",
+    "Preoperative airway assessment indicates plan for general anesthesia with laryngeal mask airway (LMA)."
+  ],
+  "handoff_claims": [
+    "Patient underwent elective open inguinal hernia repair with a history of Type 2 diabetes mellitus, hypertension, and hyperlipidemia.",
+    "Intraoperative course proceeded as expected with general anesthesia maintained via laryngeal mask airway (LMA) without complications.",
+    "Anticipated postoperative issues include monitoring for hyperglycemia, blood pressure control, and potential peripheral edema related to prior Amlodipine discontinuation."
+  ],
+  "distractors": [
+    "Pneumonia resolved in 2015",
+    "Right wrist fracture in 2008, fully healed",
+    "Discontinued omeprazole for GERD in 2020"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Name]. I'm [Provider's Name], the anesthesiologist who'll be taking care of you during your knee surgery tomorrow. Let's go over some details to ensure everything is in order. How have you been feeling lately?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doc. Been managing okay lah, but this left knee is really giving me trouble. Can't walk far without pain, even with the brace."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. How long have you been experiencing these symptoms, and has there been any recent worsening?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "About 2 years now, but last 6 months it's gotten much worse. Can't even climb stairs properly, you know?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Let's move to your medications. I see you're on Metformin, Amlodipine, Metoprolol, Atorvastatin, and Lisinopril. Are all these still active, or have there been any changes recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, actually, doc. I stopped Lisinopril about 6 months ago. Had a bad dry cough from it, couldn't sleep. Doctor said to stop and switch to something else, but I think the records might still show it as active?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. So, to confirm: you're no longer on Lisinopril, and your current active medications are Metformin, Amlodipine, Metoprolol, and Atorvastatin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, that's right. The cough went away after stopping Lisinopril, and the other meds are all still going strong."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent, that's important to note. Any known allergies to medications or other substances?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "None that I know of, doc. Never had a reaction to anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Have you had anything to eat or drink since midnight? We need to confirm your NPO status."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, nothing since 12am. Just a sip of water for meds this morning, like you instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Have you had any prior surgeries or anesthesia? Any complications in the past?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Had a hernia surgery years back. Anesthesia was fine then, no issues. Woke up feeling okay lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Lastly, how would you describe your overall fitness? Can you walk with assistance, climb stairs, or do you need a wheelchair?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "With the knee brace and a walking stick, I can manage short distances. But without it, it's really painful. Can't do stairs at all now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. We'll plan for general anesthesia with a femoral nerve block to manage your pain during and after surgery. Your blood pressure medications will continue as usual, and we'll monitor your diabetes closely. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, doc. Just want to get this sorted so I can walk properly again. Thanks for listening."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Of course, Mr./Ms. [Name]. We'll take good care of you. I'll see you in the pre-op area tomorrow. Rest well tonight."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Will do, doc. Appreciate it."
+    }
+  ]
+}

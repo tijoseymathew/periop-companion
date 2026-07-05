@@ -1,0 +1,122 @@
+{
+  "case_id": "sg-0003",
+  "persona_uuid": "9042ecb2588c4b48b7af1766bd75245b",
+  "surgery": "Elective inguinal hernia repair",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia",
+    "Stable Ischemic Heart Disease"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Metoprolol",
+      "dose": "50 mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Three times daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Penicillin allergy (rash)",
+    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved infection with no residual pulmonary compromise"
+    },
+    {
+      "description": "Right wrist fracture healed 10 years ago",
+      "why_irrelevant": "Remote traumatic injury with full functional recovery"
+    },
+    {
+      "description": "GERD resolved, omeprazole discontinued",
+      "why_irrelevant": "Symptom-free for 3 years without medication"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Metoprolol",
+        "dose": "50 mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Three times daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia resolved 5 years ago",
+      "Right wrist fracture healed 10 years ago",
+      "GERD resolved, omeprazole discontinued"
+    ],
+    "prior_anesthesia": "Previous general anesthesia for cholecystectomy 15 years ago, uneventful"
+  }
+}
