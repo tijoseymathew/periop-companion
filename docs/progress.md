@@ -27,7 +27,7 @@ resume from the first unchecked item. Conventions:
 
 ## M1 — Synthetic data v1
 
-- [ ] Persona sampling from Nemotron-Personas-Singapore (or bundled sample)
+- [x] Persona sampling from Nemotron-Personas-Singapore (or bundled sample)
 - [ ] CaseDesigner: profile → surgery + comorbidities + meds + planted defect
       + distractor history
 - [ ] Prior-records pack generator (GP summary, med list, old anesthetic record)
@@ -77,3 +77,12 @@ resume from the first unchecked item. Conventions:
 - 2026-07-05: Project started. Python 3.12 (nvidia-nat 1.8.0 requires <3.14).
   Heavy deps (google-adk, nvidia-nat[adk]) added only when first needed to keep
   early commits fast to install.
+- 2026-07-05: nvidia-nat[adk] 1.8.0 resolves cleanly with google-adk 1.36.0
+  (not 2.x). NAT functions register via the `nat.components` entry point.
+- 2026-07-05: Live smoke test — Nemotron Nano extracted "one twenty
+  milligrams" as 20mg; structured-output retries now feed validation errors
+  back to the model. Keeps §3.4's nano→super verification well motivated.
+- 2026-07-05: Spec §5 drift — the published Nemotron-Personas-Singapore
+  schema has no `healthcare_persona`/ethnicity fields. Stratified sampling
+  runs on age band × sex instead (48 personas, 6 per stratum, seed 42,
+  committed at data/synthgen/personas_sample.jsonl, CC-BY-4.0).
