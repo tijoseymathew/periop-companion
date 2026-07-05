@@ -1,0 +1,68 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew from the anesthesia team. Today, we'll go through some questions to prepare you for your hip replacement surgery. Let's start with why you're having this surgery. Can you tell me about your left hip problem?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. My left hip been hurting a lot for years, lah. Can't walk far, even with cane. X-ray show bad arthritis, so doctor say need to replace it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, let's review your medications. Your records list amlodipine, metformin, and atorvastatin. Are you still taking all these?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Amlodipine and atorvastatin still taking every day, doctor. But metformin... stopped already one year plus."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Metformin was stopped? Can you tell me why?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. My sugar level very good on diet alone. HbA1c last check was 6.2%, so doctor say can stop metformin."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. We'll update your records. Any allergies? Your file mentions penicillin causes a rash."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. Once take penicillin, body get red spots. Never take again after that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. Have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. Wife make sure I NPO from last night. Only sip water for meds."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any previous surgeries or anesthesia? Any problems during those times?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Had gallbladder out ten years back. Anesthesia okay, wake up no problem. No dizziness or vomiting."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Finally, how's your mobility now? Can you walk with assistance?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Can walk short distance with cane, but pain very bad. Need help for stairs or long walks."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia and propofol sedation as planned. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. All clear. Thank you for explaining everything."
+    }
+  ]
+}

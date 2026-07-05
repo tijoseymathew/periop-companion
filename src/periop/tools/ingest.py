@@ -1,0 +1,54 @@
+"""RecordIngestor + transcript tools (spec §3.3).
+
+RecordIngestor chunks the prior-records pack into citable document sources.
+transcript_from_script is the offline gold path for the interview
+transcribers: it turns a diarized script into timestamped audio segments
+deterministically, so the rest of the pipeline (provenance, note writing)
+runs without any TTS/ASR round-trip. The Parakeet NIM path produces the same
+Source shape.
+"""
+
+import json
+from pathlib import Path
+
+from periop.schemas import AudioSegment, Case, Source, SourceType
+from periop.tools.chunker import chunk_text
+
+# Rough spoken pace for synthesising plausible segment timings from text.
+_WORDS_PER_SEC = 2.5
+_INTER_TURN_GAP = 0.4
+
+
+def ingest_records(case: Case, case_dir: Path) -> None:
+    """Chunk every record markdown file into a document Source on the case.
+
+    Idempotent: already-registered sources are skipped, so re-ingesting a
+    resumed case is safe.
+    """
+    for md in sorted((Path(case_dir) / "records").glob("*.md")):
+        source_id = f"doc:{md.stem}"
+        if case.get_source(source_id) is not None:
+            continue
+        case.add_source(
+            Source(source_id=source_id, type=SourceType.DOCUMENT, chunks=chunk_text(md.read_text()))
+        )
+
+
+def transcript_from_script(script_path: Path, source_id: str) -> Source:
+    """Convert a diarized interview script into a timestamped audio Source."""
+    turns = json.loads(Path(script_path).read_text())["turns"]
+    segments: list[AudioSegment] = []
+    t = 0.0
+    for i, turn in enumerate(turns, start=1):
+        duration = max(1.0, len(turn["text"].split()) / _WORDS_PER_SEC)
+        segments.append(
+            AudioSegment(
+                seg_id=f"s{i:03d}",
+                t0=round(t, 2),
+                t1=round(t + duration, 2),
+                speaker=turn["speaker"],
+                text=turn["text"],
+            )
+        )
+        t += duration + _INTER_TURN_GAP
+    return Source(source_id=source_id, type=SourceType.AUDIO, segments=segments)

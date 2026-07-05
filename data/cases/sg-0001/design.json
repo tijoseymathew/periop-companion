@@ -1,0 +1,92 @@
+{
+  "case_id": "sg-0001",
+  "persona_uuid": "a2549e3b44bd4d839e85e21940169d80",
+  "surgery": "Elective total hip replacement (left)",
+  "urgency": "elective",
+  "anesthesia_plan": "Spinal anesthesia with propofol sedation",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia",
+    "Osteoarthritis (left hip)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": false
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed: Amlodipine 5mg daily, Metformin 500mg twice daily, Atorvastatin 20mg daily (all active)",
+    "truth": "Metformin discontinued 1 year ago due to sustained HbA1c <6.5% on diet alone",
+    "gold_question": "Have you stopped taking any medications that are currently listed in your medical records?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved in 2018",
+      "why_irrelevant": "Resolved >5 years ago, no residual pulmonary issues"
+    },
+    {
+      "description": "Right wrist fracture (2015), fully healed",
+      "why_irrelevant": "Remote, asymptomatic, no impact on current surgery"
+    },
+    {
+      "description": "Discontinued simvastatin in 2020 (switched to atorvastatin)",
+      "why_irrelevant": "Medication change already reflected in active meds"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin (rash)"
+    ],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "Osteoarthritis (left hip)",
+      "Pneumonia resolved in 2018",
+      "Right wrist fracture (2015), fully healed",
+      "Discontinued simvastatin in 2020"
+    ],
+    "prior_anesthesia": "Uncomplicated spinal anesthesia for left cataract surgery in 2021"
+  }
+}
