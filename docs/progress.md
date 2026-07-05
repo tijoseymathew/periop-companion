@@ -17,7 +17,7 @@ resume from the first unchecked item. Conventions:
 - [x] Schemas: `Case`, `Source` (document chunks / audio segments), `Claim`,
       `Artifact`, `Event`, provenance references (`source_id#anchor`)
 - [x] Deterministic chunker: markdown/text → stable, citable chunk IDs
-- [ ] Case store: JSON persistence, append-only source registry
+- [x] Case store: JSON persistence, append-only source registry
 - [ ] NIM client wrapper: OpenAI-compatible chat client for build.nvidia.com
       (reasoning + fast model tiers), mocked in tests
 - [ ] Live smoke test script (`scripts/smoke_llm.py`) verified with NGC key
