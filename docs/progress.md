@@ -13,8 +13,8 @@ resume from the first unchecked item. Conventions:
 
 ## M0 — Skeleton
 
-- [ ] Repo scaffolding: pyproject (uv), pytest wiring, package layout `src/periop/`
-- [ ] Schemas: `Case`, `Source` (document chunks / audio segments), `Claim`,
+- [x] Repo scaffolding: pyproject (uv), pytest wiring, package layout `src/periop/`
+- [x] Schemas: `Case`, `Source` (document chunks / audio segments), `Claim`,
       `Artifact`, `Event`, provenance references (`source_id#anchor`)
 - [ ] Deterministic chunker: markdown/text → stable, citable chunk IDs
 - [ ] Case store: JSON persistence, append-only source registry
