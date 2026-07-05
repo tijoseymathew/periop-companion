@@ -14,10 +14,13 @@ dependencies = [
     "pydantic>=2.7",
     "python-dotenv>=1.2.2",
     "nvidia-riva-client>=2.26.0",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
 ]
 
 [dependency-groups]
 dev = [
+    "httpx>=0.27",
     "pytest>=8.0",
     "pytest-asyncio>=0.24",
 ]

@@ -19,7 +19,7 @@ Conventions:
 
 ## U0 — FastAPI serving layer
 
-- [ ] C2 `feat(api)`: `src/periop/api/` — `GET /api/health`, `GET /api/cases`
+- [x] C2 `feat(api)`: `src/periop/api/` — `GET /api/health`, `GET /api/cases`
       (summaries: artifact/claim counts, status_counts, has_audio),
       `GET /api/cases/{id}` (full Case), `GET /api/cases/{id}/audio/{source_id}`
       (Range support; 404 with render_audio.py hint; path traversal rejected;
