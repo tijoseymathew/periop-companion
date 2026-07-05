@@ -38,6 +38,18 @@ class Distractor(BaseModel):
     why_irrelevant: str
 
 
+class RecordView(BaseModel):
+    """What the (flawed) prior records say — the defect is baked in here,
+    and distractors appear in past_history. Truth lives on CaseDesign."""
+
+    medications: list[Medication]
+    allergies: list[str] = Field(default_factory=list)
+    past_history: list[str]
+    prior_anesthesia: str | None = Field(
+        default=None, description="Summary line(s) of an old anesthetic record, if one exists"
+    )
+
+
 class CaseDesign(BaseModel):
     case_id: str
     persona_uuid: str
@@ -50,3 +62,4 @@ class CaseDesign(BaseModel):
     allergies: list[str] = Field(default_factory=list)
     defect: DocumentationDefect
     distractors: list[Distractor] = Field(min_length=1)
+    records: RecordView

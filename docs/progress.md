@@ -28,9 +28,9 @@ resume from the first unchecked item. Conventions:
 ## M1 — Synthetic data v1
 
 - [x] Persona sampling from Nemotron-Personas-Singapore (or bundled sample)
-- [ ] CaseDesigner: profile → surgery + comorbidities + meds + planted defect
+- [x] CaseDesigner: profile → surgery + comorbidities + meds + planted defect
       + distractor history
-- [ ] Prior-records pack generator (GP summary, med list, old anesthetic record)
+- [x] Prior-records pack generator (GP summary, med list, old anesthetic record)
 - [ ] Scripted pre-op interview / intra-op voice notes / post-op interview (gold
       diarized transcripts)
 - [ ] Gold artifacts with claim/provenance annotations

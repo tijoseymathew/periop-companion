@@ -15,6 +15,7 @@ from periop.synthgen.design import (
     DocumentationDefect,
     Distractor,
     Medication,
+    RecordView,
 )
 from tests.test_personas import make_persona
 
@@ -45,6 +46,19 @@ def make_design(case_id: str = "sg-0001") -> CaseDesign:
                 why_irrelevant="Resolved a decade ago; no residual respiratory disease.",
             )
         ],
+        records=RecordView(
+            medications=[
+                Medication(name="Metformin", dose="500 mg", frequency="BD", active=True),
+                Medication(name="Aspirin", dose="100 mg", frequency="OD", active=True),
+            ],
+            allergies=["Penicillin (rash)"],
+            past_history=[
+                "Type 2 diabetes mellitus, diagnosed 2018.",
+                "Hypertension, diagnosed 2019.",
+                "Community-acquired pneumonia in 2015, fully resolved.",
+            ],
+            prior_anesthesia="GA for appendicectomy 2010; uneventful; no PONV.",
+        ),
     )
 
 

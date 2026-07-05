@@ -35,6 +35,13 @@ Requirements:
    the records but must NOT appear in a good note (e.g., pneumonia cleared
    years ago, remote fracture, discontinued meds for a resolved condition).
 5. ASA-PS consistent with the comorbidity burden.
+6. Fill `records` with what the FLAWED prior records say: medications and
+   allergies as the records believe them (the defect must be baked in — e.g.
+   omit the missing allergy, keep the stale regimen), past_history including
+   every distractor plus genuine history, and prior_anesthesia (an old
+   anesthetic record summary, or null if the patient has never had one).
+   Top-level medications/allergies are the TRUTH; `records` is the flawed
+   view. They must differ in exactly the way the defect describes.
 
 Set case_id to "{case_id}" and persona_uuid to "{persona_uuid}".
 """
