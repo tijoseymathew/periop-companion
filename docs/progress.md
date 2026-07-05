@@ -73,7 +73,10 @@ resume from the first unchecked item. Conventions:
 
 - [x] README with architecture diagram + quickstart
 - [x] docs/provenance-design.md, docs/attribution.md
-- [ ] Review UI (adapted blueprint frontend) — last, per risk table
+- [x] Review UI — minimal self-contained HTML page (periop.ui.review +
+      scripts/render_review.py): claims by artifact, status flags, expandable
+      cited spans, links into a source registry. Blueprint React frontend
+      with audio-clip playback deferred until the TTS→ASR path lands.
 - [ ] Profiler screenshot/report in README (needs a NAT-traced live run)
 
 ## Notes / decisions log

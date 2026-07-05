@@ -94,6 +94,9 @@ uv run nat run --config_file configs/workflow.yml --input sg-0001
 
 # evaluate against gold
 uv run python scripts/run_eval.py
+
+# render the HTML review page for processed cases (offline)
+uv run python scripts/render_review.py sg-0002
 ```
 
 ## Provenance, made tangible
@@ -112,6 +115,13 @@ Each claim renders with its status and cited span — for audio, the speaker and
 
 The records still list metformin as current; the GapAnalyst catches the
 conflict, and the note states the interview truth and cites it.
+
+The same ledger renders as a self-contained HTML review page
+([`data/cases/_out/sg-0002.html`](data/cases/_out/sg-0002.html), no server
+needed): claims grouped by artifact with unsupported/conflicting ones
+visually flagged, each expandable to its cited spans, and every citation
+linking into a source-registry section — audio citations carry speaker and
+time range, the anchor for clip playback once the TTS→ASR path lands.
 
 ## Synthetic data & sovereign-AI grounding
 
