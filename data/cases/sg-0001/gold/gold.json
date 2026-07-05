@@ -1,0 +1,136 @@
+{
+  "questions": [
+    "Have you stopped taking any medications that are currently listed in your medical records?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "50",
+      "units": "mg/hour",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "endotracheal tube placed",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral IV line",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "fluid",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History of osteoarthritis in the left hip requiring elective total hip replacement.",
+    "Current medication: Amlodipine 5mg daily for hypertension.",
+    "Discontinued medication: Metformin 500mg twice daily (stopped 1 year ago due to sustained HbA1c <6.5% on diet alone).",
+    "Current medication: Atorvastatin 20mg daily for hyperlipidemia.",
+    "Allergy to penicillin (rash) documented.",
+    "ASA Physical Status III due to controlled hypertension, type 2 diabetes mellitus, and hyperlipidemia.",
+    "Anesthesia plan: Spinal anesthesia with propofol sedation for elective total hip replacement."
+  ],
+  "handoff_claims": [
+    "Patient has comorbidities including hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis of the left hip.",
+    "Current medications: Amlodipine 5mg daily and Atorvastatin 20mg daily; Metformin discontinued one year ago due to sustained HbA1c <6.5% on diet alone.",
+    "Allergy to penicillin (rash) documented.",
+    "Intraoperative course: Elective total hip replacement performed under spinal anesthesia with propofol sedation.",
+    "Anticipated postoperative issues: Monitoring of blood glucose levels and blood pressure control."
+  ],
+  "distractors": [
+    "Pneumonia resolved in 2018",
+    "Right wrist fracture (2015), fully healed",
+    "Discontinued simvastatin in 2020 (switched to atorvastatin)"
+  ]
+}

@@ -1,0 +1,140 @@
+"""PreOpNoteWriter + ClaimVerifier tests (spec §3.3 step 5, §4).
+
+The note writer emits atomic claims, each citing record chunks and/or
+interview segments. The verifier re-checks each claim against its cited spans
+(NLI-style) → supported / unsupported / conflicting. Unsupported claims are
+kept but flagged, never dropped (spec §4.3).
+"""
+
+import pytest
+
+from periop.agents.claim_verifier import ClaimVerifier
+from periop.agents.preop_note import PreOpNoteWriter, WriterClaim, WriterOutput
+from periop.schemas import Case, ClaimStatus, SourceType
+from periop.tools.chunker import ingest_document
+from periop.tools.ingest import transcript_from_script
+
+
+GP = """\
+# GP Summary
+
+## Medications
+
+Aspirin 100mg OD, current.
+"""
+
+
+def _case_with_interview(tmp_path):
+    case = Case(case_id="sg-0001")
+    case.add_source(ingest_document("doc:gp-summary", GP))
+    script = tmp_path / "preop.json"
+    script.write_text(
+        '{"turns": ['
+        '{"speaker": "PROVIDER", "text": "Still on aspirin?"},'
+        '{"speaker": "PATIENT", "text": "No, I stopped it six days ago."}'
+        ']}'
+    )
+    case.add_source(transcript_from_script(script, "audio:preop-interview"))
+    return case
+
+
+class FakeChat:
+    def __init__(self, result):
+        self.result = result
+        self.calls = []
+
+    def complete_structured(self, user, schema, system=None, **kwargs):
+        self.calls.append({"user": user, "schema": schema, "system": system})
+        return self.result
+
+
+class TestPreOpNoteWriter:
+    def test_builds_artifact_of_claims(self, tmp_path):
+        case = _case_with_interview(tmp_path)
+        out = WriterOutput(
+            claims=[
+                WriterClaim(
+                    text="Aspirin was discontinued 6 days before surgery.",
+                    section="Medications",
+                    provenance=["audio:preop-interview#s002"],
+                )
+            ]
+        )
+        writer = PreOpNoteWriter(chat=FakeChat(out))
+        artifact = writer.write(case)
+        assert artifact.artifact_id == "note:pre-anesthesia-eval"
+        assert artifact.claims[0].claim_id == "c-001"
+        assert artifact.claims[0].status == ClaimStatus.UNVERIFIED
+        # persisted on the case with provenance validated
+        assert case.get_artifact("note:pre-anesthesia-eval") is artifact
+
+    def test_prompt_includes_open_questions_for_alignment(self, tmp_path):
+        case = _case_with_interview(tmp_path)
+        case.open_questions = ["Is the patient still taking aspirin?"]
+        writer = PreOpNoteWriter(chat=FakeChat(WriterOutput(claims=[])))
+        writer.write(case)
+        prompt = writer.chat.calls[0]["user"]
+        assert "Is the patient still taking aspirin?" in prompt
+        assert "audio:preop-interview#s002" in prompt  # interview cited by anchor
+
+    def test_drops_claims_with_dangling_provenance(self, tmp_path):
+        case = _case_with_interview(tmp_path)
+        out = WriterOutput(
+            claims=[
+                WriterClaim(text="ok", section="X", provenance=["doc:gp-summary#c001"]),
+                WriterClaim(text="bad", section="X", provenance=["doc:ghost#c9"]),
+            ]
+        )
+        artifact = PreOpNoteWriter(chat=FakeChat(out)).write(case)
+        assert [c.text for c in artifact.claims] == ["ok"]
+
+
+class VerifierFakeChat:
+    """Returns a status per claim in call order."""
+
+    def __init__(self, statuses):
+        self.statuses = list(statuses)
+        self.calls = []
+
+    def complete_structured(self, user, schema, system=None, **kwargs):
+        self.calls.append(user)
+        status = self.statuses.pop(0)
+        return schema(status=status, rationale="test")
+
+
+class TestClaimVerifier:
+    def _artifact_case(self, tmp_path):
+        case = _case_with_interview(tmp_path)
+        out = WriterOutput(
+            claims=[
+                WriterClaim(text="Stopped aspirin 6 days ago.", section="Meds",
+                            provenance=["audio:preop-interview#s002"]),
+                WriterClaim(text="Patient is on aspirin.", section="Meds",
+                            provenance=["doc:gp-summary#c001"]),
+            ]
+        )
+        PreOpNoteWriter(chat=FakeChat(out)).write(case)
+        return case
+
+    def test_sets_status_from_verifier(self, tmp_path):
+        case = self._artifact_case(tmp_path)
+        verifier = ClaimVerifier(chat=VerifierFakeChat(["supported", "conflicting"]))
+        verifier.verify(case, "note:pre-anesthesia-eval")
+        claims = case.get_artifact("note:pre-anesthesia-eval").claims
+        assert claims[0].status == ClaimStatus.SUPPORTED
+        assert claims[1].status == ClaimStatus.CONFLICTING
+
+    def test_verifier_sees_cited_span_text(self, tmp_path):
+        case = self._artifact_case(tmp_path)
+        verifier = ClaimVerifier(chat=VerifierFakeChat(["supported", "supported"]))
+        verifier.verify(case, "note:pre-anesthesia-eval")
+        assert "stopped it six days ago" in verifier.chat.calls[0].lower()
+
+    def test_unsupported_claims_are_kept_not_dropped(self, tmp_path):
+        case = self._artifact_case(tmp_path)
+        ClaimVerifier(chat=VerifierFakeChat(["unsupported", "unsupported"])).verify(
+            case, "note:pre-anesthesia-eval"
+        )
+        claims = case.get_artifact("note:pre-anesthesia-eval").claims
+        assert len(claims) == 2
+        assert all(c.status == ClaimStatus.UNSUPPORTED for c in claims)
