@@ -18,9 +18,9 @@ resume from the first unchecked item. Conventions:
       `Artifact`, `Event`, provenance references (`source_id#anchor`)
 - [x] Deterministic chunker: markdown/text → stable, citable chunk IDs
 - [x] Case store: JSON persistence, append-only source registry
-- [ ] NIM client wrapper: OpenAI-compatible chat client for build.nvidia.com
+- [x] NIM client wrapper: OpenAI-compatible chat client for build.nvidia.com
       (reasoning + fast model tiers), mocked in tests
-- [ ] Live smoke test script (`scripts/smoke_llm.py`) verified with NGC key
+- [x] Live smoke test script (`scripts/smoke_llm.py`) verified with NGC key
 - [ ] ADK stage pipeline stubs (pre-op / intra-op / post-op) runnable end-to-end
       with stub tools
 - [ ] NAT wiring: register workflow, `nat run` executes a trivial 3-stage pass
