@@ -113,6 +113,15 @@ resume from the first unchecked item. Conventions:
   (c) distractor leakage into notes — TODO: strengthen relevance filtering;
   (d) post-op note/handoff verification is partial — TODO: verify all artifacts.
 
+- 2026-07-05: Live reruns surfaced two silent-drop bugs in provenance
+  filtering (models citing claims instead of sources; models echoing the
+  display brackets) — both fixed with claim-ref inheritance + normalization
+  validators on every structured-output ref field. sg-0002 demo re-run
+  post-fix: 82 claims across 5 artifacts, anticipated issues populated and
+  verified. Observation: NLI-style verification reads forward-looking risk
+  claims as "unsupported" (an anticipated issue is an inference, not an
+  entailment) — see follow-ups.
+
 ## Known follow-ups (surfaced by the baseline eval)
 
 - ~~Align gold intra-op event granularity with the extractor (or relax
@@ -124,5 +133,9 @@ resume from the first unchecked item. Conventions:
   pre-op note + handoff.~~ DONE — every artifact now passes through the
   ClaimVerifier.
 - Scale the dataset to ~30 cases and re-run the eval for stable aggregates.
+- ClaimVerifier treats anticipated issues as entailment checks; risk
+  projections are inferences, so most read "unsupported". Verify the cited
+  evidence instead (does the span support the risk factor, not the
+  prediction), or add an "inference" verdict.
 - ~~Add a NAT profiler screenshot/report to the README from a traced live
   run.~~ DONE — evals/profile/ + README "Profiling" section.

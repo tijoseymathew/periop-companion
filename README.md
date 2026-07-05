@@ -166,8 +166,9 @@ exactly why verification and the extraction first pass run on the fast tier.
 
 ## Status
 
-M0–M4 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
-pipeline, all agents, eval harness). Remaining: broader eval dataset, TTS→ASR
-audio path, and the review UI. Live NIM paths (LLM tiers, full case runs) are
-smoke-tested with an NGC key; the ASR/TTS speech NIMs use documented hosted
-NVCF endpoints (see [docs/attribution.md](docs/attribution.md)).
+M0–M5 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
+pipeline, all agents, eval harness, HTML review UI, NAT-profiled live run).
+Remaining: broader eval dataset (30 cases) and the TTS→ASR audio path. Live
+NIM paths (LLM tiers, full case runs, traced profiling) are exercised with an
+NGC key; the ASR/TTS speech NIMs use documented hosted NVCF endpoints (see
+[docs/attribution.md](docs/attribution.md)).
