@@ -9,7 +9,7 @@ are dropped before the artifact is committed.
 
 from pydantic import BaseModel, Field
 
-from periop.agents.context import render_sources
+from periop.agents.context import provenance_resolves, render_sources
 from periop.schemas import ArtifactRecord, Case, Claim
 
 PREOP_NOTE_ID = "note:pre-anesthesia-eval"
@@ -77,7 +77,7 @@ class PreOpNoteWriter:
         out = self.chat.complete_structured(prompt, schema=WriterOutput, system=SYSTEM)
         claims: list[Claim] = []
         for wc in out.claims:
-            if not _resolves(case, wc.provenance):
+            if not provenance_resolves(case, wc.provenance):
                 continue
             claims.append(
                 Claim(
@@ -89,14 +89,3 @@ class PreOpNoteWriter:
         artifact = ArtifactRecord(artifact_id=PREOP_NOTE_ID, claims=claims)
         case.add_artifact(artifact)
         return artifact
-
-
-def _resolves(case: Case, refs: list[str]) -> bool:
-    if not refs:
-        return False
-    try:
-        for ref in refs:
-            case.resolve(ref)
-    except (KeyError, ValueError):
-        return False
-    return True

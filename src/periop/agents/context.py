@@ -5,7 +5,31 @@ so the model can cite exactly. No embeddings/RAG — the whole record set fits
 in context (spec §3.3).
 """
 
-from periop.schemas import Case, SourceType
+from periop.schemas import ArtifactRecord, Case, SourceType
+
+
+def render_claims(artifact: ArtifactRecord) -> str:
+    """Render an artifact's claims with global refs (``artifact_id#claim_id``).
+
+    Used when a downstream agent composes over already-generated claims (issue
+    anticipation, handoff composition) rather than raw sources.
+    """
+    return "\n".join(
+        f"[{artifact.artifact_id}#{c.claim_id}] ({c.status}) {c.text}"
+        for c in artifact.claims
+    )
+
+
+def provenance_resolves(case: Case, refs: list[str]) -> bool:
+    """True if every ref in ``refs`` resolves to a registered anchor."""
+    if not refs:
+        return False
+    try:
+        for ref in refs:
+            case.resolve(ref)
+    except (KeyError, ValueError):
+        return False
+    return True
 
 
 def render_sources(case: Case, types: tuple[SourceType, ...] | None = None) -> str:

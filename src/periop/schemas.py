@@ -158,6 +158,7 @@ class Case(BaseModel):
     sources: list[Source] = Field(default_factory=list)
     artifacts: list[ArtifactRecord] = Field(default_factory=list)
     open_questions: list[str] = Field(default_factory=list)
+    intraop_events: list[Event] = Field(default_factory=list)
     anticipated_issues: list[str] = Field(default_factory=list)
 
     def add_source(self, source: Source) -> None:

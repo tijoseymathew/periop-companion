@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your knee surgery today. Let me go through some questions to make sure we're all set for your procedure."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. Thank you. I'm ready when you are, lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Can you tell me a bit about why you're having this knee replacement surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. My right knee has been giving me a lot of pain for years, Doctor. The arthritis is really bad now—can't even walk properly without a cane. My ortho surgeon said it's time for the replacement."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. From your records, you're on Lisinopril 10mg daily, Atorvastatin 20mg daily, Aspirin 81mg daily, and Enalapril 10mg daily. Have there been any changes to these in the past year?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, actually, Doctor, the Enalapril one—I stopped taking that about six months ago. Had a bad cough from it, so my GP switched me back to Lisinopril. But the records still show Enalapril as active? Must be a mistake lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that, Mr. Tan. I'll update our records to reflect that you're on Lisinopril 10mg daily and that Enalapril was discontinued. Any other medication changes?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. The rest are still the same. Aspirin for my heart, Atorvastatin for cholesterol, and Lisinopril for blood pressure."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any known allergies to medications or other substances?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "None that I know of, Doctor. Never had any reactions before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. My daughter reminded me to fast properly—nothing after 12am, like the instructions said."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Have you had any previous surgeries or anesthesia? Any issues like nausea, breathing problems, or reactions?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a cataract surgery years ago, Doctor. They gave me general anesthesia, and I was fine—no problems at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Lastly, how has your knee been affecting your daily activities? Can you walk, climb stairs, or manage your own care?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It's tough, Doctor. I can walk short distances with a cane, but stairs are a struggle. I manage my own care, but simple things like tying shoelaces are impossible now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that, Mr. Tan. For your anesthesia plan, we'll be doing a spinal anesthetic with some intravenous sedation using propofol. This should keep you comfortable during the procedure. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, Doctor. I trust you and your team. Just want to get this sorted so I can walk properly again."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll take good care of you. I'll pop by again before the surgery to confirm everything. Take a deep breath and relax—we're all set."
+    }
+  ]
+}
