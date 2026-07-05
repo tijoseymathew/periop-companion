@@ -73,16 +73,20 @@ class NimChat:
         self.max_retries = max_retries
 
     def complete(self, user: str, system: str | None = None, **kwargs: Any) -> str:
+        from periop.nat.telemetry import traced_llm_call
+
         messages: list[dict[str, str]] = []
         if system:
             messages.append({"role": "system", "content": system})
         messages.append({"role": "user", "content": user})
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=kwargs.pop("temperature", self.temperature),
-            **kwargs,
-        )
+        with traced_llm_call(self.model, messages) as record:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=kwargs.pop("temperature", self.temperature),
+                **kwargs,
+            )
+            record.response = response
         return strip_reasoning(response.choices[0].message.content or "")
 
     def complete_structured(
