@@ -114,6 +114,42 @@ export default function App() {
     }
   }
 
+  // keyboard navigation (ui.md §11 U4): ↑/↓ walk the visible claims of the
+  // active stage, Enter activates the focused claim's first ref
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (!kase || !activeGroup) return;
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag && ["INPUT", "SELECT", "TEXTAREA"].includes(tag)) return;
+      const rows = activeGroup.artifacts.flatMap((a) =>
+        a.claims
+          .filter((c) => filters[c.status])
+          .map((c) => ({ artifactId: a.artifact_id, claimId: c.claim_id, claim: c })),
+      );
+      if (rows.length === 0) return;
+      const idx = rows.findIndex(
+        (r) => r.artifactId === activeClaim?.artifactId && r.claimId === activeClaim?.claimId,
+      );
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        const next =
+          idx === -1
+            ? 0
+            : Math.min(Math.max(idx + (e.key === "ArrowDown" ? 1 : -1), 0), rows.length - 1);
+        const row = rows[next];
+        setActiveClaim({ artifactId: row.artifactId, claimId: row.claimId });
+        document
+          .getElementById(claimDomId(row.artifactId, row.claimId))
+          ?.scrollIntoView?.({ block: "nearest" });
+      } else if (e.key === "Enter" && idx >= 0) {
+        const ref = rows[idx].claim.provenance[0];
+        if (ref) activateRef(ref);
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  });
+
   /** Reverse-index click: bring the citing claim into view in the ledger. */
   function jumpToClaim(artifactId: string, claimId: string) {
     const group = groups.find((g) => g.artifacts.some((a) => a.artifact_id === artifactId));

@@ -64,7 +64,7 @@ Conventions:
 
 ## U4 — Polish
 
-- [ ] C8 `feat(ui)`: copy-as-markdown per artifact (claims as bullets +
+- [x] C8 `feat(ui)`: copy-as-markdown per artifact (claims as bullets +
       citation footnotes, clipboard API with fallback); keyboard navigation
       between claims (↑/↓ move, Enter activates first ref). Vitest.
 - [ ] C9 `docs`: attribution.md "Review UI" row (adapted vs built-new), README

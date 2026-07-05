@@ -79,6 +79,27 @@ describe("App workspace", () => {
     expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true");
   });
 
+  it("arrow keys walk the visible claims; Enter activates the first ref (U4)", async () => {
+    render(<App />);
+    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+    await userEvent.keyboard("{ArrowDown}");
+    const first = document.getElementById("claim-note-pre-anesthesia-eval-c-001")!;
+    expect(first).toHaveAttribute("data-active", "true");
+    await userEvent.keyboard("{ArrowDown}");
+    expect(document.getElementById("claim-note-pre-anesthesia-eval-c-002")!).toHaveAttribute(
+      "data-active",
+      "true",
+    );
+    expect(first).toHaveAttribute("data-active", "false");
+    await userEvent.keyboard("{ArrowUp}");
+    expect(first).toHaveAttribute("data-active", "true");
+    // Enter resolves the active claim's first ref (c-001 → audio segment s017)
+    await userEvent.keyboard("{Enter}");
+    await waitFor(() =>
+      expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true"),
+    );
+  });
+
   it("status filter toggle hides matching claims in the ledger", async () => {
     render(<App />);
     await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");

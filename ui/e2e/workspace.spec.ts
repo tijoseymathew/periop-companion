@@ -59,6 +59,15 @@ test("audio citation highlights the transcript segment (no wav rendered here)", 
   await expect(segment).toBeInViewport();
 });
 
+test("keyboard: arrows walk claims, Enter resolves the citation (U4)", async ({ page }) => {
+  await page.getByTestId("claim-text").first().waitFor();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.locator('[data-active="true"]')).toHaveCount(1);
+  await page.keyboard.press("Enter");
+  // sg-0002's first pre-op claim cites doc:gp-summary#c001
+  await expect(page.getByTestId("chunk-c001")).toHaveAttribute("data-highlighted", "true");
+});
+
 test("reverse index jumps from a segment back to a citing claim", async ({ page }) => {
   await page.getByRole("tab", { name: "audio:preop-interview" }).click();
   const citedBy = page.getByRole("button", { name: /cited by \d+ claims?/ }).first();

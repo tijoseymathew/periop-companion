@@ -45,6 +45,25 @@ describe("ArtifactView", () => {
   });
 });
 
+describe("ArtifactView copy as markdown", () => {
+  it("copies the artifact's markdown rendering to the clipboard", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, { clipboard: { writeText } });
+    render(
+      <ArtifactView kase={kase} artifact={kase.artifacts[0]} filters={defaultFilters()} onActivateRef={() => {}} />,
+    );
+    await userEvent.click(
+      screen.getByRole("button", { name: /copy note:pre-anesthesia-eval as markdown/i }),
+    );
+    expect(writeText).toHaveBeenCalledTimes(1);
+    const md = writeText.mock.calls[0][0] as string;
+    expect(md).toContain("# note:pre-anesthesia-eval");
+    expect(md).toContain("[^1]");
+    // transient confirmation
+    expect(await screen.findByText(/copied/i)).toBeInTheDocument();
+  });
+});
+
 describe("EventsTable", () => {
   it("renders time, category, value, units and clickable provenance chips", async () => {
     const onActivateRef = vi.fn();
