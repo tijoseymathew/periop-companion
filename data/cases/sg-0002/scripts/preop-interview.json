@@ -1,0 +1,72 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your hernia surgery today. Let me go through some questions to make sure we're all set for your general anesthesia with the LMA. First, can you tell me a bit about your hernia and why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes. This hernia on my left side has been bulging for almost a year now. It doesn't hurt much, but it gets uncomfortable when I lift heavy things or bend over. My surgeon said it's better to fix it before it gets worse, so here I am."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for sharing that. Let's talk about your medications. I see you're on Metformin, Perindopril, Indapamide, and Atorvastatin. Are you still taking all of these as prescribed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, all of them except Amlodipine. I stopped that one about six months ago because my ankles kept swelling up. My GP said it was due to the Amlodipine, so we switched me off it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. The records mentioned Amlodipine was still active, so I appreciate you correcting that. Did you have any other side effects from it besides the swelling?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, just the swelling. Blood pressure's been fine since I stopped it, though. My BP readings at the clinic have been pretty stable lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to know. Any allergies we should be aware of?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "None at all. Never had any reactions to medications or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you eaten or drunk anything this morning? Remember, it's important to be NPO for surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing since midnight. Just a sip of water to take my morning pills, like the nurse instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any previous surgeries or anesthesia experiences we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had my appendix out when I was a teenager, but that's it. No problems with the anesthesia then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Lastly, how's your overall fitness? Can you walk up a flight of stairs without getting short of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, no problem. I walk to the hawker center every day for lunch, and that's about 10 minutes. Only the hernia stops me from doing heavier stuff."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for all the details, Mr. Tan. I'll update your records about the Amlodipine and make sure the team knows. Any questions or concerns before we proceed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Just want to get this sorted and go back to my badminton games without pain lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Haha, sounds like a plan. We'll take good care of you. You'll meet the surgical team shortly, and I'll see you in the operating room."
+    }
+  ]
+}

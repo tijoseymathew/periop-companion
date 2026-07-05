@@ -39,13 +39,13 @@ resume from the first unchecked item. Conventions:
 
 ## M2 — Pre-op stage
 
-- [ ] RecordIngestor tool (chunker + source registry)
-- [ ] GapAnalyst agent (questions w/ reason + provenance)
-- [ ] InterviewTranscriber (Parakeet NIM offline + diarization; gold-transcript
+- [x] RecordIngestor tool (chunker + source registry)
+- [x] GapAnalyst agent (questions w/ reason + provenance)
+- [x] InterviewTranscriber — gold-transcript path (Parakeet NIM path pending TTS audio);
       fallback path for offline dev)
-- [ ] PreOpNoteWriter (claims-structured note) + question→answer alignment
-- [ ] ClaimVerifier (NLI-style supported/unsupported/conflicting)
-- [ ] Provenance links render in CLI
+- [x] PreOpNoteWriter (claims-structured note) + question→answer alignment
+- [x] ClaimVerifier (NLI-style supported/unsupported/conflicting)
+- [x] Provenance links render in CLI
 
 ## M3 — Intra-op + post-op
 

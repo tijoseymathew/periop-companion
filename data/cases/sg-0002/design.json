@@ -1,0 +1,107 @@
+{
+  "case_id": "sg-0002",
+  "persona_uuid": "0abc8f250484447589217ead32c0d777",
+  "surgery": "Elective open inguinal hernia repair",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with laryngeal mask airway (LMA)",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Type 2 diabetes mellitus",
+    "Hypertension",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Perindopril",
+      "dose": "8mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Indapamide",
+      "dose": "1.25mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications include Amlodipine 10mg daily (active)",
+    "truth": "Amlodipine discontinued 6 months ago due to peripheral edema",
+    "gold_question": "Have you stopped or changed any medications in the past year?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved in 2015",
+      "why_irrelevant": "Resolved infection >5 years ago, no chronic respiratory issues"
+    },
+    {
+      "description": "Right wrist fracture in 2008, fully healed",
+      "why_irrelevant": "Remote traumatic injury with no residual functional impairment"
+    },
+    {
+      "description": "Discontinued omeprazole for GERD in 2020",
+      "why_irrelevant": "Resolved condition, no current gastrointestinal symptoms"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Perindopril",
+        "dose": "8mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Indapamide",
+        "dose": "1.25mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Amlodipine",
+        "dose": "10mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia resolved in 2015",
+      "Right wrist fracture in 2008, fully healed",
+      "Discontinued omeprazole for GERD in 2020"
+    ],
+    "prior_anesthesia": "General anesthesia for appendectomy in 2005, no complications"
+  }
+}
