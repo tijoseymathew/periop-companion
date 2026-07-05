@@ -48,11 +48,12 @@ class TestNatWorkflow:
             POSTOP_NOTE_ID,
         ):
             assert artifact_id in result
-        saved = CaseStore(tmp_path / "cases").load("sg-0001")
+        # processed cases land in <case_dir>/_out, same as the CLI runner
+        saved = CaseStore(tmp_path / "cases" / "_out").load("sg-0001")
         assert len(saved.artifacts) == 4
 
     async def test_loads_existing_case_from_store(self, config_file, tmp_path):
-        store = CaseStore(tmp_path / "cases")
+        store = CaseStore(tmp_path / "cases" / "_out")
         store.save(Case(case_id="sg-0042", patient_profile_ref="personas/uuid-9"))
         await run_workflow(config_file, "sg-0042")
         assert store.load("sg-0042").patient_profile_ref == "personas/uuid-9"

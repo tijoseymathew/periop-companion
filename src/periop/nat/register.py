@@ -36,7 +36,8 @@ async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
     from periop.agents.pipeline import build_case_pipeline, run_case
     from periop.nim import fast_chat, reasoning_chat
 
-    store = CaseStore(config.case_dir)
+    # bundles live in <case_dir>/<case_id>/; processed cases in <case_dir>/_out
+    store = CaseStore(Path(config.case_dir) / "_out")
 
     async def _run(case_id: str) -> str:
         case_id = case_id.strip()
