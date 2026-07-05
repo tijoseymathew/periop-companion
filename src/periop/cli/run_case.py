@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
     case = run_case_stages(
         Case(case_id=case_id), case_dir, chat=reasoning_chat(), fast_chat=fast_chat()
     )
-    CaseStore(CASE_ROOT).save(case)
+    CaseStore(CASE_ROOT / "_out").save(case)
 
     for artifact in case.artifacts:
         print("\n" + render_artifact(case, artifact))

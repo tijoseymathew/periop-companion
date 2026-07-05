@@ -1,0 +1,1009 @@
+{
+  "case_id": "sg-0002",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "49-year-old male, Professional, resident of Tampines, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Perindopril 8mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Indapamide 1.25mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Amlodipine 10mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Pneumonia resolved in 2015",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Right wrist fracture in 2008, fully healed",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Discontinued omeprazole for GERD in 2020",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Perindopril 8mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Indapamide 1.25mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Amlodipine 10mg Once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective open inguinal hernia repair (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with laryngeal mask airway (LMA)",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:prior-anesthetic-record",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "General anesthesia for appendectomy in 2005, no complications",
+          "section": "Summary"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 22.0,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your hernia surgery today. Let me go through some questions to make sure we're all set for your general anesthesia with the LMA. First, can you tell me a bit about your hernia and why you're having this surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 22.4,
+          "t1": 41.6,
+          "speaker": "PATIENT",
+          "text": "Ah, yes. This hernia on my left side has been bulging for almost a year now. It doesn't hurt much, but it gets uncomfortable when I lift heavy things or bend over. My surgeon said it's better to fix it before it gets worse, so here I am."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 42.0,
+          "t1": 52.8,
+          "speaker": "PROVIDER",
+          "text": "Thanks for sharing that. Let's talk about your medications. I see you're on Metformin, Perindopril, Indapamide, and Atorvastatin. Are you still taking all of these as prescribed?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 53.2,
+          "t1": 67.2,
+          "speaker": "PATIENT",
+          "text": "Yes, all of them except Amlodipine. I stopped that one about six months ago because my ankles kept swelling up. My GP said it was due to the Amlodipine, so we switched me off it."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 67.6,
+          "t1": 78.4,
+          "speaker": "PROVIDER",
+          "text": "I see. The records mentioned Amlodipine was still active, so I appreciate you correcting that. Did you have any other side effects from it besides the swelling?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 78.8,
+          "t1": 88.4,
+          "speaker": "PATIENT",
+          "text": "Nope, just the swelling. Blood pressure's been fine since I stopped it, though. My BP readings at the clinic have been pretty stable lah."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 88.8,
+          "t1": 92.8,
+          "speaker": "PROVIDER",
+          "text": "Good to know. Any allergies we should be aware of?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 93.2,
+          "t1": 97.6,
+          "speaker": "PATIENT",
+          "text": "None at all. Never had any reactions to medications or anything."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 98.0,
+          "t1": 104.8,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Have you eaten or drunk anything this morning? Remember, it's important to be NPO for surgery."
+        },
+        {
+          "seg_id": "s010",
+          "t0": 105.2,
+          "t1": 112.4,
+          "speaker": "PATIENT",
+          "text": "No, nothing since midnight. Just a sip of water to take my morning pills, like the nurse instructed."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 112.8,
+          "t1": 117.2,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Any previous surgeries or anesthesia experiences we should know about?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 117.6,
+          "t1": 125.2,
+          "speaker": "PATIENT",
+          "text": "I had my appendix out when I was a teenager, but that's it. No problems with the anesthesia then."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 125.6,
+          "t1": 133.2,
+          "speaker": "PROVIDER",
+          "text": "Great. Lastly, how's your overall fitness? Can you walk up a flight of stairs without getting short of breath?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 133.6,
+          "t1": 144.4,
+          "speaker": "PATIENT",
+          "text": "Yeah, no problem. I walk to the hawker center every day for lunch, and that's about 10 minutes. Only the hernia stops me from doing heavier stuff."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 144.8,
+          "t1": 155.6,
+          "speaker": "PROVIDER",
+          "text": "Thanks for all the details, Mr. Tan. I'll update your records about the Amlodipine and make sure the team knows. Any questions or concerns before we proceed?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 156.0,
+          "t1": 164.4,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all. Just want to get this sorted and go back to my badminton games without pain lah."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 164.8,
+          "t1": 174.8,
+          "speaker": "PROVIDER",
+          "text": "Haha, sounds like a plan. We'll take good care of you. You'll meet the surgical team shortly, and I'll see you in the operating room."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.4,
+          "speaker": "PROVIDER",
+          "text": "induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 2.8,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "fentanyl fifty micrograms"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 4.4,
+          "t1": 7.2,
+          "speaker": "PROVIDER",
+          "text": "LMA inserted, good seal, ventilating without difficulty"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 7.6,
+          "t1": 11.2,
+          "speaker": "PROVIDER",
+          "text": "eighteen gauge IV cannula placed in left antecubital fossa"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 11.6,
+          "t1": 15.6,
+          "speaker": "PROVIDER",
+          "text": "normal saline running at one hundred fifty milliliters per hour"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 16.0,
+          "t1": 22.0,
+          "speaker": "PROVIDER",
+          "text": "mean arterial pressure dropped to fifty five, gave five hundred milligrams of intravenous fluid bolus"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 22.4,
+          "t1": 25.2,
+          "speaker": "PROVIDER",
+          "text": "mean arterial pressure improved to sixty five"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 25.6,
+          "t1": 30.4,
+          "speaker": "PROVIDER",
+          "text": "heart rate increased to ninety five, gave ten milligrams of intravenous metoprolol"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 8.0,
+          "speaker": "PATIENT",
+          "text": "Eh, okay lah. Got some pain here, but manageable."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 8.4,
+          "t1": 14.8,
+          "speaker": "PROVIDER",
+          "text": "Can you tell me your pain score out of 10? And where exactly is the discomfort?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 15.2,
+          "t1": 20.0,
+          "speaker": "PATIENT",
+          "text": "Maybe 4 or 5? Around the incision site, like a dull ache."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 20.4,
+          "t1": 24.0,
+          "speaker": "PROVIDER",
+          "text": "Any nausea or vomiting since waking up? Breathing comfortably?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 24.4,
+          "t1": 30.0,
+          "speaker": "PATIENT",
+          "text": "No vomiting, but feel a bit queasy. Throat a bit sore, but breathing okay."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 30.4,
+          "t1": 34.0,
+          "speaker": "PROVIDER",
+          "text": "Did you remember anything during the operation? Any awareness?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 34.4,
+          "t1": 38.0,
+          "speaker": "PATIENT",
+          "text": "Nope, slept like a baby. No memory at all."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 38.4,
+          "t1": 44.8,
+          "speaker": "PROVIDER",
+          "text": "For your diabetes, did the team check your sugar levels? Any episodes of low or high?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 45.2,
+          "t1": 49.6,
+          "speaker": "PATIENT",
+          "text": "They checked before and after, all normal. No dizziness or anything."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 50.0,
+          "t1": 53.2,
+          "speaker": "PROVIDER",
+          "text": "Your blood pressure and cholesterol meds—taken as usual?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 53.6,
+          "t1": 58.4,
+          "speaker": "PATIENT",
+          "text": "Yes, took them this morning before surgery. BP been stable, no issues."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 58.8,
+          "t1": 63.6,
+          "speaker": "PROVIDER",
+          "text": "Alright, anything else bothering you? We can adjust pain relief if needed."
+        },
+        {
+          "seg_id": "s014",
+          "t0": 64.0,
+          "t1": 67.6,
+          "speaker": "PATIENT",
+          "text": "No, I think it's all good. Thanks for checking."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "49-year-old male",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Elective open inguinal hernia repair scheduled",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "General anesthesia with laryngeal mask airway (LMA) planned",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "History of resolved pneumonia in 2015",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "History of right wrist fracture in 2008, fully healed",
+          "provenance": [
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Discontinued omeprazole for GERD in 2020 with no current symptoms reported",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s005"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "No current drug allergies",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Currently taking Metformin 500mg twice daily",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Currently taking Perindopril 8mg once daily",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Currently taking Indapamide 1.25mg once daily",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Discontinued Amlodipine 10mg once daily six months ago due to ankle swelling",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "doc:med-list#c005",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Currently taking Atorvastatin 20mg once daily",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "No difficulty with intubation or airway management during previous appendectomy anesthesia in 2005",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Diagnosed with hypertension, currently controlled on Perindopril and Indapamide",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "No new medical conditions or hospitalizations since 2005 appendectomy",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "NPO since midnight with only sip of water for morning medications",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "ASA-PS II (mild systemic disease) due to controlled hypertension without active complications",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "conflicting"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "At 00:00, propofol 120 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "At 00:02, fentanyl 50 micrograms administered",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "At 00:04, LMA inserted with good seal and ventilating without difficulty",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "At 00:07, eighteen gauge IV cannula placed in left antecubital fossa",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "At 00:11, normal saline infused at 150 milliliters per hour",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "At 00:16, mean arterial pressure dropped to 55",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "At 00:16, 500 milliliters of intravenous fluid bolus administered",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "At 00:22, mean arterial pressure improved to 65",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "At 00:25, heart rate increased to 95",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "At 00:25, metoprolol 10 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "unsupported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": []
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "49-year-old male undergoing elective open inguinal hernia repair with general anesthesia via LMA.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "History of resolved pneumonia (2015), controlled hypertension on Perindopril and Indapamide, no drug allergies, currently taking Metformin, Perindopril, Indapamide, Atorvastatin, and discontinued Amlodipine (due to ankle swelling) and omeprazole (GERD, no current symptoms). No prior intubation difficulties. NPO since midnight. ASA-PS II.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s008",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s010",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:gp-summary#c006",
+            "doc:med-list#c005",
+            "audio:preop-interview#s005",
+            "doc:gp-summary#c010",
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s012"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intraoperatively, transient hypotension (MAP 55) responded to fluid bolus (improved to MAP 65), followed by tachycardia (HR 95) treated with metoprolol.",
+          "provenance": [
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Monitor blood pressure and heart rate closely in PACU. Continue home medications as scheduled. Maintain NPO status until further assessment.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s010",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "doc:gp-summary#c005",
+            "doc:med-list#c004"
+          ],
+          "status": "conflicting"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 49-year-old male, professional, resident of Tampines, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient discontinued Amlodipine 10mg due to peripheral edema six months ago.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:med-list#c005"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Current medications include Metformin 500mg twice daily, Perindopril 8mg once daily, Indapamide 1.25mg once daily, and Atorvastatin 20mg once daily.",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "audio:postop-interview#s012"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "No known drug allergies recorded.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Past medical history includes resolved pneumonia (2015), right wrist fracture (2008, fully healed), and discontinued omeprazole for GERD (2020).",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c010"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Elective open inguinal hernia repair performed under general anesthesia with LMA.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Previous anesthesia for appendectomy in 2005 with no complications.",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s012"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Induction with propofol 120mg and fentanyl 50μg.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "LMA inserted successfully with good seal and uneventful ventilation.",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "18G IV cannula placed in left antecubital fossa with NS infusion at 150ml/hr.",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Mean arterial pressure dropped to 55 mmHg, responded to 500ml fluid bolus (improved to 65 mmHg).",
+          "provenance": [
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Heart rate increased to 95 bpm, treated with 10mg IV metoprolol.",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Postoperative pain score reported as 4-5/10 at incision site (dull ache).",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Patient reports mild nausea but no vomiting postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Throat soreness reported but no respiratory distress.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "No intraoperative recall or awareness reported.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Blood glucose levels remained normal intraoperatively and postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Blood pressure remained stable postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "unverified"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "Patient maintains functional status with ability to walk 10 minutes daily preoperatively.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "unverified"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Do you have any current drug allergies that have not been documented?",
+    "Have you experienced any symptoms of gastroesophageal reflux disease (GERD) since discontinuing omeprazole in 2020?",
+    "Have you ever had difficulty with intubation or airway management during previous anesthesia?",
+    "Have you been diagnosed with hypertension, given your current antihypertensive medications (Perindopril, Indapamide, Amlodipine)?",
+    "Have you stopped Metformin as advised prior to surgery, or are you still taking it?",
+    "Are you currently taking all your prescribed medications as listed, including Perindopril, Indapamide, Amlodipine, and Atorvastatin?",
+    "Have you had any new medical conditions or hospitalizations since your last anesthetic in 2005?",
+    "Have you had recent electrolyte tests (e.g., potassium) due to the use of Indapamide, which can cause imbalances?"
+  ],
+  "intraop_events": [
+    {
+      "t": "00:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "00:02",
+      "category": "agent",
+      "value": "fentanyl 50",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "00:04",
+      "category": "airway",
+      "value": "LMA inserted, good seal, ventilating without difficulty",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "00:07",
+      "category": "line",
+      "value": "eighteen gauge IV cannula placed in left antecubital fossa",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "00:11",
+      "category": "fluid",
+      "value": "normal saline 150",
+      "units": "milliliters per hour",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "00:16",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "00:16",
+      "category": "fluid",
+      "value": "500",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "00:22",
+      "category": "event",
+      "value": "mean arterial pressure improved to 65",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "00:25",
+      "category": "event",
+      "value": "heart rate increased to 95",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "00:25",
+      "category": "agent",
+      "value": "metoprolol 10",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    }
+  ],
+  "anticipated_issues": []
+}

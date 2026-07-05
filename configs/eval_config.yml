@@ -1,0 +1,40 @@
+# nat eval configuration (spec §6).
+#
+# The eval dataset is the generated synthetic cases (inputs + gold artifacts)
+# under data/cases/. The custom provenance/claim/extraction metrics live in
+# src/periop/evals/ and are exercised end-to-end by scripts/run_eval.py, which
+# writes evals/report.json.
+#
+# NAT-native integration: each metric in periop.evals.metrics maps to a custom
+# NAT evaluator; register them under `eval.evaluators` and point `eval.general`
+# at the workflow + dataset to drive scoring via `nat eval`. The standalone
+# runner is the reference implementation of that scoring so the two stay in
+# sync.
+
+workflow:
+  _type: periop_pipeline
+  case_dir: data/cases
+
+eval:
+  general:
+    dataset:
+      _type: json
+      # one row per case: {"id": "sg-0001", ...}; gold read from the bundle.
+      file_path: data/cases/_index.json
+  evaluators:
+    # Custom evaluators (periop.evals.metrics). Registered as nat.components
+    # in a follow-up; see scripts/run_eval.py for the scoring each performs.
+    provenance_precision:
+      _type: periop_provenance_precision
+    provenance_coverage:
+      _type: periop_provenance_coverage
+    claim_recall:
+      _type: periop_claim_recall
+    hallucinated_claim_rate:
+      _type: periop_hallucinated_claim_rate
+    gap_analysis_prf:
+      _type: periop_gap_analysis_prf
+    distractor_leakage:
+      _type: periop_distractor_leakage
+    extraction_f1:
+      _type: periop_extraction_f1
