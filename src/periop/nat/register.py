@@ -5,6 +5,8 @@ evaluation. This module is the seam — deliberately narrow so ADK could also
 run natively if the plugin integration ever fights us (spec §10).
 """
 
+from pathlib import Path
+
 from pydantic import Field
 
 from nat.builder.builder import Builder

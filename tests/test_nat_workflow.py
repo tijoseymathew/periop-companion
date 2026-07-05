@@ -56,3 +56,31 @@ class TestNatWorkflow:
         store.save(Case(case_id="sg-0042", patient_profile_ref="personas/uuid-9"))
         await run_workflow(config_file, "sg-0042")
         assert store.load("sg-0042").patient_profile_ref == "personas/uuid-9"
+
+    async def test_non_stub_builds_real_pipeline_for_case_bundle(self, tmp_path, monkeypatch):
+        """The default (non-stub) path builds the real agent pipeline rooted at
+        the case's bundle directory — this is the path `nat run` takes live."""
+        import periop.agents.pipeline as agents_pipeline
+        import periop.nim as nim
+
+        captured = {}
+
+        def fake_build_case_pipeline(case_dir, chat, fast_chat=None):
+            captured["case_dir"] = case_dir
+            return None  # run_case falls back to the stub SequentialAgent
+
+        monkeypatch.setattr(agents_pipeline, "build_case_pipeline", fake_build_case_pipeline)
+        monkeypatch.setattr(nim, "reasoning_chat", lambda **kw: object())
+        monkeypatch.setattr(nim, "fast_chat", lambda **kw: object())
+
+        config = tmp_path / "workflow.yml"
+        config.write_text(
+            f"""\
+workflow:
+  _type: periop_pipeline
+  case_dir: {tmp_path / "cases"}
+"""
+        )
+        result = await run_workflow(config, "sg-0001")
+        assert captured["case_dir"] == tmp_path / "cases" / "sg-0001"
+        assert "sg-0001" in result
