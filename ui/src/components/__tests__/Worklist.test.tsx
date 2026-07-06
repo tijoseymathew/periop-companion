@@ -61,8 +61,9 @@ function renderList(overrides: Partial<Parameters<typeof Worklist>[0]> = {}) {
     onNewCase: vi.fn(),
     filters: defaultFilters(),
     onToggleFilter: vi.fn(),
-    workFilters: { stage: "all", status: "all" } as const,
+    workFilters: { stage: "all", status: "all", mine: false } as const,
     onWorkFilters: vi.fn(),
+    me: null,
     ...overrides,
   };
   render(<Worklist {...props} />);
@@ -85,13 +86,42 @@ describe("Worklist", () => {
   it("stage filter hides non-matching rows", async () => {
     const props = renderList();
     await userEvent.selectOptions(screen.getByLabelText(/stage/i), "preop");
-    expect(props.onWorkFilters).toHaveBeenCalledWith({ stage: "preop", status: "all" });
+    expect(props.onWorkFilters).toHaveBeenCalledWith({
+      stage: "preop",
+      status: "all",
+      mine: false,
+    });
   });
 
   it("applies the given workflow filters", () => {
-    renderList({ workFilters: { stage: "preop", status: "all" } });
+    renderList({ workFilters: { stage: "preop", status: "all", mine: false } });
     expect(screen.queryByText("TKR Mrs W")).not.toBeInTheDocument();
     expect(screen.queryByText("sg-demo")).not.toBeInTheDocument();
+  });
+
+  // ---- "my cases" (v2 W6b) ---------------------------------------------------
+
+  it("My cases toggles the mine filter", async () => {
+    const props = renderList({ me: "p-tan" });
+    const toggle = screen.getByRole("button", { name: /my cases/i });
+    expect(toggle).toHaveAttribute("aria-pressed", "false");
+    await userEvent.click(toggle);
+    expect(props.onWorkFilters).toHaveBeenCalledWith({
+      stage: "all",
+      status: "all",
+      mine: true,
+    });
+  });
+
+  it("mine filter keeps only my cases", () => {
+    renderList({ me: "p-tan", workFilters: { stage: "all", status: "all", mine: true } });
+    expect(screen.getByText("TKR Mrs W")).toBeInTheDocument(); // p-tan did intra-op
+    expect(screen.queryByText("sg-demo")).not.toBeInTheDocument();
+  });
+
+  it("My cases is disabled until a provider is picked", () => {
+    renderList({ me: null });
+    expect(screen.getByRole("button", { name: /my cases/i })).toBeDisabled();
   });
 
   it("New case is a labelled button", async () => {

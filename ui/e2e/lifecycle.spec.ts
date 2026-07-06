@@ -119,6 +119,12 @@ test("three providers walk one case from creation to acknowledged handoff", asyn
   await expect(
     page.getByRole("option", { name: /ZZZ E2E TKR Mrs W/ }).getByText("Complete"),
   ).toBeVisible();
+
+  // "my cases" (stretch): Dr C acknowledged the handoff, so the case is hers;
+  // the seeded demo cases are nobody's
+  await page.getByRole("button", { name: /my cases/i }).click();
+  await expect(page.getByRole("option", { name: /ZZZ E2E TKR Mrs W/ })).toBeVisible();
+  await expect(page.getByRole("option", { name: /sg-0002/ })).toHaveCount(0);
 });
 
 test("demo cases stay read-only: no primary action anywhere", async ({ page }) => {

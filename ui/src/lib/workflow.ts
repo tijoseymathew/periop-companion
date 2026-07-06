@@ -132,18 +132,36 @@ export function primaryAction(kase: Case): PrimaryAction | null {
   return { kind: "sign-off", stage, label: SIGNOFF_LABELS[stage] };
 }
 
-// ---- worklist filters (v2 §6.8) --------------------------------------------
+// ---- worklist filters (v2 §6.8, "my cases" §2 stretch) ----------------------
 
 export interface WorklistFilters {
   stage: StageKey | "all";
   status: StageStatus | "all";
+  mine: boolean;
+}
+
+/** Did this provider touch the case — create it, perform or sign off a stage,
+ * or acknowledge the handoff? */
+export function caseInvolves(workflow: Workflow | null, providerId: string | null): boolean {
+  if (!workflow || !providerId) return false;
+  if (workflow.created_by.provider_id === providerId) return true;
+  return STAGE_KEYS.some((key) => {
+    const stage = workflow.stages[key];
+    return (
+      stage.performed_by === providerId ||
+      stage.signed_off_by === providerId ||
+      stage.handoff_acknowledged_by === providerId
+    );
+  });
 }
 
 export function filterWorklist(
   rows: CaseSummary[],
   filters: WorklistFilters,
+  me: string | null = null,
 ): CaseSummary[] {
   return rows.filter((row) => {
+    if (filters.mine && !caseInvolves(row.workflow, me)) return false;
     if (filters.stage === "all" && filters.status === "all") return true;
     if (!row.workflow) return false; // demo cases have no stage to match
     const stage = headlineStage(row.workflow);

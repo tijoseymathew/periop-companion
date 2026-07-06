@@ -44,6 +44,7 @@ export function Worklist({
   onToggleFilter,
   workFilters,
   onWorkFilters,
+  me = null,
 }: {
   cases: CaseSummary[];
   providers: Provider[];
@@ -54,8 +55,10 @@ export function Worklist({
   onToggleFilter: (status: ClaimStatus) => void;
   workFilters: WorklistFilters;
   onWorkFilters: (filters: WorklistFilters) => void;
+  /** the picked provider — powers the "my cases" filter (v2 W6b) */
+  me?: string | null;
 }) {
-  const rows = filterWorklist(cases, workFilters);
+  const rows = filterWorklist(cases, workFilters, me);
   return (
     <aside className="flex w-80 shrink-0 flex-col border-r border-surface-overlay bg-surface-raised">
       <div className="flex items-center gap-2 border-b border-surface-overlay p-3">
@@ -102,6 +105,20 @@ export function Worklist({
             ))}
           </select>
         </label>
+        <button
+          type="button"
+          aria-pressed={workFilters.mine}
+          disabled={!me}
+          title={me ? "Show only cases you touched" : "Choose your name first"}
+          onClick={() => onWorkFilters({ ...workFilters, mine: !workFilters.mine })}
+          className={`self-end rounded border px-2.5 py-2 text-sm ${
+            workFilters.mine
+              ? "border-brand text-brand"
+              : "border-surface-overlay text-ink-secondary"
+          } disabled:opacity-40`}
+        >
+          My cases
+        </button>
       </div>
       <div role="listbox" aria-label="Cases" className="min-h-0 flex-1 overflow-y-auto">
         {rows.map((summary) => {

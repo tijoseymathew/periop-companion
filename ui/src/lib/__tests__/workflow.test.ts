@@ -258,16 +258,51 @@ describe("filterWorklist", () => {
   ];
 
   it("no filters keeps everything", () => {
-    expect(filterWorklist(rows, { stage: "all", status: "all" })).toHaveLength(3);
+    expect(filterWorklist(rows, { stage: "all", status: "all", mine: false })).toHaveLength(3);
   });
 
   it("stage filter keeps cases whose headline stage matches", () => {
-    const kept = filterWorklist(rows, { stage: "intraop", status: "all" });
+    const kept = filterWorklist(rows, { stage: "intraop", status: "all", mine: false });
     expect(kept.map((r) => r.case_id)).toEqual(["live-intraop"]);
   });
 
   it("status filter matches the headline status", () => {
-    const kept = filterWorklist(rows, { stage: "all", status: "awaiting_review" });
+    const kept = filterWorklist(rows, { stage: "all", status: "awaiting_review", mine: false });
     expect(kept.map((r) => r.case_id)).toEqual(["live-preop"]);
+  });
+
+  // ---- "my cases" (v2 W6b): any stage I performed, signed off, or created --
+
+  const mineRows = [
+    makeSummary({ case_id: "demo-1" }),
+    // p-lim created every makeWorkflow case; p-tan performed live-tan's intra-op
+    makeSummary({ case_id: "live-lim", workflow: makeWorkflow() }),
+    makeSummary({
+      case_id: "live-tan",
+      workflow: makeWorkflow({
+        preop: { status: "signed_off", signed_off_by: "p-rahman" },
+        intraop: { status: "awaiting_review", performed_by: "p-tan" },
+      }),
+    }),
+  ];
+
+  it("my cases keeps only cases this provider touched", () => {
+    const kept = filterWorklist(mineRows, { stage: "all", status: "all", mine: true }, "p-tan");
+    expect(kept.map((r) => r.case_id)).toEqual(["live-tan"]);
+  });
+
+  it("creating and signing off both count as touching", () => {
+    const asLim = filterWorklist(mineRows, { stage: "all", status: "all", mine: true }, "p-lim");
+    expect(asLim.map((r) => r.case_id)).toEqual(["live-lim", "live-tan"]);
+    const asRahman = filterWorklist(
+      mineRows,
+      { stage: "all", status: "all", mine: true },
+      "p-rahman",
+    );
+    expect(asRahman.map((r) => r.case_id)).toEqual(["live-tan"]);
+  });
+
+  it("my cases with no provider picked keeps nothing live and no demos", () => {
+    expect(filterWorklist(mineRows, { stage: "all", status: "all", mine: true }, null)).toEqual([]);
   });
 });

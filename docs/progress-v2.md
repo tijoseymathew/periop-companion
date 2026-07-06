@@ -72,7 +72,7 @@ resume from the first unchecked item.
       ledger itself stays untouched); `GET`/`PUT` endpoints, demo cases 409
 - [x] W6a-ui: review/flag buttons on claim rows; sign-off screen counts
       reviewed/flagged and flagged claims join the jump list
-- [ ] W6b: "my cases" worklist filter (any stage performed/signed off by me,
+- [x] W6b: "my cases" worklist filter (any stage performed/signed off by me,
       or created by me)
 - [ ] W6c: department dashboard view (cases by stage × status, awaiting-review
       queue, conflict totals — derived from the case summaries client-side)

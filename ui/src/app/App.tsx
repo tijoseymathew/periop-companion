@@ -59,6 +59,7 @@ export default function App() {
   const [workFilters, setWorkFilters] = useState<WorklistFilters>({
     stage: "all",
     status: "all",
+    mine: false,
   });
   const [creating, setCreating] = useState(false);
   // per-claim review actions (v2 W6a): sidecar map for the selected live case
@@ -280,6 +281,7 @@ export default function App() {
           }
           workFilters={workFilters}
           onWorkFilters={setWorkFilters}
+          me={me}
         />
         <main className="flex min-w-0 flex-1 flex-col">
           {error && (
