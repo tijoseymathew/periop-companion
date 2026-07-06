@@ -205,6 +205,24 @@ class Provider(BaseModel):
     role: str
 
 
+class ClaimReviewState(StrEnum):
+    REVIEWED = "reviewed"
+    FLAGGED = "flagged"
+
+
+class ClaimReview(BaseModel):
+    """A provider's review action on one claim (v2 §2 stretch).
+
+    Keyed by ``artifact_id#claim_id`` in a sidecar file, never on the claim
+    itself: review actions annotate the review pass, they do not edit the
+    ledger.
+    """
+
+    state: ClaimReviewState
+    by: str
+    at: datetime
+
+
 class StageName(StrEnum):
     PREOP = "preop"
     INTRAOP = "intraop"

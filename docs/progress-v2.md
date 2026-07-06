@@ -67,7 +67,7 @@ resume from the first unchecked item.
 
 ## W6 — Stretch (spec §2 stretch list)
 
-- [ ] W6a-api: per-claim review actions (mark reviewed / flag) persisted as
+- [x] W6a-api: per-claim review actions (mark reviewed / flag) persisted as
       sidecar state (`_out/<case_id>.review.json`, atomic write; the case
       ledger itself stays untouched); `GET`/`PUT` endpoints, demo cases 409
 - [ ] W6a-ui: review/flag buttons on claim rows; sign-off screen counts

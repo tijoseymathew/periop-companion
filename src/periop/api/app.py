@@ -14,7 +14,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 
-from periop.api.routers import audio, cases, stage_runs, workflow
+from periop.api.routers import audio, cases, claim_reviews, stage_runs, workflow
 
 DEFAULT_CASE_DIR = Path("data/cases")
 DEFAULT_PROVIDERS = Path("data/providers.json")
@@ -55,6 +55,7 @@ def create_app(
     app.include_router(audio.router, prefix="/api")
     app.include_router(workflow.router, prefix="/api")
     app.include_router(stage_runs.router, prefix="/api")
+    app.include_router(claim_reviews.router, prefix="/api")
 
     ui_dist = Path(ui_dist) if ui_dist is not None else UI_DIST
     if ui_dist.is_dir():
