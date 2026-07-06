@@ -26,6 +26,7 @@ def create_app(
     case_dir: Path | str | None = None,
     ui_dist: Path | str | None = None,
     providers_path: Path | str | None = None,
+    runner=None,
 ) -> FastAPI:
     case_dir = Path(case_dir or os.environ.get("PERIOP_CASE_DIR", DEFAULT_CASE_DIR))
     out_dir = Path(out_dir or os.environ.get("PERIOP_OUT_DIR", case_dir / "_out"))
@@ -37,6 +38,12 @@ def create_app(
     app.state.out_dir = out_dir
     app.state.case_dir = case_dir
     app.state.providers_path = providers_path
+
+    if runner is None:
+        from periop.api.runner import LivePipelineRunner
+
+        runner = LivePipelineRunner()
+    app.state.runner = runner
 
     @app.get("/api/health")
     def health() -> dict[str, str]:

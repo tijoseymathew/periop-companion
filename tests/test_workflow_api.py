@@ -12,7 +12,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from periop.api.app import create_app
-from periop.schemas import Case, StageStatus
+from periop.schemas import Case, OpenQuestion, StageStatus
 from periop.store import CaseStore
 
 PROVIDERS = [
@@ -99,3 +99,179 @@ class TestCreateCase:
         client.post("/api/cases", json={"label": "TKR", "provider_id": "p-lim"})
         ids = [s["case_id"] for s in client.get("/api/cases").json()]
         assert "tkr" in ids
+
+
+# --------------------------------------------------------- document intake
+
+
+class StubRunner:
+    """Injectable pipeline runner: records calls, fabricates questions."""
+
+    def __init__(self):
+        self.gap_calls = []
+
+    def analyze_gaps(self, case):
+        self.gap_calls.append(case.case_id)
+        first_doc = case.sources[0]
+        case.open_questions = [
+            OpenQuestion(
+                question="Is the patient still taking aspirin?",
+                reason="conflicting",
+                provenance=[f"{first_doc.source_id}#{first_doc.chunks[0].chunk_id}"],
+            )
+        ]
+
+
+def _minimal_pdf(text: str) -> bytes:
+    """A structurally valid single-page PDF with one text run."""
+    stream = f"BT /F1 12 Tf 72 720 Td ({text}) Tj ET".encode()
+    objects = [
+        b"<< /Type /Catalog /Pages 2 0 R >>",
+        b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] "
+        b"/Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>",
+        b"<< /Length " + str(len(stream)).encode() + b" >>\nstream\n" + stream + b"\nendstream",
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+    ]
+    out = bytearray(b"%PDF-1.4\n")
+    offsets = []
+    for i, obj in enumerate(objects, start=1):
+        offsets.append(len(out))
+        out += f"{i} 0 obj\n".encode() + obj + b"\nendobj\n"
+    xref_at = len(out)
+    out += f"xref\n0 {len(objects) + 1}\n".encode()
+    out += b"0000000000 65535 f \n"
+    for off in offsets:
+        out += f"{off:010d} 00000 n \n".encode()
+    out += (
+        f"trailer\n<< /Size {len(objects) + 1} /Root 1 0 R >>\n"
+        f"startxref\n{xref_at}\n%%EOF\n".encode()
+    )
+    return bytes(out)
+
+
+@pytest.fixture
+def runner():
+    return StubRunner()
+
+
+@pytest.fixture
+def wclient(dirs, runner):
+    """Client with a stub pipeline runner and one live + one demo case."""
+    out_dir, case_dir, providers = dirs
+    store = CaseStore(out_dir)
+    store.save(Case(case_id="sg-demo"))  # no workflow → immutable demo data
+    client = TestClient(
+        create_app(
+            out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+        )
+    )
+    client.post("/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"})
+    return client
+
+
+GP_TEXT = "# GP Summary\n\n## Medications\n\nAspirin 100mg OD, current.\n"
+
+
+def paste(client, case_id, doc_type, text, provider="p-lim"):
+    return client.post(
+        f"/api/cases/{case_id}/sources/document",
+        json={"doc_type": doc_type, "text": text, "provider_id": provider},
+    )
+
+
+class TestDocumentPaste:
+    def test_paste_creates_chunked_source(self, wclient):
+        resp = paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        assert resp.status_code == 201
+        case = Case.model_validate(resp.json())
+        src = case.get_source("doc:gp-summary")
+        assert src is not None
+        assert src.chunks[0].text == "Aspirin 100mg OD, current."
+        assert src.chunks[0].section == "Medications"
+        assert src.provided_by == "p-lim"
+        assert src.captured_at is not None
+
+    def test_paste_written_to_records_dir_for_reingest(self, wclient, dirs):
+        _, case_dir, _ = dirs
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        assert (case_dir / "tkr-mrs-w" / "records" / "gp-summary.md").read_text() == GP_TEXT
+
+    def test_slot_is_append_only(self, wclient):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        resp = paste(wclient, "tkr-mrs-w", "gp-summary", "different text")
+        assert resp.status_code == 409
+
+    def test_unknown_doc_type_rejected(self, wclient):
+        resp = paste(wclient, "tkr-mrs-w", "malware/../x", GP_TEXT)
+        assert resp.status_code == 422
+
+    def test_blank_text_rejected(self, wclient):
+        resp = paste(wclient, "tkr-mrs-w", "gp-summary", "   ")
+        assert resp.status_code == 422
+
+    def test_demo_case_is_immutable(self, wclient):
+        resp = paste(wclient, "sg-demo", "gp-summary", GP_TEXT)
+        assert resp.status_code == 409
+        assert "demo" in resp.json()["detail"]
+
+    def test_unknown_case_404(self, wclient):
+        assert paste(wclient, "nope", "gp-summary", GP_TEXT).status_code == 404
+
+
+class TestDocumentUpload:
+    def _upload(self, client, filename, content, doc_type="gp-summary"):
+        return client.post(
+            "/api/cases/tkr-mrs-w/sources/document",
+            files={"file": (filename, content)},
+            data={"doc_type": doc_type, "provider_id": "p-lim"},
+        )
+
+    def test_txt_upload_ingested(self, wclient):
+        resp = self._upload(wclient, "summary.txt", GP_TEXT.encode())
+        assert resp.status_code == 201
+        case = Case.model_validate(resp.json())
+        assert case.get_source("doc:gp-summary").chunks
+
+    def test_pdf_upload_text_extracted(self, wclient):
+        resp = self._upload(wclient, "summary.pdf", _minimal_pdf("Aspirin 100mg daily."))
+        assert resp.status_code == 201
+        case = Case.model_validate(resp.json())
+        chunks = case.get_source("doc:gp-summary").chunks
+        assert any("Aspirin 100mg daily." in c.text for c in chunks)
+
+    def test_unsupported_extension_rejected(self, wclient):
+        resp = self._upload(wclient, "records.docx", b"binary")
+        assert resp.status_code == 422
+
+    def test_oversize_upload_rejected(self, wclient):
+        resp = self._upload(wclient, "big.txt", b"x" * (5 * 1024 * 1024 + 1))
+        assert resp.status_code == 413
+
+
+class TestGapAnalystTrigger:
+    def test_runs_once_op_plan_and_a_record_exist(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        assert runner.gap_calls == []  # no op plan yet
+        resp = paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLaparoscopic chole.\n")
+        assert runner.gap_calls == ["tkr-mrs-w"]
+        case = Case.model_validate(resp.json())
+        assert case.open_questions[0].question == "Is the patient still taking aspirin?"
+        assert case.open_questions[0].provenance  # cites the triggering chunk
+
+    def test_op_plan_alone_does_not_trigger(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        assert runner.gap_calls == []
+
+    def test_not_rerun_once_questions_exist(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        paste(wclient, "tkr-mrs-w", "med-list", "# Meds\n\nAspirin.\n")
+        assert runner.gap_calls == ["tkr-mrs-w"]
+
+    def test_questions_persisted_to_store(self, wclient, runner, dirs):
+        out_dir, _, _ = dirs
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        stored = CaseStore(out_dir).load("tkr-mrs-w")
+        assert stored.open_questions[0].reason == "conflicting"

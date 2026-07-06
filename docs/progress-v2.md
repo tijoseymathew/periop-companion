@@ -28,7 +28,7 @@ resume from the first unchecked item.
 - [x] `GET /api/providers` roster from `data/providers.json`
 - [x] `POST /api/cases` — skeleton case with `workflow` block; write-guard: every
       write endpoint 409s on demo cases
-- [ ] `POST /api/cases/{id}/sources/document` — paste/upload → records/ file →
+- [x] `POST /api/cases/{id}/sources/document` — paste/upload → records/ file →
       chunked source; ~5 MB cap; traversal rejection; GapAnalyst auto-run (via
       injectable runner) once op plan + ≥1 record exist
 - [ ] `PUT /api/cases/{id}/questions` — approve/dismiss/edit persisted, gate stamped
