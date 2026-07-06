@@ -39,9 +39,24 @@ All four NIMs run co-tenant on a single GB10 (aarch64, Blackwell sm_121,
 Notes that generalize beyond this box:
 
 - **KV-cache bounding is what makes co-tenancy work.** LLM NIMs size their KV
-  cache to most of GPU memory by default and starve co-tenants. Setting
-  `NIM_KVCACHE_PERCENT=0.3` (49B) and `0.15` (nano) lets all four services
-  share 120 GB. Bring services up sequentially, heaviest first.
+  cache to most of GPU memory by default and starve co-tenants. On the 49B,
+  percent/utilization knobs only gate startup — the setting that actually
+  bounds the footprint is vLLM's `--kv-cache-memory-bytes` (6 GiB here, via
+  `NIM_PASSTHROUGH_ARGS`), plus pinning the NVFP4 profile and
+  `--enforce-eager`; the nano NIM honours `NIM_GPU_MEM_FRACTION=0.15`. With
+  those, all four services share 120 GB and any service can restart anytime.
+  Bring services up sequentially, heaviest first.
+- **Set the 49B's `NIM_MAX_MODEL_LEN` to ≥16k for this workload.** The
+  KV-bytes cap makes context length footprint-neutral, and periop's
+  synth-data prompts (record pack + scripts in one context) exceed 6k tokens.
+- **The nano NIM needs two client-side accommodations** (periop's `fast_chat`
+  applies both): its server-side default `max_tokens` (~1k) is consumed by
+  the model's reasoning stream before the answer (`finish_reason=length`), so
+  request real headroom (8192; `PERIOP_FAST_MAX_TOKENS`); and reasoning is on
+  by default — a one-word verdict costs ~60s of thinking tokens unless the
+  system prompt leads with Nemotron's `/no_think` control
+  (`PERIOP_FAST_THINKING=1` re-enables). It also streams that reasoning
+  *without* the opening `<think>` tag, which `strip_reasoning` handles.
 - **On DGX Spark, prefer a model's `…-dgx-spark` NIM variant when one
   exists.** The generic `nvidia-nemotron-nano-9b-v2` arm64 tag actually ships
   x86-64 binaries (verifiable with `readelf` on an in-image binary) and
