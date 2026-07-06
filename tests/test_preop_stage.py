@@ -81,7 +81,9 @@ class TestPreOpStage:
         assert case.get_source("doc:gp-summary") is not None
         assert case.get_source("audio:preop-interview") is not None
         # gap questions captured
-        assert case.open_questions == ["Is the patient still taking aspirin?"]
+        assert [q.question for q in case.open_questions] == [
+            "Is the patient still taking aspirin?"
+        ]
         # note written and every claim verified
         note = case.get_artifact("note:pre-anesthesia-eval")
         assert len(note.claims) == 2

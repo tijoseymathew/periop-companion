@@ -13,14 +13,15 @@ resume from the first unchecked item.
 
 ## W0 — Schema + store
 
-- [ ] `Provider`, `StageState`, `Workflow` models; `Case.workflow` optional so
+- [x] `Provider`, `StageState`, `Workflow` models; `Case.workflow` optional so
       every existing case JSON loads unchanged (a case without `workflow` is
       immutable demo data)
-- [ ] `open_questions` upgraded to `OpenQuestion` objects (question, reason,
+- [x] `open_questions` upgraded to `OpenQuestion` objects (question, reason,
       provenance, review, edited_text) with coercion from the legacy plain-string
-      form
-- [ ] `Source.captured_at` / `provided_by` (optional)
-- [ ] `CaseStore.save` atomic (temp file + rename)
+      form; GapAnalyst stores full questions, PreOpNoteWriter aligns against the
+      reviewed list, UI zod schema accepts both forms
+- [x] `Source.captured_at` / `provided_by` (optional)
+- [x] `CaseStore.save` atomic (temp file + rename)
 
 ## W1 — Intake
 

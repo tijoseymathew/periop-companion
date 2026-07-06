@@ -44,7 +44,9 @@ def _empty() -> ArtifactRecord:
 def evaluate_case(case: Case, gold: GoldCase, matches: Matcher) -> CaseReport:
     preop = case.get_artifact(PREOP_NOTE_ID) or _empty()
     handoff = case.get_artifact(HANDOFF_ID) or _empty()
-    gap = metrics.gap_analysis_prf(case.open_questions, gold.questions, matches)
+    gap = metrics.gap_analysis_prf(
+        [q.effective_text for q in case.open_questions], gold.questions, matches
+    )
 
     return CaseReport(
         case_id=case.case_id,

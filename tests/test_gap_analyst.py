@@ -80,7 +80,11 @@ class TestGapAnalyst:
         analyst = GapAnalyst(chat=FakeChat(result))
         questions = analyst.analyze(case)
         assert questions[0].reason == QuestionReason.MISSING
-        assert case.open_questions == ["Any prior anesthetic problems?"]
+        stored = case.open_questions[0]
+        assert stored.question == "Any prior anesthetic problems?"
+        assert stored.reason == "missing"
+        assert stored.provenance == ["doc:gp-summary#c001"]
+        assert stored.review is None  # unreviewed until the provider approves
 
     def test_bracketed_provenance_refs_are_normalized_and_kept(self, case):
         result = GapQuestions(

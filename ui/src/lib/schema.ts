@@ -69,7 +69,28 @@ export const CaseSchema = z.object({
   patient_profile_ref: z.string().nullable().default(null),
   sources: z.array(SourceSchema).default([]),
   artifacts: z.array(ArtifactRecordSchema).default([]),
-  open_questions: z.array(z.string()).default([]),
+  // v2 serves questions as objects; legacy fixtures may still hold plain
+  // strings — normalize to the object form on parse
+  open_questions: z
+    .array(
+      z.union([
+        z.string().transform((question) => ({
+          question,
+          reason: null as string | null,
+          provenance: [] as string[],
+          review: null as string | null,
+          edited_text: null as string | null,
+        })),
+        z.object({
+          question: z.string(),
+          reason: z.string().nullable().default(null),
+          provenance: z.array(z.string()).default([]),
+          review: z.enum(["approved", "dismissed", "edited"]).nullable().default(null),
+          edited_text: z.string().nullable().default(null),
+        }),
+      ]),
+    )
+    .default([]),
   intraop_events: z.array(EventSchema).default([]),
   anticipated_issues: z.array(z.string()).default([]),
 });

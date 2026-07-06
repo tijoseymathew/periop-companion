@@ -25,7 +25,9 @@ class TestCaseStore:
         store.save(Case(case_id="sg-0042"))
         updated = Case(case_id="sg-0042", open_questions=["Allergy status?"])
         store.save(updated)
-        assert store.load("sg-0042").open_questions == ["Allergy status?"]
+        assert [q.question for q in store.load("sg-0042").open_questions] == [
+            "Allergy status?"
+        ]
 
     def test_list_case_ids_sorted(self, store):
         for cid in ["sg-0042", "sg-0001", "sg-0100"]:
@@ -43,3 +45,25 @@ class TestCaseStore:
         path = tmp_path / "cases" / "sg-0042.json"
         assert path.exists()
         assert '"case_id": "sg-0042"' in path.read_text()
+
+
+class TestAtomicSave:
+    def test_save_leaves_no_temp_files(self, store, tmp_path):
+        store.save(Case(case_id="sg-0042"))
+        leftovers = [p for p in (tmp_path / "cases").iterdir() if p.suffix != ".json"]
+        assert leftovers == []
+
+    def test_interrupted_save_keeps_prior_version_intact(self, store, monkeypatch):
+        # the SSE runner and the UI read the same file the writer replaces
+        # (spec v2 §5.2) — a failed write must never leave a partial file
+        store.save(Case(case_id="sg-0042"))
+        import periop.store as store_mod
+
+        def boom(src, dst):
+            raise OSError("disk full")
+
+        monkeypatch.setattr(store_mod.os, "replace", boom)
+        with pytest.raises(OSError):
+            store.save(Case(case_id="sg-0042", open_questions=["x"]))
+        monkeypatch.undo()
+        assert store.load("sg-0042").open_questions == []

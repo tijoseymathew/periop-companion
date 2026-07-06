@@ -11,7 +11,7 @@ from enum import StrEnum
 from pydantic import BaseModel, Field, field_validator
 
 from periop.agents.context import normalize_refs, render_sources
-from periop.schemas import Case, SourceType
+from periop.schemas import Case, OpenQuestion, SourceType
 
 
 class QuestionReason(StrEnum):
@@ -69,7 +69,10 @@ class GapAnalyst:
             PROMPT.format(sources=sources), schema=GapQuestions, system=SYSTEM
         )
         valid = [q for q in result.questions if self._citations_resolve(case, q)]
-        case.open_questions = [q.question for q in valid]
+        case.open_questions = [
+            OpenQuestion(question=q.question, reason=q.reason, provenance=q.provenance)
+            for q in valid
+        ]
         return valid
 
     @staticmethod

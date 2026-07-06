@@ -10,7 +10,7 @@ import pytest
 
 from periop.agents.claim_verifier import ClaimVerifier
 from periop.agents.preop_note import PreOpNoteWriter, WriterClaim, WriterOutput
-from periop.schemas import Case, ClaimStatus, SourceType
+from periop.schemas import Case, ClaimStatus, OpenQuestion, SourceType
 from periop.tools.chunker import ingest_document
 from periop.tools.ingest import transcript_from_script
 
@@ -70,12 +70,29 @@ class TestPreOpNoteWriter:
 
     def test_prompt_includes_open_questions_for_alignment(self, tmp_path):
         case = _case_with_interview(tmp_path)
-        case.open_questions = ["Is the patient still taking aspirin?"]
+        case.open_questions = [OpenQuestion(question="Is the patient still taking aspirin?")]
         writer = PreOpNoteWriter(chat=FakeChat(WriterOutput(claims=[])))
         writer.write(case)
         prompt = writer.chat.calls[0]["user"]
         assert "Is the patient still taking aspirin?" in prompt
         assert "audio:preop-interview#s002" in prompt  # interview cited by anchor
+
+    def test_prompt_uses_reviewed_question_list(self, tmp_path):
+        # spec v2 §4.1: the approved list is what question→answer alignment
+        # runs against — dismissed questions are excluded, edits win
+        case = _case_with_interview(tmp_path)
+        case.open_questions = [
+            OpenQuestion(question="Dismissed q?", review="dismissed"),
+            OpenQuestion(question="Original q?", review="edited", edited_text="Edited q?"),
+            OpenQuestion(question="Approved q?", review="approved"),
+        ]
+        writer = PreOpNoteWriter(chat=FakeChat(WriterOutput(claims=[])))
+        writer.write(case)
+        prompt = writer.chat.calls[0]["user"]
+        assert "Dismissed q?" not in prompt
+        assert "Edited q?" in prompt
+        assert "Original q?" not in prompt
+        assert "Approved q?" in prompt
 
     def test_bracketed_provenance_refs_are_normalized_and_kept(self, tmp_path):
         # prompts display refs as [source#anchor]; models sometimes echo the

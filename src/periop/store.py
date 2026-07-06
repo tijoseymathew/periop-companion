@@ -1,5 +1,11 @@
-"""Local JSON case store — one human-readable file per case."""
+"""Local JSON case store — one human-readable file per case.
 
+Writes are atomic (temp file + rename, v2 §5.2): the SSE runner and the UI
+read the same file the writer replaces, so a reader must never see a partial
+case.
+"""
+
+import os
 from pathlib import Path
 
 from periop.schemas import Case
@@ -15,7 +21,12 @@ class CaseStore:
     def save(self, case: Case) -> Path:
         self.root.mkdir(parents=True, exist_ok=True)
         path = self._path(case.case_id)
-        path.write_text(case.model_dump_json(indent=2) + "\n")
+        tmp = path.with_name(f".{path.name}.tmp")
+        try:
+            tmp.write_text(case.model_dump_json(indent=2) + "\n")
+            os.replace(tmp, path)
+        finally:
+            tmp.unlink(missing_ok=True)
         return path
 
     def load(self, case_id: str) -> Case:

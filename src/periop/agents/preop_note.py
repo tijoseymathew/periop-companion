@@ -64,9 +64,12 @@ a historical item without a stated anesthetic reason does not belong here.
 
 
 def _questions_block(case: Case) -> str:
-    if not case.open_questions:
+    # alignment runs against the reviewed list (v2 §4.1): dismissed questions
+    # are excluded, edited wording wins; unreviewed questions (batch path) stay
+    active = [q for q in case.open_questions if q.is_active]
+    if not active:
         return ""
-    joined = "\n".join(f"- {q}" for q in case.open_questions)
+    joined = "\n".join(f"- {q.effective_text}" for q in active)
     return (
         "These clarification questions were raised in gap analysis; ensure the "
         "note answers each one (or records it as unresolved):\n"
