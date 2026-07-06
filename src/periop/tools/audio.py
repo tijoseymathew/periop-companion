@@ -71,6 +71,42 @@ def _ffmpeg_normalize(data: bytes, filename: str, dest: Path) -> None:
         os.unlink(src)
 
 
+def wav_duration_s(path: Path) -> float:
+    """Playback length of a PCM wav in seconds (0.0 when absent)."""
+    if not Path(path).exists():
+        return 0.0
+    with wave.open(str(path), "rb") as w:
+        return w.getnframes() / w.getframerate()
+
+
+def append_pcm16(dest: Path, pcm: bytes, rate: int = TARGET_RATE) -> None:
+    """Append raw 16-bit mono PCM to a wav, creating it if needed.
+
+    The streaming dictation path (v2 stretch) receives PCM frames directly,
+    so no container conversion — and no ffmpeg — is ever involved.
+    """
+    dest = Path(dest)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if not dest.exists():
+        with wave.open(str(dest), "wb") as out:
+            out.setnchannels(1)
+            out.setsampwidth(2)
+            out.setframerate(rate)
+            out.writeframes(pcm)
+        return
+    with wave.open(str(dest), "rb") as existing:
+        params = existing.getparams()
+        frames = existing.readframes(existing.getnframes())
+    if (params.nchannels, params.sampwidth, params.framerate) != (1, 2, rate):
+        raise AudioNormalizationError(
+            "the existing intra-op recording is not 16 kHz mono PCM — "
+            "re-record or start a new case"
+        )
+    with wave.open(str(dest), "wb") as out:
+        out.setparams(params)
+        out.writeframes(frames + pcm)
+
+
 def append_wav(dest: Path, extra: Path) -> None:
     """Append one wav's frames to another (intra-op memos accumulate, v2 §4.2)."""
     with wave.open(str(extra), "rb") as src:

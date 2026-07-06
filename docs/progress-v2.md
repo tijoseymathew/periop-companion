@@ -79,7 +79,7 @@ resume from the first unchecked item.
 - [x] W6d: tablet-width layout — below `lg` the provenance rail hides and the
       worklist becomes a toggleable drawer, so the intra-op capture screen is
       a single big column; tablet-viewport Playwright spec
-- [ ] W6e-api: streaming intra-op ASR — WebSocket
+- [x] W6e-api: streaming intra-op ASR — WebSocket
       `/api/cases/{id}/sources/audio/stream` taking 16 kHz PCM16 frames,
       feed/finish transcriber seam (fake in tests/e2e, Riva streaming adapter
       live), PCM appended to the memo wav ffmpeg-free, final segments

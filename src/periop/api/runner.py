@@ -48,6 +48,24 @@ class LivePipelineRunner:
         return run_postop_stage(case, case_dir, chat=chat, fast_chat=fast, emit=emit)
 
 
+class FakeStreamingTranscriber:
+    """Deterministic dictation double for hermetic e2e (``PERIOP_STUB_RUNNER=1``).
+
+    Emits one partial per audio frame and one canned final at stop, matching
+    the stub intra-op artifact's provenance text, so the streamed segment is
+    what the generated record cites.
+    """
+
+    PARTIAL = "Propofol one twenty…"
+    FINAL = "[08:02] Propofol one twenty milligrams."
+
+    def feed(self, pcm: bytes) -> list[dict]:
+        return [{"type": "partial", "text": self.PARTIAL}]
+
+    def finish(self) -> list[dict]:
+        return [{"type": "final", "text": self.FINAL}]
+
+
 class StubPipelineRunner:
     """Instant deterministic runner for hermetic e2e (``PERIOP_STUB_RUNNER=1``).
 

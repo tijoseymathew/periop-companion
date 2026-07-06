@@ -13,8 +13,10 @@ heuristic — degrades gracefully rather than failing).
 from __future__ import annotations
 
 import os
+import queue
+import threading
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, Iterator
 
 from periop.schemas import AudioSegment, Source, SourceType
 
@@ -149,3 +151,128 @@ class ParakeetAsr:
         segments = words_to_segments(words)
         assign_roles(segments)
         return Source(source_id=source_id, type=SourceType.AUDIO, segments=segments)
+
+
+# (chunk_iterator, streaming_config) -> riva streaming response iterator
+StreamFn = Callable[[Iterator[bytes], Any], Any]
+
+
+class ParakeetStreamingAsr:
+    """Streaming (dictation) transcription — the Parakeet streaming profile.
+
+    The WS handler pushes PCM16 frames via ``feed`` and collects transcript
+    events; ``finish`` closes the stream and drains the rest. Internally a
+    worker thread drives the pull-based Riva streaming generator, bridged by
+    queues, so the caller never blocks on the network per frame.
+
+    Events: ``{"type": "partial"|"final", "text": …}``; finals carry ``t0``/
+    ``t1`` seconds (from word time offsets) when the service provides them —
+    otherwise the WS handler falls back to byte-count timing.
+    """
+
+    def __init__(
+        self,
+        server: str | None = None,
+        boosted_words: list[str] | None = None,
+        boost_score: float = DEFAULT_BOOST_SCORE,
+        sample_rate_hz: int = 16000,
+        stream_fn: StreamFn | None = None,
+    ) -> None:
+        self.server = server or asr_grpc_url_from_env()
+        self.boosted_words = boosted_words
+        self.boost_score = boost_score
+        self.sample_rate_hz = sample_rate_hz
+        self._stream_fn = stream_fn
+        self._thread: threading.Thread | None = None
+        self._done = False
+
+    def _build_config(self) -> Any:
+        if self._stream_fn is not None:  # injected in tests — config unused
+            return None
+        import riva.client
+
+        config = riva.client.RecognitionConfig(
+            encoding=riva.client.AudioEncoding.LINEAR_PCM,
+            language_code="en-US",
+            max_alternatives=1,
+            enable_automatic_punctuation=False,
+            enable_word_time_offsets=True,
+            audio_channel_count=1,
+            sample_rate_hertz=self.sample_rate_hz,
+        )
+        if self.boosted_words:
+            riva.client.add_word_boosting_to_config(
+                config, self.boosted_words, self.boost_score
+            )
+        return riva.client.StreamingRecognitionConfig(config=config, interim_results=True)
+
+    def _riva_stream(self, chunks: Iterator[bytes], config: Any) -> Any:
+        import riva.client
+
+        auth = riva.client.Auth(uri=self.server, use_ssl=False)
+        return riva.client.ASRService(auth).streaming_response_generator(
+            audio_chunks=chunks, streaming_config=config
+        )
+
+    def _ensure_started(self) -> None:
+        if self._thread is not None:
+            return
+        self._in_q: queue.Queue = queue.Queue()
+        self._out_q: queue.Queue = queue.Queue()
+        stream_fn = self._stream_fn or self._riva_stream
+        config = self._build_config()
+
+        def work() -> None:
+            try:
+                for response in stream_fn(iter(self._in_q.get, None), config):
+                    for result in response.results:
+                        if not result.alternatives:
+                            continue
+                        alt = result.alternatives[0]
+                        event: dict = {
+                            "type": "final" if result.is_final else "partial",
+                            "text": alt.transcript.strip(),
+                        }
+                        words = getattr(alt, "words", None)
+                        if result.is_final and words:
+                            event["t0"] = round(words[0].start_time / 1000.0, 2)
+                            event["t1"] = round(words[-1].end_time / 1000.0, 2)
+                        self._out_q.put(event)
+            except Exception as e:  # surfaced as a transcript error event
+                self._out_q.put({"type": "error", "message": str(e)})
+            finally:
+                self._out_q.put(None)  # stream ended
+
+        self._thread = threading.Thread(target=work, daemon=True)
+        self._thread.start()
+
+    def _drain_nowait(self) -> list[dict]:
+        events: list[dict] = []
+        while True:
+            try:
+                item = self._out_q.get_nowait()
+            except queue.Empty:
+                return events
+            if item is None:
+                self._done = True
+                return events
+            events.append(item)
+
+    def feed(self, pcm: bytes) -> list[dict]:
+        self._ensure_started()
+        if not self._done:
+            self._in_q.put(bytes(pcm))
+        return self._drain_nowait()
+
+    def finish(self) -> list[dict]:
+        if self._thread is None:
+            return []
+        events = self._drain_nowait()
+        if self._done:
+            return events
+        self._in_q.put(None)
+        while (item := self._out_q.get()) is not None:
+            events.append(item)
+        self._done = True
+        self._thread.join(timeout=5)
+        return events

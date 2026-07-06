@@ -14,7 +14,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 
-from periop.api.routers import audio, cases, claim_reviews, stage_runs, workflow
+from periop.api.routers import audio, cases, claim_reviews, stage_runs, stream_asr, workflow
 
 DEFAULT_CASE_DIR = Path("data/cases")
 DEFAULT_PROVIDERS = Path("data/providers.json")
@@ -27,6 +27,7 @@ def create_app(
     ui_dist: Path | str | None = None,
     providers_path: Path | str | None = None,
     runner=None,
+    streaming_asr_factory=None,
 ) -> FastAPI:
     case_dir = Path(case_dir or os.environ.get("PERIOP_CASE_DIR", DEFAULT_CASE_DIR))
     out_dir = Path(out_dir or os.environ.get("PERIOP_OUT_DIR", case_dir / "_out"))
@@ -39,13 +40,30 @@ def create_app(
     app.state.case_dir = case_dir
     app.state.providers_path = providers_path
 
+    stub = os.environ.get("PERIOP_STUB_RUNNER") == "1"
     if runner is None:
         from periop.api.runner import LivePipelineRunner, StubPipelineRunner
 
         # hermetic e2e (spec v2 §8): the real server with instant artifacts
-        stub = os.environ.get("PERIOP_STUB_RUNNER") == "1"
         runner = StubPipelineRunner() if stub else LivePipelineRunner()
     app.state.runner = runner
+
+    if streaming_asr_factory is None:
+        # one transcriber per dictation session (v2 stretch): fake under the
+        # stub flag, the Parakeet streaming profile live
+        if stub:
+            from periop.api.runner import FakeStreamingTranscriber
+
+            streaming_asr_factory = FakeStreamingTranscriber
+        else:
+
+            def streaming_asr_factory():
+                from periop.agents.lexicon import ANESTHESIA_LEXICON
+                from periop.tools.asr import ParakeetStreamingAsr
+
+                return ParakeetStreamingAsr(boosted_words=ANESTHESIA_LEXICON)
+
+    app.state.streaming_asr_factory = streaming_asr_factory
 
     @app.get("/api/health")
     def health() -> dict[str, str]:
@@ -56,6 +74,7 @@ def create_app(
     app.include_router(workflow.router, prefix="/api")
     app.include_router(stage_runs.router, prefix="/api")
     app.include_router(claim_reviews.router, prefix="/api")
+    app.include_router(stream_asr.router, prefix="/api")
 
     ui_dist = Path(ui_dist) if ui_dist is not None else UI_DIST
     if ui_dist.is_dir():
