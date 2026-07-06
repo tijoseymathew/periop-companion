@@ -17,6 +17,11 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:8123",
     headless: true,
+    // live dictation e2e: a fake mic that never prompts (tone generator)
+    permissions: ["microphone"],
+    launchOptions: {
+      args: ["--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream"],
+    },
   },
   webServer: {
     // setup-fixture.mjs runs first so the fixture store always exists before

@@ -84,7 +84,7 @@ resume from the first unchecked item.
       feed/finish transcriber seam (fake in tests/e2e, Riva streaming adapter
       live), PCM appended to the memo wav ffmpeg-free, final segments
       registered on `audio:intraop-notes` with wav-offset times
-- [ ] W6e-ui: live dictation on the intra-op capture screen (mic → PCM
+- [x] W6e-ui: live dictation on the intra-op capture screen (mic → PCM
       downsample → WS, live partial/final transcript, memo recorder as the
       fallback); streaming e2e with fake media device
 - [ ] W6f: live streaming smoke script in `scripts/`, README stretch section,

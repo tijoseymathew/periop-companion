@@ -16,6 +16,7 @@ import type { Case, OpenQuestion, StageKey } from "../lib/schema";
 import { streamStageRun, type RunEvent } from "../lib/sse";
 import { STATUS_WORDS, type PrimaryAction } from "../lib/workflow";
 import { IntakeForm } from "./IntakeForm";
+import { LiveDictation } from "./LiveDictation";
 import { OrientationView } from "./OrientationView";
 import { QuestionReview } from "./QuestionReview";
 import { Recorder } from "./Recorder";
@@ -28,7 +29,7 @@ const AUDIO_KIND: Record<StageKey, string> = {
 
 const CAPTURE_SENTENCES: Record<StageKey, string> = {
   preop: "Questions approved. Record or upload the patient interview.",
-  intraop: "Record voice memos through the case — as many as needed.",
+  intraop: "Dictate voice notes through the case — as many as needed.",
   postop: "Record or upload the recovery-room interview with the patient.",
 };
 
@@ -57,6 +58,8 @@ export function StagePanel({
 }) {
   const [error, setError] = useState<string | null>(null);
   const [progress, setProgress] = useState<RunEvent[] | null>(null);
+  // live dictation degraded (mic/socket/ASR) — fall back to the memo recorder
+  const [dictationProblem, setDictationProblem] = useState<string | null>(null);
 
   async function guard<T>(work: () => Promise<T>): Promise<T | undefined> {
     setError(null);
@@ -143,18 +146,51 @@ export function StagePanel({
           />
         );
       case "record-interview":
-      case "record-memo":
         return (
           <div className="mx-auto w-full max-w-2xl space-y-4 p-6">
-            {stage === "intraop" && (
-              <OrientationView kase={kase} onActivateRef={onActivateRef} />
-            )}
             <p className="text-sm text-ink-secondary">{CAPTURE_SENTENCES[stage]}</p>
             <Recorder
               label={action.label}
               filename={AUDIO_KIND[stage]}
               onUpload={captureAudio}
             />
+            {!me && (
+              <p className="text-xs text-status-unsupported">
+                Choose your name in the top-right picker first.
+              </p>
+            )}
+          </div>
+        );
+      case "record-memo":
+        // intra-op is dictation-first (v2 §2 stretch): live transcript while
+        // speaking; any failure degrades to the memo recorder (v2 §10)
+        return (
+          <div className="mx-auto w-full max-w-2xl space-y-4 p-6">
+            <OrientationView kase={kase} onActivateRef={onActivateRef} />
+            <p className="text-sm text-ink-secondary">{CAPTURE_SENTENCES.intraop}</p>
+            {me && !dictationProblem ? (
+              <>
+                <LiveDictation
+                  caseId={kase.case_id}
+                  providerId={me}
+                  onSaved={() => {
+                    void fetchCase(kase.case_id).then(onCaseUpdated).catch(() => {});
+                  }}
+                  onUnavailable={setDictationProblem}
+                />
+                <details className="text-sm text-ink-secondary">
+                  <summary className="cursor-pointer">Prefer a memo or an upload?</summary>
+                  <div className="mt-2">{memoRecorder}</div>
+                </details>
+              </>
+            ) : (
+              <>
+                {dictationProblem && (
+                  <p className="text-sm text-status-unsupported">{dictationProblem}</p>
+                )}
+                {memoRecorder}
+              </>
+            )}
             {!me && (
               <p className="text-xs text-status-unsupported">
                 Choose your name in the top-right picker first.

@@ -4,7 +4,8 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: { "/api": "http://localhost:8000" },
+    // ws: true so the live-dictation WebSocket proxies in dev too
+    proxy: { "/api": { target: "http://localhost:8000", ws: true } },
   },
   test: {
     environment: "jsdom",

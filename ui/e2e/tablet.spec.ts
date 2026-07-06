@@ -17,6 +17,7 @@ test("intra-op capture at tablet width: one column, drawer worklist", async ({
   const caseId = await apiWalkToIntraop(request, "ZZZ Tablet TKR");
 
   await page.goto("/");
+  await page.getByLabel(/working as/i).selectOption("p-tan");
 
   // the worklist is a drawer here: closed on load, opened by a labelled button
   const worklist = page.getByTestId("worklist");
@@ -29,11 +30,12 @@ test("intra-op capture at tablet width: one column, drawer worklist", async ({
   // the provenance rail is hidden at this width — capture gets the screen
   await expect(page.getByTestId("provenance-rail")).toBeHidden();
 
-  // intra-op orientation + the one big record button, legible at arm's length
+  // intra-op orientation + the one big dictation button, legible at arm's
+  // length (the memo recorder waits behind a quiet details fold)
   await expect(page.getByText(/what you need to know before induction/i)).toBeVisible();
-  const record = page.locator("[data-primary-action]");
+  const record = page.locator("[data-primary-action]:visible");
   await expect(record).toHaveCount(1);
-  await expect(record).toContainText(/record voice memo/i);
+  await expect(record).toContainText(/start dictating/i);
   const box = (await record.boundingBox())!;
   expect(box.height).toBeGreaterThanOrEqual(44);
   expect(box.width).toBeGreaterThanOrEqual(500);
