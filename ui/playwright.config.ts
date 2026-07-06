@@ -17,6 +17,8 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:8123",
     headless: true,
+    // PW_VIDEO=1 records each test (used to capture the README demo)
+    video: process.env.PW_VIDEO ? "on" : "off",
     // live dictation e2e: a fake mic that never prompts (tone generator)
     permissions: ["microphone"],
     launchOptions: {

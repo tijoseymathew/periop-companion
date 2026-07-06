@@ -197,7 +197,34 @@ inputs at the point of care, instead of reviewing pre-baked bundles.
   the workflow layer is a re-plumbing, not a fork.
 - Hermetic Playwright e2e drives all of it — three provider identities, one
   case, creation to acknowledged handoff — against the real server with an
-  instant stub runner (`PERIOP_STUB_RUNNER=1`).
+  instant stub runner (`PERIOP_STUB_RUNNER=1`). A recorded run:
+  [docs/images/provider-workflow-demo.webm](docs/images/provider-workflow-demo.webm).
+
+The v2 stretch list shipped too:
+
+- **Live intra-op dictation** — the theatre screen is dictation-first: mic
+  audio downsamples to 16 kHz PCM16 in the browser and streams up
+  `WS /api/cases/{id}/sources/audio/stream`; partial/final words render as
+  they are spoken (Parakeet *streaming* profile live, injectable fake in
+  tests), and stop lands citable segments with wav-offset times so
+  click-to-play provenance works unchanged. Mic, socket, or ASR failure
+  degrades to the memo recorder in words — dictation is never the only way
+  through the stage. Live smoke:
+  `uv run python scripts/smoke_stream_asr.py`.
+- **Per-claim review actions** — quiet *Mark reviewed / Flag* toggles on
+  live-case claim rows, persisted as sidecar state
+  (`_out/<case_id>.review.json`) so the pipeline-written case JSON stays
+  byte-identical; reviewed counts and reviewer-flagged claims feed the
+  sign-off summary and jump list.
+- **Department dashboard + "my cases"** — one screen answering "where is
+  every case, and what needs a reviewer": stage columns with status counts
+  in words, a waiting-for-a-reviewer queue naming who generated each output,
+  outstanding-conflict totals; plus a worklist filter for cases the picked
+  provider has touched.
+- **Tablet-width layout** — below desktop width the provenance rail hides
+  and the worklist folds into a drawer behind a labelled *Cases* button, so
+  the intra-op capture screen is one big column (asserted at iPad viewport
+  in e2e).
 
 Build status: [docs/progress-v2.md](docs/progress-v2.md).
 
@@ -249,13 +276,15 @@ pipeline, all agents, eval harness, NAT-profiled live run, self-hosted NIM
 path with TTS+ASR). The review UI ([specs/ui.md](specs/ui.md), U0–U2+U4 —
 see [docs/progress-ui.md](docs/progress-ui.md)) ships the claim ledger with
 click-to-play audio provenance. The v2 provider workflow
-([specs/v2.md](specs/v2.md), W0–W4 — see
+([specs/v2.md](specs/v2.md), W0–W6 — see
 [docs/progress-v2.md](docs/progress-v2.md)) adds the write path: case
 creation, staged intake with question review, audio capture, SSE-streamed
 stage runs (promoting ui.md's U3 from stretch to shipped), sign-off/reopen,
 and handoff acknowledge, pinned to the batch pipeline by a lifecycle
-conformance test. Remaining: broader eval dataset (30 cases), v2 stretch
-items (streaming intra-op ASR, tablet layout). Live NIM paths (LLM tiers,
+conformance test — plus the full stretch list: live intra-op dictation over
+the Parakeet streaming profile, per-claim review actions, the department
+dashboard with a "my cases" filter, and the tablet layout. Remaining:
+broader eval dataset (30 cases). Live NIM paths (LLM tiers,
 full case runs, traced profiling) are exercised with an NGC key; the ASR/TTS
 speech NIMs use documented hosted NVCF endpoints (see
 [docs/attribution.md](docs/attribution.md)).

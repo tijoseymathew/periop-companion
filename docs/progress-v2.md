@@ -87,8 +87,12 @@ resume from the first unchecked item.
 - [x] W6e-ui: live dictation on the intra-op capture screen (mic → PCM
       downsample → WS, live partial/final transcript, memo recorder as the
       fallback); streaming e2e with fake media device
-- [ ] W6f: live streaming smoke script in `scripts/`, README stretch section,
-      demo recording, docs finalized
+- [x] W6f: live streaming smoke script (`scripts/smoke_stream_asr.py`),
+      README stretch section, demo recording
+      (`docs/images/provider-workflow-demo.webm`, captured from the hermetic
+      lifecycle e2e with `PW_VIDEO=1`), docs finalized
+
+All spec §2 stretch items are shipped; the v2 build is complete.
 
 ## UX review against spec §6 (W4 exit criterion)
 
