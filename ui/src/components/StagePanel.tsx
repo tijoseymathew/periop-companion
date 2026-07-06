@@ -5,11 +5,38 @@
  * failures say what to do next.
  */
 import { useState } from "react";
-import { addDocumentText, reviewQuestions, uploadDocumentFile } from "../lib/api";
-import type { Case, OpenQuestion } from "../lib/schema";
+import {
+  addDocumentText,
+  fetchCase,
+  reviewQuestions,
+  uploadAudio,
+  uploadDocumentFile,
+} from "../lib/api";
+import type { Case, OpenQuestion, StageKey } from "../lib/schema";
+import { streamStageRun, type RunEvent } from "../lib/sse";
 import { STATUS_WORDS, type PrimaryAction } from "../lib/workflow";
 import { IntakeForm } from "./IntakeForm";
+import { OrientationView } from "./OrientationView";
 import { QuestionReview } from "./QuestionReview";
+import { Recorder } from "./Recorder";
+
+const AUDIO_KIND: Record<StageKey, string> = {
+  preop: "preop-interview",
+  intraop: "intraop-notes",
+  postop: "postop-interview",
+};
+
+const CAPTURE_SENTENCES: Record<StageKey, string> = {
+  preop: "Questions approved. Record or upload the patient interview.",
+  intraop: "Record voice memos through the case — as many as needed.",
+  postop: "Record or upload the recovery-room interview with the patient.",
+};
+
+const GENERATE_SENTENCES: Record<StageKey, string> = {
+  preop: "Interview recorded. Generate the pre-op note when ready.",
+  intraop: "Memos recorded. Generate the intra-op record when the case is done.",
+  postop: "Interview recorded. Generate the PACU handoff and post-op note.",
+};
 
 export function StagePanel({
   kase,
@@ -22,13 +49,14 @@ export function StagePanel({
   kase: Case;
   me: string | null;
   /** the stage the provider is looking at (the rail selection) */
-  stage: "preop" | "intraop" | "postop";
+  stage: StageKey;
   /** the case's one primary action, when it belongs to this stage */
   action: PrimaryAction | null;
   onCaseUpdated: (updated: Case) => void;
   onActivateRef: (ref: string) => void;
 }) {
   const [error, setError] = useState<string | null>(null);
+  const [progress, setProgress] = useState<RunEvent[] | null>(null);
 
   async function guard<T>(work: () => Promise<T>): Promise<T | undefined> {
     setError(null);
@@ -37,13 +65,45 @@ export function StagePanel({
     } catch (e) {
       const detail =
         (e as { response?: { data?: { detail?: string } } })?.response?.data?.detail ??
-        String(e);
+        (e as Error).message;
       setError(`${detail} — nothing was lost; fix the issue and try again.`);
       return undefined;
     }
   }
 
+  async function captureAudio(file: File) {
+    if (!me) return;
+    const updated = await guard(() => uploadAudio(kase.case_id, AUDIO_KIND[stage], file, me));
+    if (updated) onCaseUpdated(updated);
+  }
+
+  async function generate() {
+    if (!me) return;
+    setError(null);
+    setProgress([]);
+    try {
+      await streamStageRun(kase.case_id, stage, me, (event) =>
+        setProgress((events) => [...(events ?? []), event]),
+      );
+      onCaseUpdated(await fetchCase(kase.case_id));
+    } catch (e) {
+      setError(`${(e as Error).message} — the case is unchanged; try again.`);
+      // refresh so the stage status (restored server-side) is honest
+      const fresh = await fetchCase(kase.case_id).catch(() => null);
+      if (fresh) onCaseUpdated(fresh);
+    } finally {
+      setProgress(null);
+    }
+  }
+
+  const memoRecorder = (
+    <Recorder label="Record voice memo" filename="intraop-memo" onUpload={captureAudio} />
+  );
+
   const body = (() => {
+    if (progress !== null) {
+      return <RunProgress stage={stage} events={progress} />;
+    }
     switch (action?.kind) {
       case "add-records":
         return (
@@ -82,6 +142,62 @@ export function StagePanel({
             }}
           />
         );
+      case "record-interview":
+      case "record-memo":
+        return (
+          <div className="mx-auto w-full max-w-2xl space-y-4 p-6">
+            {stage === "intraop" && (
+              <OrientationView kase={kase} onActivateRef={onActivateRef} />
+            )}
+            <p className="text-sm text-ink-secondary">{CAPTURE_SENTENCES[stage]}</p>
+            <Recorder
+              label={action.label}
+              filename={AUDIO_KIND[stage]}
+              onUpload={captureAudio}
+            />
+            {!me && (
+              <p className="text-xs text-status-unsupported">
+                Choose your name in the top-right picker first.
+              </p>
+            )}
+          </div>
+        );
+      case "generate":
+        return (
+          <div className="mx-auto w-full max-w-2xl space-y-4 p-6">
+            {stage === "intraop" && (
+              <OrientationView kase={kase} onActivateRef={onActivateRef} />
+            )}
+            <p className="text-sm text-ink-secondary">{GENERATE_SENTENCES[stage]}</p>
+            <button
+              type="button"
+              disabled={!me}
+              data-primary-action
+              onClick={() => void generate()}
+              className="min-h-[56px] w-full rounded bg-brand px-5 py-3 text-base font-semibold text-white disabled:opacity-40"
+            >
+              {action.label}
+            </button>
+            <p className="text-xs text-ink-subtle">
+              Generation takes a few minutes. You can leave this case and come
+              back — the worklist shows when it is ready to review.
+            </p>
+            {stage === "intraop" && (
+              <details className="text-sm text-ink-secondary">
+                <summary className="cursor-pointer">Record another memo</summary>
+                <div className="mt-2">{memoRecorder}</div>
+              </details>
+            )}
+          </div>
+        );
+      case "generating":
+        return (
+          <div className="flex flex-1 items-center justify-center p-8">
+            <p className="text-sm text-ink-secondary">
+              Generating — progress appears here; it is safe to leave and return.
+            </p>
+          </div>
+        );
       default:
         return (
           <div className="flex flex-1 items-center justify-center p-8">
@@ -102,6 +218,32 @@ export function StagePanel({
         </p>
       )}
       {body}
+    </div>
+  );
+}
+
+/** SSE progress rendering (ui.md §7): per-agent progress, not a spinner. */
+function RunProgress({ stage, events }: { stage: StageKey; events: RunEvent[] }) {
+  return (
+    <div className="mx-auto w-full max-w-2xl p-6" data-testid="run-progress">
+      <p className="text-sm text-ink-secondary">
+        Generating the {stage === "preop" ? "pre-op note" : stage === "intraop" ? "intra-op record" : "handoff and post-op note"}
+        … this takes a few minutes.
+      </p>
+      <ul className="mt-3 space-y-1.5 font-mono text-xs text-ink-secondary">
+        {events.map((event, i) => (
+          <li key={i}>
+            {event.event === "agent_start" && `▸ ${event.data.agent} working…`}
+            {event.event === "agent_end" &&
+              `✓ ${event.data.agent} — ${event.data.summary ?? "done"}`}
+            {event.event === "artifact_complete" &&
+              `✓ ${event.data.artifact_id} (${event.data.claims} claims)`}
+            {event.event === "status" && String(event.data.message ?? "")}
+            {event.event === "stage_start" && `stage: ${event.data.stage}`}
+            {event.event === "complete" && "complete — loading the review…"}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

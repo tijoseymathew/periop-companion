@@ -78,3 +78,54 @@ export async function reviewQuestions(
   );
   return CaseSchema.parse(data);
 }
+
+export async function uploadAudio(
+  caseId: string,
+  kind: string,
+  file: File,
+  providerId: string,
+  confirm = false,
+): Promise<Case> {
+  const form = new FormData();
+  form.append("file", file);
+  form.append("kind", kind);
+  form.append("provider_id", providerId);
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/sources/audio`,
+    form,
+    { params: confirm ? { confirm: "true" } : {} },
+  );
+  return CaseSchema.parse(data);
+}
+
+export async function signoffStage(
+  caseId: string,
+  stage: string,
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/stages/${encodeURIComponent(stage)}/signoff`,
+    { provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}
+
+export async function reopenStage(
+  caseId: string,
+  stage: string,
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/stages/${encodeURIComponent(stage)}/reopen`,
+    { provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}
+
+export async function acknowledgeHandoff(caseId: string, providerId: string): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/handoff/ack`,
+    { provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}

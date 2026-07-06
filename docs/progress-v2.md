@@ -48,10 +48,10 @@ resume from the first unchecked item.
       indicator, filters) + provider picker + New case; demo cases read-only
 - [x] Stage rail (Pre-op / Intra-op / Post-op stepper) above the center pane
 - [x] Intake form + question review screens (center pane, pre-artifact)
-- [ ] Recorder (MediaRecorder + upload fallback), intra-op memo capture
-- [ ] Stage panels: one primary action per state (unit-tested), one-sentence
+- [x] Recorder (MediaRecorder + upload fallback), intra-op memo capture
+- [x] Stage panels: one primary action per state (unit-tested), one-sentence
       status copy, SSE progress rendering
-- [ ] Sign-off screen (unsupported/conflicting counts + jump list), intra-op
+- [x] Sign-off screen (unsupported/conflicting counts + jump list), intra-op
       orientation view, handoff acknowledge
 
 ## W4 — Conformance + e2e

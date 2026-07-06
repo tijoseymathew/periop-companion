@@ -13,10 +13,20 @@ import { SourcePanel } from "../components/SourcePanel";
 import { StageRail } from "../components/StageRail";
 import { StageTabs } from "../components/StageTabs";
 import { Worklist } from "../components/Worklist";
-import { audioUrl, createCase, fetchCase, fetchCases, fetchProviders } from "../lib/api";
+import {
+  acknowledgeHandoff,
+  audioUrl,
+  createCase,
+  fetchCase,
+  fetchCases,
+  fetchProviders,
+  reopenStage,
+  signoffStage,
+} from "../lib/api";
 import { defaultFilters, type StatusFilters } from "../lib/filters";
 import { buildReverseIndex, resolveRef, type CitingClaim } from "../lib/provenance";
 import { groupArtifactsByStage, type Stage } from "../lib/stages";
+import { SignOffBar } from "../components/SignOffBar";
 import { StagePanel } from "../components/StagePanel";
 import { headlineStage, primaryAction, STAGE_TITLES, type WorklistFilters } from "../lib/workflow";
 import type { Case, CaseSummary, ClaimStatus, Provider, StageKey } from "../lib/schema";
@@ -260,41 +270,70 @@ export default function App() {
                 active={activeKey}
                 onSelect={(key) => setActiveStage(STAGE_TITLES[key])}
               />
-              {activeGroup ? (
-                <div className="min-h-0 flex-1 overflow-y-auto p-4">
-                  {activeGroup.artifacts.map((artifact) => (
-                    <ArtifactView
-                      key={artifact.artifact_id}
-                      kase={kase}
-                      artifact={artifact}
-                      filters={filters}
-                      activeClaimId={
-                        activeClaim?.artifactId === artifact.artifact_id
-                          ? activeClaim.claimId
-                          : null
-                      }
-                      onActivateRef={activateRef}
-                    />
-                  ))}
-                </div>
-              ) : (
-                (() => {
-                  const action = primaryAction(kase);
+              {(() => {
+                const action = primaryAction(kase);
+                const stageAction = action?.stage === activeKey ? action : null;
+                const refresh = (updated: Case) => {
+                  setKase(updated);
+                  fetchCases().then(setCases).catch(() => {});
+                };
+                if (!activeGroup) {
                   return (
                     <StagePanel
                       kase={kase}
                       me={me}
                       stage={activeKey}
-                      action={action?.stage === activeKey ? action : null}
-                      onCaseUpdated={(updated) => {
-                        setKase(updated);
-                        fetchCases().then(setCases).catch(() => {});
-                      }}
+                      action={stageAction}
+                      onCaseUpdated={refresh}
                       onActivateRef={activateRef}
                     />
                   );
-                })()
-              )}
+                }
+                return (
+                  <>
+                    <div className="min-h-0 flex-1 overflow-y-auto p-4">
+                      {activeGroup.artifacts.map((artifact) => (
+                        <ArtifactView
+                          key={artifact.artifact_id}
+                          kase={kase}
+                          artifact={artifact}
+                          filters={filters}
+                          activeClaimId={
+                            activeClaim?.artifactId === artifact.artifact_id
+                              ? activeClaim.claimId
+                              : null
+                          }
+                          onActivateRef={activateRef}
+                        />
+                      ))}
+                    </div>
+                    <SignOffBar
+                      kase={kase}
+                      artifacts={activeGroup.artifacts}
+                      action={
+                        stageAction?.kind === "sign-off" ||
+                        stageAction?.kind === "acknowledge-handoff"
+                          ? stageAction
+                          : null
+                      }
+                      signedOff={kase.workflow.stages[activeKey].status === "signed_off"}
+                      onSignOff={async () => {
+                        if (!me) return;
+                        refresh(await signoffStage(kase.case_id, activeKey, me));
+                      }}
+                      onAcknowledge={async () => {
+                        if (!me) return;
+                        refresh(await acknowledgeHandoff(kase.case_id, me));
+                      }}
+                      onReopen={async () => {
+                        if (!me) return;
+                        refresh(await reopenStage(kase.case_id, activeKey, me));
+                      }}
+                      onJumpToClaim={jumpToClaim}
+                    />
+                  </>
+                );
+              })()}
             </>
           ) : (
             kase &&
