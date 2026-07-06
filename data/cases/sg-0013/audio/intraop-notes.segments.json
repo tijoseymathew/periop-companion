@@ -1,0 +1,39 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams, fentanyl fifty micrograms, succinylcholine one hundred milligrams",
+      "t0": 0.0,
+      "t1": 7.012
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "hypotension, BP ninety over sixty, treated with bolus and phenylephrine ten micrograms",
+      "t0": 7.362,
+      "t1": 13.818
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "20-gauge IV placed in right antecubital fossa, 500 mL crystalloid bolused",
+      "t0": 14.168,
+      "t1": 19.833
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "ET tube size seven point five, grade one view",
+      "t0": 20.183,
+      "t1": 23.388
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "tachycardia, heart rate ninety, treated with fentanyl twenty five micrograms",
+      "t0": 23.738,
+      "t1": 28.242
+    }
+  ]
+}

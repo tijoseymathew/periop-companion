@@ -1,0 +1,130 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, I'm Dr. Liew from the anesthesia team. May I ask you a few questions to prepare for your knee surgery tomorrow?",
+      "t0": 0.0,
+      "t1": 6.687
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. Sure thing. I'm having this arthroscopy because my left knee's been giving me trouble for months, right? The doctor said it's a torn meniscus.",
+      "t0": 7.037,
+      "t1": 16.883
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Can you tell me about any medications you're currently taking?",
+      "t0": 17.233,
+      "t1": 20.716
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "I use fluticasone nasal spray every day, one spray each nostril. And I was on doxycycline 100mg daily for a skin infection, but I stopped that two weeks ago, lah.",
+      "t0": 21.066,
+      "t1": 33.14
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Understood. Do you have any allergies to medications or other substances?",
+      "t0": 33.49,
+      "t1": 38.041
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Ah, yes! I'm allergic to penicillin. Had a bad rash when I took it as a teenager. The doctor stopped it immediately. But funny thing, my records say no allergies, but I remember telling them before...",
+      "t0": 38.391,
+      "t1": 50.883
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. We'll make sure to note the penicillin allergy in your chart. When did you last have something to eat or drink?",
+      "t0": 51.233,
+      "t1": 58.153
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Had dinner at 8 PM last night, and I sipped water until 6 AM this morning. Followed the fasting instructions, doctor.",
+      "t0": 58.503,
+      "t1": 65.84
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had any previous surgeries or anesthesia?",
+      "t0": 66.19,
+      "t1": 69.998
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Yes, I had a spinal block for a hernia surgery five years ago. Woke up fine, no issues at all.",
+      "t0": 70.348,
+      "t1": 76.757
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Good to know. How's your overall mobility? Any difficulty walking or climbing stairs?",
+      "t0": 77.107,
+      "t1": 82.958
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "My knee's been painful, so I walk slower now. Stairs are a bit of a struggle, but I manage with the handrail, lah.",
+      "t0": 83.308,
+      "t1": 90.274
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Understood. Any other medical conditions we should know about?",
+      "t0": 90.624,
+      "t1": 94.34
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "I've got allergic rhinitis, that's why I use the nasal spray. Gets worse during the rainy season, but it's controlled now.",
+      "t0": 94.69,
+      "t1": 101.702
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing all that. We'll proceed with general anesthesia combined with spinal for your surgery. You'll be asleep but with the spinal to keep your leg numb during the procedure.",
+      "t0": 102.052,
+      "t1": 111.294
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "Sounds good, doctor. I'm ready to get this sorted out.",
+      "t0": 111.643,
+      "t1": 115.034
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Wonderful. We'll see you in the holding area tomorrow. Any questions before we finish?",
+      "t0": 115.384,
+      "t1": 120.213
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "No questions, thank you. I appreciate the explanation.",
+      "t0": 120.563,
+      "t1": 124.139
+    }
+  ]
+}

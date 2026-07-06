@@ -1,0 +1,130 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew from the anesthesia team. Today, we'll discuss your upcoming surgery and ensure you're ready for anesthesia. Let's start with your gallstones. How have they been affecting you?",
+      "t0": 0.0,
+      "t1": 11.192
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, doc. Been having this sharp pain on the right side, especially after eating fried food. Had to stop my chili crab lah. Also, felt nauseous a few times. Scans showed stones, so doctor said remove the gallbladder.",
+      "t0": 11.542,
+      "t1": 25.706
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. You're on amlodipine, metoprolol, atorvastatin, metformin, omeprazole, and aspirin. But I noticed the records say aspirin is still active. Have you stopped or changed any medications in the past year?",
+      "t0": 26.056,
+      "t1": 42.728
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Oh, right! I stopped the aspirin about six months ago. Had some tummy bleeding, like black stools and all. Doctor said to stop it and switch to omeprazole for protection.",
+      "t0": 43.078,
+      "t1": 53.016
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. So, aspirin was discontinued due to gastrointestinal bleeding. No other medication changes?",
+      "t0": 53.366,
+      "t1": 60.936
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Nope, all others are still the same. Blood pressure and sugar are controlled, lah. HbA1c was 7.2% last check.",
+      "t0": 61.286,
+      "t1": 71.781
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Good. Any allergies to medications or foods?",
+      "t0": 72.131,
+      "t1": 75.15
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "None that I know of. Never had a reaction before.",
+      "t0": 75.5,
+      "t1": 78.426
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Excellent. You mentioned GERD earlier. Any recent acid reflux episodes or difficulty swallowing?",
+      "t0": 78.776,
+      "t1": 84.58
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Sometimes at night if I eat late, but omeprazole helps. No problem swallowing food.",
+      "t0": 84.93,
+      "t1": 90.457
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Noted. Have you eaten or drunk anything since midnight? We need to ensure your stomach is empty for anesthesia.",
+      "t0": 90.807,
+      "t1": 97.401
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "No, doc. Had my last meal at 8pm last night. Just water this morning, but stopped at 6am.",
+      "t0": 97.751,
+      "t1": 104.114
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any previous surgeries or anesthesia? Reactions like difficulty waking up or nausea?",
+      "t0": 104.463,
+      "t1": 111.012
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Appendectomy when I was younger. Anesthesia was smooth, no issues. Recovered well.",
+      "t0": 111.361,
+      "t1": 116.981
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Great. Finally, how are your daily activities? Can you climb stairs or walk without discomfort?",
+      "t0": 117.331,
+      "t1": 122.996
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "No problem, doc. Walk 30 minutes most days. Only the gallstone pain stops me sometimes.",
+      "t0": 123.346,
+      "t1": 129.476
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia using an LMA and regional analgesia as planned. The team will ensure your blood pressure and sugar are monitored closely. Any questions?",
+      "t0": 129.826,
+      "t1": 140.786
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "No questions, doc. Ready to get this done.",
+      "t0": 141.136,
+      "t1": 143.923
+    }
+  ]
+}

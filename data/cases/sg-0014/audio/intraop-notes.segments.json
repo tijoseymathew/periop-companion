@@ -1,0 +1,53 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams, fentanyl fifty micrograms, rocuronium fifty milligrams",
+      "t0": 0.0,
+      "t1": 6.594
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "LMA inserted, grade one view, capnography confirmed",
+      "t0": 6.944,
+      "t1": 10.753
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "mean arterial pressure dropped to sixty, atropine zero point five milligrams given intravenously",
+      "t0": 11.102,
+      "t1": 17.233
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "sixteen gauge peripheral line placed, blood pressure one hundred seventy over ninety",
+      "t0": 17.583,
+      "t1": 22.598
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "five hundred milliliters lactated Ringer's administered",
+      "t0": 22.948,
+      "t1": 26.013
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "ultrasound-guided transversus abdominis plane block performed with forty milliliters bupivacaine zero point five percent",
+      "t0": 26.363,
+      "t1": 34.119
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "heart rate increased to one hundred twenty, esmolol one milligram bolus administered",
+      "t0": 34.468,
+      "t1": 39.345
+    }
+  ]
+}
