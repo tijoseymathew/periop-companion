@@ -64,8 +64,31 @@ resume from the first unchecked item.
 ## W5 — Polish
 
 - [x] README v2 section; UX pass against spec §6 checklist; docs finalized
-- [ ] Stretch (open): streaming intra-op ASR, tablet-width intra-op layout,
-      per-claim review actions, "my cases" worklist filter, demo recording
+
+## W6 — Stretch (spec §2 stretch list)
+
+- [ ] W6a-api: per-claim review actions (mark reviewed / flag) persisted as
+      sidecar state (`_out/<case_id>.review.json`, atomic write; the case
+      ledger itself stays untouched); `GET`/`PUT` endpoints, demo cases 409
+- [ ] W6a-ui: review/flag buttons on claim rows; sign-off screen counts
+      reviewed/flagged and flagged claims join the jump list
+- [ ] W6b: "my cases" worklist filter (any stage performed/signed off by me,
+      or created by me)
+- [ ] W6c: department dashboard view (cases by stage × status, awaiting-review
+      queue, conflict totals — derived from the case summaries client-side)
+- [ ] W6d: tablet-width layout — below `lg` the provenance rail hides and the
+      worklist becomes a toggleable drawer, so the intra-op capture screen is
+      a single big column; tablet-viewport Playwright spec
+- [ ] W6e-api: streaming intra-op ASR — WebSocket
+      `/api/cases/{id}/sources/audio/stream` taking 16 kHz PCM16 frames,
+      feed/finish transcriber seam (fake in tests/e2e, Riva streaming adapter
+      live), PCM appended to the memo wav ffmpeg-free, final segments
+      registered on `audio:intraop-notes` with wav-offset times
+- [ ] W6e-ui: live dictation on the intra-op capture screen (mic → PCM
+      downsample → WS, live partial/final transcript, memo recorder as the
+      fallback); streaming e2e with fake media device
+- [ ] W6f: live streaming smoke script in `scripts/`, README stretch section,
+      demo recording, docs finalized
 
 ## UX review against spec §6 (W4 exit criterion)
 
