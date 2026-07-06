@@ -159,6 +159,48 @@ needed): claims grouped by artifact with unsupported/conflicting ones
 visually flagged, each expandable to its cited spans, and every citation
 linking into a source-registry section.
 
+## Provider workflow (v2)
+
+[specs/v2.md](specs/v2.md) wraps the same pipeline in a **live clinical
+workflow**: providers create cases from the browser and feed each stage its
+inputs at the point of care, instead of reviewing pre-baked bundles.
+
+- **Case lifecycle** — created → pre-op → intra-op → post-op → closed, each
+  stage the same shape: *inputs → generate → review → sign off*. Per-stage
+  status, provider attribution (`performed_by`, `signed_off_by`), and
+  timestamps live in an additive `workflow` block; every pre-v2 case JSON
+  loads unchanged and renders read-only ("Review only").
+- **Intake** — paste or upload (`.txt`/`.md`/`.pdf`) prior records and the op
+  plan into typed slots; the **GapAnalyst runs at intake** (it needs no
+  audio) and its questions, each citing the triggering chunk, go through a
+  human review — dismiss / reword / add — before the interview. Dismissals
+  are kept: a dismissed question that later proves relevant is a finding.
+- **Audio capture** — in-browser recording (MediaRecorder) or file upload for
+  the interview, intra-op voice memos (append-style), and the post-op
+  interview; the server normalizes everything to 16 kHz mono wav (ffmpeg,
+  with a wav passthrough fallback) so ASR and clip playback work unchanged.
+- **Stage runs stream progress** — `POST /stages/{stage}/run` returns SSE
+  (per-agent start/end, artifact completion) read with fetch +
+  ReadableStream; gates return 409s that name the next action ("sign off the
+  preop stage before…"). One run at a time per server.
+- **Handoff acknowledge** — the receiving provider opens the SBAR handoff,
+  plays any cited clip, and acknowledges receipt; the case records who and
+  when. Not a signature — a demonstration of a transfer that is *received,
+  traceable, acknowledged*.
+- **Worklist** — the sidebar shows every case's headline stage + status in
+  plain words, who acted last, and conflict indicators, filterable by stage
+  and status. One primary action per case state (unit-tested): a provider who
+  only ever presses the big button completes the whole workflow.
+- **Conformance** — a pytest walks a synthetic case through the entire API
+  workflow and asserts the resulting ledger is identical to the batch
+  pipeline's ([tests/test_lifecycle_conformance.py](tests/test_lifecycle_conformance.py)):
+  the workflow layer is a re-plumbing, not a fork.
+- Hermetic Playwright e2e drives all of it — three provider identities, one
+  case, creation to acknowledged handoff — against the real server with an
+  instant stub runner (`PERIOP_STUB_RUNNER=1`).
+
+Build status: [docs/progress-v2.md](docs/progress-v2.md).
+
 ## Synthetic data & sovereign-AI grounding
 
 No real patients. Synthetic patients are sampled from
@@ -206,8 +248,14 @@ M0–M6 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
 pipeline, all agents, eval harness, NAT-profiled live run, self-hosted NIM
 path with TTS+ASR). The review UI ([specs/ui.md](specs/ui.md), U0–U2+U4 —
 see [docs/progress-ui.md](docs/progress-ui.md)) ships the claim ledger with
-click-to-play audio provenance; the SSE live-run panel (U3) remains a
-stretch item. Remaining: broader eval dataset (30 cases). Live
-NIM paths (LLM tiers, full case runs, traced profiling) are exercised with an
-NGC key; the ASR/TTS speech NIMs use documented hosted NVCF endpoints (see
+click-to-play audio provenance. The v2 provider workflow
+([specs/v2.md](specs/v2.md), W0–W4 — see
+[docs/progress-v2.md](docs/progress-v2.md)) adds the write path: case
+creation, staged intake with question review, audio capture, SSE-streamed
+stage runs (promoting ui.md's U3 from stretch to shipped), sign-off/reopen,
+and handoff acknowledge, pinned to the batch pipeline by a lifecycle
+conformance test. Remaining: broader eval dataset (30 cases), v2 stretch
+items (streaming intra-op ASR, tablet layout). Live NIM paths (LLM tiers,
+full case runs, traced profiling) are exercised with an NGC key; the ASR/TTS
+speech NIMs use documented hosted NVCF endpoints (see
 [docs/attribution.md](docs/attribution.md)).

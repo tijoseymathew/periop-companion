@@ -63,4 +63,48 @@ resume from the first unchecked item.
 
 ## W5 — Polish
 
-- [ ] README v2 section; UX pass against spec §6 checklist; docs finalized
+- [x] README v2 section; UX pass against spec §6 checklist; docs finalized
+- [ ] Stretch (open): streaming intra-op ASR, tablet-width intra-op layout,
+      per-claim review actions, "my cases" worklist filter, demo recording
+
+## UX review against spec §6 (W4 exit criterion)
+
+1. **One primary action per case state** — `primaryAction()` in
+   `ui/src/lib/workflow.ts` is the single state machine every screen asks;
+   unit-tested across the whole lifecycle (`workflow.test.ts`), and the e2e
+   walk completes the workflow using only the big buttons. Read-only demo
+   cases render zero `data-primary-action` elements (asserted in
+   `lifecycle.spec.ts`).
+2. **The screen explains itself** — every capture screen opens with one
+   sentence (`CAPTURE_SENTENCES` / `GENERATE_SENTENCES` in `StagePanel.tsx`);
+   empty worklist-filter state and empty stages carry instructions.
+3. **Speech first, typing last** — the case label is the only obligatory
+   typing (the e2e walk types nothing else: everything is paste, upload, or
+   click); question edits are optional.
+4. **Clinical vocabulary** — "Pre-op evaluation", "PACU handoff", "sign off",
+   status words like "awaiting review" (`STATUS_WORDS`); no "pipeline",
+   "artifact", or "claim extraction" in provider-facing copy. The review
+   workspace keeps "claims" deliberately (load-bearing there).
+5. **Legible at arm's length** — primary buttons are min-h 44–56 px with text
+   labels; no icon-only actions (icons always accompany text); the record
+   button is the largest control on its screen.
+6. **Nothing to configure** — the provider picker is the only setup, one
+   select in the header, persisted locally; no settings screen exists.
+7. **Errors say what to do** — recorder failures keep the audio and offer
+   Retry ("kept on this device"); microphone refusal points at the upload
+   fallback; API gate 409s name the next action and are surfaced verbatim;
+   unit-tested in `Recorder.test.tsx` and `tests/test_workflow_api.py`.
+8. **The worklist answers "what needs me"** — label, headline stage + status
+   in words, who acted last, conflict glyphs, stage/status filters
+   (`Worklist.test.tsx`, `workflow.test.ts`).
+
+## Design deviations from the spec (documented, deliberate)
+
+- The post-op stage runs as one generation (handoff + post-anaesthesia note)
+  gated on the post-op interview, matching the batch pipeline's
+  `run_postop_stage` — the spec's §4.3 sketches the handoff generating before
+  the interview. Keeping one runner preserves the lifecycle-conformance
+  guarantee; splitting it is a candidate follow-up.
+- Regeneration after reopen is not offered: reopen returns a stage to
+  review/sign-off with prior artifacts kept (§4.5's "rather than silently
+  regenerated" reading). Changing inputs after generation requires a new case.
