@@ -1,0 +1,126 @@
+{
+  "case_id": "sg-0011",
+  "persona_uuid": "e0d2df24b24f4d49a6b7032cc06fef59",
+  "surgery": "Transurethral resection of the prostate (TURP)",
+  "urgency": "elective",
+  "anesthesia_plan": "Spinal anesthesia with local infiltration",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia",
+    "Chronic Kidney Disease (Stage 2)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "nightly",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Allergic to penicillin (rash)",
+    "gold_question": "Have you ever had any reactions to antibiotics, especially penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia, resolved in 2018",
+      "why_irrelevant": "Resolved years ago, no current impact"
+    },
+    {
+      "description": "Left wrist fracture, healed without issues in 2010",
+      "why_irrelevant": "Remote, fully healed"
+    },
+    {
+      "description": "Completed course of antibiotics for UTI in 2015",
+      "why_irrelevant": "Resolved infection, no ongoing issues"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "nightly",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "Chronic Kidney Disease (Stage 2)",
+      "Pneumonia, resolved in 2018",
+      "Left wrist fracture, healed without issues in 2010",
+      "Completed course of antibiotics for UTI in 2015"
+    ],
+    "prior_anesthesia": null
+  }
+}

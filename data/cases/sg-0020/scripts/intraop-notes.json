@@ -1,0 +1,116 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "Spinal anesthesia administered with bupivacaine twelve point five milligrams."
+    },
+    {
+      "t": "08:01",
+      "text": "Oxygen via nasal cannula at two liters per minute initiated."
+    },
+    {
+      "t": "08:02",
+      "text": "Two large bore IVs placed, normal saline infusion at one hundred mL per hour."
+    },
+    {
+      "t": "08:05",
+      "text": "Blood pressure seventy over forty noted, administering one liter normal saline bolus."
+    },
+    {
+      "t": "08:07",
+      "text": "Heart rate forty, administering atropine one milligram IV."
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "12.5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes:entry#0"
+      ]
+    },
+    {
+      "t": "08:01",
+      "category": "airway",
+      "value": "oxygen via nasal cannula",
+      "units": "2 L/min",
+      "provenance": [
+        "voice_notes:entry#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "line",
+      "value": "two large bore IVs",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": "100 mL/hour",
+      "provenance": [
+        "voice_notes:entry#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "hypotension (BP 70/40)",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": "1 L bolus",
+      "provenance": [
+        "voice_notes:entry#3"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "event",
+      "value": "bradycardia (HR 40)",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#4"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#4"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "1",
+      "units": "mg",
+      "provenance": [
+        "voice_notes:entry#4"
+      ]
+    }
+  ]
+}

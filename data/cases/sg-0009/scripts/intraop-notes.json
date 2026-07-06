@@ -1,0 +1,182 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "LMA placed, size four, good seal"
+    },
+    {
+      "t": "08:03",
+      "text": "mean arterial pressure dropped to fifty-five, atropine one milligram given"
+    },
+    {
+      "t": "08:04",
+      "text": "remifentanil infusion started at zero point five mcg/kg/min"
+    },
+    {
+      "t": "08:05",
+      "text": "18-gauge IV access established, blood loss minimal"
+    },
+    {
+      "t": "08:06",
+      "text": "vecuronium thirty milligrams given for muscle relaxation"
+    },
+    {
+      "t": "08:10",
+      "text": "crystalloid bolus one thousand mL given"
+    },
+    {
+      "t": "08:20",
+      "text": "heart rate increased to one twenty, labetalol ten milligrams IV administered"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#0#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_note#0#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size four",
+      "units": null,
+      "provenance": [
+        "voice_note#1#08:02"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "event",
+      "value": "hypotension (MAP 55)",
+      "units": null,
+      "provenance": [
+        "voice_note#2#08:03"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_note#2#08:03"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "dose",
+      "value": "1",
+      "units": "mg",
+      "provenance": [
+        "voice_note#2#08:03"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_note#3#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "0.5",
+      "units": "mcg/kg/min",
+      "provenance": [
+        "voice_note#3#08:04"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "18-gauge IV access",
+      "units": null,
+      "provenance": [
+        "voice_note#4#08:05"
+      ]
+    },
+    {
+      "t": "08:06",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": null,
+      "provenance": [
+        "voice_note#5#08:06"
+      ]
+    },
+    {
+      "t": "08:06",
+      "category": "dose",
+      "value": "30",
+      "units": "mg",
+      "provenance": [
+        "voice_note#5#08:06"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "crystalloid bolus",
+      "units": null,
+      "provenance": [
+        "voice_note#6#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "voice_note#6#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "tachycardia (HR 120)",
+      "units": null,
+      "provenance": [
+        "voice_note#7#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_note#7#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_note#7#08:20"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "case_id": "sg-0030",
+  "persona_uuid": "d91aab23240d4bb3ab0d8f72585a68d6",
+  "surgery": "Laparoscopic ovarian cystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Levonorgestrel/Ethinyl Estradiol",
+      "dose": "Standard dose",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Doxycycline",
+      "dose": "100 mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Sulfa drugs"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Allergic to sulfa drugs (rash)",
+    "gold_question": "Have you ever had a reaction to any antibiotics, particularly sulfa-based medications?"
+  },
+  "distractors": [
+    {
+      "description": "Fracture of left wrist (2018, healed)",
+      "why_irrelevant": "Remote, resolved injury"
+    },
+    {
+      "description": "Pneumonia (2019, resolved)",
+      "why_irrelevant": "Resolved infection, no residual issues"
+    },
+    {
+      "description": "Discontinued medication: Omeprazole for GERD (2019)",
+      "why_irrelevant": "GERD resolved, medication stopped"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Levonorgestrel/Ethinyl Estradiol",
+        "dose": "Standard dose",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Doxycycline",
+        "dose": "100 mg",
+        "frequency": "Once daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Fracture of left wrist (2018, healed)",
+      "Pneumonia (2019, resolved)",
+      "Discontinued medication: Omeprazole for GERD (2019)"
+    ],
+    "prior_anesthesia": null
+  }
+}

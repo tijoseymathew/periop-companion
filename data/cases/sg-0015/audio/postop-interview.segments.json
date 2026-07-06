@@ -1,0 +1,102 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?",
+      "t0": 0.0,
+      "t1": 2.647
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "A bit sore, ah, but manageable. My tummy hurts a little where they made the cuts.",
+      "t0": 2.997,
+      "t1": 8.57
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understandable. On a scale of 1 to 10, what would you say your pain is right now?",
+      "t0": 8.92,
+      "t1": 14.121
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5? Not too bad, but I can feel it when I move.",
+      "t0": 14.471,
+      "t1": 19.301
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Okay, we\u2019ll keep an eye on that. Any nausea or vomiting since waking up?",
+      "t0": 19.651,
+      "t1": 24.063
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "A bit of nausea, yes. Felt like I might throw up earlier, but it\u2019s better now.",
+      "t0": 24.413,
+      "t1": 29.242
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Got it. We\u2019ll give you something for that. How\u2019s your breathing? Any discomfort in your throat or chest?",
+      "t0": 29.592,
+      "t1": 35.49
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Throat\u2019s a bit sore from the tube, I think. But I\u2019m breathing fine, no trouble.",
+      "t0": 35.84,
+      "t1": 40.345
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Good. Do you remember anything from the operation itself?",
+      "t0": 40.695,
+      "t1": 44.085
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Nope, everything\u2019s blank. Woke up here, so that\u2019s good, right?",
+      "t0": 44.435,
+      "t1": 48.661
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Since you have hypertension and GERD, any chest burning or high BP symptoms?",
+      "t0": 49.011,
+      "t1": 54.584
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "BP\u2019s been okay, but my throat feels a bit acidic, like usual. Not worse than before.",
+      "t0": 54.934,
+      "t1": 60.878
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "We\u2019ll monitor your BP and give meds for the acid. You\u2019re doing well overall.",
+      "t0": 61.228,
+      "t1": 65.733
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Thanks, doctor. Hope to go home soon.",
+      "t0": 66.083,
+      "t1": 68.358
+    }
+  ]
+}

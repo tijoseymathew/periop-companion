@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Meh, still a bit groggy lah, but manageable. Got some pain here and there."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Can you rate your pain on a scale of 0 to 10? And where exactly is it hurting?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Around 4 or 5, mostly at the incision sites. Also got some gas pain here, like under my ribs."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or vomiting? Feeling sick to your stomach?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit queasy, but not throwing up. Throat also sore, like someone stuck a pipe down there."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Breathing okay? Any shortness of breath or wheezing?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing fine, but throat still uncomfortable. Like heartburn burning, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything from the operation itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, everything black out until now. Good thing, I guess!"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any dizziness, chest pain, or headaches from your blood pressure or cholesterol?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Blood pressure been okay, no chest pain. Just the usual heartburn, but I’ll take my meds later."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we’ll keep monitoring you. Let the nurse know if pain or nausea gets worse, okay?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure thing, doc. Thanks for checking on me."
+    }
+  ]
+}

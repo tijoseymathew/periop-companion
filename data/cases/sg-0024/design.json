@@ -1,0 +1,124 @@
+{
+  "case_id": "sg-0024",
+  "persona_uuid": "3b943ad7bfbb4d18b3afffe3e91b4f68",
+  "surgery": "Transurethral Resection of the Prostate (TURP) for Benign Prostatic Hyperplasia",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with In-Line Stabilization",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Hyperlipidemia",
+    "Type 2 Diabetes Mellitus",
+    "Gastroesophageal Reflux Disease (GERD)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "40mg",
+      "frequency": "nightly",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "100mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Aspirin 100mg daily (active)",
+    "truth": "Discontinued 6 months ago due to gastrointestinal side effects",
+    "gold_question": "Have you stopped or changed any medications in the past year, especially those related to cardiovascular or antiplatelet therapy?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia (resolved 2018)",
+      "why_irrelevant": "Resolved community-acquired pneumonia with no residual sequelae"
+    },
+    {
+      "description": "Distal radius fracture (right wrist, 2015)",
+      "why_irrelevant": "Healed fracture from minor fall, full functional recovery"
+    },
+    {
+      "description": "Appendectomy (1985)",
+      "why_irrelevant": "Remote surgical history with no current implications"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "40mg",
+        "frequency": "nightly",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "100mg",
+        "frequency": "daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Hypertension",
+      "Hyperlipidemia",
+      "Type 2 Diabetes Mellitus",
+      "Gastroesophageal Reflux Disease (GERD)",
+      "Pneumonia (resolved 2018)",
+      "Distal radius fracture (right wrist, 2015)",
+      "Appendectomy (1985)"
+    ],
+    "prior_anesthesia": "General anesthesia for appendectomy in 1985, no complications"
+  }
+}

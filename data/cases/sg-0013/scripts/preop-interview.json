@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Name]. I'm Dr. [Name], the anesthesiologist who'll be taking care of you during your surgery today. I'd like to go over a few things to make sure we're all set for your laparoscopic cholecystectomy. Is that okay with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. Thank you lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Can you tell me a bit about why you're having this surgery? What symptoms have you been experiencing?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've been having this sharp pain on the right side of my belly, especially after eating. The doctor said it's gallstones, and they want to remove the gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. You're currently on amlodipine, metoprolol, atorvastatin, omeprazole, and you've stopped aspirin. Is that correct?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I take all those except the aspirin, which I stopped a week ago as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Now, regarding allergies—your records say 'no known allergies,' but I always like to confirm directly. Do you have any allergies to medications, including antibiotics like penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, actually, yes. When I was younger, I took penicillin for a infection and got a bad rash all over. So I think I'm allergic to that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It's important we update your records to reflect your penicillin allergy. Have you had any other reactions to medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just that one time with penicillin. Other antibiotics seem fine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you eaten or drunk anything since midnight? We need to ensure you're NPO for surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I had water until 6 AM but nothing else. My wife made sure I followed the instructions."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Have you had any previous surgeries or anesthesia? Any complications like nausea, breathing issues, or high blood pressure during recovery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had my appendix out when I was a teenager. The anesthesia was fine then—no problems at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Lastly, how are you managing with daily activities? Any shortness of breath, chest pain, or difficulty mobilizing due to your weight or other conditions?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk and do my usual things, but sometimes I get a bit breathless if I rush. My blood pressure has been controlled with the meds, and I take omeprazole for the acid reflux."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for all that information. We'll proceed with general anesthesia and rapid sequence induction as planned. Your penicillin allergy will be clearly documented. Any questions for me before we head to the operating room?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. Just want to make sure stopping the aspirin was the right call."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Absolutely. Stopping it a week prior reduces bleeding risk during surgery. We'll manage your pain post-op with other medications. All set then?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, thank you. I'm ready."
+    }
+  ]
+}

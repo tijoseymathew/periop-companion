@@ -1,0 +1,114 @@
+{
+  "questions": [
+    "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin or related drugs?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:01",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:01",
+      "category": "dose",
+      "value": "60",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed, grade 1 view",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral",
+      "units": "left radial vein, 18G",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "arterial",
+      "units": "right radial artery, 22G",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "500",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "hypotension (MAP 55 mmHg) treated with 100 mL NS bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "tachycardia (HR 120 bpm) treated with 2 mg labetalol",
+      "units": null,
+      "provenance": [
+        "voice_notes#8"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, type 2 diabetes mellitus, hyperlipidemia, and generalized anxiety disorder",
+    "Medications: Amlodipine 5 mg once daily, Metoprolol 25 mg once daily, Metformin 500 mg twice daily, Atorvastatin 20 mg once daily, Omeprazole 20 mg once daily (discontinued)",
+    "Allergies: Penicillin (rash)",
+    "ASA Physical Status: ASA 2 due to controlled hypertension and type 2 diabetes mellitus",
+    "Airway assessment and anesthetic plan: Airway evaluation performed; plan for general anesthesia with sevoflurane and rocuronium"
+  ],
+  "handoff_claims": [
+    "Key history: Hypertension, type 2 diabetes mellitus, hyperlipidemia, generalized anxiety disorder, and penicillin allergy",
+    "Intraoperative course: Laparoscopic cholecystectomy performed under general anesthesia with sevoflurane and rocuronium; multimodal analgesia (paracetamol, ketorolac, dexamethasone) administered",
+    "Anticipated issues: Postoperative pain management, blood glucose monitoring, blood pressure control, and anxiety-related concerns"
+  ],
+  "distractors": [
+    "Pneumonia (resolved 2018, no residual issues)",
+    "Distal radius fracture (left wrist, 2015, fully healed)",
+    "GERD (discontinued omeprazole 2022, symptoms resolved)"
+  ]
+}

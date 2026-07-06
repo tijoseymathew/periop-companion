@@ -1,0 +1,144 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. We'll be discussing your upcoming surgery and anesthesia plan. How are you feeling today?",
+      "t0": 0.0,
+      "t1": 8.499
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm okay lah, just a bit nervous about the operation. But ready to get this gallbladder issue sorted.",
+      "t0": 8.848,
+      "t1": 16.604
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understandable. Let's start with your medical history. Can you tell me about your gallbladder problem?",
+      "t0": 16.954,
+      "t1": 22.295
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Yes, I had bad pain on the right side last month, and the scan showed stones. Doctor said it's best to remove it laparoscopically.",
+      "t0": 22.644,
+      "t1": 30.911
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, let's go through your medications. Can you list what you're currently taking?",
+      "t0": 31.261,
+      "t1": 36.044
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Sure. I take Amlodipine 5mg every morning for blood pressure, Metoprolol 50mg daily for the same, Metformin 500mg twice a day for diabetes, Atorvastatin 20mg at night for cholesterol, and Aspirin 75mg daily. Oh, and I stopped Levothyroxine already.",
+      "t0": 36.394,
+      "t1": 56.456
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "You mentioned stopping Levothyroxine\u2014when was that, and why did you stop?",
+      "t0": 56.806,
+      "t1": 60.707
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "About a year ago, Doctor. The thyroid tests came back normal, so my GP said I don't need it anymore. Records might still show it, but I haven't taken it since.",
+      "t0": 61.057,
+      "t1": 70.624
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Important to update that. Any allergies to medications or other substances?",
+      "t0": 70.974,
+      "t1": 75.432
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No allergies, Doctor. Never had any reactions.",
+      "t0": 75.782,
+      "t1": 79.218
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Great. Have you had any previous surgeries or anesthesia? Any issues like nausea, breathing problems, or awareness during surgery?",
+      "t0": 79.568,
+      "t1": 87.695
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "I had a hernia repair 10 years back. Anesthesia was smooth, no problems at all. Recovered well.",
+      "t0": 88.045,
+      "t1": 94.826
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Excellent. How's your diabetes control? Any recent episodes of low or high sugar?",
+      "t0": 95.176,
+      "t1": 101.213
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Stable lah, Doctor. Fasting sugar usually around 6-7 mmol/L. No hypos recently.",
+      "t0": 101.563,
+      "t1": 109.132
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Good. Are you on a normal diet now? And when did you last eat or drink?",
+      "t0": 109.482,
+      "t1": 113.801
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "Yes, normal food. I had dinner at 8pm last night, and water until 10pm. No solids after that.",
+      "t0": 114.151,
+      "t1": 121.396
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Lastly, how's your general fitness? Can you climb stairs or walk without difficulty?",
+      "t0": 121.746,
+      "t1": 127.365
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "No problem, Doctor. I walk 30 minutes most days and can take the stairs without stopping.",
+      "t0": 127.715,
+      "t1": 133.102
+    },
+    {
+      "seg_id": "s018",
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia and intubation as planned. I'll review your updated med list and ensure the team knows about the Levothyroxine change.",
+      "t0": 133.452,
+      "t1": 143.39
+    },
+    {
+      "seg_id": "s019",
+      "speaker": "PATIENT",
+      "text": "Thank you, Doctor. Feel better knowing everything's in order.",
+      "t0": 143.74,
+      "t1": 146.991
+    }
+  ]
+}

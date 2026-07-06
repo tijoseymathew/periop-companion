@@ -1,0 +1,107 @@
+{
+  "case_id": "sg-0008",
+  "persona_uuid": "316a3ff7d7034ad099e48a67898d9100",
+  "surgery": "Laparoscopic cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with sevoflurane and rocuronium, maintained with desflurane in air/oxygen, post-operative analgesia with IV paracetamol and PCA morphine",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Levothyroxine",
+      "dose": "50mcg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Records indicate patient is taking Enalapril 10mg daily for hypertension.",
+    "truth": "Patient discontinued Enalapril 6 months ago due to cough side effect; now on Amlodipine 10mg daily.",
+    "gold_question": "Can you confirm your current medications, especially any changes to your blood pressure medications?"
+  },
+  "distractors": [
+    {
+      "description": "History of community-acquired pneumonia resolved in 2019",
+      "why_irrelevant": "Resolved years ago, no ongoing respiratory issues."
+    },
+    {
+      "description": "Right wrist fracture in 2015, treated with cast, fully healed",
+      "why_irrelevant": "Remote fracture, no current functional impairment."
+    },
+    {
+      "description": "Discontinued Omeprazole for GERD in 2022 as symptoms resolved",
+      "why_irrelevant": "Medication discontinued for resolved condition."
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Enalapril",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Levothyroxine",
+        "dose": "50mcg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Community-acquired pneumonia (2019)",
+      "Right wrist fracture (2015)",
+      "GERD resolved post-Omeprazole discontinuation (2022)"
+    ],
+    "prior_anesthesia": "Previous general anesthesia for tonsillectomy in 1990; no complications."
+  }
+}

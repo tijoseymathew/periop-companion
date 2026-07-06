@@ -1,0 +1,72 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming laparoscopic cholecystectomy. Let's start with your medical history. Can you tell me why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. Yeah, I've been having belly pains on the right side, especially after eating. The scans showed gallstones, so they said to remove the gallbladder."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. You're on amlodipine, atorvastatin, omeprazole, and metformin, correct? And I see metformin was stopped recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I take amlodipine for blood pressure, atorvastatin for cholesterol, omeprazole for the acid reflux, and metformin for diabetes. But they told me to stop metformin a few days before surgery, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Correct. We'll monitor your blood sugar closely. Now, about allergies—your records say 'no known allergies,' but I always double-check. Have you ever had any reactions to medications, especially antibiotics like penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, wait a minute... I think I had a rash once when I took penicillin for a infection. It was years ago, but my skin turned all red and itchy. I told the doctor then, but maybe it wasn't recorded properly?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for mentioning that. We'll note the penicillin allergy clearly. Even if it was a rash, we'll avoid penicillin and related antibiotics. Any other reactions to foods, latex, or other drugs?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just that one time with penicillin. I don't think there's anything else."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Let's confirm your NPO status—have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. My wife made sure I fasted properly. Just a bit of water with my morning meds, but that was hours ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had anesthesia before? Any issues with previous surgeries or procedures?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Once, for a hernia repair. I woke up with a sore throat, but otherwise it was fine. No vomiting or anything bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. Lastly, how's your overall fitness? Can you walk up stairs or do daily activities without excessive shortness of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, I walk to the MRT station daily. Climbing stairs is okay, though I get a bit tired if I rush. No chest pains or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. We'll plan for general anesthesia with an LMA, as discussed. Your blood pressure and GERD will be managed carefully. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. You've explained everything clearly. I'm ready to proceed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Wonderful. We'll see you in the operating theater. Take care, and we'll ensure your safety throughout."
+    }
+  ]
+}

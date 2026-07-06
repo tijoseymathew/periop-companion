@@ -1,0 +1,53 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.926
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "tube in, grade one view",
+      "t0": 3.276,
+      "t1": 4.948
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "peripheral IV placed, 20 gauge",
+      "t0": 5.298,
+      "t1": 8.363
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "arterial line placed, 22 gauge",
+      "t0": 8.713,
+      "t1": 11.267
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "administered 500 milliliters normal saline",
+      "t0": 11.617,
+      "t1": 14.635
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "mean arterial pressure dropped to fifty-five, gave one milliliter of phenylephrine",
+      "t0": 14.985,
+      "t1": 19.769
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "heart rate increased to one hundred twenty, gave two milligrams of labetalol",
+      "t0": 20.119,
+      "t1": 24.437
+    }
+  ]
+}

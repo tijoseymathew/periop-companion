@@ -1,0 +1,96 @@
+{
+  "questions": [
+    "Do you have any allergies to sulfa-containing medications or other antibiotics?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120 mg",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral IV placed, 20 gauge",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "line",
+      "value": "arterial line placed, radial artery",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "normal saline 100 mL bolus given",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "blood pressure dropped to 80/50 mmHg, treated with phenylephrine 10 mcg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to 110 bpm, treated with esmolol 20 mg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension and seasonal allergic rhinitis",
+    "Current medications: Amlodipine 5mg daily (active), Fluticasone nasal spray twice daily (active), Lisinopril 10mg daily (stopped)",
+    "Allergy to sulfa drugs with rash",
+    "ASA Physical Status II due to well-controlled hypertension and seasonal allergic rhinitis",
+    "Airway assessment indicates no anticipated difficulties; plan for endotracheal intubation"
+  ],
+  "handoff_claims": [
+    "Key history includes hypertension, seasonal allergic rhinitis, and sulfa allergy with rash",
+    "Intraoperative course: Uncomplicated laparoscopic cholecystectomy under general anesthesia with endotracheal intubation; expected smooth emergence and recovery",
+    "Anticipated issues: Monitor blood pressure, ensure no sulfa-containing medications are administered postoperatively"
+  ],
+  "distractors": [
+    "Resolved pneumonia (2019)",
+    "Remote left wrist fracture (2015), healed without issues",
+    "Discontinued levothyroxine for resolved hypothyroidism (2020)"
+  ]
+}

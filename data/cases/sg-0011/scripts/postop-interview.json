@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Mr. Tan, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, Doctor. Got some pain here and there, but not too bad lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Can you rate your pain on a scale from 0 to 10 for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe 4 or 5? It's manageable, but I feel some discomfort when moving."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or feeling like you want to vomit? Sometimes spinal anesthesia can cause that."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit queasy earlier, but settled down after they gave me something. No vomiting, thank God."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Breathing comfortable? Any shortness of breath or airway issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing's fine. Throat a bit sore from the tube, but I can talk okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything during the surgery? Sometimes patients recall bits."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not much, Doctor. Felt some pressure here and there, heard voices, then woke up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Your blood pressure's stable, but we're watching your diabetes and kidney function. Any concerns?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, worried about sugar levels, but nurse said it's under control. Urine output's a bit less, but no swelling."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll keep monitoring. Stay hydrated and follow your meds. Any other issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, all good. Thank you, Doctor. I'll rest and drink more water."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Spinal anesthetic performed with bupivacaine twenty-five milligrams",
+      "t0": 0.0,
+      "t1": 3.715
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "Local infiltration with lidocaine twenty milligrams",
+      "t0": 4.065,
+      "t1": 7.177
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Midazolam two milligrams IV for sedation",
+      "t0": 7.527,
+      "t1": 10.452
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "Fentanyl fifty micrograms IV administered",
+      "t0": 10.802,
+      "t1": 13.635
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Airway maintained spontaneously, no intubation required",
+      "t0": 13.985,
+      "t1": 17.468
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "Peripheral IV line established in left antecubital vein",
+      "t0": 17.818,
+      "t1": 21.673
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Crystalloid fluid bolus five hundred milliliters given",
+      "t0": 22.023,
+      "t1": 25.18
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PROVIDER",
+      "text": "Blood pressure drop to seventy over forty, treated with phenylephrine ten micrograms",
+      "t0": 25.53,
+      "t1": 30.685
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Heart rate increased to one hundred twenty, atropine point five milligrams given",
+      "t0": 31.035,
+      "t1": 35.54
+    }
+  ]
+}

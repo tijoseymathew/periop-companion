@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your hip replacement surgery. Can you tell me a bit about why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. My right hip been hurting a lot, especially when walking. X-ray show severe arthritis, so doctor say need to replace it lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Let's go through your medications. I see you're on quite a few – can you confirm what you're currently taking?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I take Amlodipine 5mg every day for blood pressure, Metformin 500mg twice daily for diabetes, Insulin glargine 20 units at night. Furosemide 20mg only when I have swelling, Tamsulosin for prostate, Aspirin 75mg daily, Pantoprazole 40mg daily, and Atorvastatin 20mg nightly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Have there been any changes to your medications in the last year, particularly with your acid suppression medication?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh yes! I stopped Ranitidine about six months ago because of that big recall news. My GP switched me to Pantoprazole 40mg daily since then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for clarifying that. Are all your other medications still the same doses as listed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. Everything else same as before. Only the Ranitidine changed to Pantoprazole."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to know. Any allergies we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I get a rash from Penicillin. That's the only one."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. Have you had any previous anesthesia or surgeries?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Had a spinal block for my cataract surgery last year. No problems at all, very smooth."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. What about your fasting status today?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a light breakfast around 6am, nothing since 8am. Just some water for meds lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Finally, how's your mobility before surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Can walk with a cane, but pain makes it difficult. Need help with stairs sometimes."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for all that information, Mr. Tan. We'll be using general anesthesia with spinal anesthesia for pain control during surgery. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, doctor. Just want to get this done and walk properly again."
+    }
+  ]
+}

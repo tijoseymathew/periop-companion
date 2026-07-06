@@ -1,0 +1,150 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:00",
+      "text": "fentanyl fifty micrograms administered"
+    },
+    {
+      "t": "08:00",
+      "text": "rocuronium sixty milligrams given"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "peripheral IV 20G placed"
+    },
+    {
+      "t": "08:07",
+      "text": "arterial line placed"
+    },
+    {
+      "t": "08:10",
+      "text": "500 mL crystalloid bolus administered"
+    },
+    {
+      "t": "08:15",
+      "text": "mean arterial pressure dropped to 55 mmHg, treated with 1 mg phenylephrine"
+    },
+    {
+      "t": "08:20",
+      "text": "heart rate increased to 110 bpm, treated with 5 mL/kg fluid bolus"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "60",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral IV 20G",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "line",
+      "value": "arterial line",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 mL crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg, treated with phenylephrine 1 mg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to 110 bpm, treated with 5 mL/kg fluid bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    }
+  ]
+}

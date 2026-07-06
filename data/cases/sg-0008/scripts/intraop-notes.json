@@ -1,0 +1,138 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "18-gauge IV line placed in left antecubital fossa"
+    },
+    {
+      "t": "08:15",
+      "text": "crystalloid infusion started at 100 mL/hour"
+    },
+    {
+      "t": "08:30",
+      "text": "mean arterial pressure dropped to 55 mmHg, treated with 500 mL fluid bolus and 10 mg IV phenylephrine"
+    },
+    {
+      "t": "08:45",
+      "text": "heart rate increased to 110 bpm, treated with 5 mL/kg fluid bolus"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "endotracheal tube placed",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade 1 view",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "18-gauge IV line placed in left antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "crystalloid infusion at 100 mL/hour",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "fluid",
+      "value": "500",
+      "units": "mL bolus",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "heart rate increased to 110 bpm",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "fluid",
+      "value": "5",
+      "units": "mL/kg bolus",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your knee surgery today. Let's go through some questions to make sure everything's in order, okay?",
+      "t0": 0.0,
+      "t1": 10.031
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. Yes, sure thing. I'm ready when you are.",
+      "t0": 10.381,
+      "t1": 14.05
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Great. First, can you tell me a bit about your knee problem? How long have you been having issues with it?",
+      "t0": 14.4,
+      "t1": 20.251
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Oh, about five years already. The pain got worse last year, can't even walk properly now. That's why I'm doing this surgery, right?",
+      "t0": 20.601,
+      "t1": 29.007
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. You're on amlodipine for blood pressure, metformin and glipizide for diabetes, atorvastatin for cholesterol, omeprazole for stomach, and aspirin which was stopped recently?",
+      "t0": 29.357,
+      "t1": 43.289
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Yes, that's all correct. I take them every day except the aspirin, which I stopped a week ago like the doctor told me.",
+      "t0": 43.639,
+      "t1": 50.79
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Good. Any allergies to medications or other things?",
+      "t0": 51.14,
+      "t1": 54.438
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Hmm, I don't think so. The records say no allergies, right?",
+      "t0": 54.788,
+      "t1": 58.689
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Actually, I noticed the records say 'no known allergies,' but sometimes people might not mention things they think aren't important. Have you ever had a reaction to any medications, especially sulfa antibiotics?",
+      "t0": 59.039,
+      "t1": 70.509
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Oh! Wait a minute... I had a rash once from some antibiotic. Was it sulfa? I think so. The doctor said it was an allergy, so I stopped taking that type since.",
+      "t0": 70.859,
+      "t1": 81.54
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Thank you for mentioning that. So, a rash reaction to sulfa antibiotics. We'll make sure to note that properly. Any other reactions?",
+      "t0": 81.89,
+      "t1": 89.228
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "No, that's the only one. I don't react to anything else.",
+      "t0": 89.578,
+      "t1": 93.293
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you eaten or drunk anything since midnight? We need to confirm you're NPO for surgery.",
+      "t0": 93.643,
+      "t1": 99.494
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "No, nothing since last night dinner. Just water for meds this morning, but that was hours ago.",
+      "t0": 99.844,
+      "t1": 105.557
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any previous anesthesia or surgeries?",
+      "t0": 105.906,
+      "t1": 109.111
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "Only once, a cataract surgery years ago. They gave me local anesthesia, I think. No problems then.",
+      "t0": 109.461,
+      "t1": 116.473
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Good to know. Lastly, how's your mobility before surgery? Can you walk with assistance?",
+      "t0": 116.823,
+      "t1": 122.071
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "Yes, with a walking stick. But the pain makes it hard, so I don't go out much now.",
+      "t0": 122.421,
+      "t1": 127.808
+    },
+    {
+      "seg_id": "s018",
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia as planned, with general as backup. I'll see you in the operating room shortly.",
+      "t0": 128.158,
+      "t1": 135.681
+    },
+    {
+      "seg_id": "s019",
+      "speaker": "PATIENT",
+      "text": "Alright, doctor. Thank you for explaining everything.",
+      "t0": 136.031,
+      "t1": 139.05
+    }
+  ]
+}

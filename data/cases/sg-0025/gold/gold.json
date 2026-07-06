@@ -1,0 +1,123 @@
+{
+  "questions": [
+    "Have there been any changes to your medications in the last year, particularly regarding acid suppression medications?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "40",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "radial artery catheter placed",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 mL normal saline bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "100",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, type 2 diabetes mellitus, chronic kidney disease stage 2, osteoarthritis (right hip), and benign prostatic hyperplasia.",
+    "Current medications: Amlodipine 5mg daily, Metformin 500mg twice daily, Insulin glargine 20 units daily, Furosemide 20mg as needed, Tamsulosin 0.4mg daily, Aspirin 75mg daily, Pantoprazole 40mg daily, Atorvastatin 20mg daily. Ranitidine was discontinued 6 months ago due to recall.",
+    "Allergy to penicillin (rash).",
+    "ASA-PS 3 (systemic disease not limiting activity) due to hypertension, diabetes, and chronic kidney disease.",
+    "Airway assessment: normal. Anesthesia plan: general anesthesia with spinal anesthesia as adjunct for intraoperative pain control."
+  ],
+  "handoff_claims": [
+    "Key history: Elective total hip replacement, hypertension, type 2 diabetes, chronic kidney disease, osteoarthritis, benign prostatic hyperplasia. Current medications include Pantoprazole (replaced Ranitidine), Aspirin, and Insulin. Penicillin allergy.",
+    "Intraoperative course: General anesthesia with spinal adjunct for pain control. No complications reported.",
+    "Anticipated issues: Postoperative pain management, monitoring for hypoglycemia (insulin use), fluid balance (furosemide as needed), and bleeding risk (aspirin use)."
+  ],
+  "distractors": [
+    "History of pneumonia in 2018, fully resolved with antibiotics",
+    "Fractured left radius 20 years ago, healed without complications",
+    "Discontinued medication: Enalapril for hypertension, stopped 2 years ago due to cough"
+  ]
+}

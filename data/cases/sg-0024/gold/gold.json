@@ -1,0 +1,142 @@
+{
+  "questions": [
+    "Have you stopped or changed any medications in the past year, especially those related to cardiovascular or antiplatelet therapy?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral IV line placed in left antecubital vein",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "line",
+      "value": "arterial line placed in right radial artery",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "1000 mL",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:17",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:17"
+      ]
+    },
+    {
+      "t": "08:17",
+      "category": "dose",
+      "value": "20",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#08:17"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to 85 beats per minute",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:22",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:22"
+      ]
+    },
+    {
+      "t": "08:22",
+      "category": "dose",
+      "value": "20",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:22"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, hyperlipidemia, type 2 diabetes mellitus, and gastroesophageal reflux disease.",
+    "Current medications: amlodipine 5mg daily, lisinopril 10mg daily, atorvastatin 40mg nightly, omeprazole 20mg daily, and aspirin 100mg daily (stopped).",
+    "Metformin was discontinued 6 months ago due to gastrointestinal side effects.",
+    "No known allergies.",
+    "ASA-PS classification is 3 due to multiple comorbidities including hypertension, hyperlipidemia, type 2 diabetes mellitus, and gastroesophageal reflux disease.",
+    "Airway assessment indicates normal airway with no anticipated difficulties; plan for in-line stabilization during surgery."
+  ],
+  "handoff_claims": [
+    "Key history includes hypertension, hyperlipidemia, type 2 diabetes mellitus, and gastroesophageal reflux disease.",
+    "Intraoperative course involved transurethral resection of the prostate under general anesthesia with in-line stabilization, with attention to bleeding risk and fluid balance.",
+    "Anticipated postoperative issues include potential hypotension from antihypertensive medications, hyperglycemia requiring monitoring, and aspiration risk due to GERD."
+  ],
+  "distractors": [
+    "Pneumonia (resolved 2018)",
+    "Distal radius fracture (right wrist, 2015)",
+    "Appendectomy (1985)"
+  ]
+}

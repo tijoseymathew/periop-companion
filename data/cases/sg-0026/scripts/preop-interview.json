@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I’m Dr. Liew, the anesthesiologist who’ll be taking care of you during your hernia surgery today. Let me go through some questions to ensure everything goes smoothly for you, okay?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. Yes, please ask anything. I want to make sure I’m ready for this."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and has it been causing you any issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, about six months already. It’s on the left side, and sometimes it bulges when I lift heavy things. No pain yet, but the doctor said better to fix it before it gets worse, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Absolutely. Now, let’s go through your medications. You’re on amlodipine for blood pressure, atorvastatin for cholesterol, metformin for diabetes, omeprazole for acid, and you stopped aspirin recently—is that correct?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, all correct. I take them every day except aspirin, which I stopped two weeks ago as the surgeon advised."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Now, allergies—your records say none, but I always double-check. Do you have any allergies to medications, especially antibiotics like penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, wait… actually, I think I had a reaction once. When I was young, I took penicillin for a infection and got a rash all over. But I didn’t think it was serious, so I never mentioned it here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. A rash from penicillin is important to note. I’ll update your records to reflect that allergy to avoid any issues during surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Have you had anything to eat or drink since midnight? We need to ensure your stomach is empty for the anesthesia."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I had my last meal last night and only sipped water this morning. Nothing else, I promise."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you ever had anesthesia before? Any previous surgeries or complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I’ve been lucky so far, just check-ups and minor things."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Lastly, how’s your overall energy and mobility? Can you manage daily activities like climbing stairs or walking without difficulty?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I’m still active. I walk every day and help my wife with the gardening. No problems there."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. We’ll make sure you’re comfortable and safe throughout the procedure. Any questions or concerns before we proceed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I’m ready. Thank you for explaining everything so clearly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You’re welcome, Mr. Tan. We’ll take good care of you. I’ll see you in the operating room shortly."
+    }
+  ]
+}

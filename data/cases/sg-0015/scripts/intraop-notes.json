@@ -1,0 +1,115 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "18-gauge IV placed in right antecubital fossa"
+    },
+    {
+      "t": "08:10",
+      "text": "administered 500 mL Ringer's lactate"
+    },
+    {
+      "t": "08:15",
+      "text": "blood pressure dropped to 90/60, gave 10 mL saline bolus"
+    },
+    {
+      "t": "08:20",
+      "text": "sevoflurane at 1.5% inhaled concentration"
+    },
+    {
+      "t": "08:25",
+      "text": "fentanyl 50 micrograms IV"
+    },
+    {
+      "t": "08:30",
+      "text": "heart rate increased to 110, gave 0.5 mg metoprolol"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "18-gauge IV placed in right antecubital fossa",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 mL Ringer's lactate",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "blood pressure dropped to 90/60, gave 10 mL saline bolus",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1.5",
+      "units": "%",
+      "provenance": []
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "heart rate increased to 110, gave 0.5 mg metoprolol",
+      "units": null,
+      "provenance": []
+    }
+  ]
+}

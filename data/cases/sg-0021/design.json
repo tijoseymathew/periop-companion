@@ -1,0 +1,71 @@
+{
+  "case_id": "sg-0021",
+  "persona_uuid": "ffd8f75c88be433d9241f974f7725962",
+  "surgery": "Elective knee arthroscopy for medial meniscectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with spinal for lower limb surgery",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Allergic rhinitis"
+  ],
+  "medications": [
+    {
+      "name": "Fluticasone nasal spray",
+      "dose": "1 spray each nostril daily",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Doxycycline",
+      "dose": "100mg",
+      "frequency": "once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No allergies recorded",
+    "truth": "Penicillin allergy",
+    "gold_question": "Do you have any allergies to medications or other substances?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Remote infection with no current respiratory issues"
+    },
+    {
+      "description": "Fractured wrist (healed) 10 years ago",
+      "why_irrelevant": "Old injury with full recovery, no ongoing issues"
+    },
+    {
+      "description": "History of acne treated with doxycycline (discontinued)",
+      "why_irrelevant": "Resolved dermatological condition, medication discontinued"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Fluticasone nasal spray",
+        "dose": "1 spray each nostril daily",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Doxycycline",
+        "dose": "100mg",
+        "frequency": "once daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "History of pneumonia resolved 5 years ago",
+      "Fractured wrist (healed) 10 years ago",
+      "History of acne treated with doxycycline (discontinued)"
+    ],
+    "prior_anesthesia": null
+  }
+}

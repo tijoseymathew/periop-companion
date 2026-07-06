@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I’m okay, but my knee is a bit painful."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "On a scale from 0 to 10, how would you rate the pain?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5. It’s manageable, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or feeling like you want to vomit?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I’m not feeling sick at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "How’s your throat? Any discomfort from the tube during surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit sore, but I can breathe fine. No problem."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything about the surgery itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I was out cold, I guess."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any other issues you’re concerned about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that’s all. Thanks for checking on me."
+    }
+  ]
+}

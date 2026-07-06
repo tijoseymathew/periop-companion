@@ -1,0 +1,104 @@
+{
+  "case_id": "sg-0016",
+  "persona_uuid": "b0a4afd0c5d94233a8b641c9301970ec",
+  "surgery": "Laparoscopic cholecystectomy for symptomatic gallstones",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with sevoflurane and rocuronium, multimodal analgesia (paracetamol, ketorolac, dexamethasone)",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension (controlled with medication)",
+    "Type 2 Diabetes Mellitus (HbA1c 7.2%)",
+    "Hyperlipidemia",
+    "Generalized anxiety disorder"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5 mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Metoprolol",
+      "dose": "25 mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20 mg",
+      "frequency": "once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No allergies recorded",
+    "truth": "Patient has a history of rash to penicillin",
+    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin or related drugs?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia (resolved 2018, no residual issues)",
+      "why_irrelevant": "Remote resolved infection, no impact on current anesthesia management"
+    },
+    {
+      "description": "Distal radius fracture (left wrist, 2015, fully healed)",
+      "why_irrelevant": "Old orthopedic injury with no functional deficit"
+    },
+    {
+      "description": "GERD (discontinued omeprazole 2022, symptoms resolved)",
+      "why_irrelevant": "Medication discontinued as condition resolved"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5 mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Metoprolol",
+        "dose": "25 mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia (2018)",
+      "Left wrist fracture (2015)",
+      "GERD (on omeprazole until 2022)"
+    ],
+    "prior_anesthesia": null
+  }
+}

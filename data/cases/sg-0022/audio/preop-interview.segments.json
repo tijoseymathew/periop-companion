@@ -1,0 +1,116 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I\u2019m Dr. Liew, the anesthesiologist who\u2019ll be looking after you today. I\u2019d like to go through some questions to make sure we\u2019re all set for your hernia surgery. Is that okay with you?",
+      "t0": 0.0,
+      "t1": 11.099
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I\u2019m ready. Let\u2019s get started lah.",
+      "t0": 11.449,
+      "t1": 15.164
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and have you noticed any changes recently?",
+      "t0": 15.514,
+      "t1": 22.805
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "It\u2019s been there for about a year, but it\u2019s gotten bigger and sometimes aches, especially when I lift things. That\u2019s why I\u2019m getting it fixed now.",
+      "t0": 23.155,
+      "t1": 31.84
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let\u2019s go through your medications. You\u2019re on amlodipine, lisinopril, atorvastatin, metformin, and paracetamol as needed. Aspirin was stopped recently, right?",
+      "t0": 32.19,
+      "t1": 44.403
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Yes, I stopped the aspirin a week ago like the surgeon advised. The rest I take daily\u2014amlodipine and lisinopril for blood pressure, atorvastatin for cholesterol, metformin for diabetes, and paracetamol if I have pain.",
+      "t0": 44.753,
+      "t1": 59.289
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, about allergies\u2014your records say \u2018no allergies documented,\u2019 but I always like to double-check. Do you have any history of allergic reactions to antibiotics, especially penicillin?",
+      "t0": 59.639,
+      "t1": 71.156
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Oh, yes! I had a bad reaction to penicillin years ago. I got a rash all over and hives, so I\u2019ve avoided it since. I think I mentioned it before, but maybe it wasn\u2019t written down properly.",
+      "t0": 71.506,
+      "t1": 83.395
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. We\u2019ll make sure to note that clearly. Have you eaten or drunk anything since midnight?",
+      "t0": 83.745,
+      "t1": 89.503
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No, I\u2019ve been fasting since 12am. Just a sip of water for my morning meds, but that was hours ago.",
+      "t0": 89.853,
+      "t1": 96.448
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Have you had anesthesia before? Any issues with it?",
+      "t0": 96.798,
+      "t1": 100.838
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Once, for a cataract surgery. I had a spinal then too, and it was fine. No problems at all.",
+      "t0": 101.188,
+      "t1": 107.225
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Good to know. Lastly, how\u2019s your overall health? Any shortness of breath, chest pain, or difficulty with daily activities?",
+      "t0": 107.575,
+      "t1": 115.098
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "I can walk and do most things, but my knees hurt sometimes from osteoarthritis. No breathing issues or dizziness, though.",
+      "t0": 115.448,
+      "t1": 122.6
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Thanks for sharing all that, Mr. Tan. We\u2019ll proceed with spinal anesthesia using bupivacaine and fentanyl, plus IV paracetamol and ondansetron as planned. Any questions for me?",
+      "t0": 122.95,
+      "t1": 133.585
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "No, doctor. I think that\u2019s all covered. Thank you for explaining everything so clearly.",
+      "t0": 133.935,
+      "t1": 138.904
+    }
+  ]
+}

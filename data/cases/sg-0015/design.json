@@ -1,0 +1,112 @@
+{
+  "case_id": "sg-0015",
+  "persona_uuid": "ee88f31cfe254508a7cf1c7d7b82f25e",
+  "surgery": "Laparoscopic cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with endotracheal intubation, balanced technique using sevoflurane, fentanyl, and rocuronium",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension",
+    "Hyperlipidemia",
+    "GERD"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metoprolol",
+      "dose": "50mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "nightly",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "BD",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Sulfa drugs (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Sulfa allergy (rash)",
+    "gold_question": "Have you ever had any allergic reactions to medications, especially antibiotics like sulfonamides?"
+  },
+  "distractors": [
+    {
+      "description": "Resolved pneumonia (2018)",
+      "why_irrelevant": "Fully recovered, no residual issues"
+    },
+    {
+      "description": "Left wrist fracture (2014)",
+      "why_irrelevant": "Healed without complications, full function restored"
+    },
+    {
+      "description": "Discontinued metformin (2022)",
+      "why_irrelevant": "Stopped due to normalized glucose levels, no current indication"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metoprolol",
+        "dose": "50mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "nightly",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "BD",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Hypertension",
+      "Hyperlipidemia",
+      "GERD",
+      "Resolved pneumonia (2018)",
+      "Left wrist fracture (2014)",
+      "Discontinued metformin (2022)"
+    ],
+    "prior_anesthesia": "Appendectomy under general anesthesia 15 years ago, no complications"
+  }
+}

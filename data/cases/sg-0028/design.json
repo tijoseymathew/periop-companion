@@ -1,0 +1,69 @@
+{
+  "case_id": "sg-0028",
+  "persona_uuid": "39a743d6fff04f0982a38850c66ffe3c",
+  "surgery": "Arthroscopic partial meniscectomy of the left knee",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with sevoflurane, vecuronium, and ultrasound-guided femoral nerve block for post-operative analgesia",
+  "asa_ps": 1,
+  "comorbidities": [
+    "Allergic rhinitis"
+  ],
+  "medications": [
+    {
+      "name": "Montasone nasal spray",
+      "dose": "1 spray each nostril",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "once daily",
+      "active": false
+    }
+  ],
+  "allergies": [],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Omeprazole 20mg once daily (active)",
+    "truth": "Omeprazole discontinued in 2022 after resolution of GERD symptoms",
+    "gold_question": "Can you confirm if you are still taking all the medications listed in your medical records?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia in 2019, resolved with antibiotics",
+      "why_irrelevant": "Remote infection, fully resolved, no current impact"
+    },
+    {
+      "description": "Fractured right wrist in 2017, healed without complications",
+      "why_irrelevant": "Old trauma, fully healed, no ongoing issues"
+    },
+    {
+      "description": "GERD diagnosed in 2021, resolved with lifestyle changes",
+      "why_irrelevant": "Condition resolved, no current symptoms or treatment needed"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Montasone nasal spray",
+        "dose": "1 spray each nostril",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia in 2019, resolved",
+      "Fractured right wrist in 2017, healed",
+      "GERD diagnosed in 2021, resolved"
+    ],
+    "prior_anesthesia": null
+  }
+}

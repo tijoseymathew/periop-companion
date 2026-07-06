@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today we'll be discussing your upcoming knee arthroscopy. Let me start by understanding your medical history. Can you tell me about your knee injury?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes. I twisted my knee during a football game last month. The doctor said I have a torn meniscus that needs fixing. Been having pain and swelling since then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, let's go through your medications. I see you're on Fluticasone nasal spray, Loratadine, and Montelukast. Have you made any changes to these since your last medical review?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, I stopped the Montelukast already. Think it was mid-2023. Still using the Fluticasone spray every day and taking Loratadine for my allergies."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for clarifying that. So Montelukast was discontinued in 2023, and you're continuing Fluticasone and Loratadine. Any known drug allergies?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, no allergies. I can take all medications without problems."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Have you eaten or drunk anything since midnight? We need to ensure you're NPO for general anesthesia."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, nothing since last night dinner. Just water this morning, but I stopped at 6am as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Any previous anesthesia experiences we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Once, for a minor hand surgery years ago. I woke up with a dry throat but no other issues. They used general anesthesia then too."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. Finally, how's your overall fitness? Can you walk upstairs or do you get short of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can climb stairs slowly, but long walks make my knee hurt. No breathing problems though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia using sevoflurane and rocuronium, plus a femoral nerve block for pain control. Your allergies and medications are updated in our system now."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sounds good, doctor. I'm ready to get this sorted."
+    }
+  ]
+}

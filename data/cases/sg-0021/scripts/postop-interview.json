@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit sore, sir. My knee is painful, but I expected that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Can you rate your pain for me? Out of 10, where 0 is no pain and 10 is the worst?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe 3 or 4 lah. It’s manageable, but I can feel it throbbing."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, and are you feeling nauseous or have vomited at all?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No nausea, thank goodness. My tummy’s fine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How’s your breathing? Any shortness of breath or throat discomfort?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing’s okay, but my throat’s a bit sore from the tube, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That’s common after general anesthesia. Do you remember anything about the surgery itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I went to sleep and woke up here. All a bit fuzzy."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That’s normal. Since you have allergic rhinitis, are you having any stuffiness or allergy symptoms now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nasal’s a bit blocked, but not too bad. Like usual lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we’ll keep an eye on that. Let the nurse know if you need anything for pain or discomfort."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Will do, doctor. Thanks for checking on me."
+    }
+  ]
+}

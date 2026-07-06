@@ -1,0 +1,88 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Mr Tan, how are you feeling now after the TURP procedure?",
+      "t0": 0.0,
+      "t1": 3.344
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "I\u2019m a bit uncomfortable, Doctor, but not in severe pain. More like a dull ache.",
+      "t0": 3.694,
+      "t1": 8.663
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "On a scale of 0 to 10, how would you rate your pain right now?",
+      "t0": 9.013,
+      "t1": 12.589
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "About 4, I\u2019d say. It\u2019s there, but the medication seems to be helping.",
+      "t0": 12.939,
+      "t1": 17.722
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Any nausea, dizziness, or breathing difficulties since waking up?",
+      "t0": 18.072,
+      "t1": 22.112
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "No nausea, but I felt a bit light-headed when I first opened my eyes. Breathing\u2019s fine though.",
+      "t0": 22.462,
+      "t1": 28.128
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything about the procedure itself while under spinal anesthesia?",
+      "t0": 28.478,
+      "t1": 32.379
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "I recall being awake and hearing voices, but it\u2019s all hazy. Not much detail, really.",
+      "t0": 32.729,
+      "t1": 37.883
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Given your hypertension, diabetes, and kidney condition, have you noticed any unusual symptoms like chest pain, blurred vision, or reduced urine output?",
+      "t0": 38.233,
+      "t1": 47.289
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No chest pain or vision issues. Urine came out normally when I voided earlier. Blood sugar was 7.8 this morning, which is usual for me.",
+      "t0": 47.639,
+      "t1": 56.463
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Good. We\u2019ll continue monitoring your vitals, blood sugar, and kidney function. Any other concerns before we move you to the ward?",
+      "t0": 56.813,
+      "t1": 63.872
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "No, Doctor. I\u2019m just glad the procedure\u2019s done. Thank you for checking on me.",
+      "t0": 64.222,
+      "t1": 69.144
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "case_id": "sg-0010",
+  "persona_uuid": "4ef7a27be9f1442a9097c67b3bbd707f",
+  "surgery": "Elective laparoscopic cholecystectomy for symptomatic cholelithiasis",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with Laryngeal Mask Airway (LMA), induction with propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites",
+  "asa_ps": 1,
+  "comorbidities": [],
+  "medications": [
+    {
+      "name": "ethinyl estradiol and norethindrone",
+      "dose": "as directed",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "amoxicillin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "penicillin"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No allergies recorded",
+    "truth": "Allergic to penicillin (rash)",
+    "gold_question": "Do you have any allergies to medications, particularly antibiotics like penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved in 2019",
+      "why_irrelevant": "Resolved infection, no ongoing issues"
+    },
+    {
+      "description": "Fractured left wrist in 2015, fully healed",
+      "why_irrelevant": "Remote injury, no current impairment"
+    },
+    {
+      "description": "Discontinued lisinopril for hypertension in 2020",
+      "why_irrelevant": "Hypertension resolved with lifestyle changes, no current medication"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "ethinyl estradiol and norethindrone",
+        "dose": "as directed",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "amoxicillin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "History of pneumonia resolved in 2019",
+      "Fractured left wrist in 2015, fully healed",
+      "Discontinued lisinopril for hypertension in 2020"
+    ],
+    "prior_anesthesia": null
+  }
+}

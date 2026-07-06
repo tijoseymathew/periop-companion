@@ -1,0 +1,125 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams, fentanyl forty micrograms"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "right radial artery line placed"
+    },
+    {
+      "t": "08:10",
+      "text": "five hundred milliliters normal saline bolus"
+    },
+    {
+      "t": "08:15",
+      "text": "mean arterial pressure dropped to fifty-five, treated with phenylephrine one hundred micrograms"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "40",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "radial artery catheter placed",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 mL normal saline bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "100",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    }
+  ]
+}

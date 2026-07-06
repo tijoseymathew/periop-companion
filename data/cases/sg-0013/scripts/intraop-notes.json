@@ -1,0 +1,134 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams, fentanyl fifty micrograms, succinylcholine one hundred milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "hypotension, BP ninety over sixty, treated with bolus and phenylephrine ten micrograms"
+    },
+    {
+      "t": "08:05",
+      "text": "20-gauge IV placed in right antecubital fossa, 500 mL crystalloid bolused"
+    },
+    {
+      "t": "08:10",
+      "text": "ET tube size seven point five, grade one view"
+    },
+    {
+      "t": "08:20",
+      "text": "tachycardia, heart rate ninety, treated with fentanyl twenty five micrograms"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "succinylcholine",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "100",
+      "units": "mg",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "event",
+      "value": "hypotension treated with fluid bolus and phenylephrine 10 mcg",
+      "units": null,
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "20-gauge IV in right antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "500",
+      "units": "mL",
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "ET tube size 7.5",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "tachycardia treated with fentanyl 25 mcg",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    }
+  ]
+}

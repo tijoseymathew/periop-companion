@@ -1,0 +1,103 @@
+{
+  "case_id": "sg-0019",
+  "persona_uuid": "d79f23d3c0494e1c98368a4ed463fade",
+  "surgery": "Laparoscopic cholecystectomy for symptomatic gallstones",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension",
+    "Hyperlipidemia",
+    "Gastroesophageal reflux disease (GERD)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin",
+    "Sulfa drugs"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "Allergies: Penicillin",
+    "truth": "Allergies: Penicillin, Sulfa drugs",
+    "gold_question": "Do you have any other allergies, particularly to sulfa-containing medications?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia (resolved in 2018)",
+      "why_irrelevant": "Resolved years ago, no current impact"
+    },
+    {
+      "description": "Fractured right wrist (2005)",
+      "why_irrelevant": "Remote injury, fully healed"
+    },
+    {
+      "description": "Irritable Bowel Syndrome (resolved 2012)",
+      "why_irrelevant": "Symptoms resolved, no current management needed"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Daily",
+        "active": false
+      }
+    ],
+    "allergies": [
+      "Penicillin"
+    ],
+    "past_history": [
+      "Hypertension",
+      "Hyperlipidemia",
+      "Gastroesophageal reflux disease (GERD)",
+      "Pneumonia (resolved 2018)",
+      "Fractured right wrist (2005)",
+      "Irritable Bowel Syndrome (resolved 2012)"
+    ],
+    "prior_anesthesia": null
+  }
+}

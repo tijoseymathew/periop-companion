@@ -1,0 +1,159 @@
+{
+  "questions": [
+    "Do you have any allergies to medications or other substances?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "60",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral line eighteen gauge",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "500",
+      "units": "ml",
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "blood pressure ninety over sixty, treated with fluid bolus and phenylephrine one hundred micrograms",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "heart rate one hundred ten, treated with fluid and adjusted anesthesia depth",
+      "units": null,
+      "provenance": [
+        "voice_notes#8"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes allergic rhinitis",
+    "Medications: Fluticasone nasal spray (1 spray each nostril daily), Doxycycline (100mg once daily, stopped)",
+    "Allergy to Penicillin documented",
+    "ASA-PS 2 with reason (allergic rhinitis)",
+    "Airway assessment and anesthetic plan documented"
+  ],
+  "handoff_claims": [
+    "Key history includes Penicillin allergy and allergic rhinitis",
+    "Intra-op course: General anesthesia with spinal for elective knee arthroscopy",
+    "Anticipated issues: Monitor for allergic reactions due to Penicillin allergy"
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Fractured wrist (healed) 10 years ago",
+    "History of acne treated with doxycycline (discontinued)"
+  ]
+}

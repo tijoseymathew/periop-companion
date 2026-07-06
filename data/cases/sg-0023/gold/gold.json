@@ -1,0 +1,141 @@
+{
+  "questions": [
+    "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "40",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "airway",
+      "value": "LMA grade 1",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "0.2",
+      "units": "mcg/kg/min",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "16G peripheral IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 mL lactated Ringer's",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "MAP 50 treated with phenylephrine 100 mcg bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "HR 90 treated with esmolol 10 mg bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#8"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History of hypertension, hyperlipidemia, and GERD",
+    "Current medications: Amlodipine 10mg daily, Atorvastatin 20mg nightly, Omeprazole 20mg daily; Metformin 500mg twice daily (discontinued)",
+    "Allergy to penicillin with rash",
+    "ASA Physical Status II due to controlled hypertension and hyperlipidemia",
+    "Airway plan: Laryngeal Mask Airway (LMA) with balanced anesthesia technique using intravenous anesthetic agents and neuromuscular blockade"
+  ],
+  "handoff_claims": [
+    "Key history: Hypertension, hyperlipidemia, GERD, penicillin allergy with rash, current medications (amlodipine, atorvastatin, omeprazole; metformin discontinued)",
+    "Intraoperative course: Elective laparoscopic cholecystectomy performed under general anesthesia with LMA, balanced technique using intravenous anesthetic agents and neuromuscular blockade",
+    "Anticipated postoperative issues: Monitor for residual neuromuscular blockade, continue omeprazole for GERD management, and blood pressure monitoring"
+  ],
+  "distractors": [
+    "History of pneumonia resolved in 2018",
+    "Right ankle fracture treated with casting in 2015",
+    "Prediabetes diagnosed in 2020, managed with metformin until 2022"
+  ]
+}

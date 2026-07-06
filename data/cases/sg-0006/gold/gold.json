@@ -1,0 +1,130 @@
+{
+  "questions": [
+    "Have you stopped or changed any medications since your last medical review?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "peripheral IV 20 gauge placed in left hand",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers one liter bolus",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "blood pressure dropped to 85/50",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:00",
+      "category": "fluid",
+      "value": "500 ml fluid bolus given",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:05",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:05",
+      "category": "dose",
+      "value": "100",
+      "units": "mcg",
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "event",
+      "value": "heart rate increased to 110",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "dose",
+      "value": "0.5",
+      "units": "mg",
+      "provenance": []
+    }
+  ],
+  "preop_note_claims": [
+    "Patient has a history of hypertension, type 2 diabetes mellitus, and hyperlipidemia.",
+    "Current medications: Amlodipine 5mg daily, Metoprolol 50mg daily, Metformin 500mg twice daily, Atorvastatin 20mg nightly, Aspirin 75mg daily.",
+    "Levothyroxine 50mcg daily was discontinued 1 year ago due to normalized thyroid function.",
+    "No known allergies.",
+    "ASA Physical Status III assigned due to controlled but significant comorbidities (hypertension, diabetes, hyperlipidemia).",
+    "Airway assessment indicates plan for general anesthesia with endotracheal intubation."
+  ],
+  "handoff_claims": [
+    "Key history includes hypertension, type 2 diabetes mellitus, and hyperlipidemia.",
+    "Intraoperative course: Laparoscopic cholecystectomy performed under general anesthesia with endotracheal intubation; expected postoperative course is routine.",
+    "Anticipated issues: Monitor for blood pressure fluctuations, blood glucose levels, and manage postoperative pain and nausea."
+  ],
+  "distractors": [
+    "History of pneumonia resolved in 2018",
+    "Left wrist fracture healed in 2010",
+    "Discontinued omeprazole in 2020 after resolution of peptic ulcer disease"
+  ]
+}

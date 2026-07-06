@@ -1,0 +1,110 @@
+{
+  "case_id": "sg-0013",
+  "persona_uuid": "d6e38fcfdc664775aed8c63f576019cc",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with endotracheal intubation and rapid sequence induction",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Hyperlipidemia",
+    "Obesity (BMI 32)",
+    "Gastroesophageal Reflux Disease (GERD)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Metoprolol",
+      "dose": "50mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "Daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Penicillin allergy (rash)",
+    "gold_question": "Do you have any allergies to medications, including antibiotics like penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Resolved community-acquired pneumonia (5 years ago, fully recovered)",
+      "why_irrelevant": "Remote, resolved infection not relevant to current surgery"
+    },
+    {
+      "description": "Remote left wrist fracture (10 years ago, fully healed)",
+      "why_irrelevant": "Old injury with no ongoing issues"
+    },
+    {
+      "description": "Discontinued Aspirin for primary prevention (stopped 2 years ago due to GI side effects)",
+      "why_irrelevant": "Medication discontinued for resolved indication"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Metoprolol",
+        "dose": "50mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "Daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Resolved pneumonia",
+      "Remote wrist fracture",
+      "Bell's palsy (left side, 2015, resolved)"
+    ],
+    "prior_anesthesia": null
+  }
+}

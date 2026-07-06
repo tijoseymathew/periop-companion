@@ -1,0 +1,67 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.647
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "fentanyl fifty micrograms",
+      "t0": 2.997,
+      "t1": 4.762
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "LMA placed, no difficulty",
+      "t0": 5.112,
+      "t1": 6.691
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "18-g IV in left hand, blood pressure cuff applied",
+      "t0": 7.041,
+      "t1": 10.756
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "normal saline two hundred fifty milliliters bolus",
+      "t0": 11.106,
+      "t1": 14.217
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "blood pressure drop to eighty over fifty, treated with ephedrine ten milligrams IV",
+      "t0": 14.567,
+      "t1": 19.49
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "transient tachycardia to ninety, treated with fluid bolus",
+      "t0": 19.84,
+      "t1": 23.648
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PROVIDER",
+      "text": "sevoflurane started at two percent",
+      "t0": 23.998,
+      "t1": 26.041
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "bupivacaine ten milligrams at port sites",
+      "t0": 26.391,
+      "t1": 29.038
+    }
+  ]
+}

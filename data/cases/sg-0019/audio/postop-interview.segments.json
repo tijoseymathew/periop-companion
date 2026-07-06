@@ -1,0 +1,102 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?",
+      "t0": 0.0,
+      "t1": 2.833
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Meh, still a bit groggy lah, but manageable. Got some pain here and there.",
+      "t0": 3.183,
+      "t1": 8.338
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Can you rate your pain on a scale of 0 to 10? And where exactly is it hurting?",
+      "t0": 8.688,
+      "t1": 13.378
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Around 4 or 5, mostly at the incision sites. Also got some gas pain here, like under my ribs.",
+      "t0": 13.728,
+      "t1": 20.601
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Any nausea or vomiting? Feeling sick to your stomach?",
+      "t0": 20.951,
+      "t1": 24.016
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "A bit queasy, but not throwing up. Throat also sore, like someone stuck a pipe down there.",
+      "t0": 24.366,
+      "t1": 30.171
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Breathing okay? Any shortness of breath or wheezing?",
+      "t0": 30.521,
+      "t1": 33.54
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Breathing fine, but throat still uncomfortable. Like heartburn burning, but not too bad.",
+      "t0": 33.89,
+      "t1": 39.648
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything from the operation itself?",
+      "t0": 39.998,
+      "t1": 42.506
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Nope, everything black out until now. Good thing, I guess!",
+      "t0": 42.856,
+      "t1": 46.989
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Any dizziness, chest pain, or headaches from your blood pressure or cholesterol?",
+      "t0": 47.339,
+      "t1": 51.24
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Blood pressure been okay, no chest pain. Just the usual heartburn, but I\u2019ll take my meds later.",
+      "t0": 51.59,
+      "t1": 57.859
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Alright, we\u2019ll keep monitoring you. Let the nurse know if pain or nausea gets worse, okay?",
+      "t0": 58.209,
+      "t1": 63.411
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Sure thing, doc. Thanks for checking on me.",
+      "t0": 63.761,
+      "t1": 66.361
+    }
+  ]
+}

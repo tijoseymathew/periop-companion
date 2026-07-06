@@ -1,0 +1,109 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim, the anesthesiologist who'll be taking care of you during your surgery today. Let me go through some questions to make sure we're all set for your laparoscopic cholecystectomy. First, can you tell me about your medical history?",
+      "t0": 0.0,
+      "t1": 13.746
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Sure, doctor. I have high blood pressure, diabetes, and high cholesterol. Also, my BMI is 32, so I'm quite heavy. But I can still walk and do my daily things, though I get tired faster lah.",
+      "t0": 14.096,
+      "t1": 27.192
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Let's go through your medications. What are you currently taking?",
+      "t0": 27.542,
+      "t1": 31.582
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "I take amlodipine 10mg every day for BP, metformin 500mg twice daily for sugar, and atorvastatin 20mg at night for cholesterol. Oh, and I stopped metoprolol 50mg daily two weeks ago, as per my doctor's advice.",
+      "t0": 31.932,
+      "t1": 48.837
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Alright. Do you have any allergies to medications, especially antibiotics or anesthetics?",
+      "t0": 49.187,
+      "t1": 53.97
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Ah, yes! I had a bad rash from sulfa antibiotics before. My skin turned all red and itchy, so I avoid that now. But my records say 'no known allergies'? Must be a mistake lah.",
+      "t0": 54.32,
+      "t1": 66.905
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. We'll make sure to note the sulfa allergy. Have you had any previous surgeries or anesthesia?",
+      "t0": 67.255,
+      "t1": 74.593
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "No, this is my first surgery. But I did have a minor procedure for my diabetes check-up last year, just local anesthesia, no issues.",
+      "t0": 74.943,
+      "t1": 84.138
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Good. Are you NPO? When was the last time you ate or drank anything?",
+      "t0": 84.488,
+      "t1": 88.621
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Yes, I stopped eating after 8pm last night. Only sipped some water for my morning meds, but that was hours ago.",
+      "t0": 88.971,
+      "t1": 95.565
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any other concerns or questions about the anesthesia or surgery?",
+      "t0": 95.915,
+      "t1": 100.42
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Just worried about the pain after surgery. Will I be able to manage it with the medications I'm on?",
+      "t0": 100.77,
+      "t1": 106.389
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "We'll ensure your pain is well-controlled. You'll have a multimodal approach with different medications, and we'll coordinate with your surgeon. Any other questions?",
+      "t0": 106.739,
+      "t1": 115.47
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "No, that's all. Thank you, doctor.",
+      "t0": 115.82,
+      "t1": 118.142
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "You're welcome, Mr. Tan. We'll take good care of you. I'll review your chart and see you in the holding area soon.",
+      "t0": 118.492,
+      "t1": 124.204
+    }
+  ]
+}

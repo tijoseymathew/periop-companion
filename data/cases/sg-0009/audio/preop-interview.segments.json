@@ -1,0 +1,130 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll go over some questions to prepare you for your laparoscopic gallbladder surgery. Let's start with your medical history. Can you tell me about your gallstones?",
+      "t0": 0.0,
+      "t1": 12.399
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Ah, yes. Been having belly pains on the right side, especially after eating. Ultrasound showed stones, so doctor said remove it laparoscopically.",
+      "t0": 12.749,
+      "t1": 21.991
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understood. Let's move to your medications. You're on atorvastatin, metformin, and omeprazole daily. What about simvastatin?",
+      "t0": 22.341,
+      "t1": 30.236
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Oh, I stopped that one already, doc. Was taking it at night, but surgeon said to stop before surgery, right?",
+      "t0": 30.586,
+      "t1": 36.716
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Correct. Now, about allergies. Your records say 'no allergies recorded,' but I like to double-check. Have you ever had reactions to antibiotics, especially penicillin?",
+      "t0": 37.066,
+      "t1": 47.608
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Actually, yes! When I took penicillin for a throat infection years ago, I got a bad rash all over. But it wasn't written down, I guess.",
+      "t0": 47.958,
+      "t1": 56.781
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. We'll update your records immediately. Any other allergies or reactions?",
+      "t0": 57.131,
+      "t1": 62.565
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "No, just that one. Never had problems with other antibiotics.",
+      "t0": 62.915,
+      "t1": 67.559
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Good. Let's discuss your health conditions. You have hypertension and hyperlipidemia. How are they managed?",
+      "t0": 67.909,
+      "t1": 74.596
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Blood pressure is okay with the meds, doc. Cholesterol too. But my weight... BMI 28, still struggling with that.",
+      "t0": 74.946,
+      "t1": 82.887
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Noted. Have you fasted since midnight as instructed?",
+      "t0": 83.237,
+      "t1": 86.674
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Yes, nothing since last night's dinner. Just water this morning for meds.",
+      "t0": 87.024,
+      "t1": 91.76
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Excellent. Any previous surgeries or anesthesia issues?",
+      "t0": 92.11,
+      "t1": 95.919
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Appendectomy when I was young. No problems then. Woke up fine.",
+      "t0": 96.269,
+      "t1": 100.495
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Great. Lastly, can you walk up stairs without difficulty?",
+      "t0": 100.845,
+      "t1": 103.91
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "Yeah, can climb stairs no problem. Just slower because of the weight, lah.",
+      "t0": 104.26,
+      "t1": 108.996
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll use general anesthesia with a laryngeal mask, propofol, remifentanil, and vecuronium as planned. Desflurane will maintain your anesthesia. Any questions?",
+      "t0": 109.346,
+      "t1": 120.538
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "No, doc. Just want to get this done and feel better.",
+      "t0": 120.888,
+      "t1": 123.768
+    }
+  ]
+}

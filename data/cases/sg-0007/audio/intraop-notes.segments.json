@@ -1,0 +1,53 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.879
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "tube in, grade one view",
+      "t0": 3.229,
+      "t1": 5.133
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "peripheral IV placed, 20 gauge",
+      "t0": 5.483,
+      "t1": 7.991
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "arterial line placed, radial artery",
+      "t0": 8.341,
+      "t1": 11.127
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "fluid bolus one hundred milliliters normal saline given",
+      "t0": 11.477,
+      "t1": 14.96
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "blood pressure dropped to 80 over 50, treated with phenylephrine ten micrograms",
+      "t0": 15.31,
+      "t1": 20.187
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "heart rate increased to 110, treated with esmolol twenty milligrams",
+      "t0": 20.537,
+      "t1": 25.459
+    }
+  ]
+}

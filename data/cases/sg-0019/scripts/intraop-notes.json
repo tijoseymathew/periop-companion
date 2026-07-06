@@ -1,0 +1,138 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "eighteen-gauge peripheral IV placed in left arm"
+    },
+    {
+      "t": "08:10",
+      "text": "administered one liter normal saline bolus"
+    },
+    {
+      "t": "08:15",
+      "text": "mean arterial pressure dropped to fifty-five, treated with phenylephrine ten milligrams IV"
+    },
+    {
+      "t": "08:20",
+      "text": "heart rate increased to ninety, atropine one milligram IV administered"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty milligrams",
+      "units": null,
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "eighteen-gauge peripheral IV placed in left arm",
+      "units": null,
+      "provenance": [
+        "notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one liter normal saline bolus",
+      "units": null,
+      "provenance": [
+        "notes#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty-five",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "ten milligrams",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to ninety",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one milligram",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    }
+  ]
+}

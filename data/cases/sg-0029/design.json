@@ -1,0 +1,81 @@
+{
+  "case_id": "sg-0029",
+  "persona_uuid": "5b2bfe8299ce4c1ab15877e7b0344cb2",
+  "surgery": "Elective knee arthroscopy for traumatic medial meniscus tear",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with sevoflurane and rocuronium, supplemented with a femoral nerve block for post-operative analgesia",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Allergic Rhinitis"
+  ],
+  "medications": [
+    {
+      "name": "Fluticasone",
+      "dose": "1 spray each nostril daily",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Loratadine",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Montelukast",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Montelukast 10mg daily (active), Fluticasone nasal spray (active), Loratadine 10mg daily (active)",
+    "truth": "Patient discontinued Montelukast in 2023 and now takes only Fluticasone and Loratadine",
+    "gold_question": "Have you made any changes to your medication regimen since your last medical review?"
+  },
+  "distractors": [
+    {
+      "description": "History of left wrist fracture at age 10, treated with cast, fully healed",
+      "why_irrelevant": "Remote injury with no residual issues"
+    },
+    {
+      "description": "Pneumonia in 2015, treated with antibiotics, fully resolved",
+      "why_irrelevant": "Resolved years ago"
+    },
+    {
+      "description": "Completed a course of amoxicillin for acne in 2022, no ongoing skin issues",
+      "why_irrelevant": "Acne resolved, no current treatment needed"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Montelukast",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Fluticasone",
+        "dose": "1 spray each nostril daily",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Loratadine",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Left wrist fracture at age 10, treated with cast, fully healed",
+      "Pneumonia in 2015, treated with antibiotics, fully resolved",
+      "Completed a course of amoxicillin for acne in 2022, no ongoing skin issues"
+    ],
+    "prior_anesthesia": null
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit sore, ah, but manageable. My tummy hurts a little where they made the cuts."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understandable. On a scale of 1 to 10, what would you say your pain is right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5? Not too bad, but I can feel it when I move."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, we’ll keep an eye on that. Any nausea or vomiting since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit of nausea, yes. Felt like I might throw up earlier, but it’s better now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Got it. We’ll give you something for that. How’s your breathing? Any discomfort in your throat or chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Throat’s a bit sore from the tube, I think. But I’m breathing fine, no trouble."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Do you remember anything from the operation itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, everything’s blank. Woke up here, so that’s good, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Since you have hypertension and GERD, any chest burning or high BP symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "BP’s been okay, but my throat feels a bit acidic, like usual. Not worse than before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We’ll monitor your BP and give meds for the acid. You’re doing well overall."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thanks, doctor. Hope to go home soon."
+    }
+  ]
+}

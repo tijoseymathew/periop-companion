@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I’m Dr. Liew, the anesthesiologist who’ll be taking care of you during your surgery today. Can I briefly go over some questions to make sure everything’s in order?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. Thank you for seeing me."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "First, can you tell me a bit about why you’re having this TURP surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. My prostate’s been enlarged for a while, and I’ve had trouble urinating—weak stream, frequent trips to the toilet at night. The urologist said it’s time to fix it before it gets worse."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Let’s go through your medications. Can you list what you’re currently taking?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Amlodipine 10mg once daily for blood pressure, lisinopril 10mg daily too. Metformin 500mg twice daily for diabetes, atorvastatin 20mg at night, omeprazole 20mg in the morning. Oh, and I stopped the aspirin 75mg as instructed a week ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Any allergies we should know about? The records say ‘no known allergies,’ but sometimes things get missed."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Hmm… I don’t think so. Wait, actually, years ago I had a rash when I took penicillin. Does that count?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Yes, that definitely counts! Can you describe the reaction? Was it a rash, swelling, or something else?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Just a red rash all over, like hives. It went away after stopping the medicine. No breathing problems or anything scary."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. I’ll update your records to note the penicillin allergy. It’s important we avoid that class of antibiotics."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. My wife made sure I fasted properly. Just sipped some water with my morning meds, but that was hours ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any previous anesthesia experiences we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "None, this is my first time. I’ve always been healthy until this prostate issue came up."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Lastly, how would you describe your energy levels and daily activities? Can you walk upstairs or do light chores?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I’m still active, lah. Walk 20 minutes most days, but I do get tired faster since the diabetes started. Still manage the garden and drive myself around."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. We’ll proceed with spinal anesthesia and local infiltration as planned. I’ll be with you throughout the surgery. Any questions before we begin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. Thank you for explaining everything so clearly."
+    }
+  ]
+}

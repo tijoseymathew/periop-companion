@@ -1,0 +1,68 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I’m Dr. Liew, the anesthesiologist who’ll be looking after you today. I’d like to go through some questions to make sure we’re all set for your hernia surgery. Is that okay with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I’m ready. Let’s get started lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and have you noticed any changes recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It’s been there for about a year, but it’s gotten bigger and sometimes aches, especially when I lift things. That’s why I’m getting it fixed now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let’s go through your medications. You’re on amlodipine, lisinopril, atorvastatin, metformin, and paracetamol as needed. Aspirin was stopped recently, right?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I stopped the aspirin a week ago like the surgeon advised. The rest I take daily—amlodipine and lisinopril for blood pressure, atorvastatin for cholesterol, metformin for diabetes, and paracetamol if I have pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, about allergies—your records say ‘no allergies documented,’ but I always like to double-check. Do you have any history of allergic reactions to antibiotics, especially penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, yes! I had a bad reaction to penicillin years ago. I got a rash all over and hives, so I’ve avoided it since. I think I mentioned it before, but maybe it wasn’t written down properly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. We’ll make sure to note that clearly. Have you eaten or drunk anything since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I’ve been fasting since 12am. Just a sip of water for my morning meds, but that was hours ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Have you had anesthesia before? Any issues with it?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Once, for a cataract surgery. I had a spinal then too, and it was fine. No problems at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to know. Lastly, how’s your overall health? Any shortness of breath, chest pain, or difficulty with daily activities?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk and do most things, but my knees hurt sometimes from osteoarthritis. No breathing issues or dizziness, though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for sharing all that, Mr. Tan. We’ll proceed with spinal anesthesia using bupivacaine and fentanyl, plus IV paracetamol and ondansetron as planned. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I think that’s all covered. Thank you for explaining everything so clearly."
+    }
+  ]
+}

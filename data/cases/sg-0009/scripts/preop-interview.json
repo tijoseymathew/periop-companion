@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll go over some questions to prepare you for your laparoscopic gallbladder surgery. Let's start with your medical history. Can you tell me about your gallstones?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes. Been having belly pains on the right side, especially after eating. Ultrasound showed stones, so doctor said remove it laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Let's move to your medications. You're on atorvastatin, metformin, and omeprazole daily. What about simvastatin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, I stopped that one already, doc. Was taking it at night, but surgeon said to stop before surgery, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Correct. Now, about allergies. Your records say 'no allergies recorded,' but I like to double-check. Have you ever had reactions to antibiotics, especially penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Actually, yes! When I took penicillin for a throat infection years ago, I got a bad rash all over. But it wasn't written down, I guess."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. We'll update your records immediately. Any other allergies or reactions?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just that one. Never had problems with other antibiotics."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Let's discuss your health conditions. You have hypertension and hyperlipidemia. How are they managed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Blood pressure is okay with the meds, doc. Cholesterol too. But my weight... BMI 28, still struggling with that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. Have you fasted since midnight as instructed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, nothing since last night's dinner. Just water this morning for meds."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Any previous surgeries or anesthesia issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Appendectomy when I was young. No problems then. Woke up fine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Lastly, can you walk up stairs without difficulty?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, can climb stairs no problem. Just slower because of the weight, lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll use general anesthesia with a laryngeal mask, propofol, remifentanil, and vecuronium as planned. Desflurane will maintain your anesthesia. Any questions?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doc. Just want to get this done and feel better."
+    }
+  ]
+}

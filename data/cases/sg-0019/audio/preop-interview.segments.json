@@ -1,0 +1,116 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I\u2019m Dr. Lim from the anesthesia team. Today, we\u2019ll discuss your upcoming surgery to ensure everything goes smoothly. Can you tell me about your current condition?",
+      "t0": 0.0,
+      "t1": 10.31
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I\u2019ve been having pain in my tummy, especially after eating. The scans showed gallstones, so they decided to remove the gallbladder laparoscopically. It\u2019s been bothering me for months lah.",
+      "t0": 10.66,
+      "t1": 23.338
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Let\u2019s go through your medications. What are you currently taking?",
+      "t0": 23.688,
+      "t1": 27.96
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "I take Amlodipine 10 mg every day for blood pressure, Atorvastatin 20 mg for cholesterol, and Omeprazole 20 mg for my acid reflux. Oh, and I stopped Lisinopril last week as instructed.",
+      "t0": 28.31,
+      "t1": 42.521
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Understood. Any allergies we should know about?",
+      "t0": 42.871,
+      "t1": 46.075
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Yes, I\u2019m allergic to penicillin. Had a bad rash from it once.",
+      "t0": 46.425,
+      "t1": 51.069
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Do you have any other allergies, particularly to sulfa-containing medications?",
+      "t0": 51.419,
+      "t1": 55.552
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Oh, right! I also can\u2019t take sulfa drugs. Took one for a infection before and broke out in hives. Forgot to mention that earlier.",
+      "t0": 55.902,
+      "t1": 64.958
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying. Have you eaten or drunk anything since midnight?",
+      "t0": 65.308,
+      "t1": 69.58
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No, Doctor. I stopped eating after 8 PM last night as instructed. Just sipped some water for my morning meds.",
+      "t0": 69.93,
+      "t1": 76.803
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had anesthesia before? Any reactions to it?",
+      "t0": 77.153,
+      "t1": 81.565
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I\u2019ve only had local anesthesia for minor things before.",
+      "t0": 81.915,
+      "t1": 87.627
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Alright. How\u2019s your overall energy and activity level? Can you walk or climb stairs without difficulty?",
+      "t0": 87.977,
+      "t1": 94.34
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "I\u2019m pretty active, Doctor. I walk daily and can climb stairs without problems. The pain from the gallstones is the main issue now.",
+      "t0": 94.69,
+      "t1": 102.445
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Excellent. We\u2019ll proceed with general anesthesia and intubation as planned. I\u2019ll note your allergies and medication changes. Any questions for me?",
+      "t0": 102.795,
+      "t1": 111.944
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "No, Doctor. I think that\u2019s all. Thank you for explaining everything.",
+      "t0": 112.294,
+      "t1": 116.287
+    }
+  ]
+}

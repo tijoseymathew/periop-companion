@@ -1,0 +1,210 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "Spinal anesthesia administered with bupivacaine twenty-five milligrams and fentanyl twenty-five micrograms"
+    },
+    {
+      "t": "08:05",
+      "text": "Eighteen-gauge IV line placed in left antecubital fossa"
+    },
+    {
+      "t": "08:10",
+      "text": "Airway management: spontaneous breathing, SpO2 ninety-eight percent"
+    },
+    {
+      "t": "08:15",
+      "text": "Administered IV paracetamol one gram and ondansetron four milligrams"
+    },
+    {
+      "t": "08:30",
+      "text": "Hypotension noted, mean arterial pressure sixty-five mmHg, treated with five hundred ml fluid bolus and ten mg phenylephrine IV"
+    },
+    {
+      "t": "08:45",
+      "text": "Surgery completed, patient stable, no residual block"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "18-gauge IV cannula",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "left antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "spontaneous breathing",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "98",
+      "units": "%",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "paracetamol",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "1",
+      "units": "g",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "ondansetron",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "4",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "hypotension noted",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "65",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "fluid",
+      "value": "500",
+      "units": "ml",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "surgery completed",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "patient stable",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "no residual block",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    }
+  ]
+}

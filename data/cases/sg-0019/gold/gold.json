@@ -1,0 +1,132 @@
+{
+  "questions": [
+    "Do you have any other allergies, particularly to sulfa-containing medications?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty milligrams",
+      "units": null,
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "eighteen-gauge peripheral IV placed in left arm",
+      "units": null,
+      "provenance": [
+        "notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one liter normal saline bolus",
+      "units": null,
+      "provenance": [
+        "notes#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty-five",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "ten milligrams",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to ninety",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one milligram",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, hyperlipidemia, and gastroesophageal reflux disease (GERD).",
+    "Current medications: Amlodipine 10 mg daily, Atorvastatin 20 mg daily, Omeprazole 20 mg daily; Lisinopril 10 mg daily (stopped).",
+    "Allergies: Penicillin and Sulfa drugs.",
+    "ASA Physical Status 2 due to controlled hypertension and hyperlipidemia.",
+    "Airway assessment: Normal; plan for general anesthesia with endotracheal intubation."
+  ],
+  "handoff_claims": [
+    "Key history: Hypertension, hyperlipidemia, GERD, allergies to Penicillin and Sulfa drugs.",
+    "Intra-op course: Elective laparoscopic cholecystectomy performed under general anesthesia with endotracheal intubation; expected smooth emergence and extubation.",
+    "Anticipated issues: Postoperative nausea/vomiting risk due to GERD; continue home medications (Amlodipine, Atorvastatin, Omeprazole) postoperatively; monitor blood pressure."
+  ],
+  "distractors": [
+    "Pneumonia (resolved in 2018)",
+    "Fractured right wrist (2005)",
+    "Irritable Bowel Syndrome (resolved 2012)"
+  ]
+}

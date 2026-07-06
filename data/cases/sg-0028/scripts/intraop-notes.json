@@ -1,0 +1,164 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:03",
+      "text": "sevoflurane started"
+    },
+    {
+      "t": "08:04",
+      "text": "vecuronium seven milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "crystalloid infusion started at one hundred fifty mL per hour"
+    },
+    {
+      "t": "08:10",
+      "text": "ultrasound-guided femoral nerve block performed"
+    },
+    {
+      "t": "08:15",
+      "text": "mean arterial pressure dropped to fifty-five mmHg, treated with intravenous fluids and ephedrine ten milligrams"
+    },
+    {
+      "t": "08:25",
+      "text": "heart rate increased to one hundred twenty beats per minute, treated with intravenous metoprolol five milligrams"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed",
+      "units": null,
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade 1",
+      "units": null,
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "notes#2"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": null,
+      "provenance": [
+        "notes#3"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "7",
+      "units": "mg",
+      "provenance": [
+        "notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "crystalloid infusion started",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "150",
+      "units": "mL/hour",
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "femoral nerve block performed (ultrasound-guided)",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg",
+      "units": null,
+      "provenance": [
+        "notes#6"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "treated with intravenous fluids and ephedrine 10 mg",
+      "units": null,
+      "provenance": [
+        "notes#6"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "heart rate increased to 120 beats per minute",
+      "units": null,
+      "provenance": [
+        "notes#7"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "treated with intravenous metoprolol 5 mg",
+      "units": null,
+      "provenance": [
+        "notes#7"
+      ]
+    }
+  ]
+}

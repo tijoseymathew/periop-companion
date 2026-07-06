@@ -1,0 +1,151 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, I'm Dr. Tan from the anesthesia team. I'll be taking care of you during your surgery today. Let me go through some questions to make sure we're all set for your laparoscopic cholecystectomy.",
+      "t0": 0.0,
+      "t1": 10.96
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm ready when you are.",
+      "t0": 11.31,
+      "t1": 13.818
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Great. Can you tell me a bit about why you're having this surgery?",
+      "t0": 14.168,
+      "t1": 17.418
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Sure. I've been having pain on my right side, especially after eating. The scans showed gallstones, and the doctor said it's best to remove the gallbladder laparoscopically.",
+      "t0": 17.768,
+      "t1": 27.614
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medical history. You have high blood pressure, high cholesterol, and anxiety, right?",
+      "t0": 27.964,
+      "t1": 35.719
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Yes, lah. Been on meds for all of them for years now.",
+      "t0": 36.069,
+      "t1": 39.32
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "What medications are you currently taking?",
+      "t0": 39.67,
+      "t1": 41.76
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Amlodipine once daily for BP, Atorvastatin at night for cholesterol, Sertraline for anxiety. Oh, and I used to take Omeprazole for acid reflux, but I stopped that three months ago when the symptoms went away.",
+      "t0": 42.11,
+      "t1": 56.088
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Thanks for mentioning that. Let me check your records... it says here you're still on Omeprazole. Can you confirm if you're still taking all the medications listed here?",
+      "t0": 56.438,
+      "t1": 65.633
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No, Doctor. Like I said, I stopped the Omeprazole three months back. My GERD got better, so I didn't need it anymore. The rest are still going strong, though.",
+      "t0": 65.983,
+      "t1": 75.317
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Appreciate the clarification. Any allergies to medications or other substances?",
+      "t0": 75.667,
+      "t1": 80.404
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "None that I know of, Doctor.",
+      "t0": 80.754,
+      "t1": 82.194
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had any previous surgeries or anesthesia?",
+      "t0": 82.544,
+      "t1": 85.934
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Nope, this is my first time. Never been under general anesthesia before.",
+      "t0": 86.284,
+      "t1": 91.16
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Alright. How about your fasting status? When was your last meal or drink?",
+      "t0": 91.51,
+      "t1": 95.875
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "I stopped eating from midnight last night, as instructed. Just had a sip of water with my morning meds around 6 AM.",
+      "t0": 96.225,
+      "t1": 103.006
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Finally, how's your overall energy and mobility? Can you walk or climb stairs without issues?",
+      "t0": 103.356,
+      "t1": 111.668
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "Yeah, no problems there. I walk 20 minutes most days and can climb stairs without getting short of breath.",
+      "t0": 112.018,
+      "t1": 118.102
+    },
+    {
+      "seg_id": "s018",
+      "speaker": "PROVIDER",
+      "text": "Excellent. We'll be using general anesthesia with an LMA and sevoflurane for your surgery. Any questions for me?",
+      "t0": 118.452,
+      "t1": 125.232
+    },
+    {
+      "seg_id": "s019",
+      "speaker": "PATIENT",
+      "text": "No, Doctor. You've explained everything clearly. I'm ready to proceed.",
+      "t0": 125.582,
+      "t1": 129.808
+    },
+    {
+      "seg_id": "s020",
+      "speaker": "PROVIDER",
+      "text": "Great. We'll get you set up shortly. Take a deep breath and relax \u2013 we've got you covered.",
+      "t0": 130.158,
+      "t1": 134.849
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit sore, but I think it's manageable. The pain is there, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, on a scale of 1 to 10, what would you say your pain is right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 3 or 4. It's more like a dull ache, not sharp."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any nausea or feeling like you might be sick? Sometimes the anesthesia can cause that."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little queasy, but I haven't vomited. I'm hoping it stays that way."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. How's your breathing? Any discomfort in your throat or chest from the airway tube?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "My throat is a bit sore, but I can breathe fine. No wheezing or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything about the surgery itself? Sometimes patients have fuzzy memories after anesthesia."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I remember waking up here, but the rest is a blur. Is that normal?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Yes, that's typical. Since you have GERD, have you had any heartburn or acid reflux since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Actually, yes. There's a bit of burning in my chest. Not too bad, but it's there."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll keep an eye on that. For your diabetes, have you checked your blood sugar since the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not yet, but I feel okay. No shaking or sweating, so I think it's stable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll get you set up with some anti-nausea meds and monitor your blood sugar closely. Rest for now, and we'll transition you to oral painkillers soon."
+    }
+  ]
+}

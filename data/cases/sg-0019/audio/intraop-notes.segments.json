@@ -1,0 +1,46 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.833
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "tube in, grade one view",
+      "t0": 3.183,
+      "t1": 4.901
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "eighteen-gauge peripheral IV placed in left arm",
+      "t0": 5.251,
+      "t1": 8.502
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "administered one liter normal saline bolus",
+      "t0": 8.852,
+      "t1": 11.731
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "mean arterial pressure dropped to fifty-five, treated with phenylephrine ten milligrams IV",
+      "t0": 12.081,
+      "t1": 17.329
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "heart rate increased to ninety, atropine one milligram IV administered",
+      "t0": 17.679,
+      "t1": 21.719
+    }
+  ]
+}

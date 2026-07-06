@@ -1,0 +1,60 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "induction propofol one hundred twenty milligrams",
+      "t0": 0.0,
+      "t1": 2.74
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PROVIDER",
+      "text": "LMA placed, size four, good seal",
+      "t0": 3.09,
+      "t1": 5.551
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "mean arterial pressure dropped to fifty-five, atropine one milligram given",
+      "t0": 5.901,
+      "t1": 10.499
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PROVIDER",
+      "text": "remifentanil infusion started at zero point five mcg/kg/min",
+      "t0": 10.849,
+      "t1": 16.143
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "18-gauge IV access established, blood loss minimal",
+      "t0": 16.493,
+      "t1": 20.115
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PROVIDER",
+      "text": "vecuronium thirty milligrams given for muscle relaxation",
+      "t0": 20.465,
+      "t1": 23.902
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "crystalloid bolus one thousand mL given",
+      "t0": 24.252,
+      "t1": 27.131
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PROVIDER",
+      "text": "heart rate increased to one twenty, labetalol ten milligrams IV administered",
+      "t0": 27.481,
+      "t1": 32.079
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "questions": [
+    "Have you ever had an allergic reaction to any medications, particularly sulfa antibiotics?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "50",
+      "units": "µg",
+      "provenance": [
+        "notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "succinylcholine",
+      "units": null,
+      "provenance": [
+        "notes#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "100",
+      "units": "mg",
+      "provenance": [
+        "notes#2"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "endotracheal tube placed",
+      "units": null,
+      "provenance": [
+        "notes#3"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "notes#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "arterial line placed",
+      "units": null,
+      "provenance": [
+        "notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "notes#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure thirty five",
+      "units": null,
+      "provenance": [
+        "notes#6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "notes#6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1",
+      "units": "mg",
+      "provenance": [
+        "notes#6"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "notes#7"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "20",
+      "units": "µg",
+      "provenance": [
+        "notes#7"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis (knee)",
+    "Medications listed with status: Amlodipine 5mg once daily (continued), Metformin 500mg twice daily (continued), Glipizide 5mg once daily (continued), Atorvastatin 20mg once daily (continued), Omeprazole 20mg once daily (continued), Aspirin 75mg once daily (discontinued)",
+    "Allergy to sulfa drugs documented with reaction (rash)",
+    "ASA-PS classification is 3 due to multiple comorbidities (hypertension, diabetes mellitus, hyperlipidemia)",
+    "Anesthesia plan includes spinal anesthesia with general anesthesia as backup"
+  ],
+  "handoff_claims": [
+    "Key history includes sulfa allergy (rash), hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis",
+    "Intraoperative course: Elective left total knee arthroplasty performed under spinal anesthesia with general anesthesia as backup",
+    "Anticipated postoperative issues include pain management, monitoring for infection or deep vein thrombosis, and management of glucose levels and blood pressure"
+  ],
+  "distractors": [
+    "Pneumonia resolved in 2018",
+    "Left wrist fracture in 2015, fully healed",
+    "Aspirin discontinued in 2021 due to resolved indication"
+  ]
+}

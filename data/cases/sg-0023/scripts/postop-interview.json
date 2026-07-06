@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Eh, still a bit groggy, but okay lah. Got some pain here at the tummy, you know?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understandable. Can you rate the pain for me, like on a scale of 1 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5? Not too bad, but I can feel it when I move."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we’ll manage that with some meds. Any nausea or feeling like you want to vomit?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No nausea, but my throat got a bit sore. Like something stuck there?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That’s from the LMA tube during surgery. Should ease up soon. Breathing okay otherwise?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, breathing’s fine. Just a little discomfort when I cough."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any memory of the operation itself? Sometimes people have bits they recall."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, all black out. Woke up just now like that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Since you’ve got GERD, any acid reflux or chest discomfort post-op?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. Stomach feels okay, just the usual tummy ache from surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. We’ll keep an eye on your BP and lipids as usual. Any other concerns?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, all good. Thanks for checking on me."
+    }
+  ]
+}

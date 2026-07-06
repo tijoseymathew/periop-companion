@@ -1,0 +1,68 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Madam Tan. I'm Dr. Lim from the anesthesia team. I'll be looking after you during your surgery today. Let me go through some questions to make sure everything's in order, okay?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I'm ready."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Can you tell me briefly why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've been having bad stomach pains on the right side, especially after eating. The scans showed gallstones, so they want to remove the gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Are you currently taking any medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes. I take combined oral contraceptive pills—ethinyl estradiol and norethindrone—every day. And I was on amoxicillin 500mg twice daily for a chest infection, but I stopped that two days ago as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Do you have any allergies to medications, especially antibiotics like penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, yes! I had a bad rash all over my body once when I took penicillin for a tooth infection. It was terrible, so I avoid all penicillin now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Important to know. Have you eaten or drunk anything since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I had my last sip of water at 7 a.m., like the nurse instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had any anesthesia before?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, once for a hernia repair. I woke up fine, just a bit sleepy. No problems at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Lastly, are you able to carry out your daily activities without difficulty?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Mostly, lah. The gallbladder pains come and go, but I can still walk, climb stairs, and do housework unless it's a bad day."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Madam Tan. We'll proceed with general anesthesia using a Laryngeal Mask Airway as planned. You'll get propofol and fentanyl for induction, sevoflurane for maintenance, and local anesthesia at the port sites. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I'm all set."
+    }
+  ]
+}

@@ -5,112 +5,112 @@
       "speaker": "PROVIDER",
       "text": "Good morning, Mr Tan. I'm Dr Liew, the anesthesiologist who'll be taking care of you today. Let me go through some questions to make sure we're all set for your hernia surgery. First, can you tell me a bit about your hernia and why you're having this surgery?",
       "t0": 0.0,
-      "t1": 13.932
+      "t1": 13.328
     },
     {
       "seg_id": "s001",
       "speaker": "PATIENT",
       "text": "Morning, doc. This hernia on my left side has been bulging for almost a year now. It doesn't hurt much, but my surgeon said it's better to fix it before it gets worse. I had a similar one on the right side done ten years back, no problems then.",
-      "t0": 14.282,
-      "t1": 29.003
+      "t0": 13.678,
+      "t1": 28.167
     },
     {
       "seg_id": "s002",
       "speaker": "PROVIDER",
       "text": "Thank you. Let's talk about your medications. I see you're on quite a few. Can you list them out for me, including doses and how often you take them?",
-      "t0": 29.353,
-      "t1": 37.573
+      "t0": 28.517,
+      "t1": 37.109
     },
     {
       "seg_id": "s003",
       "speaker": "PATIENT",
       "text": "Sure. I take amlodipine 10mg every morning for blood pressure, metoprolol 50mg twice daily for my heart rhythm, metformin 500mg three times a day for diabetes, glimepiride 4mg daily, atorvastatin 20mg at night, digoxin 0.125mg daily, and warfarin 5mg every evening. Oh, and enalapril... wait, I stopped that one already.",
-      "t0": 37.923,
-      "t1": 64.533
+      "t0": 37.459,
+      "t1": 63.512
     },
     {
       "seg_id": "s004",
       "speaker": "PROVIDER",
       "text": "You mentioned enalapril. The records show it's still active, but you stopped it? Can you tell me when and why you discontinued it?",
-      "t0": 64.883,
-      "t1": 71.896
+      "t0": 63.862,
+      "t1": 70.781
     },
     {
       "seg_id": "s005",
       "speaker": "PATIENT",
       "text": "Ah yes, doc. I stopped enalapril about six months ago because of this terrible dry cough that wouldn't go away. My GP said it's a common side effect, so we switched me to amlodipine instead. I forgot to update the hospital records properly, I think.",
-      "t0": 72.246,
-      "t1": 87.71
+      "t0": 71.131,
+      "t1": 86.642
     },
     {
       "seg_id": "s006",
       "speaker": "PROVIDER",
       "text": "Thank you for clarifying that. Any known allergies to medications or other substances?",
-      "t0": 88.06,
-      "t1": 92.983
+      "t0": 86.992,
+      "t1": 91.775
     },
     {
       "seg_id": "s007",
       "speaker": "PATIENT",
       "text": "Yes, I'm allergic to penicillin. Got a bad rash the one time I took it as a young man. Never touched it since.",
-      "t0": 93.333,
-      "t1": 100.81
+      "t0": 92.125,
+      "t1": 99.463
     },
     {
       "seg_id": "s008",
       "speaker": "PROVIDER",
       "text": "Understood. Have you fasted as instructed before surgery? Nothing by mouth after midnight?",
-      "t0": 101.16,
-      "t1": 107.94
+      "t0": 99.813,
+      "t1": 105.989
     },
     {
       "seg_id": "s009",
       "speaker": "PATIENT",
       "text": "Yes, doc. I had my last sip of water at 6am. My wife made sure I didn't sneak any breakfast, haha!",
-      "t0": 108.29,
-      "t1": 115.116
+      "t0": 106.339,
+      "t1": 113.352
     },
     {
       "seg_id": "s010",
       "speaker": "PROVIDER",
       "text": "Excellent. You mentioned a previous hernia surgery. Did you have any anesthesia complications then?",
-      "t0": 115.466,
-      "t1": 121.736
+      "t0": 113.702,
+      "t1": 119.414
     },
     {
       "seg_id": "s011",
       "speaker": "PATIENT",
       "text": "No issues at all. They gave me spinal anesthesia too, and I was awake but sleepy through it. Recovered fine.",
-      "t0": 122.086,
-      "t1": 129.238
+      "t0": 119.764,
+      "t1": 126.637
     },
     {
       "seg_id": "s012",
       "speaker": "PROVIDER",
       "text": "Great. How about your overall fitness? Can you walk up a flight of stairs without getting short of breath?",
-      "t0": 129.587,
-      "t1": 135.253
+      "t0": 126.987,
+      "t1": 132.095
     },
     {
       "seg_id": "s013",
       "speaker": "PATIENT",
       "text": "I can manage 2-3 flights slowly, but I do get a bit winded. My diabetes and heart condition slow me down a little, but I'm still independent with daily activities.",
-      "t0": 135.603,
-      "t1": 146.517
+      "t0": 132.445,
+      "t1": 143.405
     },
     {
       "seg_id": "s014",
       "speaker": "PROVIDER",
       "text": "Thank you for all that information. We'll proceed with spinal anesthesia using bupivacaine and fentanyl, plus some propofol to keep you relaxed. Your blood pressure medications and warfarin management have been reviewed with the surgical team. Any questions for me?",
-      "t0": 146.866,
-      "t1": 160.845
+      "t0": 143.755,
+      "t1": 158.662
     },
     {
       "seg_id": "s015",
       "speaker": "PATIENT",
       "text": "No questions, doc. Just want to get this done and recover smoothly. Thanks for explaining everything so clearly.",
-      "t0": 161.195,
-      "t1": 167.743
+      "t0": 159.012,
+      "t1": 165.7
     }
   ]
 }

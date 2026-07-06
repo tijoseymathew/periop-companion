@@ -1,0 +1,129 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "16-gauge line placed in right antecubital vein"
+    },
+    {
+      "t": "08:10",
+      "text": "crystalloid two thousand milliliters administered"
+    },
+    {
+      "t": "08:30",
+      "text": "blood pressure dropped to 85 over 50, gave ephedrine ten milligrams IV"
+    },
+    {
+      "t": "09:15",
+      "text": "blood pressure up to 160 over 90, gave labetalol twenty milligrams IV"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "note:1#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "note:1#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed, grade one view",
+      "units": null,
+      "provenance": [
+        "note:2#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "16-gauge IV line placed in right antecubital vein",
+      "units": null,
+      "provenance": [
+        "note:3#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "crystalloid",
+      "units": "2000 ml",
+      "provenance": [
+        "note:4#4"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "hypotension (85/50 mmHg)",
+      "units": null,
+      "provenance": [
+        "note:5#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "ephedrine",
+      "units": null,
+      "provenance": [
+        "note:5#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "note:5#5"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "event",
+      "value": "hypertension (160/90 mmHg)",
+      "units": null,
+      "provenance": [
+        "note:6#6"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "note:6#6"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "20",
+      "units": "mg",
+      "provenance": [
+        "note:6#6"
+      ]
+    }
+  ]
+}

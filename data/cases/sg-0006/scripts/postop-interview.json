@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Morning, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Got some pain here, but not too bad lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "On a scale of 0 to 10, what’s your pain level?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe 5? It’s there, but I can bear it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or feeling like you’ll vomit?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Stomach’s a bit upset, but no throwing up yet."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Airway okay? Any sore throat or breathing trouble?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Throat sore a little, but breathing’s fine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Remember anything from the OR?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, everything’s blank. Woke up here only."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We’re watching your BP and sugar levels. Any worries?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "BP’s been okay, sugar’s stable. Thanks for checking."
+    }
+  ]
+}

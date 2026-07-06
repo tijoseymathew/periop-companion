@@ -1,0 +1,159 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:00",
+      "text": "fentanyl fifty micrograms"
+    },
+    {
+      "t": "08:00",
+      "text": "rocuronium forty milligrams"
+    },
+    {
+      "t": "08:00",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "remifentanil infusion started at zero point two mcg per kg per minute"
+    },
+    {
+      "t": "08:10",
+      "text": "sixteen gauge peripheral IV placed"
+    },
+    {
+      "t": "08:10",
+      "text": "five hundred milliliters of lactated ringer's administered"
+    },
+    {
+      "t": "08:05",
+      "text": "mean arterial pressure dropped to fifty, phenylephrine one hundred micrograms bolus"
+    },
+    {
+      "t": "08:20",
+      "text": "heart rate increased to ninety, esmolol ten milligrams bolus"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "40",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "airway",
+      "value": "LMA grade 1",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "0.2",
+      "units": "mcg/kg/min",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "16G peripheral IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 mL lactated Ringer's",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "MAP 50 treated with phenylephrine 100 mcg bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "HR 90 treated with esmolol 10 mg bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes#8"
+      ]
+    }
+  ]
+}

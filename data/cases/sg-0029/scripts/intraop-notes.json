@@ -1,0 +1,125 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "20G IV in left hand, 500ml LR running"
+    },
+    {
+      "t": "08:30",
+      "text": "BP dropped to 80/50, ephedrine 10mg bolus"
+    },
+    {
+      "t": "08:45",
+      "text": "HR up to 110, labetalol 5mg IV"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "20G IV in left hand",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500ml LR",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "BP dropped to 80/50",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "ephedrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "HR up to 110",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    }
+  ]
+}

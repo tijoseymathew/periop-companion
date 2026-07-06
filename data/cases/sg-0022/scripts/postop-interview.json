@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi Mr Tan, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Okay lah, a bit sore but manageable. No major pain one."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "What would you say your pain level is on a scale of 1 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe 3 or 4? The incision area got some throbbing, but the paracetamol seems to help."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or vomiting? We gave you ondansetron to prevent that."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, thank God. Stomach is fine, no dizziness or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Breathing comfortable? No shortness of breath or airway issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is okay. Spinal anesthesia made me a bit worried, but I can breathe freely now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Did you experience any awareness or discomfort during the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I was out cold. Woke up only when they moved me to recovery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Your blood pressure and sugar levels are stable. Any knee pain affecting your mobility?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Knees are stiff as usual, but not worse than before. Can bend them slowly."
+    }
+  ]
+}

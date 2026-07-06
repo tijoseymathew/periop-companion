@@ -1,0 +1,88 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, I'm Dr. Tan from the anesthesia team. I'll be taking care of you during your surgery today. Let me go through some questions to make sure we're all set for your laparoscopic cholecystectomy."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm ready when you are."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Can you tell me a bit about why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've been having pain on my right side, especially after eating. The scans showed gallstones, and the doctor said it's best to remove the gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medical history. You have high blood pressure, high cholesterol, and anxiety, right?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, lah. Been on meds for all of them for years now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "What medications are you currently taking?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Amlodipine once daily for BP, Atorvastatin at night for cholesterol, Sertraline for anxiety. Oh, and I used to take Omeprazole for acid reflux, but I stopped that three months ago when the symptoms went away."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for mentioning that. Let me check your records... it says here you're still on Omeprazole. Can you confirm if you're still taking all the medications listed here?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. Like I said, I stopped the Omeprazole three months back. My GERD got better, so I didn't need it anymore. The rest are still going strong, though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Appreciate the clarification. Any allergies to medications or other substances?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "None that I know of, Doctor."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had any previous surgeries or anesthesia?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, this is my first time. Never been under general anesthesia before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright. How about your fasting status? When was your last meal or drink?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I stopped eating from midnight last night, as instructed. Just had a sip of water with my morning meds around 6 AM."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Finally, how's your overall energy and mobility? Can you walk or climb stairs without issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, no problems there. I walk 20 minutes most days and can climb stairs without getting short of breath."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. We'll be using general anesthesia with an LMA and sevoflurane for your surgery. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. You've explained everything clearly. I'm ready to proceed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. We'll get you set up shortly. Take a deep breath and relax – we've got you covered."
+    }
+  ]
+}

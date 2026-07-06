@@ -1,0 +1,68 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming TURP surgery and the anesthesia plan. Can you please share how your prostate issues have been affecting you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes. Been having trouble for about a year now. Weak stream, waking up multiple times at night to pee... it's quite tiring, you know?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. Let's go through your medications. You're on amlodipine, lisinopril, atorvastatin, metformin, omeprazole, and aspirin. Have you stopped or changed any medications in the past year, especially those related to cardiovascular or antiplatelet therapy?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, the aspirin one. I stopped that six months ago because it kept giving me stomach discomfort, like burning sensation. Doctor said okay to stop since my BP and sugar are controlled."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. So, your current medications are all still active? Amlodipine, lisinopril, atorvastatin, metformin, and omeprazole?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, all still taking them. No issues with those, just the aspirin was the problem."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Any known allergies to medications or other substances?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "None that I know of, doctor."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. When was your last meal or drink? We need to ensure you're NPO for surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Had dinner at 8pm last night. Only water after that, stopped at 10pm."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Have you had any previous anesthesia or surgeries? Any problems like nausea, breathing issues, or reactions?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No surgeries before this. Never been under GA, so no issues to report."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Lastly, how's your mobility? Can you walk, climb stairs, or do you need assistance?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk on my own, but sometimes need to rush to the toilet. Stairs are a bit slow, but manageable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia and in-line stabilization as planned. You'll be monitored closely for blood pressure and sugar levels during surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Alright, thank you, doctor. Hope everything goes smoothly."
+    }
+  ]
+}

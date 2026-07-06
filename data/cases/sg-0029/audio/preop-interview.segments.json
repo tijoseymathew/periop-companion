@@ -1,0 +1,102 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today we'll be discussing your upcoming knee arthroscopy. Let me start by understanding your medical history. Can you tell me about your knee injury?",
+      "t0": 0.0,
+      "t1": 12.26
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Ah, yes. I twisted my knee during a football game last month. The doctor said I have a torn meniscus that needs fixing. Been having pain and swelling since then.",
+      "t0": 12.61,
+      "t1": 22.409
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, let's go through your medications. I see you're on Fluticasone nasal spray, Loratadine, and Montelukast. Have you made any changes to these since your last medical review?",
+      "t0": 22.759,
+      "t1": 34.23
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Oh, I stopped the Montelukast already. Think it was mid-2023. Still using the Fluticasone spray every day and taking Loratadine for my allergies.",
+      "t0": 34.58,
+      "t1": 45.029
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Thanks for clarifying that. So Montelukast was discontinued in 2023, and you're continuing Fluticasone and Loratadine. Any known drug allergies?",
+      "t0": 45.379,
+      "t1": 55.41
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "No, no allergies. I can take all medications without problems.",
+      "t0": 55.76,
+      "t1": 60.078
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Great. Have you eaten or drunk anything since midnight? We need to ensure you're NPO for general anesthesia.",
+      "t0": 60.428,
+      "t1": 66.976
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Nope, nothing since last night dinner. Just water this morning, but I stopped at 6am as instructed.",
+      "t0": 67.326,
+      "t1": 73.549
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Excellent. Any previous anesthesia experiences we should know about?",
+      "t0": 73.899,
+      "t1": 78.032
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Once, for a minor hand surgery years ago. I woke up with a dry throat but no other issues. They used general anesthesia then too.",
+      "t0": 78.382,
+      "t1": 86.974
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Noted. Finally, how's your overall fitness? Can you walk upstairs or do you get short of breath?",
+      "t0": 87.324,
+      "t1": 93.593
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "I can climb stairs slowly, but long walks make my knee hurt. No breathing problems though.",
+      "t0": 93.943,
+      "t1": 99.47
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia using sevoflurane and rocuronium, plus a femoral nerve block for pain control. Your allergies and medications are updated in our system now.",
+      "t0": 99.82,
+      "t1": 111.197
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Sounds good, doctor. I'm ready to get this sorted.",
+      "t0": 111.547,
+      "t1": 114.334
+    }
+  ]
+}

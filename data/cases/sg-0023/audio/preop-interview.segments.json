@@ -1,0 +1,123 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming laparoscopic cholecystectomy. Let's start with your medical history. Can you tell me why you're having this surgery?",
+      "t0": 0.0,
+      "t1": 11.285
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. Yeah, I've been having belly pains on the right side, especially after eating. The scans showed gallstones, so they said to remove the gallbladder.",
+      "t0": 11.635,
+      "t1": 21.759
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. You're on amlodipine, atorvastatin, omeprazole, and metformin, correct? And I see metformin was stopped recently?",
+      "t0": 22.109,
+      "t1": 33.626
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I take amlodipine for blood pressure, atorvastatin for cholesterol, omeprazole for the acid reflux, and metformin for diabetes. But they told me to stop metformin a few days before surgery, right?",
+      "t0": 33.976,
+      "t1": 47.861
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Correct. We'll monitor your blood sugar closely. Now, about allergies\u2014your records say 'no known allergies,' but I always double-check. Have you ever had any reactions to medications, especially antibiotics like penicillin?",
+      "t0": 48.211,
+      "t1": 60.843
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Oh, wait a minute... I think I had a rash once when I took penicillin for a infection. It was years ago, but my skin turned all red and itchy. I told the doctor then, but maybe it wasn't recorded properly?",
+      "t0": 61.193,
+      "t1": 74.382
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Thank you for mentioning that. We'll note the penicillin allergy clearly. Even if it was a rash, we'll avoid penicillin and related antibiotics. Any other reactions to foods, latex, or other drugs?",
+      "t0": 74.732,
+      "t1": 86.667
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "No, just that one time with penicillin. I don't think there's anything else.",
+      "t0": 87.017,
+      "t1": 91.475
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Excellent. Let's confirm your NPO status\u2014have you had anything to eat or drink since midnight?",
+      "t0": 91.825,
+      "t1": 97.166
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No, doctor. My wife made sure I fasted properly. Just a bit of water with my morning meds, but that was hours ago.",
+      "t0": 97.516,
+      "t1": 104.249
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had anesthesia before? Any issues with previous surgeries or procedures?",
+      "t0": 104.599,
+      "t1": 110.451
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Once, for a hernia repair. I woke up with a sore throat, but otherwise it was fine. No vomiting or anything bad.",
+      "t0": 110.801,
+      "t1": 118.603
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Noted. Lastly, how's your overall fitness? Can you walk up stairs or do daily activities without excessive shortness of breath?",
+      "t0": 118.953,
+      "t1": 126.894
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Yeah, I walk to the MRT station daily. Climbing stairs is okay, though I get a bit tired if I rush. No chest pains or anything.",
+      "t0": 127.244,
+      "t1": 135.696
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Great. We'll plan for general anesthesia with an LMA, as discussed. Your blood pressure and GERD will be managed carefully. Any questions for me?",
+      "t0": 136.046,
+      "t1": 144.73
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "No, doctor. You've explained everything clearly. I'm ready to proceed.",
+      "t0": 145.08,
+      "t1": 149.167
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Wonderful. We'll see you in the operating theater. Take care, and we'll ensure your safety throughout.",
+      "t0": 149.517,
+      "t1": 154.95
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "case_id": "sg-0027",
+  "persona_uuid": "0f60bc0d513a4e2ab62b9af2402d892d",
+  "surgery": "Total Knee Arthroplasty (Left)",
+  "urgency": "elective",
+  "anesthesia_plan": "Spinal anesthesia with general anesthesia as backup",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia",
+    "Osteoarthritis (knee)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Glipizide",
+      "dose": "5mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Sulfa drugs"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Allergic to sulfa drugs (rash)",
+    "gold_question": "Have you ever had an allergic reaction to any medications, particularly sulfa antibiotics?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved in 2018",
+      "why_irrelevant": "Resolved 5 years ago, no residual lung issues"
+    },
+    {
+      "description": "Left wrist fracture in 2015, fully healed",
+      "why_irrelevant": "Remote trauma, no ongoing orthopedic issues"
+    },
+    {
+      "description": "Aspirin discontinued in 2021 due to resolved indication",
+      "why_irrelevant": "Medication stopped 2 years ago, not relevant to current care"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Glipizide",
+        "dose": "5mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "Osteoarthritis (knee)",
+      "Pneumonia resolved in 2018",
+      "Left wrist fracture in 2015, fully healed",
+      "Aspirin discontinued in 2021 due to resolved indication"
+    ],
+    "prior_anesthesia": null
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Mr. Tan, how are you feeling now after the surgery?",
+      "t0": 0.0,
+      "t1": 3.019
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "I'm okay, Doctor. Got some pain here and there, but not too bad lah.",
+      "t0": 3.369,
+      "t1": 7.641
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Can you rate your pain on a scale from 0 to 10 for me?",
+      "t0": 7.991,
+      "t1": 10.963
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Maybe 4 or 5? It's manageable, but I feel some discomfort when moving.",
+      "t0": 11.313,
+      "t1": 16.096
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Any nausea or feeling like you want to vomit? Sometimes spinal anesthesia can cause that.",
+      "t0": 16.446,
+      "t1": 22.437
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "A bit queasy earlier, but settled down after they gave me something. No vomiting, thank God.",
+      "t0": 22.787,
+      "t1": 28.406
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Breathing comfortable? Any shortness of breath or airway issues?",
+      "t0": 28.756,
+      "t1": 32.936
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Breathing's fine. Throat a bit sore from the tube, but I can talk okay.",
+      "t0": 33.286,
+      "t1": 37.605
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything during the surgery? Sometimes patients recall bits.",
+      "t0": 37.955,
+      "t1": 42.227
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Not much, Doctor. Felt some pressure here and there, heard voices, then woke up here.",
+      "t0": 42.577,
+      "t1": 47.918
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Your blood pressure's stable, but we're watching your diabetes and kidney function. Any concerns?",
+      "t0": 48.268,
+      "t1": 53.562
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Yes, worried about sugar levels, but nurse said it's under control. Urine output's a bit less, but no swelling.",
+      "t0": 53.912,
+      "t1": 61.249
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "We'll keep monitoring. Stay hydrated and follow your meds. Any other issues?",
+      "t0": 61.599,
+      "t1": 66.197
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "No, all good. Thank you, Doctor. I'll rest and drink more water.",
+      "t0": 66.547,
+      "t1": 70.494
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I’m okay, Doctor. A bit tired, but manageable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "On a scale of 0 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe a 4? It’s a dull ache where they made the cuts."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or vomiting since waking up? Sometimes the anesthesia can cause that."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little queasy, but not throwing up. I didn’t eat anything yet anyway."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Are you having any trouble breathing or feeling short of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, breathing’s fine. Just a bit of sore throat from the tube, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything from the operating room, or was everything fuzzy?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don’t remember anything. One minute I was talking, next I was waking up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Given your blood pressure and weight, any chest pain or unusual symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No chest pain. My BP’s been okay, right? I’ve been taking my meds regularly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "All looks stable. We’ll keep monitoring, but you’re doing well. Rest now, and we’ll get you mobilizing soon."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?",
+      "t0": 0.0,
+      "t1": 2.601
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Meh, still a bit tired lah, but okay. Got some pain here, but the nurse gave me medicine already.",
+      "t0": 2.951,
+      "t1": 9.452
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Can you tell me your pain level on a scale of 1 to 10? And have you felt any nausea or vomiting?",
+      "t0": 9.802,
+      "t1": 15.375
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Pain maybe 4 or 5, not too bad. Stomach also got little bit upset, but not throwing up. Just feel like want to sleep more.",
+      "t0": 15.725,
+      "t1": 23.805
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Any trouble breathing or coughing? Your airway was managed with a tube during surgery.",
+      "t0": 24.155,
+      "t1": 28.985
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Throat sore a bit, like something stuck there, but breathing okay lah. Not short of breath.",
+      "t0": 29.335,
+      "t1": 34.862
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything from the operation? Any dreams or awareness during surgery?",
+      "t0": 35.212,
+      "t1": 39.809
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Nope, all black out. Woke up only when nurse called my name here.",
+      "t0": 40.159,
+      "t1": 44.014
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Your blood pressure and sugar levels were monitored. Any concerns about your diabetes or cholesterol?",
+      "t0": 44.364,
+      "t1": 50.029
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Blood pressure machine beeping whole time, but nurse say stable. Sugar also checked, not too high. Cholesterol... mmm, still taking pills right?",
+      "t0": 50.379,
+      "t1": 61.06
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "All your medications will continue as usual. Let the nurse know if pain or nausea gets worse, okay?",
+      "t0": 61.41,
+      "t1": 67.587
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Yes, thank you. Just want to rest now and go home soon lah.",
+      "t0": 67.937,
+      "t1": 71.977
+    }
+  ]
+}

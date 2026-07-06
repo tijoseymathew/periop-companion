@@ -1,0 +1,206 @@
+{
+  "questions": [
+    "Do you have any history of allergic reactions to antibiotics, especially penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "18-gauge IV cannula",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "left antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "spontaneous breathing",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "98",
+      "units": "%",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "paracetamol",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "1",
+      "units": "g",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "ondansetron",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "4",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "hypotension noted",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "65",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "fluid",
+      "value": "500",
+      "units": "ml",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "surgery completed",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "patient stable",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "no residual block",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, hyperlipidemia, type 2 diabetes mellitus, and osteoarthritis of the knees.",
+    "Current medications: Amlodipine 5mg daily, Lisinopril 10mg daily, Atorvastatin 20mg nightly, Metformin 500mg twice daily, Paracetamol 500mg as needed.",
+    "Discontinued medication: Aspirin 75mg daily (stopped preoperatively).",
+    "Allergy to penicillin with symptoms of rash and urticaria.",
+    "ASA Physical Status II due to controlled hypertension, hyperlipidemia, type 2 diabetes mellitus, and osteoarthritis.",
+    "Airway assessment: normal Mallampati score, adequate thyromental distance, no anticipated airway difficulties.",
+    "Anesthesia plan: spinal anesthesia with bupivacaine and fentanyl, with intraoperative IV paracetamol 1g for analgesia and ondansetron 4mg for PONV prophylaxis."
+  ],
+  "handoff_claims": [
+    "Patient has a history of hypertension, hyperlipidemia, type 2 diabetes mellitus, osteoarthritis, and a penicillin allergy with rash and urticaria.",
+    "Intraoperative management included spinal anesthesia with bupivacaine and fentanyl, with intraoperative administration of IV paracetamol 1g and ondansetron 4mg.",
+    "Anticipated postoperative issues include potential hypotension from spinal anesthesia, need for continued postoperative pain management, and monitoring for postoperative nausea and vomiting despite prophylaxis."
+  ],
+  "distractors": [
+    "Pneumonia resolved in 2014",
+    "Left wrist fracture in 2005",
+    "Hyperthyroidism treated in 2010"
+  ]
+}

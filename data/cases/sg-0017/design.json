@@ -1,0 +1,57 @@
+{
+  "case_id": "sg-0017",
+  "persona_uuid": "b0a987dea0e4443cb79481f38db54c8f",
+  "surgery": "Elective knee arthroscopy for lateral meniscus tear repair",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with endotracheal intubation and mechanical ventilation",
+  "asa_ps": 1,
+  "comorbidities": [],
+  "medications": [
+    {
+      "name": "Amoxicillin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Patient has a history of anaphylaxis to penicillin (rash, bronchospasm) at age 16",
+    "gold_question": "Have you ever had a severe reaction to any antibiotics, including penicillin or related drugs?"
+  },
+  "distractors": [
+    {
+      "description": "History of left wrist fracture in 2018 (healed, no hardware)",
+      "why_irrelevant": "Remote traumatic injury with full functional recovery, no bearing on current anesthesia"
+    },
+    {
+      "description": "Pneumonia in 2020 (treated with amoxicillin, resolved)",
+      "why_irrelevant": "Completed antibiotic course with full recovery, no residual pulmonary issues"
+    },
+    {
+      "description": "Allergic contact dermatitis to nickel (diagnosed age 12, resolved)",
+      "why_irrelevant": "Skin reaction only, no systemic involvement, resolved in childhood"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amoxicillin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Left wrist fracture in 2018 (healed, no hardware)",
+      "Pneumonia in 2020 (treated with amoxicillin, resolved)",
+      "Allergic contact dermatitis to nickel (diagnosed age 12, resolved)"
+    ],
+    "prior_anesthesia": null
+  }
+}

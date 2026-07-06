@@ -1,0 +1,143 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "fentanyl fifty micrograms"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "peripheral IV 20 gauge placed in left hand"
+    },
+    {
+      "t": "08:15",
+      "text": "lactated ringers one liter bolus"
+    },
+    {
+      "t": "09:00",
+      "text": "blood pressure dropped to 85/50, gave 500 ml fluid bolus"
+    },
+    {
+      "t": "09:05",
+      "text": "phenylephrine 100 micrograms bolus"
+    },
+    {
+      "t": "09:10",
+      "text": "heart rate increased to 110, atropine 0.5 milligrams given"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "peripheral IV 20 gauge placed in left hand",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers one liter bolus",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "blood pressure dropped to 85/50",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:00",
+      "category": "fluid",
+      "value": "500 ml fluid bolus given",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:05",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:05",
+      "category": "dose",
+      "value": "100",
+      "units": "mcg",
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "event",
+      "value": "heart rate increased to 110",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "dose",
+      "value": "0.5",
+      "units": "mg",
+      "provenance": []
+    }
+  ]
+}

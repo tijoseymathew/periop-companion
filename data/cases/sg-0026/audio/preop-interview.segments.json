@@ -1,0 +1,130 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I\u2019m Dr. Liew, the anesthesiologist who\u2019ll be taking care of you during your hernia surgery today. Let me go through some questions to ensure everything goes smoothly for you, okay?",
+      "t0": 0.0,
+      "t1": 10.82
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. Yes, please ask anything. I want to make sure I\u2019m ready for this.",
+      "t0": 11.17,
+      "t1": 17.022
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and has it been causing you any issues?",
+      "t0": 17.372,
+      "t1": 24.338
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Ah, about six months already. It\u2019s on the left side, and sometimes it bulges when I lift heavy things. No pain yet, but the doctor said better to fix it before it gets worse, right?",
+      "t0": 24.688,
+      "t1": 36.112
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Absolutely. Now, let\u2019s go through your medications. You\u2019re on amlodipine for blood pressure, atorvastatin for cholesterol, metformin for diabetes, omeprazole for acid, and you stopped aspirin recently\u2014is that correct?",
+      "t0": 36.462,
+      "t1": 51.091
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Yes, all correct. I take them every day except aspirin, which I stopped two weeks ago as the surgeon advised.",
+      "t0": 51.441,
+      "t1": 58.407
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Good. Now, allergies\u2014your records say none, but I always double-check. Do you have any allergies to medications, especially antibiotics like penicillin?",
+      "t0": 58.757,
+      "t1": 67.812
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Oh, wait\u2026 actually, I think I had a reaction once. When I was young, I took penicillin for a infection and got a rash all over. But I didn\u2019t think it was serious, so I never mentioned it here.",
+      "t0": 68.162,
+      "t1": 79.912
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. A rash from penicillin is important to note. I\u2019ll update your records to reflect that allergy to avoid any issues during surgery.",
+      "t0": 80.262,
+      "t1": 89.132
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PROVIDER",
+      "text": "Have you had anything to eat or drink since midnight? We need to ensure your stomach is empty for the anesthesia.",
+      "t0": 89.482,
+      "t1": 95.426
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PATIENT",
+      "text": "No, doctor. I had my last meal last night and only sipped water this morning. Nothing else, I promise.",
+      "t0": 95.776,
+      "t1": 101.999
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you ever had anesthesia before? Any previous surgeries or complications?",
+      "t0": 102.349,
+      "t1": 108.247
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I\u2019ve been lucky so far, just check-ups and minor things.",
+      "t0": 108.597,
+      "t1": 114.077
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PROVIDER",
+      "text": "Understood. Lastly, how\u2019s your overall energy and mobility? Can you manage daily activities like climbing stairs or walking without difficulty?",
+      "t0": 114.427,
+      "t1": 123.529
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PATIENT",
+      "text": "Yes, I\u2019m still active. I walk every day and help my wife with the gardening. No problems there.",
+      "t0": 123.879,
+      "t1": 129.916
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PROVIDER",
+      "text": "Perfect. We\u2019ll make sure you\u2019re comfortable and safe throughout the procedure. Any questions or concerns before we proceed?",
+      "t0": 130.266,
+      "t1": 136.86
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PATIENT",
+      "text": "No, doctor. I\u2019m ready. Thank you for explaining everything so clearly.",
+      "t0": 137.21,
+      "t1": 141.669
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PROVIDER",
+      "text": "You\u2019re welcome, Mr. Tan. We\u2019ll take good care of you. I\u2019ll see you in the operating room shortly.",
+      "t0": 142.019,
+      "t1": 147.127
+    }
+  ]
+}

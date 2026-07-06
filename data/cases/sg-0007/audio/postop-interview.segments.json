@@ -1,0 +1,88 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?",
+      "t0": 0.0,
+      "t1": 2.461
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "A bit sore, but okay lah. My tummy is achy, but not too bad.",
+      "t0": 2.811,
+      "t1": 7.502
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Can you rate your pain on a scale from 0 to 10 for me?",
+      "t0": 7.852,
+      "t1": 10.87
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Maybe a 4? It\u2019s manageable, but I can feel it when I move.",
+      "t0": 11.22,
+      "t1": 15.818
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Any nausea or vomiting since waking up? Sometimes anesthesia can cause that.",
+      "t0": 16.168,
+      "t1": 21.183
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "No, no vomiting. Just a bit of dizziness when I sat up earlier, but it went off.",
+      "t0": 21.533,
+      "t1": 26.595
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Good. How\u2019s your breathing? Any tightness or discomfort in your chest or throat?",
+      "t0": 26.945,
+      "t1": 31.821
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Throat\u2019s a bit sore from the tube, but I can breathe fine. No wheezing or anything.",
+      "t0": 32.171,
+      "t1": 37.094
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything about the surgery itself? Sometimes patients have fuzzy memories.",
+      "t0": 37.444,
+      "t1": 42.738
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Nope, everything\u2019s blank from when I went to sleep. Woke up here, so all good.",
+      "t0": 43.088,
+      "t1": 47.639
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "You have a history of hypertension and allergies. Any issues with those today?",
+      "t0": 47.989,
+      "t1": 52.447
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Blood pressure\u2019s been fine, no headaches. Allergies? Nose is clear, no sneezing.",
+      "t0": 52.797,
+      "t1": 58.417
+    }
+  ]
+}

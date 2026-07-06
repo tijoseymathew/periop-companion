@@ -1,0 +1,150 @@
+{
+  "questions": [
+    "Do you have any allergies to medications, particularly antibiotics like penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:00#segment.1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes:08:00#segment.1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:00#segment.2"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes:08:00#segment.2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA placed, no difficulty",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:02#segment.1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "18-g IV in left hand",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:05#segment.1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:05#segment.2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "250",
+      "units": "mL",
+      "provenance": [
+        "voice_notes:08:05#segment.2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "BP drop to 80/50, treated with ephedrine 10 mg IV",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:10#segment.1"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "transient tachycardia to 90, treated with fluid bolus",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:15#segment.1"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:20#segment.1"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "2",
+      "units": "%",
+      "provenance": [
+        "voice_notes:08:20#segment.1"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes:08:25#segment.1"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes:08:25#segment.1"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes elective laparoscopic cholecystectomy for symptomatic cholelithiasis",
+    "Medications: ethinyl estradiol and norethindrone daily (current), amoxicillin 500mg twice daily (stopped)",
+    "Allergy to penicillin (rash)",
+    "ASA-PS 1 due to healthy patient with no active comorbidities",
+    "Airway plan: Laryngeal Mask Airway (LMA) with general anesthesia induction using propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites"
+  ],
+  "handoff_claims": [
+    "Key history: Elective cholecystectomy, penicillin allergy (rash), current hormonal contraception and discontinued amoxicillin",
+    "Intra-op course: LMA placement, induction with propofol/fentanyl, maintenance with sevoflurane, local anesthetic for port sites",
+    "Anticipated issues: Monitor for allergic reaction (penicillin allergy), post-op pain management with residual local anesthetic effect"
+  ],
+  "distractors": [
+    "History of pneumonia resolved in 2019",
+    "Fractured left wrist in 2015, fully healed",
+    "Discontinued lisinopril for hypertension in 2020"
+  ]
+}

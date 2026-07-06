@@ -1,0 +1,103 @@
+{
+  "questions": [
+    "Have you ever had any allergic reactions to medications, especially antibiotics like sulfonamides?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "18-gauge IV placed in right antecubital fossa",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 mL Ringer's lactate",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "blood pressure dropped to 90/60, gave 10 mL saline bolus",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1.5",
+      "units": "%",
+      "provenance": []
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "heart rate increased to 110, gave 0.5 mg metoprolol",
+      "units": null,
+      "provenance": []
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, hyperlipidemia, and GERD",
+    "Current medications: amlodipine 5mg daily, metoprolol 50mg daily, atorvastatin 20mg nightly, omeprazole 20mg daily",
+    "Discontinued medication: metformin 500mg twice daily (stopped)",
+    "Allergy to sulfa drugs with rash",
+    "ASA Physical Status II due to controlled hypertension and hyperlipidemia",
+    "Airway assessment: normal airway with no anticipated difficulties",
+    "Anesthesia plan: general anesthesia with endotracheal intubation, balanced technique using sevoflurane, fentanyl, and rocuronium"
+  ],
+  "handoff_claims": [
+    "Patient has a sulfa allergy with rash and comorbidities of hypertension, hyperlipidemia, and GERD",
+    "Intraoperative course: laparoscopic cholecystectomy completed under general anesthesia with sevoflurane, fentanyl, and rocuronium",
+    "Anticipated postoperative issues: pain, nausea, and potential delayed extubation due to GERD"
+  ],
+  "distractors": [
+    "Resolved pneumonia (2018)",
+    "Left wrist fracture (2014)",
+    "Discontinued metformin (2022)"
+  ]
+}

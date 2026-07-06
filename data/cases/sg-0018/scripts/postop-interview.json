@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Mmm, a bit sore here and there, but I think it's manageable. Maybe a 4 out of 10?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, we can adjust your pain meds if needed. Any nausea or vomiting since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little queasy, but not too bad. I didn’t throw up or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How’s your breathing? Any tightness or discomfort in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing’s fine, but my throat feels a bit scratchy. Like I have a slight sore throat."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That’s common after the LMA; it should ease soon. Do you remember anything about the surgery itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I just recall waking up here. Everything’s a bit fuzzy."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Normal with general anesthesia. Any dizziness or anxiety spikes since coming around?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I’m a bit nervous, but not panicking. My chest feels okay, no tightness."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We’ll keep an eye on your BP and give you something for anxiety if it flares up. Rest for now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, thank you. I’ll just lie here and try to relax."
+    }
+  ]
+}

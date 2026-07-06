@@ -1,0 +1,84 @@
+{
+  "case_id": "sg-0007",
+  "persona_uuid": "8cf3816ff978463b926a84ae16c06f9c",
+  "surgery": "Laparoscopic cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension",
+    "Seasonal allergic rhinitis"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Fluticasone",
+      "dose": "nasal spray",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Sulfa drugs (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "Allergies: None recorded",
+    "truth": "Sulfa allergy (rash)",
+    "gold_question": "Do you have any allergies to sulfa-containing medications or other antibiotics?"
+  },
+  "distractors": [
+    {
+      "description": "Resolved pneumonia (2019)",
+      "why_irrelevant": "Resolved years ago"
+    },
+    {
+      "description": "Remote left wrist fracture (2015), healed without issues",
+      "why_irrelevant": "Remote and resolved"
+    },
+    {
+      "description": "Discontinued levothyroxine for resolved hypothyroidism (2020)",
+      "why_irrelevant": "Condition resolved"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Fluticasone",
+        "dose": "nasal spray",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Resolved pneumonia (2019)",
+      "Remote left wrist fracture (2015)",
+      "Discontinued levothyroxine for resolved hypothyroidism (2020)"
+    ],
+    "prior_anesthesia": null
+  }
+}

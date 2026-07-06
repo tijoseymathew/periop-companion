@@ -1,0 +1,132 @@
+{
+  "questions": [
+    "Do you have any allergies to medications, including antibiotics like penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "succinylcholine",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "100",
+      "units": "mg",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "event",
+      "value": "hypotension treated with fluid bolus and phenylephrine 10 mcg",
+      "units": null,
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "20-gauge IV in right antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "500",
+      "units": "mL",
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "ET tube size 7.5",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "tachycardia treated with fentanyl 25 mcg",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History of hypertension, hyperlipidemia, obesity (BMI 32), and GERD",
+    "Current medications include Amlodipine 5mg daily, Metoprolol 50mg daily, Atorvastatin 20mg daily, Omeprazole 20mg daily, and Aspirin 75mg daily (stopped)",
+    "Documented penicillin allergy with rash",
+    "ASA-PS classification of 3 due to controlled hypertension, hyperlipidemia, obesity (BMI 32), and GERD",
+    "Airway assessment and plan for general anesthesia with endotracheal intubation and rapid sequence induction"
+  ],
+  "handoff_claims": [
+    "Patient has a history of hypertension, hyperlipidemia, obesity (BMI 32), and GERD, with a documented penicillin allergy (rash)",
+    "Laparoscopic cholecystectomy performed under general anesthesia with endotracheal intubation and rapid sequence induction",
+    "Anticipated postoperative issues include monitoring for GERD-related complications and avoiding penicillin-based antibiotics due to allergy"
+  ],
+  "distractors": [
+    "Resolved community-acquired pneumonia (5 years ago, fully recovered)",
+    "Remote left wrist fracture (10 years ago, fully healed)",
+    "Discontinued Aspirin for primary prevention (stopped 2 years ago due to GI side effects)"
+  ]
+}

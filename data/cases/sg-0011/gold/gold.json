@@ -1,0 +1,144 @@
+{
+  "questions": [
+    "Have you ever had any reactions to antibiotics, especially penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "lidocaine",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "20",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "midazolam",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "2",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_3"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "mcg",
+      "provenance": [
+        "voice:intraop#chunk_4"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice:intraop#chunk_4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "maintained spontaneously",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral IV in left antecubital vein",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "crystalloid 500",
+      "units": "ml",
+      "provenance": [
+        "voice:intraop#chunk_7"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "Blood pressure drop to 70/40 treated with phenylephrine 10 mcg",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_8"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "Heart rate increased to 120 treated with atropine 0.5 mg",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_9"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, type 2 diabetes mellitus, hyperlipidemia, and chronic kidney disease stage 2.",
+    "Current medications include amlodipine 10mg daily, lisinopril 20mg daily, metformin 500mg twice daily, atorvastatin 20mg nightly, aspirin 75mg daily, and omeprazole 20mg daily (stopped).",
+    "Allergy to penicillin with rash documented.",
+    "ASA Physical Status III assigned due to multiple comorbidities (hypertension, diabetes, hyperlipidemia, CKD).",
+    "Airway assessment includes Mallampati score and thyromental distance documented.",
+    "Anesthetic plan includes spinal anesthesia with local infiltration for transurethral resection of the prostate."
+  ],
+  "handoff_claims": [
+    "Key history includes penicillin allergy with rash, hypertension, type 2 diabetes mellitus, hyperlipidemia, and chronic kidney disease stage 2.",
+    "Intraoperative course: spinal anesthesia with local infiltration administered without complications.",
+    "Anticipated postoperative issues include monitoring for fluid overload and renal function due to chronic kidney disease stage 2.",
+    "Home medications to be resumed postoperatively except omeprazole which was discontinued preoperatively.",
+    "Communication of penicillin allergy to PACU team for safe medication administration."
+  ],
+  "distractors": [
+    "Pneumonia, resolved in 2018",
+    "Left wrist fracture, healed without issues in 2010",
+    "Completed course of antibiotics for UTI in 2015"
+  ]
+}

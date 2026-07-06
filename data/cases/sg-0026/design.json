@@ -1,0 +1,114 @@
+{
+  "case_id": "sg-0026",
+  "persona_uuid": "676f155b1cb64a1e9bfc301a24404dc6",
+  "surgery": "Elective Inguinal Hernia Repair",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension",
+    "Hyperlipidemia",
+    "Type 2 Diabetes Mellitus",
+    "Gastroesophageal Reflux Disease (GERD)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once nightly",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No allergies recorded",
+    "truth": "Patient reports penicillin allergy with rash",
+    "gold_question": "Do you have any allergies to medications, particularly antibiotics like penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Resolved community-acquired pneumonia (2018)",
+      "why_irrelevant": "Resolved 5 years ago, no residual lung issues"
+    },
+    {
+      "description": "Remote left distal radius fracture (2005), healed without sequelae",
+      "why_irrelevant": "Old injury with full functional recovery"
+    },
+    {
+      "description": "Discontinued simvastatin (2019) due to resolution of hyperlipidemia (switched to atorvastatin)",
+      "why_irrelevant": "Medication changed; simvastatin no longer relevant"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once nightly",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "Once daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Resolved community-acquired pneumonia (2018)",
+      "Remote left distal radius fracture (2005), healed without sequelae",
+      "Discontinued simvastatin (2019) due to resolution of hyperlipidemia (switched to atorvastatin)",
+      "Hypertension",
+      "Hyperlipidemia",
+      "Type 2 Diabetes Mellitus",
+      "Gastroesophageal Reflux Disease (GERD)"
+    ],
+    "prior_anesthesia": null
+  }
+}

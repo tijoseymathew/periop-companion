@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. We'll be discussing your upcoming surgery and anesthesia plan. How are you feeling today?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm okay lah, just a bit nervous about the operation. But ready to get this gallbladder issue sorted."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understandable. Let's start with your medical history. Can you tell me about your gallbladder problem?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had bad pain on the right side last month, and the scan showed stones. Doctor said it's best to remove it laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, let's go through your medications. Can you list what you're currently taking?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I take Amlodipine 5mg every morning for blood pressure, Metoprolol 50mg daily for the same, Metformin 500mg twice a day for diabetes, Atorvastatin 20mg at night for cholesterol, and Aspirin 75mg daily. Oh, and I stopped Levothyroxine already."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You mentioned stopping Levothyroxine—when was that, and why did you stop?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "About a year ago, Doctor. The thyroid tests came back normal, so my GP said I don't need it anymore. Records might still show it, but I haven't taken it since."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Important to update that. Any allergies to medications or other substances?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No allergies, Doctor. Never had any reactions."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Have you had any previous surgeries or anesthesia? Any issues like nausea, breathing problems, or awareness during surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a hernia repair 10 years back. Anesthesia was smooth, no problems at all. Recovered well."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. How's your diabetes control? Any recent episodes of low or high sugar?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Stable lah, Doctor. Fasting sugar usually around 6-7 mmol/L. No hypos recently."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Are you on a normal diet now? And when did you last eat or drink?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, normal food. I had dinner at 8pm last night, and water until 10pm. No solids after that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Lastly, how's your general fitness? Can you climb stairs or walk without difficulty?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No problem, Doctor. I walk 30 minutes most days and can take the stairs without stopping."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia and intubation as planned. I'll review your updated med list and ensure the team knows about the Levothyroxine change."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, Doctor. Feel better knowing everything's in order."
+    }
+  ]
+}

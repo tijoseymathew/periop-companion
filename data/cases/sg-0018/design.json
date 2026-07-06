@@ -1,0 +1,98 @@
+{
+  "case_id": "sg-0018",
+  "persona_uuid": "b1f96f31082343b397fad71612c59204",
+  "surgery": "Laparoscopic cholecystectomy for symptomatic gallstones",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with Laryngeal Mask Airway (LMA) and sevoflurane maintenance",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Essential hypertension",
+    "Hyperlipidemia",
+    "Anxiety disorder"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Once daily at night",
+      "active": true
+    },
+    {
+      "name": "Sertraline",
+      "dose": "50 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20 mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Records list Amlodipine, Atorvastatin, Sertraline, and Omeprazole as active medications",
+    "truth": "Patient discontinued Omeprazole 3 months ago after resolving GERD symptoms",
+    "gold_question": "Are you still taking all the medications listed in your current medical records?"
+  },
+  "distractors": [
+    {
+      "description": "History of community-acquired pneumonia resolved in 2019",
+      "why_irrelevant": "Resolved infection with no residual pulmonary compromise"
+    },
+    {
+      "description": "Remote left wrist fracture (2015) treated with cast, fully healed",
+      "why_irrelevant": "No functional impairment or hardware in place"
+    },
+    {
+      "description": "Discontinued prednisone burst therapy for childhood asthma (last use age 12)",
+      "why_irrelevant": "Asthma resolved in adolescence, no current respiratory issues"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Once daily at night",
+        "active": true
+      },
+      {
+        "name": "Sertraline",
+        "dose": "50 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20 mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Essential hypertension",
+      "Hyperlipidemia",
+      "Anxiety disorder",
+      "Community-acquired pneumonia (2019)",
+      "Left wrist fracture (2015)",
+      "Childhood asthma with prednisone use"
+    ],
+    "prior_anesthesia": null
+  }
+}

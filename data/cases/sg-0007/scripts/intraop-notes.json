@@ -1,0 +1,106 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "peripheral IV placed, 20 gauge"
+    },
+    {
+      "t": "08:07",
+      "text": "arterial line placed, radial artery"
+    },
+    {
+      "t": "08:10",
+      "text": "fluid bolus one hundred milliliters normal saline given"
+    },
+    {
+      "t": "08:15",
+      "text": "blood pressure dropped to 80 over 50, treated with phenylephrine ten micrograms"
+    },
+    {
+      "t": "08:20",
+      "text": "heart rate increased to 110, treated with esmolol twenty milligrams"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120 mg",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral IV placed, 20 gauge",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "line",
+      "value": "arterial line placed, radial artery",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "normal saline 100 mL bolus given",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "blood pressure dropped to 80/50 mmHg, treated with phenylephrine 10 mcg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to 110 bpm, treated with esmolol 20 mg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    }
+  ]
+}

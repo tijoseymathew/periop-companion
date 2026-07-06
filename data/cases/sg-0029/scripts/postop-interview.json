@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Aiya, my knee still got some pain one, but not too bad lah. The block they give me help a lot."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Any nausea or vomiting feeling after waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Slightly dizzy one, but stomach okay. Not like I want to throw up or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any trouble breathing or feeling uncomfortable with your airway?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Throat a bit sore from the tube, but breathing is fine. Can talk normally also."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything about the surgery itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, all black out. Wake up already in recovery room."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You mentioned allergic rhinitis before. Any nasal congestion or allergy symptoms now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nose a bit blocked, but not sneezing or watery eyes. Same as usual lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll keep an eye on that. Overall, how are you coping?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Quite okay, doctor. Just want to go home and rest. Thank you for checking on me."
+    }
+  ]
+}

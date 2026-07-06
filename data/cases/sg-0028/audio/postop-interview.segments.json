@@ -1,0 +1,74 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery? Let's start with your pain. On a scale from 0 to 10, how would you rate the pain in your left knee right now?",
+      "t0": 0.0,
+      "t1": 9.474
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Eh, maybe around 3 or 4? It's sore, but the numbness from the block is still there, so it's not too bad.",
+      "t0": 9.824,
+      "t1": 16.511
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Any nausea or vomiting since waking up? Sometimes the anesthesia can make people feel queasy.",
+      "t0": 16.861,
+      "t1": 23.223
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "No nausea, thank goodness. But my nose feels a bit stuffy, like it's blocked up. Is that normal?",
+      "t0": 23.573,
+      "t1": 29.332
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "That could be from the allergic rhinitis. We'll keep an eye on it, but it's not uncommon after anesthesia. Breathing comfortable otherwise?",
+      "t0": 29.682,
+      "t1": 36.88
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Yes, breathing's fine. No tightness or anything. Just the nose thing.",
+      "t0": 37.23,
+      "t1": 42.106
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Any recollection of the operating room or waking up? Sometimes patients remember bits and pieces.",
+      "t0": 42.456,
+      "t1": 48.493
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Nope, nothing at all. One minute I was talking to the anesthetist, next thing I know, I'm here. Like a magic trick!",
+      "t0": 48.843,
+      "t1": 56.552
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Glad to hear it was smooth. Any other concerns or questions before we get you mobilizing?",
+      "t0": 56.902,
+      "t1": 61.732
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thanks for checking on me, doc.",
+      "t0": 62.082,
+      "t1": 65.472
+    }
+  ]
+}

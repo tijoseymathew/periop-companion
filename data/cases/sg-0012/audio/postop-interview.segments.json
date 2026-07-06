@@ -1,0 +1,102 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?",
+      "t0": 0.0,
+      "t1": 2.461
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Eh, still a bit groggy, but okay lah. Got some pain here, you know?",
+      "t0": 2.811,
+      "t1": 7.316
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Can you rate the pain for me? On a scale of 0 to 10, where 0 is no pain and 10 is the worst?",
+      "t0": 7.666,
+      "t1": 13.796
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Maybe 4 or 5? Mostly around the tummy area, like where they made the cuts.",
+      "t0": 14.146,
+      "t1": 19.347
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Any nausea or feeling like you might vomit? Sometimes the anesthesia can cause that.",
+      "t0": 19.697,
+      "t1": 24.434
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "A bit, yes. Not too bad, but my stomach feels funny. Like I want to throw up but can't.",
+      "t0": 24.784,
+      "t1": 31.518
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Okay, we can give you something for that. How's your breathing? Any tightness or coughing?",
+      "t0": 31.868,
+      "t1": 36.837
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Breathing is okay, but my throat sore lah. Like someone put a tube there.",
+      "t0": 37.187,
+      "t1": 41.877
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "That\u2019s normal after intubation. Do you remember anything from the operation itself?",
+      "t0": 42.227,
+      "t1": 47.847
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Nope, nothing. One minute I was talking, next thing I know, I\u2019m waking up here.",
+      "t0": 48.197,
+      "t1": 53.723
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Good. Now, since you have high blood pressure and diabetes, any headaches, dizziness, or thirst?",
+      "t0": 54.073,
+      "t1": 60.064
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Thirsty, yes. But no spinning or headache. Blood sugar was okay before surgery, right?",
+      "t0": 60.414,
+      "t1": 66.079
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "We\u2019ll check your blood sugar and blood pressure now. Rest is looking good, but let us know if anything worries you.",
+      "t0": 66.429,
+      "t1": 72.234
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Okay, thanks. Just want to go home soon and eat proper food.",
+      "t0": 72.584,
+      "t1": 76.021
+    }
+  ]
+}

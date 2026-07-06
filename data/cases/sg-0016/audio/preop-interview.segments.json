@@ -1,0 +1,137 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming laparoscopic cholecystectomy. Let's start with your medical history. Can you tell me about your gallstone symptoms?",
+      "t0": 0.0,
+      "t1": 11.842
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Yes, doc. Been having this sharp pain on the right side, especially after eating. Had a scan, and they found gallstones. Doctor said it's best to remove it before it gets worse, lah.",
+      "t0": 12.192,
+      "t1": 23.895
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. You're on amlodipine, metoprolol, metformin, atorvastatin, and omeprazole. Are you still taking all of these?",
+      "t0": 24.245,
+      "t1": 36.644
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Amlodipine, metoprolol, metformin, and atorvastatin daily, yes. Omeprazole I stopped a month ago, as instructed. No other meds, doc.",
+      "t0": 36.994,
+      "t1": 48.326
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Your records mention no allergies, but I always double-check. Have you ever had any reactions to antibiotics, especially penicillin or similar drugs?",
+      "t0": 48.676,
+      "t1": 58.057
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Oh, wait\u2014there was something. Years ago, when I took penicillin for a throat infection, I got a bad rash all over. Itchy and red, had to stop the medicine. Never took it again since.",
+      "t0": 58.407,
+      "t1": 70.899
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Important to note. That rash was likely an allergic reaction. We'll avoid penicillin and related antibiotics during your surgery. Any other reactions to medications or foods?",
+      "t0": 71.249,
+      "t1": 81.698
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "No, nothing else. Just that one time with penicillin.",
+      "t0": 82.048,
+      "t1": 85.577
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Good. Have you eaten or drunk anything since midnight? We need to ensure you're NPO (nothing by mouth) for general anesthesia.",
+      "t0": 85.927,
+      "t1": 93.961
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "No, doc. I had my last meal around 8pm last night. Just water this morning, but stopped that at 6am, as instructed.",
+      "t0": 94.311,
+      "t1": 101.742
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any previous surgeries or anesthesia? Even minor procedures?",
+      "t0": 102.092,
+      "t1": 107.2
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. Never been under general anesthesia before.",
+      "t0": 107.55,
+      "t1": 112.287
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Noted. Let's discuss your health conditions. You have hypertension, diabetes, and high cholesterol. How well are these controlled?",
+      "t0": 112.637,
+      "t1": 120.95
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Blood pressure is okay with the meds. Diabetes\u2014my HbA1c was 7.2% last check, so manageable. Cholesterol under control with statin. Also, I have anxiety, but it's been better lately.",
+      "t0": 121.3,
+      "t1": 136.207
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Thank you. We'll monitor your blood sugar closely during surgery. Lastly, are you able to perform daily activities without difficulty?",
+      "t0": 136.557,
+      "t1": 144.312
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "Yes, doc. I walk daily, do light chores. No shortness of breath or chest pain. Just the gallstone pain sometimes.",
+      "t0": 144.662,
+      "t1": 153.254
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Excellent. We'll proceed with general anesthesia using sevoflurane and rocuronium. For pain, we'll use paracetamol, ketorolac, and dexamethasone as planned. Any questions?",
+      "t0": 153.604,
+      "t1": 165.446
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "No, doc. You all seem to have everything covered. Just want to get this done and feel better.",
+      "t0": 165.796,
+      "t1": 170.951
+    },
+    {
+      "seg_id": "s018",
+      "speaker": "PROVIDER",
+      "text": "We'll take good care of you. I'll review your file again before surgery. See you in the pre-op area, Mr. Tan.",
+      "t0": 171.301,
+      "t1": 177.245
+    }
+  ]
+}

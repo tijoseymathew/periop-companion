@@ -1,0 +1,168 @@
+{
+  "questions": [
+    "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#0#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_note#0#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size four",
+      "units": null,
+      "provenance": [
+        "voice_note#1#08:02"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "event",
+      "value": "hypotension (MAP 55)",
+      "units": null,
+      "provenance": [
+        "voice_note#2#08:03"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_note#2#08:03"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "dose",
+      "value": "1",
+      "units": "mg",
+      "provenance": [
+        "voice_note#2#08:03"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_note#3#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "0.5",
+      "units": "mcg/kg/min",
+      "provenance": [
+        "voice_note#3#08:04"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "18-gauge IV access",
+      "units": null,
+      "provenance": [
+        "voice_note#4#08:05"
+      ]
+    },
+    {
+      "t": "08:06",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": null,
+      "provenance": [
+        "voice_note#5#08:06"
+      ]
+    },
+    {
+      "t": "08:06",
+      "category": "dose",
+      "value": "30",
+      "units": "mg",
+      "provenance": [
+        "voice_note#5#08:06"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "crystalloid bolus",
+      "units": null,
+      "provenance": [
+        "voice_note#6#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "1000",
+      "units": "mL",
+      "provenance": [
+        "voice_note#6#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "tachycardia (HR 120)",
+      "units": null,
+      "provenance": [
+        "voice_note#7#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_note#7#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_note#7#08:20"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient has a history of obesity (BMI 28), hyperlipidemia, and well-controlled hypertension.",
+    "Current medications include Atorvastatin 20mg daily, Metformin 500mg BID, and Omeprazole 20mg daily; Simvastatin 10mg nightly was discontinued.",
+    "Patient reports a penicillin allergy (rash) not documented in medical records.",
+    "ASA-PS classification is 2 due to mild systemic disease (obesity, hyperlipidemia, hypertension).",
+    "Airway assessment indicates no anticipated difficulties; anesthetic plan includes general anesthesia with LMA, propofol induction, remifentanil infusion, vecuronium for muscle relaxation, and desflurane maintenance."
+  ],
+  "handoff_claims": [
+    "Key history includes obesity (BMI 28), hyperlipidemia, hypertension, and reported penicillin allergy (rash) not documented.",
+    "Intraoperative course: Elective laparoscopic cholecystectomy under general anesthesia with LMA; medications included propofol, remifentanil infusion, vecuronium, and desflurane maintenance.",
+    "Anticipated issues: Potential for postoperative respiratory depression due to remifentanil, need for monitoring of neuromuscular function post-vecuronium, and consideration of penicillin allergy in postoperative care."
+  ],
+  "distractors": [
+    "Resolved community-acquired pneumonia (2019)",
+    "Left wrist fracture (healed, 2014)",
+    "Discontinued simvastatin for hyperlipidemia (2018)"
+  ]
+}

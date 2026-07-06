@@ -1,0 +1,122 @@
+{
+  "case_id": "sg-0022",
+  "persona_uuid": "bc4772be1a98408499aef35f96da7017",
+  "surgery": "Elective open inguinal hernia repair",
+  "urgency": "elective",
+  "anesthesia_plan": "Spinal anesthesia with bupivacaine and fentanyl, IV paracetamol 1g for perioperative analgesia, and ondansetron 4mg for PONV prophylaxis",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension",
+    "Hyperlipidemia",
+    "Type 2 Diabetes Mellitus",
+    "Osteoarthritis (knees)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Nightly",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Paracetamol",
+      "dose": "500mg",
+      "frequency": "As needed",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "Daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No allergies documented",
+    "truth": "Penicillin allergy (rash and urticaria)",
+    "gold_question": "Do you have any history of allergic reactions to antibiotics, especially penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved in 2014",
+      "why_irrelevant": "Resolved 9 years ago, no residual respiratory issues"
+    },
+    {
+      "description": "Left wrist fracture in 2005",
+      "why_irrelevant": "Healed without complications, full mobility maintained"
+    },
+    {
+      "description": "Hyperthyroidism treated in 2010",
+      "why_irrelevant": "Resolved with radioiodine therapy, no recurrence"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Nightly",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Paracetamol",
+        "dose": "500mg",
+        "frequency": "As needed",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "Daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia resolved in 2014",
+      "Left wrist fracture in 2005",
+      "Hyperthyroidism treated in 2010"
+    ],
+    "prior_anesthesia": "Left cataract extraction under local anesthesia in 2019, uneventful"
+  }
+}

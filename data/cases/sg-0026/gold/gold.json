@@ -1,0 +1,114 @@
+{
+  "questions": [
+    "Do you have any allergies to medications, particularly antibiotics like penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "45",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size 4 inserted",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade 1 view",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "line",
+      "value": "Peripheral IV established, 18-gauge left antecubital",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "crystalloid bolus 100 mL",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "Hypotension (BP 70/40) treated with fluid bolus and ephedrine 10 mg IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "Tachycardia (HR 120) treated with esmolol 5 mg IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, hyperlipidemia, type 2 diabetes mellitus, and gastroesophageal reflux disease (GERD)",
+    "Current medications: Amlodipine 10mg once daily, Atorvastatin 20mg once nightly, Metformin 500mg twice daily, Omeprazole 20mg once daily; Aspirin 75mg once daily (stopped)",
+    "Allergy to penicillin with reported rash",
+    "ASA Physical Status 2 (mild systemic disease) due to hypertension, hyperlipidemia, type 2 diabetes, and GERD",
+    "Airway plan: General anesthesia with Laryngeal Mask Airway for elective inguinal hernia repair"
+  ],
+  "handoff_claims": [
+    "Key history: Hypertension, hyperlipidemia, type 2 diabetes, GERD, and penicillin allergy with rash",
+    "Intraoperative course: Elective inguinal hernia repair completed under general anesthesia with Laryngeal Mask Airway; expected postoperative course includes standard monitoring for pain and respiratory status",
+    "Anticipated issues: Monitor for GERD-related aspiration risk, ensure blood glucose control, avoid penicillin or beta-lactam antibiotics, and manage postoperative pain"
+  ],
+  "distractors": [
+    "Resolved community-acquired pneumonia (2018)",
+    "Remote left distal radius fracture (2005), healed without sequelae",
+    "Discontinued simvastatin (2019) due to resolution of hyperlipidemia (switched to atorvastatin)"
+  ]
+}

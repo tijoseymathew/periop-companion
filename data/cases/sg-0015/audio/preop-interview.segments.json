@@ -1,0 +1,123 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today we'll be discussing your upcoming laparoscopic cholecystectomy. Let's start with why you're having this surgery?",
+      "t0": 0.0,
+      "t1": 9.985
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Ah, yes. Been having belly pains for months, especially after eating. Doctor said gallstones, so need to remove the gallbladder lah.",
+      "t0": 10.335,
+      "t1": 19.112
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "Understood. Let's go through your medications. You're on amlodipine, metoprolol, atorvastatin, omeprazole, and metformin?",
+      "t0": 19.462,
+      "t1": 28.192
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Correct. But I stopped the metformin two days ago, like the nurse told me. Blood sugar's been okay, just a bit peckish sometimes.",
+      "t0": 28.542,
+      "t1": 36.716
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Good. Any allergies documented here, but I always like to confirm. Have you ever had any allergic reactions to medications, especially antibiotics like sulfonamides?",
+      "t0": 37.066,
+      "t1": 46.772
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Oh! The records say no allergies, but actually... I had a bad rash once from a sulfa drug. Can't remember the name, but it was for an infection. Face and chest all red and itchy for days.",
+      "t0": 47.122,
+      "t1": 60.45
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. We'll update your records to note sulfa allergy with rash. Any other reactions to medications or foods?",
+      "t0": 60.8,
+      "t1": 68.091
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "No other allergies, but I do get heartburn easily. That's why I take omeprazole daily.",
+      "t0": 68.441,
+      "t1": 74.246
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Noted. Have you eaten or drunk anything since midnight?",
+      "t0": 74.596,
+      "t1": 78.032
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Nope, nothing since 8pm last night. Just a bit of water with meds this morning, but that was hours ago lah.",
+      "t0": 78.382,
+      "t1": 85.348
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any previous surgeries or anesthesia? Even minor procedures?",
+      "t0": 85.698,
+      "t1": 90.528
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "Never had any operations before. This is my first time under general anesthesia.",
+      "t0": 90.878,
+      "t1": 96.033
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Alright. How's your overall energy and mobility? Can you walk upstairs or do daily tasks without excessive fatigue?",
+      "t0": 96.383,
+      "t1": 103.117
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Mostly okay, but the gallstone pain sometimes makes me tired. Still working full-time, though. Just avoid heavy lifting.",
+      "t0": 103.467,
+      "t1": 111.036
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Thanks for all that. We'll use general anesthesia with a tube in your throat, and medications to keep you comfortable and relaxed. Any questions for me?",
+      "t0": 111.386,
+      "t1": 119.142
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "Will I be sleepy after? My wife is picking me up, but she's worried about driving with me drowsy.",
+      "t0": 119.492,
+      "t1": 125.25
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "You'll need a responsible adult to accompany you home, as the effects can last a few hours. We'll make sure she's briefed on aftercare.",
+      "t0": 125.6,
+      "t1": 132.473
+    }
+  ]
+}

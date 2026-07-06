@@ -1,0 +1,92 @@
+{
+  "case_id": "sg-0012",
+  "persona_uuid": "655e0afeace44a648decc85fad1ed4ff",
+  "surgery": "Laparoscopic cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia",
+    "Obesity (BMI 32)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Nightly",
+      "active": true
+    },
+    {
+      "name": "Metoprolol",
+      "dose": "50 mg",
+      "frequency": "Daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Sulfa allergy (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Sulfa allergy (rash)",
+    "gold_question": "Have you ever had any allergic reactions to antibiotics or other medications?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia (resolved in 2018)",
+      "why_irrelevant": "Resolved respiratory infection over 5 years ago, no ongoing impact"
+    },
+    {
+      "description": "Left wrist fracture (healed in 2015)",
+      "why_irrelevant": "Remote orthopedic injury with full functional recovery"
+    },
+    {
+      "description": "Discontinued metoprolol 6 months ago for hypertension",
+      "why_irrelevant": "Medication stopped after blood pressure control achieved with alternative therapy"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Nightly",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia (resolved 2018)",
+      "Left wrist fracture (2015)",
+      "Discontinued metoprolol 6 months ago"
+    ],
+    "prior_anesthesia": null
+  }
+}

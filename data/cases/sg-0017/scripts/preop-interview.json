@@ -1,0 +1,88 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim, the anesthesiologist who'll be taking care of you during your knee surgery today. Let me go through some questions to make sure everything's in order for your anesthesia plan."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm ready when you are."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. First, can you tell me a bit about your knee problem? How long have you been having issues, and what led to the decision for surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I tore my meniscus playing football last year. Tried physio, but the pain kept coming back, especially when I twist or squat. Ortho said repair is the way to go lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Any other medical conditions like diabetes, high blood pressure, or heart issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, all clear there. Just the knee."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. What medications are you currently taking, and have you stopped any recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I was on amoxicillin 500mg twice daily for a chest infection last month, but stopped it two weeks ago. That's all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks. Now, about allergies—have you ever had a severe reaction to any antibiotics, including penicillin or related drugs?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, yes! When I was 16, I had a really bad reaction to penicillin. Got a rash all over, then my throat swelled, and I couldn't breathe properly. Had to go to hospital lah. Never took penicillin again after that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That sounds like anaphylaxis. Did you have hives, difficulty breathing, or low blood pressure at the time?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "All of that, Doctor. Rash came first, then I felt dizzy and couldn't catch my breath. Scared me half to death."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. I'll update your records to reflect this penicillin allergy clearly. Have you had any previous surgeries or anesthesia?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time under general anesthesia. Never even had a blood test before without fainting, haha."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. How's your overall fitness? Can you walk up stairs or do daily activities without getting winded?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk, but bending or twisting the knee hurts. Climbing stairs is slow, but I manage. No heart issues or shortness of breath otherwise."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Last question: when did you last eat or drink anything?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Had dinner at 8pm last night, water until midnight. Nothing since then, as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. We'll proceed with general anesthesia and intubation as planned. Your allergy will be flagged prominently, and we'll avoid all penicillin-related drugs. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. Just want to get this sorted so I can play with my kids again without pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Absolutely. We'll take good care of you. I'll see you in the operating room shortly."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your knee surgery today. Let's go through some questions to make sure everything's in order, okay?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. Yes, sure thing. I'm ready when you are."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. First, can you tell me a bit about your knee problem? How long have you been having issues with it?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, about five years already. The pain got worse last year, can't even walk properly now. That's why I'm doing this surgery, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. You're on amlodipine for blood pressure, metformin and glipizide for diabetes, atorvastatin for cholesterol, omeprazole for stomach, and aspirin which was stopped recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, that's all correct. I take them every day except the aspirin, which I stopped a week ago like the doctor told me."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any allergies to medications or other things?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Hmm, I don't think so. The records say no allergies, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Actually, I noticed the records say 'no known allergies,' but sometimes people might not mention things they think aren't important. Have you ever had a reaction to any medications, especially sulfa antibiotics?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh! Wait a minute... I had a rash once from some antibiotic. Was it sulfa? I think so. The doctor said it was an allergy, so I stopped taking that type since."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for mentioning that. So, a rash reaction to sulfa antibiotics. We'll make sure to note that properly. Any other reactions?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, that's the only one. I don't react to anything else."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you eaten or drunk anything since midnight? We need to confirm you're NPO for surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing since last night dinner. Just water for meds this morning, but that was hours ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any previous anesthesia or surgeries?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Only once, a cataract surgery years ago. They gave me local anesthesia, I think. No problems then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to know. Lastly, how's your mobility before surgery? Can you walk with assistance?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, with a walking stick. But the pain makes it hard, so I don't go out much now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia as planned, with general as backup. I'll see you in the operating room shortly."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Alright, doctor. Thank you for explaining everything."
+    }
+  ]
+}

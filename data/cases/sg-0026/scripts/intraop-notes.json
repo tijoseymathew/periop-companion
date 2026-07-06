@@ -1,0 +1,120 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "Induction propofol one hundred twenty milligrams, rocuronium forty-five milligrams."
+    },
+    {
+      "t": "08:02",
+      "text": "LMA size four inserted, grade one view."
+    },
+    {
+      "t": "08:03",
+      "text": "Peripheral IV access established, 18-gauge left antecubital."
+    },
+    {
+      "t": "08:05",
+      "text": "Crystalloid bolus one hundred milliliters administered."
+    },
+    {
+      "t": "08:10",
+      "text": "Blood pressure seventy over forty, treated with fluid bolus and ephedrine ten milligrams IV."
+    },
+    {
+      "t": "08:20",
+      "text": "Heart rate increased to one hundred twenty, treated with esmolol five milligrams."
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "45",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size 4 inserted",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade 1 view",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "line",
+      "value": "Peripheral IV established, 18-gauge left antecubital",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "crystalloid bolus 100 mL",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "Hypotension (BP 70/40) treated with fluid bolus and ephedrine 10 mg IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "Tachycardia (HR 120) treated with esmolol 5 mg IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    }
+  ]
+}

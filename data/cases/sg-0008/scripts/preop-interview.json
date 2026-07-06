@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be looking after you during your surgery. Can you confirm your full name and today's date for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. I'm Tan Kiah Choon, and today's 15th March. Surgery's for my gallbladder, right? They said something about stones causing pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Yes, you're scheduled for a laparoscopic cholecystectomy. Can you tell me more about your gallbladder issues? How long have you been having symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "About half a year already. Had bad pain after eating, especially oily food. Doctor said stones are blocking, so need to remove it lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medications. Can you confirm your current list, especially any changes to your blood pressure medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I take Amlodipine 10mg every morning for BP. Used to be on Enalapril, but stopped six months back because of the cough side effect. Now only Amlodipine, plus Metformin for diabetes, Atorvastatin for cholesterol, Levothyroxine for thyroid, and Omeprazole but stopped that already."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. So no Enalapril currently, only Amlodipine for hypertension. Any allergies we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No allergies, doctor. Never had reactions to any medicines or foods."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. You mentioned diabetes and high cholesterol – are these well-controlled with your current medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. Blood sugar and cholesterol levels are okay with the meds. BP also stable with Amlodipine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had anything to eat or drink since midnight? We need to confirm you're NPO for surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No food or water since last night, like the nurse instructed. Just a bit of water with my morning pills, but that was hours ago lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any previous anesthesia experiences we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first surgery. Never had general anesthesia before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright. How are you managing with daily activities? Any shortness of breath or chest pain on exertion?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No issues, doctor. Can climb stairs slowly and walk to the market without problems."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. We'll be using general anesthesia with a short-acting agent, and you'll have pain relief through a PCA pump after surgery. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, doctor. Just want to get this over with and feel better."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Of course. We'll take good care of you. I'll see you in the holding area before the operation."
+    }
+  ]
+}

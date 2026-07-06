@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist. I'll be speaking with you today about your upcoming surgery. Can you tell me a bit about why you're having this TURP done?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes doctor. My prostate been swollen for a while, causing trouble urinating. Sometimes I can't go at all, very uncomfortable. Urologist said TURP is the best option lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. Let's go over your medical history. Can you list all your current medications for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I take amlodipine 10mg every day for blood pressure, lisinopril 20mg also daily. Metformin 500mg twice a day for diabetes, atorvastatin 20mg at night for cholesterol, and aspirin 75mg daily. Oh, and omeprazole 20mg, but I stopped that two weeks ago as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Do you have any known allergies, Mr. Tan? The records say 'no known allergies,' but I'd like to confirm directly."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Allergies? Hmm... I think I had a reaction once to penicillin when I was younger. Got a rash all over, very itchy. But that's all, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Ah, that's important. Was it specifically penicillin, or other antibiotics too?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Only penicillin, doctor. My skin turned red and itchy like a heat rash. Never had issues with other antibiotics."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. Let's move to your health conditions. You have hypertension, diabetes, high cholesterol, and stage 2 kidney disease. Are these well-controlled?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, my BP usually around 130/80, sugars okay with metformin. Cholesterol under control with statin. Kidneys stable, no recent issues."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Have you eaten or drunk anything this morning? Remember, nothing after midnight except clear fluids up to 2 hours ago."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. Only sipped some water this morning, stopped by 6am. Followed the instructions strictly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had anesthesia before? Any reactions or complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, once for cataract surgery. They gave spinal anesthesia then too, no problems at all. Woke up fine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Lastly, how's your overall energy and mobility? Can you walk comfortably, climb stairs?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Still walking daily, but slower now. Prostate issues make it hard sometimes, but I manage stairs with rest stops."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia plus local infiltration as planned. No contraindications noted. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. All clear. Thank you for explaining everything."
+    }
+  ]
+}

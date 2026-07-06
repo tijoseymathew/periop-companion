@@ -1,0 +1,150 @@
+{
+  "questions": [
+    "Are you still taking all the medications listed in your current medical records?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120 mg",
+      "units": null,
+      "provenance": [
+        "voice_notes#0#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA 6.5 placed, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#1#1"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "event",
+      "value": "MAP 55 mmHg",
+      "units": null,
+      "provenance": [
+        "voice_notes#2#2"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#3#3"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "100 mcg",
+      "units": null,
+      "provenance": [
+        "voice_notes#3#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral IV 20G placed in right hand",
+      "units": null,
+      "provenance": [
+        "voice_notes#4#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "arterial line placed in right radial artery",
+      "units": null,
+      "provenance": [
+        "voice_notes#5#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "LR 500 mL bolus administered",
+      "units": null,
+      "provenance": [
+        "voice_notes#6#6"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "HR 110 bpm",
+      "units": null,
+      "provenance": [
+        "voice_notes#7#7"
+      ]
+    },
+    {
+      "t": "08:27",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#8#8"
+      ]
+    },
+    {
+      "t": "08:27",
+      "category": "dose",
+      "value": "0.5 mg",
+      "units": null,
+      "provenance": [
+        "voice_notes#8#8"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#9#9"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "1.5%",
+      "units": null,
+      "provenance": [
+        "voice_notes#9#9"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes essential hypertension, hyperlipidemia, and anxiety disorder",
+    "Current medications: Amlodipine 10 mg daily, Atorvastatin 20 mg nightly, Sertraline 50 mg daily; Omeprazole 20 mg daily discontinued 3 months ago after resolution of GERD symptoms",
+    "No known allergies",
+    "ASA-PS classification is 2 due to well-controlled comorbidities (hypertension, hyperlipidemia, anxiety)",
+    "Airway management plan: Laryngeal Mask Airway (LMA) with general anesthesia maintained with sevoflurane"
+  ],
+  "handoff_claims": [
+    "Patient has a history of essential hypertension, hyperlipidemia, and anxiety disorder",
+    "Intraoperative course: elective laparoscopic cholecystectomy performed under general anesthesia with LMA, maintained with sevoflurane; no complications noted",
+    "Anticipated postoperative issues: pain at incision sites, possible nausea/vomiting, and need for monitoring of vital signs and respiratory status"
+  ],
+  "distractors": [
+    "History of community-acquired pneumonia resolved in 2019",
+    "Remote left wrist fracture (2015) treated with cast, fully healed",
+    "Discontinued prednisone burst therapy for childhood asthma (last use age 12)"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "case_id": "sg-0009",
+  "persona_uuid": "0de1f8d12a944692b54ddec210e5fe57",
+  "surgery": "Laparoscopic cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with LMA, propofol induction, remifentanil infusion, and vecuronium for muscle relaxation; desflurane maintenance",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 28)",
+    "Hyperlipidemia",
+    "Hypertension (well-controlled)"
+  ],
+  "medications": [
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "BID",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Simvastatin",
+      "dose": "10mg",
+      "frequency": "nightly",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No allergies recorded",
+    "truth": "Patient reports penicillin allergy (rash) not documented in records",
+    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Resolved community-acquired pneumonia (2019)",
+      "why_irrelevant": "Remote infection with full recovery, no residual pulmonary issues"
+    },
+    {
+      "description": "Left wrist fracture (healed, 2014)",
+      "why_irrelevant": "Old traumatic injury with no functional impairment"
+    },
+    {
+      "description": "Discontinued simvastatin for hyperlipidemia (2018)",
+      "why_irrelevant": "Medication stopped due to lifestyle changes; condition now controlled with atorvastatin"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "BID",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Simvastatin",
+        "dose": "10mg",
+        "frequency": "nightly",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Community-acquired pneumonia (resolved 2019)",
+      "Left wrist fracture (healed 2014)",
+      "Hyperlipidemia (discontinued simvastatin 2018)"
+    ],
+    "prior_anesthesia": "General anesthesia for laparoscopic appendectomy at age 24; no adverse events"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "questions": [
+    "Have you made any changes to your medication regimen since your last medical review?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "20G IV in left hand",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500ml LR",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "BP dropped to 80/50",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "ephedrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "HR up to 110",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documentation of allergic rhinitis as a comorbidity in the pre-anesthesia evaluation note",
+    "Current medications listed as fluticasone (1 spray each nostril daily) and loratadine (10mg daily), with montelukast (10mg daily) discontinued in 2023",
+    "No known allergies documented in the pre-anesthesia evaluation note",
+    "ASA-PS class II with rationale of well-controlled allergic rhinitis",
+    "Airway assessment and anesthetic plan including general anesthesia with sevoflurane and rocuronium, supplemented with femoral nerve block for post-operative analgesia"
+  ],
+  "handoff_claims": [
+    "Key history includes allergic rhinitis and current medications of fluticasone and loratadine",
+    "Intraoperative course included general anesthesia with sevoflurane and rocuronium, with femoral nerve block performed for post-operative pain management",
+    "Anticipated post-operative issues include monitoring for nerve block efficacy, potential opioid-sparing analgesia needs, and respiratory status given allergic rhinitis history"
+  ],
+  "distractors": [
+    "History of left wrist fracture at age 10, treated with cast, fully healed",
+    "Pneumonia in 2015, treated with antibiotics, fully resolved",
+    "Completed a course of amoxicillin for acne in 2022, no ongoing skin issues"
+  ]
+}

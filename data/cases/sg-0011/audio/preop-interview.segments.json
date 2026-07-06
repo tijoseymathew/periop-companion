@@ -1,0 +1,130 @@
+{
+  "segments": [
+    {
+      "seg_id": "s000",
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist. I'll be speaking with you today about your upcoming surgery. Can you tell me a bit about why you're having this TURP done?",
+      "t0": 0.0,
+      "t1": 9.66
+    },
+    {
+      "seg_id": "s001",
+      "speaker": "PATIENT",
+      "text": "Ah, yes doctor. My prostate been swollen for a while, causing trouble urinating. Sometimes I can't go at all, very uncomfortable. Urologist said TURP is the best option lah.",
+      "t0": 10.009,
+      "t1": 21.341
+    },
+    {
+      "seg_id": "s002",
+      "speaker": "PROVIDER",
+      "text": "I see. Let's go over your medical history. Can you list all your current medications for me?",
+      "t0": 21.691,
+      "t1": 27.496
+    },
+    {
+      "seg_id": "s003",
+      "speaker": "PATIENT",
+      "text": "Sure. I take amlodipine 10mg every day for blood pressure, lisinopril 20mg also daily. Metformin 500mg twice a day for diabetes, atorvastatin 20mg at night for cholesterol, and aspirin 75mg daily. Oh, and omeprazole 20mg, but I stopped that two weeks ago as instructed.",
+      "t0": 27.846,
+      "t1": 50.741
+    },
+    {
+      "seg_id": "s004",
+      "speaker": "PROVIDER",
+      "text": "Thank you. Do you have any known allergies, Mr. Tan? The records say 'no known allergies,' but I'd like to confirm directly.",
+      "t0": 51.091,
+      "t1": 58.428
+    },
+    {
+      "seg_id": "s005",
+      "speaker": "PATIENT",
+      "text": "Allergies? Hmm... I think I had a reaction once to penicillin when I was younger. Got a rash all over, very itchy. But that's all, I think.",
+      "t0": 58.778,
+      "t1": 67.509
+    },
+    {
+      "seg_id": "s006",
+      "speaker": "PROVIDER",
+      "text": "Ah, that's important. Was it specifically penicillin, or other antibiotics too?",
+      "t0": 67.859,
+      "t1": 72.689
+    },
+    {
+      "seg_id": "s007",
+      "speaker": "PATIENT",
+      "text": "Only penicillin, doctor. My skin turned red and itchy like a heat rash. Never had issues with other antibiotics.",
+      "t0": 73.039,
+      "t1": 80.701
+    },
+    {
+      "seg_id": "s008",
+      "speaker": "PROVIDER",
+      "text": "Noted. Let's move to your health conditions. You have hypertension, diabetes, high cholesterol, and stage 2 kidney disease. Are these well-controlled?",
+      "t0": 81.051,
+      "t1": 90.2
+    },
+    {
+      "seg_id": "s009",
+      "speaker": "PATIENT",
+      "text": "Yes, my BP usually around 130/80, sugars okay with metformin. Cholesterol under control with statin. Kidneys stable, no recent issues.",
+      "t0": 90.55,
+      "t1": 101.417
+    },
+    {
+      "seg_id": "s010",
+      "speaker": "PROVIDER",
+      "text": "Good. Have you eaten or drunk anything this morning? Remember, nothing after midnight except clear fluids up to 2 hours ago.",
+      "t0": 101.767,
+      "t1": 109.429
+    },
+    {
+      "seg_id": "s011",
+      "speaker": "PATIENT",
+      "text": "No, doctor. Only sipped some water this morning, stopped by 6am. Followed the instructions strictly.",
+      "t0": 109.779,
+      "t1": 116.095
+    },
+    {
+      "seg_id": "s012",
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had anesthesia before? Any reactions or complications?",
+      "t0": 116.445,
+      "t1": 121.925
+    },
+    {
+      "seg_id": "s013",
+      "speaker": "PATIENT",
+      "text": "Yes, once for cataract surgery. They gave spinal anesthesia then too, no problems at all. Woke up fine.",
+      "t0": 122.275,
+      "t1": 130.077
+    },
+    {
+      "seg_id": "s014",
+      "speaker": "PROVIDER",
+      "text": "Great. Lastly, how's your overall energy and mobility? Can you walk comfortably, climb stairs?",
+      "t0": 130.427,
+      "t1": 136.371
+    },
+    {
+      "seg_id": "s015",
+      "speaker": "PATIENT",
+      "text": "Still walking daily, but slower now. Prostate issues make it hard sometimes, but I manage stairs with rest stops.",
+      "t0": 136.721,
+      "t1": 143.687
+    },
+    {
+      "seg_id": "s016",
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia plus local infiltration as planned. No contraindications noted. Any questions for me?",
+      "t0": 144.037,
+      "t1": 152.814
+    },
+    {
+      "seg_id": "s017",
+      "speaker": "PATIENT",
+      "text": "No, doctor. All clear. Thank you for explaining everything.",
+      "t0": 153.164,
+      "t1": 156.74
+    }
+  ]
+}

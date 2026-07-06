@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Mr Tan, how are you feeling now after the TURP procedure?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I’m a bit uncomfortable, Doctor, but not in severe pain. More like a dull ache."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "On a scale of 0 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "About 4, I’d say. It’s there, but the medication seems to be helping."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea, dizziness, or breathing difficulties since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No nausea, but I felt a bit light-headed when I first opened my eyes. Breathing’s fine though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything about the procedure itself while under spinal anesthesia?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I recall being awake and hearing voices, but it’s all hazy. Not much detail, really."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Given your hypertension, diabetes, and kidney condition, have you noticed any unusual symptoms like chest pain, blurred vision, or reduced urine output?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No chest pain or vision issues. Urine came out normally when I voided earlier. Blood sugar was 7.8 this morning, which is usual for me."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. We’ll continue monitoring your vitals, blood sugar, and kidney function. Any other concerns before we move you to the ward?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. I’m just glad the procedure’s done. Thank you for checking on me."
+    }
+  ]
+}

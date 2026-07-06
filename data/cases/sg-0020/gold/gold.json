@@ -1,0 +1,114 @@
+{
+  "questions": [
+    "Have you ever had any reactions to antibiotics, especially penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "12.5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes:entry#0"
+      ]
+    },
+    {
+      "t": "08:01",
+      "category": "airway",
+      "value": "oxygen via nasal cannula",
+      "units": "2 L/min",
+      "provenance": [
+        "voice_notes:entry#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "line",
+      "value": "two large bore IVs",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": "100 mL/hour",
+      "provenance": [
+        "voice_notes:entry#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "hypotension (BP 70/40)",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": "1 L bolus",
+      "provenance": [
+        "voice_notes:entry#3"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "event",
+      "value": "bradycardia (HR 40)",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#4"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes:entry#4"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "1",
+      "units": "mg",
+      "provenance": [
+        "voice_notes:entry#4"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documentation of comorbidities: hypertension, type 2 diabetes mellitus, hyperlipidemia, chronic kidney disease stage 3",
+    "Medications with status: amlodipine 10mg daily (continued), lisinopril 10mg daily (continued), metformin 500mg twice daily (continued), atorvastatin 20mg daily (continued), omeprazole 20mg daily (continued), aspirin 75mg daily (discontinued)",
+    "Allergy to penicillin with rash reaction documented",
+    "ASA Physical Status classification as 3 with rationale: controlled comorbidities (hypertension, diabetes, hyperlipidemia, CKD stage 3)",
+    "Airway assessment and anesthetic plan for spinal anesthesia with local infiltration documented"
+  ],
+  "handoff_claims": [
+    "Key history including comorbidities (hypertension, type 2 diabetes, hyperlipidemia, CKD stage 3) and penicillin allergy with rash reaction",
+    "Intraoperative course: transurethral resection of the prostate completed under spinal anesthesia with local infiltration, no complications noted",
+    "Anticipated postoperative issues: potential for bleeding, urinary retention, need for monitoring renal function and blood glucose control"
+  ],
+  "distractors": [
+    "Pneumonia resolved in 2018",
+    "Left femur fracture healed in 2010",
+    "Discontinued simvastatin due to muscle pain in 2015"
+  ]
+}

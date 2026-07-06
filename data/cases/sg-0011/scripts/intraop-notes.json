@@ -1,0 +1,159 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "Spinal anesthetic performed with bupivacaine twenty-five milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "Local infiltration with lidocaine twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "Midazolam two milligrams IV for sedation"
+    },
+    {
+      "t": "08:07",
+      "text": "Fentanyl fifty micrograms IV administered"
+    },
+    {
+      "t": "08:10",
+      "text": "Airway maintained spontaneously, no intubation required"
+    },
+    {
+      "t": "08:15",
+      "text": "Peripheral IV line established in left antecubital vein"
+    },
+    {
+      "t": "08:20",
+      "text": "Crystalloid fluid bolus five hundred milliliters given"
+    },
+    {
+      "t": "08:25",
+      "text": "Blood pressure drop to seventy over forty, treated with phenylephrine ten micrograms"
+    },
+    {
+      "t": "08:30",
+      "text": "Heart rate increased to one hundred twenty, atropine point five milligrams given"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "lidocaine",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "20",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "midazolam",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "2",
+      "units": "mg",
+      "provenance": [
+        "voice:intraop#chunk_3"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "mcg",
+      "provenance": [
+        "voice:intraop#chunk_4"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice:intraop#chunk_4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "maintained spontaneously",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral IV in left antecubital vein",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "crystalloid 500",
+      "units": "ml",
+      "provenance": [
+        "voice:intraop#chunk_7"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "Blood pressure drop to 70/40 treated with phenylephrine 10 mcg",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_8"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "Heart rate increased to 120 treated with atropine 0.5 mg",
+      "units": null,
+      "provenance": [
+        "voice:intraop#chunk_9"
+      ]
+    }
+  ]
+}

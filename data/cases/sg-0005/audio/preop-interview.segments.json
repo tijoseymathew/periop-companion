@@ -5,27 +5,27 @@
       "speaker": "PROVIDER",
       "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll go through some questions to ensure you're ready for your knee surgery tomorrow. Let's start with why you're having this operation.",
       "t0": 0.0,
-      "t1": 10.263
+      "t1": 9.938
     },
     {
       "seg_id": "s001",
       "speaker": "PATIENT",
       "text": "Morning, Doctor. My right knee's been really bad for years, lah. Osteoarthritis, they said. Can't walk far without pain anymore.",
-      "t0": 10.613,
-      "t1": 18.833
+      "t0": 10.288,
+      "t1": 18.554
     },
     {
       "seg_id": "s002",
       "speaker": "PROVIDER",
       "text": "I see. Do you have any other medical conditions besides osteoarthritis?",
-      "t0": 19.183,
-      "t1": 23.688
+      "t0": 18.904,
+      "t1": 23.502
     },
     {
       "seg_id": "s003",
       "speaker": "PATIENT",
       "text": "Yes, Doctor. I've got high blood pressure, diabetes, and high cholesterol. All controlled with meds, ah.",
-      "t0": 24.038,
+      "t0": 23.852,
       "t1": 30.493
     },
     {
@@ -33,105 +33,105 @@
       "speaker": "PROVIDER",
       "text": "Thank you. Let's list your medications. What are you currently taking?",
       "t0": 30.843,
-      "t1": 35.162
+      "t1": 35.069
     },
     {
       "seg_id": "s005",
       "speaker": "PATIENT",
       "text": "Amlodipine 5mg once daily, Metoprolol 50mg twice a day, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg at night, and Aspirin 75mg every morning. Oh, and I stopped Lisinopril last week as instructed.",
-      "t0": 35.512,
-      "t1": 56.131
+      "t0": 35.419,
+      "t1": 55.945
     },
     {
       "seg_id": "s006",
       "speaker": "PROVIDER",
       "text": "Excellent. Any known allergies, especially to antibiotics or medications?",
-      "t0": 56.481,
-      "t1": 61.729
+      "t0": 56.295,
+      "t1": 61.357
     },
     {
       "seg_id": "s007",
       "speaker": "PATIENT",
       "text": "The records say no allergies, but actually... I had a rash once from penicillin when I was younger. Never told the hospital before, forgot to mention it, lah.",
-      "t0": 62.079,
-      "t1": 71.97
+      "t0": 61.707,
+      "t1": 71.042
     },
     {
       "seg_id": "s008",
       "speaker": "PROVIDER",
       "text": "Thank you for sharing that. Can you describe the rash and when it happened?",
-      "t0": 72.32,
-      "t1": 75.71
+      "t0": 71.392,
+      "t1": 75.2
     },
     {
       "seg_id": "s009",
       "speaker": "PATIENT",
       "text": "It was years ago, maybe 20 years back. Took penicillin for a tooth infection, then got itchy red spots all over. Went away after stopping the medicine.",
-      "t0": 76.06,
-      "t1": 86.277
+      "t0": 75.55,
+      "t1": 85.302
     },
     {
       "seg_id": "s010",
       "speaker": "PROVIDER",
       "text": "Noted. We'll update your records. Have you eaten or drunk anything since midnight?",
-      "t0": 86.627,
-      "t1": 91.457
+      "t0": 85.652,
+      "t1": 90.482
     },
     {
       "seg_id": "s011",
       "speaker": "PATIENT",
       "text": "No, Doctor. I stopped eating after 8 PM last night, just sipped a little water for meds.",
-      "t0": 91.807,
-      "t1": 97.194
+      "t0": 90.832,
+      "t1": 96.451
     },
     {
       "seg_id": "s012",
       "speaker": "PROVIDER",
       "text": "Good. Have you had any previous surgeries or anesthesia?",
-      "t0": 97.544,
-      "t1": 100.98
+      "t0": 96.801,
+      "t1": 100.377
     },
     {
       "seg_id": "s013",
       "speaker": "PATIENT",
       "text": "Yes, cataract surgery five years ago. They used spinal anesthesia, and I was awake but sleepy. No problems then.",
-      "t0": 101.33,
-      "t1": 109.365
+      "t0": 100.727,
+      "t1": 108.668
     },
     {
       "seg_id": "s014",
       "speaker": "PROVIDER",
       "text": "Great. How's your mobility now? Can you walk with assistance?",
-      "t0": 109.715,
-      "t1": 113.476
+      "t0": 109.018,
+      "t1": 112.826
     },
     {
       "seg_id": "s015",
       "speaker": "PATIENT",
       "text": "I use a walking frame at home. Can't bend the knee properly, so stairs are tough. Need help sometimes, ah.",
-      "t0": 113.826,
-      "t1": 121.071
+      "t0": 113.176,
+      "t1": 120.653
     },
     {
       "seg_id": "s016",
       "speaker": "PROVIDER",
       "text": "Understood. For tomorrow, we'll use spinal anesthesia with sedation. You'll be comfortable and won't feel pain. Any questions?",
-      "t0": 121.421,
-      "t1": 129.269
+      "t0": 121.003,
+      "t1": 129.408
     },
     {
       "seg_id": "s017",
       "speaker": "PATIENT",
       "text": "No questions, Doctor. Just want to get this done and walk better.",
-      "t0": 129.619,
-      "t1": 133.241
+      "t0": 129.758,
+      "t1": 133.52
     },
     {
       "seg_id": "s018",
       "speaker": "PROVIDER",
       "text": "Perfect. We'll see you in the holding area tomorrow. Nurses will prep you, and I'll explain the procedure again before we start.",
-      "t0": 133.591,
-      "t1": 140.139
+      "t0": 133.87,
+      "t1": 140.557
     }
   ]
 }

@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Meh, still a bit tired lah, but okay. Got some pain here, but the nurse gave me medicine already."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Can you tell me your pain level on a scale of 1 to 10? And have you felt any nausea or vomiting?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Pain maybe 4 or 5, not too bad. Stomach also got little bit upset, but not throwing up. Just feel like want to sleep more."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any trouble breathing or coughing? Your airway was managed with a tube during surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Throat sore a bit, like something stuck there, but breathing okay lah. Not short of breath."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything from the operation? Any dreams or awareness during surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nope, all black out. Woke up only when nurse called my name here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Your blood pressure and sugar levels were monitored. Any concerns about your diabetes or cholesterol?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Blood pressure machine beeping whole time, but nurse say stable. Sugar also checked, not too high. Cholesterol... mmm, still taking pills right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "All your medications will continue as usual. Let the nurse know if pain or nausea gets worse, okay?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, thank you. Just want to rest now and go home soon lah."
+    }
+  ]
+}

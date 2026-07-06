@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr Tan. I'm Dr Liew, the anesthesiologist who'll be taking care of you during your knee surgery today. Can I start by confirming a few details?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, sure. Morning, doctor."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks. Let's start with your knee problem. How long have you been having issues with your left knee?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "About six months already, doc. Pain when I bend it or climb stairs. Tried physio and painkillers, but still got swelling and catching sensation inside."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go through your medical history. I see in your records you're on montasone nasal spray and omeprazole. Can you confirm if you're still taking all these medications as listed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Montasone spray, yes, one spray each nostril daily for my allergic rhinitis. But omeprazole? Oh, I stopped that in 2022 already. My GERD got better, so doctor said I can stop."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. So omeprazole was discontinued in 2022 after your GERD resolved?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, correct. No more heartburn since then, so no need for the pill anymore."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Any allergies we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "None that I know of, doctor. Never had reactions to medicines or food."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Have you eaten or drunk anything since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing since last night dinner. Just a bit of water with my montasone spray this morning."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Any previous anesthesia experiences?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Once, when I had my appendix out in 2015. Went smoothly, no problems waking up or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Finally, how's your overall fitness? Can you walk, climb stairs, do daily activities?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk and climb stairs, but slowly because of the knee pain. Can't run or squat anymore, but otherwise okay lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr Tan. We'll be using general anesthesia with sevoflurane and vecuronium, plus a nerve block in your thigh to help with post-op pain. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, doctor. Just want to get this knee fixed so I can play badminton again."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. We'll take good care of you. I'll see you in the operating room shortly."
+    }
+  ]
+}

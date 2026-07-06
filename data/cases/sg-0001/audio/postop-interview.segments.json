@@ -5,98 +5,98 @@
       "speaker": "PROVIDER",
       "text": "Hi Mr Tan, how are you feeling now after the surgery?",
       "t0": 0.0,
-      "t1": 3.39
+      "t1": 3.344
     },
     {
       "seg_id": "s001",
       "speaker": "PATIENT",
       "text": "Doc, my left hip is sore, but not too bad lah. I can tolerate it.",
-      "t0": 3.74,
-      "t1": 8.431
+      "t0": 3.694,
+      "t1": 8.198
     },
     {
       "seg_id": "s002",
       "speaker": "PROVIDER",
       "text": "Okay, can you rate your pain on a scale of 0 to 10 for me?",
-      "t0": 8.78,
-      "t1": 12.403
+      "t0": 8.548,
+      "t1": 12.124
     },
     {
       "seg_id": "s003",
       "speaker": "PATIENT",
       "text": "Maybe 4 or 5? It\u2019s a dull pain, not sharp one.",
-      "t0": 12.753,
-      "t1": 16.747
+      "t0": 12.474,
+      "t1": 16.236
     },
     {
       "seg_id": "s004",
       "speaker": "PROVIDER",
       "text": "Any nausea or vomiting since waking up?",
-      "t0": 17.097,
-      "t1": 19.372
+      "t0": 16.586,
+      "t1": 18.768
     },
     {
       "seg_id": "s005",
       "speaker": "PATIENT",
       "text": "A bit dizzy earlier, but no vomiting. Stomach feels okay now.",
-      "t0": 19.722,
-      "t1": 23.948
+      "t0": 19.118,
+      "t1": 23.391
     },
     {
       "seg_id": "s006",
       "speaker": "PROVIDER",
       "text": "How\u2019s your breathing? Any tightness or discomfort in your chest?",
-      "t0": 24.298,
-      "t1": 27.781
+      "t0": 23.741,
+      "t1": 27.27
     },
     {
       "seg_id": "s007",
       "speaker": "PATIENT",
       "text": "Breathing is fine, but my throat is a bit dry. Maybe from the tube during surgery?",
-      "t0": 28.131,
-      "t1": 33.1
+      "t0": 27.62,
+      "t1": 32.775
     },
     {
       "seg_id": "s008",
       "speaker": "PROVIDER",
       "text": "That\u2019s normal. Did you remember anything during the operation?",
-      "t0": 33.45,
-      "t1": 36.608
+      "t0": 33.125,
+      "t1": 36.422
     },
     {
       "seg_id": "s009",
       "speaker": "PATIENT",
       "text": "No, I was out cold. Only woke up when they moved me here.",
-      "t0": 36.958,
-      "t1": 40.72
+      "t0": 36.772,
+      "t1": 40.395
     },
     {
       "seg_id": "s010",
       "speaker": "PROVIDER",
       "text": "Any chest pain, shortness of breath, or unusual symptoms linked to your blood pressure or sugar levels?",
-      "t0": 41.07,
-      "t1": 46.596
+      "t0": 40.745,
+      "t1": 46.178
     },
     {
       "seg_id": "s011",
       "speaker": "PATIENT",
       "text": "Blood pressure been stable, no chest pain. My sugar was 7.2 this morning, so okay lah.",
-      "t0": 46.946,
-      "t1": 53.215
+      "t0": 46.528,
+      "t1": 53.076
     },
     {
       "seg_id": "s012",
       "speaker": "PROVIDER",
       "text": "Good. Let us know if you need more pain relief or feel unwell. Rest well, Mr Tan.",
-      "t0": 53.565,
-      "t1": 59.231
+      "t0": 53.426,
+      "t1": 58.813
     },
     {
       "seg_id": "s013",
       "speaker": "PATIENT",
       "text": "Thanks, doc. I\u2019ll let the nurse know if anything comes up.",
-      "t0": 59.581,
-      "t1": 62.832
+      "t0": 59.163,
+      "t1": 62.414
     }
   ]
 }

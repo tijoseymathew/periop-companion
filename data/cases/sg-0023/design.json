@@ -1,0 +1,97 @@
+{
+  "case_id": "sg-0023",
+  "persona_uuid": "7150254a9680452abd4f1db992706156",
+  "surgery": "Laparoscopic cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General anesthesia with Laryngeal Mask Airway (LMA), balanced technique with intravenous anesthetic agents and neuromuscular blockade",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Hypertension",
+    "Hyperlipidemia",
+    "Gastroesophageal Reflux Disease (GERD)"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "once nightly",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Allergic to penicillin (rash)",
+    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved in 2018",
+      "why_irrelevant": "Resolved, no residual effects"
+    },
+    {
+      "description": "Right ankle fracture treated with casting in 2015",
+      "why_irrelevant": "Healed, no functional impairment"
+    },
+    {
+      "description": "Prediabetes diagnosed in 2020, managed with metformin until 2022",
+      "why_irrelevant": "Metformin discontinued as per resolved condition"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "once nightly",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "History of pneumonia resolved in 2018",
+      "Right ankle fracture treated with casting in 2015",
+      "Prediabetes diagnosed in 2020, managed with metformin until 2022"
+    ],
+    "prior_anesthesia": null
+  }
+}

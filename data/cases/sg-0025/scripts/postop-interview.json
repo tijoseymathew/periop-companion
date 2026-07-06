@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Got some pain at the hip, but the meds help. Feeling a bit dizzy and nauseous though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, we can give you something for the nausea. Any trouble breathing or sore throat?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Throat's a bit sore, but breathing's fine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's from the tube during anesthesia. Do you remember anything from the operation?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really, I was out cold."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's normal. Now, regarding your other conditions – how's your blood pressure, sugar levels, and kidneys?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "All seem okay. No issues so far."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Any discomfort from BPH or need to urinate?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really, but I'm a bit thirsty."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll monitor your fluids and check your blood sugar and BP regularly. Rest well."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thanks, doctor."
+    }
+  ]
+}

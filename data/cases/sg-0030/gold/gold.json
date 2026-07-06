@@ -1,0 +1,125 @@
+{
+  "questions": [
+    "Have you ever had a reaction to any antibiotics, particularly sulfa-based medications?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "note:1#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "note:1#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "endotracheal tube placed, grade one view",
+      "units": null,
+      "provenance": [
+        "note:2#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "16-gauge IV line placed in right antecubital vein",
+      "units": null,
+      "provenance": [
+        "note:3#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "crystalloid",
+      "units": "2000 ml",
+      "provenance": [
+        "note:4#4"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "hypotension (85/50 mmHg)",
+      "units": null,
+      "provenance": [
+        "note:5#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "ephedrine",
+      "units": null,
+      "provenance": [
+        "note:5#5"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "note:5#5"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "event",
+      "value": "hypertension (160/90 mmHg)",
+      "units": null,
+      "provenance": [
+        "note:6#6"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "note:6#6"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "20",
+      "units": "mg",
+      "provenance": [
+        "note:6#6"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History of hypertension",
+    "Current medication: Amlodipine 5 mg once daily",
+    "Current medication: Levonorgestrel/Ethinyl Estradiol standard dose once daily",
+    "Discontinued medication: Doxycycline 100 mg once daily (stopped)",
+    "Allergy to sulfa drugs with rash",
+    "ASA 2 classification due to hypertension",
+    "Plan for general anesthesia with endotracheal intubation"
+  ],
+  "handoff_claims": [
+    "History of hypertension and sulfa drug allergy (rash)",
+    "Intraoperative course: Uncomplicated laparoscopic ovarian cystectomy under general anesthesia with endotracheal intubation",
+    "Anticipated postoperative issues: Pain management, blood pressure monitoring, and avoidance of sulfa-containing medications"
+  ],
+  "distractors": [
+    "Fracture of left wrist (2018, healed)",
+    "Pneumonia (2019, resolved)",
+    "Discontinued medication: Omeprazole for GERD (2019)"
+  ]
+}

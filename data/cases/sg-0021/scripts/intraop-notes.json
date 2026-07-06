@@ -1,0 +1,177 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "fentanyl fifty micrograms"
+    },
+    {
+      "t": "08:04",
+      "text": "rocuronium sixty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "spinal bupivacaine ten milligrams"
+    },
+    {
+      "t": "08:15",
+      "text": "peripheral line eighteen gauge placed"
+    },
+    {
+      "t": "08:15",
+      "text": "fluids five hundred milliliters crystalloid given"
+    },
+    {
+      "t": "08:20",
+      "text": "blood pressure ninety over sixty, treated with fluid bolus and phenylephrine one hundred micrograms"
+    },
+    {
+      "t": "08:30",
+      "text": "heart rate one hundred ten, treated with fluid and adjusted anesthesia depth"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "60",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "10",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral line eighteen gauge",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "500",
+      "units": "ml",
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "blood pressure ninety over sixty, treated with fluid bolus and phenylephrine one hundred micrograms",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "heart rate one hundred ten, treated with fluid and adjusted anesthesia depth",
+      "units": null,
+      "provenance": [
+        "voice_notes#8"
+      ]
+    }
+  ]
+}

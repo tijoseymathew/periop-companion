@@ -1,0 +1,122 @@
+{
+  "case_id": "sg-0020",
+  "persona_uuid": "dd74bc4c595843ae95f226d5479836e7",
+  "surgery": "Transurethral resection of the prostate (TURP)",
+  "urgency": "elective",
+  "anesthesia_plan": "Spinal anesthesia with local infiltration",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia",
+    "Chronic Kidney Disease Stage 3"
+  ],
+  "medications": [
+    {
+      "name": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Penicillin allergy (rash)",
+    "gold_question": "Have you ever had any reactions to antibiotics, especially penicillin?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia resolved in 2018",
+      "why_irrelevant": "Resolved years ago, no current impact"
+    },
+    {
+      "description": "Left femur fracture healed in 2010",
+      "why_irrelevant": "Remote, fully healed"
+    },
+    {
+      "description": "Discontinued simvastatin due to muscle pain in 2015",
+      "why_irrelevant": "Medication discontinued for resolved side effect"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Amlodipine",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "daily",
+        "active": false
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia resolved in 2018",
+      "Left femur fracture healed in 2010",
+      "Discontinued simvastatin due to muscle pain in 2015"
+    ],
+    "prior_anesthesia": "Previous spinal anesthesia for cataract surgery in 2015, uneventful"
+  }
+}
