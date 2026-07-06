@@ -7,6 +7,7 @@ import { Stethoscope } from "lucide-react";
 import { ArtifactView } from "../components/ArtifactView";
 import { AudioPlayer, type AudioPlayerHandle } from "../components/AudioPlayer";
 import { claimDomId } from "../components/ClaimRow";
+import { DepartmentBoard } from "../components/DepartmentBoard";
 import { NewCaseForm } from "../components/NewCaseForm";
 import { ProviderPicker } from "../components/ProviderPicker";
 import { SourcePanel } from "../components/SourcePanel";
@@ -62,6 +63,8 @@ export default function App() {
     mine: false,
   });
   const [creating, setCreating] = useState(false);
+  // department dashboard (v2 W6c) rendered in place of the case view
+  const [showBoard, setShowBoard] = useState(false);
   // per-claim review actions (v2 W6a): sidecar map for the selected live case
   const [claimReviews, setClaimReviews] = useState<ClaimReviews>({});
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
@@ -272,9 +275,17 @@ export default function App() {
           selectedId={selectedId}
           onSelect={(id) => {
             setCreating(false);
+            setShowBoard(false);
             setSelectedId(id);
           }}
-          onNewCase={() => setCreating(true)}
+          onNewCase={() => {
+            setShowBoard(false);
+            setCreating(true);
+          }}
+          onDepartment={() => {
+            setCreating(false);
+            setShowBoard(true);
+          }}
           filters={filters}
           onToggleFilter={(status: ClaimStatus) =>
             setFilters((f) => ({ ...f, [status]: !f[status] }))
@@ -294,6 +305,15 @@ export default function App() {
               canCreate={me !== null}
               onCreate={handleCreateCase}
               onCancel={() => setCreating(false)}
+            />
+          ) : showBoard ? (
+            <DepartmentBoard
+              cases={cases}
+              providers={providers}
+              onSelect={(id) => {
+                setShowBoard(false);
+                setSelectedId(id);
+              }}
             />
           ) : kase?.workflow ? (
             <>

@@ -5,7 +5,7 @@
  * existing claim-status strip (conflict indicator) + audio marker. The claim
  * status filter toggles of ui.md §5.2 stay at the bottom.
  */
-import { Plus, Volume2 } from "lucide-react";
+import { LayoutGrid, Plus, Volume2 } from "lucide-react";
 import type { StatusFilters } from "../lib/filters";
 import {
   CLAIM_STATUSES,
@@ -45,6 +45,7 @@ export function Worklist({
   workFilters,
   onWorkFilters,
   me = null,
+  onDepartment,
 }: {
   cases: CaseSummary[];
   providers: Provider[];
@@ -57,6 +58,8 @@ export function Worklist({
   onWorkFilters: (filters: WorklistFilters) => void;
   /** the picked provider — powers the "my cases" filter (v2 W6b) */
   me?: string | null;
+  /** opens the department dashboard (v2 W6c) */
+  onDepartment?: () => void;
 }) {
   const rows = filterWorklist(cases, workFilters, me);
   return (
@@ -69,6 +72,15 @@ export function Worklist({
         >
           <Plus className="h-4 w-4" aria-hidden /> New case
         </button>
+        {onDepartment && (
+          <button
+            type="button"
+            onClick={onDepartment}
+            className="flex min-h-[44px] items-center gap-1.5 rounded border border-surface-overlay px-3 py-2 text-sm text-ink-secondary hover:border-brand hover:text-brand"
+          >
+            <LayoutGrid className="h-4 w-4" aria-hidden /> Department
+          </button>
+        )}
       </div>
       <div className="flex gap-2 border-b border-surface-overlay p-3 text-xs">
         <label className="flex flex-1 flex-col gap-0.5 text-ink-subtle">

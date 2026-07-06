@@ -7,6 +7,7 @@
 import { describe, expect, it } from "vitest";
 import { CaseSchema, type Case, type Workflow } from "../schema";
 import {
+  departmentBoard,
   filterWorklist,
   headline,
   headlineStage,
@@ -304,5 +305,62 @@ describe("filterWorklist", () => {
 
   it("my cases with no provider picked keeps nothing live and no demos", () => {
     expect(filterWorklist(mineRows, { stage: "all", status: "all", mine: true }, null)).toEqual([]);
+  });
+});
+
+describe("departmentBoard", () => {
+  const rows = [
+    makeSummary({ case_id: "demo-1" }),
+    makeSummary({
+      case_id: "clinic-1",
+      label: "TKR Mrs W",
+      workflow: makeWorkflow({ preop: { status: "awaiting_review", performed_by: "p-lim" } }),
+      status_counts: { supported: 3, conflicting: 1 },
+    }),
+    makeSummary({
+      case_id: "clinic-2",
+      workflow: makeWorkflow({ preop: { status: "ready_to_generate" } }),
+      status_counts: {},
+    }),
+    makeSummary({
+      case_id: "theatre-1",
+      workflow: makeWorkflow({
+        preop: { status: "signed_off" },
+        intraop: { status: "awaiting_review", performed_by: "p-tan" },
+      }),
+      status_counts: { conflicting: 2 },
+    }),
+    makeSummary({
+      case_id: "done-1",
+      workflow: makeWorkflow({
+        preop: { status: "signed_off" },
+        intraop: { status: "signed_off" },
+        postop: { status: "signed_off" },
+      }),
+      status_counts: {},
+    }),
+  ];
+
+  it("buckets live cases by headline stage with status counts", () => {
+    const board = departmentBoard(rows);
+    expect(board.stages.preop.total).toBe(2);
+    expect(board.stages.preop.byStatus.awaiting_review).toBe(1);
+    expect(board.stages.preop.byStatus.ready_to_generate).toBe(1);
+    expect(board.stages.intraop.total).toBe(1);
+    expect(board.stages.postop.total).toBe(0);
+    expect(board.complete).toBe(1);
+    expect(board.demo).toBe(1);
+  });
+
+  it("lists the awaiting-review queue with stage and who generated", () => {
+    const board = departmentBoard(rows);
+    expect(board.needsReview).toEqual([
+      { caseId: "clinic-1", label: "TKR Mrs W", stage: "preop", by: "p-lim" },
+      { caseId: "theatre-1", label: "theatre-1", stage: "intraop", by: "p-tan" },
+    ]);
+  });
+
+  it("totals outstanding conflicting claims across live cases", () => {
+    expect(departmentBoard(rows).conflicts).toBe(3);
   });
 });

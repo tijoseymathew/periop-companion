@@ -155,6 +155,58 @@ export function caseInvolves(workflow: Workflow | null, providerId: string | nul
   });
 }
 
+// ---- department dashboard (v2 §2 stretch) -----------------------------------
+
+export interface DepartmentBoardData {
+  /** live cases bucketed by their headline stage */
+  stages: Record<StageKey, { total: number; byStatus: Partial<Record<StageStatus, number>> }>;
+  complete: number;
+  demo: number;
+  /** the queue that needs a reviewer, in worklist order */
+  needsReview: { caseId: string; label: string; stage: StageKey; by: string | null }[];
+  /** outstanding conflicting claims across live cases */
+  conflicts: number;
+}
+
+export function departmentBoard(rows: CaseSummary[]): DepartmentBoardData {
+  const board: DepartmentBoardData = {
+    stages: {
+      preop: { total: 0, byStatus: {} },
+      intraop: { total: 0, byStatus: {} },
+      postop: { total: 0, byStatus: {} },
+    },
+    complete: 0,
+    demo: 0,
+    needsReview: [],
+    conflicts: 0,
+  };
+  for (const row of rows) {
+    if (!row.workflow) {
+      board.demo += 1;
+      continue;
+    }
+    board.conflicts += row.status_counts.conflicting ?? 0;
+    const stage = headlineStage(row.workflow);
+    if (!stage) {
+      board.complete += 1;
+      continue;
+    }
+    const state = row.workflow.stages[stage];
+    const bucket = board.stages[stage];
+    bucket.total += 1;
+    bucket.byStatus[state.status] = (bucket.byStatus[state.status] ?? 0) + 1;
+    if (state.status === "awaiting_review") {
+      board.needsReview.push({
+        caseId: row.case_id,
+        label: row.label ?? row.case_id,
+        stage,
+        by: state.performed_by,
+      });
+    }
+  }
+  return board;
+}
+
 export function filterWorklist(
   rows: CaseSummary[],
   filters: WorklistFilters,

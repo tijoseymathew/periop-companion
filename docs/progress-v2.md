@@ -74,7 +74,7 @@ resume from the first unchecked item.
       reviewed/flagged and flagged claims join the jump list
 - [x] W6b: "my cases" worklist filter (any stage performed/signed off by me,
       or created by me)
-- [ ] W6c: department dashboard view (cases by stage × status, awaiting-review
+- [x] W6c: department dashboard view (cases by stage × status, awaiting-review
       queue, conflict totals — derived from the case summaries client-side)
 - [ ] W6d: tablet-width layout — below `lg` the provenance rail hides and the
       worklist becomes a toggleable drawer, so the intra-op capture screen is
