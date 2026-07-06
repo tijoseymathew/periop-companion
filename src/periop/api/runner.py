@@ -24,3 +24,14 @@ class LivePipelineRunner:
 
         chat, _ = self._chats()
         GapAnalyst(chat=chat).analyze(case)
+
+    def run_stage(self, case: Case, stage: str, case_dir, emit) -> Case:
+        from periop.agents.stages import run_intraop_stage, run_postop_stage
+        from periop.agents.preop_stage import run_preop_stage
+
+        chat, fast = self._chats()
+        if stage == "preop":
+            return run_preop_stage(case, case_dir, chat=chat, verifier_chat=fast, emit=emit)
+        if stage == "intraop":
+            return run_intraop_stage(case, case_dir, chat=chat, fast_chat=fast, emit=emit)
+        return run_postop_stage(case, case_dir, chat=chat, fast_chat=fast, emit=emit)

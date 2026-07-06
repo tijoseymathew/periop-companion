@@ -144,3 +144,37 @@ class TestTranscriptSource:
         transcript_source(case_dir, "intraop-notes", "audio:intraop-notes")
         assert seen["kwargs"]["boosted_words"] == ANESTHESIA_LEXICON
         assert seen["diarize"] is False
+
+    def test_live_capture_uses_asr_when_no_script_exists(self, tmp_path, monkeypatch):
+        # live cases have a wav from the recorder but no gold script — the ASR
+        # path is the only option, regardless of PERIOP_TRANSCRIBE (v2 §3)
+        import periop.tools.asr as asr_mod
+        from periop.schemas import Source
+
+        monkeypatch.delenv("PERIOP_TRANSCRIBE", raising=False)
+        live_dir = tmp_path / "live-case"
+        (live_dir / "audio").mkdir(parents=True)
+        (live_dir / "audio" / "preop-interview.wav").write_bytes(b"RIFF")
+
+        class FakeAsr:
+            def __init__(self, **kwargs):
+                pass
+
+            def transcribe(self, wav_path, source_id, diarize=True):
+                return Source(source_id=source_id, type=SourceType.AUDIO, segments=[])
+
+        monkeypatch.setattr(asr_mod, "ParakeetAsr", FakeAsr)
+        source = transcript_source(live_dir, "preop-interview", "audio:preop-interview")
+        assert source.source_id == "audio:preop-interview"
+
+
+class TestHasTranscriptInputs:
+    def test_true_for_script_or_wav(self, case_dir, tmp_path):
+        from periop.tools.ingest import has_transcript_inputs
+
+        assert has_transcript_inputs(case_dir, "preop-interview")  # gold script
+        live_dir = tmp_path / "live"
+        assert not has_transcript_inputs(live_dir, "preop-interview")
+        (live_dir / "audio").mkdir(parents=True)
+        (live_dir / "audio" / "preop-interview.wav").write_bytes(b"RIFF")
+        assert has_transcript_inputs(live_dir, "preop-interview")

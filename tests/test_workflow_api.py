@@ -12,7 +12,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from periop.api.app import create_app
-from periop.schemas import Case, OpenQuestion, StageStatus
+from periop.schemas import ArtifactRecord, Case, Claim, OpenQuestion, StageStatus
 from periop.store import CaseStore
 
 PROVIDERS = [
@@ -104,11 +104,36 @@ class TestCreateCase:
 # --------------------------------------------------------- document intake
 
 
+STAGE_ARTIFACTS = {
+    "preop": ["note:pre-anesthesia-eval"],
+    "intraop": ["record:intra-op", "note:anticipated-issues"],
+    "postop": ["note:pacu-handoff", "note:post-anesthesia-eval"],
+}
+
+
 class StubRunner:
-    """Injectable pipeline runner: records calls, fabricates questions."""
+    """Injectable pipeline runner: records calls, fabricates instant artifacts."""
 
     def __init__(self):
         self.gap_calls = []
+        self.run_calls = []
+        self.fail = False
+
+    def run_stage(self, case, stage, case_dir, emit):
+        self.run_calls.append((case.case_id, stage))
+        if self.fail:
+            raise RuntimeError("stub failure")
+        emit("agent_start", {"stage": stage, "agent": "StubWriter"})
+        for artifact_id in STAGE_ARTIFACTS[stage]:
+            case.add_artifact(
+                ArtifactRecord(
+                    artifact_id=artifact_id,
+                    claims=[Claim(claim_id="c-001", text="stub claim")],
+                )
+            )
+            emit("artifact_complete", {"artifact_id": artifact_id, "claims": 1})
+        emit("agent_end", {"stage": stage, "agent": "StubWriter", "summary": "done"})
+        return case
 
     def analyze_gaps(self, case):
         self.gap_calls.append(case.case_id)
@@ -488,3 +513,144 @@ class TestFfmpegNormalization:
         with wave.open(str(case_dir / "tkr-mrs-w" / "audio" / "preop-interview.wav"), "rb") as w:
             assert w.getframerate() == 16000
             assert w.getnchannels() == 1
+
+
+# ---------------------------------------------------------------- stage runs
+
+
+def sse_events(text: str) -> list[tuple[str, dict]]:
+    events = []
+    for block in text.strip().split("\n\n"):
+        fields = dict(line.split(": ", 1) for line in block.split("\n"))
+        events.append((fields["event"], json.loads(fields["data"])))
+    return events
+
+
+def make_preop_ready(client):
+    """Walk tkr-mrs-w to the pre-op run gate: docs + approved questions + audio."""
+    paste(client, "tkr-mrs-w", "gp-summary", GP_TEXT)
+    paste(client, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+    client.put(
+        "/api/cases/tkr-mrs-w/questions",
+        json={
+            "questions": [
+                {"question": "Is the patient still taking aspirin?", "review": "approved"}
+            ],
+            "provider_id": "p-lim",
+        },
+    )
+    upload_audio(client, "tkr-mrs-w", "preop-interview", make_wav())
+
+
+def run_stage(client, stage, provider="p-lim", case_id="tkr-mrs-w"):
+    return client.post(
+        f"/api/cases/{case_id}/stages/{stage}/run", json={"provider_id": provider}
+    )
+
+
+class TestStageRun:
+    def test_preop_run_streams_progress_and_persists(self, wclient, runner, dirs):
+        out_dir, _, _ = dirs
+        make_preop_ready(wclient)
+        resp = run_stage(wclient, "preop")
+        assert resp.status_code == 200
+        assert resp.headers["content-type"].startswith("text/event-stream")
+        events = sse_events(resp.text)
+        names = [e for e, _ in events]
+        assert names[0] == "status"
+        assert ("stage_start", {"stage": "preop"}) in events
+        assert "agent_start" in names and "agent_end" in names
+        assert any(
+            e == "artifact_complete" and d["artifact_id"] == "note:pre-anesthesia-eval"
+            for e, d in events
+        )
+        assert events[-1] == ("complete", {"case_id": "tkr-mrs-w"})
+        stored = CaseStore(out_dir).load("tkr-mrs-w")
+        assert stored.get_artifact("note:pre-anesthesia-eval") is not None
+        stage = stored.workflow.stages["preop"]
+        assert stage.status is StageStatus.AWAITING_REVIEW
+        assert stage.performed_by == "p-lim"
+
+    def test_gate_needs_question_approval(self, wclient):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        resp = run_stage(wclient, "preop")
+        assert resp.status_code == 409
+        assert "question" in resp.json()["detail"].lower()
+
+    def test_gate_needs_interview_audio(self, wclient):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wclient.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={
+                "questions": [{"question": "Q?", "review": "approved"}],
+                "provider_id": "p-lim",
+            },
+        )
+        resp = run_stage(wclient, "preop")
+        assert resp.status_code == 409
+        assert "interview" in resp.json()["detail"].lower()
+
+    def test_intraop_gate_needs_preop_signoff(self, wclient):
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav())
+        resp = run_stage(wclient, "intraop", provider="p-tan")
+        assert resp.status_code == 409
+        assert "sign" in resp.json()["detail"].lower()
+
+    def test_intraop_runs_once_preop_signed_off(self, wclient, dirs):
+        out_dir, _, _ = dirs
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        # sign-off endpoint lands in W2c; stamp it directly for the gate
+        store = CaseStore(out_dir)
+        case = store.load("tkr-mrs-w")
+        case.workflow.stages["preop"].status = StageStatus.SIGNED_OFF
+        store.save(case)
+        upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav())
+        resp = run_stage(wclient, "intraop", provider="p-tan")
+        assert resp.status_code == 200
+        stored = store.load("tkr-mrs-w")
+        assert stored.get_artifact("record:intra-op") is not None
+        assert stored.workflow.stages["intraop"].performed_by == "p-tan"
+
+    def test_rerun_of_generated_stage_409(self, wclient):
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        resp = run_stage(wclient, "preop")
+        assert resp.status_code == 409
+
+    def test_unknown_stage_404(self, wclient):
+        assert run_stage(wclient, "phlebotomy").status_code == 404
+
+    def test_demo_case_409(self, wclient):
+        assert run_stage(wclient, "preop", case_id="sg-demo").status_code == 409
+
+    def test_single_run_lock(self, wclient):
+        from periop.api.routers import stage_runs
+
+        make_preop_ready(wclient)
+        assert stage_runs.RUN_LOCK.acquire(blocking=False)
+        try:
+            resp = run_stage(wclient, "preop")
+            assert resp.status_code == 409
+            assert "progress" in resp.json()["detail"].lower()
+        finally:
+            stage_runs.RUN_LOCK.release()
+        # lock released → run proceeds
+        assert run_stage(wclient, "preop").status_code == 200
+
+    def test_failure_emits_error_and_restores_status(self, wclient, runner, dirs):
+        out_dir, _, _ = dirs
+        make_preop_ready(wclient)
+        runner.fail = True
+        resp = run_stage(wclient, "preop")
+        events = sse_events(resp.text)
+        assert events[-1][0] == "error"
+        assert "stub failure" in events[-1][1]["message"]
+        stored = CaseStore(out_dir).load("tkr-mrs-w")
+        assert stored.workflow.stages["preop"].status is StageStatus.READY_TO_GENERATE
+        assert stored.get_artifact("note:pre-anesthesia-eval") is None

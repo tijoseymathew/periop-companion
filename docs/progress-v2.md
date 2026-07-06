@@ -38,7 +38,7 @@ resume from the first unchecked item.
 - [x] `POST /api/cases/{id}/sources/audio` — normalize to 16 kHz mono wav under
       `data/cases/{id}/audio/`; intra-op kind appends memos; others
       replace-with-confirmation; ~50 MB cap
-- [ ] `POST /api/cases/{id}/stages/{stage}/run` — gate + input validation,
+- [x] `POST /api/cases/{id}/stages/{stage}/run` — gate + input validation,
       single-run lock, SSE per ui.md §7, invokes the matching stage runner
 - [ ] `POST .../stages/{stage}/signoff` · `.../reopen` · `POST .../handoff/ack`
 

@@ -111,3 +111,39 @@ class TestRenderProvenance:
         note = case.get_artifact("note:pre-anesthesia-eval")
         rendered = render_claim_provenance(case, note.claims[1])
         assert "doc:op-plan#c001" in rendered
+
+
+class TestWorkflowIntegration:
+    def test_gap_analyst_skipped_when_questions_already_reviewed(self, case_dir):
+        # the live workflow runs the GapAnalyst at intake and the provider
+        # reviews the list (v2 §4.1) — the stage run must not overwrite it
+        from periop.schemas import OpenQuestion
+
+        case = Case(case_id="sg-0001")
+        case.open_questions = [
+            OpenQuestion(question="Is the patient still taking aspirin?", review="approved")
+        ]
+        chat = ScriptedChat()
+        run_preop_stage(case, case_dir, chat=chat)
+        assert "GapQuestions" not in chat.calls
+        assert case.open_questions[0].review == "approved"
+
+    def test_emits_progress_events(self, case_dir):
+        events = []
+        run_preop_stage(
+            Case(case_id="sg-0001"),
+            case_dir,
+            chat=ScriptedChat(),
+            emit=lambda e, d: events.append((e, d)),
+        )
+        names = [e for e, _ in events]
+        # one start/end pair per agent, then the finished artifact
+        assert names == [
+            "agent_start", "agent_end",   # GapAnalyst
+            "agent_start", "agent_end",   # PreOpNoteWriter
+            "agent_start", "agent_end",   # ClaimVerifier
+            "artifact_complete",
+        ]
+        assert events[0][1] == {"stage": "preop", "agent": "GapAnalyst"}
+        assert events[-1][1]["artifact_id"] == "note:pre-anesthesia-eval"
+        assert events[-1][1]["claims"] == 2
