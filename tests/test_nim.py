@@ -101,6 +101,43 @@ class TestNimChat:
         result = chat.complete_structured(user="Extract.", schema=ExtractionResult)
         assert result == ExtractionResult(drug="propofol", dose_mg=120)
 
+    def test_default_max_tokens_applied_when_set(self):
+        # The self-hosted nano NIM defaults max_tokens to ~1k, which its
+        # reasoning stream exhausts before the answer (finish_reason=length,
+        # zero JSON). A NimChat-level default keeps completions un-truncated.
+        client, completions = fake_client("ok")
+        chat = NimChat(client=client, model=FAST_MODEL, default_max_tokens=8192)
+        chat.complete(user="Q")
+        assert completions.calls[0]["max_tokens"] == 8192
+
+    def test_default_max_tokens_caller_override_wins(self):
+        client, completions = fake_client("ok")
+        chat = NimChat(client=client, model=FAST_MODEL, default_max_tokens=8192)
+        chat.complete(user="Q", max_tokens=64)
+        assert completions.calls[0]["max_tokens"] == 64
+
+    def test_no_max_tokens_sent_when_unset(self):
+        client, completions = fake_client("ok")
+        chat = NimChat(client=client, model=REASONING_MODEL)
+        chat.complete(user="Q")
+        assert "max_tokens" not in completions.calls[0]
+
+    def test_complete_structured_skips_echoed_schema(self):
+        # Live failure (sg-0003 GapAnalyst): the model restates the JSON
+        # schema before its answer; the first JSON object in the reply is
+        # then the schema, not the instance. The parser must keep scanning
+        # for a candidate that validates.
+        schema_echo = (
+            'Matching this schema: {"properties": {"drug": {"type": "string"},'
+            ' "dose_mg": {"type": "integer"}}, "type": "object"}\n'
+            'Answer: {"drug": "propofol", "dose_mg": 120}'
+        )
+        client, completions = fake_client(schema_echo)
+        chat = NimChat(client=client, model=FAST_MODEL)
+        result = chat.complete_structured(user="Extract.", schema=ExtractionResult)
+        assert result == ExtractionResult(drug="propofol", dose_mg=120)
+        assert len(completions.calls) == 1  # no retry needed
+
     def test_complete_structured_retries_on_invalid_json(self):
         client, completions = fake_client(
             "sorry, no json", '{"drug": "propofol", "dose_mg": 120}'

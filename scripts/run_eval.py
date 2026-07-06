@@ -49,19 +49,27 @@ def main() -> None:
         case_ids = [c for c in case_ids if c in set(args.only)]
 
     reports = []
+    failures = []
     for case_id in case_ids:
         case_dir = CASE_ROOT / case_id
         try:
-            if not args.rerun:
-                case = store.load(case_id)
-            else:
-                raise KeyError
-        except KeyError:
-            case = run_case_stages(Case(case_id=case_id), case_dir, chat=reasoning, fast_chat=fast)
-            store.save(case)
+            try:
+                if not args.rerun:
+                    case = store.load(case_id)
+                else:
+                    raise KeyError
+            except KeyError:
+                case = run_case_stages(
+                    Case(case_id=case_id), case_dir, chat=reasoning, fast_chat=fast
+                )
+                store.save(case)
 
-        gold = load_gold(case_dir)
-        report = evaluate_case(case, gold, matches=judge.matches)
+            gold = load_gold(case_dir)
+            report = evaluate_case(case, gold, matches=judge.matches)
+        except Exception as exc:  # one bad case must not sink the whole run
+            failures.append(case_id)
+            print(f"✗ {case_id}: {type(exc).__name__}: {exc}")
+            continue
         reports.append(report)
         print(f"{case_id}: gap_f1={report.gap_f1:.2f} "
               f"preop_recall={report.preop_claim_recall:.2f} "
@@ -79,6 +87,9 @@ def main() -> None:
     for k, v in means.items():
         print(f"  {k}: {v:.3f}")
     print(f"\nwrote {OUT}")
+    if failures:
+        print(f"{len(failures)} case(s) failed: {' '.join(failures)} — re-run to resume.")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

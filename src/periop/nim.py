@@ -20,7 +20,7 @@ import json
 import os
 import re
 from dataclasses import dataclass
-from typing import Any, TypeVar
+from typing import Any, Iterator, TypeVar
 
 from pydantic import BaseModel, ValidationError
 
@@ -68,21 +68,36 @@ def strip_reasoning(text: str) -> str:
     return tail.strip()
 
 
-def extract_json(text: str) -> Any:
-    """Pull the first JSON object/array out of a model reply.
+def extract_json_candidates(text: str) -> Iterator[Any]:
+    """Yield every decodable JSON object/array in a model reply, in order.
 
-    Handles bare JSON, ```json fences, and JSON embedded in prose.
+    Handles bare JSON, ```json fences, and JSON embedded in prose. Callers
+    that expect a specific shape should scan candidates rather than trust the
+    first one — models sometimes restate the requested schema before (or
+    instead of) the actual instance.
     """
     fence = re.search(r"```(?:json)?\s*(.*?)```", text, re.DOTALL)
     if fence:
         text = fence.group(1)
     decoder = json.JSONDecoder()
-    for start in (m.start() for m in re.finditer(r"[{\[]", text)):
+    pos = 0
+    while True:
+        match = re.search(r"[{\[]", text[pos:])
+        if not match:
+            return
+        start = pos + match.start()
         try:
-            value, _ = decoder.raw_decode(text[start:])
-            return value
+            value, end = decoder.raw_decode(text[start:])
+            yield value
+            pos = start + end
         except json.JSONDecodeError:
-            continue
+            pos = start + 1
+
+
+def extract_json(text: str) -> Any:
+    """Pull the first JSON object/array out of a model reply."""
+    for value in extract_json_candidates(text):
+        return value
     raise ValueError(f"no JSON found in model reply: {text[:200]!r}")
 
 
@@ -106,6 +121,7 @@ class NimChat:
         max_retries: int = 2,
         base_url: str | None = None,
         timeout_s: float | None = None,
+        default_max_tokens: int | None = None,
     ) -> None:
         if client is None:
             from openai import OpenAI
@@ -122,6 +138,7 @@ class NimChat:
         self.model = model
         self.temperature = temperature
         self.max_retries = max_retries
+        self.default_max_tokens = default_max_tokens
 
     def complete(self, user: str, system: str | None = None, **kwargs: Any) -> str:
         from periop.nat.telemetry import traced_llm_call
@@ -130,6 +147,8 @@ class NimChat:
         if system:
             messages.append({"role": "system", "content": system})
         messages.append({"role": "user", "content": user})
+        if self.default_max_tokens is not None:
+            kwargs.setdefault("max_tokens", self.default_max_tokens)
         with traced_llm_call(self.model, messages) as record:
             response = self.client.chat.completions.create(
                 model=self.model,
@@ -146,15 +165,16 @@ class NimChat:
         """Ask for JSON matching ``schema``; retry on parse/validation failure."""
         schema_hint = json.dumps(schema.model_json_schema(), indent=2)
         prompt = (
-            f"{user}\n\nRespond with a single JSON object matching this schema "
-            f"(no extra keys, no commentary):\n{schema_hint}"
+            f"{user}\n\nRespond with a single JSON object that conforms to the "
+            f"JSON Schema below. Output only the data instance — do not repeat "
+            f"the schema itself, add extra keys, or add commentary.\n{schema_hint}"
         )
         last_error: Exception | None = None
         attempt_prompt = prompt
         for _ in range(self.max_retries + 1):
             reply = self.complete(attempt_prompt, system=system, **kwargs)
             try:
-                return schema.model_validate(extract_json(reply))
+                return self._first_valid(reply, schema)
             except (ValueError, ValidationError) as exc:
                 last_error = exc
                 attempt_prompt = (
@@ -166,6 +186,27 @@ class NimChat:
             f"model failed to produce valid {schema.__name__} after "
             f"{self.max_retries + 1} attempts"
         ) from last_error
+
+    @staticmethod
+    def _first_valid(reply: str, schema: type[M]) -> M:
+        """Validate the first JSON candidate in ``reply`` matching ``schema``.
+
+        Models sometimes echo the requested schema before the instance; the
+        echo decodes as JSON but fails validation, so keep scanning. The
+        first candidate's validation error is re-raised when none fit (it is
+        the most useful retry feedback).
+        """
+        first_error: ValidationError | None = None
+        found = False
+        for candidate in extract_json_candidates(reply):
+            found = True
+            try:
+                return schema.model_validate(candidate)
+            except ValidationError as exc:
+                first_error = first_error or exc
+        if not found:
+            raise ValueError(f"no JSON found in model reply: {reply[:200]!r}")
+        raise first_error
 
 
 def reasoning_chat(**kwargs: Any) -> NimChat:
@@ -179,4 +220,9 @@ def fast_chat(**kwargs: Any) -> NimChat:
     cfg = tier_config("fast")
     kwargs.setdefault("model", cfg.model)
     kwargs.setdefault("base_url", cfg.base_url)
+    # The self-hosted nano NIM defaults max_tokens low enough that its
+    # reasoning stream truncates before the answer; ask for real headroom.
+    kwargs.setdefault(
+        "default_max_tokens", int(os.environ.get("PERIOP_FAST_MAX_TOKENS") or 8192)
+    )
     return NimChat(**kwargs)
