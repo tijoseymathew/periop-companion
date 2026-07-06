@@ -47,7 +47,7 @@ resume from the first unchecked item.
 - [x] Worklist sidebar (stage + status in words, performed-by, conflict
       indicator, filters) + provider picker + New case; demo cases read-only
 - [x] Stage rail (Pre-op / Intra-op / Post-op stepper) above the center pane
-- [ ] Intake form + question review screens (center pane, pre-artifact)
+- [x] Intake form + question review screens (center pane, pre-artifact)
 - [ ] Recorder (MediaRecorder + upload fallback), intra-op memo capture
 - [ ] Stage panels: one primary action per state (unit-tested), one-sentence
       status copy, SSE progress rendering

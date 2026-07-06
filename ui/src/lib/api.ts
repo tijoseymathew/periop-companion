@@ -7,6 +7,7 @@ import {
   ProviderSchema,
   type Case,
   type CaseSummary,
+  type OpenQuestion,
   type Provider,
 } from "./schema";
 
@@ -33,5 +34,47 @@ export async function fetchProviders(): Promise<Provider[]> {
 
 export async function createCase(label: string, providerId: string): Promise<Case> {
   const { data } = await axios.post("/api/cases", { label, provider_id: providerId });
+  return CaseSchema.parse(data);
+}
+
+export async function addDocumentText(
+  caseId: string,
+  docType: string,
+  text: string,
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/sources/document`,
+    { doc_type: docType, text, provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}
+
+export async function uploadDocumentFile(
+  caseId: string,
+  docType: string,
+  file: File,
+  providerId: string,
+): Promise<Case> {
+  const form = new FormData();
+  form.append("file", file);
+  form.append("doc_type", docType);
+  form.append("provider_id", providerId);
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/sources/document`,
+    form,
+  );
+  return CaseSchema.parse(data);
+}
+
+export async function reviewQuestions(
+  caseId: string,
+  questions: OpenQuestion[],
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.put(
+    `/api/cases/${encodeURIComponent(caseId)}/questions`,
+    { questions, provider_id: providerId },
+  );
   return CaseSchema.parse(data);
 }

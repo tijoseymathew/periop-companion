@@ -17,7 +17,8 @@ import { audioUrl, createCase, fetchCase, fetchCases, fetchProviders } from "../
 import { defaultFilters, type StatusFilters } from "../lib/filters";
 import { buildReverseIndex, resolveRef, type CitingClaim } from "../lib/provenance";
 import { groupArtifactsByStage, type Stage } from "../lib/stages";
-import { headlineStage, STAGE_TITLES, STATUS_WORDS, type WorklistFilters } from "../lib/workflow";
+import { StagePanel } from "../components/StagePanel";
+import { headlineStage, primaryAction, STAGE_TITLES, type WorklistFilters } from "../lib/workflow";
 import type { Case, CaseSummary, ClaimStatus, Provider, StageKey } from "../lib/schema";
 
 const PROVIDER_STORAGE_KEY = "periop-provider";
@@ -277,11 +278,22 @@ export default function App() {
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-1 items-center justify-center p-8">
-                  <p className="text-sm text-ink-secondary">
-                    This stage is {STATUS_WORDS[kase.workflow.stages[activeKey].status]}.
-                  </p>
-                </div>
+                (() => {
+                  const action = primaryAction(kase);
+                  return (
+                    <StagePanel
+                      kase={kase}
+                      me={me}
+                      stage={activeKey}
+                      action={action?.stage === activeKey ? action : null}
+                      onCaseUpdated={(updated) => {
+                        setKase(updated);
+                        fetchCases().then(setCases).catch(() => {});
+                      }}
+                      onActivateRef={activateRef}
+                    />
+                  );
+                })()
               )}
             </>
           ) : (
