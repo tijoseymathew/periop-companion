@@ -1,0 +1,842 @@
+{
+  "case_id": "sg-0028",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "22-year-old male, Senior Official or Manager, resident of Choa Chu Kang, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Montasone nasal spray 1 spray each nostril daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Omeprazole 20mg once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Pneumonia in 2019, resolved",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Fractured right wrist in 2017, healed",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "GERD diagnosed in 2021, resolved",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Montasone nasal spray 1 spray each nostril daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Omeprazole 20mg once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Arthroscopic partial meniscectomy of the left knee (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with sevoflurane, vecuronium, and ultrasound-guided femoral nerve block for post-operative analgesia",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 11.2,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr Tan. I'm Dr Liew, the anesthesiologist who'll be taking care of you during your knee surgery today. Can I start by confirming a few details?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 11.6,
+          "t1": 13.2,
+          "speaker": "PATIENT",
+          "text": "Yes, sure. Morning, doctor."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 13.6,
+          "t1": 20.8,
+          "speaker": "PROVIDER",
+          "text": "Thanks. Let's start with your knee problem. How long have you been having issues with your left knee?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 21.2,
+          "t1": 31.2,
+          "speaker": "PATIENT",
+          "text": "About six months already, doc. Pain when I bend it or climb stairs. Tried physio and painkillers, but still got swelling and catching sensation inside."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 31.6,
+          "t1": 44.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Now, let's go through your medical history. I see in your records you're on montasone nasal spray and omeprazole. Can you confirm if you're still taking all these medications as listed?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 44.8,
+          "t1": 57.2,
+          "speaker": "PATIENT",
+          "text": "Montasone spray, yes, one spray each nostril daily for my allergic rhinitis. But omeprazole? Oh, I stopped that in 2022 already. My GERD got better, so doctor said I can stop."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 57.6,
+          "t1": 63.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you for clarifying that. So omeprazole was discontinued in 2022 after your GERD resolved?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 64.0,
+          "t1": 69.6,
+          "speaker": "PATIENT",
+          "text": "Yes, correct. No more heartburn since then, so no need for the pill anymore."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 70.0,
+          "t1": 72.8,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Any allergies we should know about?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 73.2,
+          "t1": 78.4,
+          "speaker": "PATIENT",
+          "text": "None that I know of, doctor. Never had reactions to medicines or food."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 78.8,
+          "t1": 82.4,
+          "speaker": "PROVIDER",
+          "text": "Great. Have you eaten or drunk anything since midnight?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 82.8,
+          "t1": 89.6,
+          "speaker": "PATIENT",
+          "text": "No, nothing since last night dinner. Just a bit of water with my montasone spray this morning."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 90.0,
+          "t1": 92.0,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Any previous anesthesia experiences?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 92.4,
+          "t1": 99.2,
+          "speaker": "PATIENT",
+          "text": "Once, when I had my appendix out in 2015. Went smoothly, no problems waking up or anything."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 99.6,
+          "t1": 106.0,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. Finally, how's your overall fitness? Can you walk, climb stairs, do daily activities?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 106.4,
+          "t1": 115.2,
+          "speaker": "PATIENT",
+          "text": "I can walk and climb stairs, but slowly because of the knee pain. Can't run or squat anymore, but otherwise okay lah."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 115.6,
+          "t1": 127.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you, Mr Tan. We'll be using general anesthesia with sevoflurane and vecuronium, plus a nerve block in your thigh to help with post-op pain. Any questions for me?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 127.6,
+          "t1": 134.0,
+          "speaker": "PATIENT",
+          "text": "No questions, doctor. Just want to get this knee fixed so I can play badminton again."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 134.4,
+          "t1": 140.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. We'll take good care of you. I'll see you in the operating room shortly."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.6,
+          "speaker": "PROVIDER",
+          "text": "[08:02] tube in, grade one view"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.0,
+          "t1": 7.2,
+          "speaker": "PROVIDER",
+          "text": "[08:03] sevoflurane started"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 7.6,
+          "t1": 9.2,
+          "speaker": "PROVIDER",
+          "text": "[08:04] vecuronium seven milligrams"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 9.6,
+          "t1": 14.0,
+          "speaker": "PROVIDER",
+          "text": "[08:05] crystalloid infusion started at one hundred fifty mL per hour"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 14.4,
+          "t1": 16.8,
+          "speaker": "PROVIDER",
+          "text": "[08:10] ultrasound-guided femoral nerve block performed"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 17.2,
+          "t1": 23.6,
+          "speaker": "PROVIDER",
+          "text": "[08:15] mean arterial pressure dropped to fifty-five mmHg, treated with intravenous fluids and ephedrine ten milligrams"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 24.0,
+          "t1": 30.8,
+          "speaker": "PROVIDER",
+          "text": "[08:25] heart rate increased to one hundred twenty beats per minute, treated with intravenous metoprolol five milligrams"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 13.2,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling after the surgery? Let's start with your pain. On a scale from 0 to 10, how would you rate the pain in your left knee right now?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 13.6,
+          "t1": 22.4,
+          "speaker": "PATIENT",
+          "text": "Eh, maybe around 3 or 4? It's sore, but the numbness from the block is still there, so it's not too bad."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 22.8,
+          "t1": 30.0,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. Any nausea or vomiting since waking up? Sometimes the anesthesia can make people feel queasy."
+        },
+        {
+          "seg_id": "s004",
+          "t0": 30.4,
+          "t1": 37.6,
+          "speaker": "PATIENT",
+          "text": "No nausea, thank goodness. But my nose feels a bit stuffy, like it's blocked up. Is that normal?"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 38.0,
+          "t1": 46.8,
+          "speaker": "PROVIDER",
+          "text": "That could be from the allergic rhinitis. We'll keep an eye on it, but it's not uncommon after anesthesia. Breathing comfortable otherwise?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 47.2,
+          "t1": 51.6,
+          "speaker": "PATIENT",
+          "text": "Yes, breathing's fine. No tightness or anything. Just the nose thing."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 52.0,
+          "t1": 58.0,
+          "speaker": "PROVIDER",
+          "text": "Any recollection of the operating room or waking up? Sometimes patients remember bits and pieces."
+        },
+        {
+          "seg_id": "s008",
+          "t0": 58.4,
+          "t1": 67.2,
+          "speaker": "PATIENT",
+          "text": "Nope, nothing at all. One minute I was talking to the anesthetist, next thing I know, I'm here. Like a magic trick!"
+        },
+        {
+          "seg_id": "s009",
+          "t0": 67.6,
+          "t1": 74.0,
+          "speaker": "PROVIDER",
+          "text": "Glad to hear it was smooth. Any other concerns or questions before we get you mobilizing?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 74.4,
+          "t1": 78.8,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all. Thanks for checking on me, doc."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "22-year-old male undergoing elective arthroscopic partial meniscectomy of the left knee.",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Reports left knee pain for six months, exacerbated by bending or stair climbing, with swelling and catching sensation despite physiotherapy and analgesics.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "History of appendectomy in 2015 under general anesthesia without complications.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "No ongoing respiratory symptoms; uses Montasone nasal spray for allergic rhinitis without current nasal issues. Relevant for airway management.",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Functional status: able to walk and climb stairs slowly but cannot run or squat due to knee pain.",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Current medication: Montasone nasal spray 1 spray each nostril daily for allergic rhinitis.",
+          "provenance": [
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Omeprazole 20mg once daily was discontinued in 2022 after resolution of GERD.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "No other current medications, including over-the-counter drugs or supplements.",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "No known drug allergies.",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "NPO from solids since midnight; consumed a small amount of water with Montasone nasal spray on the morning of surgery.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "ASA-PS II: Patient has a mild systemic disease (musculoskeletal issue requiring surgery) without other systemic impairment.",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Procedure: Arthroscopic partial meniscectomy of the left knee.",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Anesthesia plan: General anesthesia with sevoflurane and vecuronium, supplemented with ultrasound-guided femoral nerve block for post-operative analgesia.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Propofol 120 milligrams administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Endotracheal tube placed with grade one view at 08:02",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Sevoflurane initiated at 08:03",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Vecuronium 7 milligrams administered at 08:04",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Crystalloid infusion started at 150 mL per hour at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Ultrasound-guided femoral nerve block performed at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Mean arterial pressure dropped to 55 mmHg at 08:15, treated with intravenous fluids and ephedrine 10 milligrams",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Heart rate increased to 120 beats per minute at 08:25, treated with intravenous metoprolol 5 milligrams",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Hemodynamic instability (hypotension and tachycardia) may persist into the PACU phase due to intraoperative hemodynamic fluctuations.",
+          "provenance": [
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Inadequate analgesia post-operatively if the femoral nerve block is ineffective or wears off, given the patient's history of significant knee pain pre-operatively despite analgesics.",
+          "provenance": [
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Risk of residual neuromuscular blockade post-operatively following intraoperative administration of vecuronium.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "22-year-old male post left knee arthroscopic partial meniscectomy under general anesthesia with sevoflurane, vecuronium, and ultrasound-guided femoral nerve block. Intraoperatively, experienced hypotension (MAP 55 mmHg) treated with fluids and ephedrine, and tachycardia (HR 120) treated with metoprolol.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "History of left knee pain for six months with swelling and catching, exacerbated by activity, despite physiotherapy and analgesics. Past medical history includes appendectomy in 2015 under general anesthesia without complications. Uses Montasone nasal spray for allergic rhinitis without current issues. No drug allergies. NPO from solids since midnight, consumed water with Montasone this morning. ASA-PS II.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Anticipated issues include possible persistent hemodynamic instability from intraoperative fluctuations, inadequate postoperative analgesia if the femoral nerve block becomes ineffective, and risk of residual neuromuscular blockade following vecuronium administration.",
+          "provenance": [
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Monitor for hemodynamic instability (hypotension/tachycardia), assess femoral nerve block efficacy for analgesia, and perform train-of-four monitoring to evaluate for residual neuromuscular blockade.",
+          "provenance": [
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 22-year-old male, Senior Official or Manager, resident of Choa Chu Kang, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Current medications include Montasone nasal spray (1 spray each nostril daily) and Omeprazole 20mg once daily.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:med-list#c001",
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Omeprazole was discontinued in 2022 after GERD resolution.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "No known drug allergies.",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Past medical history includes pneumonia (2019, resolved), fractured right wrist (2017, healed), and GERD (diagnosed 2021, resolved).",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:gp-summary#c006",
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Planned procedure: Arthroscopic partial meniscectomy of the left knee (elective).",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Anesthesia plan: General anesthesia with sevoflurane, vecuronium, and ultrasound-guided femoral nerve block for post-operative analgesia.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Induction with propofol (120mg), endotracheal tube placement (grade 1 view), sevoflurane, vecuronium (7mg), and crystalloid infusion (150mL/hour) administered intraoperatively.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Intraoperative hypotension (MAP 55mmHg) treated with IV fluids and ephedrine (10mg); tachycardia (HR 120bpm) treated with IV metoprolol (5mg).",
+          "provenance": [
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Post-operative pain in left knee rated 3-4/10 with residual numbness from femoral nerve block.",
+          "provenance": [
+            "audio:postop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "No post-operative nausea or vomiting reported.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Patient reports nasal stuffiness post-operatively, attributed to allergic rhinitis; no respiratory distress or tightness noted.",
+          "provenance": [
+            "audio:postop-interview#s005",
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "No recollection of operating room events or awakening, indicating uneventful emergence.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Have you experienced any complications or adverse reactions during previous anesthesia or surgeries, particularly in relation to your past wrist fracture in 2017?",
+    "Your records indicate GERD was resolved in 2021, yet you are still prescribed omeprazole. Can you clarify the current indication for this medication?",
+    "Given your history of pneumonia in 2019 and current use of Montasone nasal spray, do you have any ongoing respiratory symptoms or nasal issues that could impact airway management during anesthesia?",
+    "Are you currently taking any additional medications beyond Montasone nasal spray and Omeprazole, including over-the-counter drugs or supplements?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "vecuronium 7",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "crystalloid 150",
+      "units": "mL per hour",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "ultrasound-guided femoral nerve block performed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg, treated with intravenous fluids and ephedrine 10",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "heart rate increased to 120 beats per minute, treated with intravenous metoprolol 5",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Hemodynamic instability (hypotension and tachycardia) may persist into the PACU phase due to intraoperative hemodynamic fluctuations.",
+    "Inadequate analgesia post-operatively if the femoral nerve block is ineffective or wears off, given the patient's history of significant knee pain pre-operatively despite analgesics.",
+    "Risk of residual neuromuscular blockade post-operatively following intraoperative administration of vecuronium."
+  ]
+}

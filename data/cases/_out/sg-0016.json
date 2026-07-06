@@ -1,0 +1,1019 @@
+{
+  "case_id": "sg-0016",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "43-year-old female, Associate Professional or Technician, resident of Tampines, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 5 mg once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metoprolol 25 mg once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Metformin 500 mg twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Atorvastatin 20 mg once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Pneumonia (2018)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Left wrist fracture (2015)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "GERD (on omeprazole until 2022)",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 5 mg once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metoprolol 25 mg once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metformin 500 mg twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20 mg once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Laparoscopic cholecystectomy for symptomatic gallstones (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with sevoflurane and rocuronium, multimodal analgesia (paracetamol, ketorolac, dexamethasone)",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 12.8,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming laparoscopic cholecystectomy. Let's start with your medical history. Can you tell me about your gallstone symptoms?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 13.2,
+          "t1": 26.4,
+          "speaker": "PATIENT",
+          "text": "Yes, doc. Been having this sharp pain on the right side, especially after eating. Had a scan, and they found gallstones. Doctor said it's best to remove it before it gets worse, lah."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 26.8,
+          "t1": 35.6,
+          "speaker": "PROVIDER",
+          "text": "Understood. Now, let's go through your medications. You're on amlodipine, metoprolol, metformin, atorvastatin, and omeprazole. Are you still taking all of these?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 36.0,
+          "t1": 43.6,
+          "speaker": "PATIENT",
+          "text": "Amlodipine, metoprolol, metformin, and atorvastatin daily, yes. Omeprazole I stopped a month ago, as instructed. No other meds, doc."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 44.0,
+          "t1": 53.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Your records mention no allergies, but I always double-check. Have you ever had any reactions to antibiotics, especially penicillin or similar drugs?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 54.0,
+          "t1": 67.6,
+          "speaker": "PATIENT",
+          "text": "Oh, wait—there was something. Years ago, when I took penicillin for a throat infection, I got a bad rash all over. Itchy and red, had to stop the medicine. Never took it again since."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 68.0,
+          "t1": 78.4,
+          "speaker": "PROVIDER",
+          "text": "Important to note. That rash was likely an allergic reaction. We'll avoid penicillin and related antibiotics during your surgery. Any other reactions to medications or foods?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 78.8,
+          "t1": 82.4,
+          "speaker": "PATIENT",
+          "text": "No, nothing else. Just that one time with penicillin."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 82.8,
+          "t1": 91.2,
+          "speaker": "PROVIDER",
+          "text": "Good. Have you eaten or drunk anything since midnight? We need to ensure you're NPO (nothing by mouth) for general anesthesia."
+        },
+        {
+          "seg_id": "s010",
+          "t0": 91.6,
+          "t1": 100.4,
+          "speaker": "PATIENT",
+          "text": "No, doc. I had my last meal around 8pm last night. Just water this morning, but stopped that at 6am, as instructed."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 100.8,
+          "t1": 104.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Any previous surgeries or anesthesia? Even minor procedures?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 104.8,
+          "t1": 109.6,
+          "speaker": "PATIENT",
+          "text": "No, this is my first time. Never been under general anesthesia before."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 110.0,
+          "t1": 117.2,
+          "speaker": "PROVIDER",
+          "text": "Noted. Let's discuss your health conditions. You have hypertension, diabetes, and high cholesterol. How well are these controlled?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 117.6,
+          "t1": 129.2,
+          "speaker": "PATIENT",
+          "text": "Blood pressure is okay with the meds. Diabetes—my HbA1c was 7.2% last check, so manageable. Cholesterol under control with statin. Also, I have anxiety, but it's been better lately."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 129.6,
+          "t1": 137.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you. We'll monitor your blood sugar closely during surgery. Lastly, are you able to perform daily activities without difficulty?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 138.0,
+          "t1": 146.0,
+          "speaker": "PATIENT",
+          "text": "Yes, doc. I walk daily, do light chores. No shortness of breath or chest pain. Just the gallstone pain sometimes."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 146.4,
+          "t1": 155.2,
+          "speaker": "PROVIDER",
+          "text": "Excellent. We'll proceed with general anesthesia using sevoflurane and rocuronium. For pain, we'll use paracetamol, ketorolac, and dexamethasone as planned. Any questions?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 155.6,
+          "t1": 162.8,
+          "speaker": "PATIENT",
+          "text": "No, doc. You all seem to have everything covered. Just want to get this done and feel better."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 163.2,
+          "t1": 171.6,
+          "speaker": "PROVIDER",
+          "text": "We'll take good care of you. I'll review your file again before surgery. See you in the pre-op area, Mr. Tan."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.2,
+          "speaker": "PROVIDER",
+          "text": "[08:01] administered rocuronium sixty milligrams"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 5.6,
+          "t1": 8.0,
+          "speaker": "PROVIDER",
+          "text": "[08:02] tube in, grade one view"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 8.4,
+          "t1": 12.4,
+          "speaker": "PROVIDER",
+          "text": "[08:05] peripheral line placed in left radial vein, eighteen gauge"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 12.8,
+          "t1": 16.8,
+          "speaker": "PROVIDER",
+          "text": "[08:10] arterial line placed in right radial artery, twenty-two gauge"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 17.2,
+          "t1": 20.8,
+          "speaker": "PROVIDER",
+          "text": "[08:15] administered five hundred milliliters of normal saline bolus"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 21.2,
+          "t1": 27.2,
+          "speaker": "PROVIDER",
+          "text": "[08:30] mean arterial pressure dropped to fifty-five, gave one hundred milliliters of normal saline bolus"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 27.6,
+          "t1": 32.8,
+          "speaker": "PROVIDER",
+          "text": "[08:45] heart rate increased to one hundred twenty, gave two milligrams of labetalol"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 10.8,
+          "speaker": "PATIENT",
+          "text": "A bit sore, doc, but I think it's manageable. My tummy feels tight here and there."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 11.2,
+          "t1": 20.0,
+          "speaker": "PROVIDER",
+          "text": "On a scale of 1 to 10, how would you rate your pain right now? And where exactly is it bothering you?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 20.4,
+          "t1": 27.2,
+          "speaker": "PATIENT",
+          "text": "Maybe around 4 or 5? It's mostly in the upper part, near where they made the incisions."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 27.6,
+          "t1": 34.8,
+          "speaker": "PROVIDER",
+          "text": "Okay, we'll keep an eye on that. Have you felt nauseous or vomited at all since waking up?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 35.2,
+          "t1": 41.6,
+          "speaker": "PATIENT",
+          "text": "Not really, just a bit queasy when I first opened my eyes, but it's gone now."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 42.0,
+          "t1": 46.4,
+          "speaker": "PROVIDER",
+          "text": "Good. How's your breathing? Any discomfort in your throat or chest?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 46.8,
+          "t1": 53.2,
+          "speaker": "PATIENT",
+          "text": "Breathing's fine, but my throat's a little sore. Must be from the tube they put in."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 53.6,
+          "t1": 58.4,
+          "speaker": "PROVIDER",
+          "text": "That's common after intubation. Do you remember anything about the surgery itself?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 58.8,
+          "t1": 64.8,
+          "speaker": "PATIENT",
+          "text": "Nope, nothing at all. Just woke up here, so I guess the anesthesia worked well!"
+        },
+        {
+          "seg_id": "s011",
+          "t0": 65.2,
+          "t1": 74.8,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Now, considering your blood pressure and diabetes, have you noticed any dizziness, headaches, or sweet/bitter tastes that might suggest low or high sugar?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 75.2,
+          "t1": 83.6,
+          "speaker": "PATIENT",
+          "text": "No dizziness, doc. BP feels normal, and my mouth's okay. Just a bit anxious lying here, but that's usual for me."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 84.0,
+          "t1": 91.6,
+          "speaker": "PROVIDER",
+          "text": "Understood. We'll monitor your vitals and sugar levels closely. Let the nurse know if the anxiety gets overwhelming, okay?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 92.0,
+          "t1": 94.8,
+          "speaker": "PATIENT",
+          "text": "Will do, thanks. Appreciate the check-up, doc."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "43-year-old male",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s001"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Occupation: Associate Professional or Technician, resident of Tampines, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "History of GERD (on omeprazole until 2022) — relevant for aspiration risk during general anesthesia",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Denies current GERD symptoms (e.g., heartburn, regurgitation)",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "History of anxiety, currently improved",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "No respiratory infections, breathing difficulties, or chronic cough since pneumonia in 2018",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Blood pressure well-controlled on current medications (amlodipine, metoprolol)",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Amlodipine 5 mg once daily",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Metoprolol 25 mg once daily",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Metformin 500 mg twice daily",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Atorvastatin 20 mg once daily",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Omeprazole discontinued one month ago",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "History of penicillin allergy with rash",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "NPO since 6:00 AM today",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "ASA-PS II: Patient with controlled comorbidities (hypertension, diabetes, hyperlipidemia)",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Procedure: Laparoscopic cholecystectomy for symptomatic gallstones (elective)",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Anesthesia: General anesthesia with sevoflurane and rocuronium",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Analgesia: Multimodal approach with paracetamol, ketorolac, dexamethasone",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "At 08:00, propofol 120 mg administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "At 08:01, rocuronium 60 mg administered",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "At 08:02, endotracheal tube placed with grade one view",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "At 08:05, peripheral line placed in left radial vein, eighteen gauge",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "At 08:10, arterial line placed in right radial artery, twenty-two gauge",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "At 08:15, normal saline bolus 500 mL administered",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "At 08:30, mean arterial pressure dropped to 55",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "At 08:30, normal saline bolus 100 mL administered",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "At 08:45, heart rate increased to 120",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "At 08:45, labetalol 2 mg administered",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Aspiration risk due to history of GERD despite current asymptomatic status and recent discontinuation of proton pump inhibitor (omeprazole).",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hemodynamic instability (hypotension and tachycardia) given intraoperative mean arterial pressure drop to 55 mmHg and heart rate increase to 120 bpm, managed with fluid bolus and labetalol.",
+          "provenance": [
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control required due to diabetes mellitus on metformin, with preoperative HbA1c of 7.2% indicating suboptimal control.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s014",
+            "doc:med-list#c003"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Post-operative nausea and vomiting (PONV) risk associated with laparoscopic cholecystectomy and use of sevoflurane in general anesthesia.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "43-year-old male undergoing elective laparoscopic cholecystectomy for symptomatic gallstones. ASA Physical Status II with controlled comorbidities.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s001",
+            "doc:op-plan#c001",
+            "audio:preop-interview#s014"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "History of GERD, currently asymptomatic, with omeprazole discontinued one month ago. History of anxiety, now improved. Penicillin allergy with rash. Hypertension controlled on amlodipine 5mg daily and metoprolol 25mg daily. Also on metformin 500mg twice daily and atorvastatin 20mg daily. NPO since 6:00 AM today.",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "General anesthesia with sevoflurane and rocuronium. Multimodal analgesia with paracetamol, ketorolac, and dexamethasone. Endotracheal tube placed with grade one view. Peripheral and arterial lines placed. Intraoperatively, experienced hypotension (MAP 55 mmHg) and tachycardia (HR 120 bpm), managed with fluid boluses and labetalol 2mg. Anticipated risks include aspiration due to GERD history, hemodynamic instability, suboptimal glycemic control (HbA1c 7.2%), and PONV risk.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s014",
+            "doc:med-list#c003",
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Continue current antihypertensive and antidiabetic regimens. Monitor for signs of aspiration, hemodynamic instability, and hyperglycemia. Consider PONV prophylaxis. Maintain NPO status until further clearance.",
+          "provenance": [
+            "audio:preop-interview#s014",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "doc:gp-summary#c009",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "doc:gp-summary#c007",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 43-year-old female undergoing elective laparoscopic cholecystectomy for symptomatic gallstones.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Current medications include amlodipine 5 mg daily, metoprolol 25 mg daily, metformin 500 mg twice daily, and atorvastatin 20 mg daily.",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient stopped omeprazole one month prior to surgery as instructed.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient reports a history of penicillin allergy with a rash reaction.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Past medical history includes pneumonia (2018), left wrist fracture (2015), and GERD (treated with omeprazole until 2022).",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "General anesthesia was administered using propofol, sevoflurane, and rocuronium, with multimodal analgesia (paracetamol, ketorolac, dexamethasone).",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Intraoperative course included a grade 1 endotracheal tube placement, peripheral and arterial line insertions, and normal saline boluses for hypotension.",
+          "provenance": [
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Heart rate increased to 120 bpm intraoperatively, treated with labetalol 2 mg.",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Postoperatively, patient reports upper abdominal pain rated 4-5/10 near incision sites.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Patient experienced transient queasiness postoperatively but no active nausea or vomiting.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Patient reports sore throat likely due to endotracheal intubation but no respiratory distress or throat discomfort beyond this.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Patient has no recall of the surgical procedure, consistent with effective general anesthesia.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Patient denies dizziness, headaches, or abnormal tastes, with stable blood pressure and blood sugar levels postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Patient endorses mild anxiety in the postoperative period but no exacerbation requiring intervention.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Do you currently have any symptoms of gastroesophageal reflux disease (GERD), such as heartburn or regurgitation?",
+    "Have you had any respiratory infections, breathing difficulties, or chronic cough since your pneumonia in 2018?",
+    "Have you stopped taking Metformin as instructed prior to your surgery?",
+    "Is your blood pressure well-controlled on your current medications (Amlodipine and Metoprolol)?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:01",
+      "category": "agent",
+      "value": "rocuronium 60",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral line placed in left radial vein, eighteen gauge",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "arterial line placed in right radial artery, twenty-two gauge",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "normal saline bolus 500",
+      "units": "mL",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "fluid",
+      "value": "normal saline bolus 100",
+      "units": "mL",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "heart rate increased to 120",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "labetalol 2",
+      "units": "mg",
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Aspiration risk due to history of GERD despite current asymptomatic status and recent discontinuation of proton pump inhibitor (omeprazole).",
+    "Hemodynamic instability (hypotension and tachycardia) given intraoperative mean arterial pressure drop to 55 mmHg and heart rate increase to 120 bpm, managed with fluid bolus and labetalol.",
+    "Glycemic control required due to diabetes mellitus on metformin, with preoperative HbA1c of 7.2% indicating suboptimal control.",
+    "Post-operative nausea and vomiting (PONV) risk associated with laparoscopic cholecystectomy and use of sevoflurane in general anesthesia."
+  ]
+}

@@ -1,0 +1,1041 @@
+{
+  "case_id": "sg-0012",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "44-year-old female, Homemaker, resident of Punggol, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 10 mg Daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metformin 500 mg Twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20 mg Nightly.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Pneumonia (resolved 2018)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Left wrist fracture (2015)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Discontinued metoprolol 6 months ago",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 10 mg Daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metformin 500 mg Twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20 mg Nightly.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Laparoscopic cholecystectomy (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with endotracheal intubation",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 17.6,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I'm Dr. Lim, the anesthesiologist who'll be taking care of you during your surgery today. Let me go through some questions to make sure we're all set for your laparoscopic cholecystectomy. First, can you tell me about your medical history?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 18.0,
+          "t1": 32.4,
+          "speaker": "PATIENT",
+          "text": "Sure, doctor. I have high blood pressure, diabetes, and high cholesterol. Also, my BMI is 32, so I'm quite heavy. But I can still walk and do my daily things, though I get tired faster lah."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 32.8,
+          "t1": 37.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Let's go through your medications. What are you currently taking?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 38.0,
+          "t1": 52.4,
+          "speaker": "PATIENT",
+          "text": "I take amlodipine 10mg every day for BP, metformin 500mg twice daily for sugar, and atorvastatin 20mg at night for cholesterol. Oh, and I stopped metoprolol 50mg daily two weeks ago, as per my doctor's advice."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 52.8,
+          "t1": 57.6,
+          "speaker": "PROVIDER",
+          "text": "Alright. Do you have any allergies to medications, especially antibiotics or anesthetics?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 58.0,
+          "t1": 72.0,
+          "speaker": "PATIENT",
+          "text": "Ah, yes! I had a bad rash from sulfa antibiotics before. My skin turned all red and itchy, so I avoid that now. But my records say 'no known allergies'? Must be a mistake lah."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 72.4,
+          "t1": 80.8,
+          "speaker": "PROVIDER",
+          "text": "Thank you for clarifying that. We'll make sure to note the sulfa allergy. Have you had any previous surgeries or anesthesia?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 81.2,
+          "t1": 90.8,
+          "speaker": "PATIENT",
+          "text": "No, this is my first surgery. But I did have a minor procedure for my diabetes check-up last year, just local anesthesia, no issues."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 91.2,
+          "t1": 96.8,
+          "speaker": "PROVIDER",
+          "text": "Good. Are you NPO? When was the last time you ate or drank anything?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 97.2,
+          "t1": 105.6,
+          "speaker": "PATIENT",
+          "text": "Yes, I stopped eating after 8pm last night. Only sipped some water for my morning meds, but that was hours ago."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 106.0,
+          "t1": 110.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Any other concerns or questions about the anesthesia or surgery?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 110.8,
+          "t1": 118.4,
+          "speaker": "PATIENT",
+          "text": "Just worried about the pain after surgery. Will I be able to manage it with the medications I'm on?"
+        },
+        {
+          "seg_id": "s013",
+          "t0": 118.8,
+          "t1": 128.0,
+          "speaker": "PROVIDER",
+          "text": "We'll ensure your pain is well-controlled. You'll have a multimodal approach with different medications, and we'll coordinate with your surgeon. Any other questions?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 128.4,
+          "t1": 130.8,
+          "speaker": "PATIENT",
+          "text": "No, that's all. Thank you, doctor."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 131.2,
+          "t1": 140.0,
+          "speaker": "PROVIDER",
+          "text": "You're welcome, Mr. Tan. We'll take good care of you. I'll review your chart and see you in the holding area soon."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.6,
+          "speaker": "PROVIDER",
+          "text": "[08:05] tube in, grade one view"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.0,
+          "t1": 8.4,
+          "speaker": "PROVIDER",
+          "text": "[08:10] peripheral IV placed, 20 gauge"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 8.8,
+          "t1": 11.2,
+          "speaker": "PROVIDER",
+          "text": "[08:12] arterial line placed, 22 gauge"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 11.6,
+          "t1": 14.0,
+          "speaker": "PROVIDER",
+          "text": "[08:15] administered 500 milliliters normal saline"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 14.4,
+          "t1": 19.2,
+          "speaker": "PROVIDER",
+          "text": "[08:30] mean arterial pressure dropped to fifty-five, gave one milliliter of phenylephrine"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 19.6,
+          "t1": 24.8,
+          "speaker": "PROVIDER",
+          "text": "[08:40] heart rate increased to one hundred twenty, gave two milligrams of labetalol"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 3.6,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.0,
+          "t1": 9.6,
+          "speaker": "PATIENT",
+          "text": "Eh, still a bit groggy, but okay lah. Got some pain here, you know?"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 10.0,
+          "t1": 19.6,
+          "speaker": "PROVIDER",
+          "text": "Can you rate the pain for me? On a scale of 0 to 10, where 0 is no pain and 10 is the worst?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 20.0,
+          "t1": 26.0,
+          "speaker": "PATIENT",
+          "text": "Maybe 4 or 5? Mostly around the tummy area, like where they made the cuts."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 26.4,
+          "t1": 32.0,
+          "speaker": "PROVIDER",
+          "text": "Any nausea or feeling like you might vomit? Sometimes the anesthesia can cause that."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 32.4,
+          "t1": 40.0,
+          "speaker": "PATIENT",
+          "text": "A bit, yes. Not too bad, but my stomach feels funny. Like I want to throw up but can't."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 40.4,
+          "t1": 46.4,
+          "speaker": "PROVIDER",
+          "text": "Okay, we can give you something for that. How's your breathing? Any tightness or coughing?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 46.8,
+          "t1": 52.4,
+          "speaker": "PATIENT",
+          "text": "Breathing is okay, but my throat sore lah. Like someone put a tube there."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 52.8,
+          "t1": 57.6,
+          "speaker": "PROVIDER",
+          "text": "That’s normal after intubation. Do you remember anything from the operation itself?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 58.0,
+          "t1": 64.0,
+          "speaker": "PATIENT",
+          "text": "Nope, nothing. One minute I was talking, next thing I know, I’m waking up here."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 64.4,
+          "t1": 70.4,
+          "speaker": "PROVIDER",
+          "text": "Good. Now, since you have high blood pressure and diabetes, any headaches, dizziness, or thirst?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 70.8,
+          "t1": 76.4,
+          "speaker": "PATIENT",
+          "text": "Thirsty, yes. But no spinning or headache. Blood sugar was okay before surgery, right?"
+        },
+        {
+          "seg_id": "s013",
+          "t0": 76.8,
+          "t1": 85.2,
+          "speaker": "PROVIDER",
+          "text": "We’ll check your blood sugar and blood pressure now. Rest is looking good, but let us know if anything worries you."
+        },
+        {
+          "seg_id": "s014",
+          "t0": 85.6,
+          "t1": 90.4,
+          "speaker": "PATIENT",
+          "text": "Okay, thanks. Just want to go home soon and eat proper food."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "44-year-old male, resident of Punggol, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s001"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient reports history of hypertension, diabetes mellitus, hyperlipidemia, and obesity (BMI 32)",
+          "provenance": [
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "No prior history of anesthesia or surgery, thus no prior intubation difficulties",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "No prior surgeries or anesthesia complications reported",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "No current or recent respiratory symptoms or lung issues reported",
+          "provenance": [
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s005"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Current medications include amlodipine 10 mg daily, metformin 500 mg twice daily, and atorvastatin 20 mg nightly",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Metoprolol was discontinued two weeks ago as per patient report",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient reports sulfa antibiotic allergy (rash, itching, redness)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient reports last intake of solids after 8 PM last night and minimal sips of water for morning medications, completed hours prior to interview",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "ASA-PS II (mild systemic disease) due to hypertension, diabetes mellitus, hyperlipidemia, and obesity",
+          "provenance": [
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Procedure: Laparoscopic cholecystectomy (elective)",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Anesthesia: General anesthesia with endotracheal intubation",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Pain management plan includes multimodal approach coordinated with surgical team",
+          "provenance": [
+            "audio:preop-interview#s013"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Propofol 120 milligrams administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "CL grade 1, intubated at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Peripheral IV placed, 20 gauge at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Arterial line placed, 22 gauge at 08:12",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "500 milliliters administered at 08:15",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Mean arterial pressure dropped to 55 at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Phenylephrine 1 milliliters administered at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Heart rate increased to 120 at 08:40",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Labetalol 2 milligrams administered at 08:40",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "PONV risk due to laparoscopic surgery and obesity",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:preop-interview#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway watch due to obesity increasing desaturation risk",
+          "provenance": [
+            "audio:preop-interview#s002",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control due to diabetes and prolonged NPO status",
+          "provenance": [
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s010"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia needs due to patient concern and surgical pain",
+          "provenance": [
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s013"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic instability (hypotension/tachycardia) from intra-op events",
+          "provenance": [
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Sulfa allergy requiring avoidance of sulfa antibiotics",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Fluid balance monitoring due to intra-op fluid administration and hypertension",
+          "provenance": [
+            "audio:intraop-notes#s005",
+            "audio:preop-interview#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Beta-blocker withdrawal effects (tachycardia/hypertension) from discontinued metoprolol",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "44-year-old male from Punggol, Singapore, with hypertension, diabetes mellitus, hyperlipidemia, and obesity (BMI 32). No prior anesthesia, surgeries, or complications. No current respiratory issues. Current medications: amlodipine 10 mg daily, metformin 500 mg twice daily, atorvastatin 20 mg nightly. Metoprolol discontinued two weeks ago. Sulfa allergy (rash, itching, redness). NPO after 8 PM last night, minimal water for morning meds. ASA-PS II (mild systemic disease).",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s001",
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s005",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s010"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Elective laparoscopic cholecystectomy under general anesthesia with endotracheal intubation. Pain management plan includes multimodal approach coordinated with surgical team.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s013"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Propofol 120 mg administered at 08:00. CL grade 1 intubation at 08:05. Peripheral IV (20G) and arterial line (22G) placed. 500 mL fluid given at 08:15. MAP dropped to 55 at 08:30, treated with phenylephrine 1 mL. HR increased to 120 at 08:40, treated with labetalol 2 mg.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "PONV risk (laparoscopic surgery, obesity), airway watch (obesity-related desaturation risk), glycemic control (diabetes, prolonged NPO), analgesia needs (patient concern, surgical pain), hemodynamic instability (intra-op hypotension/tachycardia), sulfa allergy (avoid sulfa antibiotics), fluid balance (intra-op fluids, hypertension), beta-blocker withdrawal (tachycardia/hypertension from discontinued metoprolol).",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:preop-interview#s002",
+            "audio:intraop-notes#s002",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s013",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s005",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Monitor for PONV, maintain airway patency, check glucose levels, optimize analgesia, monitor hemodynamics, avoid sulfa antibiotics, track fluid balance, assess for beta-blocker withdrawal symptoms (tachycardia/hypertension).",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:preop-interview#s002",
+            "audio:intraop-notes#s002",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s013",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s005",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 44-year-old female",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has a BMI of 32",
+          "provenance": [
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient discontinued metoprolol 50 mg daily two weeks ago",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient has resolved pneumonia (2018)",
+          "provenance": [
+            "doc:gp-summary#c006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient has history of left wrist fracture (2015)",
+          "provenance": [
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient takes amlodipine 10 mg daily",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Patient takes metformin 500 mg twice daily",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient takes atorvastatin 20 mg nightly",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient reports sulfa allergy with rash",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Procedure: Laparoscopic cholecystectomy (elective)",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Anesthesia: General anesthesia with endotracheal intubation",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Induction with propofol 120 mg administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Endotracheal tube placed with grade 1 view at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "20-gauge peripheral IV placed at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "22-gauge arterial line placed at 08:12",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "500 mL normal saline administered at 08:15",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Mean arterial pressure dropped to 55 mmHg, treated with phenylephrine 1 mL at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Heart rate increased to 120 bpm, treated with labetalol 2 mg at 08:40",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "Patient reports grogginess postoperatively",
+          "provenance": [
+            "audio:postop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-020",
+          "text": "Patient is alert and oriented postoperatively",
+          "provenance": [
+            "audio:postop-interview#s013"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-021",
+          "text": "Patient reports pain rated 4-5 in the abdominal area",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-022",
+          "text": "Patient experiences nausea postoperatively",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-023",
+          "text": "Patient has sore throat post-intubation",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-024",
+          "text": "Patient has no recall of the surgical procedure",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-025",
+          "text": "Patient reports thirst but no headache or dizziness",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-026",
+          "text": "Patient desires to go home and eat proper food",
+          "provenance": [
+            "audio:postop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-027",
+          "text": "Provider to check blood sugar and blood pressure",
+          "provenance": [
+            "audio:postop-interview#s013"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Have you ever had any difficulties with breathing or intubation during previous anesthesia?",
+    "Do you have any history of diabetes mellitus?",
+    "Do you have any history of hypertension?",
+    "Why was metoprolol discontinued six months ago?",
+    "Have you had any complications during previous surgeries or anesthesia?",
+    "Do you have any current or recent respiratory symptoms or lung issues?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "CL grade 1, intubated",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "peripheral IV placed, 20 gauge",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:12",
+      "category": "line",
+      "value": "arterial line placed, 22 gauge",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "500",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "phenylephrine 1",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "heart rate increased to 120",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "labetalol 2",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "PONV risk due to laparoscopic surgery and obesity",
+    "Airway watch due to obesity increasing desaturation risk",
+    "Glycemic control due to diabetes and prolonged NPO status",
+    "Analgesia needs due to patient concern and surgical pain",
+    "Hemodynamic instability (hypotension/tachycardia) from intra-op events",
+    "Sulfa allergy requiring avoidance of sulfa antibiotics",
+    "Fluid balance monitoring due to intra-op fluid administration and hypertension",
+    "Beta-blocker withdrawal effects (tachycardia/hypertension) from discontinued metoprolol"
+  ]
+}

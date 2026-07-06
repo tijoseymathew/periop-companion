@@ -1,0 +1,927 @@
+{
+  "case_id": "sg-0017",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "21-year-old male, Professional, resident of Clementi, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amoxicillin 500mg twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Left wrist fracture in 2018 (healed, no hardware)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Pneumonia in 2020 (treated with amoxicillin, resolved)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Allergic contact dermatitis to nickel (diagnosed age 12, resolved)",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amoxicillin 500mg twice daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective knee arthroscopy for lateral meniscus tear repair (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General Anesthesia with endotracheal intubation and mechanical ventilation",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 14.4,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I'm Dr. Lim, the anesthesiologist who'll be taking care of you during your knee surgery today. Let me go through some questions to make sure everything's in order for your anesthesia plan."
+        },
+        {
+          "seg_id": "s002",
+          "t0": 14.8,
+          "t1": 17.6,
+          "speaker": "PATIENT",
+          "text": "Morning, Doctor. I'm ready when you are."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 18.0,
+          "t1": 28.8,
+          "speaker": "PROVIDER",
+          "text": "Great. First, can you tell me a bit about your knee problem? How long have you been having issues, and what led to the decision for surgery?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 29.2,
+          "t1": 42.0,
+          "speaker": "PATIENT",
+          "text": "Sure. I tore my meniscus playing football last year. Tried physio, but the pain kept coming back, especially when I twist or squat. Ortho said repair is the way to go lah."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 42.4,
+          "t1": 47.6,
+          "speaker": "PROVIDER",
+          "text": "Understood. Any other medical conditions like diabetes, high blood pressure, or heart issues?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 48.0,
+          "t1": 50.8,
+          "speaker": "PATIENT",
+          "text": "Nope, all clear there. Just the knee."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 51.2,
+          "t1": 56.4,
+          "speaker": "PROVIDER",
+          "text": "Good. What medications are you currently taking, and have you stopped any recently?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 56.8,
+          "t1": 65.2,
+          "speaker": "PATIENT",
+          "text": "I was on amoxicillin 500mg twice daily for a chest infection last month, but stopped it two weeks ago. That's all."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 65.6,
+          "t1": 72.8,
+          "speaker": "PROVIDER",
+          "text": "Thanks. Now, about allergies—have you ever had a severe reaction to any antibiotics, including penicillin or related drugs?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 73.2,
+          "t1": 89.2,
+          "speaker": "PATIENT",
+          "text": "Oh, yes! When I was 16, I had a really bad reaction to penicillin. Got a rash all over, then my throat swelled, and I couldn't breathe properly. Had to go to hospital lah. Never took penicillin again after that."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 89.6,
+          "t1": 96.4,
+          "speaker": "PROVIDER",
+          "text": "That sounds like anaphylaxis. Did you have hives, difficulty breathing, or low blood pressure at the time?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 96.8,
+          "t1": 105.2,
+          "speaker": "PATIENT",
+          "text": "All of that, Doctor. Rash came first, then I felt dizzy and couldn't catch my breath. Scared me half to death."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 105.6,
+          "t1": 114.8,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. I'll update your records to reflect this penicillin allergy clearly. Have you had any previous surgeries or anesthesia?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 115.2,
+          "t1": 122.8,
+          "speaker": "PATIENT",
+          "text": "No, this is my first time under general anesthesia. Never even had a blood test before without fainting, haha."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 123.2,
+          "t1": 130.0,
+          "speaker": "PROVIDER",
+          "text": "Noted. How's your overall fitness? Can you walk up stairs or do daily activities without getting winded?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 130.4,
+          "t1": 140.4,
+          "speaker": "PATIENT",
+          "text": "I can walk, but bending or twisting the knee hurts. Climbing stairs is slow, but I manage. No heart issues or shortness of breath otherwise."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 140.8,
+          "t1": 145.2,
+          "speaker": "PROVIDER",
+          "text": "Good. Last question: when did you last eat or drink anything?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 145.6,
+          "t1": 151.2,
+          "speaker": "PATIENT",
+          "text": "Had dinner at 8pm last night, water until midnight. Nothing since then, as instructed."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 151.6,
+          "t1": 162.0,
+          "speaker": "PROVIDER",
+          "text": "Perfect. We'll proceed with general anesthesia and intubation as planned. Your allergy will be flagged prominently, and we'll avoid all penicillin-related drugs. Any questions for me?"
+        },
+        {
+          "seg_id": "s020",
+          "t0": 162.4,
+          "t1": 169.6,
+          "speaker": "PATIENT",
+          "text": "No, Doctor. Just want to get this sorted so I can play with my kids again without pain."
+        },
+        {
+          "seg_id": "s021",
+          "t0": 170.0,
+          "t1": 176.0,
+          "speaker": "PROVIDER",
+          "text": "Absolutely. We'll take good care of you. I'll see you in the operating room shortly."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.2,
+          "speaker": "PROVIDER",
+          "text": "[08:00] fentanyl fifty micrograms administered"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 5.6,
+          "t1": 7.6,
+          "speaker": "PROVIDER",
+          "text": "[08:00] rocuronium sixty milligrams given"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 8.0,
+          "t1": 10.4,
+          "speaker": "PROVIDER",
+          "text": "[08:02] tube in, grade one view"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 10.8,
+          "t1": 12.8,
+          "speaker": "PROVIDER",
+          "text": "[08:05] peripheral IV 20G placed"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 13.2,
+          "t1": 14.8,
+          "speaker": "PROVIDER",
+          "text": "[08:07] arterial line placed"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 15.2,
+          "t1": 17.6,
+          "speaker": "PROVIDER",
+          "text": "[08:10] 500 mL crystalloid bolus administered"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 18.0,
+          "t1": 23.2,
+          "speaker": "PROVIDER",
+          "text": "[08:15] mean arterial pressure dropped to 55 mmHg, treated with 1 mg phenylephrine"
+        },
+        {
+          "seg_id": "s009",
+          "t0": 23.6,
+          "t1": 28.8,
+          "speaker": "PROVIDER",
+          "text": "[08:20] heart rate increased to 110 bpm, treated with 5 mL/kg fluid bolus"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 3.6,
+          "speaker": "PROVIDER",
+          "text": "Hi, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.0,
+          "t1": 7.6,
+          "speaker": "PATIENT",
+          "text": "I’m okay, but my knee is a bit painful."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 8.0,
+          "t1": 13.2,
+          "speaker": "PROVIDER",
+          "text": "On a scale from 0 to 10, how would you rate the pain?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 13.6,
+          "t1": 17.2,
+          "speaker": "PATIENT",
+          "text": "Maybe around 4 or 5. It’s manageable, I think."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 17.6,
+          "t1": 21.2,
+          "speaker": "PROVIDER",
+          "text": "Any nausea or feeling like you want to vomit?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 21.6,
+          "t1": 24.4,
+          "speaker": "PATIENT",
+          "text": "No, I’m not feeling sick at all."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 24.8,
+          "t1": 28.8,
+          "speaker": "PROVIDER",
+          "text": "How’s your throat? Any discomfort from the tube during surgery?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 29.2,
+          "t1": 33.2,
+          "speaker": "PATIENT",
+          "text": "A bit sore, but I can breathe fine. No problem."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 33.6,
+          "t1": 36.8,
+          "speaker": "PROVIDER",
+          "text": "Do you remember anything about the surgery itself?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 37.2,
+          "t1": 40.4,
+          "speaker": "PATIENT",
+          "text": "Not really. I was out cold, I guess."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 40.8,
+          "t1": 43.2,
+          "speaker": "PROVIDER",
+          "text": "Any other issues you’re concerned about?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 43.6,
+          "t1": 47.6,
+          "speaker": "PATIENT",
+          "text": "No, I think that’s all. Thanks for checking on me."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "21-year-old male",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "No history of heart disease, hypertension, or chronic lung conditions",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "First-time general anesthesia",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "No prior surgeries",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Able to climb stairs slowly without shortness of breath",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Not currently taking amoxicillin 500mg twice daily; ceased two weeks ago",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "History of anaphylaxis to penicillin at age 16, with rash, throat swelling, and breathing difficulty",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "No other medication allergies reported",
+          "provenance": [
+            "audio:preop-interview#s009",
+            "audio:preop-interview#s010"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Last oral intake: dinner at 8 PM last night, water until midnight",
+          "provenance": [
+            "audio:preop-interview#s018"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "No prior history of difficult intubation, airway problems, or anesthesia complications",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "ASA Physical Status I: healthy individual with no systemic disease",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Proceed with elective knee arthroscopy under general anesthesia with endotracheal intubation and mechanical ventilation",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s019"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Penicillin allergy to be flagged; avoid all penicillin-related drugs",
+          "provenance": [
+            "audio:preop-interview#s019",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "08:00 Propofol 120 mg administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "08:00 Fentanyl 50 mcg administered",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "08:00 Rocuronium 60 mg administered",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "08:02 Endotracheal tube placed with grade one view",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "08:05 Peripheral IV 20G placed",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "08:07 Arterial line placed",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "08:10 500 mL crystalloid bolus administered",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "08:15 Mean arterial pressure dropped to 55 mmHg, treated with 1 mg phenylephrine",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "08:20 Heart rate increased to 110 bpm, treated with 5 mL/kg fluid bolus",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Airway watch for potential edema or obstruction due to history of anaphylaxis with throat swelling",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hemodynamic instability (hypotension and tachycardia) requiring monitoring",
+          "provenance": [
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Risk of allergic reaction to medications despite precautions",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s019"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Postoperative nausea and vomiting (PONV) risk due to intra-op opioid administration and first-time anesthesia",
+          "provenance": [
+            "audio:intraop-notes#s002",
+            "audio:preop-interview#s014"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Adequate analgesia management for post-operative pain from knee arthroscopy",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "unsupported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "21-year-old male with no history of heart disease, hypertension, or chronic lung conditions. First-time general anesthesia. No prior surgeries. Able to climb stairs without shortness of breath. History of anaphylaxis to penicillin at age 16 with rash, throat swelling, and breathing difficulty. No other medication allergies reported. Last oral intake: dinner at 8 PM last night, water until midnight. Underwent elective knee arthroscopy under general anesthesia with endotracheal intubation and mechanical ventilation.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s009",
+            "audio:preop-interview#s018",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s019"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Intraoperative course included administration of propofol 120 mg, fentanyl 50 mcg, and rocuronium 60 mg at 08:00. Endotracheal intubation achieved with grade one view at 08:02. Peripheral IV and arterial line placed. Received 500 mL crystalloid bolus. Notable events: mean arterial pressure dropped to 55 mmHg, treated with phenylephrine; heart rate increased to 110 bpm, treated with fluid bolus. Anticipated issues include airway watch for potential edema or obstruction due to history of anaphylaxis with throat swelling, hemodynamic instability requiring monitoring, risk of allergic reaction despite precautions, and postoperative nausea and vomiting risk from intra-op opioid administration and first-time anesthesia.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s019",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Flag penicillin allergy and avoid all penicillin-related drugs. Monitor for airway complications, hemodynamic instability, and signs of allergic reaction. Proactively manage postoperative nausea and vomiting.",
+          "provenance": [
+            "audio:preop-interview#s019",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009",
+            "audio:intraop-notes#s002",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient reports knee pain rated 4-5 on a scale of 0-10 postoperatively",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient denies postoperative nausea or vomiting",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Endotracheal intubation achieved with grade 1 laryngeal view",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient reports mild throat soreness post-extubation without respiratory compromise",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient has no recall of intraoperative events",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Induction with propofol 120mg",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Fentanyl 50mcg administered for analgesia",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Rocuronium 60mg used for muscle relaxation",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Intraoperative hypotension (MAP 55 mmHg) treated with phenylephrine 1mg",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Intraoperative tachycardia (HR 110 bpm) treated with fluid bolus",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Patient reports history of penicillin allergy with anaphylaxis (age 16)",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Patient has history of allergic contact dermatitis to nickel (resolved)",
+          "provenance": [
+            "doc:gp-summary#c006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Patient discontinued amoxicillin 500mg twice daily two weeks preoperatively",
+          "provenance": [
+            "audio:preop-interview#s008",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Patient has no prior history of general anesthesia or surgery",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Patient had pneumonia in 2020 treated with amoxicillin",
+          "provenance": [
+            "doc:gp-summary#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Patient had left wrist fracture in 2018 (healed, no hardware)",
+          "provenance": [
+            "doc:gp-summary#c004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Patient tolerated surgery without immediate postoperative complications",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "unsupported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Do you have any history of difficult intubation, airway problems, or previous anesthesia complications such as awareness, low blood pressure, or breathing difficulties?",
+    "Besides nickel contact dermatitis, do you have any other allergies, particularly to medications, anesthetic agents, or latex?",
+    "Do you have any history of heart disease, high blood pressure, or chronic lung conditions like asthma or COPD?",
+    "Are you currently taking amoxicillin 500mg twice daily as listed in your records?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "mg",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl 50",
+      "units": "mcg",
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium 60",
+      "units": "mg",
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral IV 20G placed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "line",
+      "value": "arterial line placed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 crystalloid bolus",
+      "units": "mL",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 55 mmHg, treated with 1 mg phenylephrine",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to 110 bpm, treated with 5 mL/kg fluid bolus",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s009"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Airway watch for potential edema or obstruction due to history of anaphylaxis with throat swelling",
+    "Hemodynamic instability (hypotension and tachycardia) requiring monitoring",
+    "Risk of allergic reaction to medications despite precautions",
+    "Postoperative nausea and vomiting (PONV) risk due to intra-op opioid administration and first-time anesthesia",
+    "Adequate analgesia management for post-operative pain from knee arthroscopy"
+  ]
+}

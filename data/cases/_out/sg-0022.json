@@ -1,0 +1,988 @@
+{
+  "case_id": "sg-0022",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "72-year-old male, Unemployed, resident of Ang Mo Kio, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 5mg Daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Lisinopril 10mg Daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20mg Nightly.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Paracetamol 500mg As needed.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Aspirin 75mg Daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Pneumonia resolved in 2014",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Left wrist fracture in 2005",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c011",
+          "text": "Hyperthyroidism treated in 2010",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 5mg Daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Lisinopril 10mg Daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20mg Nightly.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Paracetamol 500mg As needed.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Aspirin 75mg Daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective open inguinal hernia repair (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Spinal anesthesia with bupivacaine and fentanyl, IV paracetamol 1g for perioperative analgesia, and ondansetron 4mg for PONV prophylaxis",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:prior-anesthetic-record",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Left cataract extraction under local anesthesia in 2019, uneventful",
+          "section": "Summary"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 14.8,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I’m Dr. Liew, the anesthesiologist who’ll be looking after you today. I’d like to go through some questions to make sure we’re all set for your hernia surgery. Is that okay with you?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 15.2,
+          "t1": 18.4,
+          "speaker": "PATIENT",
+          "text": "Yes, doctor. I’m ready. Let’s get started lah."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 18.8,
+          "t1": 28.4,
+          "speaker": "PROVIDER",
+          "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and have you noticed any changes recently?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 28.8,
+          "t1": 39.2,
+          "speaker": "PATIENT",
+          "text": "It’s been there for about a year, but it’s gotten bigger and sometimes aches, especially when I lift things. That’s why I’m getting it fixed now."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 39.6,
+          "t1": 48.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Now, let’s go through your medications. You’re on amlodipine, lisinopril, atorvastatin, metformin, and paracetamol as needed. Aspirin was stopped recently, right?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 48.8,
+          "t1": 62.4,
+          "speaker": "PATIENT",
+          "text": "Yes, I stopped the aspirin a week ago like the surgeon advised. The rest I take daily—amlodipine and lisinopril for blood pressure, atorvastatin for cholesterol, metformin for diabetes, and paracetamol if I have pain."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 62.8,
+          "t1": 74.0,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Now, about allergies—your records say ‘no allergies documented,’ but I always like to double-check. Do you have any history of allergic reactions to antibiotics, especially penicillin?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 74.4,
+          "t1": 89.2,
+          "speaker": "PATIENT",
+          "text": "Oh, yes! I had a bad reaction to penicillin years ago. I got a rash all over and hives, so I’ve avoided it since. I think I mentioned it before, but maybe it wasn’t written down properly."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 89.6,
+          "t1": 97.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you for clarifying that. We’ll make sure to note that clearly. Have you eaten or drunk anything since midnight?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 98.0,
+          "t1": 106.0,
+          "speaker": "PATIENT",
+          "text": "No, I’ve been fasting since 12am. Just a sip of water for my morning meds, but that was hours ago."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 106.4,
+          "t1": 110.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Have you had anesthesia before? Any issues with it?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 110.8,
+          "t1": 118.4,
+          "speaker": "PATIENT",
+          "text": "Once, for a cataract surgery. I had a spinal then too, and it was fine. No problems at all."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 118.8,
+          "t1": 126.4,
+          "speaker": "PROVIDER",
+          "text": "Good to know. Lastly, how’s your overall health? Any shortness of breath, chest pain, or difficulty with daily activities?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 126.8,
+          "t1": 134.8,
+          "speaker": "PATIENT",
+          "text": "I can walk and do most things, but my knees hurt sometimes from osteoarthritis. No breathing issues or dizziness, though."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 135.2,
+          "t1": 146.0,
+          "speaker": "PROVIDER",
+          "text": "Thanks for sharing all that, Mr. Tan. We’ll proceed with spinal anesthesia using bupivacaine and fentanyl, plus IV paracetamol and ondansetron as planned. Any questions for me?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 146.4,
+          "t1": 152.0,
+          "speaker": "PATIENT",
+          "text": "No, doctor. I think that’s all covered. Thank you for explaining everything so clearly."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] Spinal anesthesia administered with bupivacaine twenty-five milligrams and fentanyl twenty-five micrograms"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 5.2,
+          "t1": 8.8,
+          "speaker": "PROVIDER",
+          "text": "[08:05] Eighteen-gauge IV line placed in left antecubital fossa"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 9.2,
+          "t1": 12.4,
+          "speaker": "PROVIDER",
+          "text": "[08:10] Airway management: spontaneous breathing, SpO2 ninety-eight percent"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 12.8,
+          "t1": 16.8,
+          "speaker": "PROVIDER",
+          "text": "[08:15] Administered IV paracetamol one gram and ondansetron four milligrams"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 17.2,
+          "t1": 25.2,
+          "speaker": "PROVIDER",
+          "text": "[08:30] Hypotension noted, mean arterial pressure sixty-five mmHg, treated with five hundred ml fluid bolus and ten mg phenylephrine IV"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 25.6,
+          "t1": 28.8,
+          "speaker": "PROVIDER",
+          "text": "[08:45] Surgery completed, patient stable, no residual block"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.4,
+          "speaker": "PROVIDER",
+          "text": "Hi Mr Tan, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.8,
+          "t1": 9.2,
+          "speaker": "PATIENT",
+          "text": "Okay lah, a bit sore but manageable. No major pain one."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 9.6,
+          "t1": 15.6,
+          "speaker": "PROVIDER",
+          "text": "What would you say your pain level is on a scale of 1 to 10?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 16.0,
+          "t1": 22.4,
+          "speaker": "PATIENT",
+          "text": "Maybe 3 or 4? The incision area got some throbbing, but the paracetamol seems to help."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 22.8,
+          "t1": 27.2,
+          "speaker": "PROVIDER",
+          "text": "Any nausea or vomiting? We gave you ondansetron to prevent that."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 27.6,
+          "t1": 31.6,
+          "speaker": "PATIENT",
+          "text": "No, thank God. Stomach is fine, no dizziness or anything."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 32.0,
+          "t1": 35.6,
+          "speaker": "PROVIDER",
+          "text": "Breathing comfortable? No shortness of breath or airway issues?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 36.0,
+          "t1": 42.4,
+          "speaker": "PATIENT",
+          "text": "Breathing is okay. Spinal anesthesia made me a bit worried, but I can breathe freely now."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 42.8,
+          "t1": 46.8,
+          "speaker": "PROVIDER",
+          "text": "Did you experience any awareness or discomfort during the surgery?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 47.2,
+          "t1": 52.8,
+          "speaker": "PATIENT",
+          "text": "No, I was out cold. Woke up only when they moved me to recovery."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 53.2,
+          "t1": 58.8,
+          "speaker": "PROVIDER",
+          "text": "Your blood pressure and sugar levels are stable. Any knee pain affecting your mobility?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 59.2,
+          "t1": 64.8,
+          "speaker": "PATIENT",
+          "text": "Knees are stiff as usual, but not worse than before. Can bend them slowly."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "72-year-old male",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Elective open inguinal hernia repair planned",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Hernia present for 1 year, increased in size with aching on lifting",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "No residual respiratory symptoms since pneumonia in 2014; denies shortness of breath",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Prior spinal anesthesia for cataract extraction in 2019 without complications",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Osteoarthritis of knees reported; no functional limitation described",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Amlodipine 5mg daily for hypertension",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Lisinopril 10mg daily for hypertension; continued on day of surgery",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Atorvastatin 20mg nightly for hyperlipidemia",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Metformin 500mg twice daily for diabetes; no pre-operative hold reported",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Paracetamol 500mg as needed for pain",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "doc:med-list#c005",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Aspirin 75mg daily stopped one week ago per surgical advice",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Penicillin allergy with rash and hives reported",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "No other drug allergies documented",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Fastened since midnight with sips of water for morning medications",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "ASA-PS III (severe systemic disease: hypertension, diabetes, hyperlipidemia)",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c004",
+            "doc:gp-summary#c005"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Spinal anesthesia with bupivacaine and fentanyl planned",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "IV paracetamol 1g and ondansetron 4mg for perioperative analgesia and PONV prophylaxis planned",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "At 08:00, bupivacaine 25 mg and fentanyl 25 mcg were administered.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "At 08:05, an eighteen-gauge IV line was placed.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "At 08:10, spontaneous breathing with SpO2 98% was observed.",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "At 08:15, paracetamol 1000 mg and ondansetron 4 mg were administered.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "At 08:30, hypotension was noted with a mean arterial pressure of 65 mmHg.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "At 08:30, a 500 ml fluid bolus was administered.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "At 08:30, phenylephrine 10 mg was administered.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "At 08:45, surgery was completed with the patient stable and no residual block.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Hemodynamic instability (hypotension) due to spinal anesthesia effects and antihypertensive medications",
+          "provenance": [
+            "audio:intraop-notes#s005",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:med-list#c001",
+            "doc:med-list#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Postoperative nausea and vomiting (PONV) risk despite prophylaxis",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control due to diabetes and metformin continuation",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia requirements post-spinal anesthesia and surgery",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s004",
+            "doc:gp-summary#c006",
+            "doc:med-list#c005"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "72-year-old male post-operative from elective open inguinal hernia repair under spinal anesthesia. Surgery completed at 08:45 with stable vitals and no residual block. Intraoperative hypotension (MAP 65 mmHg) managed with fluid bolus and phenylephrine.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has a 1-year history of symptomatic inguinal hernia. Comorbidities include hypertension (amlodipine, lisinopril), diabetes (metformin continued), hyperlipidemia (atorvastatin), and osteoarthritis without functional limitation. Prior uncomplicated spinal anesthesia for cataract surgery. Penicillin allergy (rash/hives). NPO since midnight with sips for morning medications. Aspirin discontinued 1 week pre-op.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s014",
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010",
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intraoperative management included spinal anesthesia (bupivacaine/fentanyl), IV paracetamol/ondansetron for analgesia/PONV prophylaxis, and transient hypotension responsive to fluid/vasopressor. Anticipated postoperative concerns: hemodynamic instability (spinal anesthesia + antihypertensives), PONV risk despite prophylaxis, glycemic control (diabetes/metformin), and analgesia needs post-spinal anesthesia.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:op-plan#c002",
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c006",
+            "doc:med-list#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Monitor for hypotension and ensure adequate hydration. Administer scheduled paracetamol and continue PONV prophylaxis. Check blood glucose regularly and maintain current medication regimen (hold metformin only if protocol dictates). Assess pain and consider supplemental analgesia as needed. Document penicillin allergy and confirm NPO status until full awakening.",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "doc:med-list#c005",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "72-year-old male, resident of Ang Mo Kio, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Current medications include amlodipine 5mg daily, lisinopril 10mg daily, atorvastatin 20mg nightly, metformin 500mg twice daily, and paracetamol 500mg as needed",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:gp-summary#c005",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "doc:med-list#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Aspirin 75mg daily was discontinued one week prior to surgery per surgical advice",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "History of penicillin allergy with rash and hives",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Past medical history includes resolved pneumonia (2014), left wrist fracture (2005), and treated hyperthyroidism (2010)",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c010",
+            "doc:gp-summary#c011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Elective open inguinal hernia repair performed",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Spinal anesthesia administered with bupivacaine 25mg and fentanyl 25mcg",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Intraoperative management included IV paracetamol 1g and ondansetron 4mg for PONV prophylaxis",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Intraoperative hypotension (MAP 65mmHg) treated with 500ml fluid bolus and 10mg phenylephrine IV",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Postoperative pain level reported as 3-4/10 with throbbing at incision site, partially relieved by paracetamol",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "No postoperative nausea or vomiting reported",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Respiratory status stable with no shortness of breath or airway issues",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "No intraoperative awareness or discomfort reported",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Pre-existing knee osteoarthritis reported, but no acute exacerbation affecting mobility",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Stable blood pressure and blood glucose levels postoperatively",
+          "provenance": [
+            "audio:postop-interview#s011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Prior uneventful cataract extraction under spinal anesthesia in 2019",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001"
+          ],
+          "status": "unsupported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Are you currently taking Aspirin 75mg daily, and has it been stopped or adjusted according to pre-operative guidelines?",
+    "Have you stopped Metformin as advised before surgery to reduce the risk of lactic acidosis?",
+    "Have you held your Lisinopril dose on the day of surgery to avoid intraoperative hypotension?",
+    "Have you had spinal anesthesia before, and if so, were there any complications?",
+    "Is your hyperthyroidism currently well-controlled, and are you on any ongoing treatment?",
+    "Do you have any residual respiratory issues or symptoms since your pneumonia in 2014?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine 25 mg, fentanyl 25 mcg",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "eighteen-gauge IV",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "spontaneous breathing, SpO2 98%",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "paracetamol 1000 mg, ondansetron 4 mg",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "Hypotension noted, MAP 65 mmHg",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "fluid",
+      "value": "500 ml",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "phenylephrine 10 mg",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "surgery completed, patient stable, no residual block",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Hemodynamic instability (hypotension) due to spinal anesthesia effects and antihypertensive medications",
+    "Postoperative nausea and vomiting (PONV) risk despite prophylaxis",
+    "Glycemic control due to diabetes and metformin continuation",
+    "Analgesia requirements post-spinal anesthesia and surgery"
+  ]
+}

@@ -1,0 +1,988 @@
+{
+  "case_id": "sg-0007",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "28-year-old female, Associate Professional or Technician, resident of Queenstown, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 5mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Fluticasone nasal spray twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Lisinopril 10mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Resolved pneumonia (2019)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Remote left wrist fracture (2015)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Discontinued levothyroxine for resolved hypothyroidism (2020)",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 5mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Fluticasone nasal spray twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Lisinopril 10mg daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Laparoscopic cholecystectomy (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with endotracheal intubation",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 10.8,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming laparoscopic cholecystectomy and the anesthesia plan. Is that okay with you?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 11.2,
+          "t1": 13.6,
+          "speaker": "PATIENT",
+          "text": "Yes, doctor. I'm ready to talk."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 14.0,
+          "t1": 20.0,
+          "speaker": "PROVIDER",
+          "text": "Great. Let's start with your medical history. Can you tell me about your gallbladder issues?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 20.4,
+          "t1": 30.8,
+          "speaker": "PATIENT",
+          "text": "Sure. I've had pain in my tummy for months, especially after eating. The doctor said I have gallstones and need the surgery to remove the gallbladder."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 31.2,
+          "t1": 40.8,
+          "speaker": "PROVIDER",
+          "text": "Understood. Now, let's go through your medications. You're currently taking amlodipine for blood pressure, fluticasone nasal spray for allergies, and lisinopril was stopped recently?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 41.2,
+          "t1": 50.4,
+          "speaker": "PATIENT",
+          "text": "Yes, lah. I take amlodipine every morning, and the nasal spray twice daily. The doctor stopped lisinopril last week because of the surgery."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 50.8,
+          "t1": 57.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Now, about allergies. Do you have any allergies to sulfa-containing medications or other antibiotics?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 57.6,
+          "t1": 68.4,
+          "speaker": "PATIENT",
+          "text": "Oh, yes! I had a bad rash from a sulfa antibiotic years ago. The doctor said it's a sulfa allergy, so I avoid all sulfa drugs now."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 68.8,
+          "t1": 72.8,
+          "speaker": "PROVIDER",
+          "text": "Important to know. Any other allergies or reactions to medications?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 73.2,
+          "t1": 79.2,
+          "speaker": "PATIENT",
+          "text": "No, just the sulfa. My nose gets itchy sometimes, but that's from pollen, not medications."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 79.6,
+          "t1": 83.6,
+          "speaker": "PROVIDER",
+          "text": "Got it. When did you last eat or drink anything?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 84.0,
+          "t1": 91.6,
+          "speaker": "PATIENT",
+          "text": "I had dinner at 7 PM last night and water until 10 PM. No food since then, as instructed."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 92.0,
+          "t1": 96.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Have you had anesthesia before? Any issues with previous surgeries?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 96.8,
+          "t1": 102.8,
+          "speaker": "PATIENT",
+          "text": "No, this is my first surgery. I'm a bit nervous, but I trust you all."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 103.2,
+          "t1": 110.8,
+          "speaker": "PROVIDER",
+          "text": "We'll take good care of you. Finally, how are you managing daily activities? Any difficulty walking or climbing stairs?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 111.2,
+          "t1": 119.2,
+          "speaker": "PATIENT",
+          "text": "I can walk and do normal things, but sometimes my blood pressure is high. I take my meds regularly, though."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 119.6,
+          "t1": 130.0,
+          "speaker": "PROVIDER",
+          "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia and intubation as planned. You'll be asleep during the surgery and wake up in recovery. Any questions?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 130.4,
+          "t1": 134.8,
+          "speaker": "PATIENT",
+          "text": "No, doctor. I think that's all. Thank you for explaining everything."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.6,
+          "speaker": "PROVIDER",
+          "text": "[08:02] tube in, grade one view"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.0,
+          "t1": 8.4,
+          "speaker": "PROVIDER",
+          "text": "[08:05] peripheral IV placed, 20 gauge"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 8.8,
+          "t1": 11.2,
+          "speaker": "PROVIDER",
+          "text": "[08:07] arterial line placed, radial artery"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 11.6,
+          "t1": 15.2,
+          "speaker": "PROVIDER",
+          "text": "[08:10] fluid bolus one hundred milliliters normal saline given"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 15.6,
+          "t1": 20.8,
+          "speaker": "PROVIDER",
+          "text": "[08:15] blood pressure dropped to 80 over 50, treated with phenylephrine ten micrograms"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 21.2,
+          "t1": 25.6,
+          "speaker": "PROVIDER",
+          "text": "[08:20] heart rate increased to 110, treated with esmolol twenty milligrams"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 10.0,
+          "speaker": "PATIENT",
+          "text": "A bit sore, but okay lah. My tummy is achy, but not too bad."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 10.4,
+          "t1": 16.0,
+          "speaker": "PROVIDER",
+          "text": "Can you rate your pain on a scale from 0 to 10 for me?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 16.4,
+          "t1": 21.6,
+          "speaker": "PATIENT",
+          "text": "Maybe a 4? It’s manageable, but I can feel it when I move."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 22.0,
+          "t1": 26.8,
+          "speaker": "PROVIDER",
+          "text": "Any nausea or vomiting since waking up? Sometimes anesthesia can cause that."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 27.2,
+          "t1": 34.0,
+          "speaker": "PATIENT",
+          "text": "No, no vomiting. Just a bit of dizziness when I sat up earlier, but it went off."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 34.4,
+          "t1": 39.6,
+          "speaker": "PROVIDER",
+          "text": "Good. How’s your breathing? Any tightness or discomfort in your chest or throat?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 40.0,
+          "t1": 46.4,
+          "speaker": "PATIENT",
+          "text": "Throat’s a bit sore from the tube, but I can breathe fine. No wheezing or anything."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 46.8,
+          "t1": 52.0,
+          "speaker": "PROVIDER",
+          "text": "Do you remember anything about the surgery itself? Sometimes patients have fuzzy memories."
+        },
+        {
+          "seg_id": "s010",
+          "t0": 52.4,
+          "t1": 58.4,
+          "speaker": "PATIENT",
+          "text": "Nope, everything’s blank from when I went to sleep. Woke up here, so all good."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 58.8,
+          "t1": 64.0,
+          "speaker": "PROVIDER",
+          "text": "You have a history of hypertension and allergies. Any issues with those today?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 64.4,
+          "t1": 69.2,
+          "speaker": "PATIENT",
+          "text": "Blood pressure’s been fine, no headaches. Allergies? Nose is clear, no sneezing."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "28-year-old female",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hypertension, currently controlled with amlodipine",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "History of resolved hypothyroidism with levothyroxine discontinued in 2020 — relevant because thyroid dysfunction can impact anesthetic management",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "No previous anesthesia or surgeries",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Denies current respiratory symptoms (cough, shortness of breath, wheezing)",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Denies nasal congestion, sinus issues, or history of nasal surgery",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Amlodipine 5mg daily",
+          "provenance": [
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Fluticasone nasal spray twice daily",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Lisinopril discontinued last week",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Sulfa allergy",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Last meal at 7 PM, water until 10 PM",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "ASA-PS II (mild systemic disease — hypertension)",
+          "provenance": [
+            "audio:preop-interview#s016",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "General anesthesia with endotracheal intubation planned",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "At 08:00, propofol 120 mg administered.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "At 08:02, endotracheal tube placed with grade one view.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "At 08:05, peripheral IV (20 gauge) placed.",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "At 08:07, arterial line placed in radial artery.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "At 08:10, fluid bolus of 100 mL normal saline administered.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "At 08:15, blood pressure dropped to 80/50, treated with phenylephrine 10 mcg.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "At 08:20, heart rate increased to 110, treated with esmolol 20 mg.",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "PONV risk due to female gender and laparoscopic cholecystectomy",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hemodynamic instability (hypotension/tachycardia) given intra-op blood pressure fluctuations and history of hypertension",
+          "provenance": [
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:preop-interview#s016",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Sulfa allergy requiring avoidance of sulfa-containing medications post-operatively",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "28-year-old female post-laparoscopic cholecystectomy under general anesthesia with endotracheal intubation.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c002",
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hypertension controlled with amlodipine 5mg daily; history of resolved hypothyroidism (levothyroxine discontinued in 2020); no prior anesthesia or surgeries; sulfa allergy.",
+          "provenance": [
+            "audio:preop-interview#s016",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s008",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Current medications include fluticasone nasal spray twice daily; lisinopril was discontinued last week.",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Last meal at 7 PM, water until 10 PM; ASA-PS II classification.",
+          "provenance": [
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s016",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Intra-operative management included propofol induction, endotracheal tube placement with grade one view, peripheral IV and arterial line placement, and a fluid bolus of 100 mL normal saline.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Intra-operative hypotension (80/50) treated with phenylephrine and tachycardia (HR 110) treated with esmolol.",
+          "provenance": [
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Anticipated post-anesthesia care unit issues include postoperative nausea and vomiting (PONV) risk, hemodynamic instability, and sulfa allergy precautions.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:preop-interview#s016",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Monitor for PONV, maintain hemodynamic stability, and avoid sulfa-containing medications post-operatively.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:preop-interview#s016",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 28-year-old female.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient takes amlodipine 5mg daily.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient takes fluticasone nasal spray twice daily.",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient reported lisinopril was stopped prior to surgery.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "No known drug allergies recorded.",
+          "provenance": [
+            "doc:gp-summary#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient has a sulfa allergy with a history of rash.",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Resolved pneumonia in 2019.",
+          "provenance": [
+            "doc:gp-summary#c006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Remote left wrist fracture in 2015.",
+          "provenance": [
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Discontinued levothyroxine for resolved hypothyroidism in 2020.",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Underwent elective laparoscopic cholecystectomy.",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "General anesthesia with endotracheal intubation.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Induction with propofol 120mg.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Endotracheal tube placed with grade 1 view.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Peripheral IV 20 gauge placed.",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Arterial line placed in radial artery.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Fluid bolus of 100ml normal saline administered.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Blood pressure dropped to 80/50, treated with phenylephrine 10 micrograms.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Heart rate increased to 110, treated with esmolol 20mg.",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "Patient reports abdominal soreness, pain rated 4/10.",
+          "provenance": [
+            "audio:postop-interview#s002",
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-020",
+          "text": "No nausea or vomiting reported.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-021",
+          "text": "Throat soreness from endotracheal tube, but no respiratory distress.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-022",
+          "text": "No recall of surgical events.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-023",
+          "text": "Blood pressure stable, no hypertension symptoms.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-024",
+          "text": "No allergic reactions reported.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-025",
+          "text": "Patient experienced transient dizziness upon sitting up, which resolved.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-026",
+          "text": "No prior history of anesthesia.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-027",
+          "text": "Last meal at 7 PM, last drink until 10 PM.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-028",
+          "text": "Patient reports ability to walk and perform daily activities, with regular medication for hypertension.",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Have you had any previous anesthesia or surgeries? If so, were there any difficulties with intubation or breathing during those procedures?",
+    "What is your current blood pressure and how well is it controlled?",
+    "Do you have any current respiratory symptoms, such as cough, shortness of breath, or wheezing?",
+    "Have you had any changes in your thyroid function since discontinuing levothyroxine in 2020?",
+    "Do you have any nasal congestion, sinus issues, or history of nasal surgery that might affect intubation?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "peripheral IV placed, 20 gauge",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "line",
+      "value": "arterial line placed, radial artery",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "fluid bolus 100 milliliters normal saline",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "blood pressure dropped to 80 over 50, treated with phenylephrine 10 micrograms",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate increased to 110, treated with esmolol 20 milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "PONV risk due to female gender and laparoscopic cholecystectomy",
+    "Hemodynamic instability (hypotension/tachycardia) given intra-op blood pressure fluctuations and history of hypertension",
+    "Sulfa allergy requiring avoidance of sulfa-containing medications post-operatively"
+  ]
+}

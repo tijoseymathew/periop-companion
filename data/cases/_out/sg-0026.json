@@ -1,0 +1,1019 @@
+{
+  "case_id": "sg-0026",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "58-year-old male, Production Craftsman or Related Worker, resident of Pasir Ris, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 10mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20mg Once nightly.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Omeprazole 20mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Aspirin 75mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Resolved community-acquired pneumonia (2018)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Remote left distal radius fracture (2005), healed without sequelae",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Discontinued simvastatin (2019) due to resolution of hyperlipidemia (switched to atorvastatin)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c011",
+          "text": "Hypertension",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c012",
+          "text": "Hyperlipidemia",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c013",
+          "text": "Type 2 Diabetes Mellitus",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c014",
+          "text": "Gastroesophageal Reflux Disease (GERD)",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 10mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Atorvastatin 20mg Once nightly.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Omeprazole 20mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Aspirin 75mg Once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective Inguinal Hernia Repair (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General Anesthesia with Laryngeal Mask Airway",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 13.6,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I’m Dr. Liew, the anesthesiologist who’ll be taking care of you during your hernia surgery today. Let me go through some questions to ensure everything goes smoothly for you, okay?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 14.0,
+          "t1": 20.0,
+          "speaker": "PATIENT",
+          "text": "Morning, doctor. Yes, please ask anything. I want to make sure I’m ready for this."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 20.4,
+          "t1": 30.4,
+          "speaker": "PROVIDER",
+          "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and has it been causing you any issues?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 30.8,
+          "t1": 44.8,
+          "speaker": "PATIENT",
+          "text": "Ah, about six months already. It’s on the left side, and sometimes it bulges when I lift heavy things. No pain yet, but the doctor said better to fix it before it gets worse, right?"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 45.2,
+          "t1": 56.8,
+          "speaker": "PROVIDER",
+          "text": "Absolutely. Now, let’s go through your medications. You’re on amlodipine for blood pressure, atorvastatin for cholesterol, metformin for diabetes, omeprazole for acid, and you stopped aspirin recently—is that correct?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 57.2,
+          "t1": 65.2,
+          "speaker": "PATIENT",
+          "text": "Yes, all correct. I take them every day except aspirin, which I stopped two weeks ago as the surgeon advised."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 65.6,
+          "t1": 74.0,
+          "speaker": "PROVIDER",
+          "text": "Good. Now, allergies—your records say none, but I always double-check. Do you have any allergies to medications, especially antibiotics like penicillin?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 74.4,
+          "t1": 90.0,
+          "speaker": "PATIENT",
+          "text": "Oh, wait… actually, I think I had a reaction once. When I was young, I took penicillin for a infection and got a rash all over. But I didn’t think it was serious, so I never mentioned it here."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 90.4,
+          "t1": 101.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. A rash from penicillin is important to note. I’ll update your records to reflect that allergy to avoid any issues during surgery."
+        },
+        {
+          "seg_id": "s010",
+          "t0": 101.6,
+          "t1": 110.0,
+          "speaker": "PROVIDER",
+          "text": "Have you had anything to eat or drink since midnight? We need to ensure your stomach is empty for the anesthesia."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 110.4,
+          "t1": 118.0,
+          "speaker": "PATIENT",
+          "text": "No, doctor. I had my last meal last night and only sipped water this morning. Nothing else, I promise."
+        },
+        {
+          "seg_id": "s012",
+          "t0": 118.4,
+          "t1": 123.2,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Have you ever had anesthesia before? Any previous surgeries or complications?"
+        },
+        {
+          "seg_id": "s013",
+          "t0": 123.6,
+          "t1": 130.0,
+          "speaker": "PATIENT",
+          "text": "No, this is my first time. I’ve been lucky so far, just check-ups and minor things."
+        },
+        {
+          "seg_id": "s014",
+          "t0": 130.4,
+          "t1": 138.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Lastly, how’s your overall energy and mobility? Can you manage daily activities like climbing stairs or walking without difficulty?"
+        },
+        {
+          "seg_id": "s015",
+          "t0": 138.8,
+          "t1": 146.0,
+          "speaker": "PATIENT",
+          "text": "Yes, I’m still active. I walk every day and help my wife with the gardening. No problems there."
+        },
+        {
+          "seg_id": "s016",
+          "t0": 146.4,
+          "t1": 153.6,
+          "speaker": "PROVIDER",
+          "text": "Perfect. We’ll make sure you’re comfortable and safe throughout the procedure. Any questions or concerns before we proceed?"
+        },
+        {
+          "seg_id": "s017",
+          "t0": 154.0,
+          "t1": 158.4,
+          "speaker": "PATIENT",
+          "text": "No, doctor. I’m ready. Thank you for explaining everything so clearly."
+        },
+        {
+          "seg_id": "s018",
+          "t0": 158.8,
+          "t1": 166.0,
+          "speaker": "PROVIDER",
+          "text": "You’re welcome, Mr. Tan. We’ll take good care of you. I’ll see you in the operating room shortly."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "[08:00] Induction propofol one hundred twenty milligrams, rocuronium forty-five milligrams."
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 7.6,
+          "speaker": "PROVIDER",
+          "text": "[08:02] LMA size four inserted, grade one view."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 8.0,
+          "t1": 11.2,
+          "speaker": "PROVIDER",
+          "text": "[08:03] Peripheral IV access established, 18-gauge left antecubital."
+        },
+        {
+          "seg_id": "s004",
+          "t0": 11.6,
+          "t1": 14.4,
+          "speaker": "PROVIDER",
+          "text": "[08:05] Crystalloid bolus one hundred milliliters administered."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 14.8,
+          "t1": 20.8,
+          "speaker": "PROVIDER",
+          "text": "[08:10] Blood pressure seventy over forty, treated with fluid bolus and ephedrine ten milligrams IV."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 21.2,
+          "t1": 26.4,
+          "speaker": "PROVIDER",
+          "text": "[08:20] Heart rate increased to one hundred twenty, treated with esmolol five milligrams."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 10.8,
+          "speaker": "PATIENT",
+          "text": "A bit sore, but I think it's manageable. The pain is there, but not too bad."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 11.2,
+          "t1": 18.0,
+          "speaker": "PROVIDER",
+          "text": "Okay, on a scale of 1 to 10, what would you say your pain is right now?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 18.4,
+          "t1": 23.6,
+          "speaker": "PATIENT",
+          "text": "Maybe around 3 or 4. It's more like a dull ache, not sharp."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 24.0,
+          "t1": 30.4,
+          "speaker": "PROVIDER",
+          "text": "Good. Any nausea or feeling like you might be sick? Sometimes the anesthesia can cause that."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 30.8,
+          "t1": 36.0,
+          "speaker": "PATIENT",
+          "text": "A little queasy, but I haven't vomited. I'm hoping it stays that way."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 36.4,
+          "t1": 42.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. How's your breathing? Any discomfort in your throat or chest from the airway tube?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 42.8,
+          "t1": 48.8,
+          "speaker": "PATIENT",
+          "text": "My throat is a bit sore, but I can breathe fine. No wheezing or anything."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 49.2,
+          "t1": 55.2,
+          "speaker": "PROVIDER",
+          "text": "Do you remember anything about the surgery itself? Sometimes patients have fuzzy memories after anesthesia."
+        },
+        {
+          "seg_id": "s010",
+          "t0": 55.6,
+          "t1": 62.0,
+          "speaker": "PATIENT",
+          "text": "Not really. I remember waking up here, but the rest is a blur. Is that normal?"
+        },
+        {
+          "seg_id": "s011",
+          "t0": 62.4,
+          "t1": 69.6,
+          "speaker": "PROVIDER",
+          "text": "Yes, that's typical. Since you have GERD, have you had any heartburn or acid reflux since waking up?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 70.0,
+          "t1": 76.4,
+          "speaker": "PATIENT",
+          "text": "Actually, yes. There's a bit of burning in my chest. Not too bad, but it's there."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 76.8,
+          "t1": 84.0,
+          "speaker": "PROVIDER",
+          "text": "We'll keep an eye on that. For your diabetes, have you checked your blood sugar since the surgery?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 84.4,
+          "t1": 90.4,
+          "speaker": "PATIENT",
+          "text": "Not yet, but I feel okay. No shaking or sweating, so I think it's stable."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 90.8,
+          "t1": 101.2,
+          "speaker": "PROVIDER",
+          "text": "We'll get you set up with some anti-nausea meds and monitor your blood sugar closely. Rest for now, and we'll transition you to oral painkillers soon."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "58-year-old male, Production Craftsman or Related Worker, resident of Pasir Ris, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hypertension (current, on amlodipine).",
+          "provenance": [
+            "doc:gp-summary#c011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Hyperlipidemia (current, on atorvastatin).",
+          "provenance": [
+            "doc:gp-summary#c012"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Type 2 Diabetes Mellitus (current, on metformin).",
+          "provenance": [
+            "doc:gp-summary#c013"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Gastroesophageal Reflux Disease (GERD) — relevant because may increase aspiration risk during anesthesia.",
+          "provenance": [
+            "doc:gp-summary#c014"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "No prior history of anesthesia or previous surgeries.",
+          "provenance": [
+            "audio:preop-interview#s013"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Active lifestyle with daily walking and gardening; no difficulty with daily activities (e.g., climbing stairs).",
+          "provenance": [
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Current medications: Amlodipine 10mg Once daily.",
+          "provenance": [
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Current medications: Atorvastatin 20mg Once nightly.",
+          "provenance": [
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Current medications: Metformin 500mg Twice daily.",
+          "provenance": [
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Current medications: Omeprazole 20mg Once daily.",
+          "provenance": [
+            "doc:med-list#c004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Aspirin 75mg Once daily discontinued two weeks prior to surgery per surgeon advice.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Allergy to penicillin (rash reaction in childhood) — updated during pre-op interview.",
+          "provenance": [
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "NPO since midnight with only sips of water.",
+          "provenance": [
+            "audio:preop-interview#s011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "ASA Physical Status II — patient has controlled systemic disease (hypertension, diabetes, hyperlipidemia) but is not completely healthy; functional capacity maintained (e.g., daily walking, gardening).",
+          "provenance": [
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Elective Inguinal Hernia Repair (elective) under General Anesthesia with Laryngeal Mask Airway.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Update allergy record to include penicillin (rash reaction).",
+          "provenance": [
+            "audio:preop-interview#s009"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "[08:00] Induction propofol one hundred twenty milligrams",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "[08:00] Rocuronium forty-five milligrams",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "[08:02] LMA size four inserted, grade one view",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "[08:03] Peripheral IV access established, 18-gauge left antecubital",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "[08:05] Crystalloid bolus one hundred milliliters administered",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "[08:10] Blood pressure seventy over forty, treated with fluid bolus and ephedrine ten milligrams IV",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "[08:20] Heart rate increased to one hundred twenty, treated with esmolol five milligrams",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Increased risk of post-operative nausea and vomiting (PONV) due to history of GERD and intra-operative use of anesthesia agents.",
+          "provenance": [
+            "doc:gp-summary#c014",
+            "audio:intraop-notes#s001"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Risk of airway obstruction or aspiration due to LMA use and history of GERD.",
+          "provenance": [
+            "doc:gp-summary#c014",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Need for monitoring of blood glucose levels post-operatively due to type 2 diabetes mellitus and peri-operative fasting.",
+          "provenance": [
+            "doc:gp-summary#c013",
+            "doc:med-list#c003",
+            "audio:preop-interview#s011"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Risk of hypotension or hypertension due to pre-existing hypertension and intra-operative hemodynamic instability.",
+          "provenance": [
+            "doc:gp-summary#c011",
+            "doc:med-list#c001",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Requirement for adequate post-operative pain management following inguinal hernia repair.",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "58-year-old male patient, occupation Production Craftsman, resident of Pasir Ris, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hypertension (controlled with amlodipine), hyperlipidemia (on atorvastatin), type 2 diabetes mellitus (on metformin), and gastroesophageal reflux disease (GERD) increasing aspiration risk.",
+          "provenance": [
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c012",
+            "doc:gp-summary#c013",
+            "doc:gp-summary#c014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Amlodipine 10mg once daily, atorvastatin 20mg once nightly, metformin 500mg twice daily, omeprazole 20mg once daily. Aspirin 75mg once daily discontinued two weeks preoperatively.",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Penicillin allergy (rash reaction in childhood).",
+          "provenance": [
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "NPO since midnight with sips of water.",
+          "provenance": [
+            "audio:preop-interview#s011"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "ASA Physical Status II: Controlled systemic diseases (hypertension, diabetes, hyperlipidemia) with maintained functional capacity (daily walking, gardening).",
+          "provenance": [
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Elective inguinal hernia repair under general anesthesia with laryngeal mask airway (LMA).",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Induction with propofol 120mg and rocuronium 45mg. LMA size 4 placed with grade 1 view. Peripheral IV (18G) in left antecubital. Crystalloid bolus 100ml administered. Blood pressure dropped to 70/40 mmHg, treated with fluid bolus and ephedrine 10mg IV. Heart rate increased to 120 bpm, treated with esmolol 5mg IV.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "1. Increased risk of post-operative nausea/vomiting (PONV) due to GERD and anesthesia agents. 2. Risk of airway obstruction/aspiration with LMA and GERD history. 3. Need for post-operative glucose monitoring due to diabetes and fasting. 4. Risk of hypotension/hypertension from pre-existing hypertension and intra-operative instability. 5. Requirement for adequate post-operative pain management after hernia repair.",
+          "provenance": [
+            "doc:gp-summary#c014",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "doc:gp-summary#c013",
+            "doc:med-list#c003",
+            "audio:preop-interview#s011",
+            "doc:gp-summary#c011",
+            "doc:med-list#c001",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "58-year-old male, Production Craftsman or Related Worker, resident of Pasir Ris, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Current medications: Amlodipine 10mg Once daily, Atorvastatin 20mg Once nightly, Metformin 500mg Twice daily, Omeprazole 20mg Once daily, Aspirin 75mg Once daily (discontinued two weeks preoperatively).",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "doc:med-list#c005",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Allergy to penicillin (rash reported during preoperative interview).",
+          "provenance": [
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Past medical history includes hypertension, hyperlipidemia, type 2 diabetes mellitus, GERD, resolved community-acquired pneumonia (2018), and remote left distal radius fracture (2005, healed without sequelae).",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c012",
+            "doc:gp-summary#c013",
+            "doc:gp-summary#c014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Elective inguinal hernia repair performed under general anesthesia with laryngeal mask airway.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Intraoperative induction: propofol 120mg, rocuronium 45mg.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Laryngeal mask airway (size 4) inserted with grade 1 view.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Peripheral IV access established (18-gauge left antecubital).",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Crystalloid bolus of 100mL administered.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Intraoperative hypotension (BP 70/40) treated with fluid bolus and ephedrine 10mg IV.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Intraoperative tachycardia (HR 120) treated with esmolol 5mg.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Postoperative pain reported as 3-4/10, described as dull ache.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Mild nausea reported (queasy but no vomiting).",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Throat soreness reported postoperatively, no respiratory distress or wheezing.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "No recall of intraoperative events (typical amnesia from anesthesia).",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Postoperative GERD symptoms (chest burning reported).",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Diabetes management: patient reports no hypoglycemic symptoms; blood sugar monitoring planned.",
+          "provenance": [
+            "audio:postop-interview#s014",
+            "audio:postop-interview#s015"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Have you ever had any difficulties with breathing tubes, masks, or previous anesthesia (e.g., sore throat, swelling, or reactions during prior surgeries)?",
+    "Are you currently taking Aspirin, and has there been any discussion about stopping it before surgery?",
+    "Do you currently experience symptoms of acid reflux, such as heartburn, regurgitation, or difficulty swallowing?",
+    "What is your current blood pressure, and has it been well-controlled with your medications?",
+    "How is your diabetes managed? Do you have any complications such as nerve damage, kidney problems, or vision issues?",
+    "Have you had any recent tests to check your kidney function, as you are taking Metformin?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "rocuronium 45",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size 4, grade 1 view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "line",
+      "value": "peripheral IV access established, 18-gauge left antecubital",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "crystalloid bolus 100",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "blood pressure 70/40, treated with fluid bolus and ephedrine 10",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "heart rate 120, treated with esmolol 5",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Increased risk of post-operative nausea and vomiting (PONV) due to history of GERD and intra-operative use of anesthesia agents.",
+    "Risk of airway obstruction or aspiration due to LMA use and history of GERD.",
+    "Need for monitoring of blood glucose levels post-operatively due to type 2 diabetes mellitus and peri-operative fasting.",
+    "Risk of hypotension or hypertension due to pre-existing hypertension and intra-operative hemodynamic instability.",
+    "Requirement for adequate post-operative pain management following inguinal hernia repair."
+  ]
+}

@@ -1,0 +1,1198 @@
+{
+  "case_id": "sg-0005",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "60-year-old female, Homemaker, resident of Bedok, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 5mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metoprolol 50mg twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Metformin 500mg twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Sitagliptin 100mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Atorvastatin 20mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Aspirin 75mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Lisinopril 10mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Pneumonia resolved 5 years ago",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c011",
+          "text": "Distal radius fracture 10 years ago, fully healed",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c012",
+          "text": "Omeprazole discontinued 2 years ago for resolved GERD",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 5mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metoprolol 50mg twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metformin 500mg twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Sitagliptin 100mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Atorvastatin 20mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Aspirin 75mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Lisinopril 10mg daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective total knee arthroplasty (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Spinal anesthesia with sedation",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:prior-anesthetic-record",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Cholecystectomy under general anesthesia 15 years ago, no complications",
+          "section": "Summary"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 13.6,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll go through some questions to ensure you're ready for your knee surgery tomorrow. Let's start with why you're having this operation."
+        },
+        {
+          "seg_id": "s002",
+          "t0": 14.0,
+          "t1": 22.0,
+          "speaker": "PATIENT",
+          "text": "Morning, Doctor. My right knee's been really bad for years, lah. Osteoarthritis, they said. Can't walk far without pain anymore."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 22.4,
+          "t1": 26.8,
+          "speaker": "PROVIDER",
+          "text": "I see. Do you have any other medical conditions besides osteoarthritis?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 27.2,
+          "t1": 33.6,
+          "speaker": "PATIENT",
+          "text": "Yes, Doctor. I've got high blood pressure, diabetes, and high cholesterol. All controlled with meds, ah."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 34.0,
+          "t1": 38.4,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Let's list your medications. What are you currently taking?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 38.8,
+          "t1": 52.4,
+          "speaker": "PATIENT",
+          "text": "Amlodipine 5mg once daily, Metoprolol 50mg twice a day, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg at night, and Aspirin 75mg every morning. Oh, and I stopped Lisinopril last week as instructed."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 52.8,
+          "t1": 56.4,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Any known allergies, especially to antibiotics or medications?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 56.8,
+          "t1": 68.0,
+          "speaker": "PATIENT",
+          "text": "The records say no allergies, but actually... I had a rash once from penicillin when I was younger. Never told the hospital before, forgot to mention it, lah."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 68.4,
+          "t1": 74.0,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. Can you describe the rash and when it happened?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 74.4,
+          "t1": 85.2,
+          "speaker": "PATIENT",
+          "text": "It was years ago, maybe 20 years back. Took penicillin for a tooth infection, then got itchy red spots all over. Went away after stopping the medicine."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 85.6,
+          "t1": 90.8,
+          "speaker": "PROVIDER",
+          "text": "Noted. We'll update your records. Have you eaten or drunk anything since midnight?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 91.2,
+          "t1": 98.0,
+          "speaker": "PATIENT",
+          "text": "No, Doctor. I stopped eating after 8 PM last night, just sipped a little water for meds."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 98.4,
+          "t1": 102.0,
+          "speaker": "PROVIDER",
+          "text": "Good. Have you had any previous surgeries or anesthesia?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 102.4,
+          "t1": 110.0,
+          "speaker": "PATIENT",
+          "text": "Yes, cataract surgery five years ago. They used spinal anesthesia, and I was awake but sleepy. No problems then."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 110.4,
+          "t1": 114.4,
+          "speaker": "PROVIDER",
+          "text": "Great. How's your mobility now? Can you walk with assistance?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 114.8,
+          "t1": 122.8,
+          "speaker": "PATIENT",
+          "text": "I use a walking frame at home. Can't bend the knee properly, so stairs are tough. Need help sometimes, ah."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 123.2,
+          "t1": 130.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. For tomorrow, we'll use spinal anesthesia with sedation. You'll be comfortable and won't feel pain. Any questions?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 130.8,
+          "t1": 135.6,
+          "speaker": "PATIENT",
+          "text": "No questions, Doctor. Just want to get this done and walk better."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 136.0,
+          "t1": 144.8,
+          "speaker": "PROVIDER",
+          "text": "Perfect. We'll see you in the holding area tomorrow. Nurses will prep you, and I'll explain the procedure again before we start."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 7.6,
+          "speaker": "PROVIDER",
+          "text": "[08:02] spinal anesthesia with bupivacaine fifteen milligrams and fentanyl twenty micrograms"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 8.0,
+          "t1": 10.4,
+          "speaker": "PROVIDER",
+          "text": "[08:05] midazolam three milligrams for sedation"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 10.8,
+          "t1": 13.2,
+          "speaker": "PROVIDER",
+          "text": "[08:07] tube in, grade one view"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 13.6,
+          "t1": 17.6,
+          "speaker": "PROVIDER",
+          "text": "[08:10] sixteen gauge IV catheter placed in left radial vein"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 18.0,
+          "t1": 21.2,
+          "speaker": "PROVIDER",
+          "text": "[08:12] arterial line placed in right radial artery"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 21.6,
+          "t1": 24.8,
+          "speaker": "PROVIDER",
+          "text": "[08:15] lactated Ringer's solution five hundred milliliters administered"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 25.2,
+          "t1": 32.4,
+          "speaker": "PROVIDER",
+          "text": "[08:20] hypotension BP eighty over fifty treated with ephedrine ten milligrams IV and two hundred milliliter fluid bolus"
+        },
+        {
+          "seg_id": "s009",
+          "t0": 32.8,
+          "t1": 37.6,
+          "speaker": "PROVIDER",
+          "text": "[08:25] tachycardia heart rate one ten treated with esmolol ten milligrams IV"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 6.4,
+          "speaker": "PROVIDER",
+          "text": "Hi Mr Tan, how are you feeling now after the surgery? Let me check on you."
+        },
+        {
+          "seg_id": "s002",
+          "t0": 6.8,
+          "t1": 13.6,
+          "speaker": "PATIENT",
+          "text": "I’m okay lah, Doctor. Leg is numb but I feel some pain when I move a bit."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 14.0,
+          "t1": 20.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. On a scale of 1 to 10, how would you rate your pain right now?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 20.8,
+          "t1": 26.0,
+          "speaker": "PATIENT",
+          "text": "Maybe 4 or 5? Not too bad, but I can feel it there."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 26.4,
+          "t1": 30.8,
+          "speaker": "PROVIDER",
+          "text": "Alright. Have you felt any nausea or vomiting since waking up?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 31.2,
+          "t1": 36.8,
+          "speaker": "PATIENT",
+          "text": "No vomiting, but my stomach feels a bit funny. And I’m very thirsty, Doctor."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 37.2,
+          "t1": 43.2,
+          "speaker": "PROVIDER",
+          "text": "Noted. Are you feeling comfortable with your breathing? Any shortness of breath or chest tightness?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 43.6,
+          "t1": 50.4,
+          "speaker": "PATIENT",
+          "text": "Breathing is fine, no problem. But my back feels a bit sore from lying down too long."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 50.8,
+          "t1": 56.4,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. Do you remember anything during the surgery? Any sounds or feelings?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 56.8,
+          "t1": 63.2,
+          "speaker": "PATIENT",
+          "text": "I think I heard some voices, but it was like a dream. Not very clear, Doctor."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 63.6,
+          "t1": 71.2,
+          "speaker": "PROVIDER",
+          "text": "Thanks for sharing. Any other issues, like dizziness or unusual symptoms linked to your blood pressure or sugar levels?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 71.6,
+          "t1": 79.6,
+          "speaker": "PATIENT",
+          "text": "No dizziness, but my legs feel heavy. And I’m worried about my blood sugar, lah. Can I have water soon?"
+        },
+        {
+          "seg_id": "s013",
+          "t0": 80.0,
+          "t1": 90.4,
+          "speaker": "PROVIDER",
+          "text": "We’ll monitor your sugar closely and give you sips of water soon. The heaviness in your legs is normal after spinal anesthesia. Rest well, Mr Tan."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "60-year-old female scheduled for elective total knee arthroplasty due to osteoarthritis.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has a history of hypertension, diabetes mellitus, and hyperlipidemia, all reported as controlled with medications.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient denies current respiratory issues or shortness of breath.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient denies any current heartburn or reflux symptoms since resolution of GERD two years ago.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient reports diabetes is controlled with medications but no recent HbA1c or blood sugar readings provided.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient denies symptoms of high or low blood pressure; current blood pressure not documented.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Previous surgeries include cholecystectomy under general anesthesia 15 years ago without complications and cataract surgery under spinal anesthesia 5 years ago without complications.",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Current medications include Amlodipine 5mg daily, Metoprolol 50mg twice daily, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg daily, and Aspirin 75mg daily.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:gp-summary#c005",
+            "doc:gp-summary#c006",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Lisinopril 10mg daily was discontinued by the patient last week as per instruction.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Patient reports a history of penicillin allergy with a rash (itchy red spots) occurring 20 years ago.",
+          "provenance": [
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Patient is NPO since midnight except for sips of water for medications.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "ASA Physical Status Classification II (mild systemic disease: controlled hypertension, diabetes mellitus, and hyperlipidemia).",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Anesthesia plan is spinal anesthesia with sedation.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Propofol 120 milligrams administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Bupivacaine 15 milligrams administered at 08:02",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Fentanyl 20 micrograms administered at 08:02",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Midazolam 3 milligrams administered at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Endotracheal tube placed with grade one view at 08:07",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Sixteen gauge IV catheter placed in left radial vein at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Arterial line placed in right radial artery at 08:12",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Lactated Ringer's solution 500 milliliters administered at 08:15",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Hypotension (BP 80/50) treated with ephedrine 10 milligrams IV and 200 milliliter fluid bolus at 08:20",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Tachycardia (heart rate 110 bpm) treated with esmolol 10 milligrams IV at 08:25",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "PONV risk due to intra-op opioid administration and history of resolved GERD",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c012",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway watch due to intra-op sedation and history of resolved GERD",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c012",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control required due to diabetes with no recent glucose data and NPO status",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:gp-summary#c005",
+            "doc:gp-summary#c006",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s012"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia needs post-spinal anesthesia for total knee arthroplasty",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic instability watch due to intra-op hypotension/tachycardia and chronic antihypertensive medications",
+          "provenance": [
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Neurological complications from spinal anesthesia",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "60-year-old female post-operative from elective total knee arthroplasty. Anesthesia was spinal with sedation.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:preop-interview#s002",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "History of hypertension, diabetes mellitus, and hyperlipidemia, all controlled with medications. ASA Physical Status II. Previous surgeries include cholecystectomy under general anesthesia 15 years ago and cataract surgery under spinal anesthesia 5 years ago without complications. Current medications: Amlodipine 5mg daily, Metoprolol 50mg twice daily, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg daily, and Aspirin 75mg daily. Lisinopril 10mg daily was discontinued last week. History of penicillin allergy with rash. Denies current respiratory issues or reflux symptoms. NPO since midnight except for sips of water.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s014",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:gp-summary#c005",
+            "doc:gp-summary#c006",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010",
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intraoperative management included administration of propofol, bupivacaine, fentanyl, and midazolam. Endotracheal tube placed with grade one view. Hypotension (BP 80/50) treated with ephedrine 10mg IV and 200ml fluid bolus. Tachycardia (HR 110 bpm) treated with esmolol 10mg IV. Sixteen-gauge IV catheter placed in left radial vein and arterial line in right radial artery. Lactated Ringer's 500ml administered.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Risk of post-operative nausea and vomiting (PONV) due to intraoperative opioid administration and history of resolved GERD. Airway watch due to intraoperative sedation and history of resolved GERD. Glycemic control required due to diabetes mellitus without recent glucose data and NPO status. Analgesia needs post-spinal anesthesia for total knee arthroplasty. Hemodynamic instability watch due to intraoperative hypotension and tachycardia, and chronic antihypertensive medications. Neurological complications from spinal anesthesia.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c012",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:gp-summary#c005",
+            "doc:gp-summary#c006",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s012",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 60-year-old female.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient reports a history of osteoarthritis requiring elective total knee arthroplasty.",
+          "provenance": [
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Current medications include Amlodipine 5mg daily.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Current medications include Metoprolol 50mg twice daily.",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Current medications include Metformin 500mg twice daily.",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Current medications include Sitagliptin 100mg daily.",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Current medications include Atorvastatin 20mg daily.",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "doc:med-list#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Current medications include Aspirin 75mg daily.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "doc:med-list#c006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Lisinopril 10mg daily was discontinued preoperatively as per patient report.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "No known drug allergies documented in medical records.",
+          "provenance": [
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Patient reports a history of penicillin allergy with rash 20 years ago.",
+          "provenance": [
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "History of pneumonia resolved 5 years ago.",
+          "provenance": [
+            "doc:gp-summary#c010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "History of distal radius fracture 10 years ago, fully healed.",
+          "provenance": [
+            "doc:gp-summary#c011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "History of resolved GERD, omeprazole discontinued 2 years ago.",
+          "provenance": [
+            "doc:gp-summary#c012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Previous cholecystectomy under general anesthesia 15 years ago without complications.",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Previous cataract surgery under spinal anesthesia 5 years ago without complications.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Planned anesthesia: spinal anesthesia with sedation.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Intraoperative anesthesia: spinal anesthesia with bupivacaine 15mg and fentanyl 20mcg, midazolam 3mg for sedation.",
+          "provenance": [
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "Intraoperative hypotension (BP 80/50) treated with ephedrine 10mg IV and fluid bolus.",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-020",
+          "text": "Intraoperative tachycardia (HR 110) treated with esmolol 10mg IV.",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-021",
+          "text": "Patient reports current pain level of 4-5/10, with pain on movement.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-022",
+          "text": "Patient denies nausea or vomiting but reports a 'funny' stomach feeling.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-023",
+          "text": "Patient denies shortness of breath or chest tightness.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-024",
+          "text": "Patient recalls hearing voices during surgery but not clearly, consistent with sedation.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-025",
+          "text": "Patient reports heaviness in legs post-spinal anesthesia, explained as normal.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-026",
+          "text": "Patient complains of back soreness from prolonged lying during surgery.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-027",
+          "text": "Patient concerned about blood sugar levels, to be monitored.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-028",
+          "text": "Patient is thirsty postoperatively, to be allowed sips of water.",
+          "provenance": [
+            "audio:postop-interview#s006",
+            "audio:postop-interview#s013"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-029",
+          "text": "Patient uses a walking frame preoperatively, with difficulty bending the knee and climbing stairs.",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-030",
+          "text": "Patient denies dizziness postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-031",
+          "text": "Patient's airway management included endotracheal tube with grade 1 view.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-032",
+          "text": "Patient had 16G IV in left radial vein and arterial line in right radial artery.",
+          "provenance": [
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-033",
+          "text": "Patient received 500ml lactated Ringer's solution intraoperatively.",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-034",
+          "text": "Patient's induction agent was propofol 120mg.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Are you currently taking Aspirin, and if so, has it been stopped prior to surgery as per guidelines?",
+    "Have you had any other surgeries or anesthesia since your cholecystectomy 15 years ago?",
+    "Do you have any current respiratory issues or shortness of breath, given your history of pneumonia 5 years ago?",
+    "Have you experienced any heartburn or reflux symptoms since your GERD was resolved 2 years ago?",
+    "How well is your diabetes controlled? Have you had any recent HbA1c tests or blood sugar readings?",
+    "What is your current blood pressure, and are you experiencing any symptoms of high or low blood pressure?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "propofol 120 milligrams",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "bupivacaine 15 milligrams",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "fentanyl 20 micrograms",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "midazolam 3 milligrams",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "sixteen gauge IV catheter placed in left radial vein",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:12",
+      "category": "line",
+      "value": "arterial line placed in right radial artery",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated Ringer's solution 500 milliliters",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "hypotension BP 80/50 treated with ephedrine 10 milligrams and 200 milliliter fluid bolus",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "tachycardia heart rate 110 bpm treated with esmolol 10 milligrams",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s009"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "PONV risk due to intra-op opioid administration and history of resolved GERD",
+    "Airway watch due to intra-op sedation and history of resolved GERD",
+    "Glycemic control required due to diabetes with no recent glucose data and NPO status",
+    "Analgesia needs post-spinal anesthesia for total knee arthroplasty",
+    "Hemodynamic instability watch due to intra-op hypotension/tachycardia and chronic antihypertensive medications",
+    "Neurological complications from spinal anesthesia"
+  ]
+}

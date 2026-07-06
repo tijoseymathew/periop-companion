@@ -1,0 +1,925 @@
+{
+  "case_id": "sg-0030",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "28-year-old female, Senior Official or Manager, resident of Ang Mo Kio, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 5 mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Levonorgestrel/Ethinyl Estradiol Standard dose Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Doxycycline 100 mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Fracture of left wrist (2018, healed)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Pneumonia (2019, resolved)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Discontinued medication: Omeprazole for GERD (2019)",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 5 mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Levonorgestrel/Ethinyl Estradiol Standard dose Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Doxycycline 100 mg Once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Laparoscopic ovarian cystectomy (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with endotracheal intubation",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 17.6,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Miss Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your surgery today. I just need to go through a few questions to make sure everything goes smoothly for your laparoscopic ovarian cystectomy. Is that okay with you?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 18.0,
+          "t1": 22.8,
+          "speaker": "PATIENT",
+          "text": "Yes, doctor. I'm ready. Been waiting for this for weeks already lah."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 23.2,
+          "t1": 32.4,
+          "speaker": "PROVIDER",
+          "text": "Great. Let's start with your medical history. Can you tell me a bit about the ovarian cyst? When did you first notice symptoms?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 32.8,
+          "t1": 50.0,
+          "speaker": "PATIENT",
+          "text": "About three months ago, I had really bad lower tummy pain, like cramps but worse. My gynae did an ultrasound and found the cyst. They said it's about 6cm, so they want to remove it before it gets bigger or causes more trouble."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 50.4,
+          "t1": 58.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Now, let's go through your medications. You're on amlodipine for your blood pressure, right? What dose are you taking?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 58.8,
+          "t1": 72.0,
+          "speaker": "PATIENT",
+          "text": "Yes, amlodipine 5mg once daily in the morning. And my birth control pills, levonorgestrel and ethinyl estradiol, same time every day. Oh, and I stopped doxycycline two weeks ago because of the surgery."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 72.4,
+          "t1": 86.0,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Now, about allergies – your records say 'no known allergies,' but I always like to double-check. Have you ever had a reaction to any antibiotics, particularly sulfa-based medications like co-trimoxazole or sulfadiazine?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 86.4,
+          "t1": 102.0,
+          "speaker": "PATIENT",
+          "text": "Oh! Actually, yes. When I was a teenager, I took some sulfa pills for a skin infection and broke out in a terrible rash all over my body. It was really scary. I've avoided all sulfa drugs since then."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 102.4,
+          "t1": 116.8,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. I'll make sure to note your sulfa allergy clearly in your chart. Now, have you eaten or drunk anything since midnight? We need to confirm your NPO status for general anesthesia."
+        },
+        {
+          "seg_id": "s010",
+          "t0": 117.2,
+          "t1": 123.6,
+          "speaker": "PATIENT",
+          "text": "No, doctor. I had my last sip of water at 7am. Just like the instructions said."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 124.0,
+          "t1": 129.6,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Any previous surgeries or anesthesia? Even minor procedures like stitching or dental work?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 130.0,
+          "t1": 136.8,
+          "speaker": "PATIENT",
+          "text": "No, this is my first time. I'm a bit nervous about the general anesthesia, to be honest."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 137.2,
+          "t1": 149.2,
+          "speaker": "PROVIDER",
+          "text": "It's normal to feel that way. Finally, can you tell me about your daily activities? For example, can you walk up stairs or carry groceries without getting short of breath?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 149.6,
+          "t1": 158.0,
+          "speaker": "PATIENT",
+          "text": "Yes, I walk to work every day and climb five flights of stairs. No problems at all. I'm quite active, lah."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 158.4,
+          "t1": 167.2,
+          "speaker": "PROVIDER",
+          "text": "That's reassuring. We'll make sure your blood pressure is well-controlled during surgery since you're on amlodipine. Any other concerns before we proceed?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 167.6,
+          "t1": 172.8,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all. Thank you for explaining everything so clearly, doctor."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 173.2,
+          "t1": 182.8,
+          "speaker": "PROVIDER",
+          "text": "My pleasure, Miss Tan. We'll take good care of you. The nursing team will come for you shortly. See you in the operating theater."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.6,
+          "speaker": "PROVIDER",
+          "text": "[08:02] tube in, grade one view"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.0,
+          "t1": 9.2,
+          "speaker": "PROVIDER",
+          "text": "[08:05] 16-gauge line placed in right antecubital vein"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 9.6,
+          "t1": 12.0,
+          "speaker": "PROVIDER",
+          "text": "[08:10] crystalloid two thousand milliliters administered"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 12.4,
+          "t1": 17.6,
+          "speaker": "PROVIDER",
+          "text": "[08:30] blood pressure dropped to 85 over 50, gave ephedrine ten milligrams IV"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 18.0,
+          "t1": 23.2,
+          "speaker": "PROVIDER",
+          "text": "[09:15] blood pressure up to 160 over 90, gave labetalol twenty milligrams IV"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 12.4,
+          "speaker": "PATIENT",
+          "text": "Eh, still a bit tired, but okay lah. Got some pain here, like a deep ache, but not too bad."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 12.8,
+          "t1": 17.2,
+          "speaker": "PROVIDER",
+          "text": "Understandable. Can you rate your pain for me, out of 10?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 17.6,
+          "t1": 23.6,
+          "speaker": "PATIENT",
+          "text": "Maybe 3 or 4? The nurse already gave me some meds, so it's better now."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 24.0,
+          "t1": 29.6,
+          "speaker": "PROVIDER",
+          "text": "Good. Any nausea or vomiting since waking up? Sometimes the anesthesia can cause that."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 30.0,
+          "t1": 36.8,
+          "speaker": "PATIENT",
+          "text": "A bit dizzy earlier, but no vomiting. Felt like my stomach was churning, but it's gone now."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 37.2,
+          "t1": 42.8,
+          "speaker": "PROVIDER",
+          "text": "Okay. How's your breathing? Any tightness or discomfort in your throat from the tube?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 43.2,
+          "t1": 50.8,
+          "speaker": "PATIENT",
+          "text": "Throat is a bit sore, like I swallowed something big, but I can breathe fine. No wheezing or anything."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 51.2,
+          "t1": 55.6,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. Do you remember anything about the surgery itself?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 56.0,
+          "t1": 62.0,
+          "speaker": "PATIENT",
+          "text": "Nope, everything's a blank. Just woke up here, so I guess the anesthesia worked well."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 62.4,
+          "t1": 70.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Since you have hypertension, we've been monitoring your BP. It's been stable, but we'll keep an eye on it."
+        },
+        {
+          "seg_id": "s012",
+          "t0": 70.8,
+          "t1": 76.0,
+          "speaker": "PATIENT",
+          "text": "Okay, thanks. I was worried it might spike, but I feel okay now."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "28-year-old female",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Elective laparoscopic ovarian cystectomy for a 6cm cyst causing pain",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "No prior complications from anesthesia or surgeries (first-time patient)",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Currently managing hypertension with amlodipine 5 mg daily",
+          "provenance": [
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "No current respiratory symptoms or limitations; active lifestyle with no shortness of breath",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Amlodipine 5 mg once daily (current)",
+          "provenance": [
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Levonorgestrel/Ethinyl Estradiol once daily (current)",
+          "provenance": [
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Doxycycline discontinued two weeks ago (per patient report)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Sulfa allergy with rash reaction (reported during interview)",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "NPO since 7am (last sip of water)",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "No prior anesthesia or surgeries; no known airway difficulties",
+          "provenance": [
+            "audio:preop-interview#s011",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "ASA-PS II: Well-controlled hypertension with active lifestyle (walks stairs without dyspnea)",
+          "provenance": [
+            "doc:med-list#c001",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Proceed with general anesthesia with endotracheal intubation for laparoscopic ovarian cystectomy",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "At 08:00, propofol 120 mg was administered.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "At 08:02, intubation with CL grade 1 view was performed.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "At 08:05, a 16-gauge line was placed in the right antecubital vein.",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "At 08:10, crystalloid 2000 mL was administered.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "At 08:30, blood pressure was 85/50.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "At 08:30, ephedrine 10 mg was administered.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "At 09:15, blood pressure was 160/90.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "At 09:15, labetalol 20 mg was administered.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Hemodynamic instability (hypertension and hypotension risk) due to intraoperative blood pressure fluctuations and pre-existing hypertension managed with amlodipine.",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:gp-summary#c002",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Post-operative nausea and vomiting (PONV) risk due to female gender, laparoscopic surgery, and potential opioid use during anesthesia.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s004",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Sulfa allergy requiring avoidance of sulfa-based medications post-operatively to prevent rash reaction.",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "28-year-old female undergoing elective laparoscopic ovarian cystectomy for a 6cm cyst causing pain. No prior anesthesia complications or surgeries. Well-controlled hypertension on amlodipine 5mg daily, active lifestyle with no respiratory issues. Sulfa allergy with rash reaction. NPO since 7am.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s012",
+            "doc:med-list#c001",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Intraoperatively, propofol was administered, followed by uneventful intubation. A 16-gauge IV was placed, and 2000mL crystalloid was given. Blood pressure fluctuated, requiring ephedrine for hypotension and labetalol for hypertension.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Anticipated issues include hemodynamic instability due to intraoperative BP fluctuations and pre-existing hypertension, post-operative nausea and vomiting risk given female gender, laparoscopic surgery, and possible opioid use, and sulfa allergy requiring avoidance of sulfa-based medications.",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:gp-summary#c002",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s004",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Monitor for hemodynamic instability, manage BP as needed. Administer antiemetics for PONV prophylaxis. Avoid sulfa-based medications due to allergy.",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:gp-summary#c002",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s004",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 28-year-old female, Senior Official or Manager, resident of Ang Mo Kio, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Current medication: Amlodipine 5 mg Once daily.",
+          "provenance": [
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Current medication: Levonorgestrel/Ethinyl Estradiol Standard dose Once daily.",
+          "provenance": [
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Discontinued medication: Doxycycline 100 mg Once daily (stopped two weeks preoperatively).",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Allergy to sulfa-based antibiotics (e.g., co-trimoxazole, sulfadiazine) with rash.",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Past medical history: Fracture of left wrist (2018, healed).",
+          "provenance": [
+            "doc:gp-summary#c006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Past medical history: Pneumonia (2019, resolved).",
+          "provenance": [
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Discontinued medication: Omeprazole for GERD (2019).",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Procedure: Laparoscopic ovarian cystectomy (elective).",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Anesthesia: General anesthesia with endotracheal intubation.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Intraoperative induction: Propofol 120 mg administered.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Airway: Endotracheal intubation with grade 1 view.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Intraoperative fluid administration: 2000 mL crystalloid given.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Intraoperative hypotension: BP dropped to 85/50 mmHg, treated with ephedrine 10 mg IV.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Intraoperative hypertension: BP increased to 160/90 mmHg, treated with labetalol 20 mg IV.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Postoperative pain: Patient reports deep ache rated 3-4/10, improved with medication.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Postoperative nausea: Patient experienced dizziness and stomach churning, resolved.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Airway: Post-extubation throat soreness reported, no respiratory distress.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "Recall: Patient has no memory of the surgery.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-020",
+          "text": "Vital signs: Postoperative blood pressure stable.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-021",
+          "text": "Physical activity: Patient able to climb five flights of stairs without shortness of breath preoperatively.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-022",
+          "text": "NPO status confirmed: Last intake at 7am, adhered to preoperative fasting.",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-023",
+          "text": "No prior surgeries or anesthesia.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-024",
+          "text": "Anxiety about general anesthesia preoperatively.",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "unsupported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Have you experienced any complications during previous anesthesia or surgeries?",
+    "Do you have any history of difficult intubation or airway problems?",
+    "Do you have a history of hypertension or are you currently managing high blood pressure?",
+    "Have you or a close family member ever had a blood clot (e.g., DVT, pulmonary embolism), especially related to hormonal contraception?",
+    "What is the reason for taking doxycycline? Is it for a current infection, acne, or another condition?",
+    "Do you currently experience symptoms of acid reflux or GERD (e.g., heartburn, regurgitation), even though omeprazole was discontinued?",
+    "Have you had any respiratory issues since your pneumonia in 2019, or do you still experience lingering effects?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "mg",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "CL grade 1, intubated",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "16-gauge line placed in right antecubital vein",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "crystalloid 2000",
+      "units": "mL",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "BP 85/50",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "ephedrine 10",
+      "units": "mg",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "event",
+      "value": "BP 160/90",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "labetalol 20",
+      "units": "mg",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Hemodynamic instability (hypertension and hypotension risk) due to intraoperative blood pressure fluctuations and pre-existing hypertension managed with amlodipine.",
+    "Post-operative nausea and vomiting (PONV) risk due to female gender, laparoscopic surgery, and potential opioid use during anesthesia.",
+    "Sulfa allergy requiring avoidance of sulfa-based medications post-operatively to prevent rash reaction."
+  ]
+}

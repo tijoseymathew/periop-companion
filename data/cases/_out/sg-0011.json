@@ -1,0 +1,1370 @@
+{
+  "case_id": "sg-0011",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "80-year-old male, Retired, resident of Ang Mo Kio, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 10mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Lisinopril 20mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Metformin 500mg twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Atorvastatin 20mg nightly.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Aspirin 75mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Omeprazole 20mg daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Hypertension",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Type 2 Diabetes Mellitus",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c011",
+          "text": "Hyperlipidemia",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c012",
+          "text": "Chronic Kidney Disease (Stage 2)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c013",
+          "text": "Pneumonia, resolved in 2018",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c014",
+          "text": "Left wrist fracture, healed without issues in 2010",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c015",
+          "text": "Completed course of antibiotics for UTI in 2015",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Amlodipine 10mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Lisinopril 20mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metformin 500mg twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20mg nightly.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Aspirin 75mg daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Omeprazole 20mg daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Transurethral resection of the prostate (TURP) (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Spinal anesthesia with local infiltration",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 12.8,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist. I'll be speaking with you today about your upcoming surgery. Can you tell me a bit about why you're having this TURP done?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 13.2,
+          "t1": 24.8,
+          "speaker": "PATIENT",
+          "text": "Ah, yes doctor. My prostate been swollen for a while, causing trouble urinating. Sometimes I can't go at all, very uncomfortable. Urologist said TURP is the best option lah."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 25.2,
+          "t1": 32.0,
+          "speaker": "PROVIDER",
+          "text": "I see. Let's go over your medical history. Can you list all your current medications for me?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 32.4,
+          "t1": 50.0,
+          "speaker": "PATIENT",
+          "text": "Sure. I take amlodipine 10mg every day for blood pressure, lisinopril 20mg also daily. Metformin 500mg twice a day for diabetes, atorvastatin 20mg at night for cholesterol, and aspirin 75mg daily. Oh, and omeprazole 20mg, but I stopped that two weeks ago as instructed."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 50.4,
+          "t1": 59.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Do you have any known allergies, Mr. Tan? The records say 'no known allergies,' but I'd like to confirm directly."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 59.6,
+          "t1": 70.4,
+          "speaker": "PATIENT",
+          "text": "Allergies? Hmm... I think I had a reaction once to penicillin when I was younger. Got a rash all over, very itchy. But that's all, I think."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 70.8,
+          "t1": 75.2,
+          "speaker": "PROVIDER",
+          "text": "Ah, that's important. Was it specifically penicillin, or other antibiotics too?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 75.6,
+          "t1": 83.2,
+          "speaker": "PATIENT",
+          "text": "Only penicillin, doctor. My skin turned red and itchy like a heat rash. Never had issues with other antibiotics."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 83.6,
+          "t1": 92.0,
+          "speaker": "PROVIDER",
+          "text": "Noted. Let's move to your health conditions. You have hypertension, diabetes, high cholesterol, and stage 2 kidney disease. Are these well-controlled?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 92.4,
+          "t1": 100.4,
+          "speaker": "PATIENT",
+          "text": "Yes, my BP usually around 130/80, sugars okay with metformin. Cholesterol under control with statin. Kidneys stable, no recent issues."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 100.8,
+          "t1": 109.2,
+          "speaker": "PROVIDER",
+          "text": "Good. Have you eaten or drunk anything this morning? Remember, nothing after midnight except clear fluids up to 2 hours ago."
+        },
+        {
+          "seg_id": "s012",
+          "t0": 109.6,
+          "t1": 115.6,
+          "speaker": "PATIENT",
+          "text": "No, doctor. Only sipped some water this morning, stopped by 6am. Followed the instructions strictly."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 116.0,
+          "t1": 120.0,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Have you had anesthesia before? Any reactions or complications?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 120.4,
+          "t1": 127.6,
+          "speaker": "PATIENT",
+          "text": "Yes, once for cataract surgery. They gave spinal anesthesia then too, no problems at all. Woke up fine."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 128.0,
+          "t1": 133.6,
+          "speaker": "PROVIDER",
+          "text": "Great. Lastly, how's your overall energy and mobility? Can you walk comfortably, climb stairs?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 134.0,
+          "t1": 141.6,
+          "speaker": "PATIENT",
+          "text": "Still walking daily, but slower now. Prostate issues make it hard sometimes, but I manage stairs with rest stops."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 142.0,
+          "t1": 150.4,
+          "speaker": "PROVIDER",
+          "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia plus local infiltration as planned. No contraindications noted. Any questions for me?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 150.8,
+          "t1": 154.4,
+          "speaker": "PATIENT",
+          "text": "No, doctor. All clear. Thank you for explaining everything."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 3.2,
+          "speaker": "PROVIDER",
+          "text": "[08:00] Spinal anesthetic performed with bupivacaine twenty-five milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.6,
+          "t1": 6.4,
+          "speaker": "PROVIDER",
+          "text": "[08:02] Local infiltration with lidocaine twenty milligrams"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.8,
+          "t1": 9.6,
+          "speaker": "PROVIDER",
+          "text": "[08:05] Midazolam two milligrams IV for sedation"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 10.0,
+          "t1": 12.4,
+          "speaker": "PROVIDER",
+          "text": "[08:07] Fentanyl fifty micrograms IV administered"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 12.8,
+          "t1": 15.6,
+          "speaker": "PROVIDER",
+          "text": "[08:10] Airway maintained spontaneously, no intubation required"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 16.0,
+          "t1": 19.6,
+          "speaker": "PROVIDER",
+          "text": "[08:15] Peripheral IV line established in left antecubital vein"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 20.0,
+          "t1": 23.2,
+          "speaker": "PROVIDER",
+          "text": "[08:20] Crystalloid fluid bolus five hundred milliliters given"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 23.6,
+          "t1": 28.8,
+          "speaker": "PROVIDER",
+          "text": "[08:25] Blood pressure drop to seventy over forty, treated with phenylephrine ten micrograms"
+        },
+        {
+          "seg_id": "s009",
+          "t0": 29.2,
+          "t1": 34.4,
+          "speaker": "PROVIDER",
+          "text": "[08:30] Heart rate increased to one hundred twenty, atropine point five milligrams given"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Mr. Tan, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 10.0,
+          "speaker": "PATIENT",
+          "text": "I'm okay, Doctor. Got some pain here and there, but not too bad lah."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 10.4,
+          "t1": 16.0,
+          "speaker": "PROVIDER",
+          "text": "Can you rate your pain on a scale from 0 to 10 for me?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 16.4,
+          "t1": 21.6,
+          "speaker": "PATIENT",
+          "text": "Maybe 4 or 5? It's manageable, but I feel some discomfort when moving."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 22.0,
+          "t1": 28.0,
+          "speaker": "PROVIDER",
+          "text": "Any nausea or feeling like you want to vomit? Sometimes spinal anesthesia can cause that."
+        },
+        {
+          "seg_id": "s006",
+          "t0": 28.4,
+          "t1": 34.8,
+          "speaker": "PATIENT",
+          "text": "A bit queasy earlier, but settled down after they gave me something. No vomiting, thank God."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 35.2,
+          "t1": 38.8,
+          "speaker": "PROVIDER",
+          "text": "Breathing comfortable? Any shortness of breath or airway issues?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 39.2,
+          "t1": 44.8,
+          "speaker": "PATIENT",
+          "text": "Breathing's fine. Throat a bit sore from the tube, but I can talk okay."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 45.2,
+          "t1": 49.6,
+          "speaker": "PROVIDER",
+          "text": "Do you remember anything during the surgery? Sometimes patients recall bits."
+        },
+        {
+          "seg_id": "s010",
+          "t0": 50.0,
+          "t1": 56.0,
+          "speaker": "PATIENT",
+          "text": "Not much, Doctor. Felt some pressure here and there, heard voices, then woke up here."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 56.4,
+          "t1": 62.0,
+          "speaker": "PROVIDER",
+          "text": "Your blood pressure's stable, but we're watching your diabetes and kidney function. Any concerns?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 62.4,
+          "t1": 70.0,
+          "speaker": "PATIENT",
+          "text": "Yes, worried about sugar levels, but nurse said it's under control. Urine output's a bit less, but no swelling."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 70.4,
+          "t1": 75.2,
+          "speaker": "PROVIDER",
+          "text": "We'll keep monitoring. Stay hydrated and follow your meds. Any other issues?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 75.6,
+          "t1": 80.4,
+          "speaker": "PATIENT",
+          "text": "No, all good. Thank you, Doctor. I'll rest and drink more water."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is an 80-year-old male.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hypertension.",
+          "provenance": [
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Type 2 Diabetes Mellitus; patient reports blood sugars are well-controlled with metformin.",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hyperlipidemia.",
+          "provenance": [
+            "doc:gp-summary#c011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Chronic Kidney Disease (Stage 2); patient reports stable kidney function without recent issues.",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Prior spinal anesthesia for cataract surgery without complications.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Reports daily walking but slower due to prostate issues; able to climb stairs with rest stops. (Relevance: assesses functional status for anesthesia and recovery).",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Amlodipine 10mg daily.",
+          "provenance": [
+            "doc:med-list#c001",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Lisinopril 20mg daily.",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Metformin 500mg twice daily.",
+          "provenance": [
+            "doc:med-list#c003",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Atorvastatin 20mg nightly.",
+          "provenance": [
+            "doc:med-list#c004",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Aspirin 75mg daily; no discontinuation mentioned in context of TURP surgery.",
+          "provenance": [
+            "doc:med-list#c005",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Omeprazole 20mg daily discontinued two weeks prior to surgery as per patient report.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Penicillin allergy with rash reaction reported; no other drug allergies.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Patient reports NPO since 6:00 AM, followed preoperative fasting instructions.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "ASA-PS 3 (Patient with mild systemic disease); justification: controlled hypertension, type 2 diabetes mellitus, hyperlipidemia, and stable chronic kidney disease stage 2.",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c010",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Planned anesthesia: spinal anesthesia with local infiltration.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Bupivacaine administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "25 milligrams administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Midazolam administered at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "2 milligrams administered at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Fentanyl administered at 08:07",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "50 micrograms administered at 08:07",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Airway maintained spontaneously, no intubation required at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Peripheral IV line established in left antecubital vein at 08:15",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Crystalloid fluid bolus 500 milliliters administered at 08:20",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Blood pressure drop to seventy over forty at 08:25",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Phenylephrine administered at 08:25",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "10 micrograms administered at 08:25",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Heart rate increased to one hundred twenty at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Atropine administered at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "0.5 milligrams administered at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Hypotension due to spinal anesthesia and antihypertensive medications",
+          "provenance": [
+            "audio:intraop-notes#s008",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:med-list#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Tachycardia/arrhythmias from intraoperative hemodynamic instability",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Post-operative nausea and vomiting (PONV) risk from opioid and benzodiazepine administration",
+          "provenance": [
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Glycemic control challenges due to diabetes and fasting",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Renal function monitoring due to chronic kidney disease and intraoperative fluid/blood pressure changes",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s010",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Airway compromise risk in elderly patient with spinal anesthesia",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Analgesia requirements post-TURP with local anesthetic wear-off",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Bleeding risk from aspirin use in TURP patient",
+          "provenance": [
+            "doc:med-list#c005",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Delirium risk from benzodiazepine in elderly patient",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:intraop-notes#s003"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "80-year-old male post-TURP procedure under spinal anesthesia.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c002",
+            "doc:med-list#c005",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has hypertension, type 2 diabetes mellitus (controlled with metformin), hyperlipidemia, and stable chronic kidney disease (stage 2).",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s010",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Current medications include amlodipine 10mg daily, lisinopril 20mg daily, metformin 500mg twice daily, atorvastatin 20mg nightly, and aspirin 75mg daily (not discontinued preoperatively). Omeprazole 20mg daily was discontinued two weeks prior.",
+          "provenance": [
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "doc:med-list#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Penicillin allergy with rash reaction reported.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient reports daily walking but slower due to prostate issues; able to climb stairs with rest stops.",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "ASA-PS 3 (mild systemic disease) due to controlled comorbidities.",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c010",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s010"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Patient reports NPO since 6:00 AM, followed preoperative fasting instructions.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Planned anesthesia: spinal with local infiltration.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Intraoperative management included bupivacaine 25mg, midazolam 2mg, and fentanyl 50mcg. Airway maintained spontaneously without intubation. Peripheral IV in left antecubital vein. Crystalloid bolus of 500ml administered.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Blood pressure dropped to 70/40 at 08:25, prompting phenylephrine administration. Heart rate increased to 120 at 08:30, treated with atropine 0.5mg.",
+          "provenance": [
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Anticipated issues include hypotension (spinal anesthesia and antihypertensives), tachycardia/arrhythmias (hemodynamic instability), PONV (opioid/benzodiazepine), glycemic challenges (fasting/diabetes), renal monitoring (CKD and fluid/BP changes), airway compromise (elderly with spinal), analgesia needs (post-TURP), bleeding risk (aspirin), and delirium (benzodiazepine in elderly).",
+          "provenance": [
+            "audio:intraop-notes#s008",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:med-list#c002",
+            "audio:intraop-notes#s009",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c012",
+            "audio:intraop-notes#s007",
+            "doc:gp-summary#c001",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s002",
+            "doc:med-list#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Monitor for hypotension and tachycardia; assess glycemic control; monitor renal function; evaluate airway patency; manage analgesia needs; watch for bleeding; assess for delirium; consider antiemetics for PONV risk.",
+          "provenance": [
+            "audio:intraop-notes#s008",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:med-list#c002",
+            "audio:intraop-notes#s009",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c012",
+            "audio:intraop-notes#s007",
+            "doc:gp-summary#c001",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s002",
+            "doc:med-list#c005"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is an 80-year-old male residing in Ang Mo Kio, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Current medications include Amlodipine 10mg daily.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Current medications include Lisinopril 20mg daily.",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Current medications include Metformin 500mg twice daily.",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Current medications include Atorvastatin 20mg nightly.",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Current medications include Aspirin 75mg daily.",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "doc:med-list#c005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Current medications include Omeprazole 20mg daily.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "doc:med-list#c006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient stopped Omeprazole two weeks preoperatively as instructed.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient reports allergy to penicillin with rash.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Past medical history includes Hypertension.",
+          "provenance": [
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Past medical history includes Type 2 Diabetes Mellitus.",
+          "provenance": [
+            "doc:gp-summary#c010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Past medical history includes Hyperlipidemia.",
+          "provenance": [
+            "doc:gp-summary#c011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Past medical history includes Chronic Kidney Disease (Stage 2).",
+          "provenance": [
+            "doc:gp-summary#c012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Procedure planned: Transurethral resection of the prostate (TURP) (elective).",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Anesthesia plan: Spinal anesthesia with local infiltration.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Spinal anesthesia administered with bupivacaine 25mg.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Local infiltration with lidocaine 20mg performed.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Midazolam 2mg IV given for sedation.",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "Fentanyl 50mcg IV administered for analgesia.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-020",
+          "text": "Airway maintained spontaneously without intubation.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-021",
+          "text": "Blood pressure dropped to 70/40 mmHg, treated with phenylephrine.",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-022",
+          "text": "Heart rate increased to 120 bpm, treated with atropine.",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-023",
+          "text": "Patient reports pain level 4-5 on 0-10 scale postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-024",
+          "text": "Patient experienced nausea initially, resolved after medication.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-025",
+          "text": "Patient reports sore throat from tube but breathing is comfortable.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-026",
+          "text": "Patient recalls feeling pressure and hearing voices during surgery.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-027",
+          "text": "Patient concerned about diabetes and kidney function; urine output decreased but no swelling.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-028",
+          "text": "Blood pressure stable postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-029",
+          "text": "Diabetes under control per nursing report.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Are you currently taking Aspirin 75mg daily, and has it been stopped or continued in the context of your upcoming TURP surgery?",
+    "What is your current kidney function (e.g., eGFR or serum creatinine level) given your history of Chronic Kidney Disease Stage 2?",
+    "What is your current blood sugar control like? Have you had any recent HbA1c tests or glucose readings?",
+    "Are you still taking Lisinopril and Amlodipine for your blood pressure, and have you been instructed to take them on the day of surgery?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "25 milligrams",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "midazolam",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "2 milligrams",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "50 micrograms",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "maintained spontaneously, no intubation required",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral IV line established in left antecubital vein",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "crystalloid fluid bolus 500 milliliters",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "blood pressure drop to seventy over forty",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "10 micrograms",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "heart rate increased to one hundred twenty",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s009"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s009"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "0.5 milligrams",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s009"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Hypotension due to spinal anesthesia and antihypertensive medications",
+    "Tachycardia/arrhythmias from intraoperative hemodynamic instability",
+    "Post-operative nausea and vomiting (PONV) risk from opioid and benzodiazepine administration",
+    "Glycemic control challenges due to diabetes and fasting",
+    "Renal function monitoring due to chronic kidney disease and intraoperative fluid/blood pressure changes",
+    "Airway compromise risk in elderly patient with spinal anesthesia",
+    "Analgesia requirements post-TURP with local anesthetic wear-off",
+    "Bleeding risk from aspirin use in TURP patient",
+    "Delirium risk from benzodiazepine in elderly patient"
+  ]
+}

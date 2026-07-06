@@ -1,0 +1,876 @@
+{
+  "case_id": "sg-0021",
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "28-year-old male, Unemployed, resident of Ang Mo Kio, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Fluticasone nasal spray 1 spray each nostril daily daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Doxycycline 100mg once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "History of pneumonia resolved 5 years ago",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Fractured wrist (healed) 10 years ago",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "History of acne treated with doxycycline (discontinued)",
+          "section": "Past History"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Fluticasone nasal spray 1 spray each nostril daily daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Doxycycline 100mg once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective knee arthroscopy for medial meniscectomy (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with spinal for lower limb surgery",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": []
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 9.2,
+          "speaker": "PROVIDER",
+          "text": "Good morning, I'm Dr. Liew from the anesthesia team. May I ask you a few questions to prepare for your knee surgery tomorrow?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 9.6,
+          "t1": 20.0,
+          "speaker": "PATIENT",
+          "text": "Morning, doctor. Sure thing. I'm having this arthroscopy because my left knee's been giving me trouble for months, right? The doctor said it's a torn meniscus."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 20.4,
+          "t1": 25.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Can you tell me about any medications you're currently taking?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 25.6,
+          "t1": 37.6,
+          "speaker": "PATIENT",
+          "text": "I use fluticasone nasal spray every day, one spray each nostril. And I was on doxycycline 100mg daily for a skin infection, but I stopped that two weeks ago, lah."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 38.0,
+          "t1": 42.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Do you have any allergies to medications or other substances?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 42.8,
+          "t1": 57.2,
+          "speaker": "PATIENT",
+          "text": "Ah, yes! I'm allergic to penicillin. Had a bad rash when I took it as a teenager. The doctor stopped it immediately. But funny thing, my records say no allergies, but I remember telling them before..."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 57.6,
+          "t1": 68.0,
+          "speaker": "PROVIDER",
+          "text": "Thank you for clarifying that. We'll make sure to note the penicillin allergy in your chart. When did you last have something to eat or drink?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 68.4,
+          "t1": 76.8,
+          "speaker": "PATIENT",
+          "text": "Had dinner at 8 PM last night, and I sipped water until 6 AM this morning. Followed the fasting instructions, doctor."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 77.2,
+          "t1": 80.8,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Have you had any previous surgeries or anesthesia?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 81.2,
+          "t1": 89.2,
+          "speaker": "PATIENT",
+          "text": "Yes, I had a spinal block for a hernia surgery five years ago. Woke up fine, no issues at all."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 89.6,
+          "t1": 94.8,
+          "speaker": "PROVIDER",
+          "text": "Good to know. How's your overall mobility? Any difficulty walking or climbing stairs?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 95.2,
+          "t1": 104.4,
+          "speaker": "PATIENT",
+          "text": "My knee's been painful, so I walk slower now. Stairs are a bit of a struggle, but I manage with the handrail, lah."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 104.8,
+          "t1": 108.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Any other medical conditions we should know about?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 108.8,
+          "t1": 117.2,
+          "speaker": "PATIENT",
+          "text": "I've got allergic rhinitis, that's why I use the nasal spray. Gets worse during the rainy season, but it's controlled now."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 117.6,
+          "t1": 130.4,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing all that. We'll proceed with general anesthesia combined with spinal for your surgery. You'll be asleep but with the spinal to keep your leg numb during the procedure."
+        },
+        {
+          "seg_id": "s016",
+          "t0": 130.8,
+          "t1": 134.8,
+          "speaker": "PATIENT",
+          "text": "Sounds good, doctor. I'm ready to get this sorted out."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 135.2,
+          "t1": 140.8,
+          "speaker": "PROVIDER",
+          "text": "Wonderful. We'll see you in the holding area tomorrow. Any questions before we finish?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 141.2,
+          "t1": 144.4,
+          "speaker": "PATIENT",
+          "text": "No questions, thank you. I appreciate the explanation."
+        }
+      ]
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 4.8,
+          "speaker": "PROVIDER",
+          "text": "[08:02] fentanyl fifty micrograms"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 5.2,
+          "t1": 6.8,
+          "speaker": "PROVIDER",
+          "text": "[08:04] rocuronium sixty milligrams"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 7.2,
+          "t1": 9.6,
+          "speaker": "PROVIDER",
+          "text": "[08:05] tube in, grade one view"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 10.0,
+          "t1": 12.0,
+          "speaker": "PROVIDER",
+          "text": "[08:10] spinal bupivacaine ten milligrams"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 12.4,
+          "t1": 14.8,
+          "speaker": "PROVIDER",
+          "text": "[08:15] peripheral line eighteen gauge placed"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 15.2,
+          "t1": 18.0,
+          "speaker": "PROVIDER",
+          "text": "[08:15] fluids five hundred milliliters crystalloid given"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 18.4,
+          "t1": 24.4,
+          "speaker": "PROVIDER",
+          "text": "[08:20] blood pressure ninety over sixty, treated with fluid bolus and phenylephrine one hundred micrograms"
+        },
+        {
+          "seg_id": "s009",
+          "t0": 24.8,
+          "t1": 30.0,
+          "speaker": "PROVIDER",
+          "text": "[08:30] heart rate one hundred ten, treated with fluid and adjusted anesthesia depth"
+        }
+      ]
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Good morning, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 9.2,
+          "speaker": "PATIENT",
+          "text": "A bit sore, sir. My knee is painful, but I expected that."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 9.6,
+          "t1": 18.0,
+          "speaker": "PROVIDER",
+          "text": "Understood. Can you rate your pain for me? Out of 10, where 0 is no pain and 10 is the worst?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 18.4,
+          "t1": 23.6,
+          "speaker": "PATIENT",
+          "text": "Maybe 3 or 4 lah. It’s manageable, but I can feel it throbbing."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 24.0,
+          "t1": 28.4,
+          "speaker": "PROVIDER",
+          "text": "Okay, and are you feeling nauseous or have vomited at all?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 28.8,
+          "t1": 31.6,
+          "speaker": "PATIENT",
+          "text": "No nausea, thank goodness. My tummy’s fine."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 32.0,
+          "t1": 36.4,
+          "speaker": "PROVIDER",
+          "text": "Good. How’s your breathing? Any shortness of breath or throat discomfort?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 36.8,
+          "t1": 42.0,
+          "speaker": "PATIENT",
+          "text": "Breathing’s okay, but my throat’s a bit sore from the tube, I think."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 42.4,
+          "t1": 47.6,
+          "speaker": "PROVIDER",
+          "text": "That’s common after general anesthesia. Do you remember anything about the surgery itself?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 48.0,
+          "t1": 53.6,
+          "speaker": "PATIENT",
+          "text": "Not really. I went to sleep and woke up here. All a bit fuzzy."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 54.0,
+          "t1": 60.4,
+          "speaker": "PROVIDER",
+          "text": "That’s normal. Since you have allergic rhinitis, are you having any stuffiness or allergy symptoms now?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 60.8,
+          "t1": 65.2,
+          "speaker": "PATIENT",
+          "text": "Nasal’s a bit blocked, but not too bad. Like usual lah."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 65.6,
+          "t1": 73.2,
+          "speaker": "PROVIDER",
+          "text": "Alright, we’ll keep an eye on that. Let the nurse know if you need anything for pain or discomfort."
+        },
+        {
+          "seg_id": "s014",
+          "t0": 73.6,
+          "t1": 76.8,
+          "speaker": "PATIENT",
+          "text": "Will do, doctor. Thanks for checking on me."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 28-year-old male.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "History of allergic rhinitis, currently controlled with fluticasone nasal spray.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Previous spinal anesthesia for hernia surgery five years ago without complications.",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Reports penicillin allergy (rash as teenager), contradicting prior 'no allergies' documentation.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Currently using fluticasone nasal spray 1 spray each nostril daily for allergic rhinitis.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:med-list#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Doxycycline 100mg daily discontinued two weeks ago (per patient report), though listed as current in records.",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Last solid food at 8 PM, clear fluids until 6 AM (fasting compliant).",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "ASA-PS II (healthy patient with well-controlled allergic rhinitis).",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Elective knee arthroscopy for medial meniscectomy planned.",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Anesthesia plan: general anesthesia with spinal block for lower limb surgery.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "At 08:00, propofol 120 milligrams administered.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "At 08:02, fentanyl 50 micrograms administered.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "At 08:04, rocuronium 60 milligrams administered.",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "At 08:05, endotracheal tube placed with grade 1 view.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "At 08:10, bupivacaine 10 milligrams administered.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "At 08:15, 18-gauge peripheral line placed.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "At 08:15, 500 milliliters of fluid administered.",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "At 08:20, blood pressure 90/60 noted, treated with fluid bolus and phenylephrine 100 micrograms.",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "At 08:30, heart rate 110 noted, treated with fluid and adjusted anesthesia depth.",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Potential for hemodynamic instability (hypotension or tachycardia) due to spinal anesthesia and intra-operative episodes requiring treatment.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Need for post-operative analgesia as spinal block with bupivacaine may provide initial pain control but could wear off.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Monitoring for allergic reaction due to documented penicillin allergy with conflicting pre-op documentation.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c004"
+          ],
+          "status": "conflicting"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "28-year-old male undergoing elective knee arthroscopy for medial meniscectomy.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "ASA-PS II patient with well-controlled allergic rhinitis on fluticasone nasal spray 1 spray each nostril daily. History of spinal anesthesia without complications five years prior. Reports conflicting penicillin allergy (rash as teenager) versus prior 'no allergies' documentation. Doxycycline 100mg daily discontinued two weeks ago (per patient), though listed as current. NPO since 8 PM with clear fluids until 6 AM.",
+          "provenance": [
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s004",
+            "doc:med-list#c001",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intra-op course included propofol, fentanyl, rocuronium, and bupivacaine spinal block. Transient hypotension (90/60) and tachycardia (HR 110) occurred, treated with fluid bolus, phenylephrine, and adjusted anesthesia depth. Anticipated risks include hemodynamic instability, need for post-op analgesia as spinal block may wear off, and monitoring for allergic reaction due to conflicting penicillin allergy documentation.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c004"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Continue fluticasone nasal spray. Monitor for signs of allergic reaction (e.g., rash, hypotension) given conflicting penicillin allergy history. Plan for post-op analgesia as bupivacaine block may provide initial pain control but could wear off. Maintain vigilance for hemodynamic instability (hypotension/tachycardia) requiring intervention. Confirm doxycycline discontinuation with outpatient records.",
+          "provenance": [
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s004",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c004",
+            "doc:op-plan#c002"
+          ],
+          "status": "conflicting"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 28-year-old male, unemployed, residing in Ang Mo Kio, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient uses fluticasone nasal spray 1 spray each nostril daily for allergic rhinitis.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient discontinued doxycycline 100mg daily two weeks prior to surgery, though listed as current in medical records.",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient reports a penicillin allergy (rash as a teenager), not documented in prior records.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient has a history of resolved pneumonia (5 years ago), healed wrist fracture (10 years ago), and acne treated with doxycycline.",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:gp-summary#c006",
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Planned procedure: elective knee arthroscopy for medial meniscectomy under general anesthesia with spinal block.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Patient experienced hypotension (BP 90/60) intraoperatively, managed with fluid bolus and phenylephrine 100mcg.",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient experienced tachycardia (HR 110) intraoperatively, managed with fluid and adjusted anesthesia depth.",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient reports knee pain rated 3-4/10 postoperatively, described as throbbing but manageable.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Patient denies nausea or vomiting postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Patient reports mild throat soreness likely from endotracheal intubation.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Patient has no recall of the surgical procedure due to general anesthesia.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Patient reports mild nasal stuffiness consistent with baseline allergic rhinitis.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Patient denies shortness of breath or respiratory distress postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Patient had prior uneventful spinal anesthesia for hernia surgery 5 years ago.",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Patient exhibits baseline mobility limitations due to knee pain, requiring handrail assistance for stairs.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    "Are you currently taking any anticoagulant medications, such as warfarin, aspirin, or direct oral anticoagulants?",
+    "Is doxycycline still part of your current medication regimen, or was it discontinued as noted in your acne treatment history?",
+    "Can you provide details about your history of pneumonia, including its severity, treatment, and any residual effects on your respiratory function?",
+    "What is the indication for fluticasone nasal spray, and have you experienced any recent nasal or sinus issues that might affect airway management?"
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl 50",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "rocuronium 60",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade 1 view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "bupivacaine 10",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral line 18-gauge placed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "fluids 500",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "blood pressure 90/60, treated with fluid bolus and phenylephrine 100 micrograms",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "heart rate 110, treated with fluid and adjusted anesthesia depth",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s009"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Potential for hemodynamic instability (hypotension or tachycardia) due to spinal anesthesia and intra-operative episodes requiring treatment.",
+    "Need for post-operative analgesia as spinal block with bupivacaine may provide initial pain control but could wear off.",
+    "Monitoring for allergic reaction due to documented penicillin allergy with conflicting pre-op documentation."
+  ]
+}
