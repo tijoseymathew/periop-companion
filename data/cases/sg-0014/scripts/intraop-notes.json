@@ -1,0 +1,223 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams, fentanyl fifty micrograms, rocuronium fifty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "LMA inserted, grade one view, capnography confirmed"
+    },
+    {
+      "t": "08:03",
+      "text": "mean arterial pressure dropped to sixty, atropine zero point five milligrams given intravenously"
+    },
+    {
+      "t": "08:05",
+      "text": "sixteen gauge peripheral line placed, blood pressure one hundred seventy over ninety"
+    },
+    {
+      "t": "08:10",
+      "text": "five hundred milliliters lactated Ringer's administered"
+    },
+    {
+      "t": "08:15",
+      "text": "ultrasound-guided transversus abdominis plane block performed with forty milliliters bupivacaine zero point five percent"
+    },
+    {
+      "t": "08:20",
+      "text": "heart rate increased to one hundred twenty, esmolol one milligram bolus administered"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "inserted",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "event",
+      "value": "capnography confirmed",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "event",
+      "value": "60",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "dose",
+      "value": "0.5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "sixteen gauge peripheral",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "170/90",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "lactated Ringer's",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "500",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "40",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "120",
+      "units": "bpm",
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "esmolol",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#7"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "questions": [
+    "Have you stopped or changed any medications in the past year?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mcg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "50",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "inserted",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "event",
+      "value": "capnography confirmed",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "event",
+      "value": "60",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:03",
+      "category": "dose",
+      "value": "0.5",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "sixteen gauge peripheral",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "170/90",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "lactated Ringer's",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "500",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "40",
+      "units": "mL",
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "120",
+      "units": "bpm",
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "esmolol",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1",
+      "units": "mg",
+      "provenance": [
+        "voice_notes#7"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes hypertension, hyperlipidemia, type 2 diabetes (HbA1c 7.2%), and GERD",
+    "Current medications: amlodipine 10mg daily, metoprolol 50mg twice daily, atorvastatin 20mg nightly, metformin 500mg twice daily, omeprazole 20mg daily; aspirin 75mg daily discontinued 6 months ago due to gastrointestinal bleeding",
+    "No known allergies",
+    "ASA-PS class III assigned due to multiple comorbidities including diabetes and hypertension",
+    "Airway management planned with Laryngeal Mask Airway (LMA); anesthesia plan includes general anesthesia with ultrasound-guided regional analgesia"
+  ],
+  "handoff_claims": [
+    "Patient has history of hypertension, hyperlipidemia, type 2 diabetes, and GERD with aspirin discontinued 6 months ago due to gastrointestinal bleeding",
+    "Intraoperative course expected to be uncomplicated with laparoscopic cholecystectomy; anticipate need for postoperative pain management with regional analgesia",
+    "Anticipate potential for delayed gastric emptying due to GERD and need for careful hemodynamic monitoring given cardiovascular comorbidities"
+  ],
+  "distractors": [
+    "Pneumonia resolved in 2018",
+    "Fractured left humerus in 2010, fully healed",
+    "Completed course of amoxicillin for UTI in 2015"
+  ]
+}
