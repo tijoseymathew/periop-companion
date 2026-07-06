@@ -12,7 +12,14 @@ import pytest
 from fastapi.testclient import TestClient
 
 from periop.api.app import create_app
-from periop.schemas import ArtifactRecord, Case, Claim, OpenQuestion, StageStatus
+from periop.schemas import (
+    ArtifactRecord,
+    Case,
+    Claim,
+    ClaimStatus,
+    OpenQuestion,
+    StageStatus,
+)
 from periop.store import CaseStore
 
 PROVIDERS = [
@@ -654,3 +661,127 @@ class TestStageRun:
         stored = CaseStore(out_dir).load("tkr-mrs-w")
         assert stored.workflow.stages["preop"].status is StageStatus.READY_TO_GENERATE
         assert stored.get_artifact("note:pre-anesthesia-eval") is None
+
+
+# ------------------------------------------------- sign-off / reopen / ack
+
+
+def signoff(client, stage, provider="p-lim", case_id="tkr-mrs-w"):
+    return client.post(
+        f"/api/cases/{case_id}/stages/{stage}/signoff", json={"provider_id": provider}
+    )
+
+
+class TestSignoff:
+    def test_signoff_stamps_and_locks_stage(self, wclient, dirs):
+        out_dir, _, _ = dirs
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        resp = signoff(wclient, "preop")
+        assert resp.status_code == 200
+        stage = Case.model_validate(resp.json()).workflow.stages["preop"]
+        assert stage.status is StageStatus.SIGNED_OFF
+        assert stage.signed_off_by == "p-lim"
+        assert stage.signed_off_at is not None
+        # signed-off stages are read-only: inputs refuse changes (W2a rule)
+        resp = upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav(), confirm=True)
+        assert resp.status_code == 409
+
+    def test_signoff_without_artifacts_409(self, wclient):
+        make_preop_ready(wclient)  # ready, but never generated
+        resp = signoff(wclient, "preop")
+        assert resp.status_code == 409
+
+    def test_double_signoff_409(self, wclient):
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        signoff(wclient, "preop")
+        assert signoff(wclient, "preop").status_code == 409
+
+    def test_signoff_allowed_with_outstanding_conflicts(self, wclient, dirs):
+        # v2 §4.5: allowed but recorded — the ledger keeps the conflict visible
+        out_dir, _, _ = dirs
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        store = CaseStore(out_dir)
+        case = store.load("tkr-mrs-w")
+        case.get_artifact("note:pre-anesthesia-eval").claims[0].status = ClaimStatus.CONFLICTING
+        store.save(case)
+        assert signoff(wclient, "preop").status_code == 200
+
+    def test_unknown_provider_404(self, wclient):
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        assert signoff(wclient, "preop", provider="p-nobody").status_code == 404
+
+    def test_demo_case_409(self, wclient):
+        assert signoff(wclient, "preop", case_id="sg-demo").status_code == 409
+
+
+class TestReopen:
+    def test_reopen_returns_stage_to_review_and_records_it(self, wclient):
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+        signoff(wclient, "preop")
+        resp = wclient.post(
+            "/api/cases/tkr-mrs-w/stages/preop/reopen", json={"provider_id": "p-tan"}
+        )
+        assert resp.status_code == 200
+        case = Case.model_validate(resp.json())
+        stage = case.workflow.stages["preop"]
+        assert stage.status is StageStatus.AWAITING_REVIEW
+        assert stage.signed_off_by is None
+        assert stage.reopens[0].reopened_by == "p-tan"
+        # prior artifacts kept — append-only in spirit (v2 §4.5)
+        assert case.get_artifact("note:pre-anesthesia-eval") is not None
+
+    def test_reopen_needs_signed_off_stage(self, wclient):
+        make_preop_ready(wclient)
+        resp = wclient.post(
+            "/api/cases/tkr-mrs-w/stages/preop/reopen", json={"provider_id": "p-tan"}
+        )
+        assert resp.status_code == 409
+
+
+class TestHandoffAck:
+    def _to_handoff(self, client, dirs):
+        """Walk the case until the PACU handoff exists."""
+        out_dir, _, _ = dirs
+        make_preop_ready(client)
+        run_stage(client, "preop")
+        signoff(client, "preop")
+        upload_audio(client, "tkr-mrs-w", "intraop-notes", make_wav())
+        run_stage(client, "intraop", provider="p-tan")
+        signoff(client, "intraop", provider="p-tan")
+        upload_audio(client, "tkr-mrs-w", "postop-interview", make_wav())
+        run_stage(client, "postop", provider="p-rahman")
+
+    def test_ack_stamps_receiving_provider(self, wclient, dirs):
+        self._to_handoff(wclient, dirs)
+        resp = wclient.post(
+            "/api/cases/tkr-mrs-w/handoff/ack", json={"provider_id": "p-rahman"}
+        )
+        assert resp.status_code == 200
+        stage = Case.model_validate(resp.json()).workflow.stages["postop"]
+        assert stage.handoff_acknowledged_by == "p-rahman"
+        assert stage.handoff_acknowledged_at is not None
+
+    def test_ack_without_handoff_409(self, wclient):
+        resp = wclient.post(
+            "/api/cases/tkr-mrs-w/handoff/ack", json={"provider_id": "p-rahman"}
+        )
+        assert resp.status_code == 409
+
+    def test_double_ack_409(self, wclient, dirs):
+        self._to_handoff(wclient, dirs)
+        wclient.post("/api/cases/tkr-mrs-w/handoff/ack", json={"provider_id": "p-rahman"})
+        resp = wclient.post(
+            "/api/cases/tkr-mrs-w/handoff/ack", json={"provider_id": "p-lim"}
+        )
+        assert resp.status_code == 409
+
+    def test_demo_case_409(self, wclient):
+        resp = wclient.post(
+            "/api/cases/sg-demo/handoff/ack", json={"provider_id": "p-rahman"}
+        )
+        assert resp.status_code == 409

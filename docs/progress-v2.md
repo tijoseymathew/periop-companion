@@ -40,7 +40,7 @@ resume from the first unchecked item.
       replace-with-confirmation; ~50 MB cap
 - [x] `POST /api/cases/{id}/stages/{stage}/run` — gate + input validation,
       single-run lock, SSE per ui.md §7, invokes the matching stage runner
-- [ ] `POST .../stages/{stage}/signoff` · `.../reopen` · `POST .../handoff/ack`
+- [x] `POST .../stages/{stage}/signoff` · `.../reopen` · `POST .../handoff/ack`
 
 ## W3 — UI
 

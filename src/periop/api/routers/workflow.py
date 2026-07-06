@@ -18,7 +18,14 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, field_validator
 
 from periop.api.routers.cases import load_case
-from periop.schemas import Case, OpenQuestion, Provider, StageStatus, Workflow
+from periop.schemas import (
+    Case,
+    OpenQuestion,
+    Provider,
+    ReopenRecord,
+    StageStatus,
+    Workflow,
+)
 from periop.store import CaseStore
 from periop.tools import audio as audio_tools
 from periop.tools.chunker import ingest_document
@@ -319,5 +326,92 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
         stage.performed_by = str(provider_id)
     if stage.status is StageStatus.AWAITING_INPUTS:
         stage.status = StageStatus.READY_TO_GENERATE
+    _store(request).save(case)
+    return case
+
+
+class ProviderAction(BaseModel):
+    provider_id: str
+
+
+def _require_stage(case: Case, stage: str):
+    if case.workflow is None or stage not in case.workflow.stages:
+        raise HTTPException(status_code=404, detail=f"no such stage: {stage}")
+    return case.workflow.stages[stage]
+
+
+@router.post("/cases/{case_id}/stages/{stage}/signoff")
+def signoff_stage(request: Request, case_id: str, stage: str, body: ProviderAction) -> Case:
+    """Assert 'I have reviewed this stage's output' (v2 §4.5).
+
+    Allowed with outstanding conflicts — the ledger keeps them visible; the
+    sign-off screen is responsible for surfacing them, not hiding them.
+    """
+    case = load_case(request, case_id)
+    require_writable(case)
+    state = _require_stage(case, stage)
+    require_provider(request, body.provider_id)
+
+    if state.status is StageStatus.SIGNED_OFF:
+        raise HTTPException(status_code=409, detail=f"the {stage} stage is already signed off")
+    if state.status is not StageStatus.AWAITING_REVIEW:
+        raise HTTPException(
+            status_code=409,
+            detail=f"nothing to sign off — generate the {stage} output first",
+        )
+
+    state.status = StageStatus.SIGNED_OFF
+    state.signed_off_by = body.provider_id
+    state.signed_off_at = _now()
+    _store(request).save(case)
+    return case
+
+
+@router.post("/cases/{case_id}/stages/{stage}/reopen")
+def reopen_stage(request: Request, case_id: str, stage: str, body: ProviderAction) -> Case:
+    """Reopen a signed-off stage for re-review. Prior artifacts are kept —
+    the ledger is append-only in spirit (v2 §4.5)."""
+    case = load_case(request, case_id)
+    require_writable(case)
+    state = _require_stage(case, stage)
+    require_provider(request, body.provider_id)
+
+    if state.status is not StageStatus.SIGNED_OFF:
+        raise HTTPException(
+            status_code=409, detail=f"only signed-off stages can be reopened"
+        )
+
+    state.status = StageStatus.AWAITING_REVIEW
+    state.signed_off_by = None
+    state.signed_off_at = None
+    state.reopens.append(ReopenRecord(reopened_by=body.provider_id, reopened_at=_now()))
+    _store(request).save(case)
+    return case
+
+
+@router.post("/cases/{case_id}/handoff/ack")
+def acknowledge_handoff(request: Request, case_id: str, body: ProviderAction) -> Case:
+    """The receiving provider acknowledges the PACU handoff (v2 §4.4).
+
+    Deliberately not a signature or a legal artifact — it demonstrates the
+    shape of a safe transfer (received, traceable, acknowledged).
+    """
+    case = load_case(request, case_id)
+    require_writable(case)
+    require_provider(request, body.provider_id)
+
+    if case.get_artifact("note:pacu-handoff") is None:
+        raise HTTPException(
+            status_code=409, detail="generate the PACU handoff before acknowledging it"
+        )
+    state = case.workflow.stages["postop"]
+    if state.handoff_acknowledged_by is not None:
+        raise HTTPException(
+            status_code=409,
+            detail=f"handoff already acknowledged by {state.handoff_acknowledged_by}",
+        )
+
+    state.handoff_acknowledged_by = body.provider_id
+    state.handoff_acknowledged_at = _now()
     _store(request).save(case)
     return case
