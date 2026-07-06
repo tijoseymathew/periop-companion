@@ -103,6 +103,19 @@ uv run python scripts/render_review.py sg-0002
 uv run python -m periop.api            # → http://localhost:8000
 ```
 
+The server loads `.env` itself, so the `PERIOP_*` endpoint variables apply to
+live generation too. If a local NIM already holds port 8000 (the reasoning
+NIM in `configs/selfhosted.env` does), move the API:
+
+```bash
+PERIOP_API_PORT=8080 uv run python -m periop.api    # → http://localhost:8080
+PERIOP_API_PORT=8080 npm run dev                    # (in ui/) proxy follows
+```
+
+The entry point warns at startup when a chat-tier URL points back at the
+API's own port — that misconfiguration would otherwise make the server call
+itself on submit.
+
 ### Self-hosted NIMs (no API key, no rate limits)
 
 The same code runs against locally deployed NIMs — endpoint selection is

@@ -15,6 +15,7 @@ import re
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, Request
+from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel, field_validator
 
 from periop.api.routers.cases import load_case
@@ -210,16 +211,29 @@ async def add_document(request: Request, case_id: str) -> Case:
     source.captured_at = _now()
     source.provided_by = provider_id
     case.add_source(source)
-
-    # the GapAnalyst needs no audio (v2 §4.1 step 3): run it as soon as the
-    # op plan and at least one record exist, once
-    if not case.open_questions and _preop_inputs_present(case):
-        request.app.state.runner.analyze_gaps(case)
-
     if provider_id and case.workflow is not None:
         case.workflow.stages["preop"].performed_by = provider_id
-
+    # the document is durable before any model runs: an LLM outage must never
+    # swallow a paste
     _store(request).save(case)
+
+    # the GapAnalyst needs no audio (v2 §4.1 step 3): run it as soon as the
+    # op plan and at least one record exist, once — on a worker thread, because
+    # it is a long synchronous LLM call and inline it would block the event
+    # loop (freezing every other request until the model answers)
+    if not case.open_questions and _preop_inputs_present(case):
+        try:
+            await run_in_threadpool(request.app.state.runner.analyze_gaps, case)
+        except Exception as e:
+            raise HTTPException(
+                status_code=502,
+                detail=(
+                    f"the document was saved, but preparing interview questions "
+                    f"failed: {e} — adding the next record retries automatically"
+                ),
+            ) from e
+        _store(request).save(case)
+
     return case
 
 

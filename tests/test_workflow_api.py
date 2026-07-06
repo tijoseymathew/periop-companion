@@ -7,7 +7,10 @@ are writable nowhere.
 """
 
 import json
+import os
+import threading
 
+import httpx
 import pytest
 from fastapi.testclient import TestClient
 
@@ -125,6 +128,8 @@ class StubRunner:
         self.gap_calls = []
         self.run_calls = []
         self.fail = False
+        self.fail_gaps = False
+        self.gap_thread = None
 
     def run_stage(self, case, stage, case_dir, emit):
         self.run_calls.append((case.case_id, stage))
@@ -144,6 +149,9 @@ class StubRunner:
 
     def analyze_gaps(self, case):
         self.gap_calls.append(case.case_id)
+        self.gap_thread = threading.current_thread()
+        if self.fail_gaps:
+            raise RuntimeError("model unreachable")
         first_doc = case.sources[0]
         case.open_questions = [
             OpenQuestion(
@@ -307,6 +315,98 @@ class TestGapAnalystTrigger:
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
         stored = CaseStore(out_dir).load("tkr-mrs-w")
         assert stored.open_questions[0].reason == "conflicting"
+
+    def test_failure_keeps_the_document(self, wclient, runner, dirs):
+        """A model outage must not swallow the paste: the source is durable
+        before question prep runs, and the error says so."""
+        out_dir, _, _ = dirs
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        runner.fail_gaps = True
+        resp = paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        assert resp.status_code == 502
+        assert "saved" in resp.json()["detail"]
+        stored = CaseStore(out_dir).load("tkr-mrs-w")
+        assert stored.get_source("doc:op-plan") is not None
+        assert stored.open_questions == []
+
+    def test_retriggers_on_next_document_after_a_failure(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        runner.fail_gaps = True
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        runner.fail_gaps = False
+        resp = paste(wclient, "tkr-mrs-w", "med-list", "# Meds\n\nAspirin.\n")
+        assert resp.status_code == 201
+        case = Case.model_validate(resp.json())
+        assert case.open_questions  # the retry path is just "add the next record"
+
+
+@pytest.fixture
+def anyio_backend():
+    return "asyncio"
+
+
+class TestGapAnalystOffTheEventLoop:
+    """The GapAnalyst is a long synchronous LLM call (minutes on a local NIM).
+
+    Run inline in the async endpoint it blocks uvicorn's event loop, so *every*
+    request — worklist polls, health, even the NIM reply when the model URL
+    loops back to this server — hangs until it finishes: the whole UI freezes.
+    It must run on a worker thread, like stage runs already do.
+    """
+
+    @pytest.mark.anyio
+    async def test_analysis_runs_on_a_worker_thread(self, dirs, runner):
+        out_dir, case_dir, providers = dirs
+        app = create_app(
+            out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+        )
+        transport = httpx.ASGITransport(app=app)
+        async with httpx.AsyncClient(transport=transport, base_url="http://t") as client:
+            await client.post(
+                "/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"}
+            )
+            for doc_type, text in [("gp-summary", GP_TEXT), ("op-plan", "# Op Plan\n\nLap chole.\n")]:
+                resp = await client.post(
+                    "/api/cases/tkr-mrs-w/sources/document",
+                    json={"doc_type": doc_type, "text": text, "provider_id": "p-lim"},
+                )
+                assert resp.status_code == 201
+        assert runner.gap_calls == ["tkr-mrs-w"]
+        assert runner.gap_thread is not threading.current_thread()
+
+
+class TestServerEntryEnvironment:
+    def test_create_app_loads_dotenv_from_cwd(self, tmp_path, monkeypatch, dirs):
+        """`uvicorn periop.api.app:app` / `python -m periop.api` must see .env —
+        every other entry point (CLI, scripts) already loads it itself."""
+        out_dir, case_dir, providers = dirs
+        monkeypatch.chdir(tmp_path)
+        (tmp_path / ".env").write_text("PERIOP_DOTENV_CANARY=loaded\n")
+        try:
+            create_app(out_dir=out_dir, case_dir=case_dir, providers_path=providers)
+            assert os.environ.get("PERIOP_DOTENV_CANARY") == "loaded"
+        finally:
+            os.environ.pop("PERIOP_DOTENV_CANARY", None)
+
+    def test_warns_when_a_chat_tier_points_at_the_api_port(self, monkeypatch):
+        """`.env` aims the reasoning tier at localhost:8000 — the API's own
+        default port. If both land on one port the server would call itself;
+        the entry point must name the collision instead of freezing."""
+        from periop.api.__main__ import tier_port_collisions
+
+        monkeypatch.setenv("PERIOP_REASONING_BASE_URL", "http://localhost:8000/v1")
+        monkeypatch.setenv("PERIOP_FAST_BASE_URL", "http://localhost:8001/v1")
+        assert tier_port_collisions(8000) == ["reasoning"]
+        assert tier_port_collisions(8001) == ["fast"]
+        assert tier_port_collisions(8080) == []
+
+    def test_remote_nim_urls_never_collide(self, monkeypatch):
+        from periop.api.__main__ import tier_port_collisions
+
+        monkeypatch.setenv("PERIOP_REASONING_BASE_URL", "https://nim.example.com:8000/v1")
+        monkeypatch.delenv("PERIOP_FAST_BASE_URL", raising=False)
+        monkeypatch.delenv("PERIOP_NIM_BASE_URL", raising=False)
+        assert tier_port_collisions(8000) == []
 
 
 # --------------------------------------------------------- question review

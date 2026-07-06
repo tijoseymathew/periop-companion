@@ -94,6 +94,29 @@ resume from the first unchecked item.
 
 All spec §2 stretch items are shipped; the v2 build is complete.
 
+## W7 — Live-server hardening (found by running the real server live)
+
+The hermetic e2e (`PERIOP_STUB_RUNNER=1`) and script-level NIM smokes never
+booted `python -m periop.api` in live mode, so two live-only defects survived
+W0–W6. Lesson recorded: every milestone that touches the serving path ends
+with a live-mode boot + one real submission, not just the stub walk.
+
+- [x] W7a: `create_app` loads `.env` (cwd-resolved, never overriding real env)
+      — uvicorn/`python -m periop.api` bypassed the CLI wrappers that call
+      `load_dotenv`, so live runs died with a missing-key error at submit time;
+      entry point also warns when a chat-tier URL points at the API's own port
+      (the `.env` reasoning NIM and the API both default to :8000 — the server
+      would deadlock calling itself)
+- [x] W7b: gap analysis off the event loop — the GapAnalyst call in
+      `POST /sources/document` ran synchronously inside the async handler,
+      freezing every request (the whole UI) for the duration of a live LLM
+      call; now `run_in_threadpool`, with the document saved *before* question
+      prep (a model outage 502s with "the document was saved…" instead of
+      swallowing the paste) and the next added record retrying automatically
+- [x] W7c: the intake form says what is happening while it saves ("preparing
+      interview questions can take a minute") instead of a silently dimmed
+      button; vite dev proxy honors `PERIOP_API_PORT`
+
 ## UX review against spec §6 (W4 exit criterion)
 
 1. **One primary action per case state** — `primaryAction()` in

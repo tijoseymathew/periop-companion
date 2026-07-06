@@ -12,6 +12,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
+from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 
 from periop.api.routers import audio, cases, claim_reviews, stage_runs, stream_asr, workflow
@@ -29,6 +30,11 @@ def create_app(
     runner=None,
     streaming_asr_factory=None,
 ) -> FastAPI:
+    # uvicorn/`python -m periop.api` bypass the CLI wrappers that call
+    # load_dotenv themselves; resolve from the working directory like the
+    # on-disk defaults below already do (never overrides real env vars)
+    load_dotenv(find_dotenv(usecwd=True))
+
     case_dir = Path(case_dir or os.environ.get("PERIOP_CASE_DIR", DEFAULT_CASE_DIR))
     out_dir = Path(out_dir or os.environ.get("PERIOP_OUT_DIR", case_dir / "_out"))
     providers_path = Path(
