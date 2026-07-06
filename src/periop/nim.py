@@ -57,8 +57,15 @@ M = TypeVar("M", bound=BaseModel)
 
 
 def strip_reasoning(text: str) -> str:
-    """Drop Nemotron ``<think>…</think>`` blocks, returning the final answer."""
-    return _THINK_BLOCK.sub("", text).strip()
+    """Drop Nemotron reasoning, returning the final answer.
+
+    Handles ``<think>…</think>`` blocks and replies where the serving stack
+    omits the opening tag (the self-hosted nano-9b-v2 NIM streams bare
+    reasoning terminated by a lone ``</think>``).
+    """
+    text = _THINK_BLOCK.sub("", text)
+    _, _, tail = text.rpartition("</think>")
+    return tail.strip()
 
 
 def extract_json(text: str) -> Any:

@@ -50,6 +50,11 @@ class TestStripReasoning:
     def test_passthrough_without_think(self):
         assert strip_reasoning("Answer.") == "Answer."
 
+    def test_removes_untagged_reasoning_with_bare_close(self):
+        # Self-hosted nano NIM (nemotron-nano-9b-v2-dgx-spark) emits the
+        # reasoning stream without the opening <think> tag.
+        assert strip_reasoning("Okay, the user wants ok.\n</think>\n\nok\n") == "ok"
+
 
 class TestExtractJson:
     def test_bare_json(self):
