@@ -17,6 +17,8 @@ from periop.nim import (
     NimChat,
     api_key_from_env,
     extract_json,
+    fast_chat,
+    reasoning_chat,
     strip_reasoning,
     tier_config,
 )
@@ -100,6 +102,23 @@ class TestNimChat:
         chat = NimChat(client=client, model=FAST_MODEL)
         result = chat.complete_structured(user="Extract.", schema=ExtractionResult)
         assert result == ExtractionResult(drug="propofol", dose_mg=120)
+
+    def test_system_prefix_prepended_to_system_message(self):
+        # Nemotron reasoning control: "/no_think" leads the system message.
+        client, completions = fake_client("ok")
+        chat = NimChat(client=client, model=FAST_MODEL, system_prefix="/no_think")
+        chat.complete(user="Q", system="You verify claims.")
+        assert completions.calls[0]["messages"][0] == {
+            "role": "system", "content": "/no_think\nYou verify claims."
+        }
+
+    def test_system_prefix_used_alone_when_no_system_given(self):
+        client, completions = fake_client("ok")
+        chat = NimChat(client=client, model=FAST_MODEL, system_prefix="/no_think")
+        chat.complete(user="Q")
+        assert completions.calls[0]["messages"][0] == {
+            "role": "system", "content": "/no_think"
+        }
 
     def test_default_max_tokens_applied_when_set(self):
         # The self-hosted nano NIM defaults max_tokens to ~1k, which its
@@ -220,6 +239,25 @@ class TestTierConfig:
     def test_unknown_tier_rejected(self):
         with pytest.raises(ValueError):
             tier_config("turbo")
+
+
+class TestFastChatThinking:
+    def test_fast_tier_disables_thinking_by_default(self, monkeypatch):
+        # Verification/extraction calls don't need nano's reasoning stream —
+        # with it, a 1s NLI verdict takes ~60s of thinking tokens.
+        monkeypatch.delenv("PERIOP_FAST_THINKING", raising=False)
+        monkeypatch.setenv("NGC_API_KEY", "test")
+        chat = fast_chat()
+        assert chat.system_prefix == "/no_think"
+
+    def test_fast_tier_thinking_reenabled_by_env(self, monkeypatch):
+        monkeypatch.setenv("PERIOP_FAST_THINKING", "1")
+        monkeypatch.setenv("NGC_API_KEY", "test")
+        assert fast_chat().system_prefix is None
+
+    def test_reasoning_tier_has_no_prefix(self, monkeypatch):
+        monkeypatch.setenv("NGC_API_KEY", "test")
+        assert reasoning_chat().system_prefix is None
 
 
 class TestApiKey:

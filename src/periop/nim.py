@@ -122,6 +122,7 @@ class NimChat:
         base_url: str | None = None,
         timeout_s: float | None = None,
         default_max_tokens: int | None = None,
+        system_prefix: str | None = None,
     ) -> None:
         if client is None:
             from openai import OpenAI
@@ -139,10 +140,13 @@ class NimChat:
         self.temperature = temperature
         self.max_retries = max_retries
         self.default_max_tokens = default_max_tokens
+        self.system_prefix = system_prefix
 
     def complete(self, user: str, system: str | None = None, **kwargs: Any) -> str:
         from periop.nat.telemetry import traced_llm_call
 
+        if self.system_prefix:
+            system = f"{self.system_prefix}\n{system}" if system else self.system_prefix
         messages: list[dict[str, str]] = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -225,4 +229,9 @@ def fast_chat(**kwargs: Any) -> NimChat:
     kwargs.setdefault(
         "default_max_tokens", int(os.environ.get("PERIOP_FAST_MAX_TOKENS") or 8192)
     )
+    # Fast-tier calls are cheap extraction/verification: nano's reasoning
+    # stream turns a 1s verdict into ~60s of thinking tokens. Disable it via
+    # Nemotron's "/no_think" control; PERIOP_FAST_THINKING=1 re-enables.
+    if not os.environ.get("PERIOP_FAST_THINKING"):
+        kwargs.setdefault("system_prefix", "/no_think")
     return NimChat(**kwargs)
