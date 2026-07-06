@@ -31,7 +31,7 @@ resume from the first unchecked item.
 - [x] `POST /api/cases/{id}/sources/document` — paste/upload → records/ file →
       chunked source; ~5 MB cap; traversal rejection; GapAnalyst auto-run (via
       injectable runner) once op plan + ≥1 record exist
-- [ ] `PUT /api/cases/{id}/questions` — approve/dismiss/edit persisted, gate stamped
+- [x] `PUT /api/cases/{id}/questions` — approve/dismiss/edit persisted, gate stamped
 
 ## W2 — Audio + stage runs
 

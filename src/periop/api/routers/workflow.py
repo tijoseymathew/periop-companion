@@ -18,7 +18,7 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, field_validator
 
 from periop.api.routers.cases import load_case
-from periop.schemas import Case, Provider, Workflow
+from periop.schemas import Case, OpenQuestion, Provider, Workflow
 from periop.store import CaseStore
 from periop.tools.chunker import ingest_document
 
@@ -204,5 +204,43 @@ async def add_document(request: Request, case_id: str) -> Case:
     if provider_id and case.workflow is not None:
         case.workflow.stages["preop"].performed_by = provider_id
 
+    _store(request).save(case)
+    return case
+
+
+class ReviewedQuestions(BaseModel):
+    questions: list[OpenQuestion]
+    provider_id: str
+
+
+@router.put("/cases/{case_id}/questions")
+def review_questions(request: Request, case_id: str, body: ReviewedQuestions) -> Case:
+    """Persist the provider-reviewed question list and pass the question gate.
+
+    Dismissals are kept, never deleted (v2 §4.1): the submitted list *is* the
+    record of the review, including what was dismissed.
+    """
+    case = load_case(request, case_id)
+    require_writable(case)
+
+    unreviewed = [q.question for q in body.questions if q.review is None]
+    if unreviewed:
+        raise HTTPException(
+            status_code=422,
+            detail=f"every question needs a review decision; missing on: {unreviewed}",
+        )
+    for q in body.questions:
+        for ref in q.provenance:
+            try:
+                case.resolve(ref)
+            except (KeyError, ValueError):
+                raise HTTPException(
+                    status_code=422,
+                    detail=f"question {q.question!r} cites unresolvable provenance {ref}",
+                ) from None
+
+    case.open_questions = body.questions
+    case.workflow.stages["preop"].questions_approved_at = _now()
+    case.workflow.stages["preop"].performed_by = body.provider_id
     _store(request).save(case)
     return case

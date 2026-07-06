@@ -275,3 +275,87 @@ class TestGapAnalystTrigger:
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
         stored = CaseStore(out_dir).load("tkr-mrs-w")
         assert stored.open_questions[0].reason == "conflicting"
+
+
+# --------------------------------------------------------- question review
+
+
+class TestQuestionReview:
+    @pytest.fixture
+    def prepared(self, wclient):
+        """Case with intake done and GapAnalyst questions present."""
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        return wclient
+
+    def _reviewed(self):
+        return [
+            {
+                "question": "Is the patient still taking aspirin?",
+                "reason": "conflicting",
+                "provenance": ["doc:gp-summary#c001"],
+                "review": "edited",
+                "edited_text": "When exactly did you last take aspirin?",
+            },
+            {"question": "Any prior anaesthetic problems?", "review": "approved"},
+            {"question": "Do you smoke?", "review": "dismissed"},
+        ]
+
+    def test_review_persists_and_stamps_gate(self, prepared, dirs):
+        out_dir, _, _ = dirs
+        resp = prepared.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={"questions": self._reviewed(), "provider_id": "p-lim"},
+        )
+        assert resp.status_code == 200
+        case = Case.model_validate(resp.json())
+        assert [q.review for q in case.open_questions] == [
+            "edited", "approved", "dismissed",
+        ]
+        assert case.workflow.stages["preop"].questions_approved_at is not None
+        stored = CaseStore(out_dir).load("tkr-mrs-w")
+        assert stored.open_questions[0].edited_text == (
+            "When exactly did you last take aspirin?"
+        )
+        # dismissals are kept, never deleted (v2 §4.1)
+        assert stored.open_questions[2].review == "dismissed"
+
+    def test_every_question_needs_an_explicit_review(self, prepared):
+        resp = prepared.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={
+                "questions": [{"question": "Unreviewed?"}],
+                "provider_id": "p-lim",
+            },
+        )
+        assert resp.status_code == 422
+
+    def test_unresolvable_provenance_rejected(self, prepared):
+        resp = prepared.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={
+                "questions": [
+                    {
+                        "question": "Q?",
+                        "provenance": ["doc:nope#c999"],
+                        "review": "approved",
+                    }
+                ],
+                "provider_id": "p-lim",
+            },
+        )
+        assert resp.status_code == 422
+
+    def test_demo_case_409(self, wclient):
+        resp = wclient.put(
+            "/api/cases/sg-demo/questions",
+            json={"questions": [], "provider_id": "p-lim"},
+        )
+        assert resp.status_code == 409
+
+    def test_unknown_case_404(self, wclient):
+        resp = wclient.put(
+            "/api/cases/nope/questions",
+            json={"questions": [], "provider_id": "p-lim"},
+        )
+        assert resp.status_code == 404
