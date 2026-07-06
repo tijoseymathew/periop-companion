@@ -216,3 +216,25 @@ class TestErrorShape:
     def test_errors_are_json_not_html(self, client):
         resp = client.get("/api/cases/sg-9999")
         assert resp.headers["content-type"].startswith("application/json")
+
+
+class TestWorklistSummary:
+    def test_summary_carries_label_and_workflow(self, store_dirs):
+        out_dir, case_dir = store_dirs
+        from periop.schemas import Provider, Workflow
+
+        live = make_case("live-1")
+        live.label = "TKR Mrs W"
+        live.workflow = Workflow(
+            created_by=Provider(provider_id="p-lim", name="Dr A. Lim", role="consultant"),
+            created_at="2026-07-06T09:12:00+08:00",
+        )
+        live.workflow.stages["preop"].performed_by = "p-lim"
+        CaseStore(out_dir).save(live)
+        client = TestClient(create_app(out_dir=out_dir, case_dir=case_dir))
+        by_id = {s["case_id"]: s for s in client.get("/api/cases").json()}
+        assert by_id["live-1"]["label"] == "TKR Mrs W"
+        assert by_id["live-1"]["workflow"]["stages"]["preop"]["performed_by"] == "p-lim"
+        # demo cases have neither — the UI renders them read-only
+        assert by_id["sg-0001"]["label"] is None
+        assert by_id["sg-0001"]["workflow"] is None

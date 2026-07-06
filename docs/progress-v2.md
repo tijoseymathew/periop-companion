@@ -44,9 +44,9 @@ resume from the first unchecked item.
 
 ## W3 — UI
 
-- [ ] Worklist sidebar (stage + status in words, performed-by, conflict
+- [x] Worklist sidebar (stage + status in words, performed-by, conflict
       indicator, filters) + provider picker + New case; demo cases read-only
-- [ ] Stage rail (Pre-op / Intra-op / Post-op stepper) above the center pane
+- [x] Stage rail (Pre-op / Intra-op / Post-op stepper) above the center pane
 - [ ] Intake form + question review screens (center pane, pre-artifact)
 - [ ] Recorder (MediaRecorder + upload fallback), intra-op memo capture
 - [ ] Stage panels: one primary action per state (unit-tested), one-sentence

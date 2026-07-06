@@ -104,6 +104,8 @@ export function makeSummary(overrides: Partial<CaseSummary> = {}): CaseSummary {
     claim_count: 7,
     status_counts: { supported: 3, unsupported: 1, conflicting: 1, inference: 1, unverified: 1 },
     has_audio: true,
+    label: null,
+    workflow: null,
     ...overrides,
   };
 }

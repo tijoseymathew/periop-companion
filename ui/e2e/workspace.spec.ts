@@ -8,7 +8,8 @@ test.beforeEach(async ({ page }) => {
 test("case list loads and auto-selects sg-0002", async ({ page }) => {
   const option = page.getByRole("option", { name: /sg-0002/ });
   await expect(option).toHaveAttribute("aria-selected", "true");
-  await expect(option).toContainText("5 artifacts · 82 claims");
+  // demo cases read as review-only in the worklist (v2 §5.1)
+  await expect(option).toContainText("Review only");
   await expect(page.getByRole("tab", { name: "Pre-op" })).toHaveAttribute("aria-selected", "true");
   await expect(page.getByRole("heading", { name: /note:pre-anesthesia-eval/ })).toBeVisible();
 });

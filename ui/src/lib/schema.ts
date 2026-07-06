@@ -64,8 +64,68 @@ export const ArtifactRecordSchema = z.object({
 });
 export type ArtifactRecord = z.infer<typeof ArtifactRecordSchema>;
 
+export const OpenQuestionSchema = z.object({
+  question: z.string(),
+  reason: z.string().nullable().default(null),
+  provenance: z.array(z.string()).default([]),
+  review: z.enum(["approved", "dismissed", "edited"]).nullable().default(null),
+  edited_text: z.string().nullable().default(null),
+});
+export type OpenQuestion = z.infer<typeof OpenQuestionSchema>;
+
+// ---- workflow block (spec v2 §5.1) ----------------------------------------
+
+export const ProviderSchema = z.object({
+  provider_id: z.string(),
+  name: z.string(),
+  role: z.string(),
+});
+export type Provider = z.infer<typeof ProviderSchema>;
+
+export const STAGE_KEYS = ["preop", "intraop", "postop"] as const;
+export type StageKey = (typeof STAGE_KEYS)[number];
+
+export const STAGE_STATUSES = [
+  "awaiting_inputs",
+  "ready_to_generate",
+  "generating",
+  "awaiting_review",
+  "signed_off",
+] as const;
+export const StageStatusSchema = z.enum(STAGE_STATUSES);
+export type StageStatus = z.infer<typeof StageStatusSchema>;
+
+export const StageStateSchema = z.object({
+  status: StageStatusSchema.default("awaiting_inputs"),
+  performed_by: z.string().nullable().default(null),
+  signed_off_by: z.string().nullable().default(null),
+  signed_off_at: z.string().nullable().default(null),
+  questions_approved_at: z.string().nullable().default(null),
+  inputs_recorded_at: z.string().nullable().default(null),
+  handoff_acknowledged_by: z.string().nullable().default(null),
+  handoff_acknowledged_at: z.string().nullable().default(null),
+  reopens: z
+    .array(z.object({ reopened_by: z.string(), reopened_at: z.string() }))
+    .default([]),
+});
+export type StageState = z.infer<typeof StageStateSchema>;
+
+export const WorkflowSchema = z.object({
+  created_by: ProviderSchema,
+  created_at: z.string(),
+  stages: z.object({
+    preop: StageStateSchema,
+    intraop: StageStateSchema,
+    postop: StageStateSchema,
+  }),
+});
+export type Workflow = z.infer<typeof WorkflowSchema>;
+
 export const CaseSchema = z.object({
   case_id: z.string(),
+  label: z.string().nullable().default(null),
+  // absent on seeded demo cases — reviewable everywhere, writable nowhere
+  workflow: WorkflowSchema.nullable().default(null),
   patient_profile_ref: z.string().nullable().default(null),
   sources: z.array(SourceSchema).default([]),
   artifacts: z.array(ArtifactRecordSchema).default([]),
@@ -74,20 +134,16 @@ export const CaseSchema = z.object({
   open_questions: z
     .array(
       z.union([
-        z.string().transform((question) => ({
-          question,
-          reason: null as string | null,
-          provenance: [] as string[],
-          review: null as string | null,
-          edited_text: null as string | null,
-        })),
-        z.object({
-          question: z.string(),
-          reason: z.string().nullable().default(null),
-          provenance: z.array(z.string()).default([]),
-          review: z.enum(["approved", "dismissed", "edited"]).nullable().default(null),
-          edited_text: z.string().nullable().default(null),
-        }),
+        z.string().transform(
+          (question): OpenQuestion => ({
+            question,
+            reason: null,
+            provenance: [],
+            review: null,
+            edited_text: null,
+          }),
+        ),
+        OpenQuestionSchema,
       ]),
     )
     .default([]),
@@ -102,5 +158,7 @@ export const CaseSummarySchema = z.object({
   claim_count: z.number(),
   status_counts: z.record(ClaimStatusSchema, z.number()),
   has_audio: z.boolean(),
+  label: z.string().nullable().default(null),
+  workflow: WorkflowSchema.nullable().default(null),
 });
 export type CaseSummary = z.infer<typeof CaseSummarySchema>;

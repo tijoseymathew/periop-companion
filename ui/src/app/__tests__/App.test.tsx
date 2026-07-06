@@ -4,15 +4,25 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { makeCase, makeSummary } from "../../test/fixtures";
 import App from "../App";
 
+const PROVIDERS = [
+  { provider_id: "p-lim", name: "Dr A. Lim", role: "consultant" },
+  { provider_id: "p-tan", name: "Dr B. Tan", role: "registrar" },
+];
+
 vi.mock("../../lib/api", () => ({
   fetchCases: vi.fn(async () => [makeSummary()]),
   fetchCase: vi.fn(async () => makeCase()),
+  fetchProviders: vi.fn(async () => PROVIDERS),
+  createCase: vi.fn(async (label: string) => ({ ...makeCase(), case_id: "new-case", label })),
   audioUrl: (caseId: string, sourceId: string) =>
     `/api/cases/${caseId}/audio/${encodeURIComponent(sourceId)}`,
 }));
 
 describe("App workspace", () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    localStorage.clear();
+  });
 
   it("loads the case list and auto-selects the first case", async () => {
     render(<App />);
@@ -106,5 +116,46 @@ describe("App workspace", () => {
     await userEvent.click(screen.getByRole("button", { name: /filter supported/i }));
     expect(screen.queryByText("Aspirin was discontinued 6 days prior to surgery.")).not.toBeInTheDocument();
     expect(screen.getByText("Records list aspirin 100mg daily as current.")).toBeInTheDocument();
+  });
+});
+
+describe("App workflow shell (v2)", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    localStorage.clear();
+  });
+
+  it("header offers the provider picker; the choice persists", async () => {
+    render(<App />);
+    const picker = await screen.findByLabelText(/working as/i);
+    await userEvent.selectOptions(picker, "p-tan");
+    expect(localStorage.getItem("periop-provider")).toBe("p-tan");
+  });
+
+  it("demo cases read as review-only in the worklist", async () => {
+    render(<App />);
+    expect(await screen.findByText("Review only")).toBeInTheDocument();
+  });
+
+  it("New case needs a provider picked, then creates and selects the case", async () => {
+    const api = await import("../../lib/api");
+    render(<App />);
+    await screen.findByText("Review only");
+    await userEvent.click(screen.getByRole("button", { name: /new case/i }));
+    // no provider picked → form explains what to do (v2 §6.7)
+    expect(screen.getByText(/choose your name in the top-right picker/i)).toBeInTheDocument();
+    await userEvent.selectOptions(screen.getByLabelText(/working as/i), "p-lim");
+    await userEvent.type(screen.getByLabelText(/case label/i), "TKR Mrs W");
+    await userEvent.click(screen.getByRole("button", { name: /create case/i }));
+    await waitFor(() =>
+      expect(vi.mocked(api.createCase)).toHaveBeenCalledWith("TKR Mrs W", "p-lim"),
+    );
+  });
+
+  it("the New case form carries the synthetic-data note", async () => {
+    render(<App />);
+    await screen.findByText("Review only");
+    await userEvent.click(screen.getByRole("button", { name: /new case/i }));
+    expect(screen.getByText(/never enter real patient details/i)).toBeInTheDocument();
   });
 });
