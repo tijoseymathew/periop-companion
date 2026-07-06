@@ -76,7 +76,7 @@ resume from the first unchecked item.
       or created by me)
 - [x] W6c: department dashboard view (cases by stage × status, awaiting-review
       queue, conflict totals — derived from the case summaries client-side)
-- [ ] W6d: tablet-width layout — below `lg` the provenance rail hides and the
+- [x] W6d: tablet-width layout — below `lg` the provenance rail hides and the
       worklist becomes a toggleable drawer, so the intra-op capture screen is
       a single big column; tablet-viewport Playwright spec
 - [ ] W6e-api: streaming intra-op ASR — WebSocket

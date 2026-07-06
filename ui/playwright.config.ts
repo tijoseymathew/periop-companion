@@ -10,6 +10,9 @@ const fixtureDir = fileURLToPath(new URL("./e2e/.fixture", import.meta.url));
 
 export default defineConfig({
   testDir: "./e2e",
+  // one worker: the server holds a single-run lock (one generation at a time),
+  // so specs that trigger stage runs must not overlap
+  workers: 1,
   reporter: [["list"]],
   use: {
     baseURL: "http://127.0.0.1:8123",

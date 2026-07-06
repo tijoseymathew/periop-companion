@@ -7,27 +7,7 @@
  * read-only throughout.
  */
 import { expect, test, type Page } from "@playwright/test";
-
-/** Valid PCM wav: mono, 16-bit, 16 kHz — accepted without ffmpeg server-side. */
-function makeWav(seconds = 0.2): Buffer {
-  const rate = 16000;
-  const n = Math.round(rate * seconds);
-  const data = Buffer.alloc(n * 2);
-  const header = Buffer.alloc(44);
-  header.write("RIFF", 0);
-  header.writeUInt32LE(36 + data.length, 4);
-  header.write("WAVEfmt ", 8);
-  header.writeUInt32LE(16, 16);
-  header.writeUInt16LE(1, 20);
-  header.writeUInt16LE(1, 22);
-  header.writeUInt32LE(rate, 24);
-  header.writeUInt32LE(rate * 2, 28);
-  header.writeUInt16LE(2, 32);
-  header.writeUInt16LE(16, 34);
-  header.write("data", 36);
-  header.writeUInt32LE(data.length, 40);
-  return Buffer.concat([header, data]);
-}
+import { makeWav } from "./util";
 
 async function uploadAudio(page: Page, name: string) {
   await page

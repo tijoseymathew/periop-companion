@@ -46,6 +46,7 @@ export function Worklist({
   onWorkFilters,
   me = null,
   onDepartment,
+  className,
 }: {
   cases: CaseSummary[];
   providers: Provider[];
@@ -60,10 +61,15 @@ export function Worklist({
   me?: string | null;
   /** opens the department dashboard (v2 W6c) */
   onDepartment?: () => void;
+  /** shell-level responsive classes (tablet drawer, v2 W6d) */
+  className?: string;
 }) {
   const rows = filterWorklist(cases, workFilters, me);
   return (
-    <aside className="flex w-80 shrink-0 flex-col border-r border-surface-overlay bg-surface-raised">
+    <aside
+      data-testid="worklist"
+      className={`flex w-80 shrink-0 flex-col border-r border-surface-overlay bg-surface-raised ${className ?? ""}`}
+    >
       <div className="flex items-center gap-2 border-b border-surface-overlay p-3">
         <button
           type="button"

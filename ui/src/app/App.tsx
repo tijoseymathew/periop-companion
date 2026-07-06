@@ -3,7 +3,7 @@
  * with useState/useMemo and props down — no router, no store (ui.md §3).
  */
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Stethoscope } from "lucide-react";
+import { PanelLeft, Stethoscope } from "lucide-react";
 import { ArtifactView } from "../components/ArtifactView";
 import { AudioPlayer, type AudioPlayerHandle } from "../components/AudioPlayer";
 import { claimDomId } from "../components/ClaimRow";
@@ -65,6 +65,8 @@ export default function App() {
   const [creating, setCreating] = useState(false);
   // department dashboard (v2 W6c) rendered in place of the case view
   const [showBoard, setShowBoard] = useState(false);
+  // tablet drawer (v2 W6d): below lg the worklist hides behind a Cases button
+  const [showWorklist, setShowWorklist] = useState(false);
   // per-claim review actions (v2 W6a): sidecar map for the selected live case
   const [claimReviews, setClaimReviews] = useState<ClaimReviews>({});
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
@@ -257,6 +259,13 @@ export default function App() {
   return (
     <div className="flex h-screen flex-col">
       <header className="flex items-center gap-2 border-b border-surface-overlay bg-surface-raised px-4 py-2">
+        <button
+          type="button"
+          onClick={() => setShowWorklist((open) => !open)}
+          className="flex min-h-[44px] items-center gap-1.5 rounded border border-surface-overlay px-3 py-1.5 text-sm text-ink-secondary lg:hidden"
+        >
+          <PanelLeft className="h-4 w-4" aria-hidden /> Cases
+        </button>
         <Stethoscope className="h-5 w-5 text-brand" aria-hidden />
         <h1 className="text-sm font-semibold">
           PeriOp Companion <span className="font-normal text-ink-subtle">· Review</span>
@@ -268,22 +277,28 @@ export default function App() {
           <ProviderPicker providers={providers} selected={me} onSelect={pickProvider} />
         </div>
       </header>
-      <div className="flex min-h-0 flex-1">
+      <div className="relative flex min-h-0 flex-1">
         <Worklist
+          className={`max-lg:absolute max-lg:inset-y-0 max-lg:left-0 max-lg:z-30 max-lg:shadow-xl ${
+            showWorklist ? "" : "max-lg:hidden"
+          }`}
           cases={cases}
           providers={providers}
           selectedId={selectedId}
           onSelect={(id) => {
             setCreating(false);
             setShowBoard(false);
+            setShowWorklist(false);
             setSelectedId(id);
           }}
           onNewCase={() => {
             setShowBoard(false);
+            setShowWorklist(false);
             setCreating(true);
           }}
           onDepartment={() => {
             setCreating(false);
+            setShowWorklist(false);
             setShowBoard(true);
           }}
           filters={filters}
@@ -415,7 +430,10 @@ export default function App() {
             )
           )}
         </main>
-        <aside className="flex w-96 shrink-0 flex-col border-l border-surface-overlay bg-surface-sunken">
+        <aside
+          data-testid="provenance-rail"
+          className="hidden w-96 shrink-0 flex-col border-l border-surface-overlay bg-surface-sunken lg:flex"
+        >
           <AudioPlayer
             ref={playerRef}
             src={loadedAudio?.src ?? null}
