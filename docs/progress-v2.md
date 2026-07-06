@@ -56,7 +56,7 @@ resume from the first unchecked item.
 
 ## W4 — Conformance + e2e
 
-- [ ] Lifecycle conformance test: API walk of a synthetic case reproduces the
+- [x] Lifecycle conformance test: API walk of a synthetic case reproduces the
       batch pipeline's ledger (stub chats)
 - [ ] Playwright e2e: full three-provider lifecycle against the real API with a
       stubbed instant runner (`PERIOP_STUB_RUNNER=1`)
