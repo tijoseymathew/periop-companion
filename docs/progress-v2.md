@@ -35,7 +35,7 @@ resume from the first unchecked item.
 
 ## W2 — Audio + stage runs
 
-- [ ] `POST /api/cases/{id}/sources/audio` — normalize to 16 kHz mono wav under
+- [x] `POST /api/cases/{id}/sources/audio` — normalize to 16 kHz mono wav under
       `data/cases/{id}/audio/`; intra-op kind appends memos; others
       replace-with-confirmation; ~50 MB cap
 - [ ] `POST /api/cases/{id}/stages/{stage}/run` — gate + input validation,

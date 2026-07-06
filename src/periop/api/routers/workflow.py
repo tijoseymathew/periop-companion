@@ -18,11 +18,19 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, field_validator
 
 from periop.api.routers.cases import load_case
-from periop.schemas import Case, OpenQuestion, Provider, Workflow
+from periop.schemas import Case, OpenQuestion, Provider, StageStatus, Workflow
 from periop.store import CaseStore
+from periop.tools import audio as audio_tools
 from periop.tools.chunker import ingest_document
 
 MAX_DOCUMENT_BYTES = 5 * 1024 * 1024  # ~5 MB (spec v2 §5.2)
+MAX_AUDIO_BYTES = 50 * 1024 * 1024  # ~50 MB
+
+AUDIO_KIND_TO_STAGE = {
+    "preop-interview": "preop",
+    "intraop-notes": "intraop",
+    "postop-interview": "postop",
+}
 
 # typed record slots (v2 §4.1 step 2); names match the synthetic bundles'
 # records/ files so live and seeded cases share one convention
@@ -242,5 +250,74 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
     case.open_questions = body.questions
     case.workflow.stages["preop"].questions_approved_at = _now()
     case.workflow.stages["preop"].performed_by = body.provider_id
+    _store(request).save(case)
+    return case
+
+
+@router.post("/cases/{case_id}/sources/audio", status_code=201)
+async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Case:
+    """Capture/upload audio for a stage, normalized to wav (v2 §5.2).
+
+    Intra-op memos append to one growing wav; interview kinds replace only
+    with explicit confirmation. Segments arrive later, from ASR at generate
+    time — this endpoint records the input, not the transcript.
+    """
+    case = load_case(request, case_id)
+    require_writable(case)
+
+    form = await request.form()
+    upload = form.get("file")
+    kind = str(form.get("kind", ""))
+    provider_id = form.get("provider_id")
+    if kind not in AUDIO_KIND_TO_STAGE:
+        raise HTTPException(
+            status_code=422,
+            detail=f"kind must be one of {', '.join(AUDIO_KIND_TO_STAGE)}",
+        )
+    if upload is None or isinstance(upload, str):
+        raise HTTPException(status_code=422, detail="multipart upload needs a 'file' part")
+    data = await upload.read()
+    if len(data) > MAX_AUDIO_BYTES:
+        raise HTTPException(status_code=413, detail="audio exceeds the 50 MB upload cap")
+
+    stage = case.workflow.stages[AUDIO_KIND_TO_STAGE[kind]]
+    if stage.status is StageStatus.SIGNED_OFF:
+        raise HTTPException(
+            status_code=409,
+            detail="this stage is signed off — reopen it before changing its inputs",
+        )
+
+    audio_dir = request.app.state.case_dir / case_id / "audio"
+    dest = audio_dir / f"{kind}.wav"
+    filename = upload.filename or "recording.wav"
+    try:
+        if kind == "intraop-notes" and dest.exists():
+            # memos accumulate (v2 §4.2 step 2)
+            memo = audio_dir / ".memo.tmp.wav"
+            audio_tools.normalize_to_wav(data, filename, memo)
+            try:
+                audio_tools.append_wav(dest, memo)
+            finally:
+                memo.unlink(missing_ok=True)
+        else:
+            if dest.exists() and kind != "intraop-notes" and not confirm:
+                raise HTTPException(
+                    status_code=409,
+                    detail=(
+                        f"{kind} is already recorded — re-send with ?confirm=true "
+                        "to replace it"
+                    ),
+                )
+            audio_tools.normalize_to_wav(data, filename, dest)
+    except audio_tools.AudioNormalizationError as e:
+        raise HTTPException(
+            status_code=503 if e.needs_ffmpeg else 422, detail=str(e)
+        ) from None
+
+    stage.inputs_recorded_at = _now()
+    if provider_id:
+        stage.performed_by = str(provider_id)
+    if stage.status is StageStatus.AWAITING_INPUTS:
+        stage.status = StageStatus.READY_TO_GENERATE
     _store(request).save(case)
     return case

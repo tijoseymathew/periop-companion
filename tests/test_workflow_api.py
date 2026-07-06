@@ -359,3 +359,132 @@ class TestQuestionReview:
             json={"questions": [], "provider_id": "p-lim"},
         )
         assert resp.status_code == 404
+
+
+# ------------------------------------------------------------- audio upload
+
+
+def make_wav(seconds=0.1, rate=16000) -> bytes:
+    """Valid mono 16-bit PCM wav of silence."""
+    import io
+    import wave
+
+    buf = io.BytesIO()
+    with wave.open(buf, "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(rate)
+        w.writeframes(b"\x00\x00" * int(rate * seconds))
+    return buf.getvalue()
+
+
+def upload_audio(client, case_id, kind, content, filename="rec.wav", confirm=False):
+    return client.post(
+        f"/api/cases/{case_id}/sources/audio",
+        params={"confirm": "true"} if confirm else {},
+        files={"file": (filename, content)},
+        data={"kind": kind, "provider_id": "p-lim"},
+    )
+
+
+class TestAudioUpload:
+    def test_wav_upload_lands_in_audio_dir(self, wclient, dirs):
+        _, case_dir, _ = dirs
+        resp = upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        assert resp.status_code == 201
+        wav = case_dir / "tkr-mrs-w" / "audio" / "preop-interview.wav"
+        assert wav.is_file()
+        import wave
+
+        with wave.open(str(wav), "rb") as w:
+            assert w.getnchannels() == 1
+
+    def test_upload_marks_stage_ready_to_generate(self, wclient):
+        resp = upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        case = Case.model_validate(resp.json())
+        stage = case.workflow.stages["preop"]
+        assert stage.status is StageStatus.READY_TO_GENERATE
+        assert stage.inputs_recorded_at is not None
+
+    def test_interview_replacement_needs_confirmation(self, wclient):
+        upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        resp = upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        assert resp.status_code == 409
+        assert "confirm" in resp.json()["detail"].lower()
+        resp = upload_audio(
+            wclient, "tkr-mrs-w", "preop-interview", make_wav(), confirm=True
+        )
+        assert resp.status_code == 201
+
+    def test_intraop_memos_append(self, wclient, dirs):
+        _, case_dir, _ = dirs
+        upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav(seconds=0.1))
+        resp = upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav(seconds=0.1))
+        assert resp.status_code == 201
+        import wave
+
+        wav = case_dir / "tkr-mrs-w" / "audio" / "intraop-notes.wav"
+        with wave.open(str(wav), "rb") as w:
+            duration = w.getnframes() / w.getframerate()
+        assert duration == pytest.approx(0.2, abs=0.01)
+        case = Case.model_validate(resp.json())
+        assert case.workflow.stages["intraop"].status is StageStatus.READY_TO_GENERATE
+
+    def test_unknown_kind_rejected(self, wclient):
+        resp = upload_audio(wclient, "tkr-mrs-w", "elevator-music", make_wav())
+        assert resp.status_code == 422
+
+    def test_oversize_rejected(self, wclient):
+        resp = upload_audio(
+            wclient, "tkr-mrs-w", "preop-interview", b"x" * (50 * 1024 * 1024 + 1)
+        )
+        assert resp.status_code == 413
+
+    def test_demo_case_409(self, wclient):
+        resp = upload_audio(wclient, "sg-demo", "preop-interview", make_wav())
+        assert resp.status_code == 409
+
+    def test_garbage_wav_rejected(self, wclient):
+        import shutil
+
+        if shutil.which("ffmpeg"):
+            pytest.skip("ffmpeg present — it does its own validation")
+        resp = upload_audio(wclient, "tkr-mrs-w", "preop-interview", b"not audio")
+        assert resp.status_code == 422
+
+    def test_non_wav_without_ffmpeg_says_what_to_do(self, wclient, monkeypatch):
+        # spec v2 §6.7: errors name the next action
+        import periop.tools.audio as audio_mod
+
+        monkeypatch.setattr(audio_mod, "ffmpeg_available", lambda: False)
+        resp = upload_audio(
+            wclient, "tkr-mrs-w", "preop-interview", b"\x1aE\xdf\xa3webm-ish",
+            filename="rec.webm",
+        )
+        assert resp.status_code == 503
+        assert "ffmpeg" in resp.json()["detail"]
+
+
+@pytest.mark.skipif(
+    __import__("shutil").which("ffmpeg") is None,
+    reason="ffmpeg not installed — normalization path exercised where present",
+)
+class TestFfmpegNormalization:
+    def test_webm_opus_normalized_to_16k_mono_wav(self, wclient, dirs, tmp_path):
+        import subprocess
+        import wave
+
+        _, case_dir, _ = dirs
+        webm = tmp_path / "rec.webm"
+        subprocess.run(
+            ["ffmpeg", "-y", "-f", "lavfi", "-i", "sine=frequency=440:duration=0.3",
+             "-c:a", "libopus", str(webm)],
+            check=True, capture_output=True,
+        )
+        resp = upload_audio(
+            wclient, "tkr-mrs-w", "preop-interview", webm.read_bytes(), filename="rec.webm"
+        )
+        assert resp.status_code == 201
+        with wave.open(str(case_dir / "tkr-mrs-w" / "audio" / "preop-interview.wav"), "rb") as w:
+            assert w.getframerate() == 16000
+            assert w.getnchannels() == 1
