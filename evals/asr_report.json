@@ -1,0 +1,754 @@
+{
+  "cases": [
+    {
+      "case_id": "sg-0001",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 51
+        },
+        "unboosted": {
+          "ker": 0.75,
+          "words": 52
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.996,
+        "asr_segments": 16,
+        "gold_segments": 16,
+        "ker": 1.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9913,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0002",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.3333,
+          "words": 58
+        },
+        "unboosted": {
+          "ker": 0.3333,
+          "words": 58
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9981,
+        "asr_segments": 17,
+        "gold_segments": 17,
+        "ker": 1.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9985,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0003",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 74
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 74
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9992,
+        "asr_segments": 16,
+        "gold_segments": 16,
+        "ker": 0.3333
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9996,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0004",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 50
+        },
+        "unboosted": {
+          "ker": 0.6667,
+          "words": 53
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9983,
+        "asr_segments": 20,
+        "gold_segments": 20,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9972,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0005",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.2,
+          "words": 74
+        },
+        "unboosted": {
+          "ker": 0.6,
+          "words": 74
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9981,
+        "asr_segments": 19,
+        "gold_segments": 19,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.0,
+        "asr_segments": 14,
+        "gold_segments": 13,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0006",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 48
+        },
+        "unboosted": {
+          "ker": 0.25,
+          "words": 48
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9992,
+        "asr_segments": 20,
+        "gold_segments": 20,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9868,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0007",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 48
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 35
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9976,
+        "asr_segments": 18,
+        "gold_segments": 18,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9993,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0008",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 59
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 52
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9995,
+        "asr_segments": 19,
+        "gold_segments": 19,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.998,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0009",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.4,
+          "words": 57
+        },
+        "unboosted": {
+          "ker": 0.8,
+          "words": 57
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9974,
+        "asr_segments": 18,
+        "gold_segments": 18,
+        "ker": 0.75
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9955,
+        "asr_segments": 13,
+        "gold_segments": 13,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0010",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.3333,
+          "words": 56
+        },
+        "unboosted": {
+          "ker": 0.6667,
+          "words": 56
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9988,
+        "asr_segments": 16,
+        "gold_segments": 16,
+        "ker": 0.3333
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9951,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0011",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 67
+        },
+        "unboosted": {
+          "ker": 0.2857,
+          "words": 67
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9996,
+        "asr_segments": 18,
+        "gold_segments": 18,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9964,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0012",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 46
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 47
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9938,
+        "asr_segments": 15,
+        "gold_segments": 15,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.999,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0013",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 49
+        },
+        "unboosted": {
+          "ker": 0.75,
+          "words": 49
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9995,
+        "asr_segments": 20,
+        "gold_segments": 20,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9968,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0014",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.3333,
+          "words": 67
+        },
+        "unboosted": {
+          "ker": 0.6667,
+          "words": 67
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9978,
+        "asr_segments": 18,
+        "gold_segments": 18,
+        "ker": 1.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9922,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0015",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.3333,
+          "words": 49
+        },
+        "unboosted": {
+          "ker": 0.3333,
+          "words": 49
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9968,
+        "asr_segments": 17,
+        "gold_segments": 17,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9989,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0016",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 61
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 61
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9974,
+        "asr_segments": 20,
+        "gold_segments": 19,
+        "ker": 0.75
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9983,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0017",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.25,
+          "words": 56
+        },
+        "unboosted": {
+          "ker": 0.75,
+          "words": 46
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9985,
+        "asr_segments": 21,
+        "gold_segments": 21,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9955,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0018",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.2,
+          "words": 58
+        },
+        "unboosted": {
+          "ker": 0.6,
+          "words": 56
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9977,
+        "asr_segments": 21,
+        "gold_segments": 21,
+        "ker": 1.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9969,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 1.0
+      }
+    },
+    {
+      "case_id": "sg-0019",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 43
+        },
+        "unboosted": {
+          "ker": 0.3333,
+          "words": 44
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.998,
+        "asr_segments": 16,
+        "gold_segments": 16,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.994,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0020",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 49
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 49
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.995,
+        "asr_segments": 18,
+        "gold_segments": 19,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.996,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0021",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 52
+        },
+        "unboosted": {
+          "ker": 0.6,
+          "words": 52
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9964,
+        "asr_segments": 18,
+        "gold_segments": 18,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9916,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0022",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.2,
+          "words": 61
+        },
+        "unboosted": {
+          "ker": 0.6,
+          "words": 60
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9995,
+        "asr_segments": 16,
+        "gold_segments": 16,
+        "ker": 0.5
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9996,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.5
+      }
+    },
+    {
+      "case_id": "sg-0023",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.2,
+          "words": 55
+        },
+        "unboosted": {
+          "ker": 0.6,
+          "words": 42
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9987,
+        "asr_segments": 17,
+        "gold_segments": 17,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9995,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 1.0
+      }
+    },
+    {
+      "case_id": "sg-0024",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.5,
+          "words": 54
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 54
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9988,
+        "asr_segments": 16,
+        "gold_segments": 16,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9984,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0025",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 33
+        },
+        "unboosted": {
+          "ker": 0.3333,
+          "words": 34
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9993,
+        "asr_segments": 18,
+        "gold_segments": 18,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9973,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0026",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 51
+        },
+        "unboosted": {
+          "ker": 0.75,
+          "words": 52
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9964,
+        "asr_segments": 17,
+        "gold_segments": 18,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9986,
+        "asr_segments": 15,
+        "gold_segments": 15,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0027",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 45
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 46
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9987,
+        "asr_segments": 20,
+        "gold_segments": 20,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9994,
+        "asr_segments": 13,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0028",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 54
+        },
+        "unboosted": {
+          "ker": 0.75,
+          "words": 54
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.998,
+        "asr_segments": 19,
+        "gold_segments": 19,
+        "ker": 1.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.9972,
+        "asr_segments": 12,
+        "gold_segments": 10,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0029",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 38
+        },
+        "unboosted": {
+          "ker": 0.5,
+          "words": 38
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9984,
+        "asr_segments": 14,
+        "gold_segments": 14,
+        "ker": 1.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 0.999,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    },
+    {
+      "case_id": "sg-0030",
+      "intraop_ker": {
+        "boosted": {
+          "ker": 0.0,
+          "words": 46
+        },
+        "unboosted": {
+          "ker": 1.0,
+          "words": 46
+        }
+      },
+      "preop-interview": {
+        "speaker_attribution_accuracy": 0.9989,
+        "asr_segments": 18,
+        "gold_segments": 17,
+        "ker": 0.0
+      },
+      "postop-interview": {
+        "speaker_attribution_accuracy": 1.0,
+        "asr_segments": 12,
+        "gold_segments": 12,
+        "ker": 0.0
+      }
+    }
+  ]
+}
