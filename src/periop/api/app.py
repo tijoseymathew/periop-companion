@@ -14,9 +14,10 @@ from pathlib import Path
 
 from fastapi import FastAPI
 
-from periop.api.routers import audio, cases
+from periop.api.routers import audio, cases, workflow
 
 DEFAULT_CASE_DIR = Path("data/cases")
+DEFAULT_PROVIDERS = Path("data/providers.json")
 UI_DIST = Path(__file__).resolve().parents[3] / "ui" / "dist"
 
 
@@ -24,13 +25,18 @@ def create_app(
     out_dir: Path | str | None = None,
     case_dir: Path | str | None = None,
     ui_dist: Path | str | None = None,
+    providers_path: Path | str | None = None,
 ) -> FastAPI:
     case_dir = Path(case_dir or os.environ.get("PERIOP_CASE_DIR", DEFAULT_CASE_DIR))
     out_dir = Path(out_dir or os.environ.get("PERIOP_OUT_DIR", case_dir / "_out"))
+    providers_path = Path(
+        providers_path or os.environ.get("PERIOP_PROVIDERS", DEFAULT_PROVIDERS)
+    )
 
     app = FastAPI(title="PeriOp Companion — Review API", version="0.1.0")
     app.state.out_dir = out_dir
     app.state.case_dir = case_dir
+    app.state.providers_path = providers_path
 
     @app.get("/api/health")
     def health() -> dict[str, str]:
@@ -38,6 +44,7 @@ def create_app(
 
     app.include_router(cases.router, prefix="/api")
     app.include_router(audio.router, prefix="/api")
+    app.include_router(workflow.router, prefix="/api")
 
     ui_dist = Path(ui_dist) if ui_dist is not None else UI_DIST
     if ui_dist.is_dir():

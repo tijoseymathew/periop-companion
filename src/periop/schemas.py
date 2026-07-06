@@ -256,6 +256,9 @@ class Case(BaseModel):
     """Longitudinal state for one patient journey across all three stages."""
 
     case_id: str
+    # provider-entered display label for live cases (v2 §4.1); synthetic
+    # cases have none and display their case_id
+    label: str | None = None
     patient_profile_ref: str | None = None
     sources: list[Source] = Field(default_factory=list)
     artifacts: list[ArtifactRecord] = Field(default_factory=list)
