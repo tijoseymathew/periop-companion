@@ -94,7 +94,7 @@ export function IntakeForm({
             data-primary-action
             className="min-h-[44px] rounded bg-brand px-5 py-2 text-sm font-semibold text-white disabled:opacity-40"
           >
-            Add document
+            {busy ? "Adding…" : "Add document"}
           </button>
           <label className="cursor-pointer text-sm text-ink-secondary underline">
             or upload a file (.txt, .md, .pdf)
@@ -116,6 +116,12 @@ export function IntakeForm({
             />
           </label>
         </div>
+        {busy && (
+          <p className="mt-2 text-sm text-ink-secondary" role="status">
+            Saving — once the operative plan and a record are in, preparing
+            interview questions can take a minute.
+          </p>
+        )}
         {!providerId && (
           <p className="mt-2 text-xs text-status-unsupported">
             Choose your name in the top-right picker first.
