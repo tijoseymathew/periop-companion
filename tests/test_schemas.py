@@ -5,6 +5,7 @@ as sets of claims, each claim cites source anchors, and conflicts are
 first-class.
 """
 
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -264,13 +265,18 @@ class TestWorkflowBlock:
         assert restored.workflow.stages[StageName.PREOP].status is StageStatus.SIGNED_OFF
 
     def test_committed_case_jsons_load_unchanged(self):
-        # spec v2 §5.1: additive only — every existing synthetic case loads as
-        # demo data (no workflow block)
-        paths = sorted(Path("data/cases/_out").glob("*.json"))
-        assert paths, "expected committed synthetic case JSONs"
-        for path in paths:
-            case = Case.model_validate_json(path.read_text())
-            assert case.workflow is None, path.name
+        # spec v2 §5.1: additive only — every *committed* synthetic case loads
+        # as demo data (no workflow block). Only git-tracked files count: the
+        # same directory also collects live cases created through the API,
+        # which rightly carry a workflow block.
+        tracked = subprocess.run(
+            ["git", "ls-files", "data/cases/_out/*.json"],
+            capture_output=True, text=True, check=True,
+        ).stdout.split()
+        assert tracked, "expected committed synthetic case JSONs"
+        for name in tracked:
+            case = Case.model_validate_json(Path(name).read_text())
+            assert case.workflow is None, name
 
 
 # ---------------------------------------------------------------- OpenQuestion
