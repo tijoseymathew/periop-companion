@@ -65,7 +65,11 @@ def main() -> None:
                 store.save(case)
 
             gold = load_gold(case_dir)
-            report = evaluate_case(case, gold, matches=judge.matches)
+            report = evaluate_case(
+                case, gold,
+                matches=judge.matches,
+                question_matches=judge.question_matches,
+            )
         except Exception as exc:  # one bad case must not sink the whole run
             failures.append(case_id)
             print(f"✗ {case_id}: {type(exc).__name__}: {exc}")

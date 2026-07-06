@@ -38,3 +38,31 @@ class TestLlmJudge:
         judge.matches("a", "b")
         judge.matches("a", "b")  # served from cache
         assert len(chat.calls) == 1
+
+
+class TestQuestionMatches:
+    # Fact-entailment is the wrong test for questions: "Is the patient still
+    # taking Enalapril?" and "Have you stopped or changed any medications,
+    # particularly Enalapril?" assert no facts, but probe the same gap
+    # (observed live: the fact prompt returns NO for exactly that pair).
+
+    def test_uses_question_intent_prompt(self):
+        judge = LlmJudge(chat=FakeChat(["yes"]))
+        judge.question_matches("Is the patient still taking Enalapril?",
+                               "Have you stopped any medications?")
+        prompt = judge.chat.calls[0].lower()
+        assert "question" in prompt
+        assert "same" in prompt or "gap" in prompt
+
+    def test_yes_no_parsing_and_cache(self):
+        chat = FakeChat(["  YES."])
+        judge = LlmJudge(chat=chat)
+        assert judge.question_matches("q1", "q2")
+        assert judge.question_matches("q1", "q2")
+        assert len(chat.calls) == 1
+
+    def test_question_and_fact_caches_are_separate(self):
+        chat = FakeChat(["no", "yes"])
+        judge = LlmJudge(chat=chat)
+        assert not judge.matches("a", "b")
+        assert judge.question_matches("a", "b")

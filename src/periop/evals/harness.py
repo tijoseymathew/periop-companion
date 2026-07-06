@@ -41,10 +41,20 @@ def _empty() -> ArtifactRecord:
     return ArtifactRecord(artifact_id="_missing")
 
 
-def evaluate_case(case: Case, gold: GoldCase, matches: Matcher) -> CaseReport:
+def evaluate_case(
+    case: Case,
+    gold: GoldCase,
+    matches: Matcher,
+    question_matches: Matcher | None = None,
+) -> CaseReport:
+    """Score one case. ``question_matches`` compares clarification questions
+    by probed intent; fact entailment (``matches``) misreads questions as
+    non-assertions, so it is only the fallback."""
     preop = case.get_artifact(PREOP_NOTE_ID) or _empty()
     handoff = case.get_artifact(HANDOFF_ID) or _empty()
-    gap = metrics.gap_analysis_prf(case.open_questions, gold.questions, matches)
+    gap = metrics.gap_analysis_prf(
+        case.open_questions, gold.questions, question_matches or matches
+    )
 
     return CaseReport(
         case_id=case.case_id,

@@ -22,6 +22,24 @@ B: {b}
 Answer YES if they assert the same fact, otherwise NO. Answer with one word.
 """
 
+QUESTION_SYSTEM = (
+    "You judge whether two clinical clarification questions probe the same "
+    "underlying information gap. Answer only YES or NO. Ignore phrasing, "
+    "scope and register; judge whether answering one would answer the other's "
+    "core concern."
+)
+
+QUESTION_PROMPT = """\
+Do these two pre-anesthesia clarification questions target the same information gap
+(e.g. both probe whether a specific medication is still being taken)?
+
+A: {a}
+B: {b}
+
+Answer YES if a patient's answer to either would resolve the same clinical concern,
+otherwise NO. Answer with one word.
+"""
+
 
 def _parse_yes(reply: str) -> bool:
     m = re.search(r"\b(yes|no)\b", reply.lower())
@@ -35,11 +53,18 @@ class LlmJudge:
 
             chat = fast_chat()
         self.chat = chat
-        self._cache: dict[tuple[str, str], bool] = {}
+        self._cache: dict[tuple[str, str, str], bool] = {}
 
     def matches(self, pred: str, gold: str) -> bool:
-        key = (pred, gold)
+        return self._judged("fact", PROMPT, SYSTEM, pred, gold)
+
+    def question_matches(self, pred: str, gold: str) -> bool:
+        """Intent-equivalence for questions: facts entail, questions probe."""
+        return self._judged("question", QUESTION_PROMPT, QUESTION_SYSTEM, pred, gold)
+
+    def _judged(self, kind: str, prompt: str, system: str, pred: str, gold: str) -> bool:
+        key = (kind, pred, gold)
         if key not in self._cache:
-            reply = self.chat.complete(PROMPT.format(a=pred, b=gold), system=SYSTEM)
+            reply = self.chat.complete(prompt.format(a=pred, b=gold), system=system)
             self._cache[key] = _parse_yes(reply)
         return self._cache[key]
