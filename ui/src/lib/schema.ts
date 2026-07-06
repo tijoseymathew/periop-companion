@@ -73,6 +73,22 @@ export const OpenQuestionSchema = z.object({
 });
 export type OpenQuestion = z.infer<typeof OpenQuestionSchema>;
 
+// ---- per-claim review sidecar (v2 W6a) --------------------------------------
+
+export const CLAIM_REVIEW_STATES = ["reviewed", "flagged"] as const;
+export type ClaimReviewState = (typeof CLAIM_REVIEW_STATES)[number];
+
+export const ClaimReviewSchema = z.object({
+  state: z.enum(CLAIM_REVIEW_STATES),
+  by: z.string(),
+  at: z.string(),
+});
+export type ClaimReview = z.infer<typeof ClaimReviewSchema>;
+
+/** Keyed by `artifact_id#claim_id` — sidecar state, never on the claim. */
+export const ClaimReviewsSchema = z.record(z.string(), ClaimReviewSchema);
+export type ClaimReviews = z.infer<typeof ClaimReviewsSchema>;
+
 // ---- workflow block (spec v2 §5.1) ----------------------------------------
 
 export const ProviderSchema = z.object({

@@ -6,13 +6,13 @@
  */
 import { useState } from "react";
 import { resolveRef } from "../lib/provenance";
-import type { ArtifactRecord, Case } from "../lib/schema";
+import type { ArtifactRecord, Case, ClaimReviews } from "../lib/schema";
 import type { PrimaryAction } from "../lib/workflow";
 
 interface Flagged {
   artifactId: string;
   claimId: string;
-  why: "conflicting" | "unsupported" | "unresolved";
+  why: "conflicting" | "unsupported" | "unresolved" | "flagged";
 }
 
 export function SignOffBar({
@@ -20,6 +20,7 @@ export function SignOffBar({
   artifacts,
   action,
   signedOff,
+  reviews = {},
   onSignOff,
   onAcknowledge,
   onReopen,
@@ -29,6 +30,8 @@ export function SignOffBar({
   artifacts: ArtifactRecord[];
   action: PrimaryAction | null;
   signedOff: boolean;
+  /** per-claim review actions (v2 W6a), keyed `artifact_id#claim_id` */
+  reviews?: ClaimReviews;
   onSignOff: () => Promise<void>;
   onAcknowledge: () => Promise<void>;
   onReopen: () => Promise<void>;
@@ -37,12 +40,20 @@ export function SignOffBar({
   const [busy, setBusy] = useState(false);
 
   const flagged: Flagged[] = [];
+  let claimCount = 0;
+  let reviewedCount = 0;
   for (const artifact of artifacts) {
     for (const claim of artifact.claims) {
+      claimCount += 1;
       if (claim.status === "conflicting" || claim.status === "unsupported") {
         flagged.push({ artifactId: artifact.artifact_id, claimId: claim.claim_id, why: claim.status });
       } else if (claim.provenance.some((ref) => resolveRef(kase, ref) === null)) {
         flagged.push({ artifactId: artifact.artifact_id, claimId: claim.claim_id, why: "unresolved" });
+      }
+      const review = reviews[`${artifact.artifact_id}#${claim.claim_id}`];
+      if (review?.state === "reviewed") reviewedCount += 1;
+      if (review?.state === "flagged") {
+        flagged.push({ artifactId: artifact.artifact_id, claimId: claim.claim_id, why: "flagged" });
       }
     }
   }
@@ -50,6 +61,7 @@ export function SignOffBar({
     conflicting: flagged.filter((f) => f.why === "conflicting").length,
     unsupported: flagged.filter((f) => f.why === "unsupported").length,
     unresolved: flagged.filter((f) => f.why === "unresolved").length,
+    flagged: flagged.filter((f) => f.why === "flagged").length,
   };
 
   async function run(work: () => Promise<void>) {
@@ -80,6 +92,14 @@ export function SignOffBar({
                 <span className="text-status-conflicting">{counts.unresolved} unresolved citation{counts.unresolved > 1 ? "s" : ""}</span>
               </>
             )}
+            {counts.flagged > 0 && (
+              <>
+                {(counts.conflicting > 0 || counts.unsupported > 0 || counts.unresolved > 0) && " · "}
+                <span className="text-status-unsupported">
+                  {counts.flagged} flagged by a reviewer
+                </span>
+              </>
+            )}
           </p>
           <div className="mt-1.5 flex flex-wrap gap-1.5">
             {flagged.map((f) => (
@@ -106,6 +126,11 @@ export function SignOffBar({
             Nothing flagged — every claim is supported and traceable.
           </p>
         )
+      )}
+      {reviewedCount > 0 && (
+        <p className="mt-1 text-xs text-ink-subtle">
+          {reviewedCount} of {claimCount} claims marked reviewed.
+        </p>
       )}
 
       {action?.kind === "sign-off" && (

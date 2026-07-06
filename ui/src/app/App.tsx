@@ -19,8 +19,10 @@ import {
   createCase,
   fetchCase,
   fetchCases,
+  fetchClaimReviews,
   fetchProviders,
   reopenStage,
+  reviewClaim,
   signoffStage,
 } from "../lib/api";
 import { defaultFilters, type StatusFilters } from "../lib/filters";
@@ -29,7 +31,15 @@ import { groupArtifactsByStage, type Stage } from "../lib/stages";
 import { SignOffBar } from "../components/SignOffBar";
 import { StagePanel } from "../components/StagePanel";
 import { headlineStage, primaryAction, STAGE_TITLES, type WorklistFilters } from "../lib/workflow";
-import type { Case, CaseSummary, ClaimStatus, Provider, StageKey } from "../lib/schema";
+import type {
+  Case,
+  CaseSummary,
+  ClaimReviews,
+  ClaimReviewState,
+  ClaimStatus,
+  Provider,
+  StageKey,
+} from "../lib/schema";
 
 const PROVIDER_STORAGE_KEY = "periop-provider";
 
@@ -51,6 +61,8 @@ export default function App() {
     status: "all",
   });
   const [creating, setCreating] = useState(false);
+  // per-claim review actions (v2 W6a): sidecar map for the selected live case
+  const [claimReviews, setClaimReviews] = useState<ClaimReviews>({});
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
   const [highlightedAnchor, setHighlightedAnchor] = useState<string | null>(null);
   // claim ids repeat across artifacts (each artifact numbers its own claims),
@@ -114,6 +126,14 @@ export default function App() {
         setLoadedAudio(null);
         setPlayerTime(null);
         setMissingAudio(new Set());
+        setClaimReviews({});
+        if (c.workflow) {
+          fetchClaimReviews(c.case_id)
+            .then((r) => {
+              if (!stale) setClaimReviews(r);
+            })
+            .catch(() => {});
+        }
       })
       .catch((e) => setError(String(e)));
     return () => {
@@ -207,6 +227,16 @@ export default function App() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   });
+
+  /** Per-claim review action (v2 W6a): optimistic-free, server map wins. */
+  async function handleReviewClaim(ref: string, state: ClaimReviewState | null) {
+    if (!kase || !me) return;
+    try {
+      setClaimReviews(await reviewClaim(kase.case_id, ref, state, me));
+    } catch (e) {
+      setError(String(e));
+    }
+  }
 
   /** Reverse-index click: bring the citing claim into view in the ledger. */
   function jumpToClaim(artifactId: string, claimId: string) {
@@ -304,12 +334,15 @@ export default function App() {
                               : null
                           }
                           onActivateRef={activateRef}
+                          reviews={claimReviews}
+                          onReviewClaim={me ? handleReviewClaim : undefined}
                         />
                       ))}
                     </div>
                     <SignOffBar
                       kase={kase}
                       artifacts={activeGroup.artifacts}
+                      reviews={claimReviews}
                       action={
                         stageAction?.kind === "sign-off" ||
                         stageAction?.kind === "acknowledge-handoff"

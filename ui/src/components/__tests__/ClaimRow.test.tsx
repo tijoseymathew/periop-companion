@@ -60,4 +60,52 @@ describe("ClaimRow", () => {
     render(<ClaimRow kase={kase} artifactId={intraop.artifact_id} claim={intraop.claims[0]} onActivateRef={() => {}} />);
     expect(screen.getByText(/no citations/i)).toBeInTheDocument();
   });
+
+  // ---- per-claim review actions (v2 W6a) -----------------------------------
+
+  it("offers no review actions unless a handler is wired (demo cases)", () => {
+    render(<ClaimRow kase={kase} artifactId={preop.artifact_id} claim={preop.claims[0]} onActivateRef={() => {}} />);
+    expect(screen.queryByRole("button", { name: /mark reviewed/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /^flag$/i })).not.toBeInTheDocument();
+  });
+
+  it("marking reviewed reports the action without activating the ref", async () => {
+    const onReview = vi.fn();
+    const onActivateRef = vi.fn();
+    render(
+      <ClaimRow
+        kase={kase}
+        artifactId={preop.artifact_id}
+        claim={preop.claims[0]}
+        onActivateRef={onActivateRef}
+        review={null}
+        onReview={onReview}
+      />,
+    );
+    await userEvent.click(screen.getByRole("button", { name: /mark reviewed/i }));
+    expect(onReview).toHaveBeenCalledWith("reviewed");
+    expect(onActivateRef).not.toHaveBeenCalled();
+  });
+
+  it("the active state is pressed, and clicking it again clears the action", async () => {
+    const onReview = vi.fn();
+    render(
+      <ClaimRow
+        kase={kase}
+        artifactId={preop.artifact_id}
+        claim={preop.claims[0]}
+        onActivateRef={() => {}}
+        review="flagged"
+        onReview={onReview}
+      />,
+    );
+    const flag = screen.getByRole("button", { name: /^flag$/i });
+    expect(flag).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: /mark reviewed/i })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    );
+    await userEvent.click(flag);
+    expect(onReview).toHaveBeenCalledWith(null);
+  });
 });

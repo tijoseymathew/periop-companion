@@ -78,4 +78,29 @@ describe("SignOffBar", () => {
     await userEvent.click(screen.getByRole("button", { name: /reopen/i }));
     expect(props.onReopen).toHaveBeenCalled();
   });
+
+  // ---- per-claim review actions feed the summary (v2 W6a) -------------------
+
+  it("says how many claims are marked reviewed", () => {
+    renderBar({
+      reviews: {
+        "note:pre-anesthesia-eval#c-001": { state: "reviewed", by: "p-tan", at: "2026-07-06T10:00:00Z" },
+        "note:pre-anesthesia-eval#c-003": { state: "reviewed", by: "p-tan", at: "2026-07-06T10:01:00Z" },
+        // another artifact's review must not count here
+        "record:intra-op#c-010": { state: "reviewed", by: "p-tan", at: "2026-07-06T10:02:00Z" },
+      },
+    });
+    expect(screen.getByText(/2 of 3 claims marked reviewed/i)).toBeInTheDocument();
+  });
+
+  it("reviewer-flagged claims join the counts and the jump list", async () => {
+    const props = renderBar({
+      reviews: {
+        "note:pre-anesthesia-eval#c-001": { state: "flagged", by: "p-tan", at: "2026-07-06T10:00:00Z" },
+      },
+    });
+    expect(screen.getByText(/1 flagged by a reviewer/i)).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: /c-001 · flagged/ }));
+    expect(props.onJumpToClaim).toHaveBeenCalledWith("note:pre-anesthesia-eval", "c-001");
+  });
 });

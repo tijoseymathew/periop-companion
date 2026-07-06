@@ -80,6 +80,15 @@ test("three providers walk one case from creation to acknowledged handoff", asyn
 
   // sign-off surfaces the conflict, and is allowed
   await expect(page.getByText(/1 conflicting/i)).toBeVisible();
+
+  // per-claim review actions (stretch): mark one reviewed, flag the other —
+  // both land in the sign-off summary
+  await page.getByRole("button", { name: "Mark reviewed" }).first().click();
+  await expect(page.getByText(/1 of 2 claims marked reviewed/i)).toBeVisible();
+  await page.getByRole("button", { name: "Flag", exact: true }).nth(1).click();
+  await expect(page.getByText(/1 flagged by a reviewer/i)).toBeVisible();
+  await expect(page.getByRole("button", { name: /c-002 · flagged/ })).toBeVisible();
+
   await page.getByRole("button", { name: /sign off pre-op/i }).click();
   await expect(page.getByRole("tab", { name: /Pre-op.*signed off/i })).toBeVisible();
 

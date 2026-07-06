@@ -4,9 +4,12 @@ import { z } from "zod";
 import {
   CaseSchema,
   CaseSummarySchema,
+  ClaimReviewsSchema,
   ProviderSchema,
   type Case,
   type CaseSummary,
+  type ClaimReviews,
+  type ClaimReviewState,
   type OpenQuestion,
   type Provider,
 } from "./schema";
@@ -120,6 +123,26 @@ export async function reopenStage(
     { provider_id: providerId },
   );
   return CaseSchema.parse(data);
+}
+
+export async function fetchClaimReviews(caseId: string): Promise<ClaimReviews> {
+  const { data } = await axios.get(
+    `/api/cases/${encodeURIComponent(caseId)}/claim-reviews`,
+  );
+  return ClaimReviewsSchema.parse(data);
+}
+
+export async function reviewClaim(
+  caseId: string,
+  ref: string,
+  state: ClaimReviewState | null,
+  providerId: string,
+): Promise<ClaimReviews> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/claim-reviews`,
+    { ref, state, provider_id: providerId },
+  );
+  return ClaimReviewsSchema.parse(data);
 }
 
 export async function acknowledgeHandoff(caseId: string, providerId: string): Promise<Case> {

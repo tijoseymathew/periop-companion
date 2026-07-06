@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ClipboardCopy } from "lucide-react";
 import type { StatusFilters } from "../lib/filters";
 import { artifactToMarkdown, copyText } from "../lib/markdown";
-import type { ArtifactRecord, Case } from "../lib/schema";
+import type { ArtifactRecord, Case, ClaimReviews, ClaimReviewState } from "../lib/schema";
 import { ClaimRow } from "./ClaimRow";
 import { EventsTable } from "./EventsTable";
 
@@ -16,12 +16,17 @@ export function ArtifactView({
   filters,
   activeClaimId = null,
   onActivateRef,
+  reviews,
+  onReviewClaim,
 }: {
   kase: Case;
   artifact: ArtifactRecord;
   filters: StatusFilters;
   activeClaimId?: string | null;
   onActivateRef: (ref: string) => void;
+  /** per-claim review actions (v2 W6a); absent on demo cases */
+  reviews?: ClaimReviews;
+  onReviewClaim?: (ref: string, state: ClaimReviewState | null) => void;
 }) {
   const visible = artifact.claims.filter((c) => filters[c.status]);
   const hidden = artifact.claims.length - visible.length;
@@ -61,6 +66,11 @@ export function ArtifactView({
             claim={claim}
             active={claim.claim_id === activeClaimId}
             onActivateRef={onActivateRef}
+            review={reviews?.[`${artifact.artifact_id}#${claim.claim_id}`]?.state ?? null}
+            onReview={
+              onReviewClaim &&
+              ((state) => onReviewClaim(`${artifact.artifact_id}#${claim.claim_id}`, state))
+            }
           />
         ))}
       </div>

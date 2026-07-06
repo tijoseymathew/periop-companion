@@ -70,7 +70,7 @@ resume from the first unchecked item.
 - [x] W6a-api: per-claim review actions (mark reviewed / flag) persisted as
       sidecar state (`_out/<case_id>.review.json`, atomic write; the case
       ledger itself stays untouched); `GET`/`PUT` endpoints, demo cases 409
-- [ ] W6a-ui: review/flag buttons on claim rows; sign-off screen counts
+- [x] W6a-ui: review/flag buttons on claim rows; sign-off screen counts
       reviewed/flagged and flagged claims join the jump list
 - [ ] W6b: "my cases" worklist filter (any stage performed/signed off by me,
       or created by me)
