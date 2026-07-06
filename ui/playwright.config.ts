@@ -26,6 +26,8 @@ export default defineConfig({
     env: {
       PERIOP_OUT_DIR: `${fixtureDir}/_out`,
       PERIOP_CASE_DIR: fixtureDir,
+      // hermetic lifecycle e2e: the real server with instant stub artifacts
+      PERIOP_STUB_RUNNER: "1",
     },
   },
 });

@@ -785,3 +785,55 @@ class TestHandoffAck:
             "/api/cases/sg-demo/handoff/ack", json={"provider_id": "p-rahman"}
         )
         assert resp.status_code == 409
+
+
+class TestStubRunnerEnv:
+    def test_env_flag_selects_the_instant_stub_runner(self, dirs, monkeypatch):
+        # hermetic e2e (spec v2 §8) runs the real server with instant artifacts
+        from periop.api.runner import StubPipelineRunner
+
+        out_dir, case_dir, providers = dirs
+        monkeypatch.setenv("PERIOP_STUB_RUNNER", "1")
+        app = create_app(out_dir=out_dir, case_dir=case_dir, providers_path=providers)
+        assert isinstance(app.state.runner, StubPipelineRunner)
+
+    def test_stub_walk_produces_a_traceable_ledger(self, dirs, monkeypatch):
+        """The stub runner's artifacts must cite real chunks/segments so the
+        review UI's provenance interactions work in e2e."""
+        out_dir, case_dir, providers = dirs
+        monkeypatch.setenv("PERIOP_STUB_RUNNER", "1")
+        client = TestClient(
+            create_app(out_dir=out_dir, case_dir=case_dir, providers_path=providers)
+        )
+        client.post("/api/cases", json={"label": "Stub walk", "provider_id": "p-lim"})
+        paste(client, "stub-walk", "gp-summary", GP_TEXT)
+        resp = paste(client, "stub-walk", "op-plan", "# Op Plan\n\nLap chole.\n")
+        case = Case.model_validate(resp.json())
+        assert case.open_questions, "stub gap analysis should produce questions"
+        assert case.open_questions[0].provenance
+
+        client.put(
+            "/api/cases/stub-walk/questions",
+            json={
+                "questions": [
+                    {**case.open_questions[0].model_dump(mode="json"), "review": "approved"}
+                ],
+                "provider_id": "p-lim",
+            },
+        )
+        upload_audio(client, "stub-walk", "preop-interview", make_wav())
+        resp = client.post(
+            "/api/cases/stub-walk/stages/preop/run", json={"provider_id": "p-lim"}
+        )
+        assert resp.status_code == 200
+        assert "event: complete" in resp.text
+        stored = CaseStore(out_dir).load("stub-walk")
+        note = stored.get_artifact("note:pre-anesthesia-eval")
+        assert note is not None and note.claims
+        # every claim's provenance resolves against the case
+        for claim in note.claims:
+            assert claim.provenance
+            for ref in claim.provenance:
+                stored.resolve(ref)
+        # the interview transcript was registered so clips are playable
+        assert stored.get_source("audio:preop-interview").segments

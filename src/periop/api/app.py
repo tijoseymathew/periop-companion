@@ -40,9 +40,11 @@ def create_app(
     app.state.providers_path = providers_path
 
     if runner is None:
-        from periop.api.runner import LivePipelineRunner
+        from periop.api.runner import LivePipelineRunner, StubPipelineRunner
 
-        runner = LivePipelineRunner()
+        # hermetic e2e (spec v2 §8): the real server with instant artifacts
+        stub = os.environ.get("PERIOP_STUB_RUNNER") == "1"
+        runner = StubPipelineRunner() if stub else LivePipelineRunner()
     app.state.runner = runner
 
     @app.get("/api/health")

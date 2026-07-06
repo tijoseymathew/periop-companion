@@ -58,7 +58,7 @@ resume from the first unchecked item.
 
 - [x] Lifecycle conformance test: API walk of a synthetic case reproduces the
       batch pipeline's ledger (stub chats)
-- [ ] Playwright e2e: full three-provider lifecycle against the real API with a
+- [x] Playwright e2e: full three-provider lifecycle against the real API with a
       stubbed instant runner (`PERIOP_STUB_RUNNER=1`)
 
 ## W5 — Polish
