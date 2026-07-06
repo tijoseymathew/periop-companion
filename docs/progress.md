@@ -65,8 +65,9 @@ resume from the first unchecked item. Conventions:
 - [x] Custom evaluators (periop.evals.metrics): provenance precision/coverage,
       claim recall vs gold, hallucinated-claim rate, gap-analysis P/R,
       distractor leakage, extraction F1, KER. LLM-judge matcher (evals.judge).
-- [~] 30-case dataset — pipeline + resumable generator in place; 5 cases
-      generated so far (scale up when rate limits allow).
+- [x] 30-case dataset — generated 2026-07-06/07 against the self-hosted
+      stack (3 parallel generator shards; sg-0024 needed one quality-gate
+      retry). All 30 TTS-rendered; full pipeline outputs in _out.
 - [x] A/B experiments: nano vs super extraction (evals.ab). Word-boosting and
       constrained-vs-free handoff wired via flags; full audio A/B pending TTS.
 - [x] Eval runner (scripts/run_eval.py) → evals/report.json committed.
@@ -99,8 +100,10 @@ resume from the first unchecked item. Conventions:
 - [x] ASR path (Parakeet gRPC :50051) — periop.tools.asr: offline recognition
       w/ word timestamps, Sortformer diarization, lexicon word boosting;
       transcript_source() switches stages to ASR via PERIOP_TRANSCRIBE=asr.
-      Live-verified (16/16 turns, correct roles). scripts/eval_asr.py report
-      pending stable NIM co-tenancy (box was being redeployed mid-run).
+      Live-verified (16/16 turns, correct roles).
+- [x] scripts/eval_asr.py report over all 30 cases (evals/asr_report.json):
+      KER 0.109 boosted vs 0.564 unboosted; speaker attribution 0.981
+      (one label-swap outlier, sg-0005 post-op).
 
 ## Notes / decisions log
 
@@ -152,6 +155,26 @@ resume from the first unchecked item. Conventions:
   claims as "unsupported" (an anticipated issue is an inference, not an
   entailment) — see follow-ups.
 
+- 2026-07-06/07 (scaled eval session): dataset scaled 5 → 30 cases and the
+  full eval run against the self-hosted stack. Live running surfaced five
+  robustness fixes, each committed with tests:
+  (a) the nano NIM streams reasoning *without* the opening `<think>` tag —
+  strip_reasoning now handles a lone closing tag;
+  (b) the 49B sometimes echoes the requested JSON schema instead of the
+  instance — complete_structured now scans every JSON candidate in the reply
+  and validates each against the schema;
+  (c) the nano NIM's server-side default max_tokens (~1k) truncates inside
+  its own reasoning stream — fast_chat requests 8192 by default;
+  (d) fast-tier reasoning made a 1-token NLI verdict cost ~60s — fast_chat
+  now leads with Nemotron's `/no_think` (PERIOP_FAST_THINKING re-enables),
+  ~60x faster with identical verdicts on spot-check;
+  (e) LLM-judge verdicts flipped between runs at temperature 0.2 — judges
+  decode greedily now. Also: the gap metric needed a question-intent judge
+  prompt (fact entailment misreads questions; gap_f1 read 0.00 everywhere).
+  Deployment: reasoning NIM's NIM_MAX_MODEL_LEN raised 6144 → 16384
+  (../dev-rel-expt/.env) — synth-data prompts exceed 6k tokens; KV-bytes cap
+  makes context length footprint-neutral.
+
 ## Known follow-ups (surfaced by the baseline eval)
 
 - ~~Align gold intra-op event granularity with the extractor (or relax
@@ -164,7 +187,23 @@ resume from the first unchecked item. Conventions:
 - ~~Verify all generated artifacts (post-op note, anticipated issues), not just
   pre-op note + handoff.~~ DONE — every artifact now passes through the
   ClaimVerifier.
-- Scale the dataset to ~30 cases and re-run the eval for stable aggregates.
+- ~~Scale the dataset to ~30 cases and re-run the eval for stable
+  aggregates.~~ DONE — evals/report.json + evals/README.md (v0.2, 30 cases).
+
+## Known follow-ups (surfaced by the 30-case eval — see evals/README.md)
+
+- GapAnalyst misses `missing_allergy` defects (4/18 keyword-level): absent
+  info has no chunk to trigger on and the citations-must-resolve filter drops
+  unanchored questions. Allow absence-questions anchored to the section that
+  should hold the info; add an explicit completeness pass.
+- GapAnalyst stale-med probes usually mention the drug (10/12) but miss the
+  med-reconciliation intent; a standing "any medication changes since the
+  record?" question would close most of the gap.
+- Distractor leakage 0.756 despite the prompt rule — add a dedicated
+  fast-tier relevance-filter pass over emitted claims.
+- sg-0005 post-op diarization label swap (attribution 0.0): role-mapping
+  heuristic needs an anchor for interviews the patient opens.
+- SME spot-validation of LLM-judge verdicts (fact + question matchers).
 - ~~ClaimVerifier treats anticipated issues as entailment checks; risk
   projections are inferences, so most read "unsupported".~~ DONE — added an
   "inference" verdict via a forward-looking verification mode (judges the
