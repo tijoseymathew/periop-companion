@@ -6,7 +6,10 @@ sees, minus the browser.
 
 Usage: uv run python scripts/smoke_stream_asr.py [path/to/audio.wav]
 Requires the Parakeet NIM's gRPC endpoint (PERIOP_ASR_GRPC_URL, default
-localhost:50051). Defaults to a rendered case wav if no path is given.
+localhost:50051) deployed with a *streaming* profile — an offline-only
+deployment answers ``Unavailable model … type=online``; relaunch the NIM
+with the streaming tag (e.g. ``NIM_TAGS_SELECTOR=mode=str``) to fix that.
+Defaults to a rendered case wav if no path is given.
 """
 
 import sys
