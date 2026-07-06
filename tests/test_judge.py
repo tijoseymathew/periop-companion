@@ -7,9 +7,11 @@ class FakeChat:
     def __init__(self, replies):
         self.replies = list(replies)
         self.calls = []
+        self.kwargs = []
 
     def complete(self, user, system=None, **kwargs):
         self.calls.append(user)
+        self.kwargs.append(kwargs)
         return self.replies.pop(0)
 
 
@@ -66,3 +68,11 @@ class TestQuestionMatches:
         judge = LlmJudge(chat=chat)
         assert not judge.matches("a", "b")
         assert judge.question_matches("a", "b")
+
+    def test_judge_decodes_greedily(self):
+        # Verdicts must not flip between runs; temperature 0 on every call.
+        chat = FakeChat(["yes", "yes"])
+        judge = LlmJudge(chat=chat)
+        judge.matches("a", "b")
+        judge.question_matches("a", "b")
+        assert all(k.get("temperature") == 0 for k in chat.kwargs)

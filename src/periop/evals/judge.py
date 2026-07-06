@@ -65,6 +65,10 @@ class LlmJudge:
     def _judged(self, kind: str, prompt: str, system: str, pred: str, gold: str) -> bool:
         key = (kind, pred, gold)
         if key not in self._cache:
-            reply = self.chat.complete(prompt.format(a=pred, b=gold), system=system)
+            # Greedy decoding: a judge must be deterministic — at the default
+            # temperature borderline verdicts flip between runs.
+            reply = self.chat.complete(
+                prompt.format(a=pred, b=gold), system=system, temperature=0
+            )
             self._cache[key] = _parse_yes(reply)
         return self._cache[key]
