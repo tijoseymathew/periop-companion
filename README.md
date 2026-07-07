@@ -282,6 +282,28 @@ spec §8: Super's reasoning latency dominates (bottleneck score 85.4 vs 8.1),
 while Nano absorbs 86% of the calls at ~10× lower per-call latency — which is
 exactly why verification and the extraction first pass run on the fast tier.
 
+## Observability (Langfuse, live and batch alike)
+
+The provider-facing path is observed exactly like the batch path
+([specs/v2-nat.md](specs/v2-nat.md)): every stage run triggered from the
+browser executes inside a real NAT `Runner`, so the same
+`LLM_START`/`LLM_END` steps the profiler consumes also export as OTel spans.
+Tracing is opt-in by environment — set `LANGFUSE_PUBLIC_KEY`,
+`LANGFUSE_SECRET_KEY`, and `LANGFUSE_BASE_URL` and both `nat run`/`nat eval`
+and the API server export to the same Langfuse project; leave any unset and
+the app runs normally after one startup warning (the committed configs'
+`_type: periop_langfuse` block is non-secret and inert without credentials).
+
+The committed parity artifact
+([`evals/traces/live-preop-trace.json`](evals/traces/live-preop-trace.json),
+produced by `scripts/smoke_live_trace.py`) is one live, API-driven pre-op
+stage run — `POST /api/cases/{id}/stages/preop/run` against self-hosted
+NIMs — fetched back out of Langfuse: 18 observations in one trace, the
+`WORKFLOW` bracket plus one Super-49B `GENERATION` (the note writer,
+1,911 → 2,183 tokens) and 15 Nano-9B `GENERATION`s (per-claim verification,
+~1.5 s each) — the batch profiler's tiering table, visible per-click on the
+live path.
+
 ## Status
 
 M0–M6 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
@@ -289,14 +311,17 @@ pipeline, all agents, eval harness, NAT-profiled live run, self-hosted NIM
 path with TTS+ASR). The review UI ([specs/ui.md](specs/ui.md), U0–U2+U4 —
 see [docs/progress-ui.md](docs/progress-ui.md)) ships the claim ledger with
 click-to-play audio provenance. The v2 provider workflow
-([specs/v2.md](specs/v2.md), W0–W6 — see
+([specs/v2.md](specs/v2.md), W0–W8 — see
 [docs/progress-v2.md](docs/progress-v2.md)) adds the write path: case
 creation, staged intake with question review, audio capture, SSE-streamed
 stage runs (promoting ui.md's U3 from stretch to shipped), sign-off/reopen,
 and handoff acknowledge, pinned to the batch pipeline by a lifecycle
 conformance test — plus the full stretch list: live intra-op dictation over
 the Parakeet streaming profile, per-claim review actions, the department
-dashboard with a "my cases" filter, and the tablet layout. Remaining:
+dashboard with a "my cases" filter, and the tablet layout. W8
+([specs/v2-nat.md](specs/v2-nat.md)) closes the observability gap: live
+stage runs execute inside a NAT `Runner` and export to Langfuse when the
+environment provides credentials. Remaining:
 broader eval dataset (30 cases). Live NIM paths (LLM tiers,
 full case runs, traced profiling) are exercised with an NGC key; the ASR/TTS
 speech NIMs use documented hosted NVCF endpoints (see

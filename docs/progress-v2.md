@@ -155,9 +155,23 @@ one startup warning, zero exporters, never a crash).
       is healthy with exactly one warning; tests/e2e pin empty `LANGFUSE_*`
       so suites never export traces even when `.env` holds real credentials
       (unguarded, the suite exported stub traces and tripled its runtime)
-- [ ] W8d: parity artifact — Langfuse trace from a live API-driven case
-      committed next to `evals/profile/`; README shows live + batch side by
-      side
+- [x] W8d: parity artifact — `scripts/smoke_live_trace.py` boots the real
+      server with live NIMs + real credentials, drives one pre-op stage run
+      through `POST /stages/preop/run`, and fetches the trace back out of
+      Langfuse; committed as `evals/traces/live-preop-trace.json`; README
+      shows the live path's Langfuse trace alongside the batch profiler
+      report. The W8a live standalone `nat run` also completed against a
+      scratch sg-0001 bundle (~22 min on the local Super-49B).
+
+The W7 lesson paid out again: the first live smoke produced a trace with the
+workflow bracket and **zero LLM observations** — invisible to every hermetic
+test. `periop_stage_run` ran the stage via `asyncio.to_thread`, so
+`traced_llm_call` pushed steps from a thread with no running event loop and
+the OTel exporter dropped every LLM span ("Cannot create export task"). The
+batch path never had the bug because `periop_pipeline` blocks the loop
+thread; the stage function now does the same (safe: the API gives each stage
+run a private per-thread loop), pinned by
+`test_stage_runs_on_the_event_loop_thread`.
 
 ## UX review against spec §6 (W4 exit criterion)
 
