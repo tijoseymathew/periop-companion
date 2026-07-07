@@ -18,6 +18,7 @@ from nat.builder.function_info import FunctionInfo
 from nat.cli.register_workflow import register_function
 from nat.data_models.function import FunctionBaseConfig
 
+import periop.nat.observability  # noqa: F401  — registers _type: periop_langfuse
 from periop.schemas import Case
 from periop.store import CaseStore
 

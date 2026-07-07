@@ -6,7 +6,9 @@ readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.12,<3.14"
 dependencies = [
-    "nvidia-nat[adk,eval,profiler]~=1.8",
+    # opentelemetry provides the langfuse exporter type (spec v2-nat §3.5);
+    # exercised at runtime only when LANGFUSE_* credentials are present
+    "nvidia-nat[adk,eval,profiler,opentelemetry]~=1.8",
     # nvidia-nat-eval 1.8.0 imports langchain_core unconditionally but does not
     # declare it (packaging gap upstream); needed for `nat eval`.
     "langchain-core>=0.3",

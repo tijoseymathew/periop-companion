@@ -5,6 +5,15 @@
 # The workflow function is registered via the `nat.components` entry point
 # in pyproject.toml (periop.nat.register).
 
+# Tracing is opt-in by environment (spec v2-nat §3.5): the periop_langfuse
+# component exports to Langfuse iff LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY /
+# LANGFUSE_BASE_URL are all set, and degrades to a warning + no-op otherwise.
+general:
+  telemetry:
+    tracing:
+      langfuse:
+        _type: periop_langfuse
+
 workflow:
   _type: periop_pipeline
   case_dir: data/cases

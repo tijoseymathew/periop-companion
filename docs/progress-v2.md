@@ -146,8 +146,15 @@ one startup warning, zero exporters, never a crash).
       awaiting-review (the NAT function saved its own copy — re-saving the
       handler's stale object would have clobbered the artifacts); UI SSE
       vocabulary unchanged (asserted + Playwright suite green untouched)
-- [ ] W8c: `apply_optional_telemetry` + `opentelemetry` extra; wired into API
-      lifespan and batch entry points; `tests/test_nat_observability.py`
+- [x] W8c: optional Langfuse tracing via the `opentelemetry` extra —
+      registered component `_type: periop_langfuse`
+      (`periop.nat.observability`) referenced by all four committed configs;
+      env decides on/off (all three vars → stock Langfuse exporter, any
+      missing → one warning + no-op exporter, asserted in
+      `tests/test_nat_observability.py`); verified boot without credentials
+      is healthy with exactly one warning; tests/e2e pin empty `LANGFUSE_*`
+      so suites never export traces even when `.env` holds real credentials
+      (unguarded, the suite exported stub traces and tripled its runtime)
 - [ ] W8d: parity artifact — Langfuse trace from a live API-driven case
       committed next to `evals/profile/`; README shows live + batch side by
       side
@@ -193,3 +200,13 @@ one startup warning, zero exporters, never a crash).
 - Regeneration after reopen is not offered: reopen returns a stage to
   review/sign-off with prior artifacts kept (§4.5's "rather than silently
   regenerated" reading). Changing inputs after generation requires a new case.
+- v2-nat §3.5 sketches an `apply_optional_telemetry(config)` helper called
+  "after `load_config`" in every entry point. The API lifespan could do that,
+  but the batch path is NAT's own CLI (`nat run` / `nat eval`) with no hook
+  between config load and workflow build — the helper could never reach it
+  without wrapper scripts. Implemented instead as a registered NAT component
+  (`_type: periop_langfuse`) that performs the identical env check at
+  exporter-build time: one credential check, one warning, one destination for
+  batch and live alike, which is the requirement the helper was drafted to
+  meet. The committed YAML block is non-secret and inert without credentials,
+  preserving §3.2's "whether tracing is on is an environment decision."

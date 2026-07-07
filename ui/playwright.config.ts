@@ -38,6 +38,11 @@ export default defineConfig({
       PERIOP_CASE_DIR: fixtureDir,
       // hermetic lifecycle e2e: the real server with instant stub artifacts
       PERIOP_STUB_RUNNER: "1",
+      // never export traces from e2e, even when .env has real credentials —
+      // empty strings survive load_dotenv and read as "tracing off"
+      LANGFUSE_PUBLIC_KEY: "",
+      LANGFUSE_SECRET_KEY: "",
+      LANGFUSE_BASE_URL: "",
     },
   },
 });

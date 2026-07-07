@@ -6,10 +6,18 @@
 #   uv run nat run --config_file configs/api.yml \
 #       --input '{"case_id": "sg-0001", "stage": "preop"}'
 #
-# Deliberately no telemetry block: exporter credentials are a deployment
-# secret, and whether tracing is on at all is an environment decision
-# (LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY / LANGFUSE_BASE_URL), not a
-# config-file decision.
+# The tracing block below is non-secret and inert without credentials:
+# _type: periop_langfuse (periop.nat.observability) reads
+# LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY / LANGFUSE_BASE_URL from the
+# environment — all set → traces export to Langfuse; any missing → one
+# startup warning and a no-op exporter. Whether tracing is on is an
+# environment decision, never a config-file one.
+
+general:
+  telemetry:
+    tracing:
+      langfuse:
+        _type: periop_langfuse
 
 workflow:
   _type: periop_stage_run
