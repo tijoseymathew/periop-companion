@@ -3,7 +3,17 @@
 An NLI-style pass on the fast model: does the cited text entail the claim,
 contradict it, or fail to support it → supported / unsupported / conflicting.
 Unsupported/conflicting claims are flagged in place, never dropped.
+
+Verdicts are independent, so the per-claim calls fan out over a bounded
+thread pool (spec v2-speed §3.3) — ``PERIOP_VERIFIER_CONCURRENCY`` tunes it
+(default 4; ``0``/``1`` = sequential, the knob for rate-limited hosted
+endpoints). The ledger is identical to the sequential version: workers
+mutate their own ``Claim`` in place and never touch artifact order.
 """
+
+import contextvars
+import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from pydantic import BaseModel, Field
 
@@ -52,6 +62,10 @@ Judge the claim's evidence, not the prediction itself:
 """
 
 
+def _concurrency() -> int:
+    return int(os.environ.get("PERIOP_VERIFIER_CONCURRENCY") or 4)
+
+
 class ClaimVerifier:
     def __init__(self, chat) -> None:
         self.chat = chat
@@ -61,14 +75,35 @@ class ClaimVerifier:
         if artifact is None:
             raise KeyError(f"no such artifact: {artifact_id}")
         prompt = FORWARD_LOOKING_PROMPT if forward_looking else PROMPT
-        for claim in artifact.claims:
-            spans = self._render_spans(case, claim)
-            verdict = self.chat.complete_structured(
-                prompt.format(claim=claim.text, spans=spans),
-                schema=VerifierVerdict,
-                system=SYSTEM,
-            )
-            claim.status = verdict.status
+
+        workers = min(_concurrency(), len(artifact.claims))
+        if workers <= 1:
+            for claim in artifact.claims:
+                self._verify_one(case, claim, prompt)
+            return
+
+        # traced_llm_call reaches NAT's step stream through contextvars, which
+        # a bare ThreadPoolExecutor does not propagate — without copy_context
+        # every verification call silently drops off the trace. One copy per
+        # task: a single Context object cannot be entered concurrently.
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = [
+                pool.submit(
+                    contextvars.copy_context().run, self._verify_one, case, claim, prompt
+                )
+                for claim in artifact.claims
+            ]
+            for future in as_completed(futures):
+                future.result()  # re-raise the first failure, same as the loop
+
+    def _verify_one(self, case: Case, claim, prompt: str) -> None:
+        spans = self._render_spans(case, claim)
+        verdict = self.chat.complete_structured(
+            prompt.format(claim=claim.text, spans=spans),
+            schema=VerifierVerdict,
+            system=SYSTEM,
+        )
+        claim.status = verdict.status
 
     @staticmethod
     def _render_spans(case: Case, claim) -> str:

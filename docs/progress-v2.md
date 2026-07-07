@@ -213,9 +213,18 @@ are measured.
       process-wide lock, thread-unique temp names) now carries every write
       that can race, pinned by a two-writer store test and the conformance
       walk.
-- [ ] W9c: ClaimVerifier bounded fan-out (`PERIOP_VERIFIER_CONCURRENCY`,
-      default 4) with contextvar propagation into worker threads so
-      verification stays traced.
+- [x] W9c: ClaimVerifier bounded fan-out (`PERIOP_VERIFIER_CONCURRENCY`,
+      default 4; `0`/`1` = sequential for rate-limited hosted endpoints).
+      Verdicts land on distinct `Claim` objects mutated in place, so the
+      ledger is byte-identical to the sequential loop (conformance test
+      green untouched). Context propagation was the real trap:
+      `traced_llm_call` reaches NAT's step stream through contextvars, which
+      a bare `ThreadPoolExecutor` drops — `contextvars.copy_context().run`
+      per task keeps all 62 calls traced, pinned by a steps-per-claim test.
+      One deviation from the spec's sketch: the copy is per *task*, not one
+      shared copy — a single `Context` object raises when two workers enter
+      it concurrently. Expected effect at defaults: 28 s → ~8 s (pre-op),
+      49 s → ~13 s (post-op); measured on the next live boot.
 - [ ] W9d: post-op's independent Super calls (HandoffComposer ∥
       PostAnesthesiaEvaluator) overlap; artifact order stays deterministic
       (handoff first). Intra-op stays sequential — IssueAnticipator reads
