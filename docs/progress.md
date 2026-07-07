@@ -93,10 +93,11 @@ resume from the first unchecked item. Conventions:
       per-tier PERIOP_{REASONING,FAST}_BASE_URL / _MODEL overrides; API key
       optional for non-hosted endpoints). Spec §8.1 added.
 - [x] configs/selfhosted.env + configs/selfhosted.yml + docs/selfhosted.md
-      (DGX Spark GB10 reference deployment: all four NIMs co-tenant,
-      KV-cache-bounded; nano needs the -dgx-spark image variant).
-- [x] Live smoke: reasoning tier verified against spark:8000 (no API key).
-- [x] TTS client (Magpie, spark:9001) → case audio rendered for sg-0001..0005
+      (deployable-locally, fully-sovereign reference deployment: all four
+      NIMs co-tenant on one local GPU box, KV-cache-bounded; nano needs the
+      local-GPU image variant).
+- [x] Live smoke: reasoning tier verified against the local endpoint (no API key).
+- [x] TTS client (Magpie, local endpoint) → case audio rendered for sg-0001..0005
 - [x] ASR path (Parakeet gRPC :50051) — periop.tools.asr: offline recognition
       w/ word timestamps, Sortformer diarization, lexicon word boosting;
       transcript_source() switches stages to ASR via PERIOP_TRANSCRIBE=asr.
@@ -137,7 +138,7 @@ resume from the first unchecked item. Conventions:
   (c) distractor leakage into notes — TODO: strengthen relevance filtering;
   (d) post-op note/handoff verification is partial — TODO: verify all artifacts.
 
-- 2026-07-05 (self-hosted session): DGX Spark co-tenancy — the 49B NIM sizes
+- 2026-07-05 (self-hosted session): local co-tenancy — the 49B NIM sizes
   its KV cache for the model's 128k window (24.5 GB) and starved the other
   three NIMs (nano crash-looped at CUDA init; ASR OOMed at inference).
   Fix: NIM_MAX_MODEL_LEN=32768 on the reasoning service (periop prompts are

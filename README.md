@@ -114,8 +114,9 @@ set -a; source configs/selfhosted.env; set +a   # edit host/ports to taste
 uv run python scripts/smoke_llm.py               # same commands as above
 ```
 
-Reference deployment (all four NIMs co-tenant on a single DGX Spark GB10,
-120 GB unified memory) is documented in `docs/selfhosted.md`.
+Reference deployment (all four NIMs co-tenant on a single local GPU box)
+— deployable locally and fully sovereign — is documented in
+`docs/selfhosted.md`.
 
 ## Provenance, made tangible
 

@@ -135,5 +135,5 @@ class TestEnv:
         assert asr_grpc_url_from_env() == "localhost:50051"
 
     def test_override(self, monkeypatch):
-        monkeypatch.setenv("PERIOP_ASR_GRPC_URL", "192.168.68.105:50051")
-        assert asr_grpc_url_from_env() == "192.168.68.105:50051"
+        monkeypatch.setenv("PERIOP_ASR_GRPC_URL", "gpu-host:50051")
+        assert asr_grpc_url_from_env() == "gpu-host:50051"

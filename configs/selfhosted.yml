@@ -8,8 +8,8 @@
 #   set -a; source configs/selfhosted.env; set +a
 #   uv run nat run --config_file configs/selfhosted.yml --input "sg-0001"
 #
-# Reference deployment: DGX Spark (GB10, 120 GB unified memory) running all
-# four NIMs via docker compose — see docs/selfhosted.md.
+# Reference deployment: one local GPU box running all four NIMs via docker
+# compose — deployable locally, fully sovereign — see docs/selfhosted.md.
 
 workflow:
   _type: periop_pipeline

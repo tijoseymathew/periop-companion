@@ -1,7 +1,7 @@
 # Evaluation reports
 
-Two committed reports, both produced against the self-hosted DGX Spark NIM
-stack (see `docs/selfhosted.md`):
+Two committed reports, both produced against the self-hosted NIM stack —
+deployable locally and fully sovereign (see `docs/selfhosted.md`):
 
 - **`report.json`** — `uv run python scripts/run_eval.py`: runs the full
   three-stage pipeline over every case in `data/cases/`, scores each against

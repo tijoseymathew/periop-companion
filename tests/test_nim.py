@@ -53,8 +53,8 @@ class TestStripReasoning:
         assert strip_reasoning("Answer.") == "Answer."
 
     def test_removes_untagged_reasoning_with_bare_close(self):
-        # Self-hosted nano NIM (nemotron-nano-9b-v2-dgx-spark) emits the
-        # reasoning stream without the opening <think> tag.
+        # Self-hosted nano NIM (nemotron-nano-9b-v2, local GPU variant) emits
+        # the reasoning stream without the opening <think> tag.
         assert strip_reasoning("Okay, the user wants ok.\n</think>\n\nok\n") == "ok"
 
 
@@ -221,15 +221,15 @@ class TestTierConfig:
         assert tier_config("fast").model == FAST_MODEL
 
     def test_generic_base_url_applies_to_both_tiers(self, monkeypatch):
-        monkeypatch.setenv("PERIOP_NIM_BASE_URL", "http://spark:8000/v1")
-        assert tier_config("reasoning").base_url == "http://spark:8000/v1"
-        assert tier_config("fast").base_url == "http://spark:8000/v1"
+        monkeypatch.setenv("PERIOP_NIM_BASE_URL", "http://gpu-host:8000/v1")
+        assert tier_config("reasoning").base_url == "http://gpu-host:8000/v1"
+        assert tier_config("fast").base_url == "http://gpu-host:8000/v1"
 
     def test_per_tier_base_url_beats_generic(self, monkeypatch):
-        monkeypatch.setenv("PERIOP_NIM_BASE_URL", "http://spark:8000/v1")
-        monkeypatch.setenv("PERIOP_FAST_BASE_URL", "http://spark:8001/v1")
-        assert tier_config("reasoning").base_url == "http://spark:8000/v1"
-        assert tier_config("fast").base_url == "http://spark:8001/v1"
+        monkeypatch.setenv("PERIOP_NIM_BASE_URL", "http://gpu-host:8000/v1")
+        monkeypatch.setenv("PERIOP_FAST_BASE_URL", "http://gpu-host:8001/v1")
+        assert tier_config("reasoning").base_url == "http://gpu-host:8000/v1"
+        assert tier_config("fast").base_url == "http://gpu-host:8001/v1"
 
     def test_model_overrides(self, monkeypatch):
         monkeypatch.setenv("PERIOP_REASONING_MODEL", "my/served-model")
@@ -270,10 +270,10 @@ class TestApiKey:
     def test_optional_for_local_endpoint(self, monkeypatch):
         monkeypatch.delenv("NGC_API_KEY", raising=False)
         monkeypatch.delenv("NVIDIA_API_KEY", raising=False)
-        key = api_key_from_env("http://spark:8000/v1")
+        key = api_key_from_env("http://gpu-host:8000/v1")
         assert key  # non-empty placeholder — local NIMs don't authenticate
 
     def test_env_key_used_when_present(self, monkeypatch):
         monkeypatch.setenv("NGC_API_KEY", "nvapi-test")
         assert api_key_from_env(NIM_BASE_URL) == "nvapi-test"
-        assert api_key_from_env("http://spark:8000/v1") == "nvapi-test"
+        assert api_key_from_env("http://gpu-host:8000/v1") == "nvapi-test"
