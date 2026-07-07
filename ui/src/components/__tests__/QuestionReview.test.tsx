@@ -49,7 +49,7 @@ describe("QuestionReview", () => {
 
   it("approve sends every untouched question as approved", async () => {
     const props = renderReview();
-    await userEvent.click(screen.getByRole("button", { name: /approve questions/i }));
+    await userEvent.click(screen.getByRole("button", { name: /approve & start interview/i }));
     expect(props.onApprove).toHaveBeenCalledWith([
       expect.objectContaining({ question: QUESTIONS[0].question, review: "approved" }),
       expect.objectContaining({ question: QUESTIONS[1].question, review: "approved" }),
@@ -59,7 +59,7 @@ describe("QuestionReview", () => {
   it("dismissed questions are kept in the payload, marked dismissed", async () => {
     const props = renderReview();
     await userEvent.click(screen.getAllByRole("button", { name: /dismiss/i })[0]);
-    await userEvent.click(screen.getByRole("button", { name: /approve questions/i }));
+    await userEvent.click(screen.getByRole("button", { name: /approve & start interview/i }));
     expect(props.onApprove).toHaveBeenCalledWith([
       expect.objectContaining({ review: "dismissed" }),
       expect.objectContaining({ review: "approved" }),
@@ -80,7 +80,7 @@ describe("QuestionReview", () => {
     await userEvent.clear(box);
     await userEvent.type(box, "When was the last aspirin dose?");
     await userEvent.click(screen.getByRole("button", { name: /done/i }));
-    await userEvent.click(screen.getByRole("button", { name: /approve questions/i }));
+    await userEvent.click(screen.getByRole("button", { name: /approve & start interview/i }));
     expect(props.onApprove).toHaveBeenCalledWith([
       expect.objectContaining({
         question: "Is the patient still taking aspirin?",
@@ -98,7 +98,7 @@ describe("QuestionReview", () => {
       "Do you smoke?",
     );
     await userEvent.click(screen.getByRole("button", { name: /^add$/i }));
-    await userEvent.click(screen.getByRole("button", { name: /approve questions/i }));
+    await userEvent.click(screen.getByRole("button", { name: /approve & start interview/i }));
     expect(props.onApprove).toHaveBeenCalledWith([
       expect.anything(),
       expect.anything(),

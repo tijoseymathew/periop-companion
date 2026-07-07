@@ -21,11 +21,11 @@ function renderForm(overrides: Partial<Parameters<typeof IntakeForm>[0]> = {}) {
 }
 
 describe("IntakeForm", () => {
-  it("opens with one plain sentence of instruction", () => {
+  it("opens ready to add a record — the typed-slot control is present", () => {
+    // the one-plain-sentence instruction is the screen header's job (StagePanel);
+    // the form itself opens on the record-adding control
     renderForm();
-    expect(
-      screen.getByText(/add the patient's records and the operative plan/i),
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText(/document type/i)).toBeInTheDocument();
   });
 
   it("offers the typed slots in clinical vocabulary", () => {

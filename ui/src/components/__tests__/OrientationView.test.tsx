@@ -36,7 +36,7 @@ function caseWithQuestions() {
 describe("OrientationView", () => {
   it("pins approved questions and conflicting claims to the top", () => {
     render(<OrientationView kase={caseWithQuestions()} onActivateRef={vi.fn()} />);
-    expect(screen.getByText(/before induction/i)).toBeInTheDocument();
+    expect(screen.getByText(/needs your attention/i)).toBeInTheDocument();
     expect(screen.getByText("Is the patient still taking aspirin?")).toBeInTheDocument();
     // the fixture's conflicting claim from the signed-off pre-op note
     expect(screen.getByText("Records list aspirin 100mg daily as current.")).toBeInTheDocument();
