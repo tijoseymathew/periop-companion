@@ -2585,6 +2585,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastapi" },
+    { name = "httpx" },
     { name = "langchain-core" },
     { name = "nvidia-nat", extra = ["adk", "eval", "opentelemetry", "profiler"] },
     { name = "nvidia-riva-client" },
@@ -2598,7 +2599,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "httpx" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
 ]
@@ -2606,6 +2606,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", specifier = ">=0.115" },
+    { name = "httpx", specifier = ">=0.27" },
     { name = "langchain-core", specifier = ">=0.3" },
     { name = "nvidia-nat", extras = ["adk", "eval", "profiler", "opentelemetry"], specifier = "~=1.8" },
     { name = "nvidia-riva-client", specifier = ">=2.26.0" },
@@ -2619,7 +2620,6 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "httpx", specifier = ">=0.27" },
     { name = "pytest", specifier = ">=8.0" },
     { name = "pytest-asyncio", specifier = ">=0.24" },
 ]
