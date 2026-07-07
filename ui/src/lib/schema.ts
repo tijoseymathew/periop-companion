@@ -117,6 +117,12 @@ export const StageStateSchema = z.object({
   signed_off_by: z.string().nullable().default(null),
   signed_off_at: z.string().nullable().default(null),
   questions_approved_at: z.string().nullable().default(null),
+  // pre-op only: background question-prep lifecycle (v2-speed §3.2)
+  gap_analysis: z
+    .enum(["pending", "running", "complete", "failed"])
+    .nullable()
+    .default(null),
+  gap_analysis_error: z.string().nullable().default(null),
   inputs_recorded_at: z.string().nullable().default(null),
   handoff_acknowledged_by: z.string().nullable().default(null),
   handoff_acknowledged_at: z.string().nullable().default(null),

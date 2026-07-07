@@ -9,6 +9,7 @@ import contextvars
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
@@ -70,10 +71,14 @@ async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
 
 
 class StageRunInput(BaseModel):
-    """Input for one live stage run — the granularity the write API calls at."""
+    """Input for one live generation — the granularity the write API calls at."""
 
     case_id: str
     stage: str
+    # "gap_analysis" runs intake question prep instead of the stage's writers
+    # (spec v2-speed §3.2) — a sibling entry so the intake call, formerly the
+    # one un-traced LLM call on the live path, executes inside the NAT session
+    mode: Literal["stage", "gap_analysis"] = "stage"
 
 
 @dataclass
@@ -132,7 +137,20 @@ async def periop_stage_run(config: PeriopStageRunConfig, _builder: Builder):
         # deliberately blocking, exactly like the batch pipeline: steps pushed
         # off the loop thread can't be exported (the OTel exporter drops them
         # with "no running event loop"), and the loop this blocks is private —
-        # the API runs each stage on a worker thread's own loop (nat_bridge)
+        # the API runs each generation on a worker thread's own loop (nat_bridge)
+        if input.mode == "gap_analysis":
+            bridge.runner.analyze_gaps(case)  # the long LLM call, on a snapshot
+
+            def merge(fresh: Case) -> None:
+                # documents uploaded while the model ran live on the fresh
+                # copy; only the questions belong to this generation
+                fresh.open_questions = case.open_questions
+
+            case = store.mutate(input.case_id, merge)
+            return (
+                f"case {case.case_id} gap analysis: "
+                f"{len(case.open_questions)} open questions"
+            )
         case = bridge.runner.run_stage(case, input.stage, case_dir, bridge.emit)
         store.save(case)
         return (

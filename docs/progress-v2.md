@@ -194,11 +194,25 @@ are measured.
       live-endpoint step, still to run; if any metric regresses past noise
       the default flips back by inverting the env check, a deploy-time
       toggle.
-- [ ] W9b: intake gap analysis off the request path — document uploads
-      return when the document is durable; the GapAnalyst runs as a
-      NAT-traced background generation with `gap_analysis` state on the
-      pre-op stage, an explicit `POST …/questions/analyze` retry, and the
-      intake screen polling until questions arrive.
+- [x] W9b: intake gap analysis off the request path — document uploads
+      return when the document is durable (the 488 s op-plan upload becomes
+      instant); the GapAnalyst runs as a background generation *inside the
+      shared NAT session* (`mode: "gap_analysis"` on `periop_stage_run`,
+      closing §1.2's observability hole — a bracket test pins it like
+      W8b's), stamped on the case as
+      `workflow.stages.preop.gap_analysis: pending → running → complete |
+      failed` (+ `gap_analysis_error`), serialized with stage runs by the
+      same `RUN_LOCK`. Explicit `POST …/questions/analyze` retry (409 once
+      questions are approved); the implicit next-upload retry preserved;
+      approving questions 409s while a re-analysis is in flight; a boot-time
+      sweep fails analyses stranded by a crash. The intake screen polls the
+      case and narrates the wait; failures name the error and offer "Try
+      again". Found while building: concurrent whole-object saves (the gap
+      worker vs the next upload) collide on the store's temp file and eat
+      each other's updates — `CaseStore.mutate` (read-modify-write under a
+      process-wide lock, thread-unique temp names) now carries every write
+      that can race, pinned by a two-writer store test and the conformance
+      walk.
 - [ ] W9c: ClaimVerifier bounded fan-out (`PERIOP_VERIFIER_CONCURRENCY`,
       default 4) with contextvar propagation into worker threads so
       verification stays traced.

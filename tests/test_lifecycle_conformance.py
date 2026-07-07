@@ -24,7 +24,7 @@ from tests.test_case_designer import make_design
 from tests.test_full_stages import ScriptedChat
 from tests.test_personas import make_persona
 from tests.test_scripts_gen import make_gold, make_interview, make_intraop
-from tests.test_workflow_api import PROVIDERS
+from tests.test_workflow_api import PROVIDERS, wait_gap
 
 
 class ScriptedChatRunner:
@@ -89,8 +89,9 @@ def _walk(client, case_root, bundle_dir, out_dir) -> Case:
         )
         assert resp.status_code == 201, resp.text
 
-    # questions arrived from the GapAnalyst; approve them unchanged
-    case = Case.model_validate(client.get(f"/api/cases/{case_id}").json())
+    # questions arrive from the GapAnalyst's background run (v2-speed §3.2);
+    # approve them unchanged once they land
+    case = wait_gap(client, case_id, "complete")
     assert case.open_questions, "GapAnalyst should have run at intake"
     reviewed = [
         {**q.model_dump(mode="json"), "review": "approved"} for q in case.open_questions

@@ -27,6 +27,7 @@ def run_stage_in_nat(
     out_dir: Path,
     case_dir: Path,
     emit: Callable[[str, dict], None],
+    mode: str = "stage",
 ) -> str:
     """Blocking; call from the worker thread. Returns the workflow result."""
     from nat.builder.runtime_event_subscriber import pull_intermediate
@@ -37,7 +38,7 @@ def run_stage_in_nat(
         _LIVE_BRIDGE.set(
             StageRunBridge(runner=runner, emit=emit, out_dir=out_dir, case_dir=case_dir)
         )
-        message = StageRunInput(case_id=case_id, stage=stage)
+        message = StageRunInput(case_id=case_id, stage=stage, mode=mode)
         async with nat_sessions.run(message) as nat_runner:
             # subscribe before the workflow starts (same shape as `nat eval`)
             steps_task = asyncio.ensure_future(pull_intermediate())
@@ -45,12 +46,32 @@ def run_stage_in_nat(
             result = await runner_task
             steps = await steps_task
         logger.info(
-            "case %s stage %s ran inside NAT: %d intermediate steps [%s]",
+            "case %s %s ran inside NAT: %d intermediate steps [%s]",
             case_id,
-            stage,
+            "gap analysis" if mode == "gap_analysis" else f"stage {stage}",
             len(steps),
             ",".join(s["payload"]["event_type"] for s in steps),
         )
         return result
 
     return asyncio.run(go())
+
+
+def run_gap_analysis_in_nat(
+    nat_sessions, runner, case_id: str, out_dir: Path, case_dir: Path
+) -> str:
+    """Blocking; call from the gap-analysis worker thread (v2-speed §3.2).
+
+    No SSE channel exists at intake — progress reaches the provider through
+    ``gap_analysis`` state on the case, which the intake screen polls.
+    """
+    return run_stage_in_nat(
+        nat_sessions,
+        runner,
+        case_id,
+        "preop",
+        out_dir,
+        case_dir,
+        lambda event, data: None,
+        mode="gap_analysis",
+    )

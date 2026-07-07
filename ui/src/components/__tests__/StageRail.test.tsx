@@ -15,6 +15,8 @@ function wf(): Workflow {
     signed_off_by: null,
     signed_off_at: null,
     questions_approved_at: null,
+    gap_analysis: null,
+    gap_analysis_error: null,
     inputs_recorded_at: null,
     handoff_acknowledged_by: null,
     handoff_acknowledged_at: null,
