@@ -64,9 +64,11 @@ v2 §7's.
 
 ## C5 — Conformance + docs
 
-- [ ] CLI lifecycle-conformance test: a full three-provider CLI walk of a
-      synthetic bundle reproduces the batch pipeline's ledger (v2 §7, CLI edition)
-- [ ] README: CLI section under the provider workflow
+- [x] CLI lifecycle-conformance test: a full three-provider CLI walk of a
+      synthetic bundle reproduces the batch pipeline's ledger (v2 §7, CLI
+      edition) — passed unmodified on first run, which is the point: the CLI
+      layer adds no behavior to fork
+- [x] README: quickstart line + "Terminal workflow (CLI)" section
 
 ## C6 — Agent skill
 

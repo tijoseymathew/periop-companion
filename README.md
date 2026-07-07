@@ -101,6 +101,9 @@ uv run python scripts/render_review.py sg-0002
 # review UI (offline): build the SPA once, then serve UI + API in one process
 (cd ui && npm install && npm run build)
 uv run python -m periop.api            # → http://localhost:8000
+
+# or drive the same provider workflow from the terminal
+uv run periop --help
 ```
 
 The server loads `.env` itself, so the `PERIOP_*` endpoint variables apply to
@@ -212,6 +215,37 @@ inputs at the point of care, instead of reviewing pre-baked bundles.
   case, creation to acknowledged handoff — against the real server with an
   instant stub runner (`PERIOP_STUB_RUNNER=1`). A recorded run:
   [docs/images/provider-workflow-demo.webm](docs/images/provider-workflow-demo.webm).
+
+### Terminal workflow (CLI)
+
+The same workflow drives from the terminal — `periop` is a thin HTTP client
+over the identical API (a running server via `--api-url`/`PERIOP_API_URL`, or
+an app auto-hosted on an ephemeral port for the life of the command, NAT
+session included, so live stage runs stay traced either way):
+
+```bash
+export PERIOP_PROVIDER=p-lim                      # acting provider (attribution)
+periop create "Hip repair"                        # → hip-repair
+periop add-document hip-repair gp-summary notes.md
+periop add-document hip-repair op-plan --text "Elective right hip repair under GA."
+periop questions hip-repair                       # GapAnalyst ran at intake
+periop approve-questions hip-repair --dismiss 2   # dismissals kept, never deleted
+periop add-audio hip-repair preop-interview interview.wav
+periop run hip-repair preop                       # streams per-agent progress
+periop show hip-repair                            # claim ledger with provenance
+periop signoff hip-repair preop
+# … intraop (p-tan), postop (p-rahman), then:
+periop ack-handoff hip-repair --provider p-rahman
+periop list                                       # the worklist, in words
+```
+
+The CLI owns no workflow logic — stage gates, error copy, and demo-case
+immutability are the API's, and failures print the server's next-action
+message verbatim. A second conformance test
+([tests/test_cli_conformance.py](tests/test_cli_conformance.py)) walks a
+synthetic bundle end-to-end through `periop` commands and asserts the ledger
+is identical to the batch pipeline's: CLI == API == batch, one seam. Build
+status: [docs/progress-cli.md](docs/progress-cli.md).
 
 The v2 stretch list shipped too:
 
