@@ -1,0 +1,16 @@
+# NAT config for the API server process (spec v2-nat §3.2).
+#
+# The FastAPI lifespan builds one long-lived session from this file so every
+# live stage run a provider triggers executes inside a real NAT Runner:
+#
+#   uv run nat run --config_file configs/api.yml \
+#       --input '{"case_id": "sg-0001", "stage": "preop"}'
+#
+# Deliberately no telemetry block: exporter credentials are a deployment
+# secret, and whether tracing is on at all is an environment decision
+# (LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY / LANGFUSE_BASE_URL), not a
+# config-file decision.
+
+workflow:
+  _type: periop_stage_run
+  case_dir: data/cases

@@ -117,6 +117,34 @@ with a live-mode boot + one real submission, not just the stub walk.
       interview questions can take a minute") instead of a silently dimmed
       button; vite dev proxy honors `PERIOP_API_PORT`
 
+## W8 — NAT-traced live runs ([specs/v2-nat.md](../specs/v2-nat.md))
+
+Close the observability gap: live stage runs from the browser execute inside a
+real NAT `Runner` (traced/profiled/exported like a batch `nat eval` row), with
+Langfuse export opt-in by environment (`LANGFUSE_PUBLIC_KEY` /
+`LANGFUSE_SECRET_KEY` / `LANGFUSE_BASE_URL` — all set → traced, any missing →
+one startup warning, zero exporters, never a crash).
+
+- [x] W8a: `periop_stage_run` NAT function (stage-sized sibling of
+      `periop_pipeline`, never fabricates a case) + `configs/api.yml`
+      (deliberately telemetry-free); JSON-string input converter so
+      `nat run --config_file configs/api.yml --input
+      '{"case_id": "sg-0001", "stage": "preop"}'` runs one stage standalone
+      (stub-mode standalone run verified; the live-NIM standalone run is
+      exercised against a scratch copy of the sg-0001 bundle so committed
+      demo cases stay untouched — result recorded under W8d);
+      `StageRunBridge`/`_LIVE_BRIDGE` contextvar seam for the API's runner +
+      SSE emit (wired in W8b)
+- [ ] W8b: API lifespan builds/holds the shared NAT `SessionManager`;
+      `stage_runs.py` worker thread runs the stage inside a NAT `Runner` via
+      the contextvar bridge; live API stage run produces
+      `WORKFLOW_START`/`WORKFLOW_END`; UI SSE vocabulary unchanged
+- [ ] W8c: `apply_optional_telemetry` + `opentelemetry` extra; wired into API
+      lifespan and batch entry points; `tests/test_nat_observability.py`
+- [ ] W8d: parity artifact — Langfuse trace from a live API-driven case
+      committed next to `evals/profile/`; README shows live + batch side by
+      side
+
 ## UX review against spec §6 (W4 exit criterion)
 
 1. **One primary action per case state** — `primaryAction()` in

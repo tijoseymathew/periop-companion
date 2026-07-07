@@ -12,7 +12,7 @@ from periop.pipeline import (
     POSTOP_NOTE_ID,
     PREOP_NOTE_ID,
 )
-from periop.schemas import Case
+from periop.schemas import Case, Chunk, Source, SourceType
 from periop.store import CaseStore
 
 
@@ -85,3 +85,62 @@ workflow:
         result = await run_workflow(config, "sg-0001")
         assert captured["case_dir"] == tmp_path / "cases" / "sg-0001"
         assert "sg-0001" in result
+
+
+# ---------------------------------------------------------- periop_stage_run
+
+
+@pytest.fixture
+def stage_config_file(tmp_path):
+    """configs/api.yml-shaped config (spec v2-nat §3.1) in stub mode."""
+    config = tmp_path / "api.yml"
+    config.write_text(
+        f"""\
+workflow:
+  _type: periop_stage_run
+  case_dir: {tmp_path / "cases"}
+  stub: true
+"""
+    )
+    return config
+
+
+def seed_case_with_document(store: CaseStore, case_id: str) -> Case:
+    """The minimum the stub runner needs: one chunked document source."""
+    case = Case(case_id=case_id)
+    case.add_source(
+        Source(
+            source_id="doc:gp-summary",
+            type=SourceType.DOCUMENT,
+            chunks=[Chunk(chunk_id="c0", text="Aspirin 100mg OD, current.")],
+        )
+    )
+    store.save(case)
+    return case
+
+
+class TestPeriopStageRun:
+    """Stage-sized NAT function: the granularity the write API calls at
+    (spec v2-nat §3.1). Same store layout as periop_pipeline."""
+
+    async def test_runs_one_stage_and_persists_case(self, stage_config_file, tmp_path):
+        store = CaseStore(tmp_path / "cases" / "_out")
+        seed_case_with_document(store, "sg-0100")
+
+        result = await run_workflow(
+            stage_config_file, '{"case_id": "sg-0100", "stage": "preop"}'
+        )
+
+        assert "sg-0100" in result and "preop" in result
+        saved = store.load("sg-0100")
+        assert saved.get_artifact(PREOP_NOTE_ID) is not None
+        # one stage ran, not the whole pipeline
+        assert saved.get_artifact(INTRAOP_RECORD_ID) is None
+
+    async def test_missing_case_fails_loudly(self, stage_config_file):
+        # unlike periop_pipeline, a stage run never fabricates a case: the
+        # write API creates cases, so an unknown id is an error, not a seed
+        with pytest.raises(Exception, match="sg-does-not-exist"):
+            await run_workflow(
+                stage_config_file, '{"case_id": "sg-does-not-exist", "stage": "preop"}'
+            )
