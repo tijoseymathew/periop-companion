@@ -30,6 +30,9 @@ dev = [
     "pytest-asyncio>=0.24",
 ]
 
+[project.scripts]
+periop = "periop.cli.main:main"
+
 [project.entry-points.'nat.components']
 periop = "periop.nat.register"
 

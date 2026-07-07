@@ -30,12 +30,14 @@ v2 §7's.
 
 ## C2 — Read commands
 
-- [ ] `periop providers` — the roster, one line per provider
-- [ ] `periop list` — the worklist: case id, label, headline stage + status in
-      words, claim counts
-- [ ] `periop show <case>` — workflow status per stage, open questions, artifacts
-      rendered with claim-level provenance (reuses `periop.cli.render`)
-- [ ] `periop` console script + `python -m periop.cli` entry point
+- [x] `periop providers` — the roster, one line per provider
+- [x] `periop list` — the worklist: case id, label, headline stage + status in
+      words (first non-signed-off stage, v2 §4; demo cases marked read-only),
+      claim counts with flagged counts
+- [x] `periop show <case>` — workflow status per stage, open questions with
+      review state, artifacts rendered with claim-level provenance (reuses
+      `periop.cli.render`)
+- [x] `periop` console script + `python -m periop.cli` entry point
 
 ## C3 — Intake commands
 
