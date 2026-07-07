@@ -104,16 +104,27 @@ def run_stage(request: Request, case_id: str, stage: str, body: RunRequest) -> S
         RUN_LOCK.release()
         raise
 
-    runner = request.app.state.runner
-    case_dir = request.app.state.case_dir / case_id
+    app_state = request.app.state
 
     def stream():
         events: queue.Queue = queue.Queue()
         outcome: dict = {}
 
         def work():
+            from periop.api.nat_bridge import run_stage_in_nat
+
             try:
-                runner.run_stage(case, stage, case_dir, lambda e, d: events.put((e, d)))
+                # the stage executes inside the shared NAT Runner (spec
+                # v2-nat §3.3) — the function loads/saves the case itself
+                run_stage_in_nat(
+                    app_state.nat_sessions,
+                    app_state.runner,
+                    case_id,
+                    stage,
+                    app_state.out_dir,
+                    app_state.case_dir,
+                    lambda e, d: events.put((e, d)),
+                )
                 outcome["ok"] = True
             except Exception as e:  # surfaced as an SSE error event
                 outcome["error"] = str(e)
@@ -129,8 +140,11 @@ def run_stage(request: Request, case_id: str, stage: str, body: RunRequest) -> S
                 yield _sse(*item)
             worker.join()
             if outcome.get("ok"):
-                state.status = StageStatus.AWAITING_REVIEW
-                store.save(case)
+                # the NAT function saved its own copy; reload before stamping
+                # so its artifacts aren't clobbered by this stale one
+                fresh = store.load(case_id)
+                fresh.workflow.stages[stage].status = StageStatus.AWAITING_REVIEW
+                store.save(fresh)
                 yield _sse("complete", {"case_id": case_id})
             else:
                 # discard partial in-memory mutations; restore the runnable state

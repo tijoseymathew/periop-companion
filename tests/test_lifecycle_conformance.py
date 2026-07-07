@@ -65,15 +65,19 @@ def walk_workflow(tmp_path, bundle_dir) -> Case:
     import json
 
     providers.write_text(json.dumps(PROVIDERS))
-    client = TestClient(
+    # lifespan-entered: stage runs execute inside the NAT session (v2-nat §3.2)
+    with TestClient(
         create_app(
             out_dir=out_dir,
             case_dir=case_root,
             providers_path=providers,
             runner=ScriptedChatRunner(),
         )
-    )
+    ) as client:
+        return _walk(client, case_root, bundle_dir, out_dir)
 
+
+def _walk(client, case_root, bundle_dir, out_dir) -> Case:
     # Dr A (pre-op clinic): create the case and paste the records
     case_id = client.post(
         "/api/cases", json={"label": "Walkthrough", "provider_id": "p-lim"}

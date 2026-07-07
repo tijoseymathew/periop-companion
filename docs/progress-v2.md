@@ -135,10 +135,17 @@ one startup warning, zero exporters, never a crash).
       demo cases stay untouched — result recorded under W8d);
       `StageRunBridge`/`_LIVE_BRIDGE` contextvar seam for the API's runner +
       SSE emit (wired in W8b)
-- [ ] W8b: API lifespan builds/holds the shared NAT `SessionManager`;
-      `stage_runs.py` worker thread runs the stage inside a NAT `Runner` via
-      the contextvar bridge; live API stage run produces
-      `WORKFLOW_START`/`WORKFLOW_END`; UI SSE vocabulary unchanged
+- [x] W8b: API lifespan builds/holds the shared NAT session
+      (`load_workflow(configs/api.yml)`); `stage_runs.py`'s worker thread runs
+      the stage inside a NAT `Runner` via `periop.api.nat_bridge` (own event
+      loop per run — NAT's documented per-request pattern) with the
+      contextvar bridge carrying runner + SSE emit; an API stage run logs its
+      intermediate-step sequence and the new `TestNatWiring` asserts
+      `WORKFLOW_START` precedes `WORKFLOW_END` (pins the direct-call bypass
+      shut); success path reloads the case from the store before stamping
+      awaiting-review (the NAT function saved its own copy — re-saving the
+      handler's stale object would have clobbered the artifacts); UI SSE
+      vocabulary unchanged (asserted + Playwright suite green untouched)
 - [ ] W8c: `apply_optional_telemetry` + `opentelemetry` extra; wired into API
       lifespan and batch entry points; `tests/test_nat_observability.py`
 - [ ] W8d: parity artifact — Langfuse trace from a live API-driven case

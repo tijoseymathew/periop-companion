@@ -10,6 +10,7 @@ demo command.
 from __future__ import annotations
 
 import os
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
@@ -19,7 +20,26 @@ from periop.api.routers import audio, cases, claim_reviews, stage_runs, stream_a
 
 DEFAULT_CASE_DIR = Path("data/cases")
 DEFAULT_PROVIDERS = Path("data/providers.json")
-UI_DIST = Path(__file__).resolve().parents[3] / "ui" / "dist"
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+UI_DIST = _REPO_ROOT / "ui" / "dist"
+NAT_CONFIG = _REPO_ROOT / "configs" / "api.yml"
+
+
+@asynccontextmanager
+async def _lifespan(app: FastAPI):
+    """One long-lived NAT session per API process (spec v2-nat §3.2).
+
+    Every live stage run executes inside this session's ``Runner`` so the
+    existing ``traced_llm_call`` instrumentation lands on a subscribed
+    intermediate-step stream instead of a no-op one. The config's own
+    ``case_dir`` never applies here — the API passes its dirs and runner
+    through the ``_LIVE_BRIDGE`` contextvar per request.
+    """
+    from nat.runtime.loader import load_workflow
+
+    async with load_workflow(NAT_CONFIG) as nat_sessions:
+        app.state.nat_sessions = nat_sessions
+        yield
 
 
 def create_app(
@@ -41,7 +61,9 @@ def create_app(
         providers_path or os.environ.get("PERIOP_PROVIDERS", DEFAULT_PROVIDERS)
     )
 
-    app = FastAPI(title="PeriOp Companion — Review API", version="0.1.0")
+    app = FastAPI(
+        title="PeriOp Companion — Review API", version="0.1.0", lifespan=_lifespan
+    )
     app.state.out_dir = out_dir
     app.state.case_dir = case_dir
     app.state.providers_path = providers_path

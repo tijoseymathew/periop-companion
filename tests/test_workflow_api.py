@@ -197,17 +197,21 @@ def runner():
 
 @pytest.fixture
 def wclient(dirs, runner):
-    """Client with a stub pipeline runner and one live + one demo case."""
+    """Client with a stub pipeline runner and one live + one demo case.
+
+    Lifespan-entered (``with``): stage runs execute inside the NAT session
+    the lifespan builds (spec v2-nat §3.2).
+    """
     out_dir, case_dir, providers = dirs
     store = CaseStore(out_dir)
     store.save(Case(case_id="sg-demo"))  # no workflow → immutable demo data
-    client = TestClient(
+    with TestClient(
         create_app(
             out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
         )
-    )
-    client.post("/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"})
-    return client
+    ) as client:
+        client.post("/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"})
+        yield client
 
 
 GP_TEXT = "# GP Summary\n\n## Medications\n\nAspirin 100mg OD, current.\n"
@@ -763,6 +767,39 @@ class TestStageRun:
         assert stored.get_artifact("note:pre-anesthesia-eval") is None
 
 
+class TestNatWiring:
+    """Spec v2-nat §5: a live API stage run executes inside a real NAT
+    ``Runner`` — WORKFLOW_START precedes WORKFLOW_END on the intermediate-step
+    stream. This pins §1's gap shut: a refactor back to calling the stage
+    functions directly would emit no workflow bracket and fail here."""
+
+    def test_stage_run_brackets_workflow_start_end(self, wclient, caplog):
+        import logging
+
+        make_preop_ready(wclient)
+        with caplog.at_level(logging.INFO, logger="periop.api.nat_bridge"):
+            resp = run_stage(wclient, "preop")
+        assert resp.status_code == 200
+        assert "event: complete" in resp.text
+        msg = next(
+            (r.getMessage() for r in caplog.records if "WORKFLOW_START" in r.getMessage()),
+            None,
+        )
+        assert msg is not None, "stage run emitted no NAT intermediate steps"
+        assert msg.index("WORKFLOW_START") < msg.index("WORKFLOW_END")
+
+    def test_sse_vocabulary_unchanged_by_nat_wrapping(self, wclient):
+        # ui.md §7 events only — NAT's stream is a parallel channel, never
+        # merged into the provider-facing SSE
+        make_preop_ready(wclient)
+        resp = run_stage(wclient, "preop")
+        names = {e for e, _ in sse_events(resp.text)}
+        assert names <= {
+            "status", "stage_start", "agent_start", "agent_end",
+            "artifact_complete", "complete", "error",
+        }
+
+
 # ------------------------------------------------- sign-off / reopen / ack
 
 
@@ -902,9 +939,12 @@ class TestStubRunnerEnv:
         review UI's provenance interactions work in e2e."""
         out_dir, case_dir, providers = dirs
         monkeypatch.setenv("PERIOP_STUB_RUNNER", "1")
-        client = TestClient(
+        with TestClient(
             create_app(out_dir=out_dir, case_dir=case_dir, providers_path=providers)
-        )
+        ) as client:
+            self._walk(client, out_dir)
+
+    def _walk(self, client, out_dir):
         client.post("/api/cases", json={"label": "Stub walk", "provider_id": "p-lim"})
         paste(client, "stub-walk", "gp-summary", GP_TEXT)
         resp = paste(client, "stub-walk", "op-plan", "# Op Plan\n\nLap chole.\n")
