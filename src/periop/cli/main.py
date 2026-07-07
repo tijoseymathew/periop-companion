@@ -16,7 +16,7 @@ from pathlib import Path
 
 import httpx
 
-from periop.cli.client import ApiError, check, open_client
+from periop.cli.client import ApiError, check, iter_sse, open_client
 from periop.cli.render import render_artifact
 from periop.schemas import Case, StageName
 
@@ -162,6 +162,91 @@ def cmd_approve_questions(client: httpx.Client, args) -> int:
     return 0
 
 
+def cmd_add_audio(client: httpx.Client, args) -> int:
+    path = Path(args.path)
+    data = {"kind": args.kind}
+    if args.provider:
+        data["provider_id"] = args.provider
+    check(
+        client.post(
+            f"/api/cases/{args.case_id}/sources/audio",
+            params={"confirm": "true"} if args.confirm else None,
+            files={"file": (path.name, path.read_bytes())},
+            data=data,
+        )
+    )
+    print(f"{args.kind} recorded for {args.case_id}")
+    return 0
+
+
+def cmd_run(client: httpx.Client, args) -> int:
+    """Stream the stage run's SSE progress as lines, not a spinner (v2 §2)."""
+    failed = None
+    with client.stream(
+        "POST",
+        f"/api/cases/{args.case_id}/stages/{args.stage}/run",
+        json={"provider_id": args.provider},
+    ) as resp:
+        if resp.status_code != 200:
+            resp.read()
+            check(resp)
+        for event, data in iter_sse(resp.iter_lines()):
+            if event == "status":
+                print(data.get("message", ""))
+            elif event == "stage_start":
+                print(f"generating the {args.stage} output …")
+            elif event == "agent_start":
+                print(f"  {data.get('agent', '?')} …")
+            elif event == "agent_end":
+                print(f"  {data.get('agent', '?')}: {data.get('summary', 'done')}")
+            elif event == "artifact_complete":
+                print(f"  ✓ {data.get('artifact_id')} ({data.get('claims', '?')} claims)")
+            elif event == "complete":
+                print(
+                    f"{args.stage} generated — review: periop show {args.case_id}, "
+                    f"then: periop signoff {args.case_id} {args.stage}"
+                )
+            elif event == "error":
+                failed = data.get("message", "stage run failed")
+    if failed:
+        print(f"error: {failed}", file=sys.stderr)
+        return 1
+    return 0
+
+
+def cmd_signoff(client: httpx.Client, args) -> int:
+    check(
+        client.post(
+            f"/api/cases/{args.case_id}/stages/{args.stage}/signoff",
+            json={"provider_id": args.provider},
+        )
+    )
+    print(f"{args.stage} signed off by {args.provider}")
+    return 0
+
+
+def cmd_reopen(client: httpx.Client, args) -> int:
+    check(
+        client.post(
+            f"/api/cases/{args.case_id}/stages/{args.stage}/reopen",
+            json={"provider_id": args.provider},
+        )
+    )
+    print(f"{args.stage} reopened for review (prior artifacts kept)")
+    return 0
+
+
+def cmd_ack_handoff(client: httpx.Client, args) -> int:
+    check(
+        client.post(
+            f"/api/cases/{args.case_id}/handoff/ack",
+            json={"provider_id": args.provider},
+        )
+    )
+    print(f"handoff acknowledged by {args.provider}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="periop",
@@ -227,6 +312,48 @@ def build_parser() -> argparse.ArgumentParser:
     )
     provider_arg(p)
     p.set_defaults(func=cmd_approve_questions)
+
+    p = sub.add_parser(
+        "add-audio",
+        help="upload a stage's audio (wav works everywhere; other formats need "
+        "ffmpeg on the server)",
+    )
+    p.add_argument("case_id")
+    p.add_argument("kind", choices=("preop-interview", "intraop-notes", "postop-interview"))
+    p.add_argument("path")
+    p.add_argument(
+        "--confirm", action="store_true",
+        help="replace an already-recorded interview (intra-op memos always append)",
+    )
+    provider_arg(p)
+    p.set_defaults(func=cmd_add_audio)
+
+    p = sub.add_parser(
+        "run",
+        help="generate a stage's output, streaming progress (runs inside the "
+        "NAT session — minutes on live NIMs)",
+    )
+    p.add_argument("case_id")
+    p.add_argument("stage", choices=("preop", "intraop", "postop"))
+    provider_arg(p)
+    p.set_defaults(func=cmd_run)
+
+    p = sub.add_parser("signoff", help="assert 'I have reviewed this stage's output'")
+    p.add_argument("case_id")
+    p.add_argument("stage", choices=("preop", "intraop", "postop"))
+    provider_arg(p)
+    p.set_defaults(func=cmd_signoff)
+
+    p = sub.add_parser("reopen", help="reopen a signed-off stage (recorded; artifacts kept)")
+    p.add_argument("case_id")
+    p.add_argument("stage", choices=("preop", "intraop", "postop"))
+    provider_arg(p)
+    p.set_defaults(func=cmd_reopen)
+
+    p = sub.add_parser("ack-handoff", help="acknowledge receipt of the PACU handoff")
+    p.add_argument("case_id")
+    provider_arg(p)
+    p.set_defaults(func=cmd_ack_handoff)
 
     return parser
 

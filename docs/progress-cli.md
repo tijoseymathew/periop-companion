@@ -53,11 +53,14 @@ v2 §7's.
 
 ## C4 — Stage commands
 
-- [ ] `periop add-audio <case> <kind> <file> [--confirm]` — wav upload,
-      normalized server-side; intra-op kind appends memos
-- [ ] `periop run <case> <stage> --provider` — streams SSE progress as
-      human-readable lines; auto-hosted runs assert the NAT bracket
-- [ ] `periop signoff / reopen / ack-handoff`
+- [x] `periop add-audio <case> <kind> <file> [--confirm]` — wav upload,
+      normalized server-side; intra-op kind appends memos; interview
+      replacement requires `--confirm` (API 409 otherwise)
+- [x] `periop run <case> <stage> --provider` — streams the ui.md §7 SSE events
+      as progress lines; the run executes inside the shared NAT `Runner`,
+      pinned by the nat_bridge WORKFLOW_START/END log bracket
+- [x] `periop signoff / reopen / ack-handoff` — three-provider walk to an
+      acknowledged handoff covered end-to-end
 
 ## C5 — Conformance + docs
 
