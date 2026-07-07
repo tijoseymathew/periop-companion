@@ -45,7 +45,12 @@ def run_intraop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None, em
     if case.get_source("audio:intraop-notes") is None and has_transcript_inputs(
         case_dir, "intraop-notes"
     ):
-        case.add_source(transcript_source(case_dir, "intraop-notes", "audio:intraop-notes"))
+        # ASR leg split out from extraction/generation on the waterfall
+        emit("agent_start", {"stage": "intraop", "agent": "VoiceNoteTranscriber"})
+        source = transcript_source(case_dir, "intraop-notes", "audio:intraop-notes")
+        case.add_source(source)
+        emit("agent_end", {"stage": "intraop", "agent": "VoiceNoteTranscriber",
+                           "summary": f"{len(source.segments)} segments"})
 
     emit("agent_start", {"stage": "intraop", "agent": "EventExtractor"})
     events = EventExtractor(fast_chat=fast_chat, reasoning_chat=chat).extract(
@@ -80,7 +85,12 @@ def run_postop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None, emi
     if case.get_source("audio:postop-interview") is None and has_transcript_inputs(
         case_dir, "postop-interview"
     ):
-        case.add_source(transcript_source(case_dir, "postop-interview", "audio:postop-interview"))
+        # ASR leg split out from handoff/eval generation on the waterfall
+        emit("agent_start", {"stage": "postop", "agent": "PostOpTranscriber"})
+        source = transcript_source(case_dir, "postop-interview", "audio:postop-interview")
+        case.add_source(source)
+        emit("agent_end", {"stage": "postop", "agent": "PostOpTranscriber",
+                           "summary": f"{len(source.segments)} segments"})
 
     # both starts announced up front; agent_end/artifact_complete arrive in
     # completion order (the UI's append-only log renders interleavings as-is)
