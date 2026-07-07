@@ -41,14 +41,9 @@ export function IntakeForm({
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl p-6">
-      <p className="text-sm text-ink-secondary">
-        Add the patient's records and the operative plan — paste text or upload
-        a file. Questions to ask at the interview will appear automatically.
-      </p>
-
+    <div className="mx-auto w-full max-w-2xl">
       {existingDocTypes.length > 0 && (
-        <ul className="mt-4 space-y-1">
+        <ul className="space-y-1">
           {DOC_SLOTS.filter((s) => existingDocTypes.includes(s.value)).map((s) => (
             <li
               key={s.value}
@@ -92,7 +87,7 @@ export function IntakeForm({
             disabled={!text.trim() || busy || !providerId}
             onClick={submit}
             data-primary-action
-            className="min-h-[44px] rounded bg-brand px-5 py-2 text-sm font-semibold text-white disabled:opacity-40"
+            className="min-h-[44px] rounded-lg bg-brand px-5 py-2 text-sm font-semibold text-ink-onBrand disabled:opacity-40"
           >
             {busy ? "Adding…" : "Add document"}
           </button>

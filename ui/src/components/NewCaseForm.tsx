@@ -48,7 +48,7 @@ export function NewCaseForm({
         <button
           type="submit"
           disabled={!ready}
-          className="min-h-[44px] flex-1 rounded bg-brand px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
+          className="min-h-[44px] flex-1 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-ink-onBrand disabled:opacity-40"
         >
           Create case
         </button>

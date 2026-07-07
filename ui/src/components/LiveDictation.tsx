@@ -161,7 +161,7 @@ export function LiveDictation({
           disabled={phase !== "idle"}
           onClick={() => void start()}
           data-primary-action
-          className="flex min-h-[56px] w-full items-center justify-center gap-2 rounded bg-brand px-5 py-3 text-base font-semibold text-white disabled:opacity-40"
+          className="flex min-h-[56px] w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3 text-base font-semibold text-ink-onBrand disabled:opacity-40"
         >
           <Mic className="h-5 w-5" aria-hidden />
           {phase === "saving"
