@@ -217,6 +217,12 @@ def reasoning_chat(**kwargs: Any) -> NimChat:
     cfg = tier_config("reasoning")
     kwargs.setdefault("model", cfg.model)
     kwargs.setdefault("base_url", cfg.base_url)
+    # Reasoning latency is proportional to completion tokens at the
+    # self-hosted decode rate, and thinking is most of the completion
+    # (2,712→~1,000 tokens on the pre-op note). PERIOP_REASONING_THINKING=1
+    # restores it for A/B runs.
+    if not os.environ.get("PERIOP_REASONING_THINKING"):
+        kwargs.setdefault("system_prefix", "/no_think")
     return NimChat(**kwargs)
 
 

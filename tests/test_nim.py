@@ -255,9 +255,32 @@ class TestFastChatThinking:
         monkeypatch.setenv("NGC_API_KEY", "test")
         assert fast_chat().system_prefix is None
 
-    def test_reasoning_tier_has_no_prefix(self, monkeypatch):
+
+class TestReasoningChatThinking:
+    """Spec v2-speed §3.1 (W9a): thinking off by default on the reasoning tier.
+
+    At the self-hosted decode rate latency is proportional to completion
+    tokens, and completion is dominated by the `<think>` stream the pipeline
+    strips — the identical pre-op note call ran 2.7× faster with `/no_think`.
+    Same mechanism and escape hatch as the fast tier.
+    """
+
+    def test_reasoning_tier_disables_thinking_by_default(self, monkeypatch):
+        monkeypatch.delenv("PERIOP_REASONING_THINKING", raising=False)
+        monkeypatch.setenv("NGC_API_KEY", "test")
+        assert reasoning_chat().system_prefix == "/no_think"
+
+    def test_reasoning_tier_thinking_reenabled_by_env(self, monkeypatch):
+        monkeypatch.setenv("PERIOP_REASONING_THINKING", "1")
         monkeypatch.setenv("NGC_API_KEY", "test")
         assert reasoning_chat().system_prefix is None
+
+    def test_caller_supplied_prefix_wins_over_the_default(self, monkeypatch):
+        # per-agent re-enablement (spec §3.1): an agent that needs thinking
+        # constructs its chat with system_prefix=None — a one-line decision
+        monkeypatch.delenv("PERIOP_REASONING_THINKING", raising=False)
+        monkeypatch.setenv("NGC_API_KEY", "test")
+        assert reasoning_chat(system_prefix=None).system_prefix is None
 
 
 class TestApiKey:

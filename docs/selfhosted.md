@@ -14,6 +14,7 @@ which is what unblocks scaling the synthetic dataset.
 | `PERIOP_REASONING_MODEL` / `PERIOP_FAST_MODEL` | Served-model name overrides |
 | `PERIOP_ASR_BASE_URL` / `PERIOP_TTS_BASE_URL` | Speech NIM HTTP endpoints (Parakeet / Magpie) |
 | `PERIOP_ASR_GRPC_URL` | Parakeet Riva gRPC endpoint (diarization + word boosting live here, not on HTTP) |
+| `PERIOP_REASONING_THINKING=1` / `PERIOP_FAST_THINKING=1` | Re-enable Nemotron reasoning (`<think>`) on a tier — both default off ([specs/v2-speed.md](../specs/v2-speed.md) §3.1); at the self-hosted decode rate thinking tokens dominate latency |
 
 `NGC_API_KEY` is only required for the hosted endpoint; local NIMs don't
 authenticate. `configs/selfhosted.env` is a sourceable endpoint set:

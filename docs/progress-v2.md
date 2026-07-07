@@ -173,6 +173,40 @@ thread; the stage function now does the same (safe: the API gives each stage
 run a private per-thread loop), pinned by
 `test_stage_runs_on_the_event_loop_thread`.
 
+## W9 — Speed ([specs/v2-speed.md](../specs/v2-speed.md))
+
+Remove the latency the application controls: a live e2e benchmark put one
+case at ~68 min, 96.6% of it inside seven Super-49B calls decoding at
+7.7 tok/s, most of those tokens `<think>` reasoning the pipeline strips.
+Serving-side throughput is the dev-rel-expt repo's spec; this workstream
+only cuts tokens and adds concurrency. Each milestone's exit includes a
+timed live boot (the W7 lesson) — numbers land in these entries as they
+are measured.
+
+- [x] W9a: `/no_think` default on the reasoning tier
+      (`periop.nim.reasoning_chat`), mirroring the fast tier's mechanism;
+      `PERIOP_REASONING_THINKING=1` restores thinking for A/B runs, and an
+      agent that needs thinking back can pass `system_prefix=None` at its
+      own callsite. Validated live before the change: the identical
+      PreOpNoteWriter call ran 129.6 s vs 349.0 s (2.7×) with a comparable
+      claim-structured note. The eval A/B gate (spec §3.1 — gold-set run
+      thinking-on vs thinking-off, both rows into `evals/report.json`) is a
+      live-endpoint step, still to run; if any metric regresses past noise
+      the default flips back by inverting the env check, a deploy-time
+      toggle.
+- [ ] W9b: intake gap analysis off the request path — document uploads
+      return when the document is durable; the GapAnalyst runs as a
+      NAT-traced background generation with `gap_analysis` state on the
+      pre-op stage, an explicit `POST …/questions/analyze` retry, and the
+      intake screen polling until questions arrive.
+- [ ] W9c: ClaimVerifier bounded fan-out (`PERIOP_VERIFIER_CONCURRENCY`,
+      default 4) with contextvar propagation into worker threads so
+      verification stays traced.
+- [ ] W9d: post-op's independent Super calls (HandoffComposer ∥
+      PostAnesthesiaEvaluator) overlap; artifact order stays deterministic
+      (handoff first). Intra-op stays sequential — IssueAnticipator reads
+      the intra-op record's claims, a real dependency.
+
 ## UX review against spec §6 (W4 exit criterion)
 
 1. **One primary action per case state** — `primaryAction()` in
