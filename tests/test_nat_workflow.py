@@ -144,3 +144,62 @@ class TestPeriopStageRun:
             await run_workflow(
                 stage_config_file, '{"case_id": "sg-does-not-exist", "stage": "preop"}'
             )
+
+    async def test_stage_runs_on_the_event_loop_thread(self, tmp_path):
+        """The runner must execute on the NAT loop thread, like the batch
+        pipeline does. Pushing intermediate steps from a foreign thread makes
+        the OTel exporter drop every LLM span ("Cannot create export task:
+        no running event loop") — found live in W8d: the smoke's Langfuse
+        trace held only the workflow bracket, zero LLM observations."""
+        import asyncio
+
+        from nat.builder.runtime_event_subscriber import pull_intermediate
+        from nat.runtime.loader import load_workflow
+
+        from periop.nat.register import _LIVE_BRIDGE, StageRunBridge, StageRunInput
+        from periop.nat.telemetry import traced_llm_call
+
+        config = tmp_path / "api.yml"
+        config.write_text(
+            f"""\
+workflow:
+  _type: periop_stage_run
+  case_dir: {tmp_path / "cases"}
+"""
+        )
+        store = CaseStore(tmp_path / "cases" / "_out")
+        seed_case_with_document(store, "sg-0300")
+        seen: dict = {}
+
+        class TracedRunner:
+            def run_stage(self, case, stage, case_dir, emit):
+                try:
+                    seen["loop"] = asyncio.get_running_loop()
+                except RuntimeError:
+                    seen["loop"] = None
+                with traced_llm_call("fake", [{"role": "user", "content": "x"}]) as rec:
+                    rec.response = None
+                return case
+
+        async with load_workflow(config) as sessions:
+            _LIVE_BRIDGE.set(
+                StageRunBridge(
+                    runner=TracedRunner(),
+                    emit=lambda e, d: None,
+                    out_dir=tmp_path / "cases" / "_out",
+                    case_dir=tmp_path / "cases",
+                )
+            )
+            async with sessions.run(
+                StageRunInput(case_id="sg-0300", stage="preop")
+            ) as runner:
+                steps_task = asyncio.ensure_future(pull_intermediate())
+                await asyncio.create_task(runner.result(to_type=str))
+                steps = await steps_task
+
+        assert seen["loop"] is not None, (
+            "run_stage executed off the event loop — exporters cannot "
+            "schedule export tasks for the steps it pushes"
+        )
+        types = [s["payload"]["event_type"] for s in steps]
+        assert "LLM_START" in types and "LLM_END" in types

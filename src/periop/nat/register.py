@@ -5,7 +5,6 @@ evaluation. This module is the seam — deliberately narrow so ADK could also
 run natively if the plugin integration ever fights us (spec §10).
 """
 
-import asyncio
 import contextvars
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -130,9 +129,11 @@ async def periop_stage_run(config: PeriopStageRunConfig, _builder: Builder):
         # id is an error here (unlike periop_pipeline's synthetic-bundle seed)
         case = store.load(input.case_id)
         case_dir = bridge.case_dir / input.case_id
-        case = await asyncio.to_thread(
-            bridge.runner.run_stage, case, input.stage, case_dir, bridge.emit
-        )
+        # deliberately blocking, exactly like the batch pipeline: steps pushed
+        # off the loop thread can't be exported (the OTel exporter drops them
+        # with "no running event loop"), and the loop this blocks is private —
+        # the API runs each stage on a worker thread's own loop (nat_bridge)
+        case = bridge.runner.run_stage(case, input.stage, case_dir, bridge.emit)
         store.save(case)
         return (
             f"case {case.case_id} stage {input.stage}: "
