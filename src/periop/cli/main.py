@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import os
 import sys
+from pathlib import Path
 
 import httpx
 
@@ -88,6 +89,79 @@ def cmd_show(client: httpx.Client, args) -> int:
     return 0
 
 
+def cmd_create(client: httpx.Client, args) -> int:
+    case = check(
+        client.post(
+            "/api/cases", json={"label": args.label, "provider_id": args.provider}
+        )
+    ).json()
+    print(case["case_id"])
+    return 0
+
+
+def _questions_ready(case: Case) -> bool:
+    return bool(
+        case.open_questions
+        and case.workflow is not None
+        and case.workflow.stages[StageName.PREOP].questions_approved_at is None
+    )
+
+
+def cmd_add_document(client: httpx.Client, args) -> int:
+    url = f"/api/cases/{args.case_id}/sources/document"
+    if args.path:
+        path = Path(args.path)
+        data = {"doc_type": args.doc_type}
+        if args.provider:
+            data["provider_id"] = args.provider
+        resp = client.post(url, files={"file": (path.name, path.read_bytes())}, data=data)
+    else:
+        # paste: --text, or stdin so records pipe straight in
+        text = args.text if args.text is not None else sys.stdin.read()
+        resp = client.post(
+            url,
+            json={"doc_type": args.doc_type, "text": text, "provider_id": args.provider},
+        )
+    case = Case.model_validate(check(resp).json())
+    source = case.get_source(f"doc:{args.doc_type}")
+    print(f"doc:{args.doc_type} added ({len(source.chunks)} chunks)")
+    if _questions_ready(case):
+        n = len(case.open_questions)
+        print(
+            f"{n} question{'s' if n != 1 else ''} ready for review — "
+            f"run: periop questions {case.case_id}"
+        )
+    return 0
+
+
+def cmd_questions(client: httpx.Client, args) -> int:
+    case = Case.model_validate(check(client.get(f"/api/cases/{args.case_id}")).json())
+    for i, q in enumerate(case.open_questions):
+        review = q.review.value if q.review else "unreviewed"
+        why = f" (why: {q.reason})" if q.reason else ""
+        print(f"{i:>3} [{review}] {q.effective_text}{why}")
+    return 0
+
+
+def cmd_approve_questions(client: httpx.Client, args) -> int:
+    resp = check(client.get(f"/api/cases/{args.case_id}"))
+    questions = resp.json()["open_questions"]
+    for i, q in enumerate(questions):
+        q["review"] = "dismissed" if i in args.dismiss else "approved"
+    check(
+        client.put(
+            f"/api/cases/{args.case_id}/questions",
+            json={"questions": questions, "provider_id": args.provider},
+        )
+    )
+    approved = len(questions) - len(args.dismiss)
+    print(
+        f"{approved} approved, {len(args.dismiss)} dismissed — "
+        "pre-op question gate passed"
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="periop",
@@ -110,6 +184,49 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("show", help="one case: stages, questions, claim ledger with provenance")
     p.add_argument("case_id")
     p.set_defaults(func=cmd_show)
+
+    def provider_arg(p: argparse.ArgumentParser) -> None:
+        p.add_argument(
+            "--provider",
+            default=os.environ.get("PERIOP_PROVIDER") or None,
+            required="PERIOP_PROVIDER" not in os.environ,
+            help="acting provider id, stamped as attribution (env: PERIOP_PROVIDER)",
+        )
+
+    p = sub.add_parser("create", help="start a case (label + acting provider)")
+    p.add_argument("label")
+    provider_arg(p)
+    p.set_defaults(func=cmd_create)
+
+    p = sub.add_parser(
+        "add-document",
+        help="add a prior record or the op plan: file (.txt/.md/.pdf), --text, or stdin",
+    )
+    p.add_argument("case_id")
+    p.add_argument(
+        "doc_type",
+        choices=("gp-summary", "med-list", "prior-anesthetic-record", "op-plan", "other"),
+    )
+    p.add_argument("path", nargs="?", help="file to upload; omit to paste --text or stdin")
+    p.add_argument("--text", help="paste the document text inline")
+    provider_arg(p)
+    p.set_defaults(func=cmd_add_document)
+
+    p = sub.add_parser("questions", help="the GapAnalyst's clarification questions")
+    p.add_argument("case_id")
+    p.set_defaults(func=cmd_questions)
+
+    p = sub.add_parser(
+        "approve-questions",
+        help="approve the question list (dismissals kept, never deleted)",
+    )
+    p.add_argument("case_id")
+    p.add_argument(
+        "--dismiss", type=int, action="append", default=[], metavar="N",
+        help="dismiss the question at this index (repeatable)",
+    )
+    provider_arg(p)
+    p.set_defaults(func=cmd_approve_questions)
 
     return parser
 
