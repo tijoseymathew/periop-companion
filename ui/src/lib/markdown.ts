@@ -2,9 +2,21 @@
  * Copy-as-Markdown rendering (ui.md §5.3): claims as a bulleted note with
  * one footnote per distinct citation carrying the exact cited span.
  */
-import { STATUS_GLYPHS } from "../components/StatusBadge";
 import { resolveRef } from "./provenance";
-import type { ArtifactRecord, Case } from "./schema";
+import type { ArtifactRecord, Case, ClaimStatus } from "./schema";
+
+/**
+ * Copy-as-text mirrors the CLI renderer's ASCII-ish glyph vocabulary (ui.md
+ * §6), kept independent of the on-screen status badge — the badge's icons are
+ * a UI design choice, this export stays in lockstep with the CLI/static HTML.
+ */
+const MD_STATUS_GLYPHS: Record<ClaimStatus, string> = {
+  supported: "✓",
+  unsupported: "?",
+  conflicting: "✗",
+  unverified: "·",
+  inference: "→",
+};
 
 function footnoteBody(kase: Case, ref: string): string {
   const hit = resolveRef(kase, ref);
@@ -28,7 +40,7 @@ export function artifactToMarkdown(kase: Case, artifact: ArtifactRecord): string
         return `[^${i + 1}]`;
       })
       .join("");
-    lines.push(`- ${STATUS_GLYPHS[claim.status]} ${claim.text}${notes ? ` ${notes}` : ""}`);
+    lines.push(`- ${MD_STATUS_GLYPHS[claim.status]} ${claim.text}${notes ? ` ${notes}` : ""}`);
   }
   if (refs.length > 0) {
     lines.push("");
