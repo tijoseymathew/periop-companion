@@ -83,9 +83,10 @@ class HandoffComposer:
                     provenance=provenance,
                 )
             )
-        artifact = ArtifactRecord(artifact_id=HANDOFF_ID, claims=claims)
-        case.add_artifact(artifact)
-        return artifact
+        # returned, not appended: the post-op stage runs this concurrently
+        # with the PostAnesthesiaEvaluator and appends both in fixed order
+        # (v2-speed §3.4), keeping the ledger deterministic
+        return ArtifactRecord(artifact_id=HANDOFF_ID, claims=claims)
 
     @staticmethod
     def _inherit_provenance(case: Case, source_claims: list[str]) -> list[str]:

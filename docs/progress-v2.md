@@ -225,10 +225,21 @@ are measured.
       shared copy — a single `Context` object raises when two workers enter
       it concurrently. Expected effect at defaults: 28 s → ~8 s (pre-op),
       49 s → ~13 s (post-op); measured on the next live boot.
-- [ ] W9d: post-op's independent Super calls (HandoffComposer ∥
-      PostAnesthesiaEvaluator) overlap; artifact order stays deterministic
-      (handoff first). Intra-op stays sequential — IssueAnticipator reads
-      the intra-op record's claims, a real dependency.
+- [x] W9d: post-op's independent Super calls (HandoffComposer ∥
+      PostAnesthesiaEvaluator) overlap — independence established, not
+      assumed: the composer reads existing signed-off claims, the evaluator
+      only `render_sources(case)`. The agents now *return* their artifacts
+      and the stage appends in fixed order (handoff first), so the ledger
+      never depends on completion order (pinned by a forced-completion-order
+      test + the conformance walk). Both `agent_start` events fire up front;
+      `agent_end`/`artifact_complete` arrive in completion order — same SSE
+      vocabulary, and the stub runner stays sequential so Playwright
+      fixtures are untouched. A failed writer fails the whole stage with no
+      partial appends. Intra-op stays sequential — IssueAnticipator renders
+      the intra-op record's claims into its prompt, a real dependency;
+      loosening it is an eval experiment, not a default. Expected effect:
+      post-op ~1,538 s → ~950–1,100 s at current decode rates (GPU-shared,
+      sub-additive); measured on the next live boot.
 
 ## UX review against spec §6 (W4 exit criterion)
 

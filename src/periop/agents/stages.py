@@ -5,8 +5,16 @@ its artifacts. `chat` is the reasoning tier; `fast_chat` is the fast tier used
 for the event-extraction first pass and claim verification. Both are injected
 (live NimChat, or stubs in tests). `emit` is an optional progress callback
 ``emit(event, data)`` feeding the SSE stream (ui.md §7).
+
+Post-op's two reasoning calls overlap (spec v2-speed §3.4): the
+HandoffComposer composes from existing signed-off claims and the
+PostAnesthesiaEvaluator reads only the case sources — neither reads the
+other's output. Intra-op stays sequential: the IssueAnticipator renders the
+intra-op record's claims into its prompt, a real data dependency.
 """
 
+import contextvars
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from periop.agents.claim_verifier import ClaimVerifier
@@ -74,21 +82,39 @@ def run_postop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None, emi
     ):
         case.add_source(transcript_source(case_dir, "postop-interview", "audio:postop-interview"))
 
+    # both starts announced up front; agent_end/artifact_complete arrive in
+    # completion order (the UI's append-only log renders interleavings as-is)
     emit("agent_start", {"stage": "postop", "agent": "HandoffComposer"})
-    HandoffComposer(chat=chat).compose(case)
-    emit("agent_end", {"stage": "postop", "agent": "HandoffComposer", "summary": f"{_claims(case, HANDOFF_ID)} claims"})
-    emit("artifact_complete", {"artifact_id": HANDOFF_ID, "claims": _claims(case, HANDOFF_ID)})
-
     emit("agent_start", {"stage": "postop", "agent": "PostAnesthesiaEvaluator"})
-    PostAnesthesiaEvaluator(chat=chat).write(case)
-    emit("agent_end", {"stage": "postop", "agent": "PostAnesthesiaEvaluator", "summary": f"{_claims(case, POSTOP_NOTE_ID)} claims"})
+    artifacts: dict[str, object] = {}
+    # copy_context per task: traced_llm_call reaches NAT's step stream
+    # through contextvars, which a bare pool would drop (v2-speed §3.3)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        futures = {
+            pool.submit(
+                contextvars.copy_context().run, HandoffComposer(chat=chat).compose, case
+            ): ("HandoffComposer", HANDOFF_ID),
+            pool.submit(
+                contextvars.copy_context().run, PostAnesthesiaEvaluator(chat=chat).write, case
+            ): ("PostAnesthesiaEvaluator", POSTOP_NOTE_ID),
+        }
+        for future in as_completed(futures):
+            agent, artifact_id = futures[future]
+            artifact = future.result()  # a failed writer fails the stage
+            artifacts[artifact_id] = artifact
+            emit("agent_end", {"stage": "postop", "agent": agent, "summary": f"{len(artifact.claims)} claims"})
+            emit("artifact_complete", {"artifact_id": artifact_id, "claims": len(artifact.claims)})
+
+    # the agents return their artifacts; the stage appends in fixed order —
+    # handoff first — so the ledger never depends on completion order
+    case.add_artifact(artifacts[HANDOFF_ID])
+    case.add_artifact(artifacts[POSTOP_NOTE_ID])
 
     emit("agent_start", {"stage": "postop", "agent": "ClaimVerifier"})
     verifier = ClaimVerifier(chat=fast_chat)
     verifier.verify(case, HANDOFF_ID)
     verifier.verify(case, POSTOP_NOTE_ID)
     emit("agent_end", {"stage": "postop", "agent": "ClaimVerifier", "summary": "verified"})
-    emit("artifact_complete", {"artifact_id": POSTOP_NOTE_ID, "claims": _claims(case, POSTOP_NOTE_ID)})
     return case
 
 
