@@ -72,5 +72,8 @@ v2 §7's.
 
 ## C6 — Agent skill
 
-- [ ] `.agents/skills/` SKILL.md (NVIDIA/NemoClaw style) teaching a coding agent
-      to drive the workflow CLI end-to-end
+- [x] `.agents/skills/periop-provider-workflow/SKILL.md` (NVIDIA/NemoClaw
+      style: frontmatter with trigger keywords + Apache-2.0, prerequisites,
+      numbered steps, common mistakes) teaching a coding agent to drive the
+      workflow CLI end-to-end — drop-in ready for a NemoClaw
+      `.agents/skills/` directory

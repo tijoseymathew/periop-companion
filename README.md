@@ -247,6 +247,11 @@ synthetic bundle end-to-end through `periop` commands and asserts the ledger
 is identical to the batch pipeline's: CLI == API == batch, one seam. Build
 status: [docs/progress-cli.md](docs/progress-cli.md).
 
+An agent skill —
+[.agents/skills/periop-provider-workflow/SKILL.md](.agents/skills/periop-provider-workflow/SKILL.md),
+written in the [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw) skills
+style — teaches coding-agent harnesses to drive this workflow themselves.
+
 The v2 stretch list shipped too:
 
 - **Live intra-op dictation** — the theatre screen is dictation-first: mic
