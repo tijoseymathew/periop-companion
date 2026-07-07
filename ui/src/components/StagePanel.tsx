@@ -1,10 +1,11 @@
 /**
- * The center-pane capture screen for a live case's stage before its
- * artifacts exist (spec v2 §6). Dispatches on the one primary action: every
- * screen opens with one plain sentence and exactly one dominant button, and
- * failures say what to do next.
+ * The capture / generate / orientation sub-screens for an open case (brief §4).
+ * Screen-driven: the stepper decides which sub-screen is shown; this component
+ * renders it with the same one-plain-sentence + one-primary-action treatment,
+ * and failures say what to do next. The Review / Sign-off / Handoff screens are
+ * rendered by App, not here.
  */
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import {
   addDocumentText,
   fetchCase,
@@ -14,12 +15,13 @@ import {
 } from "../lib/api";
 import type { Case, OpenQuestion, StageKey } from "../lib/schema";
 import { streamStageRun, type RunEvent } from "../lib/sse";
-import { STATUS_WORDS, type PrimaryAction } from "../lib/workflow";
+import { GENERATE_LABELS, type SubScreen } from "../lib/workflow";
 import { IntakeForm } from "./IntakeForm";
 import { LiveDictation } from "./LiveDictation";
 import { OrientationView } from "./OrientationView";
 import { QuestionReview } from "./QuestionReview";
 import { Recorder } from "./Recorder";
+import { RunProgress } from "./RunProgress";
 
 const AUDIO_KIND: Record<StageKey, string> = {
   preop: "preop-interview",
@@ -27,38 +29,61 @@ const AUDIO_KIND: Record<StageKey, string> = {
   postop: "postop-interview",
 };
 
-const CAPTURE_SENTENCES: Record<StageKey, string> = {
-  preop: "Questions approved. Record or upload the patient interview.",
-  intraop: "Dictate voice notes through the case — as many as needed.",
-  postop: "Record or upload the recovery-room interview with the patient.",
+const STAGE_WORD: Record<StageKey, string> = {
+  preop: "PRE-OP",
+  intraop: "INTRA-OP",
+  postop: "POST-OP",
 };
 
-const GENERATE_SENTENCES: Record<StageKey, string> = {
-  preop: "Interview recorded. Generate the pre-op note when ready.",
-  intraop: "Memos recorded. Generate the intra-op record when the case is done.",
-  postop: "Interview recorded. Generate the PACU handoff and post-op note.",
-};
+function ScreenHeader({
+  kase,
+  stage,
+  title,
+  sentence,
+  action,
+}: {
+  kase: Case;
+  stage: StageKey;
+  title: string;
+  sentence: string;
+  action?: ReactNode;
+}) {
+  return (
+    <div className="flex flex-none items-start justify-between gap-6 border-b border-surface-overlay px-8 py-5">
+      <div>
+        <div className="mb-1.5 font-mono text-[11px] tracking-wide text-ink-subtle">
+          {kase.case_id} · {(kase.label ?? "").toUpperCase()} · {STAGE_WORD[stage]}
+        </div>
+        <h1 className="text-[23px] font-semibold tracking-tight">{title}</h1>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-secondary">{sentence}</p>
+      </div>
+      {action}
+    </div>
+  );
+}
 
 export function StagePanel({
   kase,
   me,
   stage,
-  action,
+  screen,
   onCaseUpdated,
   onActivateRef,
+  onNavigate,
+  onWorklist,
 }: {
   kase: Case;
   me: string | null;
-  /** the stage the provider is looking at (the rail selection) */
   stage: StageKey;
-  /** the case's one primary action, when it belongs to this stage */
-  action: PrimaryAction | null;
+  /** the sub-screen the stepper selected */
+  screen: SubScreen;
   onCaseUpdated: (updated: Case) => void;
   onActivateRef: (ref: string) => void;
+  onNavigate: (screen: SubScreen) => void;
+  onWorklist: () => void;
 }) {
   const [error, setError] = useState<string | null>(null);
   const [progress, setProgress] = useState<RunEvent[] | null>(null);
-  // live dictation degraded (mic/socket/ASR) — fall back to the memo recorder
   const [dictationProblem, setDictationProblem] = useState<string | null>(null);
 
   async function guard<T>(work: () => Promise<T>): Promise<T | undefined> {
@@ -74,10 +99,13 @@ export function StagePanel({
     }
   }
 
-  async function captureAudio(file: File) {
+  async function captureAudio(file: File, advance = false) {
     if (!me) return;
     const updated = await guard(() => uploadAudio(kase.case_id, AUDIO_KIND[stage], file, me));
-    if (updated) onCaseUpdated(updated);
+    if (updated) {
+      onCaseUpdated(updated);
+      if (advance) onNavigate("generate");
+    }
   }
 
   async function generate() {
@@ -89,9 +117,9 @@ export function StagePanel({
         setProgress((events) => [...(events ?? []), event]),
       );
       onCaseUpdated(await fetchCase(kase.case_id));
+      onNavigate("review");
     } catch (e) {
       setError(`${(e as Error).message} — the case is unchanged; try again.`);
-      // refresh so the stage status (restored server-side) is honest
       const fresh = await fetchCase(kase.case_id).catch(() => null);
       if (fresh) onCaseUpdated(fresh);
     } finally {
@@ -99,187 +127,267 @@ export function StagePanel({
     }
   }
 
-  const memoRecorder = (
-    <Recorder label="Record voice memo" filename="intraop-memo" onUpload={captureAudio} />
+  const errorBanner = error && (
+    <p className="mx-8 mt-4 rounded-lg border border-status-conflicting/50 bg-status-conflicting/10 p-3 text-sm text-status-conflicting">
+      {error}
+    </p>
   );
 
+  const needsProvider = !me && (
+    <p className="px-8 text-xs text-status-unsupported">
+      Choose your name in the top-right picker first.
+    </p>
+  );
+
+  if (progress !== null) {
+    return (
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        <ScreenHeader
+          kase={kase}
+          stage={stage}
+          title={`Generating the ${GENERATE_LABELS[stage].replace(/^Generate /, "")}`}
+          sentence="This can take a few minutes. It's safe to leave this page — we'll keep everything and notify you when it's ready."
+        />
+        <RunProgress stage={stage} events={progress} onWorklist={onWorklist} />
+      </div>
+    );
+  }
+
   const body = (() => {
-    if (progress !== null) {
-      return <RunProgress stage={stage} events={progress} />;
-    }
-    switch (action?.kind) {
-      case "add-records":
+    switch (screen) {
+      case "orientation":
         return (
-          <IntakeForm
-            providerId={me}
-            existingDocTypes={kase.sources
-              .filter((s) => s.type === "document")
-              .map((s) => s.source_id.replace(/^doc:/, ""))}
-            onAddText={async (docType, text) => {
-              if (!me) return;
-              const updated = await guard(() =>
-                addDocumentText(kase.case_id, docType, text, me),
-              );
-              if (updated) onCaseUpdated(updated);
-            }}
-            onUploadFile={async (docType, file) => {
-              if (!me) return;
-              const updated = await guard(() =>
-                uploadDocumentFile(kase.case_id, docType, file, me),
-              );
-              if (updated) onCaseUpdated(updated);
-            }}
-          />
-        );
-      case "review-questions":
-        return (
-          <QuestionReview
-            questions={kase.open_questions}
-            onActivateRef={onActivateRef}
-            onApprove={async (reviewed: OpenQuestion[]) => {
-              if (!me) return;
-              const updated = await guard(() =>
-                reviewQuestions(kase.case_id, reviewed, me),
-              );
-              if (updated) onCaseUpdated(updated);
-            }}
-          />
-        );
-      case "record-interview":
-        return (
-          <div className="mx-auto w-full max-w-2xl space-y-4 p-6">
-            <p className="text-sm text-ink-secondary">{CAPTURE_SENTENCES[stage]}</p>
-            <Recorder
-              label={action.label}
-              filename={AUDIO_KIND[stage]}
-              onUpload={captureAudio}
+          <>
+            <ScreenHeader
+              kase={kase}
+              stage={stage}
+              title="Before you touch this patient"
+              sentence="Everything unresolved is pinned to the top. Read that first — then the key facts below."
+              action={
+                <button
+                  type="button"
+                  onClick={() => onNavigate("review")}
+                  className="min-h-[44px] flex-none rounded-lg border border-surface-line px-4 py-2.5 text-sm font-medium text-ink-primary hover:border-brand hover:text-brand"
+                >
+                  Open full record →
+                </button>
+              }
             />
-            {!me && (
-              <p className="text-xs text-status-unsupported">
-                Choose your name in the top-right picker first.
-              </p>
-            )}
-          </div>
-        );
-      case "record-memo":
-        // intra-op is dictation-first (v2 §2 stretch): live transcript while
-        // speaking; any failure degrades to the memo recorder (v2 §10)
-        return (
-          <div className="mx-auto w-full max-w-2xl space-y-4 p-6">
-            <OrientationView kase={kase} onActivateRef={onActivateRef} />
-            <p className="text-sm text-ink-secondary">{CAPTURE_SENTENCES.intraop}</p>
-            {me && !dictationProblem ? (
-              <>
-                <LiveDictation
-                  caseId={kase.case_id}
-                  providerId={me}
-                  onSaved={() => {
-                    void fetchCase(kase.case_id).then(onCaseUpdated).catch(() => {});
-                  }}
-                  onUnavailable={setDictationProblem}
-                />
-                <details className="text-sm text-ink-secondary">
-                  <summary className="cursor-pointer">Prefer a memo or an upload?</summary>
-                  <div className="mt-2">{memoRecorder}</div>
-                </details>
-              </>
-            ) : (
-              <>
-                {dictationProblem && (
-                  <p className="text-sm text-status-unsupported">{dictationProblem}</p>
-                )}
-                {memoRecorder}
-              </>
-            )}
-            {!me && (
-              <p className="text-xs text-status-unsupported">
-                Choose your name in the top-right picker first.
-              </p>
-            )}
-          </div>
-        );
-      case "generate":
-        return (
-          <div className="mx-auto w-full max-w-2xl space-y-4 p-6">
-            {stage === "intraop" && (
+            <div className="min-h-0 flex-1 overflow-y-auto px-8 py-6">
               <OrientationView kase={kase} onActivateRef={onActivateRef} />
-            )}
-            <p className="text-sm text-ink-secondary">{GENERATE_SENTENCES[stage]}</p>
-            <button
-              type="button"
-              disabled={!me}
-              data-primary-action
-              onClick={() => void generate()}
-              className="min-h-[56px] w-full rounded bg-brand px-5 py-3 text-base font-semibold text-white disabled:opacity-40"
-            >
-              {action.label}
-            </button>
-            <p className="text-xs text-ink-subtle">
-              Generation takes a few minutes. You can leave this case and come
-              back — the worklist shows when it is ready to review.
-            </p>
-            {stage === "intraop" && (
-              <details className="text-sm text-ink-secondary">
-                <summary className="cursor-pointer">Record another memo</summary>
-                <div className="mt-2">{memoRecorder}</div>
-              </details>
-            )}
-          </div>
+            </div>
+          </>
         );
-      case "generating":
+
+      case "intake":
         return (
-          <div className="flex flex-1 items-center justify-center p-8">
-            <p className="text-sm text-ink-secondary">
-              Generating — progress appears here; it is safe to leave and return.
-            </p>
-          </div>
+          <>
+            <ScreenHeader
+              kase={kase}
+              stage={stage}
+              title="Records intake"
+              sentence="Add the patient's prior records below. When you're ready, generate the clarifying questions."
+              action={
+                <button
+                  type="button"
+                  onClick={() => onNavigate("questions")}
+                  className="min-h-[44px] flex-none rounded-lg border border-surface-line px-4 py-2.5 text-sm font-medium text-ink-primary hover:border-brand hover:text-brand"
+                >
+                  Find gaps in the record →
+                </button>
+              }
+            />
+            <div className="min-h-0 flex-1 overflow-y-auto px-8 py-6">
+              <IntakeForm
+                providerId={me}
+                existingDocTypes={kase.sources
+                  .filter((s) => s.type === "document")
+                  .map((s) => s.source_id.replace(/^doc:/, ""))}
+                onAddText={async (docType, text) => {
+                  if (!me) return;
+                  const updated = await guard(() => addDocumentText(kase.case_id, docType, text, me));
+                  if (updated) onCaseUpdated(updated);
+                }}
+                onUploadFile={async (docType, file) => {
+                  if (!me) return;
+                  const updated = await guard(() =>
+                    uploadDocumentFile(kase.case_id, docType, file, me),
+                  );
+                  if (updated) onCaseUpdated(updated);
+                }}
+              />
+            </div>
+          </>
         );
+
+      case "questions":
+        return (
+          <>
+            <ScreenHeader
+              kase={kase}
+              stage={stage}
+              title="Clarifying questions"
+              sentence="We found gaps in the record. Review them before you interview the patient — dismiss, edit, or add your own, then approve."
+            />
+            <div className="min-h-0 flex-1 overflow-y-auto px-8 py-6">
+              <QuestionReview
+                questions={kase.open_questions}
+                onActivateRef={onActivateRef}
+                onApprove={async (reviewed: OpenQuestion[]) => {
+                  if (!me) return;
+                  const updated = await guard(() => reviewQuestions(kase.case_id, reviewed, me));
+                  if (updated) {
+                    onCaseUpdated(updated);
+                    onNavigate("record");
+                  }
+                }}
+              />
+            </div>
+          </>
+        );
+
+      case "record":
+        return (
+          <>
+            <ScreenHeader
+              kase={kase}
+              stage={stage}
+              title={stage === "postop" ? "Post-op interview" : "Pre-op interview"}
+              sentence="Recording your conversation with the patient. Tap Stop when you're finished."
+            />
+            <div className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-8 py-6">
+              <Recorder
+                variant="primary"
+                label={stage === "postop" ? "Record post-op interview" : "Record interview"}
+                filename={AUDIO_KIND[stage]}
+                onUpload={(file) => captureAudio(file, true)}
+              />
+              {needsProvider}
+            </div>
+          </>
+        );
+
+      case "intraop":
+        return (
+          <>
+            <ScreenHeader
+              kase={kase}
+              stage="intraop"
+              title="Intra-op — voice memos"
+              sentence="Hold the button and speak a quick note. Each memo stacks into one running timeline."
+              action={
+                <button
+                  type="button"
+                  onClick={() => onNavigate("generate")}
+                  className="min-h-[44px] flex-none rounded-lg border border-surface-line px-4 py-2.5 text-sm font-medium text-ink-primary hover:border-brand hover:text-brand"
+                >
+                  Done — generate record →
+                </button>
+              }
+            />
+            <div className="min-h-0 flex-1 overflow-y-auto px-8 py-6">
+              <div className="mx-auto w-full max-w-3xl space-y-4">
+                {me && !dictationProblem ? (
+                  <>
+                    <LiveDictation
+                      caseId={kase.case_id}
+                      providerId={me}
+                      onSaved={() => {
+                        void fetchCase(kase.case_id).then(onCaseUpdated).catch(() => {});
+                      }}
+                      onUnavailable={setDictationProblem}
+                    />
+                    <details className="text-sm text-ink-secondary">
+                      <summary className="cursor-pointer">Prefer a memo or an upload?</summary>
+                      <div className="mt-2">
+                        <Recorder
+                          label="Record voice memo"
+                          filename="intraop-memo"
+                          onUpload={(f) => captureAudio(f)}
+                        />
+                      </div>
+                    </details>
+                  </>
+                ) : (
+                  <>
+                    {dictationProblem && (
+                      <p className="text-sm text-status-unsupported">{dictationProblem}</p>
+                    )}
+                    <Recorder
+                      label="Record voice memo"
+                      filename="intraop-memo"
+                      onUpload={(f) => captureAudio(f)}
+                    />
+                  </>
+                )}
+                {needsProvider}
+              </div>
+            </div>
+          </>
+        );
+
+      case "generate": {
+        const generated = kase.artifacts.some(
+          (a) =>
+            a.artifact_id ===
+            ({ preop: "note:pre-anesthesia-eval", intraop: "record:intra-op", postop: "note:pacu-handoff" } as const)[
+              stage
+            ],
+        );
+        return (
+          <>
+            <ScreenHeader
+              kase={kase}
+              stage={stage}
+              title={GENERATE_LABELS[stage].replace(/^Generate /, "Generate the ")}
+              sentence="After inputs exist, generate the note. It takes a few minutes — it's safe to leave and come back."
+            />
+            <div className="min-h-0 flex-1 overflow-y-auto px-8 py-6">
+              <div className="mx-auto w-full max-w-2xl space-y-4">
+                {generated ? (
+                  <div className="rounded-xl border border-brand/20 bg-brand/[0.07] p-4 text-sm text-brand-soft">
+                    This note is already generated.{" "}
+                    <button type="button" onClick={() => onNavigate("review")} className="underline">
+                      Open the review →
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      disabled={!me}
+                      data-primary-action
+                      onClick={() => void generate()}
+                      className="min-h-[56px] w-full rounded-lg bg-brand px-5 py-3 text-base font-semibold text-ink-onBrand hover:bg-brand-soft disabled:opacity-40"
+                    >
+                      {GENERATE_LABELS[stage]}
+                    </button>
+                    <p className="text-xs text-ink-subtle">
+                      Generation takes a few minutes. You can leave this case and come back — the
+                      worklist shows when it is ready to review.
+                    </p>
+                    {needsProvider}
+                  </>
+                )}
+              </div>
+            </div>
+          </>
+        );
+      }
+
       default:
         return (
           <div className="flex flex-1 items-center justify-center p-8">
-            <p className="text-sm text-ink-secondary">
-              This stage is{" "}
-              {kase.workflow ? STATUS_WORDS[kase.workflow.stages[stage].status] : "read-only"}.
-            </p>
+            <p className="text-sm text-ink-secondary">Nothing to show for this step yet.</p>
           </div>
         );
     }
   })();
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
-      {error && (
-        <p className="mx-6 mt-4 rounded border border-status-conflicting/50 p-3 text-sm text-status-conflicting">
-          {error}
-        </p>
-      )}
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+      {errorBanner}
       {body}
-    </div>
-  );
-}
-
-/** SSE progress rendering (ui.md §7): per-agent progress, not a spinner. */
-function RunProgress({ stage, events }: { stage: StageKey; events: RunEvent[] }) {
-  return (
-    <div className="mx-auto w-full max-w-2xl p-6" data-testid="run-progress">
-      <p className="text-sm text-ink-secondary">
-        Generating the {stage === "preop" ? "pre-op note" : stage === "intraop" ? "intra-op record" : "handoff and post-op note"}
-        … this takes a few minutes.
-      </p>
-      <ul className="mt-3 space-y-1.5 font-mono text-xs text-ink-secondary">
-        {events.map((event, i) => (
-          <li key={i}>
-            {event.event === "agent_start" && `▸ ${event.data.agent} working…`}
-            {event.event === "agent_end" &&
-              `✓ ${event.data.agent} — ${event.data.summary ?? "done"}`}
-            {event.event === "artifact_complete" &&
-              `✓ ${event.data.artifact_id} (${event.data.claims} claims)`}
-            {event.event === "status" && String(event.data.message ?? "")}
-            {event.event === "stage_start" && `stage: ${event.data.stage}`}
-            {event.event === "complete" && "complete — loading the review…"}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

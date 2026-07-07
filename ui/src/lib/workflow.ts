@@ -55,7 +55,7 @@ export interface PrimaryAction {
   label: string;
 }
 
-const GENERATE_LABELS: Record<StageKey, string> = {
+export const GENERATE_LABELS: Record<StageKey, string> = {
   preop: "Generate pre-op note",
   intraop: "Generate intra-op record",
   postop: "Generate handoff & post-op note",
@@ -130,6 +130,96 @@ export function primaryAction(kase: Case): PrimaryAction | null {
   }
 
   return { kind: "sign-off", stage, label: SIGNOFF_LABELS[stage] };
+}
+
+// ---- stepper sub-navigation (design: substep pills) -------------------------
+
+/** The screens reachable within an open case (the stepper's substep pills). */
+export type SubScreen =
+  | "intake"
+  | "questions"
+  | "record"
+  | "generate"
+  | "review"
+  | "signoff"
+  | "handoff"
+  | "intraop"
+  | "orientation";
+
+/** Ordered substep pills per stage. Labels are clinical, never enum values. */
+export const STAGE_SUBSTEPS: Record<StageKey, { key: SubScreen; label: string }[]> = {
+  preop: [
+    { key: "intake", label: "Records intake" },
+    { key: "questions", label: "Clarifying questions" },
+    { key: "record", label: "Pre-op interview" },
+    { key: "generate", label: "Generate note" },
+    { key: "review", label: "Review & claims" },
+    { key: "signoff", label: "Sign off" },
+  ],
+  intraop: [
+    { key: "intraop", label: "Voice memos" },
+    { key: "generate", label: "Generate record" },
+    { key: "review", label: "Review & claims" },
+    { key: "signoff", label: "Sign off" },
+  ],
+  postop: [
+    { key: "record", label: "Post-op interview" },
+    { key: "generate", label: "Generate handoff" },
+    { key: "handoff", label: "PACU handoff" },
+    { key: "signoff", label: "Sign off" },
+  ],
+};
+
+const ACTION_SUBSCREEN: Record<PrimaryActionKind, SubScreen> = {
+  "add-records": "intake",
+  "review-questions": "questions",
+  "record-interview": "record",
+  "record-memo": "intraop",
+  generate: "generate",
+  generating: "generate",
+  "acknowledge-handoff": "handoff",
+  "sign-off": "review",
+};
+
+/** Which stage a case's newest artifact belongs to (fallback for demo cases). */
+function newestStageWithArtifacts(kase: Case): StageKey | null {
+  const has = (id: string) => kase.artifacts.some((a) => a.artifact_id === id);
+  if (has("note:pacu-handoff") || has("note:post-anesthesia-eval")) return "postop";
+  if (has("record:intra-op") || has("note:anticipated-issues")) return "intraop";
+  if (has("note:pre-anesthesia-eval")) return "preop";
+  return null;
+}
+
+/**
+ * Where a freshly-opened case lands: the screen of its one live primary action
+ * (brief §4.9). Complete or demo (read-only) cases land on their most advanced
+ * note. Stepper pills override this afterward.
+ */
+export function defaultSubScreen(kase: Case): { stage: StageKey; screen: SubScreen } {
+  const action = primaryAction(kase);
+  if (action) return { stage: action.stage, screen: ACTION_SUBSCREEN[action.kind] };
+  const stage = headlineStage(kase.workflow) ?? newestStageWithArtifacts(kase) ?? "preop";
+  return { stage, screen: stage === "postop" ? "handoff" : "review" };
+}
+
+/** Per-stage node state for the stepper (done / current / todo). */
+export type StageNodeState = "done" | "current" | "todo";
+
+export function stageNodeState(kase: Case, stage: StageKey): StageNodeState {
+  const wf = kase.workflow;
+  if (!wf) {
+    // demo/read-only: a stage is "done" if it produced artifacts
+    return newestStageWithArtifacts(kase) === stage ||
+      STAGE_KEYS.indexOf(stage) < STAGE_KEYS.indexOf(newestStageWithArtifacts(kase) ?? "preop")
+      ? "done"
+      : "todo";
+  }
+  if (wf.stages[stage].status === "signed_off") return "done";
+  const head = headlineStage(wf);
+  if (!head) return "done"; // complete
+  const cur = STAGE_KEYS.indexOf(head);
+  const i = STAGE_KEYS.indexOf(stage);
+  return i < cur ? "done" : i === cur ? "current" : "todo";
 }
 
 // ---- worklist filters (v2 §6.8, "my cases" §2 stretch) ----------------------
