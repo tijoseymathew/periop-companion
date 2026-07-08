@@ -46,7 +46,8 @@ def evaluate_case(
 ) -> CaseReport:
     """Score one case. ``matches`` compares claim/distractor statements;
     ``matches_questions`` compares gap-analysis questions (questions need a
-    same-issue judgment, not a same-fact one — defaults to ``matches``)."""
+    would-it-elicit-the-same-information judgment, not a same-fact one —
+    defaults to ``matches``)."""
     preop = case.get_artifact(PREOP_NOTE_ID) or _empty()
     handoff = case.get_artifact(HANDOFF_ID) or _empty()
     gap = metrics.gap_analysis_prf(

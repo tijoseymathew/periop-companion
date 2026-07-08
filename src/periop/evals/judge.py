@@ -11,9 +11,14 @@ Two prompts, one per comparison mode. Claims are *statements*, so the fact
 prompt asks whether they assert the same fact. Gap-analysis questions are not
 statements — asked whether two equivalent questions "express the same fact",
 the model correctly answers NO, which pinned gap_f1 at 0 for every run. The
-question prompt instead asks whether they probe the same clinical issue,
-tolerating generic-vs-specific phrasing (gold's "stopped or changed any
-medications?" vs a generated question naming the five listed drugs).
+question prompt instead asks directionally whether answering the generated
+question would surface what the gold probe seeks: that credits
+generic-vs-specific phrasing (gold's "stopped or changed any medications?" vs
+a generated question naming the five listed drugs) while rejecting a question
+that merely *mentions* a related detail (an "update on your GERD since
+omeprazole was discontinued?" question does not cover a med-change probe —
+that exact pair was the one false positive of a symmetric "same issue"
+prompt).
 """
 
 import re
@@ -33,21 +38,22 @@ Answer YES if they assert the same fact, otherwise NO. Answer with one word.
 """
 
 SYSTEM_QUESTIONS = (
-    "You judge whether two clinical interview questions probe the same issue. "
+    "You judge whether one clinical interview question covers another. "
     "Answer only YES or NO. Ignore phrasing, register, and level of detail; "
-    "judge what the question is trying to find out."
+    "judge what information each question would elicit from the patient."
 )
 
 PROMPT_QUESTIONS = """\
-Do these two pre-anesthesia interview questions probe the same clinical issue?
+Would a patient's full answer to question A also give the interviewer the
+information question B asks for?
 
 A: {a}
 B: {b}
 
-One question may be generic where the other names specific items (drugs, dates,
-conditions); that still counts as the same issue if a patient's answers to both
-would surface the same information. Answer YES if they probe the same issue,
-otherwise NO. Answer with one word.
+A may be broader or more specific than B; answer YES only if answering A would
+surface what B seeks. A question that merely mentions a related detail (a
+drug, a date, a condition) while actually asking about something else does not
+cover B. Answer YES or NO, one word.
 """
 
 
@@ -79,5 +85,5 @@ class LlmJudge:
         return self._judge("fact", PROMPT, SYSTEM, pred, gold)
 
     def matches_questions(self, pred: str, gold: str) -> bool:
-        """Question equivalence: do the two questions probe the same issue?"""
+        """Question coverage: would answering ``pred`` surface what ``gold`` seeks?"""
         return self._judge("question", PROMPT_QUESTIONS, SYSTEM_QUESTIONS, pred, gold)

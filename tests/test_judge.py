@@ -46,7 +46,7 @@ class TestLlmJudgeQuestions:
     def test_uses_question_prompt(self):
         judge = LlmJudge(chat=FakeChat(["yes"]))
         judge.matches_questions("Any med changes?", "Stopped any medications?")
-        assert "probe the same clinical issue" in judge.chat.calls[0]
+        assert "answer to question A" in judge.chat.calls[0]
         assert "Any med changes?" in judge.chat.calls[0]
 
     def test_parses_verdict(self):
