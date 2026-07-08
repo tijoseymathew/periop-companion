@@ -1,8 +1,8 @@
 /**
- * Semantic token pattern per specs/ui.md §6 — our own neutral slate values
- * and a teal brand accent (deliberately not green). Token *names* follow the
- * blueprint's semantic style; the values are ours (KUI theme values excluded,
- * ui.md §8).
+ * Semantic token pattern per specs/ui.md §6. Values track the imported
+ * "PeriOp Companion.dc.html" design: a near-black slate canvas, a teal brand
+ * accent (deliberately not green), and the five-state verification-status
+ * palette. Token *names* stay semantic so component classes survive a reskin.
  * @type {import('tailwindcss').Config}
  */
 export default {
@@ -11,31 +11,49 @@ export default {
     extend: {
       colors: {
         surface: {
-          base: "#0f172a",
-          raised: "#1e293b",
-          sunken: "#0b1120",
-          overlay: "#334155",
+          base: "#0d1117", // app canvas
+          chrome: "#10151c", // stepper / nav chrome
+          raised: "#141a22", // cards
+          sunken: "#0f141b", // source panel
+          overlay: "#1e2732", // chrome borders / dividers
+          line: "#232d38", // card borders
         },
         ink: {
-          primary: "#f1f5f9",
-          secondary: "#94a3b8",
-          subtle: "#64748b",
+          primary: "#e6ecf3",
+          secondary: "#9fb0c0",
+          subtle: "#6a7889",
+          faint: "#5b6879",
+          onBrand: "#07110f", // text on a teal fill
         },
         brand: {
-          DEFAULT: "#14b8a6",
-          strong: "#0d9488",
-          soft: "#5eead4",
+          DEFAULT: "#2dd4bf",
+          soft: "#5fe3d3",
         },
         status: {
-          supported: "#22c55e",
-          unsupported: "#f59e0b",
-          conflicting: "#ef4444",
-          inference: "#8b5cf6",
-          unverified: "#64748b",
+          supported: "#4ac776",
+          unsupported: "#e3ab3f",
+          conflicting: "#f26a60",
+          inference: "#b28bf5",
+          unverified: "#8ea0b2",
         },
       },
       fontFamily: {
-        mono: ["JetBrains Mono", "Fira Code", "ui-monospace", "SFMono-Regular", "monospace"],
+        sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
+        mono: ["'IBM Plex Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
+      keyframes: {
+        recPulse: {
+          "0%,100%": { boxShadow: "0 0 0 0 rgba(242,106,96,.55)" },
+          "50%": { boxShadow: "0 0 0 16px rgba(242,106,96,0)" },
+        },
+        barflow: {
+          "0%,100%": { opacity: "0.45" },
+          "50%": { opacity: "1" },
+        },
+      },
+      animation: {
+        recPulse: "recPulse 2s ease-out infinite",
+        barflow: "barflow 1.4s ease-in-out infinite",
       },
     },
   },

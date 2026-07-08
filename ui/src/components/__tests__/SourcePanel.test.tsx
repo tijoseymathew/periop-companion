@@ -24,11 +24,13 @@ function renderPanel(props: Partial<Parameters<typeof SourcePanel>[0]> = {}) {
 }
 
 describe("SourcePanel", () => {
-  it("has a tab per source and switches on click", async () => {
+  it("groups sources into Interview and Documents tabs and switches on click", async () => {
     const onSelectSource = vi.fn();
     renderPanel({ onSelectSource });
-    expect(screen.getByRole("tab", { name: "doc:gp-summary" })).toBeInTheDocument();
-    await userEvent.click(screen.getByRole("tab", { name: "audio:preop-interview" }));
+    // a document source is active → the Documents tab is selected
+    expect(screen.getByRole("tab", { name: "Documents" })).toHaveAttribute("aria-selected", "true");
+    // switching to Interview selects the case's audio source
+    await userEvent.click(screen.getByRole("tab", { name: "Interview" }));
     expect(onSelectSource).toHaveBeenCalledWith("audio:preop-interview");
   });
 

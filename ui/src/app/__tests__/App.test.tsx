@@ -18,34 +18,47 @@ vi.mock("../../lib/api", () => ({
     `/api/cases/${caseId}/audio/${encodeURIComponent(sourceId)}`,
 }));
 
+/** Open the fixture case from the worklist. It lands on its most advanced note. */
+async function openCase() {
+  render(<App />);
+  await userEvent.click(await screen.findByRole("button", { name: /sg-t/ }));
+}
+
+/** Open the case, then step to the Pre-op evaluation → its claim review. */
+async function openPreopReview() {
+  await openCase();
+  await userEvent.click(await screen.findByRole("button", { name: /Pre-op evaluation/ }));
+  await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+}
+
 describe("App workspace", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     localStorage.clear();
   });
 
-  it("loads the case list and auto-selects the first case", async () => {
+  it("lists cases on the worklist and opens one on click", async () => {
     render(<App />);
-    expect(await screen.findByRole("option", { name: /sg-t/ })).toHaveAttribute(
-      "aria-selected",
-      "true",
-    );
-    // pre-op tab content is visible by default
-    expect(await screen.findByText("Aspirin was discontinued 6 days prior to surgery.")).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Cases" })).toBeInTheDocument();
+    await userEvent.click(await screen.findByRole("button", { name: /sg-t/ }));
+    // a demo case opens on its most advanced note (the PACU handoff)
+    expect(await screen.findByText("Aspirin held pre-op.")).toBeInTheDocument();
   });
 
-  it("switches stages via tabs", async () => {
-    render(<App />);
-    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
-    await userEvent.click(screen.getByRole("tab", { name: "Post-op" }));
-    expect(screen.getByText("Aspirin held pre-op.")).toBeInTheDocument();
-    expect(screen.getByText("UNRESOLVED")).toBeInTheDocument();
-    expect(screen.queryByText("Aspirin was discontinued 6 days prior to surgery.")).not.toBeInTheDocument();
+  it("steps between stages via the stepper nodes", async () => {
+    await openCase();
+    // landed on the handoff (post-op) note
+    await screen.findByText("Aspirin held pre-op.");
+    // stepping to Pre-op shows its claims and hides the handoff's
+    await userEvent.click(await screen.findByRole("button", { name: /Pre-op evaluation/ }));
+    expect(
+      await screen.findByText("Aspirin was discontinued 6 days prior to surgery."),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Orphan claim.")).not.toBeInTheDocument();
   });
 
   it("doc-chunk citation click highlights the chunk in the source panel (U1 exit)", async () => {
-    render(<App />);
-    await screen.findByText("Records list aspirin 100mg daily as current.");
+    await openPreopReview();
     await userEvent.click(screen.getByRole("button", { name: /doc:gp-summary#c001/ }));
     await waitFor(() =>
       expect(screen.getByTestId("chunk-c001")).toHaveAttribute("data-highlighted", "true"),
@@ -53,9 +66,7 @@ describe("App workspace", () => {
   });
 
   it("audio citation click highlights the transcript segment (degraded, no wav yet)", async () => {
-    render(<App />);
-    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
-    // two claims cite s017; either chip works
+    await openPreopReview();
     await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
     await waitFor(() =>
       expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true"),
@@ -69,8 +80,8 @@ describe("App workspace", () => {
     });
     window.HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
     window.HTMLMediaElement.prototype.pause = vi.fn();
-    const { container } = render(<App />);
-    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+    await openPreopReview();
+    const container = document.body;
     await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
     const audio = container.querySelector("audio")!;
     expect(audio.getAttribute("src")).toContain("/api/cases/sg-t/audio/audio%3Apreop-interview");
@@ -79,19 +90,16 @@ describe("App workspace", () => {
   });
 
   it("degrades to highlight-only when the wav 404s", async () => {
-    const { container } = render(<App />);
-    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+    await openPreopReview();
     await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
-    const audio = container.querySelector("audio")!;
+    const audio = document.body.querySelector("audio")!;
     fireEvent(audio, new Event("error"));
     expect(await screen.findByText(/timestamp-only/i)).toBeInTheDocument();
-    // the citation still resolves visually
     expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true");
   });
 
   it("arrow keys walk the visible claims; Enter activates the first ref (U4)", async () => {
-    render(<App />);
-    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+    await openPreopReview();
     await userEvent.keyboard("{ArrowDown}");
     const first = document.getElementById("claim-note-pre-anesthesia-eval-c-001")!;
     expect(first).toHaveAttribute("data-active", "true");
@@ -103,7 +111,6 @@ describe("App workspace", () => {
     expect(first).toHaveAttribute("data-active", "false");
     await userEvent.keyboard("{ArrowUp}");
     expect(first).toHaveAttribute("data-active", "true");
-    // Enter resolves the active claim's first ref (c-001 → audio segment s017)
     await userEvent.keyboard("{Enter}");
     await waitFor(() =>
       expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true"),
@@ -111,10 +118,11 @@ describe("App workspace", () => {
   });
 
   it("status filter toggle hides matching claims in the ledger", async () => {
-    render(<App />);
-    await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+    await openPreopReview();
     await userEvent.click(screen.getByRole("button", { name: /filter supported/i }));
-    expect(screen.queryByText("Aspirin was discontinued 6 days prior to surgery.")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Aspirin was discontinued 6 days prior to surgery."),
+    ).not.toBeInTheDocument();
     expect(screen.getByText("Records list aspirin 100mg daily as current.")).toBeInTheDocument();
   });
 });
@@ -137,11 +145,11 @@ describe("App workflow shell (v2)", () => {
     expect(await screen.findByText("Review only")).toBeInTheDocument();
   });
 
-  it("New case needs a provider picked, then creates and selects the case", async () => {
+  it("New case needs a provider picked, then creates and opens the case", async () => {
     const api = await import("../../lib/api");
     render(<App />);
-    await screen.findByText("Review only");
-    await userEvent.click(screen.getByRole("button", { name: /new case/i }));
+    await screen.findByRole("heading", { name: "Cases" });
+    await userEvent.click(screen.getByRole("button", { name: /start a new case/i }));
     // no provider picked → form explains what to do (v2 §6.7)
     expect(screen.getByText(/choose your name in the top-right picker/i)).toBeInTheDocument();
     await userEvent.selectOptions(screen.getByLabelText(/working as/i), "p-lim");
@@ -154,8 +162,8 @@ describe("App workflow shell (v2)", () => {
 
   it("the New case form carries the synthetic-data note", async () => {
     render(<App />);
-    await screen.findByText("Review only");
-    await userEvent.click(screen.getByRole("button", { name: /new case/i }));
+    await screen.findByRole("heading", { name: "Cases" });
+    await userEvent.click(screen.getByRole("button", { name: /start a new case/i }));
     expect(screen.getByText(/never enter real patient details/i)).toBeInTheDocument();
   });
 });

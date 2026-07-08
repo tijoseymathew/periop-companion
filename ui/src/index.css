@@ -4,6 +4,23 @@
 
 @layer base {
   body {
-    @apply bg-surface-base text-ink-primary antialiased;
+    @apply bg-surface-base font-sans text-ink-primary antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Quiet, on-palette scrollbars to match the imported design. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #28323f;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #33404f;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
 }

@@ -1,7 +1,7 @@
 /**
- * U2 exit criterion (ui.md §11): click a PACU-handoff claim → hear the exact
- * pre-op interview clip (seek to t0, auto-pause at t1) — plus the
- * timestamp-only degradation when no wav is rendered.
+ * U2 exit criterion (ui.md §11): click a PACU-handoff claim's audio chip →
+ * hear the exact pre-op interview clip (seek to t0, auto-pause at t1) — plus
+ * the timestamp-only degradation when no wav is rendered.
  */
 import { expect, test } from "@playwright/test";
 
@@ -16,9 +16,9 @@ test("PACU-handoff claim plays the cited pre-op interview clip with auto-pause",
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("option", { name: /sg-audio/ }).click();
-  await page.getByRole("tab", { name: "Post-op" }).click();
-  await page.getByText("Aspirin was held before surgery.").click();
+  // sg-audio opens on its handoff note (its only artifact)
+  await page.getByRole("button", { name: /sg-audio/ }).click();
+  await page.getByRole("button", { name: /^audio:preop-interview#s001$/ }).click();
 
   // the cited segment (s001: 1.0–2.0s) is highlighted and the clip plays
   await expect(page.getByTestId("segment-s001")).toHaveAttribute("data-highlighted", "true");
@@ -45,8 +45,8 @@ test("PACU-handoff claim plays the cited pre-op interview clip with auto-pause",
 
 test("transcript segment click seeks the loaded recording", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("option", { name: /sg-audio/ }).click();
-  await page.getByRole("tab", { name: "audio:preop-interview" }).click();
+  await page.getByRole("button", { name: /sg-audio/ }).click();
+  // the Interview tab shows the transcript for the case's recording
   await page.getByText("I stopped the aspirin.").click();
   await expect.poll(async () => (await audioState(page))?.currentTime).toBeGreaterThanOrEqual(1.0);
 });
@@ -55,9 +55,10 @@ test("missing wav degrades to timestamp-only highlight (sg-0002 has no wav)", as
   page,
 }) => {
   await page.goto("/");
-  // sg-0002 auto-selected; find an audio citation and click it
+  await page.getByRole("button", { name: /sg-0002/ }).click();
+  await page.getByRole("button", { name: /Pre-op evaluation/ }).click();
   const chip = page.getByRole("button", { name: /^audio:preop-interview#s\d+$/ }).first();
-  const segId = (await chip.textContent())!.split("#")[1];
+  const segId = (await chip.textContent())!.match(/#(s\d+)/)![1];
   await chip.click();
   await expect(page.getByText(/timestamp-only mode/)).toBeVisible();
   await expect(page.getByTestId(`segment-${segId}`)).toHaveAttribute("data-highlighted", "true");

@@ -15,10 +15,10 @@ test("dictating a voice note streams the transcript live and saves segments", as
 
   await page.goto("/");
   await page.getByLabel(/working as/i).selectOption("p-tan");
-  await page.getByRole("option", { name: /ZZZ Dictation Chole/ }).click();
+  await page.getByRole("button", { name: /ZZZ Dictation Chole/ }).click();
 
-  // dictation-first capture screen, orientation pinned above it
-  await expect(page.getByText(/what you need to know before induction/i)).toBeVisible();
+  // the intra-op voice-memo capture screen (dictation-first)
+  await expect(page.getByRole("heading", { name: /intra-op — voice memos/i })).toBeVisible();
   await page.getByRole("button", { name: /start dictating/i }).click();
 
   // words appear while speaking (fake transcriber emits one partial per frame)
@@ -26,15 +26,14 @@ test("dictating a voice note streams the transcript live and saves segments", as
 
   await page.getByRole("button", { name: /stop dictating/i }).click();
 
-  // saved: the workflow moves on to generation…
+  // saved: the provider can move on to generation…
+  await page.getByRole("button", { name: /done — generate record/i }).click();
   await expect(
     page.getByRole("button", { name: /generate intra-op record/i }),
   ).toBeVisible();
 
   // …and the streamed words are a citable transcript segment on the case
-  const kase = await (
-    await request.get("/api/cases/zzz-dictation-chole")
-  ).json();
+  const kase = await (await request.get("/api/cases/zzz-dictation-chole")).json();
   const source = kase.sources.find(
     (s: { source_id: string }) => s.source_id === "audio:intraop-notes",
   );

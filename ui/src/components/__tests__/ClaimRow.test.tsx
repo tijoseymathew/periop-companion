@@ -9,19 +9,19 @@ const kase = makeCase();
 const preop = kase.artifacts[0];
 
 describe("StatusBadge", () => {
-  it("uses the CLI renderer's glyph vocabulary (ui.md §6)", () => {
+  it("uses the design's status glyph vocabulary (ui.md §6)", () => {
     expect(STATUS_GLYPHS).toEqual({
       supported: "✓",
-      unsupported: "?",
-      conflicting: "✗",
-      unverified: "·",
+      unsupported: "⚠",
+      conflicting: "✕",
+      unverified: "○",
       inference: "→",
     });
   });
 
   it("labels the glyph with the status for a11y and tests", () => {
     render(<StatusBadge status="conflicting" />);
-    expect(screen.getByLabelText("conflicting")).toHaveTextContent("✗");
+    expect(screen.getByLabelText("conflicting")).toHaveTextContent("✕");
   });
 });
 
@@ -55,10 +55,10 @@ describe("ClaimRow", () => {
     expect(screen.getByText("UNRESOLVED")).toBeInTheDocument();
   });
 
-  it("says so when a claim has no citations", () => {
+  it("flags a claim with no citations as an unresolved source (never hidden)", () => {
     const intraop = kase.artifacts[1];
     render(<ClaimRow kase={kase} artifactId={intraop.artifact_id} claim={intraop.claims[0]} onActivateRef={() => {}} />);
-    expect(screen.getByText(/no citations/i)).toBeInTheDocument();
+    expect(screen.getByText(/source unresolved/i)).toBeInTheDocument();
   });
 
   // ---- per-claim review actions (v2 W6a) -----------------------------------

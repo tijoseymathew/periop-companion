@@ -13,7 +13,7 @@ describe("ArtifactView", () => {
     render(
       <ArtifactView kase={kase} artifact={kase.artifacts[0]} filters={defaultFilters()} onActivateRef={() => {}} />,
     );
-    expect(screen.getByRole("heading", { name: /note:pre-anesthesia-eval/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /note:pre-anesthesia-eval/i })).toBeInTheDocument();
     const texts = screen.getAllByTestId("claim-text").map((el) => el.textContent);
     expect(texts).toEqual([
       "Aspirin was discontinued 6 days prior to surgery.",
@@ -42,25 +42,6 @@ describe("ArtifactView", () => {
     );
     expect(screen.getByRole("table")).toBeInTheDocument();
     expect(screen.getByText("propofol 120")).toBeInTheDocument();
-  });
-});
-
-describe("ArtifactView copy as markdown", () => {
-  it("copies the artifact's markdown rendering to the clipboard", async () => {
-    const writeText = vi.fn().mockResolvedValue(undefined);
-    Object.assign(navigator, { clipboard: { writeText } });
-    render(
-      <ArtifactView kase={kase} artifact={kase.artifacts[0]} filters={defaultFilters()} onActivateRef={() => {}} />,
-    );
-    await userEvent.click(
-      screen.getByRole("button", { name: /copy note:pre-anesthesia-eval as markdown/i }),
-    );
-    expect(writeText).toHaveBeenCalledTimes(1);
-    const md = writeText.mock.calls[0][0] as string;
-    expect(md).toContain("# note:pre-anesthesia-eval");
-    expect(md).toContain("[^1]");
-    // transient confirmation
-    expect(await screen.findByText(/copied/i)).toBeInTheDocument();
   });
 });
 

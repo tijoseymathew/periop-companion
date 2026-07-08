@@ -152,7 +152,7 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
                 if (el.paused) Promise.resolve(el.play()).catch(() => undefined);
                 else el.pause();
               }}
-              className="rounded-full bg-brand p-1.5 text-surface-base hover:bg-brand-strong"
+              className="rounded-full bg-brand p-1.5 text-ink-onBrand hover:bg-brand-soft"
             >
               {paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
             </button>

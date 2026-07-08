@@ -74,12 +74,8 @@ export function QuestionReview({
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl p-6">
-      <p className="text-sm text-ink-secondary">
-        These are the questions to clarify at the interview. Dismiss or reword
-        any of them, then approve the list.
-      </p>
-      <ul className="mt-4 space-y-2">
+    <div className="mx-auto w-full max-w-2xl">
+      <ul className="space-y-2">
         {drafts.map((d, i) => (
           <li
             key={i}
@@ -193,9 +189,9 @@ export function QuestionReview({
         disabled={busy}
         onClick={approve}
         data-primary-action
-        className="mt-5 min-h-[44px] w-full rounded bg-brand px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-40"
+        className="mt-5 min-h-[44px] w-full rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-ink-onBrand disabled:opacity-40"
       >
-        Approve questions
+        Approve &amp; start interview
       </button>
     </div>
   );
