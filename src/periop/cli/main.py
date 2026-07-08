@@ -18,7 +18,7 @@ import httpx
 
 from periop.cli.client import ApiError, check, iter_sse, open_client
 from periop.cli.render import render_artifact
-from periop.schemas import Case, StageName
+from periop.schemas import Case, GapAnalysisState, StageName
 
 STAGE_LABEL = {"preop": "Pre-op", "intraop": "Intra-op", "postop": "Post-op"}
 
@@ -107,6 +107,19 @@ def _questions_ready(case: Case) -> bool:
     )
 
 
+def _gap_analysis_state(case: Case) -> GapAnalysisState | None:
+    if case.workflow is None:
+        return None
+    return case.workflow.stages[StageName.PREOP].gap_analysis
+
+
+def _gap_analysis_underway(case: Case) -> bool:
+    return _gap_analysis_state(case) in (
+        GapAnalysisState.PENDING,
+        GapAnalysisState.RUNNING,
+    )
+
+
 def cmd_add_document(client: httpx.Client, args) -> int:
     url = f"/api/cases/{args.case_id}/sources/document"
     if args.path:
@@ -131,11 +144,37 @@ def cmd_add_document(client: httpx.Client, args) -> int:
             f"{n} question{'s' if n != 1 else ''} ready for review — "
             f"run: periop questions {case.case_id}"
         )
+    elif _gap_analysis_underway(case):
+        # v2-speed §3.2: question prep runs off the request path. The upload
+        # returned as soon as the document was durable; point at the read
+        # command, which reports progress until the questions land.
+        print(
+            "Preparing interview questions in the background — "
+            f"run: periop questions {case.case_id} when ready"
+        )
     return 0
 
 
 def cmd_questions(client: httpx.Client, args) -> int:
     case = Case.model_validate(check(client.get(f"/api/cases/{args.case_id}")).json())
+    if not case.open_questions:
+        # v2-speed §3.2: prep runs in the background — say where it stands
+        # rather than printing an empty, silent list.
+        state = _gap_analysis_state(case)
+        if state in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+            print(
+                "Interview questions are still being prepared — "
+                f"run this again in a moment: periop questions {args.case_id}"
+            )
+        elif state == GapAnalysisState.FAILED:
+            error = case.workflow.stages[StageName.PREOP].gap_analysis_error
+            print(
+                "Preparing the interview questions failed"
+                + (f" — {error}" if error else "")
+                + ". The records are saved; add the next one or re-run: "
+                f"periop add-document {args.case_id} …"
+            )
+        return 0
     for i, q in enumerate(case.open_questions):
         review = q.review.value if q.review else "unreviewed"
         why = f" (why: {q.reason})" if q.reason else ""

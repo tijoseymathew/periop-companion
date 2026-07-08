@@ -20,13 +20,12 @@ from pydantic import BaseModel
 
 from periop.api.routers.cases import load_case
 from periop.api.routers.workflow import AUDIO_KIND_TO_STAGE, require_writable
-from periop.schemas import Case, StageStatus
+from periop.api.run_lock import RUN_LOCK
+from periop.schemas import Case, GapAnalysisState, StageStatus
 from periop.store import CaseStore
 from periop.tools.ingest import has_transcript_inputs
 
 router = APIRouter()
-
-RUN_LOCK = threading.Lock()
 
 STAGE_KIND = {v: k for k, v in AUDIO_KIND_TO_STAGE.items()}  # stage → audio kind
 PRIMARY_ARTIFACT = {
@@ -62,11 +61,17 @@ def _check_gate(request: Request, case: Case, stage: str) -> None:
             status_code=409,
             detail=f"sign off the {prior} stage before generating the {stage} output",
         )
-    if stage == "preop" and state.questions_approved_at is None:
-        raise HTTPException(
-            status_code=409,
-            detail="review and approve the clarification questions before generating the note",
-        )
+    if stage == "preop":
+        if state.gap_analysis in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+            raise HTTPException(
+                status_code=409,
+                detail="interview questions are still being prepared — review them when they arrive",
+            )
+        if state.questions_approved_at is None:
+            raise HTTPException(
+                status_code=409,
+                detail="review and approve the clarification questions before generating the note",
+            )
 
     case_dir = request.app.state.case_dir / case.case_id
     if not (

@@ -9,8 +9,8 @@ are writable nowhere.
 import json
 import os
 import threading
+import time
 
-import httpx
 import pytest
 from fastapi.testclient import TestClient
 
@@ -20,6 +20,7 @@ from periop.schemas import (
     Case,
     Claim,
     ClaimStatus,
+    GapAnalysisState,
     OpenQuestion,
     StageStatus,
 )
@@ -130,6 +131,7 @@ class StubRunner:
         self.fail = False
         self.fail_gaps = False
         self.gap_thread = None
+        self.gap_block = None  # tests set a threading.Event to hold analysis open
 
     def run_stage(self, case, stage, case_dir, emit):
         self.run_calls.append((case.case_id, stage))
@@ -150,6 +152,8 @@ class StubRunner:
     def analyze_gaps(self, case):
         self.gap_calls.append(case.case_id)
         self.gap_thread = threading.current_thread()
+        if self.gap_block is not None:
+            assert self.gap_block.wait(timeout=10), "test forgot to release gap_block"
         if self.fail_gaps:
             raise RuntimeError("model unreachable")
         first_doc = case.sources[0]
@@ -160,6 +164,24 @@ class StubRunner:
                 provenance=[f"{first_doc.source_id}#{first_doc.chunks[0].chunk_id}"],
             )
         ]
+
+
+def wait_gap(client, case_id, *states, timeout=10.0):
+    """Poll the case until pre-op ``gap_analysis`` reaches one of ``states``.
+
+    Question prep is a background generation (v2-speed §3.2): tests observe
+    its state transitions the same way the intake screen does — by refetching
+    the case.
+    """
+    deadline = time.monotonic() + timeout
+    last = None
+    while time.monotonic() < deadline:
+        case = Case.model_validate(client.get(f"/api/cases/{case_id}").json())
+        last = case.workflow.stages["preop"].gap_analysis
+        if last in states:
+            return case
+        time.sleep(0.01)
+    raise AssertionError(f"gap_analysis stuck at {last!r}, wanted one of {states}")
 
 
 def _minimal_pdf(text: str) -> bytes:
@@ -294,22 +316,32 @@ class TestDocumentUpload:
 
 
 class TestGapAnalystTrigger:
+    """Question prep is a background generation (v2-speed §3.2): the upload
+    returns when the document is durable, and ``gap_analysis`` on the pre-op
+    stage tracks the launch through pending → running → complete | failed."""
+
     def test_runs_once_op_plan_and_a_record_exist(self, wclient, runner):
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         assert runner.gap_calls == []  # no op plan yet
         resp = paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLaparoscopic chole.\n")
+        assert resp.status_code == 201
+        launched = Case.model_validate(resp.json())
+        assert launched.workflow.stages["preop"].gap_analysis is not None
+        case = wait_gap(wclient, "tkr-mrs-w", "complete")
         assert runner.gap_calls == ["tkr-mrs-w"]
-        case = Case.model_validate(resp.json())
         assert case.open_questions[0].question == "Is the patient still taking aspirin?"
         assert case.open_questions[0].provenance  # cites the triggering chunk
 
     def test_op_plan_alone_does_not_trigger(self, wclient, runner):
-        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        resp = paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
         assert runner.gap_calls == []
+        case = Case.model_validate(resp.json())
+        assert case.workflow.stages["preop"].gap_analysis is None
 
     def test_not_rerun_once_questions_exist(self, wclient, runner):
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
         paste(wclient, "tkr-mrs-w", "med-list", "# Meds\n\nAspirin.\n")
         assert runner.gap_calls == ["tkr-mrs-w"]
 
@@ -317,18 +349,21 @@ class TestGapAnalystTrigger:
         out_dir, _, _ = dirs
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
         stored = CaseStore(out_dir).load("tkr-mrs-w")
         assert stored.open_questions[0].reason == "conflicting"
 
     def test_failure_keeps_the_document(self, wclient, runner, dirs):
-        """A model outage must not swallow the paste: the source is durable
-        before question prep runs, and the error says so."""
+        """A model outage must not swallow the paste: the source was durable
+        before question prep even launched, and the failure lands on the case
+        in words instead of failing the upload."""
         out_dir, _, _ = dirs
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         runner.fail_gaps = True
         resp = paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
-        assert resp.status_code == 502
-        assert "saved" in resp.json()["detail"]
+        assert resp.status_code == 201  # the upload no longer shares the model's fate
+        case = wait_gap(wclient, "tkr-mrs-w", "failed")
+        assert "model unreachable" in case.workflow.stages["preop"].gap_analysis_error
         stored = CaseStore(out_dir).load("tkr-mrs-w")
         assert stored.get_source("doc:op-plan") is not None
         assert stored.open_questions == []
@@ -337,46 +372,147 @@ class TestGapAnalystTrigger:
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         runner.fail_gaps = True
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "failed")
         runner.fail_gaps = False
         resp = paste(wclient, "tkr-mrs-w", "med-list", "# Meds\n\nAspirin.\n")
         assert resp.status_code == 201
-        case = Case.model_validate(resp.json())
+        case = wait_gap(wclient, "tkr-mrs-w", "complete")
         assert case.open_questions  # the retry path is just "add the next record"
+        assert case.workflow.stages["preop"].gap_analysis_error is None
 
 
-@pytest.fixture
-def anyio_backend():
-    return "asyncio"
+class TestGapAnalysisOffTheRequestPath:
+    """The GapAnalyst is a long synchronous LLM call — 488 s live, inside the
+    op-plan upload request (v2-speed §1.2), past any proxy/browser timeout.
+    W7b moved it off the event loop; W9b moves it off the request entirely."""
 
+    def test_upload_returns_while_analysis_still_running(self, wclient, runner):
+        runner.gap_block = threading.Event()
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        resp = paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        # the upload came back with the model still "thinking"
+        assert resp.status_code == 201
+        case = Case.model_validate(resp.json())
+        assert case.open_questions == []
+        assert case.workflow.stages["preop"].gap_analysis in ("pending", "running")
+        runner.gap_block.set()
+        case = wait_gap(wclient, "tkr-mrs-w", "complete")
+        assert case.open_questions
 
-class TestGapAnalystOffTheEventLoop:
-    """The GapAnalyst is a long synchronous LLM call (minutes on a local NIM).
-
-    Run inline in the async endpoint it blocks uvicorn's event loop, so *every*
-    request — worklist polls, health, even the NIM reply when the model URL
-    loops back to this server — hangs until it finishes: the whole UI freezes.
-    It must run on a worker thread, like stage runs already do.
-    """
-
-    @pytest.mark.anyio
-    async def test_analysis_runs_on_a_worker_thread(self, dirs, runner):
-        out_dir, case_dir, providers = dirs
-        app = create_app(
-            out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
-        )
-        transport = httpx.ASGITransport(app=app)
-        async with httpx.AsyncClient(transport=transport, base_url="http://t") as client:
-            await client.post(
-                "/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"}
-            )
-            for doc_type, text in [("gp-summary", GP_TEXT), ("op-plan", "# Op Plan\n\nLap chole.\n")]:
-                resp = await client.post(
-                    "/api/cases/tkr-mrs-w/sources/document",
-                    json={"doc_type": doc_type, "text": text, "provider_id": "p-lim"},
-                )
-                assert resp.status_code == 201
+    def test_analysis_runs_on_a_worker_thread(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
         assert runner.gap_calls == ["tkr-mrs-w"]
         assert runner.gap_thread is not threading.current_thread()
+
+    def test_preop_run_gate_says_questions_are_being_prepared(self, wclient, runner):
+        runner.gap_block = threading.Event()
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        resp = run_stage(wclient, "preop")
+        assert resp.status_code == 409
+        assert "still being prepared" in resp.json()["detail"]
+        runner.gap_block.set()
+        wait_gap(wclient, "tkr-mrs-w", "complete")
+
+    def test_review_put_409s_while_analysis_running(self, wclient, runner):
+        # approving questions mid-analysis would race the analysis's own save
+        runner.gap_block = threading.Event()
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        resp = wclient.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={
+                "questions": [{"question": "Q?", "review": "approved"}],
+                "provider_id": "p-lim",
+            },
+        )
+        assert resp.status_code == 409
+        assert "prepared" in resp.json()["detail"]
+        runner.gap_block.set()
+        wait_gap(wclient, "tkr-mrs-w", "complete")
+
+    def test_interrupted_analysis_is_failed_on_restart(self, dirs, runner):
+        """A server crash mid-analysis must not strand the case in "running"
+        forever — the next boot marks it failed so retry paths open up."""
+        out_dir, case_dir, providers = dirs
+        store = CaseStore(out_dir)
+        with TestClient(
+            create_app(
+                out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+            )
+        ) as client:
+            client.post("/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"})
+        case = store.load("tkr-mrs-w")
+        case.workflow.stages["preop"].gap_analysis = GapAnalysisState.RUNNING
+        store.save(case)
+        with TestClient(
+            create_app(
+                out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+            )
+        ) as client:
+            resp = client.get("/api/cases/tkr-mrs-w")
+        fresh = Case.model_validate(resp.json())
+        assert fresh.workflow.stages["preop"].gap_analysis == "failed"
+        assert "restart" in fresh.workflow.stages["preop"].gap_analysis_error
+
+
+class TestAnalyzeQuestions:
+    """Explicit (re)launch endpoint (v2-speed §3.2): a provider whose last
+    upload's analysis failed isn't forced to upload a dummy document."""
+
+    def _fail_intake(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        runner.fail_gaps = True
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        return wait_gap(wclient, "tkr-mrs-w", "failed")
+
+    def test_explicit_retry_after_failure(self, wclient, runner):
+        self._fail_intake(wclient, runner)
+        runner.fail_gaps = False
+        resp = wclient.post("/api/cases/tkr-mrs-w/questions/analyze")
+        assert resp.status_code == 202
+        case = wait_gap(wclient, "tkr-mrs-w", "complete")
+        assert case.open_questions
+        assert runner.gap_calls == ["tkr-mrs-w", "tkr-mrs-w"]
+
+    def test_409_when_inputs_missing(self, wclient):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)  # no op plan yet
+        resp = wclient.post("/api/cases/tkr-mrs-w/questions/analyze")
+        assert resp.status_code == 409
+        assert "operative plan" in resp.json()["detail"]
+
+    def test_409_while_already_preparing(self, wclient, runner):
+        runner.gap_block = threading.Event()
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        resp = wclient.post("/api/cases/tkr-mrs-w/questions/analyze")
+        assert resp.status_code == 409
+        assert "already being prepared" in resp.json()["detail"]
+        runner.gap_block.set()
+        wait_gap(wclient, "tkr-mrs-w", "complete")
+
+    def test_409_once_questions_approved(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        case = wait_gap(wclient, "tkr-mrs-w", "complete")
+        reviewed = [
+            {**q.model_dump(mode="json"), "review": "approved"} for q in case.open_questions
+        ]
+        wclient.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={"questions": reviewed, "provider_id": "p-lim"},
+        )
+        resp = wclient.post("/api/cases/tkr-mrs-w/questions/analyze")
+        assert resp.status_code == 409
+        assert "approved" in resp.json()["detail"]
+
+    def test_demo_case_409(self, wclient):
+        assert wclient.post("/api/cases/sg-demo/questions/analyze").status_code == 409
+
+    def test_unknown_case_404(self, wclient):
+        assert wclient.post("/api/cases/nope/questions/analyze").status_code == 404
 
 
 class TestServerEntryEnvironment:
@@ -422,6 +558,7 @@ class TestQuestionReview:
         """Case with intake done and GapAnalyst questions present."""
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
         return wclient
 
     def _reviewed(self):
@@ -641,6 +778,7 @@ def make_preop_ready(client):
     """Walk tkr-mrs-w to the pre-op run gate: docs + approved questions + audio."""
     paste(client, "tkr-mrs-w", "gp-summary", GP_TEXT)
     paste(client, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+    wait_gap(client, "tkr-mrs-w", "complete")  # questions can't be approved earlier
     client.put(
         "/api/cases/tkr-mrs-w/questions",
         json={
@@ -685,6 +823,7 @@ class TestStageRun:
     def test_gate_needs_question_approval(self, wclient):
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
         upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
         resp = run_stage(wclient, "preop")
         assert resp.status_code == 409
@@ -693,6 +832,7 @@ class TestStageRun:
     def test_gate_needs_interview_audio(self, wclient):
         paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
         paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
         wclient.put(
             "/api/cases/tkr-mrs-w/questions",
             json={
@@ -786,6 +926,23 @@ class TestNatWiring:
             None,
         )
         assert msg is not None, "stage run emitted no NAT intermediate steps"
+        assert msg.index("WORKFLOW_START") < msg.index("WORKFLOW_END")
+
+    def test_gap_analysis_brackets_workflow_start_end(self, wclient, caplog):
+        # v2-speed §1.2: the intake GapAnalyst was the one LLM call left
+        # outside the NAT Runner (hence invisible in Langfuse). This pins the
+        # hole shut the same way the stage-run test above does.
+        import logging
+
+        with caplog.at_level(logging.INFO, logger="periop.api.nat_bridge"):
+            paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+            paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+            wait_gap(wclient, "tkr-mrs-w", "complete")
+        msg = next(
+            (r.getMessage() for r in caplog.records if "WORKFLOW_START" in r.getMessage()),
+            None,
+        )
+        assert msg is not None, "intake analysis emitted no NAT intermediate steps"
         assert msg.index("WORKFLOW_START") < msg.index("WORKFLOW_END")
 
     def test_sse_vocabulary_unchanged_by_nat_wrapping(self, wclient):
@@ -948,7 +1105,8 @@ class TestStubRunnerEnv:
         client.post("/api/cases", json={"label": "Stub walk", "provider_id": "p-lim"})
         paste(client, "stub-walk", "gp-summary", GP_TEXT)
         resp = paste(client, "stub-walk", "op-plan", "# Op Plan\n\nLap chole.\n")
-        case = Case.model_validate(resp.json())
+        assert resp.status_code == 201
+        case = wait_gap(client, "stub-walk", "complete")
         assert case.open_questions, "stub gap analysis should produce questions"
         assert case.open_questions[0].provenance
 

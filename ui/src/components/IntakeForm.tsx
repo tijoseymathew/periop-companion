@@ -113,9 +113,8 @@ export function IntakeForm({
         </div>
         {busy && (
           <p className="mt-2 text-sm text-ink-secondary" role="status">
-            Saving — once the operative plan and a record are in, preparing
-            interview questions can take several minutes on local hardware.
-            Leave this open; the questions appear when ready.
+            Saving the document — once the operative plan and a record are in,
+            interview questions are prepared in the background.
           </p>
         )}
         {!providerId && (

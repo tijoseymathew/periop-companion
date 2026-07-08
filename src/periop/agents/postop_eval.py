@@ -47,6 +47,7 @@ class PostAnesthesiaEvaluator:
                 claims.append(
                     Claim(claim_id=f"c-{len(claims) + 1:03d}", text=wc.text, provenance=wc.provenance)
                 )
-        artifact = ArtifactRecord(artifact_id=POSTOP_NOTE_ID, claims=claims)
-        case.add_artifact(artifact)
-        return artifact
+        # returned, not appended: the post-op stage runs this concurrently
+        # with the HandoffComposer and appends both in fixed order
+        # (v2-speed §3.4), keeping the ledger deterministic
+        return ArtifactRecord(artifact_id=POSTOP_NOTE_ID, claims=claims)

@@ -47,7 +47,13 @@ export async function apiWalkToIntraop(
     data: { doc_type: "op-plan", text: "# Op Plan\n\nLaparoscopic chole.", provider_id: providerId },
   });
 
-  const kase = await (await request.get(`/api/cases/${caseId}`)).json();
+  // question prep is a background generation (v2-speed §3.2): poll until it
+  // lands, the same way the intake screen does
+  let kase = await (await request.get(`/api/cases/${caseId}`)).json();
+  for (let i = 0; i < 200 && kase.workflow.stages.preop.gap_analysis !== "complete"; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    kase = await (await request.get(`/api/cases/${caseId}`)).json();
+  }
   await request.put(`/api/cases/${caseId}/questions`, {
     data: {
       questions: kase.open_questions.map((q: object) => ({ ...q, review: "approved" })),

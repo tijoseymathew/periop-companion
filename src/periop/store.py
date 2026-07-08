@@ -2,14 +2,23 @@
 
 Writes are atomic (temp file + rename, v2 §5.2): the SSE runner and the UI
 read the same file the writer replaces, so a reader must never see a partial
-case.
+case. Concurrent writers (a request handler and the background question-prep
+worker, v2-speed §3.2) use :meth:`CaseStore.mutate` so read-modify-write
+cycles compose instead of clobbering each other with stale whole-object saves.
 """
 
 import json
 import os
+import threading
+from collections.abc import Callable
 from pathlib import Path
 
 from periop.schemas import Case, ClaimReview
+
+# One lock per process: writes are rare and small, and every CaseStore is a
+# throwaway wrapper around the same on-disk root, so instance-level locks
+# would not actually serialize anything.
+_WRITE_LOCK = threading.Lock()
 
 
 class CaseStore:
@@ -21,7 +30,9 @@ class CaseStore:
 
     def _atomic_write(self, path: Path, text: str) -> None:
         self.root.mkdir(parents=True, exist_ok=True)
-        tmp = path.with_name(f".{path.name}.tmp")
+        # thread-unique temp name: two writers replacing the same case must
+        # not share a temp file, or one's os.replace strands the other's
+        tmp = path.with_name(f".{path.name}.{threading.get_ident()}.tmp")
         try:
             tmp.write_text(text)
             os.replace(tmp, path)
@@ -32,6 +43,19 @@ class CaseStore:
         path = self._path(case.case_id)
         self._atomic_write(path, case.model_dump_json(indent=2) + "\n")
         return path
+
+    def mutate(self, case_id: str, fn: Callable[[Case], None]) -> Case:
+        """Load → ``fn(case)`` → save, atomically w.r.t. other mutates.
+
+        Writers that hold a case across a long operation (an LLM call, a
+        whole request) re-apply their delta to the freshest copy here rather
+        than saving their stale object over someone else's update.
+        """
+        with _WRITE_LOCK:
+            case = self.load(case_id)
+            fn(case)
+            self.save(case)
+        return case
 
     def load(self, case_id: str) -> Case:
         path = self._path(case_id)

@@ -237,6 +237,15 @@ class StageStatus(StrEnum):
     SIGNED_OFF = "signed_off"
 
 
+class GapAnalysisState(StrEnum):
+    """Background intake question prep (spec v2-speed §3.2)."""
+
+    PENDING = "pending"
+    RUNNING = "running"
+    COMPLETE = "complete"
+    FAILED = "failed"
+
+
 class ReopenRecord(BaseModel):
     reopened_by: str
     reopened_at: datetime
@@ -252,6 +261,10 @@ class StageState(BaseModel):
     signed_off_at: datetime | None = None
     # pre-op only: the question gate (v2 §4.1 step 4)
     questions_approved_at: datetime | None = None
+    # pre-op only: background question-prep lifecycle (v2-speed §3.2); None
+    # until the first analysis launches, so pre-W9 case JSONs load unchanged
+    gap_analysis: GapAnalysisState | None = None
+    gap_analysis_error: str | None = None
     # stamped when this stage's audio inputs land
     inputs_recorded_at: datetime | None = None
     # post-op only: handoff acknowledge (v2 §4.4)

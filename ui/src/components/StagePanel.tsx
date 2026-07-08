@@ -5,9 +5,10 @@
  * and failures say what to do next. The Review / Sign-off / Handoff screens are
  * rendered by App, not here.
  */
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   addDocumentText,
+  analyzeQuestions,
   fetchCase,
   reviewQuestions,
   uploadAudio,
@@ -220,31 +221,43 @@ export function StagePanel({
           </>
         );
 
-      case "questions":
+      case "questions": {
+        // Gap analysis runs in the background (v2-speed §3.2): until the
+        // questions land, watch the case instead of reviewing.
+        const waiting = kase.open_questions.length === 0;
         return (
           <>
             <ScreenHeader
               kase={kase}
               stage={stage}
               title="Clarifying questions"
-              sentence="We found gaps in the record. Review them before you interview the patient — dismiss, edit, or add your own, then approve."
+              sentence={
+                waiting
+                  ? "We're finding gaps in the record. The questions appear here when they're ready — it's safe to leave and come back."
+                  : "We found gaps in the record. Review them before you interview the patient — dismiss, edit, or add your own, then approve."
+              }
             />
             <div className="min-h-0 flex-1 overflow-y-auto px-8 py-6">
-              <QuestionReview
-                questions={kase.open_questions}
-                onActivateRef={onActivateRef}
-                onApprove={async (reviewed: OpenQuestion[]) => {
-                  if (!me) return;
-                  const updated = await guard(() => reviewQuestions(kase.case_id, reviewed, me));
-                  if (updated) {
-                    onCaseUpdated(updated);
-                    onNavigate("record");
-                  }
-                }}
-              />
+              {waiting ? (
+                <QuestionPrep kase={kase} onCaseUpdated={onCaseUpdated} />
+              ) : (
+                <QuestionReview
+                  questions={kase.open_questions}
+                  onActivateRef={onActivateRef}
+                  onApprove={async (reviewed: OpenQuestion[]) => {
+                    if (!me) return;
+                    const updated = await guard(() => reviewQuestions(kase.case_id, reviewed, me));
+                    if (updated) {
+                      onCaseUpdated(updated);
+                      onNavigate("record");
+                    }
+                  }}
+                />
+              )}
             </div>
           </>
         );
+      }
 
       case "record":
         return (
@@ -388,6 +401,76 @@ export function StagePanel({
     <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
       {errorBanner}
       {body}
+    </div>
+  );
+}
+
+/**
+ * Question prep runs as a background generation (v2-speed §3.2): poll the
+ * case until the questions arrive, and offer an explicit retry when it
+ * failed — the documents are durable either way.
+ */
+function QuestionPrep({
+  kase,
+  onCaseUpdated,
+}: {
+  kase: Case;
+  onCaseUpdated: (updated: Case) => void;
+}) {
+  const preop = kase.workflow?.stages.preop;
+  const failed = preop?.gap_analysis === "failed";
+  const [error, setError] = useState<string | null>(null);
+  const [retrying, setRetrying] = useState(false);
+
+  useEffect(() => {
+    if (failed) return;
+    const timer = setInterval(() => {
+      void fetchCase(kase.case_id).then(onCaseUpdated).catch(() => {});
+    }, 1500);
+    return () => clearInterval(timer);
+  }, [kase.case_id, failed, onCaseUpdated]);
+
+  if (failed) {
+    return (
+      <div className="mx-auto w-full max-w-2xl space-y-4">
+        <p className="text-sm text-status-unsupported">
+          Preparing the interview questions failed
+          {preop?.gap_analysis_error ? ` — ${preop.gap_analysis_error}` : ""}. The
+          documents are saved; nothing was lost.
+        </p>
+        <button
+          type="button"
+          disabled={retrying}
+          data-primary-action
+          onClick={async () => {
+            setError(null);
+            setRetrying(true);
+            try {
+              onCaseUpdated(await analyzeQuestions(kase.case_id));
+            } catch (e) {
+              const detail =
+                (e as { response?: { data?: { detail?: string } } })?.response?.data
+                  ?.detail ?? (e as Error).message;
+              setError(detail);
+            } finally {
+              setRetrying(false);
+            }
+          }}
+          className="min-h-[44px] rounded-lg bg-brand px-5 py-2 text-sm font-semibold text-ink-onBrand hover:bg-brand-soft disabled:opacity-40"
+        >
+          {retrying ? "Starting…" : "Try again"}
+        </button>
+        {error && <p className="text-sm text-status-unsupported">{error}</p>}
+      </div>
+    );
+  }
+  return (
+    <div className="mx-auto w-full max-w-2xl">
+      <p className="text-sm text-ink-secondary" role="status">
+        Preparing interview questions… They appear here when ready — this can
+        take a few minutes on local hardware, and it is safe to leave and come
+        back.
+      </p>
     </div>
   );
 }

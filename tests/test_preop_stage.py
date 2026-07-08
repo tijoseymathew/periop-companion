@@ -140,6 +140,7 @@ class TestWorkflowIntegration:
         # one start/end pair per agent, then the finished artifact
         assert names == [
             "agent_start", "agent_end",   # GapAnalyst
+            "agent_start", "agent_end",   # InterviewTranscriber (ASR leg)
             "agent_start", "agent_end",   # PreOpNoteWriter
             "agent_start", "agent_end",   # ClaimVerifier
             "artifact_complete",

@@ -48,7 +48,16 @@ def run_preop_stage(
     if case.get_source("audio:preop-interview") is None and has_transcript_inputs(
         case_dir, "preop-interview"
     ):
-        case.add_source(transcript_source(case_dir, "preop-interview", "audio:preop-interview"))
+        # the ASR leg (Parakeet on a live wav) is its own bar on the waterfall,
+        # split out from note generation — on live audio it is minutes, not free
+        emit("agent_start", {"stage": "preop", "agent": "InterviewTranscriber"})
+        source = transcript_source(case_dir, "preop-interview", "audio:preop-interview")
+        case.add_source(source)
+        emit(
+            "agent_end",
+            {"stage": "preop", "agent": "InterviewTranscriber",
+             "summary": f"{len(source.segments)} segments"},
+        )
 
     emit("agent_start", {"stage": "preop", "agent": "PreOpNoteWriter"})
     note = PreOpNoteWriter(chat=chat).write(case)

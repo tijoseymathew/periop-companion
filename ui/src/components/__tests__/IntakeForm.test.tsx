@@ -65,20 +65,22 @@ describe("IntakeForm", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("says what is happening while the document saves (live model can take a minute)", async () => {
+  it("says what is happening while the document saves", async () => {
     let finish!: () => void;
     const pending = new Promise<void>((resolve) => (finish = resolve));
     renderForm({ onAddText: vi.fn(() => pending) });
     await userEvent.type(screen.getByLabelText(/paste/i), "Aspirin 100mg OD.");
     await userEvent.click(screen.getByRole("button", { name: /add document/i }));
 
-    // errors say what to do; waits say what is happening (v2 §6 spirit)
+    // errors say what to do; waits say what is happening (v2 §6 spirit) —
+    // the upload itself is quick now (v2-speed §3.2): question prep happens
+    // in the background and is narrated on the questions screen instead
     expect(screen.getByRole("button", { name: /adding/i })).toBeDisabled();
-    expect(screen.getByText(/preparing interview questions/i)).toBeInTheDocument();
+    expect(screen.getByText(/saving the document/i)).toBeInTheDocument();
 
     finish();
     await screen.findByRole("button", { name: /add document/i });
-    expect(screen.queryByText(/preparing interview questions/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/saving the document/i)).not.toBeInTheDocument();
   });
 
   it("file upload is a labelled control, not an icon", async () => {

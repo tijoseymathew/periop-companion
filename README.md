@@ -188,9 +188,13 @@ inputs at the point of care, instead of reviewing pre-baked bundles.
   loads unchanged and renders read-only ("Review only").
 - **Intake** — paste or upload (`.txt`/`.md`/`.pdf`) prior records and the op
   plan into typed slots; the **GapAnalyst runs at intake** (it needs no
-  audio) and its questions, each citing the triggering chunk, go through a
-  human review — dismiss / reword / add — before the interview. Dismissals
-  are kept: a dismissed question that later proves relevant is a finding.
+  audio) as a background generation — uploads return as soon as the document
+  is durable, the intake screen polls until the questions arrive, and a
+  failed analysis retries from the next upload or an explicit re-run
+  ([specs/v2-speed.md](specs/v2-speed.md) §3.2). The questions, each citing
+  the triggering chunk, go through a human review — dismiss / reword / add —
+  before the interview. Dismissals are kept: a dismissed question that later
+  proves relevant is a finding.
 - **Audio capture** — in-browser recording (MediaRecorder) or file upload for
   the interview, intra-op voice memos (append-style), and the post-op
   interview; the server normalizes everything to 16 kHz mono wav (ffmpeg,
@@ -228,7 +232,7 @@ export PERIOP_PROVIDER=p-lim                      # acting provider (attribution
 periop create "Hip repair"                        # → hip-repair
 periop add-document hip-repair gp-summary notes.md
 periop add-document hip-repair op-plan --text "Elective right hip repair under GA."
-periop questions hip-repair                       # GapAnalyst ran at intake
+periop questions hip-repair                       # GapAnalyst prepped these in the background
 periop approve-questions hip-repair --dismiss 2   # dismissals kept, never deleted
 periop add-audio hip-repair preop-interview interview.wav
 periop run hip-repair preop                       # streams per-agent progress

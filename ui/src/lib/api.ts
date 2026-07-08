@@ -70,6 +70,13 @@ export async function uploadDocumentFile(
   return CaseSchema.parse(data);
 }
 
+export async function analyzeQuestions(caseId: string): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/questions/analyze`,
+  );
+  return CaseSchema.parse(data);
+}
+
 export async function reviewQuestions(
   caseId: string,
   questions: OpenQuestion[],

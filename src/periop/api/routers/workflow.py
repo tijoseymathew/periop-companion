@@ -15,12 +15,13 @@ import re
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel, field_validator
 
+from periop.api.gap_analysis import launch_gap_analysis
 from periop.api.routers.cases import load_case
 from periop.schemas import (
     Case,
+    GapAnalysisState,
     OpenQuestion,
     Provider,
     ReopenRecord,
@@ -210,29 +211,28 @@ async def add_document(request: Request, case_id: str) -> Case:
     source = ingest_document(source_id, text)
     source.captured_at = _now()
     source.provided_by = provider_id
-    case.add_source(source)
-    if provider_id and case.workflow is not None:
-        case.workflow.stages["preop"].performed_by = provider_id
-    # the document is durable before any model runs: an LLM outage must never
-    # swallow a paste
-    _store(request).save(case)
 
-    # the GapAnalyst needs no audio (v2 §4.1 step 3): run it as soon as the
-    # op plan and at least one record exist, once — on a worker thread, because
-    # it is a long synchronous LLM call and inline it would block the event
-    # loop (freezing every other request until the model answers)
-    if not case.open_questions and _preop_inputs_present(case):
-        try:
-            await run_in_threadpool(request.app.state.runner.analyze_gaps, case)
-        except Exception as e:
-            raise HTTPException(
-                status_code=502,
-                detail=(
-                    f"the document was saved, but preparing interview questions "
-                    f"failed: {e} — adding the next record retries automatically"
-                ),
-            ) from e
-        _store(request).save(case)
+    def apply(fresh: Case) -> None:
+        fresh.add_source(source)
+        if provider_id and fresh.workflow is not None:
+            fresh.workflow.stages["preop"].performed_by = provider_id
+
+    # the document is durable before any model runs: an LLM outage must never
+    # swallow a paste — merged into the freshest copy, because a background
+    # question prep may be saving this case concurrently (v2-speed §3.2)
+    case = _store(request).mutate(case_id, apply)
+
+    # the GapAnalyst needs no audio (v2 §4.1 step 3): once the op plan and at
+    # least one record exist, launch question prep as a background generation
+    # (v2-speed §3.2) — the upload returns now that the document is durable,
+    # and a failed analysis relaunches when the next record lands
+    state = case.workflow.stages["preop"]
+    if (
+        not case.open_questions
+        and _preop_inputs_present(case)
+        and state.gap_analysis in (None, GapAnalysisState.FAILED)
+    ):
+        case = launch_gap_analysis(request.app.state, case_id)
 
     return case
 
@@ -251,6 +251,16 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
     """
     case = load_case(request, case_id)
     require_writable(case)
+
+    # approving mid-analysis would race the analysis's own save of the case
+    if case.workflow.stages["preop"].gap_analysis in (
+        GapAnalysisState.PENDING,
+        GapAnalysisState.RUNNING,
+    ):
+        raise HTTPException(
+            status_code=409,
+            detail="interview questions are still being prepared — review them when they arrive",
+        )
 
     unreviewed = [q.question for q in body.questions if q.review is None]
     if unreviewed:
@@ -273,6 +283,35 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
     case.workflow.stages["preop"].performed_by = body.provider_id
     _store(request).save(case)
     return case
+
+
+@router.post("/cases/{case_id}/questions/analyze", status_code=202)
+def analyze_questions(request: Request, case_id: str) -> Case:
+    """Explicitly (re)launch intake question prep (v2-speed §3.2).
+
+    The implicit path — adding the next record after a failure — still works;
+    this spares a provider whose last upload's analysis failed from uploading
+    a dummy document. Regenerating approved questions is a reopen-shaped
+    decision and deliberately not offered.
+    """
+    case = load_case(request, case_id)
+    require_writable(case)
+    state = case.workflow.stages["preop"]
+    if state.questions_approved_at is not None:
+        raise HTTPException(
+            status_code=409,
+            detail="the questions are already reviewed and approved — regenerating them is not offered",
+        )
+    if state.gap_analysis in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+        raise HTTPException(
+            status_code=409, detail="interview questions are already being prepared"
+        )
+    if not _preop_inputs_present(case):
+        raise HTTPException(
+            status_code=409,
+            detail="add the operative plan and at least one record before preparing questions",
+        )
+    return launch_gap_analysis(request.app.state, case_id)
 
 
 @router.post("/cases/{case_id}/sources/audio", status_code=201)
@@ -335,13 +374,16 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
             status_code=503 if e.needs_ffmpeg else 422, detail=str(e)
         ) from None
 
-    stage.inputs_recorded_at = _now()
-    if provider_id:
-        stage.performed_by = str(provider_id)
-    if stage.status is StageStatus.AWAITING_INPUTS:
-        stage.status = StageStatus.READY_TO_GENERATE
-    _store(request).save(case)
-    return case
+    def apply(fresh: Case) -> None:
+        s = fresh.workflow.stages[AUDIO_KIND_TO_STAGE[kind]]
+        s.inputs_recorded_at = _now()
+        if provider_id:
+            s.performed_by = str(provider_id)
+        if s.status is StageStatus.AWAITING_INPUTS:
+            s.status = StageStatus.READY_TO_GENERATE
+
+    # merged like documents: intake question prep may be writing concurrently
+    return _store(request).mutate(case_id, apply)
 
 
 class ProviderAction(BaseModel):
