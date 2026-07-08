@@ -41,11 +41,18 @@ def _empty() -> ArtifactRecord:
     return ArtifactRecord(artifact_id="_missing")
 
 
-def evaluate_case(case: Case, gold: GoldCase, matches: Matcher) -> CaseReport:
+def evaluate_case(
+    case: Case, gold: GoldCase, matches: Matcher, matches_questions: Matcher | None = None
+) -> CaseReport:
+    """Score one case. ``matches`` compares claim/distractor statements;
+    ``matches_questions`` compares gap-analysis questions (questions need a
+    same-issue judgment, not a same-fact one — defaults to ``matches``)."""
     preop = case.get_artifact(PREOP_NOTE_ID) or _empty()
     handoff = case.get_artifact(HANDOFF_ID) or _empty()
     gap = metrics.gap_analysis_prf(
-        [q.effective_text for q in case.open_questions], gold.questions, matches
+        [q.effective_text for q in case.open_questions],
+        gold.questions,
+        matches_questions or matches,
     )
 
     return CaseReport(
