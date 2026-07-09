@@ -16,5 +16,6 @@ skills-lock.json
 ui/node_modules/
 ui/dist/
 ui/e2e/.fixture/
+ui/e2e/.recordings/
 ui/test-results/
 ui/playwright-report/
