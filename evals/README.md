@@ -9,8 +9,8 @@ question judge (finding 4 below).
 **Reading `gap_recall` in `report.json`:** it is one Bernoulli draw (this run
 happens to be 1.00, an audited-true catch). A single run's 0/1 is not the
 benchmark for this metric — the benchmark is the *catch rate* across samples,
-~2/10 on sg-0002 (measured and audited below). Don't read a single run's
-`gap_recall` as the pipeline's defect-catch quality.
+~15% on sg-0002 (6/40 audited samples, 95% CI 7–29%; measured below). Don't
+read a single run's `gap_recall` as the pipeline's defect-catch quality.
 
 ## 2026-07-09 — gap_f1 was structurally zero: judge bug, fixed
 
@@ -50,27 +50,39 @@ as derived noise around the recall bit. `run_eval.py` prints gap_recall.
 ### Defect-catch measurement (2026-07-09)
 
 gap_recall in one eval run is a single Bernoulli draw, so the catch rate was
-measured directly: 10 fresh GapAnalyst samples on sg-0002 (thinking-off
-default), each sample's kept questions judged against the gold probe, every
-MATCH verdict then audited by hand (`scripts/measure_gap_catch.py` repeats
-this):
+measured directly: **40 fresh GapAnalyst samples** on sg-0002 (thinking-off
+default, two batches of 10 + 30), each sample's kept questions judged against
+the gold probe, every MATCH verdict then audited by hand
+(`scripts/measure_gap_catch.py` repeats this):
 
-| | catches / 10 samples |
-|---|---|
-| question judge | 4 |
-| **manual audit** | **2** |
+| | catches / 40 samples | rate | 95% CI (Wilson) |
+|---|---|---|---|
+| question judge flagged | 12 | 30% | 18–45% |
+| **manual audit (true catches)** | **6** | **15%** | **7–29%** |
+| judge false positives | 6 | 15% | 7–29% |
 
-So the audited catch rate is **~2/10 (~20%)**. The two audited catches are
-genuine med-reconciliation questions ("please confirm if there have been any
-changes to your medications since the last record?"). The two overturned
-verdicts are judge false positives from a single recurring family — "any
-update on your GERD since omeprazole was discontinued in 2020?" — which the
-analyst asks in most samples (the records document that discontinuation) and
-some phrasings of which slip past the judge's passing-mention clause. The
-committed `report.json` (a separate full-pipeline run) is an audited-true
-catch. The intermittent catch is a real pipeline quality finding, previously
-invisible; it likely wants a GapAnalyst prompt nudge (med-list reconciliation)
-gated on this now-functional metric.
+**The Bernoulli hypothesis holds: audited catch rate ~15% (95% CI 7–29%),
+every individual sample landing 0 or 1** — 6 of 40 draws caught the planted
+defect, 34 missed. The single committed `report.json` (a full-pipeline run) is
+one such draw and happens to be an audited-true catch (1.00); a prior
+full-pipeline run was a miss (0.00) — the two full-eval draws bracket the
+sampler exactly as expected.
+
+Two stable regularities in the 40 samples:
+- **True catches are genuine full-regimen reconciliation questions** — "are
+  you still on the same medications as listed (Metformin, Perindopril,
+  Indapamide, Atorvastatin, Amlodipine), and have there been any changes?" A
+  patient answering that surfaces the planted Amlodipine discontinuation.
+- **Every false positive is the same GERD/omeprazole family** — "any update
+  on your GERD since omeprazole was discontinued in 2020?" The analyst asks
+  this in most samples (the records document that discontinuation) and some
+  phrasings slip past the judge's passing-mention clause. Judge FP rate is as
+  stable as the true-catch rate, so judge-flagged (30%) ≈ true (15%) + this
+  one FP family (15%).
+
+The intermittent ~15% catch is a real pipeline quality finding, previously
+invisible behind the judge bug; it likely wants a GapAnalyst prompt nudge
+(explicit med-list reconciliation) gated on this now-functional metric.
 
 **Judge choice + known error direction.** On a 20-pair audit suite built from
 the samples above, Nano-9B with the directional prompt is wrong on 2/20 —
@@ -164,7 +176,7 @@ isolated measurement of anything.
 | handoff_claim_recall | 0.67 | 0.00 – 0.33 |
 | distractor_leakage | 1.00 | 0.33 – 1.00 |
 | handoff_hallucination_rate | 0.50 | 0.00 |
-| gap_recall / gap_f1 | n/a | n/a (judge bug, finding 4 — fixed 2026-07-09; post-fix catch rate ~2/10 below) |
+| gap_recall / gap_f1 | n/a | n/a (judge bug, finding 4 — fixed 2026-07-09; post-fix catch rate ~15% below) |
 | extraction_f1 | 0.00 | 0.55 (finding 1 fixed) |
 
 ### Findings
@@ -191,10 +203,10 @@ isolated measurement of anything.
    *questions*, pinning gap_precision/recall/f1 at 0 in every run above,
    independent of pipeline behavior. Fixed with a directional question-mode
    prompt (see the dated section at the top). First honest readings: the
-   GapAnalyst catches sg-0002's planted defect in ~2 of 10 controlled samples
-   (measured and audited in the defect-catch section above) — gap_recall is
-   now a live pipeline-quality signal, and its improvement belongs to the
-   pipeline, not the harness.
+   GapAnalyst catches sg-0002's planted defect in ~15% of samples (6/40
+   audited; measured in the defect-catch section above) — gap_recall is now a
+   live pipeline-quality signal, and its improvement belongs to the pipeline,
+   not the harness.
 
 The point of the harness is to make these measurable and drive them down; on one
 case the quality metrics are noisy, so read movements of 1–2 claims as noise, not
