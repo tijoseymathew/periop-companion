@@ -6,6 +6,12 @@ judge, and aggregates the §6 metrics. The committed `report.json` is one
 thinking-off run on the current default configuration, scored with the fixed
 question judge (finding 4 below).
 
+**Reading `gap_recall` in `report.json`:** it is one Bernoulli draw (this run
+happens to be 1.00, an audited-true catch). A single run's 0/1 is not the
+benchmark for this metric — the benchmark is the *catch rate* across samples,
+~2/10 on sg-0002 (measured and audited below). Don't read a single run's
+`gap_recall` as the pipeline's defect-catch quality.
+
 ## 2026-07-09 — gap_f1 was structurally zero: judge bug, fixed
 
 Every run in every table below scored `gap_f1 = 0.00`. That was not the
@@ -98,8 +104,8 @@ the headline finding (below), not a footnote.
 | handoff_provenance_coverage | 1.00 | 1.00 | 1.00 | ✓ |
 | preop_claim_recall | 0.40 | 0.80 | 0.40 | ✗ |
 | handoff_claim_recall | 0.00 | 0.33 | 0.00 | ✗ |
-| gap_recall (defect caught) | 0.00 | 0.00 | 0.00 | judge bug — unmeasurable, finding 4 |
-| gap_f1 (not a gate — see note) | 0.00 | 0.00 | 0.00 | judge bug — unmeasurable, finding 4 |
+| gap_recall (defect caught) | n/a | n/a | n/a | judge bug — unscoreable when run, finding 4 |
+| gap_f1 (not a gate — see note) | n/a | n/a | n/a | judge bug — unscoreable when run, finding 4 |
 | distractor_leakage (lower better) | 0.33 | 0.33 | 1.00 | ✗ |
 | handoff_hallucination_rate (lower better) | 0.00 | 0.00 | 0.00 | ✓ |
 | extraction_f1 | 0.55 | 0.55 | 0.55 | ✓ |
@@ -122,9 +128,12 @@ metric regresses past noise" is satisfied only because the noise band is wide
 enough to swallow any real effect — this single case cannot detect a quality
 difference between the tiers in either direction. What *is* stable across all
 three runs (provenance coverage 1.00, hallucination 0.00, extraction_f1 0.55)
-is unchanged by the flag. (gap_f1 was also "stably" 0.00 across all three —
-that stability was an artifact of the judge bug in finding 4, not a
-measurement.)
+is unchanged by the flag. (The gap rows read `n/a`, not `0.00`: under the
+finding-4 judge bug the harness *did* emit 0.00 on every one of these runs,
+but that was the judge failing to score any question pair, not a measurement
+of the pipeline — so those cells are marked unscoreable rather than shown as a
+zero. The gap metric only became real after the 2026-07-09 fix; for the
+post-fix benchmark see below.)
 
 The env escape hatch (`PERIOP_REASONING_THINKING=1`) makes reverting a
 deploy-time toggle, and a single agent that turns out to need reasoning can
@@ -155,7 +164,7 @@ isolated measurement of anything.
 | handoff_claim_recall | 0.67 | 0.00 – 0.33 |
 | distractor_leakage | 1.00 | 0.33 – 1.00 |
 | handoff_hallucination_rate | 0.50 | 0.00 |
-| gap_recall / gap_f1 | 0.00 | 0.00 (judge bug, finding 4 — fixed 2026-07-09) |
+| gap_recall / gap_f1 | n/a | n/a (judge bug, finding 4 — fixed 2026-07-09; post-fix catch rate ~2/10 below) |
 | extraction_f1 | 0.00 | 0.55 (finding 1 fixed) |
 
 ### Findings
