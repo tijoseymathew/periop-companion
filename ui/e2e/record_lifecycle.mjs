@@ -1,38 +1,45 @@
 /**
- * Screen-record the PeriOp Catch-Up UI end-to-end with Playwright. Not CI.
+ * Screen-record the PeriOp Catch-Up UI through the *entire* case lifecycle with
+ * Playwright. Not CI.
  *
- * The sibling of scripts/e2e_lifecycle_timing.py: where that walks the *write
- * API* over HTTP and times every leg, this drives the *browser* through the
- * same case and films it, so the review flow can be watched rather than read.
+ * The browser-side sibling of scripts/e2e_lifecycle_timing.py: where that walks
+ * the write API over HTTP and times every leg, this drives the *browser*
+ * through the same lifecycle and films it, so the whole provider workflow can
+ * be watched rather than read. It creates a fresh case and takes it all the way
+ * to a signed-off, acknowledged handoff:
+ *
+ *   worklist → new handoff → create the case
+ *   intake   → add records (GP summary + op plan) → upload the pre-op interview
+ *   pre-op   → generate the note (live SSE) → review → sign off
+ *   intra-op → record a voice memo → generate the theatre record → sign off
+ *   post-op  → post-op interview → generate the handoff → acknowledge
+ *
  * It boots the real FastAPI server against the hermetic e2e fixture store
- * (e2e/setup-fixture.mjs — the committed sg-0002 case plus a synthetic
- * audio case) with the stub runner, so there is no network, no live NIMs,
- * and committed bundles are never mutated.
+ * (e2e/setup-fixture.mjs — a couple of seed cases for worklist context) with
+ * the stub runner, so there is no network, no live NIMs, and committed bundles
+ * are never mutated. Generation is instant but streams the same SSE the live
+ * pipeline does, so the "Generating…" screen fills in for real.
+ *
+ * Every step is a real click — including reviewing and approving the pre-op
+ * clarification questions, which the intake screen now surfaces directly. (The
+ * read-only apiGet polls below just wait for background work to settle — gap
+ * analysis finishing, an audio upload landing — they never drive the workflow.)
  *
  * The point is legibility, not speed. Every interaction is deliberately paced
- * (Playwright `slowMo` plus explicit beats between steps) and long sections are
- * scrolled smoothly rather than jumped, so a reviewer watching the .webm can
- * follow what the operator did and how the UI responded:
- *
- *   worklist  → pick a provider · toggle segments · search
- *   brief     → read the story · scroll key facts / theatre / issues
- *   source    → open a citation · step through cited sources · close
- *   review    → mark a "needs you now" item reviewed
- *   audio     → open an audio citation · play the dictation
- *
- * The video is written to e2e/.recordings/ (gitignored) as a single .webm.
- * Chromium records one file per browser context at the viewport size; we flush
- * it on context close and rename it to a stable, human-readable name.
+ * (Playwright `slowMo` plus explicit beats, scaled by --pace) and long sections
+ * are scrolled smoothly rather than jumped, so a reviewer watching the .webm can
+ * follow both what the operator did and how the UI responded. The video is
+ * written to e2e/.recordings/ (gitignored) as a single .webm.
  *
  * Usage:
- *   # build the UI if needed, boot a throwaway server, film the walk:
- *   node ui/e2e/record_walkthrough.mjs
+ *   # build the UI if needed, boot a throwaway server, film the lifecycle:
+ *   node ui/e2e/record_lifecycle.mjs
  *
  *   # slower/faster overall pace (default 1.0; higher = slower & more readable):
- *   node ui/e2e/record_walkthrough.mjs --pace 1.5
+ *   node ui/e2e/record_lifecycle.mjs --pace 1.4
  *
  *   # watch it happen (non-headless) and force a fresh production build:
- *   node ui/e2e/record_walkthrough.mjs --headed --build
+ *   node ui/e2e/record_lifecycle.mjs --headed --build
  *
  * Run from the repo root (paths below resolve relative to ui/). Requires the
  * UI's dev deps (`cd ui && npm install`) — it reuses the Playwright chromium
@@ -40,7 +47,9 @@
  */
 import { spawn } from "node:child_process";
 import { createServer } from "node:net";
-import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync, cpSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
 
@@ -57,9 +66,7 @@ const VIEWPORT = { width: 1440, height: 900 };
 // --------------------------------------------------------------------------- #
 
 const argv = process.argv.slice(2);
-function flag(name) {
-  return argv.includes(`--${name}`);
-}
+const flag = (name) => argv.includes(`--${name}`);
 function opt(name, fallback) {
   const i = argv.indexOf(`--${name}`);
   return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
@@ -73,21 +80,21 @@ const PROVIDER = opt("provider", "p-lim"); // "Dr A. Lim (consultant)"
 // A beat between steps, scaled by --pace so the whole film can be slowed at once.
 const beat = (ms) => new Promise((r) => setTimeout(r, Math.round(ms * PACE)));
 
+let BASE_URL = ""; // filled in on boot; used by the small API bridge
+
 // --------------------------------------------------------------------------- #
-// server boot
+// server boot + input files
 // --------------------------------------------------------------------------- #
 
 function die(msg) {
-  console.error(`record_walkthrough: ${msg}`);
+  console.error(`record_lifecycle: ${msg}`);
   process.exit(1);
 }
 
 function run(cmd, args, cwd) {
   return new Promise((resolve, reject) => {
     const p = spawn(cmd, args, { cwd, stdio: "inherit" });
-    p.on("exit", (code) =>
-      code === 0 ? resolve() : reject(new Error(`${cmd} exited ${code}`)),
-    );
+    p.on("exit", (code) => (code === 0 ? resolve() : reject(new Error(`${cmd} exited ${code}`))));
     p.on("error", reject);
   });
 }
@@ -107,8 +114,7 @@ async function waitHealthy(baseUrl, timeoutMs = 60000) {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
     try {
-      const r = await fetch(`${baseUrl}/api/health`);
-      if (r.ok) return;
+      if ((await fetch(`${baseUrl}/api/health`)).ok) return;
     } catch {
       /* not up yet */
     }
@@ -127,12 +133,10 @@ async function ensureBuild() {
 }
 
 async function bootServer() {
-  // rebuild the hermetic fixture store, exactly as the e2e config does
-  await run("node", [`${uiRoot}e2e/setup-fixture.mjs`], repoRoot);
-
+  await run("node", [`${uiRoot}e2e/setup-fixture.mjs`], repoRoot); // seed cases
   const port = await freePort();
-  const baseUrl = `http://127.0.0.1:${port}`;
-  console.log(`→ booting server on ${baseUrl} (fixture: ${fixtureDir})`);
+  BASE_URL = `http://127.0.0.1:${port}`;
+  console.log(`→ booting server on ${BASE_URL} (fixture: ${fixtureDir})`);
   const server = spawn(
     "uv",
     ["run", "uvicorn", "periop.api.app:app", "--host", "127.0.0.1", "--port", String(port)],
@@ -143,25 +147,95 @@ async function bootServer() {
         ...process.env,
         PERIOP_CASE_DIR: fixtureDir,
         PERIOP_OUT_DIR: `${fixtureDir}/_out`,
-        // hermetic: the real server with instant stub artifacts, no NIMs
-        PERIOP_STUB_RUNNER: "1",
-        // never export traces even if .env has real credentials
+        PERIOP_STUB_RUNNER: "1", // hermetic: instant stub artifacts, no NIMs
         LANGFUSE_PUBLIC_KEY: "",
         LANGFUSE_SECRET_KEY: "",
         LANGFUSE_BASE_URL: "",
       },
     },
   );
-  await waitHealthy(baseUrl);
-  return { server, baseUrl };
+  await waitHealthy(BASE_URL);
+  return server;
+}
+
+/** Valid PCM wav: mono, 16-bit, 8 kHz, `seconds` of a soft 440 Hz tone. */
+function makeWav(seconds) {
+  const rate = 8000;
+  const n = rate * seconds;
+  const data = Buffer.alloc(n * 2);
+  for (let i = 0; i < n; i++) {
+    data.writeInt16LE(Math.round(3000 * Math.sin((2 * Math.PI * 440 * i) / rate)), i * 2);
+  }
+  const h = Buffer.alloc(44);
+  h.write("RIFF", 0);
+  h.writeUInt32LE(36 + data.length, 4);
+  h.write("WAVEfmt ", 8);
+  h.writeUInt32LE(16, 16);
+  h.writeUInt16LE(1, 20);
+  h.writeUInt16LE(1, 22);
+  h.writeUInt32LE(rate, 24);
+  h.writeUInt32LE(rate * 2, 28);
+  h.writeUInt16LE(2, 32);
+  h.writeUInt16LE(16, 34);
+  h.write("data", 36);
+  h.writeUInt32LE(data.length, 40);
+  return Buffer.concat([h, data]);
+}
+
+/** Write the throwaway inputs the intake screen uploads (docs + interviews). */
+function writeInputs() {
+  const dir = mkdtempSync(join(tmpdir(), "periop-record-"));
+  writeFileSync(
+    join(dir, "gp-summary.md"),
+    "# GP summary\n\nAmara Okafor, 62. Hypertension on amlodipine.\n\n" +
+      "Aspirin 100 mg daily, started after a TIA in 2019.\n\nNo known drug allergies.\n",
+  );
+  writeFileSync(
+    join(dir, "op-plan.md"),
+    "# Operative plan\n\nElective laparoscopic cholecystectomy for symptomatic gallstones.\n\n" +
+      "General anaesthesia. Day case if uncomplicated.\n",
+  );
+  const wav = join(dir, "interview.wav");
+  writeFileSync(wav, makeWav(4));
+  return { dir, gp: join(dir, "gp-summary.md"), op: join(dir, "op-plan.md"), wav };
+}
+
+// --------------------------------------------------------------------------- #
+// small write-API bridge (only for the pre-op question approval seam)
+// --------------------------------------------------------------------------- #
+
+async function apiGet(path) {
+  const r = await fetch(`${BASE_URL}${path}`);
+  if (!r.ok) throw new Error(`GET ${path} → ${r.status}`);
+  return r.json();
+}
+
+/** Poll until a stage's audio input is recorded server-side. Uploaded audio
+ * only becomes a transcript Source at generate time, so the intake list shows
+ * no new row — inputs_recorded_at is the honest signal the upload landed. */
+async function waitInputs(caseId, stage, timeoutMs = 15000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const c = await apiGet(`/api/cases/${caseId}`);
+    if (c.workflow?.stages?.[stage]?.inputs_recorded_at) return;
+    await new Promise((r) => setTimeout(r, 300));
+  }
+  throw new Error(`${stage} inputs never recorded`);
+}
+
+/** The case_id that appeared since `before` (a Set of prior ids). */
+async function newCaseId(before) {
+  const cases = await apiGet("/api/cases");
+  const fresh = cases.map((c) => c.case_id).filter((id) => !before.has(id));
+  if (fresh.length !== 1) throw new Error(`expected 1 new case, saw ${fresh.length}`);
+  return fresh[0];
 }
 
 // --------------------------------------------------------------------------- #
 // interaction helpers — deliberately paced so the film reads
 // --------------------------------------------------------------------------- #
 
-/** Announce a chapter both in the console and via a brief pause. */
-async function chapter(page, title) {
+async function chapter(title) {
   console.log(`   • ${title}`);
   await beat(600);
 }
@@ -170,19 +244,23 @@ async function chapter(page, title) {
 async function slowClick(page, locator, { after = 700 } = {}) {
   const el = typeof locator === "string" ? page.locator(locator) : locator;
   await el.first().scrollIntoViewIfNeeded();
-  await beat(350);
+  await beat(300);
   await el.first().hover().catch(() => {});
-  await beat(250);
+  await beat(220);
   await el.first().click();
   await beat(after);
 }
 
-/**
- * Smoothly scroll the case brief's main column by `delta` px. Finds the nearest
- * scrollable ancestor of the "The story so far" eyebrow so it keeps working if
- * the layout shifts, and steps the scroll so the motion is watchable.
- */
-async function smoothScroll(page, delta, { steps = 34, stepMs = 55 } = {}) {
+/** Type into a field character-by-character so the typing is watchable. */
+async function slowType(page, locator, text, { after = 700 } = {}) {
+  const el = typeof locator === "string" ? page.locator(locator) : locator;
+  await el.click();
+  await el.pressSequentially(text, { delay: Math.round(60 * PACE) });
+  await beat(after);
+}
+
+/** Smoothly scroll the brief's main column by `delta` px (steps the motion). */
+async function smoothScroll(page, delta, { steps = 30, stepMs = 55 } = {}) {
   await page.evaluate(
     async ({ delta, steps, stepMs }) => {
       const anchor = [...document.querySelectorAll("*")].find(
@@ -199,113 +277,147 @@ async function smoothScroll(page, delta, { steps = 34, stepMs = 55 } = {}) {
     },
     { delta, steps, stepMs: Math.round(stepMs * PACE) },
   );
-  await beat(500);
+  await beat(400);
+}
+
+/** Wait for the generating screen's SSE checklist to hand off to the brief. */
+async function waitForBrief(page) {
+  await page.getByText("The story so far").waitFor({ timeout: 30000 });
+  await beat(1000);
 }
 
 // --------------------------------------------------------------------------- #
-// the walk
+// the lifecycle walk
 // --------------------------------------------------------------------------- #
 
-async function walk(page) {
-  // --- worklist ---------------------------------------------------------- #
+async function walk(page, inputs) {
+  // --- worklist: who am I --------------------------------------------------
   await page.goto("/", { waitUntil: "networkidle" });
   await page.getByRole("heading", { name: "Cases" }).waitFor();
-  await chapter(page, "Worklist — the department's cases");
-  await beat(1200);
-
-  // pick who you are (attribution only) — the app's one bit of setup
-  await chapter(page, `Picking a provider (${PROVIDER})`);
+  await chapter("Worklist — the department's cases");
+  await beat(1000);
+  await chapter(`Picking a provider (${PROVIDER})`);
   await page.locator('select[aria-label="Working as"]').selectOption(PROVIDER);
-  await beat(1100);
-
-  // segment toggle: peek at "waiting for you", then settle on all cases
-  await chapter(page, "Toggling worklist segments");
-  await slowClick(page, 'button:has-text("Waiting for you")');
   await beat(900);
-  await slowClick(page, 'button:has-text("All cases")');
-  await beat(600);
 
-  // search, then clear
-  await chapter(page, "Searching the worklist");
-  const search = page.locator('input[placeholder="Search patient or case number"]');
-  await search.click();
-  await search.pressSequentially("sg-0002", { delay: Math.round(140 * PACE) });
+  // --- new handoff: create the case ---------------------------------------
+  const before = new Set((await apiGet("/api/cases")).map((c) => c.case_id));
+  await chapter("Starting a new handoff");
+  await slowClick(page, page.getByRole("button", { name: /Hand off a new case/ }), { after: 900 });
+  const label = "Amara Okafor — laparoscopic cholecystectomy";
+  await chapter("Naming the patient / case");
+  await slowType(page, 'input[placeholder*="James Whitfield"]', label, { after: 500 });
+  await slowClick(page, page.getByRole("button", { name: "Create" }), { after: 1100 });
+  const caseId = await newCaseId(before);
+  console.log(`     case_id = ${caseId}`);
+
+  // --- intake: add the records --------------------------------------------
+  const docInput = page.locator('input[type="file"][accept*="text/plain"]');
+  const audioInput = page.locator('input[type="file"][accept*="audio"]');
+
+  await chapter("Adding a GP summary");
+  await page.locator('select[aria-label="Document type"]').selectOption("gp-summary");
+  await docInput.setInputFiles(inputs.gp);
+  await page.getByText("doc:gp-summary").waitFor();
   await beat(1100);
-  await search.fill("");
-  await beat(500);
 
-  // --- open the rich case → brief --------------------------------------- #
-  await chapter(page, "Opening case sg-0002 → the patient brief");
-  await slowClick(page, page.getByRole("button", { name: /sg-0002/ }), { after: 900 });
-  await page.getByText("The story so far").waitFor();
-  await beat(1600); // let the reader take in the story + attention items
+  await chapter("Adding the operative plan");
+  await page.locator('select[aria-label="Document type"]').selectOption("op-plan");
+  await docInput.setInputFiles(inputs.op);
+  await page.getByText("doc:op-plan").waitFor();
+  await beat(1100);
 
-  // read the brief top-to-bottom
-  await chapter(page, "Reading the brief — key facts");
-  await smoothScroll(page, 460);
-  await beat(1200);
-  await chapter(page, "Reading the brief — theatre timeline");
-  await smoothScroll(page, 520);
-  await beat(1200);
-  await chapter(page, "Reading the brief — anticipated issues");
-  await smoothScroll(page, 520);
-  await beat(1400);
+  // --- intake: review & approve the clarification questions ----------------
+  await chapter("GapAnalyst prepares clarifying questions from the records");
+  const approve = page.getByRole("button", { name: /Approve questions & continue/ });
+  await approve.waitFor({ timeout: 30000 }); // intake polls until prep settles
+  await beat(1400); // read the questions
+  await chapter("Reviewing & approving the clarifying questions");
+  await slowClick(page, approve, { after: 1100 });
 
-  // back up to a citation
-  await smoothScroll(page, -820, { steps: 40 });
-  await beat(700);
+  // --- intake: the pre-op interview ---------------------------------------
+  await chapter("Uploading the pre-op interview");
+  await audioInput.setInputFiles(inputs.wav);
+  await waitInputs(caseId, "preop");
+  await beat(1000);
 
-  // --- source modal: open a citation, step through cited sources -------- #
-  await chapter(page, "Opening a source — the original, highlighted");
-  const sourceLink = page.getByRole("button", { name: /^See (the source|sources)/ }).first();
-  await slowClick(page, sourceLink, { after: 1200 });
-  await page.getByText("Source for this fact").waitFor();
-  await beat(1600);
-
-  // step through each cited source in the left rail, if more than one
-  const citedButtons = page.locator('button:has-text("doc:"), button:has-text("audio:")');
-  const cited = await citedButtons.count();
-  for (let i = 1; i < Math.min(cited, 3); i++) {
-    await chapter(page, `Stepping to cited source ${i + 1}/${cited}`);
-    await slowClick(page, citedButtons.nth(i), { after: 1200 });
-  }
-  await chapter(page, "Closing the source modal");
-  await slowClick(page, 'button[aria-label="Close"]', { after: 900 });
-
-  // --- review a "needs you now" item ------------------------------------ #
+  // --- pre-op: generate → review → sign off -------------------------------
+  await chapter("Generating the pre-op note (live SSE)");
+  await slowClick(page, page.getByRole("button", { name: /Generate the brief/ }), { after: 500 });
+  await waitForBrief(page);
+  await chapter("Reading the pre-op brief");
+  await smoothScroll(page, 420);
+  await smoothScroll(page, -420);
   const markReviewed = page.getByRole("button", { name: "Mark reviewed" }).first();
   if (await markReviewed.count()) {
-    await chapter(page, 'Marking a "needs you now" item reviewed');
-    await slowClick(page, markReviewed, { after: 1400 });
+    await chapter('Marking the "needs you now" item reviewed');
+    await slowClick(page, markReviewed, { after: 1000 });
   }
+  await chapter("Signing off the pre-op note");
+  await slowClick(page, page.getByRole("button", { name: "Sign off pre-op" }), { after: 1200 });
 
-  // --- audio: open an audio citation and play the dictation ------------- #
-  await chapter(page, "Back to the worklist");
+  // --- intra-op: record memo → generate → sign off ------------------------
+  await runCaptureStage(page, {
+    caseId,
+    stage: "intraop",
+    open: "Opening the case for theatre",
+    actionButton: /Record voice memo/,
+    capture: "Recording an intra-op voice memo",
+    generate: "Generating the theatre record (live SSE)",
+    signOff: "Sign off intra-op",
+    wav: inputs.wav,
+  });
+
+  // --- post-op: interview → generate → acknowledge ------------------------
+  await chapter("Opening the case for recovery");
+  await slowClick(page, page.getByRole("button", { name: /Amara Okafor/ }), { after: 900 });
+  await waitForBrief(page);
+  await chapter("To recovery — the post-op interview");
+  await slowClick(page, page.getByRole("button", { name: /Record post-op interview/ }), {
+    after: 800,
+  });
+  await audioInput.setInputFiles(inputs.wav);
+  await waitInputs(caseId, "postop");
+  await beat(1000);
+  await chapter("Generating the handoff & post-op note (live SSE)");
+  await slowClick(page, page.getByRole("button", { name: /Generate the brief/ }), { after: 500 });
+  await waitForBrief(page);
+  await chapter("Reading the final handoff brief");
+  await smoothScroll(page, 520);
+  await smoothScroll(page, 520);
+  await smoothScroll(page, -1040, { steps: 40 });
+  await chapter("Acknowledging the handoff — taking over the patient");
+  await slowClick(page, page.getByRole("button", { name: "Acknowledge handoff" }), { after: 1600 });
+  await page.getByText("You now hold this patient.").waitFor();
+  await beat(1500);
+
+  await chapter("Back to the worklist — the case is complete");
   await slowClick(page, page.getByRole("button", { name: /Worklist/ }), { after: 900 });
   await page.getByRole("heading", { name: "Cases" }).waitFor();
+  await slowClick(page, 'button:has-text("All cases")', { after: 1400 });
+  await chapter("Done");
+  await beat(1200);
+}
 
-  const audioRow = page.getByRole("button", { name: /sg-audio/ });
-  if (await audioRow.count()) {
-    await chapter(page, "Opening the audio case → play a dictation");
-    await slowClick(page, page.locator('button:has-text("All cases")'));
-    await slowClick(page, audioRow, { after: 900 });
-    await page.getByText("The story so far").waitFor().catch(() => {});
-    await beat(800);
-    const audioSource = page.getByRole("button", { name: /^See (the source|sources)/ }).first();
-    if (await audioSource.count()) {
-      await slowClick(page, audioSource, { after: 1200 });
-      const play = page.getByRole("button", { name: /play/i }).first();
-      if (await play.count()) {
-        await slowClick(page, play, { after: 2600 }); // let the tone play
-      }
-      await beat(1200);
-      await slowClick(page, 'button[aria-label="Close"]', { after: 800 });
-    }
-    await slowClick(page, page.getByRole("button", { name: /Worklist/ }), { after: 900 });
-  }
-
-  await chapter(page, "Done");
-  await beat(1400);
+/** Reopen the case → follow its primary action into intake → capture audio →
+ * generate the stage → sign off. Used for the intra-op leg. */
+async function runCaptureStage(page, c) {
+  await chapter(c.open);
+  await slowClick(page, page.getByRole("button", { name: /Amara Okafor/ }), { after: 900 });
+  await waitForBrief(page);
+  await chapter(c.capture);
+  await slowClick(page, page.getByRole("button", { name: c.actionButton }), { after: 800 });
+  const audioInput = page.locator('input[type="file"][accept*="audio"]');
+  await audioInput.setInputFiles(c.wav);
+  await waitInputs(c.caseId, c.stage);
+  await beat(1000);
+  await chapter(c.generate);
+  await slowClick(page, page.getByRole("button", { name: /Generate the brief/ }), { after: 500 });
+  await waitForBrief(page);
+  await smoothScroll(page, 460);
+  await smoothScroll(page, -460);
+  await chapter(`Signing off (${c.signOff})`);
+  await slowClick(page, page.getByRole("button", { name: c.signOff }), { after: 1200 });
 }
 
 // --------------------------------------------------------------------------- #
@@ -315,16 +427,17 @@ async function walk(page) {
 async function main() {
   rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
+  const inputs = writeInputs();
 
   await ensureBuild();
-  const { server, baseUrl } = await bootServer();
+  const server = await bootServer();
 
   const browser = await chromium.launch({
     headless: !HEADED,
-    slowMo: Math.round(160 * PACE), // every action gets a visible beat
+    slowMo: Math.round(150 * PACE),
   });
   const context = await browser.newContext({
-    baseURL: baseUrl,
+    baseURL: BASE_URL,
     viewport: VIEWPORT,
     recordVideo: { dir: outDir, size: VIEWPORT },
   });
@@ -332,8 +445,8 @@ async function main() {
 
   let failed = null;
   try {
-    console.log(`→ filming the walkthrough on ${baseUrl}\n`);
-    await walk(page);
+    console.log(`→ filming the full lifecycle on ${BASE_URL}\n`);
+    await walk(page, inputs);
   } catch (e) {
     failed = e;
     console.error(`\n✗ walk failed: ${e.stack || e}`);
@@ -343,9 +456,10 @@ async function main() {
     await context.close(); // flushes the .webm to disk
     await browser.close();
     server.kill("SIGTERM");
+    rmSync(inputs.dir, { recursive: true, force: true });
 
     if (tmpPath && existsSync(tmpPath)) {
-      const finalPath = `${outDir}/catchup-walkthrough.webm`;
+      const finalPath = `${outDir}/catchup-lifecycle.webm`;
       cpSync(tmpPath, finalPath);
       rmSync(tmpPath, { force: true });
       console.log(`\n${failed ? "✗ partial" : "✓"} video saved → ${finalPath}`);

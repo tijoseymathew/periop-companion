@@ -6,7 +6,8 @@
  * a plain-language notice rather than a dead end.
  */
 import { useRef, useState, type ReactNode } from "react";
-import type { Case } from "../../lib/schema";
+import { categorizeReason } from "../../lib/catchup";
+import type { Case, OpenQuestion } from "../../lib/schema";
 
 const DOC_TYPES = [
   { value: "gp-summary", label: "GP summary" },
@@ -26,6 +27,7 @@ export function IntakeScreen({
   onCreateCase,
   onUploadDocument,
   onUploadAudio,
+  onApproveQuestions,
   onGenerate,
   onBack,
 }: {
@@ -38,6 +40,7 @@ export function IntakeScreen({
   onCreateCase: (label: string) => void;
   onUploadDocument: (docType: string, file: File) => void;
   onUploadAudio: (file: File) => void;
+  onApproveQuestions: (questions: OpenQuestion[]) => void;
   onGenerate: () => void;
   onBack: () => void;
 }) {
@@ -47,6 +50,14 @@ export function IntakeScreen({
   const audioInput = useRef<HTMLInputElement>(null);
 
   const sources = kase?.sources ?? [];
+  const preop = kase?.workflow?.stages.preop ?? null;
+  const gap = preop?.gap_analysis ?? null;
+  const questions = kase?.open_questions ?? [];
+  const questionsApproved = !!preop?.questions_approved_at;
+  // the pre-op note can't generate until the clarification questions are
+  // reviewed (v2 §4.1); block the button until then so a click can't 409
+  const questionsPending =
+    !!kase && !questionsApproved && (gap === "pending" || gap === "running" || questions.length > 0);
 
   return (
     <div className="flex h-full flex-col overflow-hidden">
@@ -207,15 +218,32 @@ export function IntakeScreen({
                 />
               </div>
 
+              {/* clarification questions: the pre-op gate the note waits on */}
+              {(gap === "pending" || gap === "running") && (
+                <div className="mt-8">
+                  <Label>Clarifying questions</Label>
+                  <div className="flex items-center gap-3 rounded-[12px] border border-surface-overlay bg-surface-sunken px-4 py-3.5 text-[13.5px] text-ink-secondary">
+                    <span
+                      className="h-4 w-4 flex-none rounded-full border-[2.5px] border-transparent border-t-brand"
+                      style={{ animation: "spin .8s linear infinite" }}
+                    />
+                    Reading the records for anything worth asking about in the interview…
+                  </div>
+                </div>
+              )}
+              {questionsPending && gap !== "pending" && gap !== "running" && (
+                <ClarifyingQuestions questions={questions} busy={busy} onApprove={onApproveQuestions} />
+              )}
+
               <div className="mt-7 flex items-center gap-4 border-t border-surface-line pt-6">
                 <div className="flex-1 text-[13.5px] leading-relaxed text-ink-dim">
-                  {sources.length} source{sources.length === 1 ? "" : "s"} on file. Generating the{" "}
-                  {audioKind.replace("-", " ")} output runs the pipeline — you can leave and come
-                  back to the worklist.
+                  {questionsPending
+                    ? "Review the clarifying questions above before generating the pre-op note."
+                    : `${sources.length} source${sources.length === 1 ? "" : "s"} on file. Generating the ${audioKind.replace("-", " ")} output runs the pipeline — you can leave and come back to the worklist.`}
                 </div>
                 <button
                   type="button"
-                  disabled={busy}
+                  disabled={busy || questionsPending}
                   onClick={onGenerate}
                   className="flex min-h-[52px] flex-none items-center rounded-[11px] bg-brand px-6 text-[15.5px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-50"
                 >
@@ -234,6 +262,86 @@ function Label({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-3.5 text-[12px] font-bold uppercase tracking-[.12em] text-gold">
       {children}
+    </div>
+  );
+}
+
+/**
+ * Review the GapAnalyst's clarification questions before the interview
+ * (design: "review before the interview"). Each question is kept (approved) or
+ * dismissed; the whole reviewed list is submitted at once, which passes the
+ * pre-op question gate. Approving an empty list is valid — it records that no
+ * clarification was needed.
+ */
+function ClarifyingQuestions({
+  questions,
+  busy,
+  onApprove,
+}: {
+  questions: OpenQuestion[];
+  busy: boolean;
+  onApprove: (questions: OpenQuestion[]) => void;
+}) {
+  const [decisions, setDecisions] = useState<Record<number, "approved" | "dismissed">>({});
+  const decisionFor = (i: number) => decisions[i] ?? "approved";
+
+  return (
+    <div className="mt-8">
+      <Label>Clarifying questions</Label>
+      <p className="-mt-1.5 mb-3.5 text-[13.5px] leading-relaxed text-ink-secondary">
+        {questions.length === 0
+          ? "The records didn't raise anything to clarify — approve to continue to the interview."
+          : "Review before the interview — keep the ones worth asking, dismiss the rest."}
+      </p>
+      <div className="flex flex-col gap-2.5">
+        {questions.map((q, i) => {
+          const meta = categorizeReason(q.reason);
+          const decision = decisionFor(i);
+          return (
+            <div key={i} className={`rounded-[13px] border ${meta.borderClass} ${meta.bgClass} p-4`}>
+              <span
+                className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] ${meta.textClass}`}
+              >
+                <span className={`h-1.5 w-1.5 rounded-full ${meta.dotClass}`} />
+                {meta.label}
+              </span>
+              <div className="mt-2 text-[15.5px] font-semibold leading-snug text-ink-primary">
+                {q.edited_text ?? q.question}
+              </div>
+              {q.reason && (
+                <div className="mt-1 text-[13px] leading-relaxed text-ink-secondary">{q.reason}</div>
+              )}
+              <div className="mt-3 inline-flex rounded-[10px] border border-surface-overlay bg-surface-panel p-[3px]">
+                {(["approved", "dismissed"] as const).map((opt) => {
+                  const on = decision === opt;
+                  return (
+                    <button
+                      key={opt}
+                      type="button"
+                      onClick={() => setDecisions((d) => ({ ...d, [i]: opt }))}
+                      className={`rounded-md px-3.5 py-1.5 text-[12.5px] font-semibold ${
+                        on
+                          ? "bg-surface-base text-ink-primary shadow-[0_1px_2px_rgba(35,27,15,.08)]"
+                          : "text-ink-dim"
+                      }`}
+                    >
+                      {opt === "approved" ? "Keep" : "Dismiss"}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <button
+        type="button"
+        disabled={busy}
+        onClick={() => onApprove(questions.map((q, i) => ({ ...q, review: decisionFor(i) })))}
+        className="mt-3.5 flex min-h-[48px] items-center rounded-[11px] bg-brand px-5 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-50"
+      >
+        Approve questions &amp; continue &nbsp;→
+      </button>
     </div>
   );
 }

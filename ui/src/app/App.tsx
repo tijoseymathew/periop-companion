@@ -25,7 +25,7 @@ import {
   uploadDocumentFile,
 } from "../lib/api";
 import { buildBrief, worklistRow } from "../lib/catchup";
-import type { Case, CaseSummary, Provider, StageKey } from "../lib/schema";
+import type { Case, CaseSummary, OpenQuestion, Provider, StageKey } from "../lib/schema";
 import { streamStageRun, type RunEvent } from "../lib/sse";
 import { headlineStage, type PrimaryAction } from "../lib/workflow";
 
@@ -64,6 +64,30 @@ export default function App() {
       .then(setProviders)
       .catch(() => setProviders([]));
   }, []);
+
+  // GapAnalyst question prep runs in a background thread (v2-speed §3.2), so a
+  // fresh upload returns before the questions exist. While intake is open on a
+  // case whose prep is pending/running, poll until it settles so the intake
+  // review step can surface the questions the gate will require.
+  const gapState = kase?.workflow?.stages.preop.gap_analysis ?? null;
+  useEffect(() => {
+    if (view !== "intake" || !kase) return;
+    if (gapState !== "pending" && gapState !== "running") return;
+    const caseId = kase.case_id;
+    let cancelled = false;
+    const id = setInterval(async () => {
+      try {
+        const fresh = await fetchCase(caseId);
+        if (!cancelled) setKase(fresh);
+      } catch {
+        /* transient — keep polling */
+      }
+    }, 1500);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
+  }, [view, kase?.case_id, gapState]);
 
   function pickProvider(providerId: string) {
     setMe(providerId);
@@ -147,6 +171,21 @@ export default function App() {
     setNotice(null);
     try {
       setKase(await uploadAudio(kase.case_id, AUDIO_KIND[stage], file, me, true));
+    } catch (e) {
+      setNotice(readDetail(e));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  /** Approve/dismiss the pre-op clarification questions from intake, passing
+   * the question gate so the note can generate (v2 §4.1). */
+  async function handleApproveQuestions(questions: OpenQuestion[]) {
+    if (!kase || !me) return;
+    setBusy(true);
+    setNotice(null);
+    try {
+      setKase(await reviewQuestions(kase.case_id, questions, me));
     } catch (e) {
       setNotice(readDetail(e));
     } finally {
@@ -297,6 +336,7 @@ export default function App() {
             onCreateCase={handleCreateCase}
             onUploadDocument={handleUploadDocument}
             onUploadAudio={handleUploadAudio}
+            onApproveQuestions={handleApproveQuestions}
             onGenerate={handleGenerate}
             onBack={goWorklist}
           />
