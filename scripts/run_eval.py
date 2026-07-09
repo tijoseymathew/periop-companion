@@ -74,7 +74,10 @@ def main() -> None:
             print(f"✗ {case_id}: {type(exc).__name__}: {exc}")
             continue
         reports.append(report)
-        print(f"{case_id}: gap_f1={report.gap_f1:.2f} "
+        # gap_recall, not gap_f1, is the defect-catch signal: gold carries one
+        # probe per case while the analyst asks ~5 questions, so precision
+        # (and with it f1) is capped low even on a perfect catch
+        print(f"{case_id}: gap_recall={report.gap_recall:.2f} "
               f"preop_recall={report.preop_claim_recall:.2f} "
               f"distractor_leak={report.distractor_leakage:.2f} "
               f"handoff_halluc={report.handoff_hallucination_rate:.2f}")
