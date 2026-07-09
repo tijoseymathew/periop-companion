@@ -10,7 +10,12 @@
  * (labels, claim statuses, open questions) rather than invent it.
  */
 import { claimFlagged } from "./claims";
-import { headlineStage, STATUS_WORDS } from "./workflow";
+import {
+  headlineStage,
+  primaryAction,
+  STATUS_WORDS,
+  type PrimaryAction,
+} from "./workflow";
 import type {
   Case,
   CaseSummary,
@@ -85,6 +90,75 @@ export const STAGE_DISPLAY: Record<StageKey, StageDisplay> = {
     className: "text-brand-ink bg-brand/12",
   },
 };
+
+// ---- gap-analysis reason categories (design "Needs you now" REASON map) ------
+//
+// The design tags every open question with one of three coloured reasons
+// (Conflict / Missing / Stale). Our GapAnalyst stores `reason` as free text,
+// so we categorise it honestly from its wording rather than invent a field —
+// falling back to a neutral "Clarify" when the wording is unclassifiable.
+
+export type ReasonKey = "conflict" | "missing" | "stale" | "clarify";
+
+export interface ReasonMeta {
+  key: ReasonKey;
+  label: string;
+  textClass: string; // accent text colour
+  dotClass: string; // solid status dot
+  borderClass: string; // card border
+  bgClass: string; // card tint
+}
+
+export const REASON_META: Record<ReasonKey, ReasonMeta> = {
+  conflict: {
+    key: "conflict",
+    label: "Conflict",
+    textClass: "text-status-conflicting",
+    dotClass: "bg-status-conflicting",
+    borderClass: "border-status-conflicting/28",
+    bgClass: "bg-status-conflicting/[0.06]",
+  },
+  missing: {
+    key: "missing",
+    label: "Missing",
+    textClass: "text-status-unsupported",
+    dotClass: "bg-status-unsupported",
+    borderClass: "border-status-unsupported/28",
+    bgClass: "bg-status-unsupported/[0.07]",
+  },
+  stale: {
+    key: "stale",
+    label: "Stale",
+    textClass: "text-status-inference",
+    dotClass: "bg-status-inference",
+    borderClass: "border-status-inference/26",
+    bgClass: "bg-status-inference/[0.06]",
+  },
+  clarify: {
+    key: "clarify",
+    label: "Clarify",
+    textClass: "text-gold",
+    dotClass: "bg-gold",
+    borderClass: "border-gold/30",
+    bgClass: "bg-gold/[0.06]",
+  },
+};
+
+/** Bucket a free-text gap reason into the design's coloured categories. */
+export function categorizeReason(reason: string | null): ReasonMeta {
+  const r = (reason ?? "").toLowerCase();
+  if (/conflict|disagree|mismatch|contradic|inconsist|differ|does not match|doesn't match/.test(r))
+    return REASON_META.conflict;
+  if (
+    /missing|undocument|not documented|no record|absent|unconfirmed|not on file|no mention|not stated|never documented|no document/.test(
+      r,
+    )
+  )
+    return REASON_META.missing;
+  if (/stale|outdated|out of date|predate|superseded|prior admission|previous admission|earlier admission|last documented|older than/.test(r))
+    return REASON_META.stale;
+  return REASON_META.clarify;
+}
 
 // ---- shared helpers ---------------------------------------------------------
 
@@ -215,6 +289,7 @@ export interface NeedItem {
   key: number;
   title: string;
   detail: string;
+  reason: ReasonMeta;
   refs: string[];
   hasProv: boolean;
   reviewed: boolean;
@@ -233,6 +308,8 @@ export interface BriefModel {
   title: string;
   stage: StageKey;
   stageDisplay: StageDisplay;
+  /** true once the case has left the operating room (timeline is real, not pending) */
+  reachedTheatre: boolean;
   assembledFrom: string;
   attentionCount: number;
   attentionItems: string[];
@@ -245,6 +322,10 @@ export interface BriefModel {
   pendingReview: number;
   chain: ChainNode[];
   writable: boolean;
+  /** the single forward action for this case's stage (null = read-only / complete) */
+  action: PrimaryAction | null;
+  /** provider this reviewer is taking the case over from (acknowledge / sign-off copy) */
+  handedFrom: string | null;
   // acknowledge (post-op handoff)
   handoffReady: boolean;
   acknowledgedBy: string | null;
@@ -305,15 +386,19 @@ export function buildBrief(
         ?.claims.map((c) => c.text) ?? [];
   }
 
-  // needs you now = gap-analysis open questions
-  const needs: NeedItem[] = kase.open_questions.map((q, i) => ({
-    key: i,
-    title: q.edited_text ?? q.question,
-    detail: q.reason ?? "",
-    refs: q.provenance,
-    hasProv: q.provenance.length > 0,
-    reviewed: q.review !== null,
-  }));
+  // needs you now = gap-analysis open questions, minus the ones the reviewer
+  // dismissed (kept in the record, but not something that "needs you now")
+  const needs: NeedItem[] = kase.open_questions
+    .map((q, i) => ({
+      key: i,
+      title: q.edited_text ?? q.question,
+      detail: q.reason ?? "",
+      reason: categorizeReason(q.reason),
+      refs: q.provenance,
+      hasProv: q.provenance.length > 0,
+      reviewed: q.review !== null,
+    }))
+    .filter((n) => kase.open_questions[n.key].review !== "dismissed");
   const pendingReview = needs.filter((n) => !n.reviewed).length;
 
   // attention summary (the design's hand-written "story so far", derived)
@@ -363,11 +448,30 @@ export function buildBrief(
   const ackBy = providerName(providers, wf?.stages.postop.handoff_acknowledged_by ?? null);
   const ackAt = timeHM(wf?.stages.postop.handoff_acknowledged_at ?? null);
 
+  // the case has genuinely left theatre once an intra-op artifact/events exist —
+  // before that the timeline section renders as a calm "not yet" placeholder so
+  // the page skeleton is identical at every stage
+  const reachedTheatre =
+    events.length > 0 ||
+    kase.artifacts.some(
+      (a) => a.artifact_id === "record:intra-op" || a.artifact_id === "note:anticipated-issues",
+    );
+
+  // who is handing the case to this reviewer: the most recent stage they signed off
+  let handedFrom: string | null = null;
+  if (wf) {
+    for (const st of ["preop", "intraop", "postop"] as StageKey[]) {
+      const pid = wf.stages[st].signed_off_by;
+      if (pid) handedFrom = providerName(providers, pid);
+    }
+  }
+
   return {
     caseId: kase.case_id,
     title: kase.label ?? kase.case_id,
     stage,
     stageDisplay: STAGE_DISPLAY[stage],
+    reachedTheatre,
     assembledFrom,
     attentionCount: attentionItems.length,
     attentionItems,
@@ -380,6 +484,8 @@ export function buildBrief(
     pendingReview,
     chain,
     writable: !!wf,
+    action: primaryAction(kase),
+    handedFrom,
     handoffReady: hasHandoff,
     acknowledgedBy: ackBy,
     acknowledgedMeta: ackBy ? [ackAt, ackBy].filter(Boolean).join(" · ") : null,

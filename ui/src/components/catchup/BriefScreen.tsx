@@ -1,11 +1,13 @@
 /**
- * The catch-up brief (PeriOp Catch-Up.dc.html "BRIEF"). The whole point of the
- * product: a clinician taking over an unfamiliar patient reads this top-to-
- * bottom in about a minute. Story → key facts (each with a verification badge
- * and a jump to its source) → theatre timeline → anticipated issues, with a
- * "needs you now" rail and the handoff acknowledgement.
+ * The patient view (PeriOp Catch-Up.dc.html "BRIEF"), generalised so its shape
+ * holds at every stage of a case — pre-op, in theatre, recovery, and complete.
+ * A clinician reads it top-to-bottom in about a minute: story → key facts (each
+ * with a verification badge and a jump to its source) → theatre timeline →
+ * anticipated issues, with a "needs you now" rail. The one forward action in the
+ * rail adapts to the case's stage (sign off / acknowledge / continue).
  */
 import type { BriefModel, ChainNode } from "../../lib/catchup";
+import type { PrimaryAction } from "../../lib/workflow";
 import type { SourceRequest } from "./SourceModal";
 
 interface QueueNav {
@@ -21,7 +23,7 @@ export function BriefScreen({
   canReview,
   onBack,
   onOpenSource,
-  onAcknowledge,
+  onAction,
   onReviewNeed,
 }: {
   model: BriefModel;
@@ -29,7 +31,7 @@ export function BriefScreen({
   canReview: boolean;
   onBack: () => void;
   onOpenSource: (req: SourceRequest) => void;
-  onAcknowledge: () => void;
+  onAction: (action: PrimaryAction) => void;
   onReviewNeed: (key: number, reviewed: boolean) => void;
 }) {
   const first = model.title.split(" ")[0] || "this patient";
@@ -162,12 +164,13 @@ export function BriefScreen({
             )}
           </div>
 
-          {/* theatre timeline */}
-          {model.events.length > 0 && (
+          {/* theatre timeline — always present so the page shape holds at every
+              stage; a calm placeholder stands in until the case reaches theatre */}
+          <Eyebrow>
+            In theatre{model.intraopPerformer ? ` · ${model.intraopPerformer}` : ""}
+          </Eyebrow>
+          {model.events.length > 0 ? (
             <>
-              <Eyebrow>
-                In theatre{model.intraopPerformer ? ` · ${model.intraopPerformer}` : ""}
-              </Eyebrow>
               <div className="mb-9 mt-3.5">
                 {model.events.map((e, i) => (
                   <div key={i} className="flex gap-4">
@@ -195,24 +198,35 @@ export function BriefScreen({
                 ))}
               </div>
             </>
+          ) : (
+            <SectionPlaceholder>
+              {model.reachedTheatre
+                ? "No dictation was recorded for the theatre record."
+                : "Not in the operating room yet — the theatre timeline fills in live once the case reaches theatre."}
+            </SectionPlaceholder>
           )}
 
-          {/* anticipated issues */}
-          {model.issues.length > 0 && (
-            <>
-              <Eyebrow>Anticipated issues</Eyebrow>
-              <div className="mt-3 flex max-w-[760px] flex-col gap-2.5">
-                {model.issues.map((r, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
-                  >
-                    <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
-                    <span className="text-[15px] leading-relaxed text-ink-body">{r}</span>
-                  </div>
-                ))}
-              </div>
-            </>
+          {/* anticipated issues — always present; the section fills in once the
+              theatre record is generated */}
+          <Eyebrow>Anticipated issues</Eyebrow>
+          {model.issues.length > 0 ? (
+            <div className="mt-3 flex max-w-[760px] flex-col gap-2.5">
+              {model.issues.map((r, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
+                >
+                  <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
+                  <span className="text-[15px] leading-relaxed text-ink-body">{r}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <SectionPlaceholder>
+              {model.reachedTheatre
+                ? "No post-op issues were anticipated for this case."
+                : "Anticipated post-op issues appear once the theatre record is generated."}
+            </SectionPlaceholder>
           )}
         </div>
 
@@ -232,13 +246,15 @@ export function BriefScreen({
             {model.needs.map((n) => (
               <div
                 key={n.key}
-                className="mb-3 rounded-[14px] border border-status-unsupported/28 bg-status-unsupported/[0.07] p-4"
+                className={`mb-3 rounded-[14px] border ${n.reason.borderClass} ${n.reason.bgClass} p-4`}
                 style={{ opacity: n.reviewed ? 0.6 : 1 }}
               >
                 <div className="mb-2 flex items-center justify-between gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] text-status-unsupported">
-                    <span className="h-1.5 w-1.5 rounded-full bg-status-unsupported" />
-                    Open question
+                  <span
+                    className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] ${n.reason.textClass}`}
+                  >
+                    <span className={`h-1.5 w-1.5 rounded-full ${n.reason.dotClass}`} />
+                    {n.reason.label}
                   </span>
                   {n.reviewed && (
                     <span className="text-[11.5px] font-semibold text-status-supported">
@@ -268,7 +284,7 @@ export function BriefScreen({
                       <button
                         type="button"
                         onClick={() => onReviewNeed(n.key, true)}
-                        className="min-h-[40px] rounded-[9px] border border-status-unsupported/40 bg-surface-base px-3.5 py-2 text-[13px] font-semibold text-status-unsupported"
+                        className={`min-h-[40px] rounded-[9px] border bg-surface-base px-3.5 py-2 text-[13px] font-semibold ${n.reason.borderClass} ${n.reason.textClass}`}
                       >
                         Mark reviewed
                       </button>
@@ -288,53 +304,15 @@ export function BriefScreen({
             )}
           </div>
 
-          {/* acknowledge */}
+          {/* the one forward action — adapts to the case's stage */}
           <div className="flex-none border-t border-surface-overlay bg-surface-sunken px-6 pb-5 pt-4">
             <div className="rounded-[15px] border border-surface-overlay bg-surface-base p-4">
-              {model.acknowledgedBy ? (
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-brand text-[18px] text-ink-onBrand">
-                    ✓
-                  </span>
-                  <div>
-                    <div className="text-[15px] font-semibold text-brand-ink">
-                      You now hold this patient.
-                    </div>
-                    {model.acknowledgedMeta && (
-                      <div className="mt-px text-[12.5px] text-ink-secondary">
-                        Handoff acknowledged {model.acknowledgedMeta}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ) : model.handoffReady && canReview ? (
-                <>
-                  <div className="text-[14px] leading-relaxed text-ink-muted">
-                    Acknowledging means you now hold clinical responsibility for{" "}
-                    <b className="text-ink-primary">{first}</b>.
-                  </div>
-                  {model.pendingReview > 0 && (
-                    <div className="mt-2.5 flex items-center gap-2 text-[12.5px] text-status-conflicting">
-                      <span>›</span>
-                      {model.pendingReview} item{model.pendingReview === 1 ? "" : "s"} still need
-                      your review — you can still acknowledge.
-                    </div>
-                  )}
-                  <button
-                    type="button"
-                    onClick={onAcknowledge}
-                    className="mt-3 min-h-[52px] w-full rounded-[11px] bg-brand py-3.5 text-[15.5px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] hover:bg-brand-soft"
-                  >
-                    Acknowledge handoff
-                  </button>
-                </>
-              ) : (
-                <div className="text-[13.5px] leading-relaxed text-ink-secondary">
-                  {model.handoffReady
-                    ? "This case is read-only. The handoff can be acknowledged by the clinician taking over."
-                    : "The handoff brief hasn't been generated yet — this case is still in progress."}
-                </div>
-              )}
+              <ActionPanel
+                model={model}
+                canReview={canReview}
+                first={first}
+                onAction={onAction}
+              />
             </div>
           </div>
         </div>
@@ -346,6 +324,134 @@ export function BriefScreen({
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div className="text-[12px] font-bold uppercase tracking-[.12em] text-gold">{children}</div>
+  );
+}
+
+/** A calm stand-in for a section a stage hasn't reached yet — keeps the page
+ * skeleton identical across pre-op, in-theatre, recovery and complete. */
+function SectionPlaceholder({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-9 mt-3 max-w-[760px] rounded-[11px] border border-dashed border-surface-overlay px-4 py-4 text-[13.5px] leading-relaxed text-ink-subtle">
+      {children}
+    </div>
+  );
+}
+
+const STAGE_NOUN: Record<BriefModel["stage"], string> = {
+  preop: "pre-op assessment",
+  intraop: "theatre record",
+  postop: "recovery handoff",
+};
+
+/**
+ * The single forward action in the rail, resolved from the case's stage. In the
+ * patient view this is realistically sign-off (pre-op / in-theatre),
+ * acknowledge (recovery), or a nudge back to intake to finish capture — with a
+ * confirmed / read-only / complete resting state.
+ */
+function ActionPanel({
+  model,
+  canReview,
+  first,
+  onAction,
+}: {
+  model: BriefModel;
+  canReview: boolean;
+  first: string;
+  onAction: (action: PrimaryAction) => void;
+}) {
+  // resting states first
+  if (model.acknowledgedBy) {
+    return (
+      <div className="flex items-center gap-3">
+        <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-brand text-[18px] text-ink-onBrand">
+          ✓
+        </span>
+        <div>
+          <div className="text-[15px] font-semibold text-brand-ink">You now hold this patient.</div>
+          {model.acknowledgedMeta && (
+            <div className="mt-px text-[12.5px] text-ink-secondary">
+              Handoff acknowledged {model.acknowledgedMeta}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  const action = model.action;
+
+  if (!canReview || !action) {
+    return (
+      <div className="text-[13.5px] leading-relaxed text-ink-secondary">
+        {!model.writable
+          ? "This case is read-only — a reference record. Nothing to sign off here."
+          : !action
+            ? "Signed off — this case is complete."
+            : "Pick a provider (top right) to act on this case."}
+      </div>
+    );
+  }
+
+  const noun = STAGE_NOUN[model.stage];
+  const pending =
+    model.pendingReview > 0 ? (
+      <div className="mt-2.5 flex items-center gap-2 text-[12.5px] text-status-conflicting">
+        <span>›</span>
+        {model.pendingReview} item{model.pendingReview === 1 ? "" : "s"} still need your review — you
+        can still continue.
+      </div>
+    ) : null;
+
+  if (action.kind === "generating") {
+    return (
+      <div className="flex items-center gap-3 text-[13.5px] text-ink-secondary">
+        <span
+          className="h-4 w-4 flex-none rounded-full border-[2.5px] border-transparent border-t-brand"
+          style={{ animation: "spin .8s linear infinite" }}
+        />
+        The pipeline is building this case — you can leave and come back.
+      </div>
+    );
+  }
+
+  // copy per action kind
+  let lead: React.ReactNode;
+  let cta = action.label;
+  if (action.kind === "acknowledge-handoff") {
+    lead = (
+      <>
+        {model.handedFrom ? (
+          <>
+            Taking over from <b className="text-ink-primary">{model.handedFrom}</b>.{" "}
+          </>
+        ) : null}
+        Acknowledging means you now hold clinical responsibility for{" "}
+        <b className="text-ink-primary">{first}</b>.
+      </>
+    );
+  } else if (action.kind === "sign-off") {
+    lead = <>Signing off confirms the {noun} and hands the case forward.</>;
+  } else if (action.kind === "generate") {
+    lead = <>The inputs are in — generate the {noun} when you're ready.</>;
+  } else {
+    // add-records / review-questions / record-interview / record-memo
+    lead = <>There's a step to finish before the {noun} is ready.</>;
+    cta = `${action.label} →`;
+  }
+
+  return (
+    <>
+      <div className="text-[14px] leading-relaxed text-ink-muted">{lead}</div>
+      {pending}
+      <button
+        type="button"
+        onClick={() => onAction(action)}
+        className="mt-3 min-h-[52px] w-full rounded-[11px] bg-brand py-3.5 text-[15.5px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] hover:bg-brand-soft"
+      >
+        {cta}
+      </button>
+    </>
   );
 }
 

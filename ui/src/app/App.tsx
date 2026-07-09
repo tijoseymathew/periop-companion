@@ -20,13 +20,14 @@ import {
   fetchCases,
   fetchProviders,
   reviewQuestions,
+  signoffStage,
   uploadAudio,
   uploadDocumentFile,
 } from "../lib/api";
 import { buildBrief, worklistRow } from "../lib/catchup";
 import type { Case, CaseSummary, Provider, StageKey } from "../lib/schema";
 import { streamStageRun, type RunEvent } from "../lib/sse";
-import { headlineStage } from "../lib/workflow";
+import { headlineStage, type PrimaryAction } from "../lib/workflow";
 
 const PROVIDER_STORAGE_KEY = "periop-provider";
 
@@ -184,6 +185,40 @@ export default function App() {
     }
   }
 
+  /** Sign off a stage from the patient view, then drop back to the worklist —
+   * the case reappears with its next stage's status. */
+  async function handleSignoff(stage: StageKey) {
+    if (!kase || !me) return;
+    try {
+      await signoffStage(kase.case_id, stage, me);
+      goWorklist();
+    } catch (e) {
+      setError(readDetail(e));
+    }
+  }
+
+  /** Dispatch the patient view's single adaptive action (workflow.primaryAction).
+   * Forward-moving capture steps route back to intake; terminal actions run here. */
+  function handleAction(action: PrimaryAction) {
+    switch (action.kind) {
+      case "sign-off":
+        void handleSignoff(action.stage);
+        return;
+      case "acknowledge-handoff":
+        void handleAcknowledge();
+        return;
+      case "generate":
+        void handleGenerate();
+        return;
+      case "generating":
+        return;
+      default:
+        // add-records / review-questions / record-interview / record-memo
+        setNotice(null);
+        setView("intake");
+    }
+  }
+
   /** Toggle an open question's review state (design: "Needs you now" cards). */
   async function handleReviewNeed(key: number, reviewed: boolean) {
     if (!kase || !me) return;
@@ -224,7 +259,7 @@ export default function App() {
         canReview={model.writable && !!me}
         onBack={goWorklist}
         onOpenSource={setSource}
-        onAcknowledge={handleAcknowledge}
+        onAction={handleAction}
         onReviewNeed={handleReviewNeed}
       />
     );
