@@ -1,8 +1,9 @@
 /**
  * Semantic token pattern per specs/ui.md §6. Values track the imported
- * "PeriOp Companion.dc.html" design: a near-black slate canvas, a teal brand
- * accent (deliberately not green), and the five-state verification-status
- * palette. Token *names* stay semantic so component classes survive a reskin.
+ * "PeriOp Catch-Up.dc.html" design: a warm paper canvas, a muted green brand
+ * accent, a gold eyebrow accent, serif Newsreader for narrative + Public Sans
+ * for everything else, and the five-state verification-status palette. Token
+ * *names* stay semantic so component classes survive a reskin.
  * @type {import('tailwindcss').Config}
  */
 export default {
@@ -10,41 +11,55 @@ export default {
   theme: {
     extend: {
       colors: {
+        // warm paper surfaces
         surface: {
-          base: "#0d1117", // app canvas
-          chrome: "#10151c", // stepper / nav chrome
-          raised: "#141a22", // cards
-          sunken: "#0f141b", // source panel
-          overlay: "#1e2732", // chrome borders / dividers
-          line: "#232d38", // card borders
+          base: "#FBF9F5", // app canvas
+          chrome: "#FAF7F1", // headers / nav chrome
+          raised: "#FBF9F5", // cards on the sunken rail
+          sunken: "#F4EEE3", // right rail / intake fields
+          panel: "#F1EBDF", // segmented control track
+          warm: "#F7F1E6", // anticipated-issue cards
+          overlay: "#E4DBCB", // card borders / dividers
+          line: "#EFE8DA", // hairline row separators
+          chromeline: "#E9E1D3", // header underlines
         },
         ink: {
-          primary: "#e6ecf3",
-          secondary: "#9fb0c0",
-          subtle: "#6a7889",
-          faint: "#5b6879",
-          onBrand: "#07110f", // text on a teal fill
+          primary: "#23201B",
+          body: "#33302a",
+          secondary: "#6E675B",
+          muted: "#5c564b",
+          dim: "#8a8270",
+          subtle: "#9a917f",
+          faint: "#a49a87",
+          ghost: "#b3a992",
+          onBrand: "#FBF9F5", // text on a green fill
         },
         brand: {
-          DEFAULT: "#2dd4bf",
-          soft: "#5fe3d3",
+          DEFAULT: "#2F6B5E", // fills
+          ink: "#2A5F53", // links / on-paper text
+          soft: "#3f7d6f",
+        },
+        gold: {
+          DEFAULT: "#b0894a", // eyebrow / section labels
+          soft: "#cdb98a",
         },
         status: {
-          supported: "#4ac776",
-          unsupported: "#e3ab3f",
-          conflicting: "#f26a60",
-          inference: "#b28bf5",
-          unverified: "#8ea0b2",
+          supported: "#5f8a52",
+          unsupported: "#8A6D1E",
+          conflicting: "#A24B2E",
+          inference: "#5E6E8A",
+          unverified: "#9a917f",
         },
       },
       fontFamily: {
-        sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
+        sans: ["'Public Sans'", "system-ui", "sans-serif"],
+        serif: ["'Newsreader'", "Georgia", "serif"],
         mono: ["'IBM Plex Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       keyframes: {
         recPulse: {
-          "0%,100%": { boxShadow: "0 0 0 0 rgba(242,106,96,.55)" },
-          "50%": { boxShadow: "0 0 0 16px rgba(242,106,96,0)" },
+          "0%,100%": { boxShadow: "0 0 0 0 rgba(162,75,46,.5)" },
+          "50%": { boxShadow: "0 0 0 14px rgba(162,75,46,0)" },
         },
         barflow: {
           "0%,100%": { opacity: "0.45" },
