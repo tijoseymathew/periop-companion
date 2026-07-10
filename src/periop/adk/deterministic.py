@@ -17,7 +17,6 @@ from google.adk.events import Event, EventActions
 from google.genai import types
 
 from periop.adk.runtime import case_delta, emit, get_case
-from periop.schemas import Case
 from periop.tools.ingest import has_transcript_inputs, ingest_records, transcript_source
 
 
