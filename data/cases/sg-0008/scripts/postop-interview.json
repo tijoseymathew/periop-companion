@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Still a bit groggy, but okay. My tummy is sore, though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I understand. Can you rate your pain for me, from 1 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Hmm, maybe a 4 or 5. It's manageable, but I can feel it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Have you been feeling nauseous or sick to your stomach at all?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little bit when I first woke up, but it's better now. Not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How's your breathing? Any discomfort or feeling like you can't catch your breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. My throat is a bit sore, but that's all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That can happen with the LMA. Do you remember anything from the surgery itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing. I was out cold. Just woke up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected. Since you have hypertension and diabetes, we'll keep a close eye on your vitals and blood sugar levels. Any concerns from your side?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think I'm okay. Just want to go home and rest."
+    }
+  ]
+}

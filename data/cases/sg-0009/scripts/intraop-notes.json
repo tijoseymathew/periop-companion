@@ -1,0 +1,187 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "LMA size four in place, secure airway"
+    },
+    {
+      "t": "08:05",
+      "text": "fentanyl twenty micrograms IV for analgesia"
+    },
+    {
+      "t": "08:10",
+      "text": "vecuronium fifty milligrams IV for muscle relaxation"
+    },
+    {
+      "t": "08:20",
+      "text": "normal saline one liter IV fluid running at one hundred fifty mL per hour"
+    },
+    {
+      "t": "09:00",
+      "text": "hypotension noted, mean arterial pressure forty five mmHg, atropine one milligram IV administered"
+    },
+    {
+      "t": "09:15",
+      "text": "surgery completed, emergence started with neostigmine two milligrams and sugammadex one hundred sixty milligrams IV"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size four",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "20",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "50",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "150",
+      "units": "mL per hour",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "1",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "2",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "160",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    }
+  ]
+}

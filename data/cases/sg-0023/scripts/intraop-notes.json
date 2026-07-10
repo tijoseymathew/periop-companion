@@ -1,0 +1,111 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "LMA size four inserted, good seal, capnograph waveform confirmed"
+    },
+    {
+      "t": "08:05",
+      "text": "ultrasound-guided right subcostal transversus abdominis plane block, local anesthetic twenty milligrams of bupivacaine"
+    },
+    {
+      "t": "08:10",
+      "text": "hypotension noted, blood pressure sixty-five over forty, one liter of Ringer's lactate administered"
+    },
+    {
+      "t": "08:15",
+      "text": "tube in, grade one view, surgery commencing"
+    },
+    {
+      "t": "09:00",
+      "text": "normotension maintained, blood pressure one twenty over seventy-five"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size four",
+      "units": null,
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one liter",
+      "units": "Ringer's lactate",
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:15"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "normotension maintained",
+      "units": null,
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "questions": [
+    "Can you confirm the current dose of Atorvastatin you are taking?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "250",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "16",
+      "units": "size",
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "20",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "50",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "1",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "desflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:45"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "1.2",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:45"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "surgery completed",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "airway",
+      "value": "LMA removed",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documentation of current medications: Atorvastatin 20 mg Daily, Omeprazole 20 mg Daily, and Paracetamol 500 mg As needed (with note that Paracetamol has been stopped)",
+    "Allergy to Penicillin with reaction described as rash",
+    "ASA-PS classification of 2 with reason: due to Obesity (BMI 28.5 kg/m²) and Hyperlipidemia",
+    "Airway assessment and plan for General Anesthesia with Laryngeal Mask Airway (LMA)",
+    "Confirmation of elective Appendectomy (Laparoscopic) and relevant comorbidities"
+  ],
+  "handoff_claims": [
+    "Expectation of potential challenges in airway management due to Obesity (BMI 28.5 kg/m²)",
+    "Anticipation of possible delayed recovery or increased risk of complications due to comorbidities (Obesity and Hyperlipidemia)",
+    "Key medication history: Atorvastatin dose increase to 20 mg Daily 3 months ago, and Penicillin allergy with rash reaction"
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Fractured left wrist at age 10, fully healed",
+    "Completed a 6-week smoking cessation program 2 years ago"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning! I'm going to be your anesthesiologist for your laparoscopic cholecystectomy tomorrow. I'd like to go through some questions to make sure we're all set for your surgery. Can you start by telling me a bit about why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've been having pain on the right side of my tummy, especially after eating. The doctor found a gallstone, and they said it's best to remove the gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. That helps. Now, let's go through your medications. I see you're on Atorvastatin, Lisinopril, Omeprazole, and Paracetamol as needed. Can you confirm if you're still taking all of these, and if not, when did you stop any of them?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm still taking Atorvastatin, Lisinopril, and Omeprazole every day. But I stopped taking Paracetamol already. I think it was about six months ago when my back pain got better."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great, thanks for clarifying that. Do you have any allergies? I see penicillin listed with a rash."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had a rash when I took penicillin before, so I avoid it. No other drug allergies that I know of."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Are you currently on any other medications, supplements, or herbal remedies that aren't listed here?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't think so. Just the ones we already mentioned."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Let's talk about your health. You have a history of hypertension, hyperlipidemia, and you're a bit overweight. How have those been managed lately?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "My blood pressure has been okay, not too high. I take Lisinopril regularly. Cholesterol is under control with Atorvastatin. And I know I need to lose some weight, but it's been hard."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks. Have you had any previous surgeries or anesthesia? Any problems with anesthesia in the past?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had my wisdom teeth removed years ago, and that went fine. No problems with the anesthesia then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Are you currently on a NPO order? When was the last time you ate or drank anything?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I was told not to eat after midnight. I had some water until about 6 AM this morning, but nothing else."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Lastly, how would you describe your overall energy level and ability to perform daily activities?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can do most things, but sometimes I get a bit tired, especially after meals. But I can walk, climb stairs, that sort of thing."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for all that information. We'll be using general anesthesia with a breathing tube for your surgery. We'll also give you some pain relief during and after surgery. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all clear. I'm ready."
+    }
+  ]
+}

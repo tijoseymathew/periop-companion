@@ -1,0 +1,84 @@
+{
+  "case_id": "sg-0017",
+  "persona_uuid": "b0a987dea0e4443cb79481f38db54c8f",
+  "surgery": "Arthroscopic Knee Meniscectomy (Left)",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Ultrasound-Guided Femoral Nerve Block",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 28.5 kg/m²)",
+    "Mild Asthma (intermittent, exercise-triggered)"
+  ],
+  "medications": [
+    {
+      "name": "Montelukast",
+      "dose": "10 mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Salbutamol Inhaler",
+      "dose": "2 puffs as needed",
+      "frequency": "PRN",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Latex allergy (confirmed during pre-op interview)",
+    "gold_question": "Have you experienced any reactions to latex products in the past?"
+  },
+  "distractors": [
+    {
+      "description": "History of left ankle fracture (healed, 2018)",
+      "why_irrelevant": "Remote, fully healed, no impact on current anesthesia or surgery"
+    },
+    {
+      "description": "Pneumonia (resolved, 2020)",
+      "why_irrelevant": "Resolved infection, no residual lung disease"
+    },
+    {
+      "description": "Discontinued metformin (2019) for prediabetes",
+      "why_irrelevant": "Condition resolved with lifestyle changes, no current metabolic issues"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Montelukast",
+        "dose": "10 mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Salbutamol Inhaler",
+        "dose": "2 puffs as needed",
+        "frequency": "PRN",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Left ankle fracture (2018)",
+      "Pneumonia (2020)",
+      "Prediabetes (2019, resolved)"
+    ],
+    "prior_anesthesia": null
+  }
+}

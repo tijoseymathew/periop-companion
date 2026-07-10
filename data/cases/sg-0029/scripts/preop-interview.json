@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning! I'm going to be your anesthesiologist for your laparoscopic appendectomy today. I'd like to go through a few questions to make sure we're all set for your surgery. Can you start by telling me a bit about your current condition and why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doc. I've been having this sharp pain on the right side of my belly for a few days. It started after I ate some street food, I think. The doctor said my appendix is inflamed and needs to come out. So here I am, lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that. Let's move on to your medications. I see here that you're on Montelukast Sodium and Escitalopram. Can you confirm the current doses for me, and let me know if there have been any changes recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I'm still on Montelukast Sodium 10 mg every night for my asthma. But for the Escitalopram, I had it reduced to 5 mg once daily about three months ago. My psychiatrist said it was enough for me, so I've been on that dose since."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. It's important we have the most up-to-date information. Do you have any allergies that we should be aware of?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I'm allergic to penicillin. I got a rash the last time I took it, so they told me to avoid it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. We'll make sure to note that. Now, about your health history — you mentioned asthma. Can you tell me more about that?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It's pretty mild, doc. I only get it when I exercise really hard or when the weather changes. I use my inhaler maybe once a week, sometimes less. I haven't had any attacks recently."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to know. And I see you have a BMI of 28, which puts you in the overweight category. Has your weight been stable, or has it been increasing?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It's been going up a bit, slowly. I try to exercise, but it's hard with my schedule. I know I should lose some weight, but it's tough, you know?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "It can be challenging, but we'll take that into account during anesthesia. Have you had any previous surgeries or anesthesia? If so, how did you tolerate them?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I've never been under general anesthesia before, so I'm a bit nervous about that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely normal. We'll make sure you're comfortable and explain everything as we go. Are you NPO — that is, have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I stopped eating and drinking after midnight, like the nurse told me. Just a bit thirsty, but I'm okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great, thank you. Finally, how are you functioning day-to-day? Can you walk up stairs, carry groceries, that sort of thing?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk and do normal things, but sometimes I get a bit short of breath if I walk too fast or climb too many stairs. But I'm still independent, lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for all that information. We'll be using a combined technique — general anesthesia with spinal anesthesia — to make sure you're comfortable during and after the surgery. We'll also monitor you closely given your asthma and weight. Any questions for me before we proceed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thanks for explaining everything, doc."
+    }
+  ]
+}

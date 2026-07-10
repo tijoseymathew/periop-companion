@@ -1,0 +1,48 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm feeling a bit tired, but okay. Got some pain in the tummy area."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Can you rate the pain for me, from 0 to 10? And have you felt nauseous at all?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe a 4 or 5? And yeah, a little bit of nausea, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we can manage that pain and nausea for you. How’s your breathing? Any discomfort or difficulty breathing?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine, no problem. Throat is a bit sore though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That sore throat can happen from the LMA tube. It should ease soon. Any moments where you felt awake during the surgery or remember anything?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don’t remember anything. Went to sleep and woke up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Given your diabetes, kidney issues, and high blood pressure, we’ll keep a close eye on your vitals and fluid balance. Any other concerns?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that’s all for now. Thanks for checking on me."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Of course. We’ll get you more comfortable and ready to move to the ward soon."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through a few questions to ensure we have all the necessary information for your safety and comfort."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Good morning, Doctor. I'm ready when you are."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Can you please confirm for me the reason for your surgery today and how long you've been experiencing symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, sure. I've been having a lot of pain on my right side, especially after eating. The doctor said it's due to gallstones and that the best option is to remove the gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. Now, let's move on to your medications. Can you confirm your current list of medications, including any changes or discontinuations in the past year, and any new allergies or reactions since your last medical review?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Okay, let me think. I'm still taking Metformin 500mg twice a day for my diabetes, Lisinopril 10mg once a day for blood pressure, and Atorvastatin 20mg at night for cholesterol. Oh, and I stopped taking Ranitidine about six months ago because my acid reflux got better, so now I'm taking Omeprazole 20mg once a day instead."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that update. It's important we have the most current information. Regarding allergies, you mentioned Penicillin causing a rash in the past. Have you had any new allergies or reactions to any medications, foods, or latex since your last review?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. Just the Penicillin rash. Nothing new has come up."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great, thank you. Now, in terms of your general health, can you tell me about your daily activities and any limitations you might have due to your obesity, diabetes, or hypertension?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Well, I do find it harder to move around because of my weight, and sometimes I get short of breath. But I can still do most daily tasks, just slower. My diabetes and blood pressure are managed with medication, and I check my sugar levels regularly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It helps us understand how to support you better during and after surgery. Have you had any previous surgeries or anesthesia? If so, were there any issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had a cesarean section about 10 years ago, and that went smoothly. No issues with the anesthesia that I remember."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. And finally, can you confirm when you last had food and drink? It's important for your safety under general anesthesia."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had my last meal around 8 PM last night and a sip of water at 10 PM. Nothing since then, as per the instructions."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect, thank you. We'll be using general anesthesia for your laparoscopic cholecystectomy and also performing an ultrasound-guided TAP block for post-operative pain management. This should help keep you comfortable after surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "That sounds good. I'm hoping the pain won't be too bad after."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll do our best to manage your pain effectively. If you have any questions or concerns before we proceed, please let me know."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you, Doctor."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You're very welcome. We'll take good care of you. I'll see you in the operating room shortly."
+    }
+  ]
+}

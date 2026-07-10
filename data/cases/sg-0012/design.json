@@ -1,0 +1,99 @@
+{
+  "case_id": "sg-0012",
+  "persona_uuid": "655e0afeace44a648decc85fad1ed4ff",
+  "surgery": "Cholecystectomy (Laparoscopic)",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Balanced Technique, including Fentanyl, Propofol, and Sevoflurane; Muscle Relaxant (Rocuronium) for intubation and surgery",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin, Lisinopril, Atorvastatin, Ranitidine (active)",
+    "truth": "Ranitidine was discontinued 6 months ago due to side effects; currently not on any H2 blocker",
+    "gold_question": "Can you confirm if you are still taking Ranitidine or if it has been discontinued?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved and not relevant to current surgical or anesthetic risk"
+    },
+    {
+      "description": "Fractured right wrist 10 years ago, fully healed",
+      "why_irrelevant": "Remote history, no impact on current anesthesia or surgical plan"
+    },
+    {
+      "description": "Completed a course of Amoxicillin for a dental infection 2 years ago without issues",
+      "why_irrelevant": "Not an allergy, and not relevant to current medications or surgeries"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Ranitidine",
+        "dose": "150mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin (rash)"
+    ],
+    "past_history": [
+      "History of pneumonia resolved 5 years ago",
+      "Fractured right wrist 10 years ago, fully healed",
+      "Completed a course of Amoxicillin for a dental infection 2 years ago without issues"
+    ],
+    "prior_anesthesia": null
+  }
+}

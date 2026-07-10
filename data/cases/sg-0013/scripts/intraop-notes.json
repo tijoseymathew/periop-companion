@@ -1,0 +1,165 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "18 gauge peripheral line placed, 500 ml lactated ringers bolus"
+    },
+    {
+      "t": "08:15",
+      "text": "ultrasound-guided TAP block performed with 0.5% bupivacaine twenty milligrams"
+    },
+    {
+      "t": "08:30",
+      "text": "blood pressure drop to eighty over fifty, atropine one milligram given"
+    },
+    {
+      "t": "09:00",
+      "text": "surgery completed, reversal with neostigmine two milligrams and sugammadex fifty milligrams"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "18 gauge peripheral line",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 ml lactated ringers",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:15"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "blood pressure drop to eighty over fifty",
+      "units": null,
+      "provenance": [
+        "voice_note#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "one",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:30"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    }
+  ]
+}

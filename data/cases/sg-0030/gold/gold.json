@@ -1,0 +1,159 @@
+{
+  "questions": [
+    "Can you please confirm if there have been any changes to your medication list since your last review, and have you experienced any new allergic reactions to medications recently?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty-five",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": "liters",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two",
+      "units": "liters",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty-five",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atropine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "sixteen",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documentation of comprehensive history including obesity (BMI 32) and type 2 diabetes mellitus (well-controlled with oral medications).",
+    "Medication list includes Metformin 500mg twice daily (continued), Atorvastatin 20mg once daily (continued), Ranitidine 150mg once daily (stopped), and updated change from Gliclazide to Sitagliptin 100mg once daily due to hypoglycemic episodes.",
+    "Allergy documentation includes Penicillin (rash) and new allergy to Ceftriaxone (urticaria).",
+    "ASA-PS classification of 2 with rationale including well-controlled type 2 diabetes and obesity.",
+    "Airway assessment and anesthetic plan documented, including general anesthesia with single-shot ultrasound-guided transversus abdominis plane (TAP) block for postoperative pain management."
+  ],
+  "handoff_claims": [
+    "Key history shared includes type 2 diabetes, obesity, and updated medication changes (discontinuation of Gliclazide, initiation of Sitagliptin).",
+    "Intra-operative course expectations shared, including successful completion of laparoscopic cholecystectomy and administration of TAP block for postoperative pain management.",
+    "Anticipated issues communicated, including potential for hypoglycemia given diabetes history and recent medication change, and monitoring for signs of urticaria or allergic reaction given new Ceftriaxone allergy."
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Fractured wrist at age 12, fully healed",
+    "Previous diagnosis of mild depression, not on any medications"
+  ]
+}

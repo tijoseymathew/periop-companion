@@ -1,0 +1,68 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your surgery today. I'd like to go through a few things with you to make sure everything is in order for your laparoscopic cholecystectomy under general anesthesia with spinal block. Can you please confirm your current medications and if there have been any changes since your last review?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure, doctor. I'm still on Metformin 500mg twice a day and Sitagliptin 100mg once a day for my diabetes. I used to take Loratadine for my nose, but I stopped it because it was getting too expensive. Now I take Montelukast 10mg once a day instead. Oh, and I also take Omeprazole 20mg once a day, but I think I stopped that a while back too."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that update, Mr. Tan. It's important we have the most current information. You mentioned stopping Omeprazole — was that due to any specific reason or just discontinuation? Also, have you had any new allergic reactions to medications recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No specific reason for stopping Omeprazole, just thought I didn't need it anymore, lah. But yes, actually, I had a reaction to some antibiotic I took recently. I went to the polyclinic for a UTI and they gave me Cefuroxime. After a few days, I developed a rash all over my body. It was pretty bad, so I had to stop it and switch to another antibiotic."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. So to confirm, you now have a known allergy to Cefuroxime in addition to your previous allergy to Penicillin, which caused a rash. Is that correct?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, exactly. Both caused rashes, so I guess I should avoid both."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Absolutely. We'll make sure that's clearly noted in your chart. Now, regarding your diabetes, how well-controlled is it? Are you having any issues with your blood sugar levels?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It's been pretty stable, doctor. I check my sugar levels a few times a week, and they're usually within the normal range. I haven't had any episodes of high or low sugar recently."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. And how about your mobility and overall fitness? Are you able to walk, climb stairs, or do any regular physical activity?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk around, but I do get a bit short of breath if I walk too fast or climb too many stairs. I'm not as active as I used to be, but I can still do daily activities without too much trouble."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time having surgery. I've never had anesthesia before, so I'm a bit nervous about it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely normal. We'll make sure you're comfortable and safe throughout the process. Finally, have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I followed the instructions. I had my last meal around 7pm last night and only sipped water until 8pm. Nothing since then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. We'll proceed with the plan for general anesthesia combined with spinal anesthesia to minimize pain during and after surgery. We'll also ensure your diabetes and allergies are carefully managed. Any questions or concerns before we begin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you, doctor."
+    }
+  ]
+}

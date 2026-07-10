@@ -1,0 +1,78 @@
+{
+  "case_id": "sg-0029",
+  "persona_uuid": "5b2bfe8299ce4c1ab15877e7b0344cb2",
+  "surgery": "Laparoscopic Appendectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Spinal Anesthesia (Combined Technique)",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 28 kg/m^2)",
+    "Mild Asthma (infrequent, exercise-induced)"
+  ],
+  "medications": [
+    {
+      "name": "Montelukast Sodium",
+      "dose": "10 mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Escitalopram",
+      "dose": "10 mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Levothyroxine",
+      "dose": "50 mcg",
+      "frequency": "once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Montelukast Sodium 10 mg once daily, Escitalopram 10 mg once daily",
+    "truth": "Montelukast Sodium 10 mg once daily, Escitalopram 5 mg once daily (dose reduced 3 months ago)",
+    "gold_question": "Can you confirm the current dose of Escitalopram you are taking, and any recent changes to your medications?"
+  },
+  "distractors": [
+    {
+      "description": "History of left wrist fracture (age 12, fully healed)",
+      "why_irrelevant": "Remote, fully healed, no impact on current anesthesia or surgery"
+    },
+    {
+      "description": "Pneumonia (age 15, fully resolved)",
+      "why_irrelevant": "Resolved infection, no residual lung disease"
+    },
+    {
+      "description": "Previous pre-op ECG for elective cholecystectomy (age 16, normal results)",
+      "why_irrelevant": "Remote, normal findings, not relevant to current surgery"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Montelukast Sodium",
+        "dose": "10 mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Escitalopram",
+        "dose": "10 mg",
+        "frequency": "once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Left wrist fracture (age 12, fully healed)",
+      "Pneumonia (age 15, fully resolved)",
+      "Previous pre-op ECG for elective cholecystectomy (age 16, normal results)"
+    ],
+    "prior_anesthesia": null
+  }
+}

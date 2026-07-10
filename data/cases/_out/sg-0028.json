@@ -1,0 +1,1043 @@
+{
+  "case_id": "sg-0028",
+  "label": null,
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "22-year-old male, Senior Official or Manager, resident of Choa Chu Kang, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Atorvastatin 10 mg Daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Omeprazole 20 mg Daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Paracetamol 500 mg As needed.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Appendicitis (current presentation)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Obesity",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Hyperlipidemia",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Pneumonia (resolved 5 years ago)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Fractured left wrist (age 10, fully healed)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c011",
+          "text": "Smoking cessation program completed 2 years ago",
+          "section": "Past History"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Atorvastatin 10 mg Daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Omeprazole 20 mg Daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Paracetamol 500 mg As needed.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Appendectomy (Laparoscopic) (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 17.2,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr./Ms. [Name]. I'm [Provider's Name], the anesthesiologist who'll be taking care of you during your surgery today. I'd like to go over a few things to make sure everything goes smoothly for your laparoscopic appendectomy under general anesthesia with an LMA."
+        },
+        {
+          "seg_id": "s002",
+          "t0": 17.6,
+          "t1": 21.2,
+          "speaker": "PATIENT",
+          "text": "Morning, doctor. I'm ready, just a bit nervous lah."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 21.6,
+          "t1": 31.6,
+          "speaker": "PROVIDER",
+          "text": "That's completely normal. Let's start with your current health. Can you tell me a bit about your symptoms and how long you've been having them?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 32.0,
+          "t1": 46.8,
+          "speaker": "PATIENT",
+          "text": "Sure. I've had tummy pain for about two days, mostly on the right side. It's been getting worse, and I've had some fever and loss of appetite. The doctor said it's appendicitis and needs to come out."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 47.2,
+          "t1": 58.4,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Now, let's go over your medications. I see you're on Atorvastatin, Omeprazole, and Paracetamol as needed. Can you confirm the current dose of Atorvastatin you're taking?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 58.8,
+          "t1": 71.2,
+          "speaker": "PATIENT",
+          "text": "Ah, yes. I was on 10 mg daily for a while, but my doctor increased it to 20 mg daily about three months ago because my cholesterol levels were still high."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 71.6,
+          "t1": 77.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you for clarifying that. And how often are you taking the Omeprazole and Paracetamol?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 78.0,
+          "t1": 88.8,
+          "speaker": "PATIENT",
+          "text": "I take Omeprazole every morning, and Paracetamol only when I have pain or fever. I actually stopped taking it a few days ago when the pain started."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 89.2,
+          "t1": 94.0,
+          "speaker": "PROVIDER",
+          "text": "Got it. And do you have any allergies we should know about?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 94.4,
+          "t1": 100.4,
+          "speaker": "PATIENT",
+          "text": "Yes, I had a rash when I took Penicillin before, so I'm allergic to that."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 100.8,
+          "t1": 111.2,
+          "speaker": "PROVIDER",
+          "text": "Noted. We'll make sure to avoid Penicillin and related antibiotics. Now, about your health history — you mentioned obesity and hyperlipidemia. Are you managing these well?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 111.6,
+          "t1": 123.6,
+          "speaker": "PATIENT",
+          "text": "I try my best, but with my BMI at 28.5, it's been a struggle. I walk a bit and watch my diet, but I know I need to do more."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 124.0,
+          "t1": 128.4,
+          "speaker": "PROVIDER",
+          "text": "That's good to hear. Any other medical conditions or recent illnesses?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 128.8,
+          "t1": 133.2,
+          "speaker": "PATIENT",
+          "text": "No, nothing else. I haven't been sick recently except for this."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 133.6,
+          "t1": 138.0,
+          "speaker": "PROVIDER",
+          "text": "Great. Have you had any anesthesia before? Any issues with it?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 138.4,
+          "t1": 142.8,
+          "speaker": "PATIENT",
+          "text": "No, this is my first time. I've never had surgery before."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 143.2,
+          "t1": 148.4,
+          "speaker": "PROVIDER",
+          "text": "Alright. And finally, are you NPO as instructed? Nothing by mouth since midnight?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 148.8,
+          "t1": 156.4,
+          "speaker": "PATIENT",
+          "text": "Yes, I haven't eaten or drunk anything since last night. Just a sip of water for my morning meds."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 156.8,
+          "t1": 168.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Thank you for going through all that with me. I'll be with you throughout the surgery and make sure you're comfortable and safe. Any questions before we proceed?"
+        },
+        {
+          "seg_id": "s020",
+          "t0": 168.8,
+          "t1": 171.6,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all. Thanks, doctor."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 3.2,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol two hundred and fifty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.6,
+          "t1": 7.6,
+          "speaker": "PROVIDER",
+          "text": "[08:02] LMA sixteen in place, good seal, capnograph trace confirmed"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 8.0,
+          "t1": 10.0,
+          "speaker": "PROVIDER",
+          "text": "[08:05] fentanyl twenty micrograms intravenous"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 10.4,
+          "t1": 12.4,
+          "speaker": "PROVIDER",
+          "text": "[08:10] rocuronium fifty milligrams intravenous"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 12.8,
+          "t1": 16.0,
+          "speaker": "PROVIDER",
+          "text": "[08:15] normal saline one liter fluid bolus administered"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 16.4,
+          "t1": 22.0,
+          "speaker": "PROVIDER",
+          "text": "[08:30] mean arterial pressure dropped to fifty five mmHg, atropine one milligram intravenous given"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 22.4,
+          "t1": 26.0,
+          "speaker": "PROVIDER",
+          "text": "[08:45] desflurane at one point two percent for maintenance"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 26.4,
+          "t1": 29.6,
+          "speaker": "PROVIDER",
+          "text": "[09:00] surgery completed, LMA removed, patient extubated smoothly"
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 3.6,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.0,
+          "t1": 8.8,
+          "speaker": "PATIENT",
+          "text": "I'm feeling a bit groggy, but okay, I guess. Still waking up."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 9.2,
+          "t1": 15.6,
+          "speaker": "PROVIDER",
+          "text": "That's normal. Can you tell me your pain level on a scale of 1 to 10?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 16.0,
+          "t1": 21.2,
+          "speaker": "PATIENT",
+          "text": "Maybe around 4? There's some discomfort in my tummy, but not too bad."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 21.6,
+          "t1": 26.8,
+          "speaker": "PROVIDER",
+          "text": "Alright, we'll manage that with some medication. Are you feeling nauseous at all?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 27.2,
+          "t1": 33.2,
+          "speaker": "PATIENT",
+          "text": "A little, but not throwing up or anything. Just a bit of a queasy feeling."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 33.6,
+          "t1": 39.2,
+          "speaker": "PROVIDER",
+          "text": "Okay, we'll keep an eye on that. How's your breathing? Any tightness or discomfort?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 39.6,
+          "t1": 44.8,
+          "speaker": "PATIENT",
+          "text": "No, breathing's fine. My throat's a bit sore, but I can breathe okay."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 45.2,
+          "t1": 51.6,
+          "speaker": "PROVIDER",
+          "text": "That soreness is from the LMA tube. It should ease soon. Any memory of the surgery?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 52.0,
+          "t1": 55.6,
+          "speaker": "PATIENT",
+          "text": "No, I don't remember anything. I was out completely."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 56.0,
+          "t1": 63.2,
+          "speaker": "PROVIDER",
+          "text": "Good. Given your BMI and hyperlipidemia, we'll monitor your vitals closely. Any chest pain or shortness of breath?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 63.6,
+          "t1": 67.6,
+          "speaker": "PATIENT",
+          "text": "No, nothing like that. Just tired and a bit sore."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 68.0,
+          "t1": 73.2,
+          "speaker": "PROVIDER",
+          "text": "Alright, rest well. We'll check on you regularly and get you mobilized soon."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "22-year-old male",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Presenting for elective laparoscopic appendectomy under general anesthesia with LMA",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Reports symptoms of right-sided abdominal pain, fever, and loss of appetite for 2 days, consistent with appendicitis",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Current medications: Atorvastatin 20 mg Daily (dose increased 3 months ago)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Current medications: Omeprazole 20 mg Daily",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s008"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Current medications: Paracetamol 500 mg As needed (not taken in the last few days)",
+          "provenance": [
+            "doc:med-list#c003",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Denies allergies to medications, foods, or latex, except for Penicillin (rash)",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "No prior anesthesia history",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "No complications or reactions from previous anesthesia (none to report as first-time)",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "No current use of anticoagulants or blood thinners reported",
+          "provenance": [
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Obesity (BMI 28.5) - relevant because may impact airway management and surgical positioning",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Hyperlipidemia - relevant because may indicate increased cardiovascular risk",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "No history of sleep apnea or respiratory conditions reported",
+          "provenance": [
+            "audio:preop-interview#s013",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Completed smoking cessation program 2 years ago; no current smoking",
+          "provenance": [
+            "doc:gp-summary#c011",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "NPO status confirmed: nothing by mouth since midnight, except a sip of water for morning medications",
+          "provenance": [
+            "audio:preop-interview#s018"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "ASA-PS II (healthy patient with a mild systemic disease)",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s011"
+          ],
+          "status": "unsupported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "08:00 Propofol 250 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "08:02 LMA sixteen in place, good seal, capnograph trace confirmed",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "08:05 Fentanyl 20 micrograms administered intravenously",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "08:10 Rocuronium 50 milligrams administered intravenously",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "08:15 Normal saline 1000 milliliters fluid bolus administered",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "08:30 Mean arterial pressure dropped to 55 mmHg",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "08:30 Atropine 1 milligram administered intravenously",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "08:45 Desflurane at 1.2 percent for maintenance",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "09:00 Surgery completed, LMA removed, patient extubated smoothly",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Risk of Post-Operative Nausea and Vomiting (PONV) due to multiple factors including use of opioids (Fentanyl), Desflurane, and history of appendicitis with possible bowel involvement",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway Watch due to Obesity (BMI 28.5) which may lead to difficult mask ventilation or intubation, and potential for rapid desaturation",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s012"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic Control Monitoring as patient is on Omeprazole which might affect glucose levels indirectly, and stress from surgery can impact glucose",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s008",
+            "doc:gp-summary#c003"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia Management considering the patient's pre-operative pain and potential for increased post-operative pain due to laparoscopic surgery",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s008"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic Watch due to intra-operative hypotension (MAP 55 mmHg) which was treated with Atropine, indicating potential for post-operative hemodynamic instability",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "22-year-old male presenting for elective laparoscopic appendectomy under general anesthesia with LMA, reporting symptoms of right-sided abdominal pain, fever, and loss of appetite for 2 days, consistent with appendicitis.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has obesity (BMI 28.5), hyperlipidemia, and no history of sleep apnea or respiratory conditions. Current medications include Atorvastatin 20 mg Daily, and he denies allergies except for Penicillin (rash). NPO status confirmed since midnight, except a sip of water for morning medications.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s011",
+            "audio:preop-interview#s013",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s018"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intra-operative course included administration of Propofol, Fentanyl, Rocuronium, and Desflurane. A transient drop in mean arterial pressure to 55 mmHg was treated with Atropine. Surgery completed without complications, and the patient was extubated smoothly.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Monitor for post-operative nausea and vomiting due to opioid and desflurane use. Maintain vigilance for airway complications due to obesity. Consider glycemic control monitoring, and manage analgesia carefully given pre-operative pain and laparoscopic surgery. Watch for hemodynamic instability following intra-operative hypotension.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s007",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s012",
+            "doc:med-list#c002",
+            "audio:preop-interview#s008",
+            "doc:gp-summary#c003",
+            "doc:med-list#c003",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 22-year-old male, Senior Official or Manager, resident of Choa Chu Kang, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient is currently taking Atorvastatin 10 mg Daily, Omeprazole 20 mg Daily, and Paracetamol 500 mg As needed.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient reported an allergy to Penicillin, experiencing a rash when taken before.",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient's past medical history includes Appendicitis (current presentation), Obesity, Hyperlipidemia, Pneumonia (resolved 5 years ago), and a Fractured left wrist (age 10, fully healed).",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient completed a Smoking cessation program 2 years ago.",
+          "provenance": [
+            "doc:gp-summary#c011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "The planned procedure is an Appendectomy (Laparoscopic) under General Anesthesia with a Laryngeal Mask Airway (LMA).",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Induction medication included Propofol 250 mg.",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "LMA 16 was placed with a good seal, confirmed by capnograph trace.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient experienced a drop in mean arterial pressure to 55 mmHg, treated with Atropine 1 mg IV.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Maintenance anesthesia included Desflurane at 1.2%.",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Patient reported a pain level of 4/10 postoperatively, describing it as discomfort in the tummy.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Patient experienced mild nausea postoperatively, but did not vomit.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Patient's airway is stable with no reported tightness or discomfort, but noted soreness from the LMA.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Patient has no memory of the surgery, indicating effective anesthesia.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Patient denied any chest pain or shortness of breath postoperatively.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Has the patient ever experienced any complications or reactions during previous anesthesia administrations?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c005"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Is the patient currently taking any medications not listed, especially anticoagulants or blood thinners, that may increase bleeding risk during surgery?",
+      "reason": "missing",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Does the patient have any history of sleep apnea or other respiratory conditions that could affect airway management during general anesthesia?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c007"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm the patient's current smoking status and any history of respiratory symptoms, given the past pneumonia and smoking cessation program?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c009",
+        "doc:gp-summary#c011"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Please confirm if the patient has any known allergies to medications, foods, or latex, as none are currently documented?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c005"
+      ],
+      "review": null,
+      "edited_text": null
+    }
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 250",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA sixteen in place, good seal, capnograph trace confirmed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl 20",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "rocuronium 50",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "normal saline 1000",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "line",
+      "value": "mean arterial pressure 55",
+      "units": "mmHg",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine 1",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "desflurane 1.2",
+      "units": "percent",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "surgery completed, LMA removed, patient extubated smoothly",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Risk of Post-Operative Nausea and Vomiting (PONV) due to multiple factors including use of opioids (Fentanyl), Desflurane, and history of appendicitis with possible bowel involvement",
+    "Airway Watch due to Obesity (BMI 28.5) which may lead to difficult mask ventilation or intubation, and potential for rapid desaturation",
+    "Glycemic Control Monitoring as patient is on Omeprazole which might affect glucose levels indirectly, and stress from surgery can impact glucose",
+    "Analgesia Management considering the patient's pre-operative pain and potential for increased post-operative pain due to laparoscopic surgery",
+    "Hemodynamic Watch due to intra-operative hypotension (MAP 55 mmHg) which was treated with Atropine, indicating potential for post-operative hemodynamic instability"
+  ],
+  "workflow": null
+}

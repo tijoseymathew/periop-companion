@@ -1,0 +1,102 @@
+{
+  "case_id": "sg-0014",
+  "persona_uuid": "c554ec33f326439995cb810af6709a79",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Single-shot Dose of Cefazolin for Prophylaxis",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Losartan",
+      "dose": "50 mg",
+      "frequency": "Once Daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Twice Daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Once Daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150 mg",
+      "frequency": "Once Daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Losartan 50 mg Once Daily, Metformin 500 mg Twice Daily, Atorvastatin 20 mg Once Daily, Ranitidine 150 mg Once Daily (active)",
+    "truth": "Ranitidine has been discontinued due to a switch to Omeprazole 20 mg Once Daily for GERD management",
+    "gold_question": "Can you confirm if you are still taking Ranitidine, or have you been switched to another medication for your acid reflux?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia in 2018, fully resolved",
+      "why_irrelevant": "Resolved years ago, no impact on current perioperative risk"
+    },
+    {
+      "description": "Remote history of left femur fracture (age 25), healed without complications",
+      "why_irrelevant": "Old injury, fully healed, no ongoing issues"
+    },
+    {
+      "description": "Discontinued medication: Amlodipine (stopped 2 years ago due to dizziness)",
+      "why_irrelevant": "Medication for hypertension was changed, but current regimen is stable and effective"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Losartan",
+        "dose": "50 mg",
+        "frequency": "Once Daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Twice Daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Once Daily",
+        "active": true
+      },
+      {
+        "name": "Ranitidine",
+        "dose": "150 mg",
+        "frequency": "Once Daily",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin"
+    ],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "Pneumonia (2018)",
+      "Left Femur Fracture (age 25)",
+      "Discontinued Amlodipine (stopped 2 years ago)"
+    ],
+    "prior_anesthesia": null
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "spinal needle inserted, bupivacaine two point five milligrams, fentanyl ten micrograms"
+    },
+    {
+      "t": "08:10",
+      "text": "epidural catheter placed, bupivacaine one milligram test dose"
+    },
+    {
+      "t": "08:15",
+      "text": "iv fluids normal saline one liter bolus"
+    },
+    {
+      "t": "08:30",
+      "text": "blood pressure one hundred sixty over one hundred, labetalol twenty milligrams iv"
+    },
+    {
+      "t": "09:00",
+      "text": "surgery completed, desflurane off, reversal done, extubated"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice:08:00#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:00#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice:08:02#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice:08:02#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "two point five milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "ten micrograms",
+      "units": "micrograms",
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "epidural catheter placed",
+      "units": null,
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "one milligram",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "test dose",
+      "units": null,
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice:08:15#0"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one liter",
+      "units": "liters",
+      "provenance": [
+        "voice:08:15#0"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "bolus",
+      "units": null,
+      "provenance": [
+        "voice:08:15#0"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "blood pressure one hundred sixty over one hundred",
+      "units": null,
+      "provenance": [
+        "voice:08:30#0"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice:08:30#0"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "twenty milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:30#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "desflurane",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "surgery completed",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "reversal done",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "airway",
+      "value": "extubated",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    }
+  ]
+}

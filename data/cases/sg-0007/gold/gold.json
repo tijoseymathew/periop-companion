@@ -1,0 +1,150 @@
+{
+  "questions": [
+    "Have you experienced any adverse reactions to antibiotics other than Penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "eight",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:04"
+      ]
+    },
+    {
+      "t": "08:06",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:06"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "one point five",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure seventy five",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "ten",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "fluid",
+      "value": "two thousand milliliters crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "heart rate eighty five, mean arterial pressure ninety",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient has a history of Type 2 Diabetes Mellitus, well-controlled with lifestyle modifications and Metformin 500 mg once daily.",
+    "Patient is currently taking Lisinopril 10 mg once daily and Aspirin 75 mg once daily (which has been stopped preoperatively).",
+    "Patient reports an allergy to Penicillin (manifested as a rash) and also has a documented allergy to Cephalosporins (manifested as nausea and vomiting).",
+    "Patient has an ASA-PS classification of 2 due to well-controlled Type 2 Diabetes Mellitus and Obesity (BMI 28.5).",
+    "Airway assessment is unremarkable with no anticipated difficulties; plan for general anesthesia with endotracheal intubation."
+  ],
+  "handoff_claims": [
+    "Patient underwent an elective laparoscopic appendectomy under general anesthesia with Propofol, Fentanyl, and Vecuronium, maintained with Sevoflurane and spontaneous breathing.",
+    "Anticipated postoperative issues include potential for delayed awakening due to residual neuromuscular blockade; ensure reversal agents were administered and monitor for signs of residual paralysis.",
+    "Patient has a history of Type 2 Diabetes Mellitus and Obesity; monitor for hyperglycemia and ensure early mobilization postoperatively. Also, note patient's allergies to Penicillin and Cephalosporins in case of postoperative antibiotic needs."
+  ],
+  "distractors": [
+    "History of pneumonia (resolved 5 years ago)",
+    "Fractured right wrist (aged 12, fully healed)",
+    "Completed treatment for hypothyroidism (now off Levothyroxine)"
+  ]
+}

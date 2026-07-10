@@ -1,0 +1,178 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "spinal anesthesia administered, twenty five milligrams of bupivacaine"
+    },
+    {
+      "t": "08:10",
+      "text": "ultrasound-guided peripheral nerve block, ten milliliters of ropivacaine"
+    },
+    {
+      "t": "08:15",
+      "text": "hypotension noted, mean arterial pressure forty five mmHg, one milligram of phenylephrine administered"
+    },
+    {
+      "t": "09:00",
+      "text": "two liters of lactated ringers administered"
+    },
+    {
+      "t": "09:20",
+      "text": "tachycardia noted, heart rate one twenty beats per minute, incremental dose of fentanyl twenty five micrograms"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_note#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_note#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty five",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "ropivacaine",
+      "units": null,
+      "provenance": [
+        "voice_note#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "ten",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_note#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_note#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_note#4"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "voice_note#5"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "two",
+      "units": "liters",
+      "provenance": [
+        "voice_note#5"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "event",
+      "value": "tachycardia",
+      "units": null,
+      "provenance": [
+        "voice_note#6"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_note#6"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "dose",
+      "value": "twenty five",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#6"
+      ]
+    }
+  ]
+}

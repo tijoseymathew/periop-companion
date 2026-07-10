@@ -1,0 +1,72 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery. I'd like to go over a few things with you before your laparoscopic cholecystectomy. Can you please start by telling me a bit about your medical history and why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I've been having a lot of tummy pain on the right side, especially after eating. The doctor said I have gallstones and the best way is to remove the gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. Now, let's go over your medications. I see here you're on Losartan, Metformin, Atorvastatin, and Ranitidine. Can you confirm if you're still taking all these medications as listed, and are there any changes?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I'm still on Losartan for my blood pressure, Metformin for my diabetes, and Atorvastatin for cholesterol. But for the Ranitidine, ah, I've stopped that one. My doctor switched me to Omeprazole 20 mg daily for my acid reflux because Ranitidine was discontinued."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. It's important we have the most up-to-date medication list. Regarding your acid reflux, has the Omeprazole been working well for you without any issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, it's been fine. No heartburn or anything like before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Now, about your allergies, we have you down as allergic to Penicillin. Can you please describe the reaction you had to Penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had a bad rash all over my body the last time I took it. So, I've avoided it ever since."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that information. It's crucial for us to know. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I've never been under general anesthesia before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, so you're NPO after midnight, correct? And you've had no food or drink since then?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, Doctor. I stopped eating after dinner last night and haven't had anything since, not even water."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Lastly, how would you describe your overall physical activity level? Are you able to walk up a flight of stairs without getting overly short of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can walk up the stairs, but I do get a bit out of breath, especially if I go too fast. But generally, I'm fairly active."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for providing all this information, Mr./Ms./Mrs. [Patient's Name]. It's very helpful for us. If you have any questions about the anesthesia or the procedure, now is a good time to ask."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think you've covered everything. I'm ready."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Very well. We'll take good care of you. You'll see me or one of my team members again before you go into the operating room. Have a rest, and we'll see you soon."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm feeling a bit groggy, but okay lah. My left hip is sore, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Can you rate your pain for me on a scale from 0 to 10, where 0 is no pain and 10 is the worst pain?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'd say around 4 or 5. The epidural seems to be helping a lot."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Have you experienced any nausea or vomiting since the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No nausea, thank goodness. I was worried about that, but I feel fine."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. How about your breathing? Are you comfortable, or do you feel any shortness of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine. A bit of discomfort when I move, but I can breathe normally."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything from the operating room or immediately after surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I knew I was going in, and then I woke up here. So I guess the anesthesia worked well."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected with general anesthesia. Given your history of hypertension and diabetes, are you experiencing any unusual symptoms like dizziness, blurred vision, or chest discomfort?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing like that. Just the usual aches from the surgery."
+    }
+  ]
+}

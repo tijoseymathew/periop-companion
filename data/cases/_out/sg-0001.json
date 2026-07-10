@@ -423,49 +423,75 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Hypertension",
+          "text": "Elective total hip replacement (left) planned.",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Spinal anesthesia with propofol sedation planned.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hypertension.",
           "provenance": [
             "doc:gp-summary#c006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Type 2 Diabetes Mellitus",
+          "claim_id": "c-005",
+          "text": "Type 2 Diabetes Mellitus, currently controlled with diet (HbA1c 6.2%).",
           "provenance": [
-            "doc:gp-summary#c007"
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-004",
-          "text": "Hyperlipidemia",
+          "claim_id": "c-006",
+          "text": "Hyperlipidemia.",
           "provenance": [
             "doc:gp-summary#c008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
-          "text": "Osteoarthritis (left hip) - Worsening of symptoms reported in pre-op interview, affecting mobility.",
+          "claim_id": "c-007",
+          "text": "Osteoarthritis in the left hip, causing significant pain and mobility issues — relevant for potential increased surgical time and postoperative pain management.",
           "provenance": [
             "doc:gp-summary#c009",
+            "audio:preop-interview#s002",
             "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "No new or updated pulmonary issues since the resolved pneumonia in 2018.",
+          "claim_id": "c-008",
+          "text": "Penicillin allergy (rash).",
           "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s011"
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s008"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Amlodipine 5mg daily (confirmed current).",
+          "claim_id": "c-009",
+          "text": "No other allergies confirmed besides penicillin (rash).",
+          "provenance": [
+            "audio:preop-interview#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Currently taking Amlodipine 5mg daily.",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
@@ -474,18 +500,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Metformin 500mg twice daily (discontinued over one year ago, per patient report).",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Atorvastatin 20mg daily (confirmed current).",
+          "claim_id": "c-011",
+          "text": "Currently taking Atorvastatin 20mg daily.",
           "provenance": [
             "doc:gp-summary#c004",
             "doc:med-list#c003",
@@ -494,54 +510,73 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Penicillin allergy (rash, not anaphylactic).",
+          "claim_id": "c-012",
+          "text": "Metformin 500mg twice daily, stopped over a year ago due to good glycemic control (HbA1c 6.2%).",
           "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s008"
+            "doc:gp-summary#c003",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "No other allergies reported besides Penicillin.",
+          "claim_id": "c-013",
+          "text": "No changes in medication list regarding blood thinners or anticoagulants reported.",
           "provenance": [
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s005"
           ],
           "status": "unsupported"
         },
         {
-          "claim_id": "c-012",
-          "text": "NPO since midnight, only sipped water for medications.",
+          "claim_id": "c-014",
+          "text": "NPO from last night, only sip water for meds.",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "No history of difficult intubation, airway issues, or previous anesthetic complications reported.",
+          "claim_id": "c-015",
+          "text": "No difficulty walking with assistance reported, but significant pain with movement — relevant for positioning and mobility post-surgery.",
           "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "No respiratory issues or recent chest infections reported since pneumonia in 2018.",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s011"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "No history of difficult intubation, airway issues, or previous anesthesia complications.",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001",
             "audio:preop-interview#s012"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "ASA-PS III (patient has mild systemic disease, specifically controlled hypertension and well-managed type 2 diabetes).",
+          "claim_id": "c-018",
+          "text": "No history of cardiovascular issues such as heart attack, heart failure, or arrhythmias.",
+          "provenance": [
+            "audio:preop-interview#s011"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "ASA-PS II (healthy patient with well-controlled comorbidities) — justified by controlled hypertension, diabetes, and hyperlipidemia without recent complications.",
           "provenance": [
             "doc:gp-summary#c006",
             "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
             "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Elective total hip replacement (left) under spinal anesthesia with propofol sedation.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002"
           ],
           "status": "supported"
         }
@@ -568,7 +603,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Propofol infusion started at 50 mg/h at 08:05",
+          "text": "Propofol infusion started at 50 mg/hour at 08:05",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -576,7 +611,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Endotracheal tube placed with Grade 1 view at 08:10",
+          "text": "Grade one view confirmed at 08:10",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -584,7 +619,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "18-gauge peripheral IV line placed in left hand at 08:15",
+          "text": "Eighteen-gauge peripheral IV line placed in left hand at 08:15",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -592,7 +627,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "1 L of Normal Saline administered at 09:00",
+          "text": "1 liter of normal saline administered at 09:00",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -600,7 +635,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "Hypotension noted with BP 60/40 at 08:20",
+          "text": "Hypotension noted, blood pressure 60/40 at 08:20",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -610,108 +645,163 @@
     },
     {
       "artifact_id": "note:anticipated-issues",
-      "claims": []
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Use and Opioid Administration",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s001"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Hypotension in the Postoperative Period Following Spinal Anesthesia and Intraoperative Hypotension Event",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic Control Challenges in a Diabetic Patient Post-Surgery",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Increased Postoperative Pain Management Needs Due to Severe Pre-Existing Hip Osteoarthritis",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s014"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Risk of Airway Compromise Post-Extubation Due to Propofol Sedation and Spinal Anesthesia",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Potential for Delayed Mobilization and Increased Risk of Thromboembolic Events",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "inference"
+        }
+      ]
     },
     {
       "artifact_id": "note:pacu-handoff",
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "64-year-old female undergoing elective total hip replacement (left) under spinal anesthesia with propofol sedation.",
+          "text": "64-year-old female undergoing elective total hip replacement (left).",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:op-plan#c001",
-            "doc:op-plan#c002"
+            "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis (left hip) with worsening symptoms affecting mobility.",
+          "text": "Patient has a history of hypertension, type 2 diabetes mellitus (controlled with diet, HbA1c 6.2%), hyperlipidemia, and osteoarthritis in the left hip causing significant pain and mobility issues. She is allergic to penicillin (rash) with no other allergies. Current medications include Amlodipine 5mg daily and Atorvastatin 20mg daily.",
           "provenance": [
             "doc:gp-summary#c006",
             "doc:gp-summary#c007",
+            "audio:preop-interview#s006",
             "doc:gp-summary#c008",
             "doc:gp-summary#c009",
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s014",
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s007",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient's current medications include amlodipine 5mg daily and atorvastatin 20mg daily. Metformin was discontinued over a year ago.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s006",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient reports a penicillin allergy (rash, not anaphylactic) and no other allergies. No new or updated pulmonary issues since resolved pneumonia in 2018.",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s007",
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s011"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient has been NPO since midnight, only sipping water for medications. No history of difficult intubation, airway issues, or previous anesthetic complications.",
+          "text": "Patient was NPO from last night, only sipping water for medications. No difficulty walking with assistance, but significant pain with movement. No history of difficult intubation, airway issues, or previous anesthesia complications. ASA-PS II classification.",
           "provenance": [
             "audio:preop-interview#s010",
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient is classified as ASA-PS III, indicating mild systemic disease with controlled hypertension and well-managed type 2 diabetes.",
-          "provenance": [
+            "audio:preop-interview#s014",
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s012",
             "doc:gp-summary#c006",
             "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Intraoperative course included administration of bupivacaine, fentanyl, and propofol. Endotracheal tube placed with Grade 1 view. Hypotension (BP 60/40) noted at 08:20.",
+          "claim_id": "c-004",
+          "text": "Intraoperative course included spinal anesthesia with propofol sedation. Medications administered: Bupivacaine 25 mg, Fentanyl 20 mcg, Propofol infusion at 50 mg/hour. Grade one view confirmed. 18-gauge peripheral IV placed in left hand. One liter of normal saline administered. Hypotension noted (BP 60/40).",
           "provenance": [
+            "doc:op-plan#c002",
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
             "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
             "audio:intraop-notes#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Monitor for signs of hypotension and ensure adequate fluid resuscitation. Continue current medication regimen as ordered, with attention to blood glucose levels given diabetes history.",
+          "claim_id": "c-005",
+          "text": "Anticipated issues include risk of postoperative nausea and vomiting (PONV) due to propofol use and opioid administration, hypotension in the postoperative period following spinal anesthesia and intraoperative hypotension event, glycemic control challenges in a diabetic patient post-surgery, increased postoperative pain management needs due to severe pre-existing hip osteoarthritis, risk of airway compromise post-extubation due to propofol sedation and spinal anesthesia, and potential for delayed mobilization and increased risk of thromboembolic events.",
           "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s001",
+            "doc:gp-summary#c006",
             "audio:intraop-notes#s006",
             "doc:gp-summary#c007",
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
             "audio:preop-interview#s004",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Given the patient's osteoarthritis and mobility issues, consider postoperative pain management and physical therapy needs.",
+          "claim_id": "c-006",
+          "text": "Monitor for and manage potential hypotension, postoperative nausea and vomiting, and glycemic control challenges. Ensure adequate postoperative pain management considering the patient's pre-existing hip osteoarthritis. Be vigilant for signs of airway compromise post-extubation and encourage early mobilization to reduce thromboembolic risk.",
           "provenance": [
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s001",
+            "doc:gp-summary#c006",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "audio:preop-interview#s004",
             "doc:gp-summary#c009",
+            "audio:preop-interview#s002",
             "audio:preop-interview#s014"
           ],
           "status": "supported"
@@ -723,7 +813,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is a 64-year-old female, retired, residing in Choa Chu Kang, Singapore.",
+          "text": "Patient is a 64-year-old female, retired, resident of Choa Chu Kang, Singapore.",
           "provenance": [
             "doc:gp-summary#c001"
           ],
@@ -731,7 +821,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of hypertension, Type 2 Diabetes Mellitus, hyperlipidemia, osteoarthritis (left hip), resolved pneumonia (2018), and a fully healed right wrist fracture (2015).",
+          "text": "Patient has a history of hypertension, type 2 diabetes mellitus, hyperlipidemia, osteoarthritis (left hip), resolved pneumonia (2018), and a fully healed right wrist fracture (2015).",
           "provenance": [
             "doc:gp-summary#c006",
             "doc:gp-summary#c007",
@@ -744,33 +834,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient discontinued simvastatin in 2020.",
-          "provenance": [
-            "doc:gp-summary#c012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient's current medications include Amlodipine 5mg daily, Metformin 500mg twice daily, and Atorvastatin 20mg daily.",
-          "provenance": [
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient reported stopping Metformin over a year ago due to good blood sugar control (HbA1c 6.2%).",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient has a penicillin allergy, which caused a rash.",
+          "text": "Patient is allergic to penicillin, which causes a rash.",
           "provenance": [
             "doc:gp-summary#c005",
             "audio:preop-interview#s008"
@@ -778,115 +842,73 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "The planned procedure is an elective total hip replacement (left).",
+          "claim_id": "c-004",
+          "text": "Patient's current medications include amlodipine 5mg daily and atorvastatin 20mg daily.",
           "provenance": [
-            "doc:op-plan#c001"
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c001",
+            "doc:med-list#c003"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Anesthesia plan includes spinal anesthesia with propofol sedation.",
+          "claim_id": "c-005",
+          "text": "Patient stopped taking metformin approximately one year ago due to good blood sugar control (HbA1c 6.2%) through diet alone.",
           "provenance": [
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient underwent an elective total hip replacement (left) with spinal anesthesia and propofol sedation.",
+          "provenance": [
+            "doc:op-plan#c001",
             "doc:op-plan#c002"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Patient had uncomplicated spinal anesthesia for left cataract surgery in 2021.",
+          "claim_id": "c-007",
+          "text": "Patient had a previous uncomplicated spinal anesthesia for left cataract surgery in 2021.",
           "provenance": [
             "doc:prior-anesthetic-record#c001"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Intraoperative notes indicate spinal anesthetic administered with bupivacaine (25mg) and fentanyl (20 micrograms).",
-          "provenance": [
-            "audio:intraop-notes#s001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Propofol infusion was started at 50 milligrams per hour during the operation.",
-          "provenance": [
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Endotracheal tube was placed with a grade one view confirmed.",
-          "provenance": [
-            "audio:intraop-notes#s003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "An 18-gauge peripheral IV line was placed in the left hand.",
-          "provenance": [
-            "audio:intraop-notes#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "One liter of normal saline was administered intraoperatively.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Hypotension (BP 60/40) was noted and treated with phenylephrine (20 micrograms).",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "Postoperatively, patient reports left hip soreness, rating pain as 4 or 5 out of 10, described as a dull pain.",
+          "claim_id": "c-008",
+          "text": "Patient's recovery course is as follows: sore left hip but tolerable, pain rated 4/10 (dull pain), no nausea or vomiting, slight dizziness initially but resolved.",
           "provenance": [
             "audio:postop-interview#s002",
-            "audio:postop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-017",
-          "text": "Patient experienced dizziness postoperatively but no vomiting; stomach feels okay now.",
-          "provenance": [
+            "audio:postop-interview#s004",
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-018",
-          "text": "Patient reports dry throat but no breathing difficulties, chest tightness, or discomfort.",
+          "claim_id": "c-009",
+          "text": "Patient reports no chest pain, shortness of breath, or unusual symptoms related to blood pressure or sugar levels. Blood pressure stable, blood sugar 7.2mg/dL this morning.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Patient experienced dry throat post-operatively, likely due to endotracheal tube during surgery.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-019",
-          "text": "Patient recalls nothing during the operation, waking up only when moved postoperatively.",
+          "claim_id": "c-011",
+          "text": "Patient recalls nothing during the operation, indicating effective anesthesia.",
           "provenance": [
             "audio:postop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-020",
-          "text": "Patient denies chest pain, shortness of breath, or unusual symptoms related to blood pressure or sugar levels; blood sugar was 7.2 in the morning.",
-          "provenance": [
-            "audio:postop-interview#s012"
           ],
           "status": "supported"
         }
@@ -895,7 +917,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you have any other allergies besides Penicillin, and if the rash from Penicillin was anaphylactic or not?",
+      "question": "Can you confirm if you have any other allergies besides penicillin (rash)?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c005"
@@ -904,35 +926,8 @@
       "edited_text": null
     },
     {
-      "question": "Have you had any new or updated pulmonary issues since the resolved pneumonia in 2018, especially considering the upcoming surgery and anesthesia?",
+      "question": "Have you had any changes in your medication list since the last review, particularly regarding blood thinners or anticoagulants?",
       "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c010"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you confirm the current status of your osteoarthritis in the left hip, and if it has worsened since the last documentation?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c009"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Is there any history of difficult intubation, airway issues, or previous anesthetic complications not mentioned in the prior record?",
-      "reason": "missing",
-      "provenance": [
-        "doc:prior-anesthetic-record#c001"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you confirm if you are still taking all the listed medications (Amlodipine, Metformin, Atorvastatin) and if there have been any changes in dosage or frequency?",
-      "reason": "conflicting",
       "provenance": [
         "doc:gp-summary#c002",
         "doc:gp-summary#c003",
@@ -945,10 +940,38 @@
       "edited_text": null
     },
     {
-      "question": "Please confirm if you have ever experienced any muscle pain or other side effects from statin medications, given the discontinuation of simvastatin in 2020?",
+      "question": "Can you provide more details about your osteoarthritis in the left hip, such as the severity and any previous treatments or surgeries?",
       "reason": "missing",
       "provenance": [
-        "doc:gp-summary#c012"
+        "doc:gp-summary#c009"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Have you experienced any respiratory issues or had a recent chest infection, considering your history of pneumonia in 2018?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c010"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Is there any history of difficult intubation, airway issues, or previous anesthesia complications not mentioned in the prior anesthetic record?",
+      "reason": "missing",
+      "provenance": [
+        "doc:prior-anesthetic-record#c001"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm if you have any history of cardiovascular issues, such as heart attack, heart failure, or arrhythmias, given your hypertension and hyperlipidemia?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c006",
+        "doc:gp-summary#c008"
       ],
       "review": null,
       "edited_text": null
@@ -976,8 +999,8 @@
     {
       "t": "08:05",
       "category": "agent",
-      "value": "propofol 50 mg/h",
-      "units": "mg/h",
+      "value": "propofol 50 mg/hour",
+      "units": "mg/hour",
       "provenance": [
         "audio:intraop-notes#s002"
       ]
@@ -985,7 +1008,7 @@
     {
       "t": "08:10",
       "category": "airway",
-      "value": "CL grade 1, intubated",
+      "value": "grade one view confirmed",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s003"
@@ -994,7 +1017,7 @@
     {
       "t": "08:15",
       "category": "line",
-      "value": "18-gauge peripheral IV",
+      "value": "eighteen-gauge peripheral IV line placed in left hand",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s004"
@@ -1003,8 +1026,8 @@
     {
       "t": "09:00",
       "category": "fluid",
-      "value": "normal saline 1 L",
-      "units": "L",
+      "value": "1 liter of normal saline",
+      "units": "liter",
       "provenance": [
         "audio:intraop-notes#s005"
       ]
@@ -1012,13 +1035,20 @@
     {
       "t": "08:20",
       "category": "event",
-      "value": "hypotension BP 60/40",
+      "value": "hypotension noted, blood pressure 60/40",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s006"
       ]
     }
   ],
-  "anticipated_issues": [],
+  "anticipated_issues": [
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Use and Opioid Administration",
+    "Hypotension in the Postoperative Period Following Spinal Anesthesia and Intraoperative Hypotension Event",
+    "Glycemic Control Challenges in a Diabetic Patient Post-Surgery",
+    "Increased Postoperative Pain Management Needs Due to Severe Pre-Existing Hip Osteoarthritis",
+    "Risk of Airway Compromise Post-Extubation Due to Propofol Sedation and Spinal Anesthesia",
+    "Potential for Delayed Mobilization and Increased Risk of Thromboembolic Events"
+  ],
   "workflow": null
 }

@@ -1,0 +1,1062 @@
+{
+  "case_id": "sg-0016",
+  "label": null,
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "43-year-old female, Associate Professional or Technician, resident of Tampines, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Lisinopril 10mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Ranitidine 150mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Penicillin (rash)",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Pneumonia (resolved 5 years ago)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Wrist fracture (healed, no sequelae)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Previous use of Alprazolam for anxiety (discontinued)",
+          "section": "Past History"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Lisinopril 10mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Ranitidine 150mg Once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Laparoscopic Cholecystectomy (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General Anesthesia with Propofol, Fentanyl, and Vecuronium; Maintenance with Sevoflurane and Remifentanil; Reversal with Neostigmine and Glycopyrrolate",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:prior-anesthetic-record",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Previous general anesthesia for laparoscopic appendectomy 10 years ago; no complications reported",
+          "section": "Summary"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 20.4,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr./Ms./Mrs. [Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go over a few things to make sure everything goes smoothly. Can you please tell me a bit about your medical history and why you're having this surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 20.8,
+          "t1": 35.2,
+          "speaker": "PATIENT",
+          "text": "Morning, Doctor. I'm having my gallbladder removed because of the stones, right? I've had bad belly pain after eating, especially fatty food, and the scans showed stones in the gallbladder. So they decided on laparoscopic surgery."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 35.6,
+          "t1": 43.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you for that. Let's go through your medical history. You have hypertension, type 2 diabetes, and obesity, correct?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 43.6,
+          "t1": 54.8,
+          "speaker": "PATIENT",
+          "text": "Yes, that's right. I've had diabetes for about 8 years now, and high blood pressure for even longer. My weight has been a problem for a while too."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 55.2,
+          "t1": 66.4,
+          "speaker": "PROVIDER",
+          "text": "And your current medications are Metformin, Lisinopril, Atorvastatin, and Ranitidine, as per the records. Has there been any change in your medication list since your last hospital visit?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 66.8,
+          "t1": 76.4,
+          "speaker": "PATIENT",
+          "text": "Actually, yes. The Ranitidine was stopped about six months ago because my acid problem got better. Now I'm taking Omeprazole 20mg once daily instead."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 76.8,
+          "t1": 84.4,
+          "speaker": "PROVIDER",
+          "text": "Thank you for letting me know. That's an important update. Do you have any known allergies, especially to medications?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 84.8,
+          "t1": 90.8,
+          "speaker": "PATIENT",
+          "text": "Yes, I had a rash when I took Penicillin before, so I'm allergic to that."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 91.2,
+          "t1": 98.4,
+          "speaker": "PROVIDER",
+          "text": "Got it. Have you had any previous surgeries or anesthesia before? If so, how did you tolerate it?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 98.8,
+          "t1": 106.4,
+          "speaker": "PATIENT",
+          "text": "No, this is my first time. I've never had general anesthesia before, so I'm a bit nervous about it."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 106.8,
+          "t1": 118.4,
+          "speaker": "PROVIDER",
+          "text": "That's completely understandable. We'll make sure you're comfortable and safe throughout the process. Are you currently on any NPO orders? That is, when was your last meal or drink?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 118.8,
+          "t1": 128.4,
+          "speaker": "PATIENT",
+          "text": "I had my last meal around 8pm last night and a sip of water until about 10pm. I think I'm all set for fasting."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 128.8,
+          "t1": 136.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect, that sounds appropriate. Lastly, how would you describe your overall energy level and ability to perform daily activities?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 136.8,
+          "t1": 146.8,
+          "speaker": "PATIENT",
+          "text": "I manage okay, but I do get tired more easily, especially after walking long distances. I can still do most of my daily tasks, though."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 147.2,
+          "t1": 164.8,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. It helps us understand your baseline. We'll be using general anesthesia with Propofol, Fentanyl, and Vecuronium to start, then maintain with Sevoflurane and Remifentanil. After surgery, we'll reverse the muscle relaxant with Neostigmine and Glycopyrrolate. Any questions so far?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 165.2,
+          "t1": 169.2,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all clear. I'm ready to proceed."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 169.6,
+          "t1": 179.6,
+          "speaker": "PROVIDER",
+          "text": "Great. We'll take good care of you. You'll be seen by the surgical team shortly, and we'll be with you every step of the way."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.2,
+          "speaker": "PROVIDER",
+          "text": "[08:02] fentanyl twenty five micrograms"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 5.6,
+          "t1": 7.2,
+          "speaker": "PROVIDER",
+          "text": "[08:04] vecuronium ten milligrams"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 7.6,
+          "t1": 10.0,
+          "speaker": "PROVIDER",
+          "text": "[08:05] tube in, grade one view"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 10.4,
+          "t1": 13.6,
+          "speaker": "PROVIDER",
+          "text": "[08:10] sevoflurane at two percent, remifentanil infusion started"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 14.0,
+          "t1": 19.6,
+          "speaker": "PROVIDER",
+          "text": "[08:20] blood pressure dropped to ninety over sixty, gave one hundred milliliters fluid bolus"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 20.0,
+          "t1": 24.0,
+          "speaker": "PROVIDER",
+          "text": "[08:40] neostigmine two milligrams, glycopyrrolate four milligrams given for reversal"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 24.4,
+          "t1": 26.8,
+          "speaker": "PROVIDER",
+          "text": "[08:45] patient waking up, extubated smoothly"
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 11.2,
+          "speaker": "PATIENT",
+          "text": "I'm okay, I guess. A bit tired and my tummy is sore, but I'm awake at least."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 11.6,
+          "t1": 18.8,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. On a scale from 0 to 10, how would you rate your pain right now?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 19.2,
+          "t1": 24.0,
+          "speaker": "PATIENT",
+          "text": "Maybe a 4 or 5? It's manageable, but I can feel it."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 24.4,
+          "t1": 29.2,
+          "speaker": "PROVIDER",
+          "text": "Thanks. Are you feeling any nausea or like you might be sick?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 29.6,
+          "t1": 36.0,
+          "speaker": "PATIENT",
+          "text": "A little bit, but not too bad. I didn't eat anything before, so maybe that helps."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 36.4,
+          "t1": 40.8,
+          "speaker": "PROVIDER",
+          "text": "Good. How's your breathing? Any difficulty or tightness in your chest?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 41.2,
+          "t1": 46.4,
+          "speaker": "PATIENT",
+          "text": "No, I'm breathing fine. Just a bit stuffy from the tube, I think."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 46.8,
+          "t1": 50.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Do you remember anything from the operation itself?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 50.8,
+          "t1": 54.4,
+          "speaker": "PATIENT",
+          "text": "No, I don't think so. I was out completely."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 54.8,
+          "t1": 61.6,
+          "speaker": "PROVIDER",
+          "text": "That's expected. Lastly, with your diabetes and blood pressure, are you feeling any dizziness or unusual symptoms?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 62.0,
+          "t1": 68.0,
+          "speaker": "PATIENT",
+          "text": "No, I feel stable. Just a bit thirsty, but I know I can't drink yet."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "43-year-old female",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Occupation: Associate Professional or Technician",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Resident of Tampines, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Diagnosis: Gallstones, indicated for Laparoscopic Cholecystectomy",
+          "provenance": [
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hypertension, managed with Lisinopril 10mg Once daily",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Type 2 Diabetes, managed with Metformin 500mg Twice daily",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Obesity, as self-reported",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Previous use of Alprazolam for anxiety, discontinued",
+          "provenance": [
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "No current anxiety symptoms impacting surgery or recovery, as self-reported",
+          "provenance": [
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s017"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Metformin 500mg Twice daily (current)",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Lisinopril 10mg Once daily (current)",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Atorvastatin 20mg Once daily (current)",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Omeprazole 20mg Once daily (current, replaced Ranitidine)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Penicillin allergy (rash)",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "No known allergies to anesthesia medications or antibiotics beyond Penicillin",
+          "provenance": [
+            "audio:preop-interview#s007"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Last meal around 8pm, last drink (water) around 10pm",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "No airway, breathing issues reported; no previous general anesthesia complications",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "doc:prior-anesthetic-record#c001"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "ASA-PS II: Patient with mild systemic disease (hypertension, type 2 diabetes, obesity) but not severe",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "General Anesthesia with Propofol, Fentanyl, and Vecuronium; Maintenance with Sevoflurane and Remifentanil; Reversal with Neostigmine and Glycopyrrolate",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "08:00 Propofol 120 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "08:02 Fentanyl 25 micrograms administered",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "08:04 Vecuronium 10 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "08:05 Endotracheal tube inserted, grade one view",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "08:10 Sevoflurane 2% initiated",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "08:20 Fluid bolus of 100 milliliters administered due to blood pressure drop (90/60)",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "08:40 Neostigmine 2 milligrams and Glycopyrrolate 4 milligrams administered for reversal",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "08:45 Patient waking up, extubated smoothly",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Risk of Post-Operative Nausea and Vomiting (PONV) due to use of Opioids (Fentanyl) and history of Gallstones",
+          "provenance": [
+            "audio:preop-interview#s002",
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway Watch due to Obesity and use of Neuromuscular Blocking Agents",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic Control Monitoring due to Type 2 Diabetes",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia Management considering Potential Opioid Sensitivity from Previous Alprazolam Use",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic Watch due to Hypertension and Intra-op Blood Pressure Drop",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "43-year-old female with gallstones scheduled for laparoscopic cholecystectomy.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has a history of hypertension managed with Lisinopril 10mg once daily, type 2 diabetes managed with Metformin 500mg twice daily, and obesity. She previously used Alprazolam for anxiety, which has been discontinued, and reports no current anxiety symptoms. She also has a penicillin allergy (rash) but no known allergies to anesthesia medications or antibiotics beyond penicillin.",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s017",
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Current medications include Metformin 500mg twice daily, Lisinopril 10mg once daily, Atorvastatin 20mg once daily, and Omeprazole 20mg once daily (replaced Ranitidine).",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s005",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Last meal was around 8pm and last drink (water) was around 10pm. No airway or breathing issues reported, and no previous general anesthesia complications. ASA-PS II classification due to mild systemic disease (hypertension, type 2 diabetes, obesity).",
+          "provenance": [
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s010",
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Intraoperative course included administration of Propofol, Fentanyl, and Vecuronium. Maintenance with Sevoflurane and Remifentanil. Reversal with Neostigmine and Glycopyrrolate. Endotracheal tube inserted with grade one view. A fluid bolus was given due to a blood pressure drop (90/60). Patient woke up and was extubated smoothly.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Monitor for post-operative nausea and vomiting due to opioid use and history of gallstones. Maintain airway watch due to obesity and use of neuromuscular blocking agents. Ensure glycemic control monitoring due to type 2 diabetes. Manage analgesia considering potential opioid sensitivity from previous Alprazolam use. Continue hemodynamic monitoring due to hypertension and intra-op blood pressure drop.",
+          "provenance": [
+            "audio:preop-interview#s002",
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c003",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient is a 43-year-old female.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient's current medications include Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, and Omeprazole 20mg Once daily (replacing Ranitidine).",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient has a known allergy to Penicillin (rash).",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient's past medical history includes resolved Pneumonia (5 years ago), healed Wrist fracture (no sequelae), and previous use of Alprazolam for anxiety (discontinued).",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient underwent Laparoscopic Cholecystectomy under General Anesthesia.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Anesthesia induction included Propofol 120mg, Fentanyl 25mcg, and Vecuronium 10mg.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Anesthesia maintenance included Sevoflurane 2% and Remifentanil infusion.",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Reversal of muscle relaxant was achieved with Neostigmine 2mg and Glycopyrrolate 4mg.",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient experienced a drop in blood pressure to 90/60 mmHg, which was managed with a 100ml fluid bolus.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Patient reports postoperative pain rated as 4 or 5 out of 10, describing it as manageable.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Patient reports a little nausea but not severe, and attributes it to fasting.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Patient's airway management included successful intubation with a grade one view.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Patient reports no difficulty or tightness in the chest and describes breathing as fine, with only a stuffy feeling from the tube.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Patient has no recall of the operation, which is expected under general anesthesia.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Patient denies any dizziness or unusual symptoms related to diabetes or blood pressure.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Can you confirm if you have any current or previous allergies to any medications, especially those related to anesthesia or antibiotics?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Have you experienced any issues with your airway, breathing, or had any complications during your previous general anesthesia for laparoscopic appendectomy 10 years ago?",
+      "reason": "stale",
+      "provenance": [
+        "doc:prior-anesthetic-record#c001"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm if you have any history of heart disease, high blood pressure (beyond what's managed by Lisinopril), or any respiratory conditions like asthma or COPD?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Have you had any changes in your anxiety symptoms since discontinuing Alprazolam, and are you currently experiencing any anxiety that might impact your surgery or recovery?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c009"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm the current use of Ranitidine and its indication, as it may interact with anesthesia medications?",
+      "reason": "conflicting",
+      "provenance": [
+        "doc:gp-summary#c005",
+        "doc:med-list#c004"
+      ],
+      "review": null,
+      "edited_text": null
+    }
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl 25",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium 10",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane 2%",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "fluid bolus 100",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "neostigmine 2, glycopyrrolate 4",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "patient waking up, extubated smoothly",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Risk of Post-Operative Nausea and Vomiting (PONV) due to use of Opioids (Fentanyl) and history of Gallstones",
+    "Airway Watch due to Obesity and use of Neuromuscular Blocking Agents",
+    "Glycemic Control Monitoring due to Type 2 Diabetes",
+    "Analgesia Management considering Potential Opioid Sensitivity from Previous Alprazolam Use",
+    "Hemodynamic Watch due to Hypertension and Intra-op Blood Pressure Drop"
+  ],
+  "workflow": null
+}

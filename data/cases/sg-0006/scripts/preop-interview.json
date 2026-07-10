@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Patient's Name]. I'm going to be your anesthesiologist for your laparoscopic cholecystectomy today. I'd like to go through a few questions to make sure we're all set for your surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm ready when you are."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Can you tell me a bit about your medical history? We know you have hypertension, diabetes, and obesity, but are there any other conditions we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. My blood pressure and sugar have been under control, lah. I take my meds regularly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Let's go through your medications. You're on Metformin, Lisinopril, Atorvastatin, and you were on Ranitidine but it's stopped now, correct?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, that's right. I stopped the Ranitidine a few weeks ago as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Now, regarding allergies. Your records say 'no known allergies', but I understand you mentioned a reaction to Penicillin before. Can you tell me more about that?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh yes, I had a rash when I took Penicillin once, so I avoid that now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Have you ever had any adverse reactions to other antibiotics, like Cephalosporins, for example?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Actually, yes. I took a Cephalosporin once before, and I felt really nauseous and vomited. It was pretty bad, so I told my doctor not to give me that again."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It's very important we know about all reactions. We'll make sure to note that allergy clearly in your chart."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thanks, Doctor. I didn't think it was that important, but I guess it is."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Absolutely. Allergic reactions, even if not life-threatening, help us choose safer alternatives. Now, have you had any previous surgeries or anesthesia?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I'm a bit nervous, to be honest."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely normal. We'll be with you every step of the way. Just to confirm, you've had nothing to eat or drink since midnight, as instructed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I followed the fasting instructions. Nothing since last night."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. And how are you feeling today? Any chest pain, shortness of breath, or other symptoms we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm feeling fine. Just a bit anxious about the surgery, but otherwise okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for going through all that with me. We'll be using general anesthesia with a Laryngeal Mask Airway for your surgery. I'll explain the plan in a moment, but first, do you have any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think you've covered everything. I'm ready."
+    }
+  ]
+}

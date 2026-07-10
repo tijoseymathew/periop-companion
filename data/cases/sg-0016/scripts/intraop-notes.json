@@ -1,0 +1,218 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "fentanyl twenty five micrograms"
+    },
+    {
+      "t": "08:04",
+      "text": "vecuronium ten milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "sevoflurane at two percent, remifentanil infusion started"
+    },
+    {
+      "t": "08:20",
+      "text": "blood pressure dropped to ninety over sixty, gave one hundred milliliters fluid bolus"
+    },
+    {
+      "t": "08:40",
+      "text": "neostigmine two milligrams, glycopyrrolate four milligrams given for reversal"
+    },
+    {
+      "t": "08:45",
+      "text": "patient waking up, extubated smoothly"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty five",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "ten",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:04"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": "percent",
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "infusion started",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "blood pressure dropped",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "one hundred",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "glycopyrrolate",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "four",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "patient waking up",
+      "units": null,
+      "provenance": [
+        "voice_note#08:45"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "extubated smoothly",
+      "units": null,
+      "provenance": [
+        "voice_note#08:45"
+      ]
+    }
+  ]
+}

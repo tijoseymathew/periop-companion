@@ -1,0 +1,159 @@
+{
+  "questions": [
+    "Have you had any allergic reactions to foods, especially nuts, or any other substances not listed in your records?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#1#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#1#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_note#2#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "event",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#2#2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_note#3#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#3#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_note#4#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two point five",
+      "units": "percent",
+      "provenance": [
+        "voice_note#4#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "movement",
+      "units": null,
+      "provenance": [
+        "voice_note#4#3"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_note#5#1"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "five hundred",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#5#2"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "fluid bolus",
+      "units": null,
+      "provenance": [
+        "voice_note#5#3"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_note#6#1"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#6#2"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "tachycardia",
+      "units": null,
+      "provenance": [
+        "voice_note#6#3"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient has a history of Type 2 Diabetes Mellitus, Hypertension, and Obesity (BMI 32).",
+    "Current medications include Metformin 500 mg twice daily, Lisinopril 10 mg once daily, Atorvastatin 20 mg once daily, and Ranitidine 150 mg twice daily (discontinued).",
+    "Patient is allergic to Penicillin (rash) and has a history of anaphylaxis to Nuts.",
+    "ASA-PS classification is 3 due to controlled but significant comorbidities including Diabetes, Hypertension, and Obesity.",
+    "Airway assessment indicates no anticipated difficulties; general anesthesia plan includes Propofol, Remifentanil, and Sevoflurane."
+  ],
+  "handoff_claims": [
+    "Patient underwent elective Laparoscopic Cholecystectomy under General Anesthesia with a Balanced Technique using Propofol, Remifentanil, and Sevoflurane.",
+    "Anticipated postoperative issues include potential for nausea and delayed awakening due to use of Remifentanil and Propofol.",
+    "Key history includes Penicillin allergy (rash), Nut allergy (anaphylaxis), and comorbidities of Diabetes, Hypertension, and Obesity."
+  ],
+  "distractors": [
+    "Pneumonia (resolved, 5 years ago)",
+    "Fractured wrist (healed, 10 years ago)",
+    "Discontinued Metformin (due to side effects, 2 years ago, then restarted)"
+  ]
+}

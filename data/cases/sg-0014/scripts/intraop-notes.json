@@ -1,0 +1,135 @@
+{
+  "notes": [
+    {
+      "t": "07:30",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "07:32",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "07:35",
+      "text": "iv access established, two large bore lines"
+    },
+    {
+      "t": "07:40",
+      "text": "fluid bolus one thousand milliliters normal saline"
+    },
+    {
+      "t": "08:15",
+      "text": "notable hypotension, treat with fifty micrograms phenylephrine"
+    },
+    {
+      "t": "08:45",
+      "text": "notable tachycardia, treat with ten milligrams IV metoprolol"
+    }
+  ],
+  "events": [
+    {
+      "t": "07:30",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:30",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "07:32",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:32",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:35",
+      "category": "line",
+      "value": "iv access established",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:35",
+      "category": "line",
+      "value": "two large bore lines",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:40",
+      "category": "fluid",
+      "value": "bolus",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:40",
+      "category": "dose",
+      "value": "1000",
+      "units": "milliliters",
+      "provenance": []
+    },
+    {
+      "t": "07:40",
+      "category": "agent",
+      "value": "normal saline",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "notable hypotension",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "notable tachycardia",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "metoprolol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "10",
+      "units": "milligrams",
+      "provenance": []
+    }
+  ]
+}

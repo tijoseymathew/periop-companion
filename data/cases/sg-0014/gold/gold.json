@@ -1,0 +1,129 @@
+{
+  "questions": [
+    "Can you confirm if you are still taking Ranitidine, or have you been switched to another medication for your acid reflux?"
+  ],
+  "events": [
+    {
+      "t": "07:30",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:30",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "07:32",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:32",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:35",
+      "category": "line",
+      "value": "iv access established",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:35",
+      "category": "line",
+      "value": "two large bore lines",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:40",
+      "category": "fluid",
+      "value": "bolus",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "07:40",
+      "category": "dose",
+      "value": "1000",
+      "units": "milliliters",
+      "provenance": []
+    },
+    {
+      "t": "07:40",
+      "category": "agent",
+      "value": "normal saline",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "notable hypotension",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "notable tachycardia",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "metoprolol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "10",
+      "units": "milligrams",
+      "provenance": []
+    }
+  ],
+  "preop_note_claims": [
+    "History includes Hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia.",
+    "Medications: Losartan 50 mg Once Daily (active), Metformin 500 mg Twice Daily (active), Atorvastatin 20 mg Once Daily (active), Ranitidine 150 mg Once Daily (discontinued).",
+    "Allergies: Penicillin.",
+    "ASA-PS: ASA 3 due to controlled but active systemic diseases (Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia).",
+    "Airway/Plan: General Anesthesia planned for Laparoscopic Cholecystectomy; airway assessment indicates no anticipated difficulties."
+  ],
+  "handoff_claims": [
+    "Key History: Patient has Hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia; all are controlled with medications.",
+    "Intra-op Course Expectations: Uneventful Laparoscopic Cholecystectomy under General Anesthesia with single-shot Cefazolin for prophylaxis.",
+    "Anticipated Issues: Monitor for potential hyperglycemic episodes due to stress response to surgery; manage pain to prevent blood pressure elevations."
+  ],
+  "distractors": [
+    "History of pneumonia in 2018, fully resolved",
+    "Remote history of left femur fracture (age 25), healed without complications",
+    "Discontinued medication: Amlodipine (stopped 2 years ago due to dizziness)"
+  ]
+}

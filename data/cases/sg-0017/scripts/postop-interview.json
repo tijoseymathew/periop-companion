@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, I guess. Still a bit sleepy, but my knee doesn't hurt too much."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Can you rate your pain for me, out of 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe a 3 or 4. There's some soreness, but it's manageable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or feeling like you might be sick?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I feel fine. No dizziness or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How's your breathing? Any discomfort or tightness in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. A bit more aware of my breathing, but it's okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You mentioned you have mild asthma. Any wheezing or shortness of breath at all?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing like that. I didn't even need my inhaler today."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. And just to check, do you remember the surgery being done?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, I remember waking up and being moved here. It's a bit fuzzy, but I know what happened."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for confirming. We'll keep an eye on your pain and breathing, especially with your asthma and weight, but you're looking good so far."
+    }
+  ]
+}

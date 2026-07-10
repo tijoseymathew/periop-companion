@@ -1,0 +1,99 @@
+{
+  "case_id": "sg-0019",
+  "persona_uuid": "d79f23d3c0494e1c98368a4ed463fade",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Endotracheal Intubation",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Overweight (BMI 27.6)",
+    "Hypertension",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Paracetamol",
+      "dose": "500mg",
+      "frequency": "As needed",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications: Atorvastatin 20mg Daily, Lisinopril 10mg Daily, Omeprazole 20mg Daily, Paracetamol 500mg As needed (active)",
+    "truth": "Medications: Atorvastatin 20mg Daily, Lisinopril 10mg Daily, Omeprazole 20mg Daily (Paracetamol discontinued 6 months ago due to resolution of symptoms)",
+    "gold_question": "Can you confirm if you are still taking Paracetamol, and if not, when was the last time you took it?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved years ago, no impact on current anesthesia plan"
+    },
+    {
+      "description": "Remote history of wrist fracture (healed) from 10 years ago",
+      "why_irrelevant": "Old injury, fully healed, no ongoing issues"
+    },
+    {
+      "description": "Previous diagnosis of mild iron deficiency anemia, resolved with dietary changes",
+      "why_irrelevant": "Resolved nutritional deficiency, no current anemia"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Paracetamol",
+        "dose": "500mg",
+        "frequency": "As needed",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin (rash)"
+    ],
+    "past_history": [
+      "History of pneumonia resolved 5 years ago",
+      "Remote history of wrist fracture (healed) from 10 years ago",
+      "Previous diagnosis of mild iron deficiency anemia, resolved with dietary changes"
+    ],
+    "prior_anesthesia": null
+  }
+}

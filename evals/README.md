@@ -3,14 +3,125 @@
 `report.json` is produced by `uv run python scripts/run_eval.py` — it runs the
 pipeline over the generated cases, scores each against its gold with the LLM
 judge, and aggregates the §6 metrics. The committed `report.json` is one
-thinking-off run on the current default configuration, scored with the fixed
-question judge (finding 4 below).
+thinking-off run of the **ADK-native pipeline over all 30 cases** (below),
+scored with the fixed question judge (finding 4).
 
-**Reading `gap_recall` in `report.json`:** it is one Bernoulli draw (this run
-happens to be 1.00, an audited-true catch). A single run's 0/1 is not the
-benchmark for this metric — the benchmark is the *catch rate* across samples,
-~15% on sg-0002 (6/40 audited samples, 95% CI 7–29%; measured below). Don't
-read a single run's `gap_recall` as the pipeline's defect-catch quality.
+## 2026-07-11 — ADK-native pipeline × 30-case dataset: first full-scale run
+
+Two things changed at once relative to every table below, deliberately: the
+pipeline is the ADK-native composition (`src/periop/adk/`, this branch) and
+the dataset is the full ~30-case scale-up that `docs/progress.md` and finding
+3 had been calling for. sg-0001..0005 are the original committed bundles;
+sg-0006..0030 were generated fresh for this run (the old sg-0006+ directories
+held only gitignored TTS wavs — their scripts/records/gold had never been
+committed — so those bundles are new, and the stale wavs in other worktrees
+no longer match these scripts; re-render before any ASR eval on cases 6–30).
+n=1 per case, thinking-off default, live Super-49B/Nano-9B.
+
+### Aggregate (n = 30 cases, one pipeline run each)
+
+| Metric | mean | reading |
+|---|---|---|
+| preop_provenance_coverage | 1.000 | stable at ceiling, as always |
+| preop_provenance_precision | 0.829 | in line with the 0.53–0.84 spread seen at n=1 |
+| handoff_provenance_coverage | 1.000 | ceiling |
+| preop_claim_recall | 0.630 | now a real average, not a 1-case draw |
+| handoff_claim_recall | 0.423 | weakest recall metric |
+| gap_recall (judge-flagged) | 0.667 | 20/30 — but see the audit below |
+| gap_precision / gap_f1 | 0.125 / 0.210 | not gates (one gold probe vs ~6 questions) |
+| distractor_leakage | 0.622 | **worst signal — channel identified below** |
+| handoff_hallucination_rate | 0.107 | mean is fine; 3 outliers ≥ 0.43, cause identified |
+| extraction_f1 | 0.526 | matches the 0.49–0.58 band from single-case runs |
+
+Per-case rows are in `report.json` (`per_case`). The five shared cases land
+inside the noise envelope of the pre-ADK single-case runs on every metric, so
+nothing here suggests the ADK rewrite moved quality in either direction — the
+value of this run is the n=30 denominators, which finally make the
+judge-dependent metrics readable as averages.
+
+### Gap catches audited: judge-flagged 20/30, audited-true ≈ 12–17
+
+Every one of the 20 `gap_recall = 1.00` matches was re-derived and hand-read
+(each case's kept questions re-judged against its gold probe at temperature
+0 — deterministic, same verdicts as the run):
+
+- **12 clear true catches** — explicit medication-reconciliation or
+  undocumented-allergy questions that a patient's full answer would resolve
+  (e.g. sg-0025: "are you still taking all the listed medications (Metformin,
+  Lisinopril, Amlodipine, Dutasteride, Aspirin, Omeprazole)…?").
+- **5 directional-marginal** (sg-0008, sg-0013, sg-0014, sg-0023, sg-0030) —
+  a full answer plausibly-but-not-certainly surfaces the defect (e.g. "any
+  medications *not listed* in your records?" catching a stale-aspirin defect
+  only via the replacement drug).
+- **3 false positives**: sg-0002 is the *known* GERD/omeprazole judge-FP
+  family again ("why was omeprazole discontinued in 2020?" ≠ current med
+  changes); two new FP shapes — sg-0019 ("any *other* meds in addition to
+  the listed ones?" cannot reveal that a **listed** med was stopped) and
+  sg-0009 ("any *drug* allergies not recorded?" matched a **latex**-allergy
+  probe).
+
+So the honest defect-catch rate of the ADK pipeline at n=30 is **~0.40–0.57
+audited-true** (12–17/30), against 0.667 judge-flagged. The judge's error
+direction is still false-positive-only, now with three known FP shapes. The
+10 clean misses (sg-0003/07/12/15/16/17/20/21/22/28) plus the marginals are
+the target for the GapAnalyst prompt experiment finding 4 proposed.
+
+### Distractor leakage 0.622: the channel is unfiltered history recitation
+
+Reading the leaked claims directly (sg-0009/13/23/24 among others), the leak
+has one shape — resolved/remote history recited as past-medical-history
+boilerplate — through three channels:
+
+1. **note:post-anesthesia-eval** leaks in essentially every leaked case: it
+   recites the full record history ("past medical history includes resolved
+   pneumonia, healed fractured wrist, GERD (discontinued Omeprazole)") — one
+   claim can match all three gold distractors. It has **no relevance-filter
+   rule** in its prompt.
+2. **note:pacu-handoff** carries the same recitation forward. Also
+   unfiltered.
+3. **note:pre-anesthesia-eval** — the one artifact that *has* the filter —
+   leaks anyway, in the most instructive way: "Past History: Fractured right
+   wrist (15 years ago, fully healed) — **not relevant to anesthetic plan**"
+   (sg-0013). The justification-in-claim rule taught the writer to *annotate*
+   irrelevance instead of *omitting* the item; the leakage metric (rightly)
+   counts a mentioned distractor as leaked regardless of the disclaimer.
+
+The fix candidates are prompt-level: omit-don't-annotate in the pre-op note
+rule, and extend the filter to the handoff and post-anesthesia-eval writers.
+
+### Handoff hallucination outliers: entailment-mode verdicts on forward-looking claims
+
+Mean 0.107 hides three outliers (sg-0013 0.58, sg-0010 0.45, sg-0017 0.43).
+Reading their handoff claims: the "unsupported" verdicts are almost entirely
+the forward-looking "monitor for PONV / airway watch / glycemic control"
+recommendations the handoff carries from anticipated issues. Anticipated
+issues themselves are verified in the forward-looking inference mode (added
+2026-07 precisely for this), but the handoff artifact is verified with
+`forward_looking=False`, so identical claim content flips to "unsupported"
+when it appears in the handoff. This is mostly a verifier-wiring artifact,
+not new hallucination — the fix is to verify the handoff's monitoring
+recommendations in inference mode (or cite the anticipated-issues artifact).
+
+### Dataset scale-up notes (synthgen behavior at 25 fresh cases)
+
+- Generation is robust but not clean-pass: 21/24 bundles on the first pass,
+  ~8–10 min/case. sg-0021/0022 passed on plain re-runs (sampling luck).
+- **sg-0020 exposed a `reveals_truth` failure mode**: its sampled defect
+  truth was a full five-drug enumeration, and the check requires ≥half of the
+  truth's distinctive words to be spoken by the patient — effectively
+  demanding the patient recite the whole regimen; it failed deterministically
+  across 3 attempts. Wiping the case and letting the designer re-sample
+  produced a focused truth (Ranitidine→Omeprazole switch) that passed
+  immediately. If enumeration-style truths recur, either the designer should
+  be told to keep `truth` to the *delta*, or `reveals_truth` should score
+  only the record↔truth diff.
+- One pipeline-side flake at eval time: sg-0028's IssueAnticipator failed
+  structured output 3× in one run, passed on re-run.
+
+**Reading `gap_recall` for a single case:** still one Bernoulli draw per
+case (the pre-ADK measurement below found ~15% per-sample catch on sg-0002
+with 40 samples of the old implementation). At n=30 the *mean* is finally a
+usable catch-rate estimate, but per-case 0/1 values remain noise.
 
 ## 2026-07-09 — gap_f1 was structurally zero: judge bug, fixed
 

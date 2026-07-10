@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm a bit tired, but okay. My tummy is sore, and I feel a little nauseous."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I understand. On a scale from 0 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5. It's manageable, but I can feel it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks for letting me know. Have you felt any sickness or vomited at all since coming out of anesthesia?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, not yet. Just a bit of a queasy feeling, but I haven't thrown up."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How about your breathing? Any shortness of breath or discomfort in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. Just a bit of a sore throat from the tube, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's common after intubation. Do you remember anything from the surgery itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't remember anything. I was out completely."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected. Since you have hypertension and diabetes, we'll keep a close eye on your vitals and blood sugar levels. Any other concerns for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all for now. Thank you, doctor."
+    }
+  ]
+}

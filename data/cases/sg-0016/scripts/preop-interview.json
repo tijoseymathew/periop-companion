@@ -1,0 +1,72 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms./Mrs. [Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go over a few things to make sure everything goes smoothly. Can you please tell me a bit about your medical history and why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm having my gallbladder removed because of the stones, right? I've had bad belly pain after eating, especially fatty food, and the scans showed stones in the gallbladder. So they decided on laparoscopic surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that. Let's go through your medical history. You have hypertension, type 2 diabetes, and obesity, correct?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, that's right. I've had diabetes for about 8 years now, and high blood pressure for even longer. My weight has been a problem for a while too."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "And your current medications are Metformin, Lisinopril, Atorvastatin, and Ranitidine, as per the records. Has there been any change in your medication list since your last hospital visit?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Actually, yes. The Ranitidine was stopped about six months ago because my acid problem got better. Now I'm taking Omeprazole 20mg once daily instead."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for letting me know. That's an important update. Do you have any known allergies, especially to medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had a rash when I took Penicillin before, so I'm allergic to that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Got it. Have you had any previous surgeries or anesthesia before? If so, how did you tolerate it?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I've never had general anesthesia before, so I'm a bit nervous about it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely understandable. We'll make sure you're comfortable and safe throughout the process. Are you currently on any NPO orders? That is, when was your last meal or drink?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had my last meal around 8pm last night and a sip of water until about 10pm. I think I'm all set for fasting."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect, that sounds appropriate. Lastly, how would you describe your overall energy level and ability to perform daily activities?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I manage okay, but I do get tired more easily, especially after walking long distances. I can still do most of my daily tasks, though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It helps us understand your baseline. We'll be using general anesthesia with Propofol, Fentanyl, and Vecuronium to start, then maintain with Sevoflurane and Remifentanil. After surgery, we'll reverse the muscle relaxant with Neostigmine and Glycopyrrolate. Any questions so far?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all clear. I'm ready to proceed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. We'll take good care of you. You'll be seen by the surgical team shortly, and we'll be with you every step of the way."
+    }
+  ]
+}

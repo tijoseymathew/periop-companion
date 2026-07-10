@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm feeling a bit groggy, but okay, I guess. Still waking up."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's normal. Can you tell me your pain level on a scale of 1 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4? There's some discomfort in my tummy, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we'll manage that with some medication. Are you feeling nauseous at all?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little, but not throwing up or anything. Just a bit of a queasy feeling."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, we'll keep an eye on that. How's your breathing? Any tightness or discomfort?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, breathing's fine. My throat's a bit sore, but I can breathe okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That soreness is from the LMA tube. It should ease soon. Any memory of the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't remember anything. I was out completely."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Given your BMI and hyperlipidemia, we'll monitor your vitals closely. Any chest pain or shortness of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing like that. Just tired and a bit sore."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, rest well. We'll check on you regularly and get you mobilized soon."
+    }
+  ]
+}
