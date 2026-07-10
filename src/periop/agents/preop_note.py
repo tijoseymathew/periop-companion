@@ -7,6 +7,8 @@ provenance is structural (spec §4.1). Claims whose citations don't resolve
 are dropped before the artifact is committed.
 """
 
+from typing import Any, Mapping
+
 from pydantic import BaseModel, Field, field_validator
 
 from periop.agents.context import normalize_refs, provenance_resolves, render_sources
@@ -77,27 +79,49 @@ def _questions_block(case: Case) -> str:
     )
 
 
+def prompt(case: Case, state: Mapping[str, Any] | None = None) -> str:
+    return PROMPT.format(
+        sources=render_sources(case),
+        questions_block=_questions_block(case),
+    )
+
+
+def filtered_claims(case: Case, out: WriterOutput) -> list[Claim]:
+    """Writer claims whose citations resolve, renumbered as the ledger ids."""
+    claims: list[Claim] = []
+    for wc in out.claims:
+        if not provenance_resolves(case, wc.provenance):
+            continue
+        claims.append(
+            Claim(
+                claim_id=f"c-{len(claims) + 1:03d}",
+                text=wc.text,
+                provenance=wc.provenance,
+            )
+        )
+    return claims
+
+
+def apply(
+    case: Case, out: WriterOutput, state: Mapping[str, Any] | None = None
+) -> tuple[str, dict[str, Any]]:
+    from periop.adk.runtime import case_delta
+
+    artifact = ArtifactRecord(artifact_id=PREOP_NOTE_ID, claims=filtered_claims(case, out))
+    case.add_artifact(artifact)
+    return f"{len(artifact.claims)} claims", case_delta(case)
+
+
 class PreOpNoteWriter:
+    """Facade: run the ADK pre-op note step standalone over one case."""
+
     def __init__(self, chat) -> None:
         self.chat = chat
 
     def write(self, case: Case) -> ArtifactRecord:
-        prompt = PROMPT.format(
-            sources=render_sources(case),
-            questions_block=_questions_block(case),
-        )
-        out = self.chat.complete_structured(prompt, schema=WriterOutput, system=SYSTEM)
-        claims: list[Claim] = []
-        for wc in out.claims:
-            if not provenance_resolves(case, wc.provenance):
-                continue
-            claims.append(
-                Claim(
-                    claim_id=f"c-{len(claims) + 1:03d}",
-                    text=wc.text,
-                    provenance=wc.provenance,
-                )
-            )
-        artifact = ArtifactRecord(artifact_id=PREOP_NOTE_ID, claims=claims)
-        case.add_artifact(artifact)
-        return artifact
+        from periop.adk.runtime import run_agent, sync_case
+        from periop.adk.stages import preop_note_step
+
+        result, _ = run_agent(preop_note_step(self.chat), case)
+        sync_case(case, result)
+        return case.get_artifact(PREOP_NOTE_ID)

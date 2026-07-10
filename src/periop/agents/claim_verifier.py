@@ -4,16 +4,11 @@ An NLI-style pass on the fast model: does the cited text entail the claim,
 contradict it, or fail to support it → supported / unsupported / conflicting.
 Unsupported/conflicting claims are flagged in place, never dropped.
 
-Verdicts are independent, so the per-claim calls fan out over a bounded
-thread pool (spec v2-speed §3.3) — ``PERIOP_VERIFIER_CONCURRENCY`` tunes it
-(default 4; ``0``/``1`` = sequential, the knob for rate-limited hosted
-endpoints). The ledger is identical to the sequential version: workers
-mutate their own ``Claim`` in place and never touch artifact order.
+Execution is ``periop.adk.verifier.ClaimVerifierAgent``: an ADK agent that
+fans one generate→validate verdict step out over the artifact's claims, one
+independent verdict per claim. The ``ClaimVerifier`` class is a facade over
+that agent for standalone callers.
 """
-
-import contextvars
-import os
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from pydantic import BaseModel, Field
 
@@ -62,57 +57,33 @@ Judge the claim's evidence, not the prediction itself:
 """
 
 
-def _concurrency() -> int:
-    return int(os.environ.get("PERIOP_VERIFIER_CONCURRENCY") or 4)
+def render_spans(case: Case, claim) -> str:
+    lines = []
+    for ref in claim.provenance:
+        try:
+            anchor = case.resolve(ref)
+        except (KeyError, ValueError):
+            lines.append(f"[{ref}] (missing)")
+            continue
+        lines.append(f"[{ref}] {anchor.text}")
+    return "\n".join(lines) or "(no citations)"
 
 
 class ClaimVerifier:
+    """Facade: run the ADK claim-verifier agent standalone over one artifact."""
+
     def __init__(self, chat) -> None:
         self.chat = chat
 
     def verify(self, case: Case, artifact_id: str, forward_looking: bool = False) -> None:
-        artifact = case.get_artifact(artifact_id)
-        if artifact is None:
-            raise KeyError(f"no such artifact: {artifact_id}")
-        prompt = FORWARD_LOOKING_PROMPT if forward_looking else PROMPT
+        from periop.adk.runtime import run_agent, sync_case
+        from periop.adk.verifier import ClaimVerifierAgent
 
-        workers = min(_concurrency(), len(artifact.claims))
-        if workers <= 1:
-            for claim in artifact.claims:
-                self._verify_one(case, claim, prompt)
-            return
-
-        # traced_llm_call reaches NAT's step stream through contextvars, which
-        # a bare ThreadPoolExecutor does not propagate — without copy_context
-        # every verification call silently drops off the trace. One copy per
-        # task: a single Context object cannot be entered concurrently.
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            futures = [
-                pool.submit(
-                    contextvars.copy_context().run, self._verify_one, case, claim, prompt
-                )
-                for claim in artifact.claims
-            ]
-            for future in as_completed(futures):
-                future.result()  # re-raise the first failure, same as the loop
-
-    def _verify_one(self, case: Case, claim, prompt: str) -> None:
-        spans = self._render_spans(case, claim)
-        verdict = self.chat.complete_structured(
-            prompt.format(claim=claim.text, spans=spans),
-            schema=VerifierVerdict,
-            system=SYSTEM,
+        agent = ClaimVerifierAgent.build(
+            name="claim_verifier",
+            chat=self.chat,
+            artifact_id=artifact_id,
+            forward_looking=forward_looking,
         )
-        claim.status = verdict.status
-
-    @staticmethod
-    def _render_spans(case: Case, claim) -> str:
-        lines = []
-        for ref in claim.provenance:
-            try:
-                anchor = case.resolve(ref)
-            except (KeyError, ValueError):
-                lines.append(f"[{ref}] (missing)")
-                continue
-            lines.append(f"[{ref}] {anchor.text}")
-        return "\n".join(lines) or "(no citations)"
+        result, _ = run_agent(agent, case)
+        sync_case(case, result)

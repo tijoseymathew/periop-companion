@@ -4,9 +4,15 @@ Each question is tagged with why it matters (missing / stale / conflicting)
 and cites the chunk that triggered it. Questions whose citations don't resolve
 against the case are dropped — a hallucinated citation is worse than a missing
 question here.
+
+The prompt, output schema, and apply step live here; execution is the ADK
+generate→validate step built in ``periop.adk.stages``. The ``GapAnalyst``
+class is a facade over a single-step ADK run for standalone callers (intake
+gap analysis, eval scripts).
 """
 
 from enum import StrEnum
+from typing import Any, Mapping
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -59,29 +65,52 @@ airway history, prior anesthetic complications, cardiorespiratory disease).
 """
 
 
+def prompt(case: Case, state: Mapping[str, Any] | None = None) -> str:
+    return PROMPT.format(sources=render_sources(case, types=(SourceType.DOCUMENT,)))
+
+
+def apply(
+    case: Case, result: GapQuestions, state: Mapping[str, Any] | None = None
+) -> tuple[str, dict[str, Any]]:
+    """Keep only questions whose citations resolve; store them on the case."""
+    from periop.adk.runtime import case_delta
+
+    valid = [q for q in result.questions if _citations_resolve(case, q)]
+    case.open_questions = [
+        OpenQuestion(question=q.question, reason=q.reason, provenance=q.provenance)
+        for q in valid
+    ]
+    return f"{len(valid)} questions", case_delta(case)
+
+
+def _citations_resolve(case: Case, q: ClarificationQuestion) -> bool:
+    if not q.provenance:
+        return False
+    try:
+        for ref in q.provenance:
+            case.resolve(ref)
+    except (KeyError, ValueError):
+        return False
+    return True
+
+
 class GapAnalyst:
+    """Facade: run the ADK gap-analysis step standalone over one case."""
+
     def __init__(self, chat) -> None:
         self.chat = chat
 
     def analyze(self, case: Case) -> list[ClarificationQuestion]:
-        sources = render_sources(case, types=(SourceType.DOCUMENT,))
-        result = self.chat.complete_structured(
-            PROMPT.format(sources=sources), schema=GapQuestions, system=SYSTEM
-        )
-        valid = [q for q in result.questions if self._citations_resolve(case, q)]
-        case.open_questions = [
-            OpenQuestion(question=q.question, reason=q.reason, provenance=q.provenance)
-            for q in valid
-        ]
-        return valid
+        from periop.adk.runtime import run_agent, sync_case
+        from periop.adk.stages import gap_analyst_step
 
-    @staticmethod
-    def _citations_resolve(case: Case, q: ClarificationQuestion) -> bool:
-        if not q.provenance:
-            return False
-        try:
-            for ref in q.provenance:
-                case.resolve(ref)
-        except (KeyError, ValueError):
-            return False
-        return True
+        result, _ = run_agent(gap_analyst_step(self.chat, skip_when_present=False), case)
+        sync_case(case, result)
+        return [
+            ClarificationQuestion(
+                question=q.question,
+                reason=QuestionReason(q.reason),
+                provenance=[str(r) for r in q.provenance],
+            )
+            for q in case.open_questions
+        ]

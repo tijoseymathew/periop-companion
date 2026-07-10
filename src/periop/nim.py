@@ -101,6 +101,50 @@ def extract_json(text: str) -> Any:
     raise ValueError(f"no JSON found in model reply: {text[:200]!r}")
 
 
+def structured_prompt(user: str, schema: type[BaseModel]) -> str:
+    """Append the JSON-Schema instruction block used for structured output.
+
+    Shared by ``NimChat.complete_structured`` and the ADK generate/validate
+    steps so the live prompts are identical on both paths.
+    """
+    schema_hint = json.dumps(schema.model_json_schema(), indent=2)
+    return (
+        f"{user}\n\nRespond with a single JSON object that conforms to the "
+        f"JSON Schema below. Output only the data instance — do not repeat "
+        f"the schema itself, add extra keys, or add commentary.\n{schema_hint}"
+    )
+
+
+def retry_feedback(base_prompt: str, reply: str, error: str) -> str:
+    """The corrective re-prompt after a rejected structured reply."""
+    return (
+        f"{base_prompt}\n\nYour previous reply was rejected:\n{reply}\n\n"
+        f"Validation error:\n{error}\n\n"
+        "Correct the JSON so it matches the schema exactly."
+    )
+
+
+def first_valid(reply: str, schema: type[M]) -> M:
+    """Validate the first JSON candidate in ``reply`` matching ``schema``.
+
+    Models sometimes echo the requested schema before the instance; the
+    echo decodes as JSON but fails validation, so keep scanning. The
+    first candidate's validation error is re-raised when none fit (it is
+    the most useful retry feedback).
+    """
+    first_error: ValidationError | None = None
+    found = False
+    for candidate in extract_json_candidates(reply):
+        found = True
+        try:
+            return schema.model_validate(candidate)
+        except ValidationError as exc:
+            first_error = first_error or exc
+    if not found:
+        raise ValueError(f"no JSON found in model reply: {reply[:200]!r}")
+    raise first_error
+
+
 def api_key_from_env(base_url: str = NIM_BASE_URL) -> str:
     key = os.environ.get("NGC_API_KEY") or os.environ.get("NVIDIA_API_KEY")
     if not key:
@@ -167,50 +211,22 @@ class NimChat:
         self, user: str, schema: type[M], system: str | None = None, **kwargs: Any
     ) -> M:
         """Ask for JSON matching ``schema``; retry on parse/validation failure."""
-        schema_hint = json.dumps(schema.model_json_schema(), indent=2)
-        prompt = (
-            f"{user}\n\nRespond with a single JSON object that conforms to the "
-            f"JSON Schema below. Output only the data instance — do not repeat "
-            f"the schema itself, add extra keys, or add commentary.\n{schema_hint}"
-        )
+        prompt = structured_prompt(user, schema)
         last_error: Exception | None = None
         attempt_prompt = prompt
         for _ in range(self.max_retries + 1):
             reply = self.complete(attempt_prompt, system=system, **kwargs)
             try:
-                return self._first_valid(reply, schema)
+                return first_valid(reply, schema)
             except (ValueError, ValidationError) as exc:
                 last_error = exc
-                attempt_prompt = (
-                    f"{prompt}\n\nYour previous reply was rejected:\n{reply}\n\n"
-                    f"Validation error:\n{exc}\n\n"
-                    "Correct the JSON so it matches the schema exactly."
-                )
+                attempt_prompt = retry_feedback(prompt, reply, str(exc))
         raise ValueError(
             f"model failed to produce valid {schema.__name__} after "
             f"{self.max_retries + 1} attempts"
         ) from last_error
 
-    @staticmethod
-    def _first_valid(reply: str, schema: type[M]) -> M:
-        """Validate the first JSON candidate in ``reply`` matching ``schema``.
-
-        Models sometimes echo the requested schema before the instance; the
-        echo decodes as JSON but fails validation, so keep scanning. The
-        first candidate's validation error is re-raised when none fit (it is
-        the most useful retry feedback).
-        """
-        first_error: ValidationError | None = None
-        found = False
-        for candidate in extract_json_candidates(reply):
-            found = True
-            try:
-                return schema.model_validate(candidate)
-            except ValidationError as exc:
-                first_error = first_error or exc
-        if not found:
-            raise ValueError(f"no JSON found in model reply: {reply[:200]!r}")
-        raise first_error
+    _first_valid = staticmethod(first_valid)
 
 
 def reasoning_chat(**kwargs: Any) -> NimChat:

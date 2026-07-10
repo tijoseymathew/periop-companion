@@ -7,6 +7,7 @@ kept but flagged, never dropped (spec §4.3).
 """
 
 import threading
+import time
 
 import pytest
 
@@ -275,17 +276,27 @@ class TestClaimVerifierFanOut:
         assert all(c.status == ClaimStatus.SUPPORTED for c in claims)
 
     def test_concurrency_env_one_stays_sequential(self, tmp_path, monkeypatch):
+        # sequential means no two verdict calls in flight at once (the calls
+        # run on ADK executor threads now, so assert overlap, not thread id)
         monkeypatch.setenv("PERIOP_VERIFIER_CONCURRENCY", "1")
         case = self._many_claim_case(tmp_path, n=3)
-        threads = []
+        lock = threading.Lock()
+        in_flight = {"now": 0, "max": 0, "calls": 0}
 
         class RecordingChat:
             def complete_structured(self, user, schema, system=None, **kwargs):
-                threads.append(threading.current_thread())
+                with lock:
+                    in_flight["now"] += 1
+                    in_flight["calls"] += 1
+                    in_flight["max"] = max(in_flight["max"], in_flight["now"])
+                time.sleep(0.05)  # give a would-be overlapping call time to enter
+                with lock:
+                    in_flight["now"] -= 1
                 return schema(status="supported", rationale="ok")
 
         ClaimVerifier(chat=RecordingChat()).verify(case, "note:pre-anesthesia-eval")
-        assert threads == [threading.current_thread()] * 3
+        assert in_flight["calls"] == 3
+        assert in_flight["max"] == 1
 
     def test_one_failing_claim_raises_without_deadlock(self, tmp_path):
         case = self._many_claim_case(tmp_path, n=5)
