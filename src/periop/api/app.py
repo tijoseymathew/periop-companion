@@ -38,10 +38,12 @@ async def _lifespan(app: FastAPI):
     from nat.runtime.loader import load_workflow
 
     from periop.api.gap_analysis import fail_interrupted_analyses
+    from periop.api.transcription import fail_interrupted_transcriptions
 
-    # a crash mid-question-prep leaves gap_analysis stuck at pending/running;
-    # sweep those to failed so the retry paths open up (v2-speed §3.2)
+    # a crash mid-question-prep or mid-transcription leaves a stage stuck at
+    # pending/running; sweep those to failed so the retry paths open up
     fail_interrupted_analyses(app.state.out_dir)
+    fail_interrupted_transcriptions(app.state.out_dir)
     async with load_workflow(NAT_CONFIG) as nat_sessions:
         app.state.nat_sessions = nat_sessions
         yield

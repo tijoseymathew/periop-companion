@@ -266,6 +266,9 @@ def walk(client: Client, case_dir: Path, label: str, providers: dict[str, str]) 
                            f"/api/cases/{case_id}/sources/audio",
                            files={"file": (wav.name, fh, "audio/wav")},
                            data={"kind": stem, "provider_id": provider})
+        # upload-time transcription runs in the background; the run gate
+        # 409s until it settles, so wait (and time the ASR leg) here
+        _time_transcription(client, case_id, stage)
         step = client.run_stage_sse(stage, case_id, stage, provider)
         if "completed" not in step.detail:
             die(f"{stage} run did not complete: {step.detail}")
@@ -278,6 +281,31 @@ def walk(client: Client, case_dir: Path, label: str, providers: dict[str, str]) 
                    f"/api/cases/{case_id}/handoff/ack",
                    json={"provider_id": providers["postop"]})
     return case_id
+
+
+def _time_transcription(client: Client, case_id: str, stage: str,
+                        timeout_s: float = 1800.0) -> None:
+    """Poll until the stage's upload-time transcription settles; time the wait.
+
+    "failed" is not fatal — the stage run transcribes at generate time.
+    """
+    rec = client.rec
+    t0 = time.perf_counter()
+    polls = 0
+    deadline = time.monotonic() + timeout_s
+    while time.monotonic() < deadline:
+        polls += 1
+        case = client._c.get(f"/api/cases/{case_id}").json()
+        state = case["workflow"]["stages"][stage].get("transcription")
+        if state in ("complete", "failed"):
+            dt = time.perf_counter() - t0
+            note = f"{polls} polls" if state == "complete" else \
+                f"failed ({case['workflow']['stages'][stage].get('transcription_error')}) — " \
+                "the stage run transcribes instead"
+            rec.add(Step(stage, "upload-time transcription", dt, None, note))
+            return
+        time.sleep(1.0)
+    die("transcription never settled within timeout")
 
 
 def _time_gap_analysis(client: Client, case_id: str, timeout_s: float = 1800.0) -> list[dict]:

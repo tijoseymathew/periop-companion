@@ -267,6 +267,11 @@ class StageState(BaseModel):
     gap_analysis_error: str | None = None
     # stamped when this stage's audio inputs land
     inputs_recorded_at: datetime | None = None
+    # background upload-time transcription lifecycle (same state vocabulary as
+    # gap_analysis); None until a recording is uploaded, so older case JSONs
+    # load unchanged. On "failed" the stage run transcribes at generate time.
+    transcription: GapAnalysisState | None = None
+    transcription_error: str | None = None
     # post-op only: handoff acknowledge (v2 §4.4)
     handoff_acknowledged_by: str | None = None
     handoff_acknowledged_at: datetime | None = None

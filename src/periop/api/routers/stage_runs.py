@@ -73,6 +73,14 @@ def _check_gate(request: Request, case: Case, stage: str) -> None:
                 detail="review and approve the clarification questions before generating the note",
             )
 
+    # a run mid-transcription would race the transcript landing on the case;
+    # "failed" deliberately passes — the run's own Transcriber picks it up
+    if state.transcription in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+        raise HTTPException(
+            status_code=409,
+            detail="the recording is still being transcribed — generate when the transcript lands",
+        )
+
     case_dir = request.app.state.case_dir / case.case_id
     if not (
         state.inputs_recorded_at or has_transcript_inputs(case_dir, STAGE_KIND[stage])

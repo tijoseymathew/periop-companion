@@ -47,6 +47,20 @@ class LivePipelineRunner:
             return run_intraop_stage(case, case_dir, chat=chat, fast_chat=fast, emit=emit)
         return run_postop_stage(case, case_dir, chat=chat, fast_chat=fast, emit=emit)
 
+    def transcribe(self, wav_path, kind: str, source_id: str) -> Source:
+        """Batch-ASR one uploaded recording (upload-time transcription).
+
+        Same Parakeet configuration as the stage pipeline's Transcriber:
+        diarized for interviews, single-speaker with the anesthesia lexicon
+        boosted for intra-op memos.
+        """
+        import periop.tools.asr as asr_mod
+        from periop.agents.lexicon import ANESTHESIA_LEXICON
+
+        intraop = kind == "intraop-notes"
+        asr = asr_mod.ParakeetAsr(boosted_words=ANESTHESIA_LEXICON if intraop else None)
+        return asr.transcribe(wav_path, source_id, diarize=not intraop)
+
 
 class FakeStreamingTranscriber:
     """Deterministic dictation double for hermetic e2e (``PERIOP_STUB_RUNNER=1``).
@@ -108,6 +122,21 @@ class StubPipelineRunner:
                 ),
             ],
         )
+
+    def transcribe(self, wav_path, kind: str, source_id: str) -> Source:
+        """Instant canned transcript, matching what run_stage would register."""
+        if kind == "intraop-notes":
+            return Source(
+                source_id=source_id,
+                type=SourceType.AUDIO,
+                segments=[
+                    AudioSegment(
+                        seg_id="s001", t0=0.0, t1=2.0, speaker="PROVIDER",
+                        text="[08:02] Propofol one twenty milligrams.",
+                    )
+                ],
+            )
+        return self._interview_source(source_id)
 
     def run_stage(self, case: Case, stage: str, case_dir, emit) -> Case:
         doc = next(s for s in case.sources if s.type is SourceType.DOCUMENT)

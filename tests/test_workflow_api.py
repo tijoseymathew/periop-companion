@@ -17,11 +17,14 @@ from fastapi.testclient import TestClient
 from periop.api.app import create_app
 from periop.schemas import (
     ArtifactRecord,
+    AudioSegment,
     Case,
     Claim,
     ClaimStatus,
     GapAnalysisState,
     OpenQuestion,
+    Source,
+    SourceType,
     StageStatus,
 )
 from periop.store import CaseStore
@@ -128,10 +131,13 @@ class StubRunner:
     def __init__(self):
         self.gap_calls = []
         self.run_calls = []
+        self.transcribe_calls = []
         self.fail = False
         self.fail_gaps = False
+        self.fail_transcribe = False
         self.gap_thread = None
         self.gap_block = None  # tests set a threading.Event to hold analysis open
+        self.transcribe_block = None  # same, to hold a transcription open
 
     def run_stage(self, case, stage, case_dir, emit):
         self.run_calls.append((case.case_id, stage))
@@ -165,6 +171,26 @@ class StubRunner:
             )
         ]
 
+    def transcribe(self, wav_path, kind, source_id):
+        self.transcribe_calls.append((str(wav_path), kind, source_id))
+        if self.transcribe_block is not None:
+            assert self.transcribe_block.wait(timeout=10), (
+                "test forgot to release transcribe_block"
+            )
+        if self.fail_transcribe:
+            raise RuntimeError("asr unreachable")
+        speaker = "PROVIDER" if kind == "intraop-notes" else "PATIENT"
+        return Source(
+            source_id=source_id,
+            type=SourceType.AUDIO,
+            segments=[
+                AudioSegment(
+                    seg_id="s001", t0=0.0, t1=2.0, speaker=speaker,
+                    text="I stopped the aspirin.",
+                )
+            ],
+        )
+
 
 def wait_gap(client, case_id, *states, timeout=10.0):
     """Poll the case until pre-op ``gap_analysis`` reaches one of ``states``.
@@ -182,6 +208,19 @@ def wait_gap(client, case_id, *states, timeout=10.0):
             return case
         time.sleep(0.01)
     raise AssertionError(f"gap_analysis stuck at {last!r}, wanted one of {states}")
+
+
+def wait_transcription(client, case_id, stage, *states, timeout=10.0):
+    """Poll the case until ``stage``'s upload-time transcription settles."""
+    deadline = time.monotonic() + timeout
+    last = None
+    while time.monotonic() < deadline:
+        case = Case.model_validate(client.get(f"/api/cases/{case_id}").json())
+        last = case.workflow.stages[stage].transcription
+        if last in states:
+            return case
+        time.sleep(0.01)
+    raise AssertionError(f"transcription stuck at {last!r}, wanted one of {states}")
 
 
 def _minimal_pdf(text: str) -> bytes:
@@ -681,6 +720,7 @@ class TestAudioUpload:
 
     def test_interview_replacement_needs_confirmation(self, wclient):
         upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        wait_transcription(wclient, "tkr-mrs-w", "preop", "complete")
         resp = upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
         assert resp.status_code == 409
         assert "confirm" in resp.json()["detail"].lower()
@@ -692,6 +732,7 @@ class TestAudioUpload:
     def test_intraop_memos_append(self, wclient, dirs):
         _, case_dir, _ = dirs
         upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav(seconds=0.1))
+        wait_transcription(wclient, "tkr-mrs-w", "intraop", "complete")
         resp = upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav(seconds=0.1))
         assert resp.status_code == 201
         import wave
@@ -736,6 +777,135 @@ class TestAudioUpload:
         )
         assert resp.status_code == 503
         assert "ffmpeg" in resp.json()["detail"]
+
+
+class TestUploadTimeTranscription:
+    """Transcripts land in the background right after an upload, so the
+    capture screens can show the segments in seconds — and the stage run's
+    own Transcriber then skips its ASR leg (the source already exists)."""
+
+    def test_upload_returns_before_transcript_lands(self, wclient, runner):
+        runner.transcribe_block = threading.Event()
+        resp = upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        assert resp.status_code == 201
+        case = Case.model_validate(resp.json())
+        assert case.workflow.stages["preop"].transcription in ("pending", "running")
+        assert case.get_source("audio:preop-interview") is None
+        runner.transcribe_block.set()
+        case = wait_transcription(wclient, "tkr-mrs-w", "preop", "complete")
+        source = case.get_source("audio:preop-interview")
+        assert [s.text for s in source.segments] == ["I stopped the aspirin."]
+        assert runner.transcribe_calls[0][1:] == ("preop-interview", "audio:preop-interview")
+
+    def test_second_upload_409_while_transcribing(self, wclient, runner):
+        runner.transcribe_block = threading.Event()
+        upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav())
+        resp = upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav())
+        assert resp.status_code == 409
+        assert "transcribed" in resp.json()["detail"]
+        runner.transcribe_block.set()
+        wait_transcription(wclient, "tkr-mrs-w", "intraop", "complete")
+
+    def test_intraop_memo_segments_append_with_offset(self, wclient, runner):
+        upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav(seconds=0.5))
+        wait_transcription(wclient, "tkr-mrs-w", "intraop", "complete")
+        upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav(seconds=0.5))
+        case = wait_transcription(wclient, "tkr-mrs-w", "intraop", "complete")
+        # wait for the second transcription's segment to land, not the first's
+        deadline = time.monotonic() + 10
+        while len(case.get_source("audio:intraop-notes").segments) < 2:
+            assert time.monotonic() < deadline, "second memo segment never landed"
+            time.sleep(0.01)
+            case = Case.model_validate(wclient.get("/api/cases/tkr-mrs-w").json())
+        first, second = case.get_source("audio:intraop-notes").segments
+        assert (first.seg_id, second.seg_id) == ("s001", "s002")
+        # the second memo transcribed alone, offset by the first's duration
+        assert second.t0 == pytest.approx(0.5, abs=0.05)
+        # the second ASR call saw the appended memo, not the whole wav
+        assert runner.transcribe_calls[1][0] != runner.transcribe_calls[0][0]
+
+    def test_confirmed_reupload_replaces_segments(self, wclient, runner):
+        upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        wait_transcription(wclient, "tkr-mrs-w", "preop", "complete")
+        upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav(), confirm=True)
+        case = wait_transcription(wclient, "tkr-mrs-w", "preop", "complete")
+        deadline = time.monotonic() + 10
+        while len(runner.transcribe_calls) < 2:
+            assert time.monotonic() < deadline
+            time.sleep(0.01)
+        assert len(case.get_source("audio:preop-interview").segments) == 1
+
+    def test_run_gate_409_while_transcribing(self, wclient, runner):
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
+        wclient.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={
+                "questions": [{"question": "Q?", "review": "approved"}],
+                "provider_id": "p-lim",
+            },
+        )
+        runner.transcribe_block = threading.Event()
+        upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        resp = run_stage(wclient, "preop")
+        assert resp.status_code == 409
+        assert "transcribed" in resp.json()["detail"]
+        runner.transcribe_block.set()
+        wait_transcription(wclient, "tkr-mrs-w", "preop", "complete")
+        assert run_stage(wclient, "preop").status_code == 200
+
+    def test_failed_transcription_does_not_block_generation(self, wclient, runner):
+        runner.fail_transcribe = True
+        paste(wclient, "tkr-mrs-w", "gp-summary", GP_TEXT)
+        paste(wclient, "tkr-mrs-w", "op-plan", "# Op Plan\n\nLap chole.\n")
+        wait_gap(wclient, "tkr-mrs-w", "complete")
+        wclient.put(
+            "/api/cases/tkr-mrs-w/questions",
+            json={
+                "questions": [{"question": "Q?", "review": "approved"}],
+                "provider_id": "p-lim",
+            },
+        )
+        upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        case = wait_transcription(wclient, "tkr-mrs-w", "preop", "failed")
+        assert "asr unreachable" in case.workflow.stages["preop"].transcription_error
+        assert case.get_source("audio:preop-interview") is None
+        # the wav is durable — the stage run transcribes at generate time
+        assert run_stage(wclient, "preop").status_code == 200
+
+    def test_failed_transcription_allows_reupload(self, wclient, runner):
+        runner.fail_transcribe = True
+        upload_audio(wclient, "tkr-mrs-w", "preop-interview", make_wav())
+        wait_transcription(wclient, "tkr-mrs-w", "preop", "failed")
+        runner.fail_transcribe = False
+        resp = upload_audio(
+            wclient, "tkr-mrs-w", "preop-interview", make_wav(), confirm=True
+        )
+        assert resp.status_code == 201
+        wait_transcription(wclient, "tkr-mrs-w", "preop", "complete")
+
+    def test_interrupted_transcription_is_failed_on_restart(self, dirs, runner):
+        out_dir, case_dir, providers = dirs
+        store = CaseStore(out_dir)
+        with TestClient(
+            create_app(
+                out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+            )
+        ) as client:
+            client.post("/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"})
+        case = store.load("tkr-mrs-w")
+        case.workflow.stages["preop"].transcription = GapAnalysisState.RUNNING
+        store.save(case)
+        with TestClient(
+            create_app(
+                out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+            )
+        ) as client:
+            resp = client.get("/api/cases/tkr-mrs-w")
+        fresh = Case.model_validate(resp.json())
+        assert fresh.workflow.stages["preop"].transcription == "failed"
+        assert "restart" in fresh.workflow.stages["preop"].transcription_error
 
 
 @pytest.mark.skipif(
@@ -789,6 +959,7 @@ def make_preop_ready(client):
         },
     )
     upload_audio(client, "tkr-mrs-w", "preop-interview", make_wav())
+    wait_transcription(client, "tkr-mrs-w", "preop", "complete", "failed")
 
 
 def run_stage(client, stage, provider="p-lim", case_id="tkr-mrs-w"):
@@ -862,6 +1033,7 @@ class TestStageRun:
         case.workflow.stages["preop"].status = StageStatus.SIGNED_OFF
         store.save(case)
         upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav())
+        wait_transcription(wclient, "tkr-mrs-w", "intraop", "complete")
         resp = run_stage(wclient, "intraop", provider="p-tan")
         assert resp.status_code == 200
         stored = store.load("tkr-mrs-w")
@@ -1045,9 +1217,11 @@ class TestHandoffAck:
         run_stage(client, "preop")
         signoff(client, "preop")
         upload_audio(client, "tkr-mrs-w", "intraop-notes", make_wav())
+        wait_transcription(client, "tkr-mrs-w", "intraop", "complete", "failed")
         run_stage(client, "intraop", provider="p-tan")
         signoff(client, "intraop", provider="p-tan")
         upload_audio(client, "tkr-mrs-w", "postop-interview", make_wav())
+        wait_transcription(client, "tkr-mrs-w", "postop", "complete", "failed")
         run_stage(client, "postop", provider="p-rahman")
 
     def test_ack_stamps_receiving_provider(self, wclient, dirs):
@@ -1120,6 +1294,7 @@ class TestStubRunnerEnv:
             },
         )
         upload_audio(client, "stub-walk", "preop-interview", make_wav())
+        wait_transcription(client, "stub-walk", "preop", "complete")
         resp = client.post(
             "/api/cases/stub-walk/stages/preop/run", json={"provider_id": "p-lim"}
         )

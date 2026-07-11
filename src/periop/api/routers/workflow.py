@@ -13,11 +13,13 @@ import io
 import json
 import re
 from datetime import datetime, timezone
+from uuid import uuid4
 
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, field_validator
 
 from periop.api.gap_analysis import launch_gap_analysis
+from periop.api.transcription import launch_transcription
 from periop.api.routers.cases import load_case
 from periop.schemas import (
     Case,
@@ -319,8 +321,10 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
     """Capture/upload audio for a stage, normalized to wav (v2 §5.2).
 
     Intra-op memos append to one growing wav; interview kinds replace only
-    with explicit confirmation. Segments arrive later, from ASR at generate
-    time — this endpoint records the input, not the transcript.
+    with explicit confirmation. The upload returns once the wav is durable;
+    transcription launches in the background (``transcription`` on the stage:
+    pending → running → complete | failed) so the transcript appears on the
+    case moments later instead of at generate time.
     """
     case = load_case(request, case_id)
     require_writable(case)
@@ -340,25 +344,32 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
     if len(data) > MAX_AUDIO_BYTES:
         raise HTTPException(status_code=413, detail="audio exceeds the 50 MB upload cap")
 
-    stage = case.workflow.stages[AUDIO_KIND_TO_STAGE[kind]]
+    stage_key = AUDIO_KIND_TO_STAGE[kind]
+    stage = case.workflow.stages[stage_key]
     if stage.status is StageStatus.SIGNED_OFF:
         raise HTTPException(
             status_code=409,
             detail="this stage is signed off — reopen it before changing its inputs",
         )
+    if stage.transcription in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+        raise HTTPException(
+            status_code=409,
+            detail="the previous recording is still being transcribed — try again in a moment",
+        )
 
     audio_dir = request.app.state.case_dir / case_id / "audio"
     dest = audio_dir / f"{kind}.wav"
     filename = upload.filename or "recording.wav"
+    transcribe_path, transcribe_offset, memo = dest, 0.0, None
     try:
         if kind == "intraop-notes" and dest.exists():
-            # memos accumulate (v2 §4.2 step 2)
-            memo = audio_dir / ".memo.tmp.wav"
+            # memos accumulate (v2 §4.2 step 2); keep the normalized memo
+            # around so the background ASR transcribes just the new dictation
+            memo = audio_dir / f".memo-{uuid4().hex}.wav"
             audio_tools.normalize_to_wav(data, filename, memo)
-            try:
-                audio_tools.append_wav(dest, memo)
-            finally:
-                memo.unlink(missing_ok=True)
+            transcribe_offset = audio_tools.wav_duration_s(dest)
+            audio_tools.append_wav(dest, memo)
+            transcribe_path = memo
         else:
             if dest.exists() and kind != "intraop-notes" and not confirm:
                 raise HTTPException(
@@ -370,12 +381,14 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
                 )
             audio_tools.normalize_to_wav(data, filename, dest)
     except audio_tools.AudioNormalizationError as e:
+        if memo is not None:
+            memo.unlink(missing_ok=True)
         raise HTTPException(
             status_code=503 if e.needs_ffmpeg else 422, detail=str(e)
         ) from None
 
     def apply(fresh: Case) -> None:
-        s = fresh.workflow.stages[AUDIO_KIND_TO_STAGE[kind]]
+        s = fresh.workflow.stages[stage_key]
         s.inputs_recorded_at = _now()
         if provider_id:
             s.performed_by = str(provider_id)
@@ -383,7 +396,20 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
             s.status = StageStatus.READY_TO_GENERATE
 
     # merged like documents: intake question prep may be writing concurrently
-    return _store(request).mutate(case_id, apply)
+    _store(request).mutate(case_id, apply)
+
+    # the wav is durable; land the transcript in the background so the capture
+    # screen can show it moments after the upload returns
+    return launch_transcription(
+        request.app.state,
+        case_id,
+        stage_key,
+        kind,
+        transcribe_path,
+        offset=transcribe_offset,
+        provider_id=str(provider_id) if provider_id else None,
+        cleanup=memo,
+    )
 
 
 class ProviderAction(BaseModel):
