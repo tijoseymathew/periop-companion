@@ -7,7 +7,9 @@
  * timeline. Intra-op keeps its explicit generate (only the provider knows
  * when the dictation is done); post-op generates itself the moment the
  * transcript lands (App's auto-generate), so its manual generate appears
- * only on the recovery paths (failed transcription / failed run).
+ * only on the recovery paths (failed transcription / failed run). While the
+ * post-op run streams, the two writers — the post-anaesthesia evaluator and
+ * the handoff composer — read as live columns beside the transcript.
  */
 import { useRef } from "react";
 import { audioUrl } from "../../lib/api";
@@ -15,7 +17,7 @@ import { audioSource, transcriptionBusy, transcriptionState } from "../../lib/fl
 import { clock, useRecorder } from "../../lib/recorder";
 import { GENERATE_LABELS } from "../../lib/workflow";
 import type { Case, StageKey } from "../../lib/schema";
-import type { RunEvent } from "../../lib/sse";
+import { agentResults, type RunEvent } from "../../lib/sse";
 import { AudioPlayer } from "../AudioPlayer";
 import { LiveResults } from "./LiveResults";
 import { StageContainer } from "./StageContainer";
@@ -80,6 +82,9 @@ export function CaptureScreen({
     failed ||
     genFailed ||
     transcriptionState(kase, stage) === null;
+  // post-op run in flight: the two writers' results read as columns beside
+  // the transcript while the rest of the pipeline is still being worked on
+  const postopColumns = stage === "postop" && liveEvents.length > 0;
 
   return (
     <StageContainer fullHeight>
@@ -208,9 +213,21 @@ export function CaptureScreen({
               Transcript
             </div>
             <TranscriptList segments={source.segments} />
-            <LiveResults events={liveEvents} />
+            {!postopColumns && <LiveResults events={liveEvents} />}
           </div>
 
+          {postopColumns && (
+            <>
+              <WriterColumn
+                title="Post-anaesthesia evaluation"
+                agent="PostAnesthesiaEvaluator"
+                events={liveEvents}
+              />
+              <WriterColumn title="PACU handoff" agent="HandoffComposer" events={liveEvents} />
+            </>
+          )}
+
+          {!postopColumns && (
           <div className="sticky top-0 w-[300px] flex-none rounded-[15px] border border-surface-overlay bg-surface-sunken px-5 py-5">
             {transcribing ? (
               <div className="mb-3 flex h-[34px] w-[34px] items-center justify-center rounded-full bg-brand/10">
@@ -267,8 +284,53 @@ export function CaptureScreen({
               </div>
             )}
           </div>
+          )}
         </div>
       )}
     </StageContainer>
+  );
+}
+
+/** One writer's live output during the post-op run — its preview lines once
+ * its step completes, a quiet spinner while it's still drafting. */
+function WriterColumn({
+  title,
+  agent,
+  events,
+}: {
+  title: string;
+  agent: string;
+  events: RunEvent[];
+}) {
+  const result = agentResults(events).find((r) => r.agent === agent);
+  const started = events.some((e) => e.event === "agent_start" && e.data.agent === agent);
+  return (
+    <div className="min-w-0 flex-1 rounded-[15px] border border-surface-overlay bg-surface-sunken px-5 py-5">
+      <div className="mb-3 text-[11px] font-bold uppercase tracking-[.09em] text-ink-faint">
+        {title}
+      </div>
+      {result ? (
+        result.preview.length > 0 ? (
+          <ul className="space-y-1.5">
+            {result.preview.map((p, i) => (
+              <li key={i} className="flex gap-2 text-[13px] leading-snug text-ink-secondary">
+                <span className="flex-none text-ink-faint">•</span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="text-[12.5px] text-ink-subtle">{result.summary}</div>
+        )
+      ) : (
+        <div className="flex items-center gap-2.5 text-[13px] text-ink-secondary">
+          <span
+            className="h-3.5 w-3.5 flex-none rounded-full border-[2.5px] border-transparent border-t-brand"
+            style={{ animation: "spin .8s linear infinite" }}
+          />
+          {started ? "Drafting…" : "Waiting to start…"}
+        </div>
+      )}
+    </div>
   );
 }
