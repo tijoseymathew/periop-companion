@@ -3,7 +3,8 @@
  * from any provenance link — a key fact, a theatre event, a "needs you now"
  * card. Left rail lists every citation; the pane renders the active one with
  * its exact span highlighted: an audio transcript over the shared AudioPlayer,
- * or a document with the cited chunk lit.
+ * or a document with the cited chunk lit — scrolled so the cited span sits
+ * roughly mid-window.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AudioPlayer, type AudioPlayerHandle } from "../AudioPlayer";
@@ -72,6 +73,7 @@ export function SourceModal({
   const active = entries[idx] ?? entries[0];
 
   const playerRef = useRef<AudioPlayerHandle>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
   const [playerTime, setPlayerTime] = useState<number | null>(null);
   const [missing, setMissing] = useState<Set<string>>(new Set());
@@ -103,6 +105,20 @@ export function SourceModal({
   }, [idx, active?.sourceId]);
 
   const src = active?.source;
+
+  // Bring the cited span to roughly the middle of the scroll window — the
+  // highlight alone isn't enough when the transcript (or document) is long
+  // and the citation sits below the fold.
+  useEffect(() => {
+    const box = scrollRef.current;
+    if (!box || !active?.anchor) return;
+    const el = box.querySelector<HTMLElement>(
+      `[data-anchor="${CSS.escape(active.anchor)}"]`,
+    );
+    if (!el) return;
+    box.scrollTop = el.offsetTop - (box.clientHeight - el.clientHeight) / 2;
+  }, [active?.anchor, src?.source_id]);
+
   // The cited segment's start, handed to AudioPlayer as a prop rather than
   // driven imperatively from here: right after a fresh source loads, the
   // <audio> element doesn't exist in the DOM yet (src was null the render
@@ -221,7 +237,11 @@ export function SourceModal({
                     </div>
                   )}
                 </div>
-                <div className="flex-1 overflow-y-auto px-6 py-4">
+                <div
+                  ref={scrollRef}
+                  data-testid="source-scroll"
+                  className="relative flex-1 overflow-y-auto px-6 py-4"
+                >
                   {src.segments.map((g) => {
                     const cited = g.seg_id === active.anchor;
                     const playing =
@@ -231,6 +251,7 @@ export function SourceModal({
                       <button
                         key={g.seg_id}
                         type="button"
+                        data-anchor={g.seg_id}
                         onClick={() => playerRef.current?.seekToTime(g.t0)}
                         className={`mb-1 flex w-full gap-3.5 rounded-[9px] border-l-2 px-3 py-2.5 text-left ${
                           lit ? "border-brand bg-brand/10" : "border-transparent"
@@ -278,14 +299,18 @@ export function SourceModal({
                     document · {src.chunks.length} passages
                   </div>
                 </div>
-                <div className="flex-1 overflow-y-auto px-7 py-6">
+                <div
+                  ref={scrollRef}
+                  data-testid="source-scroll"
+                  className="relative flex-1 overflow-y-auto px-7 py-6"
+                >
                   <div className="max-w-[600px]">
                     {src.chunks.map((b, i) => {
                       const cited = b.chunk_id === active.anchor;
                       const prev = i > 0 ? src.chunks[i - 1] : null;
                       const showHead = b.section && b.section !== prev?.section;
                       return (
-                        <div key={b.chunk_id}>
+                        <div key={b.chunk_id} data-anchor={b.chunk_id}>
                           {showHead && (
                             <div className="mb-1.5 mt-5 text-[11.5px] font-bold uppercase tracking-[.09em] text-ink-faint">
                               {b.section}
