@@ -10,6 +10,7 @@ import { categorizeReason } from "../../lib/catchup";
 import { audioSource, transcriptionBusy } from "../../lib/flow";
 import type { Case, OpenQuestion } from "../../lib/schema";
 import { RecordingPanel } from "./RecordingPanel";
+import { StageContainer } from "./StageContainer";
 
 export function InterviewScreen({
   kase,
@@ -41,72 +42,70 @@ export function InterviewScreen({
     : questions;
 
   return (
-    <div className="px-10 pb-14 pt-7">
-      <div className="mx-auto max-w-[1080px]">
-        <div className="mb-6 flex items-start justify-between gap-6">
-          <div>
-            <div className="text-[12px] font-bold uppercase tracking-[.13em] text-gold">
-              Pre-op · Interview
-            </div>
-            <h1 className="mt-2 font-serif text-[29px] font-medium text-ink-primary">
-              Questions to ask, then the recording
-            </h1>
-            <p className="mt-2 max-w-[600px] text-[14.5px] leading-relaxed text-ink-secondary">
-              {approved
-                ? "Ask these during the interview, then add the audio and generate the brief."
-                : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest."}
-            </p>
+    <StageContainer>
+      <div className="mb-6 flex items-start justify-between gap-6">
+        <div>
+          <div className="text-[12px] font-bold uppercase tracking-[.13em] text-gold">
+            Pre-op · Interview
           </div>
-          <button
-            type="button"
-            disabled={!canGenerate}
-            onClick={onGenerate}
-            className="flex min-h-[50px] flex-none items-center rounded-[11px] bg-brand px-6 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-40"
-          >
-            Generate pre-op brief &nbsp;→
-          </button>
+          <h1 className="mt-2 font-serif text-[29px] font-medium text-ink-primary">
+            Questions to ask, then the recording
+          </h1>
+          <p className="mt-2 max-w-[600px] text-[14.5px] leading-relaxed text-ink-secondary">
+            {approved
+              ? "Ask these during the interview, then add the audio and generate the brief."
+              : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest."}
+          </p>
         </div>
-
-        {notice && (
-          <div className="mb-6 rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
-            {notice}
-          </div>
-        )}
-
-        <div className="flex items-start gap-7">
-          <div className="min-w-0 flex-1">
-            <div className="mb-3 text-[12px] font-bold uppercase tracking-[.12em] text-gold">
-              {approved ? "Ask during the interview" : "Review the questions"}
-            </div>
-
-            {approved ? (
-              <>
-                {askList.map((q, i) => (
-                  <QuestionCard key={i} q={q} />
-                ))}
-                {askList.length === 0 && (
-                  <p className="rounded-[12px] border border-dashed border-[#cdbfa4] px-4 py-3.5 text-[13.5px] text-ink-dim">
-                    Nothing needed clarifying — record the interview when you're ready.
-                  </p>
-                )}
-              </>
-            ) : (
-              <QuestionReview questions={questions} busy={busy} onApprove={onApproveQuestions} />
-            )}
-          </div>
-
-          <RecordingPanel
-            title="Interview recording"
-            kase={kase}
-            stage="preop"
-            source={source}
-            busy={busy}
-            canWrite={canWrite}
-            onUploadAudio={onUploadAudio}
-          />
-        </div>
+        <button
+          type="button"
+          disabled={!canGenerate}
+          onClick={onGenerate}
+          className="flex min-h-[50px] flex-none items-center rounded-[11px] bg-brand px-6 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-40"
+        >
+          Generate pre-op brief &nbsp;→
+        </button>
       </div>
-    </div>
+
+      {notice && (
+        <div className="mb-6 rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
+          {notice}
+        </div>
+      )}
+
+      <div className="flex items-start gap-7">
+        <div className="min-w-0 flex-1">
+          <div className="mb-3 text-[12px] font-bold uppercase tracking-[.12em] text-gold">
+            {approved ? "Ask during the interview" : "Review the questions"}
+          </div>
+
+          {approved ? (
+            <>
+              {askList.map((q, i) => (
+                <QuestionCard key={i} q={q} />
+              ))}
+              {askList.length === 0 && (
+                <p className="rounded-[12px] border border-dashed border-[#cdbfa4] px-4 py-3.5 text-[13.5px] text-ink-dim">
+                  Nothing needed clarifying — record the interview when you're ready.
+                </p>
+              )}
+            </>
+          ) : (
+            <QuestionReview questions={questions} busy={busy} onApprove={onApproveQuestions} />
+          )}
+        </div>
+
+        <RecordingPanel
+          title="Interview recording"
+          kase={kase}
+          stage="preop"
+          source={source}
+          busy={busy}
+          canWrite={canWrite}
+          onUploadAudio={onUploadAudio}
+        />
+      </div>
+    </StageContainer>
   );
 }
 
