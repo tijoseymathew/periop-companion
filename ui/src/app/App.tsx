@@ -41,7 +41,7 @@ import {
 import type { Case, CaseSummary, OpenQuestion, Provider, StageKey } from "../lib/schema";
 import { STAGE_KEYS } from "../lib/schema";
 import { describeRunEvent, streamStageRun, type RunEvent } from "../lib/sse";
-import { headlineStage, type PrimaryAction } from "../lib/workflow";
+import { headlineStage, PRIMARY_ARTIFACT, type PrimaryAction } from "../lib/workflow";
 
 const PROVIDER_STORAGE_KEY = "periop-provider";
 
@@ -64,6 +64,9 @@ export default function App() {
   const [kase, setKase] = useState<Case | null>(null);
   // explicit navigation (pills / brief actions); null = follow the flow
   const [screenOverride, setScreenOverride] = useState<FlowScreen | null>(null);
+  // stage-bubble navigation: pin the brief to a completed stage's output;
+  // null = the case's live stage
+  const [stageView, setStageView] = useState<StageKey | null>(null);
   const [uploads, setUploads] = useState<UploadProgress | null>(null);
 
   const [source, setSource] = useState<SourceRequest | null>(null);
@@ -139,6 +142,7 @@ export default function App() {
       const c = await fetchCase(caseId);
       setKase(c);
       setScreenOverride(c.artifacts.length > 0 ? "brief" : null);
+      setStageView(null);
       setUploads(null);
       setView("case");
     } catch (e) {
@@ -151,6 +155,7 @@ export default function App() {
     setSelectedId(null);
     setKase(null);
     setScreenOverride(null);
+    setStageView(null);
     setUploads(null);
     setNotice(null);
     refreshCases();
@@ -160,6 +165,7 @@ export default function App() {
     setSelectedId(null);
     setKase(null);
     setScreenOverride(null);
+    setStageView(null);
     setUploads(null);
     setNotice(null);
     setView("case");
@@ -268,6 +274,7 @@ export default function App() {
       const fresh = await fetchCase(kase.case_id);
       setKase(fresh);
       await refreshCases();
+      setStageView(null); // land on the freshly generated stage's brief
       setScreenOverride("brief");
     } catch (e) {
       // gate (409) or run error — back to the flow with the plain reason
@@ -315,9 +322,21 @@ export default function App() {
     }
   }
 
+  /** Stage-bubble navigation: pin the brief to a completed stage's output. */
+  function handleSelectStage(stage: StageKey) {
+    setNotice(null);
+    setStageView(stage);
+    setScreenOverride("brief");
+  }
+
+  /** Any stage whose primary artifact exists has output worth revisiting. */
+  const canViewStage = (stage: StageKey): boolean =>
+    !!kase && kase.artifacts.some((a) => a.artifact_id === PRIMARY_ARTIFACT[stage]);
+
   /** Dispatch the brief's single adaptive action (workflow.primaryAction).
    * Capture steps route into the flow's screen; terminal actions run here. */
   function handleAction(action: PrimaryAction) {
+    setStageView(null); // acting always happens on the live stage
     switch (action.kind) {
       case "sign-off":
         void handleSignoff(action.stage);
@@ -360,7 +379,7 @@ export default function App() {
 
   function renderBrief() {
     if (!kase) return null;
-    const model = buildBrief(kase, providers);
+    const model = buildBrief(kase, providers, stageView ? { stage: stageView } : {});
     const pos = selectedId ? forYouIds.indexOf(selectedId) : -1;
     const queue =
       pos >= 0 && forYouIds.length > 1
@@ -379,6 +398,8 @@ export default function App() {
         onBack={goWorklist}
         onOpenSource={setSource}
         onAction={handleAction}
+        canViewStage={canViewStage}
+        onSelectStage={handleSelectStage}
         generating={generatingLabel}
       />
     );
@@ -432,9 +453,12 @@ export default function App() {
         onBack={goWorklist}
         onSelectScreen={(s) => {
           setNotice(null);
+          setStageView(null);
           setScreenOverride(s);
         }}
         canReach={canReach}
+        canViewStage={canViewStage}
+        onSelectStage={handleSelectStage}
         generating={chromeStatus}
       >
         {(screen === "records" || screen === "intake-generating") && (

@@ -25,6 +25,8 @@ export function BriefScreen({
   onBack,
   onOpenSource,
   onAction,
+  canViewStage = () => false,
+  onSelectStage,
   generating = null,
 }: {
   model: BriefModel;
@@ -33,6 +35,10 @@ export function BriefScreen({
   onBack: () => void;
   onOpenSource: (req: SourceRequest) => void;
   onAction: (action: PrimaryAction) => void;
+  /** which stages' output can be visited via the stepper bubbles —
+   * any stage whose primary artifact exists */
+  canViewStage?: (stage: BriefModel["stage"]) => boolean;
+  onSelectStage?: (stage: BriefModel["stage"]) => void;
   /** non-null while this session's own stage run is streaming — the brief
    * has no FlowChrome to fold the live status into, so it shows minimally
    * in the action panel instead of taking over the screen */
@@ -95,7 +101,12 @@ export function BriefScreen({
           </div>
           <ProviderChain chain={model.chain} />
         </div>
-        <StageStepper steps={model.stageSteps} />
+        <StageStepper
+          steps={model.stageSteps}
+          shown={model.stage}
+          canView={canViewStage}
+          onSelect={onSelectStage}
+        />
       </div>
 
       {/* body — pre-op keeps the narrative page; in theatre and recovery
@@ -319,38 +330,64 @@ function IssuesList({ model }: { model: BriefModel }) {
 /** Compact Pre-op › Intra-op › Post-op progress, mirroring FlowChrome's
  * stepper — the brief has its own header and never rendered inside
  * FlowChrome, so without this the stage progress disappeared entirely
- * once a case left the capture flow. */
-function StageStepper({ steps }: { steps: BriefModel["stageSteps"] }) {
+ * once a case left the capture flow. Bubbles for completed stages are
+ * buttons: they pin the brief to that stage's output. */
+function StageStepper({
+  steps,
+  shown,
+  canView,
+  onSelect,
+}: {
+  steps: BriefModel["stageSteps"];
+  /** the stage the brief is showing right now */
+  shown: BriefModel["stage"];
+  canView: (stage: BriefModel["stage"]) => boolean;
+  onSelect?: (stage: BriefModel["stage"]) => void;
+}) {
   return (
     <div className="mt-3 flex items-center gap-1.5">
       {steps.map((s, i) => {
         const done = s.state === "done";
         const current = s.state === "current";
+        const clickable = !!onSelect && s.key !== shown && canView(s.key);
+        const pill = (
+          <span
+            className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11.5px] font-semibold ${
+              current
+                ? "bg-brand text-ink-onBrand"
+                : done
+                  ? "text-status-supported"
+                  : "text-ink-faint"
+            }`}
+          >
+            <span
+              className={`flex h-[15px] w-[15px] flex-none items-center justify-center rounded-full text-[9px] font-bold ${
+                done
+                  ? "bg-status-supported/20 text-status-supported"
+                  : current
+                    ? "bg-white/20 text-ink-onBrand"
+                    : "border border-surface-overlay text-ink-faint"
+              }`}
+            >
+              {done ? "✓" : i + 1}
+            </span>
+            {s.label}
+          </span>
+        );
         return (
           <div key={s.key} className="flex items-center">
             {i > 0 && <div className="mx-1.5 h-px w-5 bg-surface-overlay" />}
-            <span
-              className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11.5px] font-semibold ${
-                current
-                  ? "bg-brand text-ink-onBrand"
-                  : done
-                    ? "text-status-supported"
-                    : "text-ink-faint"
-              }`}
-            >
-              <span
-                className={`flex h-[15px] w-[15px] flex-none items-center justify-center rounded-full text-[9px] font-bold ${
-                  done
-                    ? "bg-status-supported/20 text-status-supported"
-                    : current
-                      ? "bg-white/20 text-ink-onBrand"
-                      : "border border-surface-overlay text-ink-faint"
-                }`}
+            {clickable ? (
+              <button
+                type="button"
+                onClick={() => onSelect(s.key)}
+                className="rounded-full hover:bg-surface-panel"
               >
-                {done ? "✓" : i + 1}
-              </span>
-              {s.label}
-            </span>
+                {pill}
+              </button>
+            ) : (
+              pill
+            )}
           </div>
         );
       })}
@@ -409,6 +446,17 @@ function ActionPanel({
           style={{ animation: "spin .8s linear infinite" }}
         />
         {generating || "The pipeline is building this case — you can leave and come back."}
+      </div>
+    );
+  }
+
+  // pinned to a completed stage via the stepper bubbles — the record is
+  // being read, so the case's forward action is withheld here
+  if (model.viewingPast) {
+    return (
+      <div className="text-[13.5px] leading-relaxed text-ink-secondary">
+        You're viewing this completed stage's output. Use the stage bubbles above
+        to return to where the case is now.
       </div>
     );
   }

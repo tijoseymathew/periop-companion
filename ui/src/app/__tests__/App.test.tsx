@@ -167,6 +167,23 @@ describe("Catch-Up app", () => {
     expect(screen.getByText(/read-only/i)).toBeInTheDocument();
   });
 
+  it("navigates to a completed stage's output via the stage bubbles", async () => {
+    await openBrief(); // lands on the recovery brief
+    await userEvent.click(screen.getByRole("button", { name: /Pre-op/ }));
+
+    // the brief is pinned to the pre-op output: narrative layout, pre-op facts
+    expect(await screen.findByText("The story so far")).toBeInTheDocument();
+    expect(
+      screen.getByText("Aspirin was discontinued 6 days prior to surgery."),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/viewing this completed stage/)).toBeInTheDocument();
+
+    // and back to where the case is now
+    await userEvent.click(screen.getByRole("button", { name: /Post-op/ }));
+    expect(await screen.findByText("Aspirin held pre-op.")).toBeInTheDocument();
+    expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
+  });
+
   it("drives a live pre-op case to sign-off from the patient view", async () => {
     localStorage.setItem("periop-provider", "p-lim");
     const live = livePreopCase();

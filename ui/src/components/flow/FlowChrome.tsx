@@ -21,6 +21,8 @@ export function FlowChrome({
   onBack,
   onSelectScreen,
   canReach,
+  canViewStage = () => false,
+  onSelectStage,
   generating = null,
   children,
 }: {
@@ -35,6 +37,10 @@ export function FlowChrome({
   onSelectScreen: (screen: FlowScreen) => void;
   /** which pills may be clicked (the current one never is) */
   canReach: (screen: FlowScreen) => boolean;
+  /** stage bubbles for completed stages are buttons: they open that
+   * stage's output in the brief */
+  canViewStage?: (stage: StageKey) => boolean;
+  onSelectStage?: (stage: StageKey) => void;
   /** non-null while a stage run is streaming — replaces the sub-stage pills
    * with a minimal live-status strip instead of taking over the screen */
   generating?: string | null;
@@ -98,33 +104,47 @@ export function FlowChrome({
             const state = kase ? stageNodeState(kase, key) : key === "preop" ? "current" : "todo";
             const current = state === "current";
             const done = state === "done";
+            const clickable = !!onSelectStage && canViewStage(key);
+            const bubble = (
+              <span
+                className={`flex items-center gap-2 rounded-full border py-1 pl-1 pr-3 ${
+                  current ? "border-surface-overlay bg-surface-panel" : "border-transparent"
+                }`}
+              >
+                <span
+                  className={`flex h-6 w-6 flex-none items-center justify-center rounded-full text-[11px] font-bold ${
+                    done
+                      ? "bg-status-supported text-ink-onBrand"
+                      : current
+                        ? "bg-brand text-ink-onBrand"
+                        : "border-2 border-surface-overlay bg-surface-panel text-ink-dim"
+                  }`}
+                >
+                  {done ? "✓" : i + 1}
+                </span>
+                <span
+                  className={`text-[13px] font-semibold ${
+                    current ? "text-ink-primary" : done ? "text-ink-muted" : "text-ink-dim"
+                  }`}
+                >
+                  {STAGE_TITLES[key]}
+                </span>
+              </span>
+            );
             return (
               <div key={key} className="flex items-center">
                 {i > 0 && <div className="mx-1 h-px w-8 bg-surface-overlay" />}
-                <span
-                  className={`flex items-center gap-2 rounded-full border py-1 pl-1 pr-3 ${
-                    current ? "border-surface-overlay bg-surface-panel" : "border-transparent"
-                  }`}
-                >
-                  <span
-                    className={`flex h-6 w-6 flex-none items-center justify-center rounded-full text-[11px] font-bold ${
-                      done
-                        ? "bg-status-supported text-ink-onBrand"
-                        : current
-                          ? "bg-brand text-ink-onBrand"
-                          : "border-2 border-surface-overlay bg-surface-panel text-ink-dim"
-                    }`}
+                {clickable ? (
+                  <button
+                    type="button"
+                    onClick={() => onSelectStage(key)}
+                    className="rounded-full hover:bg-surface-panel"
                   >
-                    {done ? "✓" : i + 1}
-                  </span>
-                  <span
-                    className={`text-[13px] font-semibold ${
-                      current ? "text-ink-primary" : done ? "text-ink-muted" : "text-ink-dim"
-                    }`}
-                  >
-                    {STAGE_TITLES[key]}
-                  </span>
-                </span>
+                    {bubble}
+                  </button>
+                ) : (
+                  bubble
+                )}
               </div>
             );
           })}

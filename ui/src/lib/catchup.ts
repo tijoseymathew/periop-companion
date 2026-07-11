@@ -360,6 +360,9 @@ export interface BriefModel {
   pendingReview: number;
   chain: ChainNode[];
   writable: boolean;
+  /** viewing a completed stage's output, not the case's live stage — the
+   * stage bubbles navigated here; the forward action is withheld */
+  viewingPast: boolean;
   /** the single forward action for this case's stage (null = read-only / complete) */
   action: PrimaryAction | null;
   /** provider this reviewer is taking the case over from (acknowledge / sign-off copy) */
@@ -388,10 +391,14 @@ function mapKeyFact(claim: Claim, alwaysShowStatus: boolean): KeyFact {
 export function buildBrief(
   kase: Case,
   providers: Provider[],
-  opts: { alwaysShowStatus?: boolean; flaggedFirst?: boolean } = {},
+  opts: { alwaysShowStatus?: boolean; flaggedFirst?: boolean; stage?: StageKey } = {},
 ): BriefModel {
   const wf = kase.workflow;
-  const stage = headlineStage(wf) ?? newestStageWithArtifacts(kase) ?? "postop";
+  const liveStage = headlineStage(wf) ?? newestStageWithArtifacts(kase) ?? "postop";
+  // the stage bubbles can pin the brief to any completed stage's output;
+  // everything stage-shaped below (layout, key facts, chip) follows it
+  const stage = opts.stage ?? liveStage;
+  const viewingPast = stage !== liveStage;
 
   // key facts follow the displayed stage: pre-op and in-theatre read the
   // pre-op evaluation (patient-level facts); the recovery brief reads the
@@ -509,7 +516,8 @@ export function buildBrief(
     pendingReview,
     chain,
     writable: !!wf,
-    action: primaryAction(kase),
+    viewingPast,
+    action: viewingPast ? null : primaryAction(kase),
     handedFrom,
     handoffReady: hasHandoff,
     acknowledgedBy: ackBy,

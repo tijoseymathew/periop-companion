@@ -170,6 +170,42 @@ describe("buildBrief — adaptive patient view", () => {
     expect(recoveryBrief.keyFacts.map((f) => f.text)).toEqual(["Handoff fact."]);
   });
 
+  it("pins the brief to a completed stage on request, withholding the forward action", () => {
+    const kase = CaseSchema.parse({
+      case_id: "sg-pin",
+      workflow: {
+        created_by: PROVIDERS[0],
+        created_at: "2026-04-02T06:00:00Z",
+        stages: {
+          preop: signedStage("p-lim"),
+          intraop: signedStage("p-tan"),
+          postop: stage({
+            status: "awaiting_review",
+            performed_by: "p-tan",
+            inputs_recorded_at: "2026-04-02T10:00:00Z",
+          }),
+        },
+      },
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "p1", text: "Pre-op fact." }],
+        },
+        { artifact_id: "note:pacu-handoff", claims: [] },
+      ],
+    });
+    const live = buildBrief(kase, PROVIDERS);
+    expect(live.stage).toBe("postop");
+    expect(live.viewingPast).toBe(false);
+    expect(live.action?.kind).toBe("acknowledge-handoff");
+
+    const pinned = buildBrief(kase, PROVIDERS, { stage: "preop" });
+    expect(pinned.stage).toBe("preop");
+    expect(pinned.viewingPast).toBe(true);
+    expect(pinned.action).toBeNull();
+    expect(pinned.keyFacts.map((f) => f.text)).toEqual(["Pre-op fact."]);
+  });
+
   it("has no action for a read-only demo case (no workflow)", () => {
     const kase = CaseSchema.parse({
       case_id: "sg-demo",
