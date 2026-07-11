@@ -426,7 +426,9 @@ export default function App() {
       case "records":
         return stage === "preop";
       case "interview":
-        return stage === "preop" && hasPreopRecords(kase) && gap !== "pending" && gap !== "running";
+        // reachable even while question prep runs — the screen shows a
+        // preparing state and the questions land via the polling refresh
+        return stage === "preop" && hasPreopRecords(kase);
       case "capture":
         return stage !== "preop";
       default:
@@ -463,7 +465,9 @@ export default function App() {
             canWrite={!!me}
             onCreateIntake={handleCreateIntake}
             onUploadDocument={handleUploadDocument}
-            onContinue={() => setScreenOverride(null)}
+            // explicit — while question prep still runs, following the flow
+            // (null) would resolve right back to this screen and go nowhere
+            onContinue={() => setScreenOverride("interview")}
             gapFailure={
               gap === "failed"
                 ? {

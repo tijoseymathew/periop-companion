@@ -68,6 +68,20 @@ describe("InterviewScreen", () => {
     expect(screen.getByRole("button", { name: "Record" })).toBeEnabled();
   });
 
+  it("waits while question prep runs — no review list, recording held", () => {
+    renderScreen(
+      interviewCase((c) => {
+        c.workflow!.stages.preop.gap_analysis = "running";
+        c.open_questions = [];
+      }),
+    );
+    expect(screen.getByText("Preparing the questions")).toBeInTheDocument();
+    expect(screen.getByText(/Reading the records for gaps and conflicts/)).toBeInTheDocument();
+    // no premature "nothing needed clarifying", no gate-passing upload
+    expect(screen.queryByText(/record the interview when you're ready/)).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Record" })).toBeDisabled();
+  });
+
   it("submits the reviewed list with the upload, honouring a dismiss", async () => {
     const props = renderScreen(interviewCase());
     await userEvent.click(screen.getAllByRole("button", { name: "Dismiss" })[1]);

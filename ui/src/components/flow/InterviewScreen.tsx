@@ -44,6 +44,10 @@ export function InterviewScreen({
 }) {
   const preop = kase.workflow?.stages.preop ?? null;
   const approved = !!preop?.questions_approved_at;
+  // question prep still running server-side — the list lands via App's
+  // polling refresh; until then this screen waits rather than pretending
+  // the records raised nothing
+  const preparing = preop?.gap_analysis === "pending" || preop?.gap_analysis === "running";
   const source = audioSource(kase, "preop");
   const inputsRecorded = !!preop?.inputs_recorded_at;
   const transcribing = transcriptionBusy(kase, "preop");
@@ -83,9 +87,11 @@ export function InterviewScreen({
             Questions to ask, then the recording
           </h1>
           <p className="mt-2 max-w-[600px] text-[14.5px] leading-relaxed text-ink-secondary">
-            {approved
-              ? "Ask these during the interview, then add the audio — the brief starts generating the moment it's transcribed."
-              : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest, add your own — then upload the recording when you're ready."}
+            {preparing
+              ? "The records are being read for gaps and conflicts — the questions to ask will appear here in a moment."
+              : approved
+                ? "Ask these during the interview, then add the audio — the brief starts generating the moment it's transcribed."
+                : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest, add your own — then upload the recording when you're ready."}
           </p>
         </div>
         {/* no standing "Generate" button — the brief generates itself once
@@ -111,10 +117,22 @@ export function InterviewScreen({
       <div className="flex items-start gap-7">
         <div className="min-w-0 flex-1">
           <div className="mb-3 text-[12px] font-bold uppercase tracking-[.12em] text-gold">
-            {approved ? "Ask during the interview" : "Review the questions"}
+            {preparing
+              ? "Preparing the questions"
+              : approved
+                ? "Ask during the interview"
+                : "Review the questions"}
           </div>
 
-          {approved ? (
+          {preparing ? (
+            <div className="flex items-center gap-3 rounded-[12px] border border-surface-overlay bg-surface-sunken px-4 py-4 text-[13.5px] text-ink-secondary">
+              <span
+                className="h-4 w-4 flex-none rounded-full border-[2.5px] border-transparent border-t-brand"
+                style={{ animation: "spin .8s linear infinite" }}
+              />
+              Reading the records for gaps and conflicts…
+            </div>
+          ) : approved ? (
             <>
               {askList.map((q, i) => (
                 <QuestionCard key={i} q={q} />
@@ -161,7 +179,9 @@ export function InterviewScreen({
           stage="preop"
           source={source}
           busy={busy}
-          canWrite={canWrite}
+          // uploading passes the question gate with the list as it stands, so
+          // hold the recording until the prepared questions have landed
+          canWrite={canWrite && !preparing}
           onUploadAudio={(file) => onUploadAudio(file, reviewed)}
         />
       </div>
