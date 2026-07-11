@@ -442,6 +442,7 @@ export default function App() {
             onApproveQuestions={handleApproveQuestions}
             onUploadAudio={handleUploadAudio}
             onGenerate={() => void handleGenerate()}
+            liveEvents={running ? genEvents : []}
           />
         )}
         {screen === "capture" && kase && stage !== "preop" && (
@@ -451,6 +452,7 @@ export default function App() {
             busy={busy || running}
             notice={notice}
             canWrite={!!me}
+            liveEvents={running ? genEvents : []}
             onUploadAudio={handleUploadAudio}
             onGenerate={() => void handleGenerate()}
           />

@@ -9,6 +9,8 @@ import { useState } from "react";
 import { categorizeReason } from "../../lib/catchup";
 import { audioSource, transcriptionBusy } from "../../lib/flow";
 import type { Case, OpenQuestion } from "../../lib/schema";
+import type { RunEvent } from "../../lib/sse";
+import { LiveResults } from "./LiveResults";
 import { RecordingPanel } from "./RecordingPanel";
 import { StageContainer } from "./StageContainer";
 
@@ -20,6 +22,7 @@ export function InterviewScreen({
   onApproveQuestions,
   onUploadAudio,
   onGenerate,
+  liveEvents = [],
 }: {
   kase: Case;
   busy: boolean;
@@ -28,6 +31,8 @@ export function InterviewScreen({
   onApproveQuestions: (questions: OpenQuestion[]) => void;
   onUploadAudio: (file: File) => void;
   onGenerate: () => void;
+  /** this session's own stage-run SSE events, while one is in flight */
+  liveEvents?: RunEvent[];
 }) {
   const preop = kase.workflow?.stages.preop ?? null;
   const approved = !!preop?.questions_approved_at;
@@ -98,6 +103,7 @@ export function InterviewScreen({
           ) : (
             <QuestionReview questions={questions} busy={busy} onApprove={onApproveQuestions} />
           )}
+          <LiveResults events={liveEvents} />
         </div>
 
         <RecordingPanel

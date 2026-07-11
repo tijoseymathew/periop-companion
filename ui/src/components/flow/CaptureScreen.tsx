@@ -12,7 +12,9 @@ import { audioSource, transcriptionBusy, transcriptionState } from "../../lib/fl
 import { clock, useRecorder } from "../../lib/recorder";
 import { GENERATE_LABELS } from "../../lib/workflow";
 import type { Case, StageKey } from "../../lib/schema";
+import type { RunEvent } from "../../lib/sse";
 import { AudioPlayer } from "../AudioPlayer";
+import { LiveResults } from "./LiveResults";
 import { StageContainer } from "./StageContainer";
 import { TranscriptList } from "./TranscriptList";
 
@@ -44,6 +46,7 @@ export function CaptureScreen({
   canWrite,
   onUploadAudio,
   onGenerate,
+  liveEvents = [],
 }: {
   stage: Extract<StageKey, "intraop" | "postop">;
   kase: Case;
@@ -52,6 +55,8 @@ export function CaptureScreen({
   canWrite: boolean;
   onUploadAudio: (file: File) => void;
   onGenerate: () => void;
+  /** this session's own stage-run SSE events, while one is in flight */
+  liveEvents?: RunEvent[];
 }) {
   const copy = COPY[stage];
   const fileInput = useRef<HTMLInputElement>(null);
@@ -190,6 +195,7 @@ export function CaptureScreen({
               Transcript
             </div>
             <TranscriptList segments={source.segments} />
+            <LiveResults events={liveEvents} />
           </div>
 
           <div className="sticky top-0 w-[300px] flex-none rounded-[15px] border border-surface-overlay bg-surface-sunken px-5 py-5">

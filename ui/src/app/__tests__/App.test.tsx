@@ -183,7 +183,9 @@ describe("Catch-Up app", () => {
       start(controller) {
         controller.enqueue(
           new TextEncoder().encode(
-            'event: agent_start\ndata: {"stage": "preop", "agent": "PreOpNoteWriter"}\n\n',
+            'event: agent_start\ndata: {"stage": "preop", "agent": "PreOpNoteWriter"}\n\n' +
+              'event: agent_end\ndata: {"stage": "preop", "agent": "PreOpNoteWriter", ' +
+              '"summary": "1 claims", "preview": ["Aspirin held pre-op."]}\n\n',
           ),
         );
         sseController = controller;
@@ -204,8 +206,14 @@ describe("Catch-Up app", () => {
       await screen.findByText("Questions to ask, then the recording"),
     ).toBeInTheDocument();
     expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
-      "PreOpNoteWriter working…",
+      "PreOpNoteWriter — 1 claims",
     );
+
+    // the completed step's actual output streams into the page itself —
+    // not just the chrome's one-line status
+    expect(await screen.findByText("Building live")).toBeInTheDocument();
+    expect(screen.getByText("PreOpNoteWriter")).toBeInTheDocument();
+    expect(screen.getByText("Aspirin held pre-op.")).toBeInTheDocument();
 
     // now let the stream finish; the fresh case lands and the brief takes over
     sseController!.close();

@@ -10,6 +10,27 @@ export interface RunEvent {
   data: Record<string, unknown>;
 }
 
+export interface AgentResult {
+  agent: string;
+  summary: string;
+  /** short lines of what the step actually produced (backend's
+   * agents.context.preview_texts) — empty when the step attached none. */
+  preview: string[];
+}
+
+/** Every agent step completed so far, in order, each with whatever preview
+ * it attached — the provider's live look at what intra-op event extraction,
+ * the record writer, etc. are actually finding/drafting, not just a count. */
+export function agentResults(events: RunEvent[]): AgentResult[] {
+  return events
+    .filter((e) => e.event === "agent_end")
+    .map((e) => ({
+      agent: String(e.data.agent ?? ""),
+      summary: String(e.data.summary ?? ""),
+      preview: Array.isArray(e.data.preview) ? e.data.preview.map(String) : [],
+    }));
+}
+
 /** One human line for a stage-run event, or null for events with nothing
  * to show (e.g. the terminal "complete"/"error" the caller handles itself). */
 export function describeRunEvent(event: RunEvent): string | null {
