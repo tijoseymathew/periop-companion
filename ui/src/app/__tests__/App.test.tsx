@@ -16,6 +16,8 @@ vi.mock("../../lib/api", () => ({
   fetchCase: vi.fn(async () => makeCase()),
   fetchProviders: vi.fn(async () => PROVIDERS),
   createCase: vi.fn(),
+  addDocumentText: vi.fn(),
+  analyzeQuestions: vi.fn(),
   uploadAudio: vi.fn(),
   uploadDocumentFile: vi.fn(),
   reviewQuestions: vi.fn(),

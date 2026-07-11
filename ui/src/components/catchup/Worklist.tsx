@@ -11,12 +11,12 @@ export function Worklist({
   rows,
   providerControl,
   onOpen,
-  onNewHandoff,
+  onNewCase,
 }: {
   rows: WorklistRow[];
   providerControl?: ReactNode;
   onOpen: (caseId: string) => void;
-  onNewHandoff: () => void;
+  onNewCase: () => void;
 }) {
   // null = auto: follow the data (show "waiting for you" when it has cases,
   // otherwise fall back to all). An explicit click pins the choice.
@@ -58,10 +58,10 @@ export function Worklist({
         </div>
         <button
           type="button"
-          onClick={onNewHandoff}
+          onClick={onNewCase}
           className="flex min-h-[48px] flex-none items-center rounded-[11px] bg-brand px-5 py-3 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] hover:bg-brand-soft"
         >
-          + &nbsp;Hand off a new case
+          + &nbsp;New case intake
         </button>
       </div>
 

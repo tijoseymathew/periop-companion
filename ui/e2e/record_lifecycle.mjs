@@ -8,22 +8,21 @@
  * be watched rather than read. It creates a fresh case and takes it all the way
  * to a signed-off, acknowledged handoff:
  *
- *   worklist → new handoff → create the case
- *   intake   → add records (GP summary + op plan) → upload the pre-op interview
- *   pre-op   → generate the note (live SSE) → review → sign off
- *   intra-op → record a voice memo → generate the theatre record → sign off
+ *   worklist → new case intake → describe the case + stage the GP summary
+ *   intake   → create intake (build ring) → review & approve the questions
+ *   pre-op   → upload the interview → transcript lands → generate → sign off
+ *   intra-op → voice memo → transcript lands → generate the record → sign off
  *   post-op  → post-op interview → generate the handoff → acknowledge
  *
  * It boots the real FastAPI server against the hermetic e2e fixture store
  * (e2e/setup-fixture.mjs — a couple of seed cases for worklist context) with
  * the stub runner, so there is no network, no live NIMs, and committed bundles
  * are never mutated. Generation is instant but streams the same SSE the live
- * pipeline does, so the "Generating…" screen fills in for real.
+ * pipeline does, so the "Generating…" screen fills in for real, and uploaded
+ * audio is "transcribed" by the stub in the background exactly like live ASR.
  *
- * Every step is a real click — including reviewing and approving the pre-op
- * clarification questions, which the intake screen now surfaces directly. (The
- * read-only apiGet polls below just wait for background work to settle — gap
- * analysis finishing, an audio upload landing — they never drive the workflow.)
+ * Every step is a real click. (The read-only apiGet polls below just wait for
+ * background work to settle — they never drive the workflow.)
  *
  * The point is legibility, not speed. Every interaction is deliberately paced
  * (Playwright `slowMo` plus explicit beats, scaled by --pace) and long sections
@@ -182,7 +181,8 @@ function makeWav(seconds) {
   return Buffer.concat([h, data]);
 }
 
-/** Write the throwaway inputs the intake screen uploads (docs + interviews). */
+/** Write the throwaway inputs the intake screen uploads (docs + interviews).
+ * The operative plan is typed into the case-description field, not uploaded. */
 function writeInputs() {
   const dir = mkdtempSync(join(tmpdir(), "periop-record-"));
   writeFileSync(
@@ -190,14 +190,9 @@ function writeInputs() {
     "# GP summary\n\nAmara Okafor, 62. Hypertension on amlodipine.\n\n" +
       "Aspirin 100 mg daily, started after a TIA in 2019.\n\nNo known drug allergies.\n",
   );
-  writeFileSync(
-    join(dir, "op-plan.md"),
-    "# Operative plan\n\nElective laparoscopic cholecystectomy for symptomatic gallstones.\n\n" +
-      "General anaesthesia. Day case if uncomplicated.\n",
-  );
   const wav = join(dir, "interview.wav");
   writeFileSync(wav, makeWav(4));
-  return { dir, gp: join(dir, "gp-summary.md"), op: join(dir, "op-plan.md"), wav };
+  return { dir, gp: join(dir, "gp-summary.md"), wav };
 }
 
 // --------------------------------------------------------------------------- #
@@ -210,17 +205,18 @@ async function apiGet(path) {
   return r.json();
 }
 
-/** Poll until a stage's audio input is recorded server-side. Uploaded audio
- * only becomes a transcript Source at generate time, so the intake list shows
- * no new row — inputs_recorded_at is the honest signal the upload landed. */
-async function waitInputs(caseId, stage, timeoutMs = 15000) {
+/** Poll until a stage's uploaded audio has been transcribed server-side —
+ * the UI shows the transcript moments later via its own poll. */
+async function waitTranscribed(caseId, stage, timeoutMs = 15000) {
   const deadline = Date.now() + timeoutMs;
+  let last = null;
   while (Date.now() < deadline) {
     const c = await apiGet(`/api/cases/${caseId}`);
-    if (c.workflow?.stages?.[stage]?.inputs_recorded_at) return;
+    last = c.workflow?.stages?.[stage]?.transcription;
+    if (last === "complete" || last === "failed") return;
     await new Promise((r) => setTimeout(r, 300));
   }
-  throw new Error(`${stage} inputs never recorded`);
+  throw new Error(`${stage} transcription stuck at ${last}`);
 }
 
 /** The case_id that appeared since `before` (a Set of prior ids). */
@@ -300,50 +296,54 @@ async function walk(page, inputs) {
   await page.locator('select[aria-label="Working as"]').selectOption(PROVIDER);
   await beat(900);
 
-  // --- new handoff: create the case ---------------------------------------
+  // --- new case intake: describe the case, stage the records ---------------
   const before = new Set((await apiGet("/api/cases")).map((c) => c.case_id));
-  await chapter("Starting a new handoff");
-  await slowClick(page, page.getByRole("button", { name: /Hand off a new case/ }), { after: 900 });
-  const label = "Amara Okafor — laparoscopic cholecystectomy";
-  await chapter("Naming the patient / case");
-  await slowType(page, 'input[placeholder*="James Whitfield"]', label, { after: 500 });
-  await slowClick(page, page.getByRole("button", { name: "Create" }), { after: 1100 });
+  await chapter("Starting a new case intake");
+  await slowClick(page, page.getByRole("button", { name: /New case intake/ }), { after: 900 });
+  await chapter("Naming the patient");
+  await slowType(page, 'input[placeholder*="James Whitfield"]', "Amara Okafor", { after: 400 });
+  await chapter("Describing the case — this becomes the operative plan");
+  await slowType(
+    page,
+    'textarea[placeholder*="Elective open right"]',
+    "Elective laparoscopic cholecystectomy for symptomatic gallstones. GA, day case.",
+    { after: 600 },
+  );
+
+  const docInput = page.locator('input[type="file"][accept*="text/plain"]');
+  await chapter("Dropping in the GP summary");
+  await docInput.setInputFiles(inputs.gp);
+  await page.getByText("gp-summary.md").waitFor();
+  await beat(1200);
+
+  // --- create intake: records land, question prep runs on the build ring ---
+  await chapter("Creating the intake — records save, question prep begins");
+  await slowClick(page, page.getByRole("button", { name: /Create intake/ }), { after: 600 });
+  await page.getByText("Building the intake").first().waitFor({ timeout: 15000 });
   const caseId = await newCaseId(before);
   console.log(`     case_id = ${caseId}`);
 
-  // --- intake: add the records --------------------------------------------
-  const docInput = page.locator('input[type="file"][accept*="text/plain"]');
-  const audioInput = page.locator('input[type="file"][accept*="audio"]');
-
-  await chapter("Adding a GP summary");
-  await page.locator('select[aria-label="Document type"]').selectOption("gp-summary");
-  await docInput.setInputFiles(inputs.gp);
-  await page.getByText("doc:gp-summary").waitFor();
-  await beat(1100);
-
-  await chapter("Adding the operative plan");
-  await page.locator('select[aria-label="Document type"]').selectOption("op-plan");
-  await docInput.setInputFiles(inputs.op);
-  await page.getByText("doc:op-plan").waitFor();
-  await beat(1100);
-
-  // --- intake: review & approve the clarification questions ----------------
-  await chapter("GapAnalyst prepares clarifying questions from the records");
+  // --- interview: review & approve the clarification questions -------------
   const approve = page.getByRole("button", { name: /Approve questions & continue/ });
-  await approve.waitFor({ timeout: 30000 }); // intake polls until prep settles
-  await beat(1400); // read the questions
+  await approve.waitFor({ timeout: 30000 }); // the flow flips when prep lands
   await chapter("Reviewing & approving the clarifying questions");
+  await beat(1400); // read the questions
   await slowClick(page, approve, { after: 1100 });
 
-  // --- intake: the pre-op interview ---------------------------------------
+  // --- interview: upload the recording, watch the transcript land ----------
+  const audioInput = page.locator('input[type="file"][accept*="audio"]');
   await chapter("Uploading the pre-op interview");
   await audioInput.setInputFiles(inputs.wav);
-  await waitInputs(caseId, "preop");
-  await beat(1000);
+  await waitTranscribed(caseId, "preop");
+  await chapter("The transcript lands moments after the upload");
+  await page.getByText("✓ transcribed").waitFor({ timeout: 15000 });
+  await beat(1400);
 
   // --- pre-op: generate → review → sign off -------------------------------
-  await chapter("Generating the pre-op note (live SSE)");
-  await slowClick(page, page.getByRole("button", { name: /Generate the brief/ }), { after: 500 });
+  await chapter("Generating the pre-op brief (live SSE)");
+  await slowClick(page, page.getByRole("button", { name: /Generate pre-op brief/ }), {
+    after: 500,
+  });
   await waitForBrief(page);
   await chapter("Reading the pre-op brief");
   await smoothScroll(page, 420);
@@ -362,7 +362,8 @@ async function walk(page, inputs) {
     stage: "intraop",
     open: "Opening the case for theatre",
     actionButton: /Record voice memo/,
-    capture: "Recording an intra-op voice memo",
+    capture: "Adding an intra-op voice memo — transcribed as it lands",
+    generateButton: /Generate intra-op record/,
     generate: "Generating the theatre record (live SSE)",
     signOff: "Sign off intra-op",
     wav: inputs.wav,
@@ -377,10 +378,11 @@ async function walk(page, inputs) {
     after: 800,
   });
   await audioInput.setInputFiles(inputs.wav);
-  await waitInputs(caseId, "postop");
-  await beat(1000);
+  await waitTranscribed(caseId, "postop");
+  await page.getByTestId("transcript").waitFor({ timeout: 15000 });
+  await beat(1200);
   await chapter("Generating the handoff & post-op note (live SSE)");
-  await slowClick(page, page.getByRole("button", { name: /Generate the brief/ }), { after: 500 });
+  await slowClick(page, page.getByRole("button", { name: /Generate handoff/ }), { after: 500 });
   await waitForBrief(page);
   await chapter("Reading the final handoff brief");
   await smoothScroll(page, 520);
@@ -399,8 +401,8 @@ async function walk(page, inputs) {
   await beat(1200);
 }
 
-/** Reopen the case → follow its primary action into intake → capture audio →
- * generate the stage → sign off. Used for the intra-op leg. */
+/** Reopen the case → follow its primary action into the capture screen →
+ * add audio → watch the transcript land → generate → sign off. */
 async function runCaptureStage(page, c) {
   await chapter(c.open);
   await slowClick(page, page.getByRole("button", { name: /Amara Okafor/ }), { after: 900 });
@@ -409,10 +411,11 @@ async function runCaptureStage(page, c) {
   await slowClick(page, page.getByRole("button", { name: c.actionButton }), { after: 800 });
   const audioInput = page.locator('input[type="file"][accept*="audio"]');
   await audioInput.setInputFiles(c.wav);
-  await waitInputs(c.caseId, c.stage);
-  await beat(1000);
+  await waitTranscribed(c.caseId, c.stage);
+  await page.getByTestId("transcript").waitFor({ timeout: 15000 });
+  await beat(1200);
   await chapter(c.generate);
-  await slowClick(page, page.getByRole("button", { name: /Generate the brief/ }), { after: 500 });
+  await slowClick(page, page.getByRole("button", { name: c.generateButton }), { after: 500 });
   await waitForBrief(page);
   await smoothScroll(page, 460);
   await smoothScroll(page, -460);

@@ -29,10 +29,13 @@ function line(event: RunEvent): string | null {
 
 export function GeneratingScreen({
   title,
+  heading = "Building the handoff brief",
   events,
   onBack,
 }: {
   title: string;
+  /** what is being generated, e.g. "Generating the pre-op brief" */
+  heading?: string;
   events: RunEvent[];
   onBack: () => void;
 }) {
@@ -46,7 +49,7 @@ export function GeneratingScreen({
       <div className="w-full max-w-[540px]">
         <div className="mb-6 text-center">
           <div className="text-[12px] font-bold uppercase tracking-[.12em] text-gold">
-            Building the handoff brief
+            {heading}
           </div>
           <div className="mt-2 font-serif text-[26px] font-medium text-ink-primary">{title}</div>
         </div>
