@@ -10,6 +10,29 @@ export interface RunEvent {
   data: Record<string, unknown>;
 }
 
+/** One human line for a stage-run event, or null for events with nothing
+ * to show (e.g. the terminal "complete"/"error" the caller handles itself). */
+export function describeRunEvent(event: RunEvent): string | null {
+  switch (event.event) {
+    case "status":
+      return event.data.message ? String(event.data.message) : null;
+    case "stage_start":
+      return `Starting the ${String(event.data.stage ?? "")} pipeline`;
+    case "agent_start":
+      return `${event.data.agent} working…`;
+    case "agent_end":
+      return `${event.data.agent} — ${event.data.summary ?? "done"}`;
+    case "artifact_complete":
+      return `${event.data.artifact_id} (${event.data.claims} claims)`;
+    case "complete":
+      return "Complete — opening the brief…";
+    case "error":
+      return `Failed: ${event.data.message ?? "stage run failed"}`;
+    default:
+      return null;
+  }
+}
+
 function parseBlock(block: string): RunEvent | null {
   let event: string | null = null;
   let data: string | null = null;

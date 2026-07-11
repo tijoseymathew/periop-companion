@@ -25,6 +25,7 @@ export function BriefScreen({
   onOpenSource,
   onAction,
   onReviewNeed,
+  generating = null,
 }: {
   model: BriefModel;
   queue: QueueNav | null;
@@ -33,6 +34,10 @@ export function BriefScreen({
   onOpenSource: (req: SourceRequest) => void;
   onAction: (action: PrimaryAction) => void;
   onReviewNeed: (key: number, reviewed: boolean) => void;
+  /** non-null while this session's own stage run is streaming — the brief
+   * has no FlowChrome to fold the live status into, so it shows minimally
+   * in the action panel instead of taking over the screen */
+  generating?: string | null;
 }) {
   const first = model.title.split(" ")[0] || "this patient";
 
@@ -321,6 +326,7 @@ export function BriefScreen({
               <ActionPanel
                 model={model}
                 canReview={canReview}
+                generating={generating}
                 first={first}
                 onAction={onAction}
               />
@@ -405,14 +411,30 @@ const STAGE_NOUN: Record<BriefModel["stage"], string> = {
 function ActionPanel({
   model,
   canReview,
+  generating,
   first,
   onAction,
 }: {
   model: BriefModel;
   canReview: boolean;
+  generating: string | null;
   first: string;
   onAction: (action: PrimaryAction) => void;
 }) {
+  // this session's own run in flight — checked before anything else so it
+  // pre-empts the resting/action states below while it streams
+  if (generating !== null) {
+    return (
+      <div className="flex items-center gap-3 text-[13.5px] text-ink-secondary">
+        <span
+          className="h-4 w-4 flex-none rounded-full border-[2.5px] border-transparent border-t-brand"
+          style={{ animation: "spin .8s linear infinite" }}
+        />
+        {generating || "The pipeline is building this case — you can leave and come back."}
+      </div>
+    );
+  }
+
   // resting states first
   if (model.acknowledgedBy) {
     return (

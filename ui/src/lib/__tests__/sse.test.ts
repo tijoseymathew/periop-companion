@@ -4,7 +4,7 @@
  * error event rejects with its message.
  */
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { streamStageRun, type RunEvent } from "../sse";
+import { describeRunEvent, streamStageRun, type RunEvent } from "../sse";
 
 function sseResponse(blocks: string[], ok = true, status = 200): Response {
   const stream = new ReadableStream<Uint8Array>({
@@ -63,5 +63,23 @@ describe("streamStageRun", () => {
     await expect(streamStageRun("x", "preop", "p-lim", () => {})).rejects.toThrow(
       "gate closed",
     );
+  });
+});
+
+describe("describeRunEvent", () => {
+  it("renders one line per known event kind", () => {
+    expect(describeRunEvent({ event: "agent_start", data: { agent: "GapAnalyst" } })).toBe(
+      "GapAnalyst working…",
+    );
+    expect(
+      describeRunEvent({ event: "agent_end", data: { agent: "GapAnalyst", summary: "3 questions" } }),
+    ).toBe("GapAnalyst — 3 questions");
+    expect(
+      describeRunEvent({ event: "artifact_complete", data: { artifact_id: "record:intra-op", claims: 2 } }),
+    ).toBe("record:intra-op (2 claims)");
+  });
+
+  it("returns null for a status event with no message", () => {
+    expect(describeRunEvent({ event: "status", data: {} })).toBeNull();
   });
 });

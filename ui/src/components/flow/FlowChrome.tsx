@@ -21,6 +21,7 @@ export function FlowChrome({
   onBack,
   onSelectScreen,
   canReach,
+  generating = null,
   children,
 }: {
   kase: Case | null;
@@ -34,6 +35,9 @@ export function FlowChrome({
   onSelectScreen: (screen: FlowScreen) => void;
   /** which pills may be clicked (the current one never is) */
   canReach: (screen: FlowScreen) => boolean;
+  /** non-null while a stage run is streaming — replaces the sub-stage pills
+   * with a minimal live-status strip instead of taking over the screen */
+  generating?: string | null;
   children: ReactNode;
 }) {
   const chip = STAGE_DISPLAY[stage];
@@ -126,38 +130,53 @@ export function FlowChrome({
           })}
         </div>
 
-        <div className="flex flex-none gap-1.5 rounded-xl border border-surface-overlay bg-surface-panel p-1">
-          {pills.map((p) => {
-            const on = p.state === "current";
-            const can = reachable(p.key);
-            return (
-              <button
-                key={p.key}
-                type="button"
-                disabled={!can}
-                onClick={() => onSelectScreen(p.key)}
-                className={`inline-flex min-h-[36px] items-center gap-2 rounded-lg px-3.5 text-[12.5px] ${
-                  on
-                    ? "bg-surface-base font-semibold text-ink-primary shadow-[0_1px_2px_rgba(35,27,15,.08)]"
-                    : `font-medium text-ink-dim ${can ? "hover:text-ink-primary" : "cursor-default"}`
-                }`}
-              >
-                <span
-                  className={`flex h-[15px] w-[15px] flex-none items-center justify-center rounded-full text-[9px] font-bold ${
-                    p.state === "done"
-                      ? "bg-status-supported/20 text-status-supported"
-                      : on
-                        ? "bg-brand text-ink-onBrand"
-                        : "bg-[#E0D8C9] text-ink-dim"
+        {generating !== null ? (
+          <div
+            data-testid="generating-strip"
+            className="flex flex-none items-center gap-2.5 rounded-xl border border-brand/30 bg-brand/[0.07] px-3.5 py-2"
+          >
+            <span
+              className="h-3.5 w-3.5 flex-none rounded-full border-2 border-transparent border-t-brand"
+              style={{ animation: "spin .8s linear infinite" }}
+            />
+            <span className="max-w-[280px] truncate text-[12.5px] font-medium text-brand-ink">
+              {generating || "Working…"}
+            </span>
+          </div>
+        ) : (
+          <div className="flex flex-none gap-1.5 rounded-xl border border-surface-overlay bg-surface-panel p-1">
+            {pills.map((p) => {
+              const on = p.state === "current";
+              const can = reachable(p.key);
+              return (
+                <button
+                  key={p.key}
+                  type="button"
+                  disabled={!can}
+                  onClick={() => onSelectScreen(p.key)}
+                  className={`inline-flex min-h-[36px] items-center gap-2 rounded-lg px-3.5 text-[12.5px] ${
+                    on
+                      ? "bg-surface-base font-semibold text-ink-primary shadow-[0_1px_2px_rgba(35,27,15,.08)]"
+                      : `font-medium text-ink-dim ${can ? "hover:text-ink-primary" : "cursor-default"}`
                   }`}
                 >
-                  {p.state === "done" ? "✓" : on ? "•" : ""}
-                </span>
-                {p.label}
-              </button>
-            );
-          })}
-        </div>
+                  <span
+                    className={`flex h-[15px] w-[15px] flex-none items-center justify-center rounded-full text-[9px] font-bold ${
+                      p.state === "done"
+                        ? "bg-status-supported/20 text-status-supported"
+                        : on
+                          ? "bg-brand text-ink-onBrand"
+                          : "bg-[#E0D8C9] text-ink-dim"
+                    }`}
+                  >
+                    {p.state === "done" ? "✓" : on ? "•" : ""}
+                  </span>
+                  {p.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto">{children}</div>

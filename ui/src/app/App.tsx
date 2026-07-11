@@ -9,7 +9,6 @@
  */
 import { useEffect, useMemo, useState } from "react";
 import { BriefScreen } from "../components/catchup/BriefScreen";
-import { GeneratingScreen } from "../components/catchup/GeneratingScreen";
 import { SourceModal, type SourceRequest } from "../components/catchup/SourceModal";
 import { Worklist } from "../components/catchup/Worklist";
 import { CaptureScreen } from "../components/flow/CaptureScreen";
@@ -41,12 +40,12 @@ import {
 } from "../lib/flow";
 import type { Case, CaseSummary, OpenQuestion, Provider, StageKey } from "../lib/schema";
 import { STAGE_KEYS } from "../lib/schema";
-import { streamStageRun, type RunEvent } from "../lib/sse";
-import { GENERATE_LABELS, headlineStage, type PrimaryAction } from "../lib/workflow";
+import { describeRunEvent, streamStageRun, type RunEvent } from "../lib/sse";
+import { headlineStage, type PrimaryAction } from "../lib/workflow";
 
 const PROVIDER_STORAGE_KEY = "periop-provider";
 
-type View = "worklist" | "case" | "generating";
+type View = "worklist" | "case";
 
 export default function App() {
   const [cases, setCases] = useState<CaseSummary[]>([]);
@@ -64,6 +63,9 @@ export default function App() {
 
   const [source, setSource] = useState<SourceRequest | null>(null);
   const [genEvents, setGenEvents] = useState<RunEvent[]>([]);
+  // a stage run in flight — folded into the stage chrome as a minimal live
+  // status instead of a full-screen takeover (v2-ui feedback)
+  const [running, setRunning] = useState(false);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -249,7 +251,7 @@ export default function App() {
     const stage = headlineStage(kase.workflow) ?? "preop";
     setGenEvents([]);
     setNotice(null);
-    setView("generating");
+    setRunning(true);
     try {
       await streamStageRun(kase.case_id, stage, me, (ev) => {
         setGenEvents((prev) => [...prev, ev]);
@@ -258,12 +260,12 @@ export default function App() {
       setKase(fresh);
       await refreshCases();
       setScreenOverride("brief");
-      setView("case");
     } catch (e) {
       // gate (409) or run error — back to the flow with the plain reason
       setNotice(readDetail(e));
       setScreenOverride(null);
-      setView("case");
+    } finally {
+      setRunning(false);
     }
   }
 
@@ -339,6 +341,12 @@ export default function App() {
   // brief queue: step through the cases still waiting for you
   const forYouIds = rows.filter((r) => r.forYou).map((r) => r.caseId);
 
+  // this session's own stage run, as one live status line — null when
+  // nothing is running (folded into the chrome, ui.md §7 / v2-ui feedback)
+  const generatingLabel = running
+    ? ([...genEvents].reverse().map(describeRunEvent).find((s): s is string => !!s) ?? "")
+    : null;
+
   function renderBrief() {
     if (!kase) return null;
     const model = buildBrief(kase, providers);
@@ -361,6 +369,7 @@ export default function App() {
         onOpenSource={setSource}
         onAction={handleAction}
         onReviewNeed={handleReviewNeed}
+        generating={generatingLabel}
       />
     );
   }
@@ -401,6 +410,7 @@ export default function App() {
           setScreenOverride(s);
         }}
         canReach={canReach}
+        generating={generatingLabel}
       >
         {screen === "records" && (
           <RecordsScreen
@@ -426,7 +436,7 @@ export default function App() {
         {screen === "interview" && kase && (
           <InterviewScreen
             kase={kase}
-            busy={busy}
+            busy={busy || running}
             notice={notice}
             canWrite={!!me}
             onApproveQuestions={handleApproveQuestions}
@@ -438,7 +448,7 @@ export default function App() {
           <CaptureScreen
             stage={stage}
             kase={kase}
-            busy={busy}
+            busy={busy || running}
             notice={notice}
             canWrite={!!me}
             onUploadAudio={handleUploadAudio}
@@ -469,14 +479,6 @@ export default function App() {
           />
         )}
         {view === "case" && renderCase()}
-        {view === "generating" && (
-          <GeneratingScreen
-            title={kase?.label ?? kase?.case_id ?? "case"}
-            heading={GENERATE_LABELS[stage]}
-            events={genEvents}
-            onBack={goWorklist}
-          />
-        )}
       </main>
       {source && kase && (
         <SourceModal kase={kase} request={source} onClose={() => setSource(null)} />
