@@ -122,7 +122,11 @@ export function RecordsScreen({
   const described = kase
     ? existingDocs.some((s) => s.source_id === "doc:op-plan")
     : description.trim().length > 0;
-  const docCount = existingDocs.filter((s) => s.source_id !== "doc:op-plan").length + staged.length;
+  // once the case exists the staged list is spent — its files were uploaded
+  // by Create intake and live on in existingDocs
+  const docCount =
+    existingDocs.filter((s) => s.source_id !== "doc:op-plan").length +
+    (kase ? 0 : staged.length);
   const ready = described && docCount > 0 && (kase ? true : name.trim().length > 0);
 
   function addFiles(files: FileList | File[]) {
@@ -283,7 +287,7 @@ export function RecordsScreen({
           />
 
           {kase && existingDocs.length > 0 && <DocumentTabs docs={existingDocs} />}
-          {staged.map((d, i) => (
+          {!kase && staged.map((d, i) => (
             <DocRow
               key={`${d.file.name}-${i}`}
               name={d.file.name}
