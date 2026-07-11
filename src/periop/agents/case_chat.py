@@ -17,6 +17,7 @@ from __future__ import annotations
 import asyncio
 import re
 import threading
+from difflib import SequenceMatcher
 from typing import Any, Callable
 
 from google.adk.agents import LlmAgent
@@ -75,23 +76,40 @@ def _snippet(text: str, limit: int = 240) -> str:
     return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
 
 
-def _term_matches(term: str, lowered: str) -> bool:
-    """Substring match with just enough stemming for clinical English.
+#: how alike a query term and a text word must be to count as a fuzzy match
+_FUZZY_RATIO = 0.8
 
-    Inflection must not hide facts: "allergy" has to find "allergies",
-    "tubes" has to find "tube". Dropping a trailing y/s/e from longer terms
-    ("allergi-", "tube-", "dos-") covers those without a stemmer dependency.
+
+def _term_matches(term: str, lowered: str, words: list[str]) -> int:
+    """Score one query term against a text: 2 exact-ish, 1 fuzzy, 0 no match.
+
+    Exact-ish is a substring match with just enough stemming for clinical
+    English — inflection must not hide facts: "allergy" has to find
+    "allergies", "tubes" has to find "tube". Dropping a trailing y/s/e from
+    longer terms ("allergi-", "tube-", "dos-") covers those without a
+    stemmer dependency. Fuzzy is a per-word similarity ratio so misspellings
+    ("asprin", "metfromin") still find the fact; short terms are exempt —
+    almost everything is within one edit of a three-letter word.
     """
     if term in lowered:
-        return True
-    return len(term) > 4 and term[-1] in "yse" and term[:-1] in lowered
+        return 2
+    if len(term) > 4 and term[-1] in "yse" and term[:-1] in lowered:
+        return 2
+    if len(term) >= 4:
+        matcher = SequenceMatcher(b=term)
+        for word in words:
+            matcher.set_seq1(word)
+            if matcher.ratio() >= _FUZZY_RATIO:
+                return 1
+    return 0
 
 
 def search_case_texts(case: Case, query: str, limit: int = 8) -> list[dict[str, Any]]:
-    """Simple keyword search over chunks, transcript segments, and claims.
+    """Fuzzy keyword search over chunks, transcript segments, and claims.
 
-    Scores by distinct query terms present (whole-query substring counts
-    double); ties keep registry order, which puts documents before the
+    Scores by distinct query terms present — an exact (substring) term
+    counts double a fuzzy one, and a whole-query substring counts double
+    again; ties keep registry order, which puts documents before the
     transcripts appended later. Deliberately dependency-free — the demo
     corpus is a handful of short sources, not a retrieval problem.
     """
@@ -101,9 +119,10 @@ def search_case_texts(case: Case, query: str, limit: int = 8) -> list[dict[str, 
 
     def consider(text: str, entry: dict[str, Any]) -> None:
         lowered = text.lower()
-        score = sum(1 for t in terms if _term_matches(t, lowered))
+        words = _WORD.findall(lowered)
+        score = sum(_term_matches(t, lowered, words) for t in terms)
         if phrase and len(terms) > 1 and phrase in lowered:
-            score += len(terms)
+            score += 2 * len(terms)
         if score > 0:
             entry["text"] = _snippet(text)
             hits.append((score, entry))
@@ -206,7 +225,10 @@ class CaseChatRuntime:
             }
 
         def search_case(query: str, tool_context: ToolContext) -> dict[str, Any]:
-            """Keyword-search the case's documents, transcripts, and notes.
+            """Fuzzy-search the case's documents, transcripts, and notes.
+
+            Matching tolerates inflections and misspellings, so search with
+            the words you have.
 
             Args:
                 query: words to look for, e.g. "aspirin stopped".

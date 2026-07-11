@@ -130,6 +130,23 @@ class TestSearchCaseTexts:
     def test_no_match_is_empty(self):
         assert search_case_texts(make_case(), "penicillin sensitivity") == []
 
+    def test_misspelling_still_finds_the_fact(self):
+        hits = search_case_texts(make_case(), "asprin")
+        assert "doc:gp-summary#c001" in [h["ref"] for h in hits]
+        assert search_case_texts(make_case(), "metfromin")[0]["ref"] == (
+            "doc:gp-summary#c002"
+        )
+
+    def test_exact_match_outranks_fuzzy(self):
+        case = make_case()
+        case.sources[0].chunks.append(
+            Chunk(chunk_id="c003", text="Aspirating secretions noted.", section="Airway")
+        )
+        # "aspirin" matches c001 exactly and c003 only fuzzily
+        hits = search_case_texts(case, "aspirin")
+        refs = [h["ref"] for h in hits]
+        assert refs.index("doc:gp-summary#c001") < refs.index("doc:gp-summary#c003")
+
     def test_inflection_does_not_hide_facts(self):
         case = make_case()
         case.sources[0].chunks.append(
