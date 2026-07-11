@@ -1,0 +1,89 @@
+=== sg-0001: CATCH (5 questions)
+  PROBE: Have you stopped taking any medications that are currently listed in your medical records?
+  MATCH: Can you confirm if you are still taking Amlodipine 5mg daily, Metformin 500mg twice daily, and Atorvastatin 20mg daily, or have any of these medications been stopped, changed, or replaced since the last record?
+=== sg-0002: CATCH (6 questions)
+  PROBE: Have you stopped or changed any medications in the past year?
+  MATCH: Can you confirm if you are still taking all the medications listed in your current medication list (Metformin 500mg Twice daily, Perindopril 8mg Once daily, Indapamide 1.25mg Once daily, Atorvastatin 20mg Once daily, Amlodipine 10mg Once daily) and have any been stopped, changed, or replaced since this list was created?
+=== sg-0003: CATCH (7 questions)
+  PROBE: Have you stopped or changed any medications in the past year, particularly Enalapril?
+  MATCH: Can you confirm if there have been any changes, stoppages, or replacements to the following medications since the last record: Amlodipine 10mg daily, Metoprolol 50mg twice daily, Metformin 500mg thrice daily, Glimepiride 4mg daily, Atorvastatin 20mg daily, Digoxin 0.125mg daily, Warfarin 5mg daily, Enalapril 10mg daily?
+=== sg-0004: CATCH (6 questions)
+  PROBE: Have you stopped or changed any blood pressure medications in the past year, particularly ACE inhibitors like Lisinopril?
+  MATCH: Can you confirm if there have been any changes, stoppages, or additions to your medication list since it was last recorded? Specifically, are you still taking Metformin 500mg Twice daily, Amlodipine 5mg Once daily, Metoprolol 25mg Once daily, Atorvastatin 20mg Once daily, and Lisinopril 10mg Once daily?
+=== sg-0005: CATCH (6 questions)
+  PROBE: Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?
+  MATCH: Are you aware of any drug or non-drug allergies (including reactions to latex, plasters, or foods) that have not been documented in your records?
+=== sg-0006: miss (4 questions)
+  PROBE: Have you experienced any adverse reactions to antibiotics other than Penicillin?
+=== sg-0007: miss (6 questions)
+  PROBE: Have you experienced any adverse reactions to antibiotics other than Penicillin?
+=== sg-0008: CATCH (5 questions)
+  PROBE: Can you confirm if you are still taking Aspirin, and if not, what alternative antiplatelet medication are you currently on?
+  MATCH: Can you confirm if you are still taking all the medications listed in your current medication list (Atorvastatin 20 mg Daily, Metformin 500 mg Twice daily, Lisinopril 10 mg Daily, Aspirin 75 mg Daily), or have any of them been stopped, changed, or replaced since the list was written?
+=== sg-0009: CATCH (5 questions)
+  PROBE: Can you please confirm if you have any allergies, particularly to Latex, which might not be documented?
+  MATCH: Are you aware of any drug allergies, or any reactions to non-drug items such as latex, plasters, or foods, that are not documented in your records?
+=== sg-0010: CATCH (4 questions)
+  PROBE: Can you confirm if you have any allergies to antibiotics, including cephalosporins, in addition to penicillin?
+  MATCH: Are you aware of any drug or non-drug allergies (e.g., to latex, plasters, foods, or any other substances) that are not documented in your records?
+=== sg-0011: CATCH (4 questions)
+  PROBE: Can you confirm if you are still taking Aspirin, and if not, when did you stop and why?
+  MATCH: Can you confirm if you are still taking all the medications listed in your current medication list (Losartan 100 mg Once daily, Metformin 500 mg Twice daily, Tamsulosin 0.4 mg Once daily, Aspirin 75 mg Once daily) and have there been any changes, such as stopping, adding, or replacing any of these medications since the list was recorded?
+=== sg-0012: CATCH (5 questions)
+  PROBE: Can you confirm if you are still taking Ranitidine or if it has been discontinued?
+  MATCH: Can you confirm if you are still taking all the medications listed: Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, and Ranitidine 150mg Once daily? Have any of these been stopped, changed, or replaced since the list was written?
+=== sg-0013: CATCH (3 questions)
+  PROBE: Can you confirm your current list of medications, including any changes or discontinuations in the past year, and any new allergies or reactions since your last medical review?
+  MATCH: Have you stopped, changed, or added any medications since your current list was recorded, including Metformin 500 mg twice daily, Lisinopril 10 mg once daily, and Atorvastatin 20 mg once daily?
+=== sg-0014: CATCH (7 questions)
+  PROBE: Can you confirm if you are still taking Ranitidine, or have you been switched to another medication for your acid reflux?
+  MATCH: Has there been any change to your medication list since it was last recorded? Specifically, have you stopped, started, or changed the dose of Losartan, Metformin, Atorvastatin, or Ranitidine?
+=== sg-0015: CATCH (3 questions)
+  PROBE: Have you had any allergic reactions to foods, especially nuts, or any other substances not listed in your records?
+  MATCH: Are you aware of any drug allergies, or have you had any reactions to non-drug items such as latex, plasters, or foods, that are not documented in your records?
+=== sg-0016: CATCH (5 questions)
+  PROBE: Has there been any change in your medication list since your last hospital visit?
+  MATCH: Has there been any change to your medication list since it was last recorded? Specifically, have you stopped, started, or replaced Metformin, Lisinopril, Atorvastatin, or Ranitidine?
+=== sg-0017: CATCH (5 questions)
+  PROBE: Have you experienced any reactions to latex products in the past?
+  MATCH: Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that have not been documented in your records?
+=== sg-0018: CATCH (5 questions)
+  PROBE: Have there been any changes to your medication list in the past year, particularly regarding your gastrointestinal symptoms?
+  MATCH: Have you stopped, changed, or added any medications since your current medication list was recorded (Metformin 500mg Twice daily, Lisinopril 20mg Once daily, Atorvastatin 40mg Once daily, Ranitidine 150mg Twice daily)?
+  MATCH: Can you confirm if you still have symptoms of GERD or if you require any medication for it, given that Omeprazole was previously used and then discontinued?
+=== sg-0019: CATCH (5 questions)
+  PROBE: Can you confirm if you are still taking Paracetamol, and if not, when was the last time you took it?
+  MATCH: Can you confirm if you are still taking all the medications listed (Atorvastatin 20mg Daily, Lisinopril 10mg Daily, Omeprazole 20mg Daily, Paracetamol 500mg As needed) and have not started, stopped, or changed any medications since this list was recorded?
+=== sg-0020: CATCH (7 questions)
+  PROBE: Have there been any changes to your medication list in the last 12 months, particularly regarding medications for stomach acid or ulcer prevention?
+  MATCH: Can you confirm if you are still taking all the medications listed in your current medication list (Atorvastatin, Metformin, Losartan, Aspirin, Ranitidine) and if any have been stopped, changed, or replaced since it was recorded?
+=== sg-0021: CATCH (4 questions)
+  PROBE: Can you confirm your current medications, including any changes since your last medical review, and have you experienced any new allergic reactions to medications recently?
+  MATCH: Can you confirm if you are still taking Metformin 500 mg Twice daily, Sitagliptin 100 mg Once daily, and Loratadine 10 mg Once daily, or have any of these medications been stopped, changed, or replaced since they were last recorded?
+=== sg-0022: miss (6 questions)
+  PROBE: Can you confirm if you are currently taking any blood-thinning medications, including those you may have stopped in the past year?
+=== sg-0023: CATCH (4 questions)
+  PROBE: Can you confirm the current list of medications and any allergies that have been diagnosed since your last medical review?
+  MATCH: Can you confirm if you are still taking Metformin 1000 mg Twice daily, Lisinopril 20 mg Once daily, and Atorvastatin 40 mg Once daily, or have any of these medications been stopped, changed, or replaced since the list was written?
+  MATCH: Are you aware of any drug or non-drug allergies (such as to latex, plasters, or foods) that are not documented in your records?
+=== sg-0024: CATCH (6 questions)
+  PROBE: Can you confirm your current medications, particularly any changes to antiplatelet or blood-thinning agents in the past year?
+  MATCH: Can you confirm if you are currently taking all the medications listed (Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, Aspirin 75mg once daily) or if any have been stopped, changed, or replaced since the list was created?
+=== sg-0025: CATCH (7 questions)
+  PROBE: Can you confirm if there have been any changes to your medication list since your last hospital visit, particularly regarding any acid-reducing medications?
+  MATCH: Please confirm if there have been any changes, stoppages, or additions to your medication list since it was last recorded? Specifically, we need to verify: Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Amlodipine 5mg Once daily, Dutasteride 0.5mg Once daily, Aspirin 75mg Once daily, Omeprazole 20mg Once daily.
+=== sg-0026: CATCH (6 questions)
+  PROBE: Can you confirm the current antiplatelet medication and the reason for any changes from Aspirin?
+  MATCH: Can you confirm if you are still taking all the medications listed in your current medication list (Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, Aspirin 75mg once daily) and have there been any changes, stoppages, or new medications added since this list was recorded?
+=== sg-0027: CATCH (5 questions)
+  PROBE: Can you confirm if you are still taking Ranitidine, or has it been discontinued?
+  MATCH: Can you confirm if you are still taking all the medications listed in your current medication list (Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, Insulin Glargine 30 units Once daily, Ranitidine 150mg Twice daily) and have there been any changes, stoppages, or new medications added since this list was created?
+=== sg-0028: miss (5 questions)
+  PROBE: Can you confirm the current dose of Atorvastatin you are taking?
+=== sg-0029: CATCH (4 questions)
+  PROBE: Can you confirm the current dose of Escitalopram you are taking, and any recent changes to your medications?
+  MATCH: Can you confirm if you are still taking Montelukast Sodium 10 mg once daily and Escitalopram 10 mg once daily, or have any of these medications been stopped, changed, or replaced since the list was recorded?
+=== sg-0030: miss (4 questions)
+  PROBE: Can you please confirm if there have been any changes to your medication list since your last review, and have you experienced any new allergic reactions to medications recently?
+
+treatment gap catch: 25/30

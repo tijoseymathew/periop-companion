@@ -1,0 +1,222 @@
+{
+  "questions": [
+    "Can you confirm if there have been any changes to your medication list since your last hospital visit, particularly regarding any acid-reducing medications?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice:08:00#0"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:00#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice:08:02#0"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice:08:02#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "two point five milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "ten micrograms",
+      "units": "micrograms",
+      "provenance": [
+        "voice:08:05#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "epidural catheter placed",
+      "units": null,
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "one milligram",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "test dose",
+      "units": null,
+      "provenance": [
+        "voice:08:10#0"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice:08:15#0"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one liter",
+      "units": "liters",
+      "provenance": [
+        "voice:08:15#0"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "bolus",
+      "units": null,
+      "provenance": [
+        "voice:08:15#0"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "blood pressure one hundred sixty over one hundred",
+      "units": null,
+      "provenance": [
+        "voice:08:30#0"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice:08:30#0"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "twenty milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice:08:30#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "desflurane",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "surgery completed",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "reversal done",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "airway",
+      "value": "extubated",
+      "units": null,
+      "provenance": [
+        "voice:09:00#0"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient has a history of Hypertension, Type 2 Diabetes Mellitus, Benign Prostatic Hyperplasia (BPH), and Chronic Kidney Disease (Stage 3).",
+    "Current medications include Metformin 500mg twice daily, Lisinopril 10mg once daily, Amlodipine 5mg once daily, Dutasteride 0.5mg once daily, and Aspirin 75mg once daily. Omeprazole 20mg once daily was discontinued 6 months ago due to resolution of gastritis; patient now uses Pantoprazole 30mg once daily as needed.",
+    "Patient has a known allergy to Penicillin.",
+    "ASA-PS is 3 due to the presence of controlled comorbidities including Hypertension, Type 2 Diabetes Mellitus, and Chronic Kidney Disease (Stage 3).",
+    "Airway assessment indicates no anticipated difficulties; anesthesia plan includes General Anesthesia with Combined Spinal-Epidural Anesthesia for elective Prostatectomy (Transurethral Resection of the Prostate, TURP)."
+  ],
+  "handoff_claims": [
+    "Patient has a history of Hypertension, Type 2 Diabetes Mellitus, Benign Prostatic Hyperplasia (BPH), and Chronic Kidney Disease (Stage 3) which may impact recovery and fluid management.",
+    "Intraoperative course was uncomplicated with Combined Spinal-Epidural Anesthesia; anticipate potential for residual spinal anesthetic effects and monitor for hypotension or urinary retention in PACU.",
+    "Anticipated issues include potential for postoperative bleeding, need for ongoing blood pressure and glucose control, and monitoring of renal function due to Chronic Kidney Disease (Stage 3)."
+  ],
+  "distractors": [
+    "History of pneumonia resolved 2 years ago",
+    "Remote history of left femur fracture (30 years ago), fully healed",
+    "Previous use of Warfarin for atrial fibrillation, discontinued 4 years ago"
+  ]
+}

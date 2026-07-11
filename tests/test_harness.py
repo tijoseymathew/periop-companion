@@ -71,6 +71,17 @@ class TestEvaluateCase:
         report = evaluate_case(case, gold, matches=keyword_matcher)
         assert report.gap_f1 == 1.0
 
+    def test_gap_analysis_uses_question_matcher_when_given(self, case, gold):
+        # fact matcher says nothing matches; the question matcher must be the
+        # one consulted for the gap metric — and only for the gap metric
+        report = evaluate_case(
+            case, gold,
+            matches=lambda p, g: False,
+            matches_questions=keyword_matcher,
+        )
+        assert report.gap_f1 == 1.0
+        assert report.preop_claim_recall == 0.0
+
     def test_claim_recall_partial(self, case, gold):
         report = evaluate_case(case, gold, matches=keyword_matcher)
         # "aspirin" gold recalled, "penicillin" not → 0.5

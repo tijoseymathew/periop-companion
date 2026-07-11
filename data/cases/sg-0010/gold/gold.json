@@ -1,0 +1,151 @@
+{
+  "questions": [
+    "Can you confirm if you have any allergies to antibiotics, including cephalosporins, in addition to penicillin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "ten",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral line in, left arm",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one thousand",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "event",
+      "value": "surgical incision to closure time forty minutes",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:20"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes obesity (BMI 28.5), type 2 diabetes mellitus (well-controlled with metformin), and hypertension.",
+    "Medications: Metformin 500 mg twice daily (active), Lisinopril 10 mg once daily (active), Atorvastatin 20 mg once daily (active), Ranitidine 150 mg once daily (stopped).",
+    "Allergies: Penicillin (rash), cephalosporins (nausea and vomiting).",
+    "ASA-PS: 2 (reason: well-controlled type 2 diabetes mellitus and hypertension).",
+    "Airway assessment: Not specified in case details, but should be included in pre-anesthesia evaluation note.",
+    "Anesthesia plan: General anesthesia with intraoperative neuromonitoring for elective laparoscopic cholecystectomy."
+  ],
+  "handoff_claims": [
+    "Key history: Obesity, type 2 diabetes mellitus, hypertension, and allergies to penicillin and cephalosporins.",
+    "Intra-op course expectations: Elective laparoscopic cholecystectomy under general anesthesia with intraoperative neuromonitoring.",
+    "Anticipated issues: Potential for delayed emergence due to obesity and diabetes-related comorbidities; monitor for signs of allergic reaction given allergy history."
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of left wrist fracture (healed)",
+    "Previous use of Omeprazole for GERD, discontinued 2 years ago"
+  ]
+}

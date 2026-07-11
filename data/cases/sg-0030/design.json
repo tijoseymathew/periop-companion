@@ -1,0 +1,90 @@
+{
+  "case_id": "sg-0030",
+  "persona_uuid": "d91aab23240d4bb3ab0d8f72585a68d6",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Single-shot Ultrasound-Guided Transversus Abdominis Plane (TAP) Block for Postoperative Pain Management",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus (well-controlled with oral medications)"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Gliclazide",
+      "dose": "60mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 500mg BID, Gliclazide 60mg OD, Atorvastatin 20mg OD. No allergies listed.",
+    "truth": "Patient has since discontinued Gliclazide and switched to Sitagliptin 100mg OD due to hypoglycemic episodes. Also, patient has a new allergy to Ceftriaxone (urticaria) not present in records.",
+    "gold_question": "Can you please confirm if there have been any changes to your medication list since your last review, and have you experienced any new allergic reactions to medications recently?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved long ago, no impact on current anesthesia or surgery"
+    },
+    {
+      "description": "Fractured wrist at age 12, fully healed",
+      "why_irrelevant": "Remote history, no bearing on current condition or surgical/anesthesia plan"
+    },
+    {
+      "description": "Previous diagnosis of mild depression, not on any medications",
+      "why_irrelevant": "Not active, no current treatment, and not directly relevant to surgical procedure"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Gliclazide",
+        "dose": "60mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia (resolved 5 years ago)",
+      "Fractured wrist at age 12 (fully healed)",
+      "Mild depression (not on medications)"
+    ],
+    "prior_anesthesia": null
+  }
+}

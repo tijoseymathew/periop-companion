@@ -1,0 +1,160 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "iv access established, two large bore peripheral lines"
+    },
+    {
+      "t": "08:10",
+      "text": "fluid bolus one thousand milliliters normal saline"
+    },
+    {
+      "t": "08:20",
+      "text": "hypotension noted, mean arterial pressure forty five, atenolol infusion started"
+    },
+    {
+      "t": "08:35",
+      "text": "maintenance infusion of remifentanil zero point two micrograms per kilogram per minute initiated"
+    },
+    {
+      "t": "08:50",
+      "text": "intraoperative peak airway pressure twenty eight cm h2o, checked tube position, no change"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "two large bore peripheral lines",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one thousand milliliters",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "hypotension noted",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "forty five",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atenolol infusion",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "zero point two micrograms per kilogram per minute",
+      "units": "micrograms per kilogram per minute",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "intraoperative peak airway pressure",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "dose",
+      "value": "twenty eight",
+      "units": "cm H2O",
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    }
+  ]
+}

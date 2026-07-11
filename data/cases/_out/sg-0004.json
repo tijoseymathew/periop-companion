@@ -1,0 +1,1092 @@
+{
+  "case_id": "sg-0004",
+  "label": null,
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "62-year-old female, Unemployed, resident of Bukit Timah, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Amlodipine 5mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Metoprolol 25mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Lisinopril 10mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Hypertension",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Type 2 Diabetes Mellitus",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Osteoarthritis",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c011",
+          "text": "Hyperlipidemia",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c012",
+          "text": "Pneumonia (2018)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c013",
+          "text": "Right wrist fracture (2012)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c014",
+          "text": "GERD (resolved)",
+          "section": "Past History"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Amlodipine 5mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Metoprolol 25mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Lisinopril 10mg Once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective total knee arthroplasty (left) (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General anesthesia with femoral nerve block for peri-operative analgesia",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:prior-anesthetic-record",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "General anesthesia for cholecystectomy in 2009; no complications reported",
+          "section": "Summary"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 14.8,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr./Ms. [Name]. I'm [Provider's Name], the anesthesiologist who'll be taking care of you during your knee surgery tomorrow. Let's go over some details to ensure everything is in order. How have you been feeling lately?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 15.2,
+          "t1": 24.8,
+          "speaker": "PATIENT",
+          "text": "Morning, doc. Been managing okay lah, but this left knee is really giving me trouble. Can't walk far without pain, even with the brace."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 25.2,
+          "t1": 32.0,
+          "speaker": "PROVIDER",
+          "text": "I see. How long have you been experiencing these symptoms, and has there been any recent worsening?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 32.4,
+          "t1": 40.0,
+          "speaker": "PATIENT",
+          "text": "About 2 years now, but last 6 months it's gotten much worse. Can't even climb stairs properly, you know?"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 40.4,
+          "t1": 51.6,
+          "speaker": "PROVIDER",
+          "text": "Understood. Let's move to your medications. I see you're on Metformin, Amlodipine, Metoprolol, Atorvastatin, and Lisinopril. Are all these still active, or have there been any changes recently?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 52.0,
+          "t1": 67.6,
+          "speaker": "PATIENT",
+          "text": "Ah, actually, doc. I stopped Lisinopril about 6 months ago. Had a bad dry cough from it, couldn't sleep. Doctor said to stop and switch to something else, but I think the records might still show it as active?"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 68.0,
+          "t1": 77.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you for clarifying that. So, to confirm: you're no longer on Lisinopril, and your current active medications are Metformin, Amlodipine, Metoprolol, and Atorvastatin?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 78.0,
+          "t1": 85.6,
+          "speaker": "PATIENT",
+          "text": "Yes, that's right. The cough went away after stopping Lisinopril, and the other meds are all still going strong."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 86.0,
+          "t1": 91.2,
+          "speaker": "PROVIDER",
+          "text": "Excellent, that's important to note. Any known allergies to medications or other substances?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 91.6,
+          "t1": 96.4,
+          "speaker": "PATIENT",
+          "text": "None that I know of, doc. Never had a reaction to anything."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 96.8,
+          "t1": 104.0,
+          "speaker": "PROVIDER",
+          "text": "Great. Have you had anything to eat or drink since midnight? We need to confirm your NPO status."
+        },
+        {
+          "seg_id": "s012",
+          "t0": 104.4,
+          "t1": 110.8,
+          "speaker": "PATIENT",
+          "text": "Nope, nothing since 12am. Just a sip of water for meds this morning, like you instructed."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 111.2,
+          "t1": 116.8,
+          "speaker": "PROVIDER",
+          "text": "Perfect. Have you had any prior surgeries or anesthesia? Any complications in the past?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 117.2,
+          "t1": 124.0,
+          "speaker": "PATIENT",
+          "text": "Had a hernia surgery years back. Anesthesia was fine then, no issues. Woke up feeling okay lah."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 124.4,
+          "t1": 134.0,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. Lastly, how would you describe your overall fitness? Can you walk with assistance, climb stairs, or do you need a wheelchair?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 134.4,
+          "t1": 144.4,
+          "speaker": "PATIENT",
+          "text": "With the knee brace and a walking stick, I can manage short distances. But without it, it's really painful. Can't do stairs at all now."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 144.8,
+          "t1": 161.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. We'll plan for general anesthesia with a femoral nerve block to manage your pain during and after surgery. Your blood pressure medications will continue as usual, and we'll monitor your diabetes closely. Any questions for me?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 161.6,
+          "t1": 168.8,
+          "speaker": "PATIENT",
+          "text": "No questions, doc. Just want to get this sorted so I can walk properly again. Thanks for listening."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 169.2,
+          "t1": 177.6,
+          "speaker": "PROVIDER",
+          "text": "Of course, Mr./Ms. [Name]. We'll take good care of you. I'll see you in the pre-op area tomorrow. Rest well tonight."
+        },
+        {
+          "seg_id": "s020",
+          "t0": 178.0,
+          "t1": 180.0,
+          "speaker": "PATIENT",
+          "text": "Will do, doc. Appreciate it."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.6,
+          "speaker": "PROVIDER",
+          "text": "[08:05] tube in, grade one view"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.0,
+          "t1": 8.4,
+          "speaker": "PROVIDER",
+          "text": "[08:10] right radial artery line placed"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 8.8,
+          "t1": 12.0,
+          "speaker": "PROVIDER",
+          "text": "[08:15] one thousand milliliters of lactated ringers administered"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 12.4,
+          "t1": 18.8,
+          "speaker": "PROVIDER",
+          "text": "[08:25] mean arterial pressure dropped to fifty, treated with one hundred and fifty micrograms of phenylephrine"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 19.2,
+          "t1": 24.8,
+          "speaker": "PROVIDER",
+          "text": "[08:35] heart rate increased to one hundred ten, treated with twenty milligrams of labetalol"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 25.2,
+          "t1": 29.6,
+          "speaker": "PROVIDER",
+          "text": "[08:45] left femoral nerve block performed with twenty milliliters of ropivacaine"
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Mr Tan, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 10.0,
+          "speaker": "PATIENT",
+          "text": "I have some pain at the knee, but it's manageable. Not too bad, doc."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 10.4,
+          "t1": 15.6,
+          "speaker": "PROVIDER",
+          "text": "On a scale of 1 to 10, how would you rate the pain?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 16.0,
+          "t1": 22.0,
+          "speaker": "PATIENT",
+          "text": "Maybe 4? The numbness from the block is still there, so it's not too painful."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 22.4,
+          "t1": 25.2,
+          "speaker": "PROVIDER",
+          "text": "Any nausea or vomiting since waking up?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 25.6,
+          "t1": 30.0,
+          "speaker": "PATIENT",
+          "text": "A bit queasy earlier, but better now. Didn't throw up, though."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 30.4,
+          "t1": 34.4,
+          "speaker": "PROVIDER",
+          "text": "How's your breathing? Any discomfort in your chest or throat?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 34.8,
+          "t1": 39.2,
+          "speaker": "PATIENT",
+          "text": "Slight sore throat from the tube, but I can breathe fine."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 39.6,
+          "t1": 42.4,
+          "speaker": "PROVIDER",
+          "text": "Do you remember anything from the operation?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 42.8,
+          "t1": 46.8,
+          "speaker": "PATIENT",
+          "text": "No, everything's a blank. Woke up here, so that's good."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 47.2,
+          "t1": 52.4,
+          "speaker": "PROVIDER",
+          "text": "Any issues with your blood pressure or sugar levels that you're aware of?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 52.8,
+          "t1": 60.4,
+          "speaker": "PATIENT",
+          "text": "My sugar was a bit high before surgery, but the nurses said they're monitoring it. BP seems okay now."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "62-year-old female, Unemployed, resident of Bukit Timah, Singapore.",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Diagnosed with Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, and Osteoarthritis.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "No known drug allergies recorded.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Currently taking Metformin 500mg Twice daily.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Currently taking Amlodipine 5mg Once daily.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Currently taking Metoprolol 25mg Once daily.",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Currently taking Atorvastatin 20mg Once daily.",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Stopped taking Lisinopril 10mg Once daily approximately 6 months ago due to a bad dry cough.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "NPO status confirmed since midnight, with only a sip of water for medications in the morning.",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "No prior history of respiratory issues or infections since the pneumonia in 2018 that could impact anesthesia.",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s014"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "General anesthesia for cholecystectomy in 2009 and hernia surgery (year unspecified) without complications.",
+          "provenance": [
+            "doc:prior-anesthetic-record#c001",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "GERD (Gastroesophageal Reflux Disease) was resolved and does not currently impact anesthesia management.",
+          "provenance": [
+            "doc:gp-summary#c014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "ASA-PS II: Patient has mild systemic disease (Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia) without substantial functional limitations.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Planned procedure: Elective total knee arthroplasty (left) under general anesthesia with femoral nerve block for peri-operative analgesia.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Limited mobility due to left knee osteoarthritis; able to walk short distances with a brace and walking stick, but unable to climb stairs.",
+          "provenance": [
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "08:00 Propofol 120 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "08:05 Endotracheal tube placed with grade one view",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "08:10 Right radial artery line placed",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "08:15 Lactated Ringer's 1000 milliliters administered",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "08:25 Mean arterial pressure dropped to 50",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "08:25 Phenylephrine 150 micrograms administered",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "08:35 Heart rate increased to 110",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "08:35 Labetalol 20 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "08:45 Left femoral nerve block performed",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "08:45 Ropivacaine 20 milliliters administered",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "PONV risk due to multiple factors including opioid use for analgesia, history of GERD (though resolved), and prolonged surgery",
+          "provenance": [
+            "doc:gp-summary#c014",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway watch due to history of GERD (though resolved) and potential for rapid sequence induction challenges if needed",
+          "provenance": [
+            "doc:gp-summary#c014"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control given Type 2 Diabetes Mellitus, requiring careful monitoring of blood glucose levels",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c010"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia management considering femoral nerve block with ropivacaine, requiring monitoring for block efficacy and potential for opioid-sparing",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic instability (hypotension) as evidenced by intra-op MAP drop to 50, requiring close monitoring",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Hemodynamic instability (tachycardia) as evidenced by intra-op heart rate increase to 110, requiring close monitoring",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Potential for hypotension due to Metoprolol and Amlodipine, requiring careful blood pressure management",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "doc:gp-summary#c003"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "62-year-old female undergoing elective total knee arthroplasty (left) under general anesthesia with femoral nerve block for peri-operative analgesia.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis. She is currently taking metformin, amlodipine, and atorvastatin. Lisinopril was discontinued 6 months ago due to a bad dry cough.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c010",
+            "doc:gp-summary#c001",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008",
+            "doc:gp-summary#c002",
+            "doc:med-list#c002",
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient has no known drug allergies and was NPO since midnight with only a sip of water for medications in the morning.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Intraoperative course included propofol administration, endotracheal tube placement, right radial artery line, lactated Ringer's fluid administration, and left femoral nerve block with ropivacaine.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Intraoperative hemodynamic instability included a drop in mean arterial pressure to 50, requiring phenylephrine, and a heart rate increase to 110, requiring labetalol.",
+          "provenance": [
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Monitor for PONV due to multiple risk factors including opioid use, history of GERD, and prolonged surgery.",
+          "provenance": [
+            "doc:gp-summary#c014",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Maintain airway vigilance due to history of GERD and potential challenges with rapid sequence induction if needed.",
+          "provenance": [
+            "doc:gp-summary#c014"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Ensure glycemic control given type 2 diabetes mellitus, requiring careful monitoring of blood glucose levels.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c010"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Monitor for hemodynamic instability (hypotension and tachycardia) as evidenced by intra-op events, requiring close monitoring.",
+          "provenance": [
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Manage analgesia considering femoral nerve block with ropivacaine, requiring monitoring for block efficacy and potential for opioid-sparing.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient reports manageable knee pain post-surgery, rating it 4 out of 10, with residual numbness from the femoral nerve block.",
+          "provenance": [
+            "audio:postop-interview#s002",
+            "audio:postop-interview#s004",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient experienced slight nausea post-operatively but reported improvement without vomiting.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient reports a slight sore throat from the endotracheal tube but no respiratory distress or breathing difficulties.",
+          "provenance": [
+            "audio:postop-interview#s008",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient has no recall of the operation, indicating effective general anesthesia.",
+          "provenance": [
+            "audio:postop-interview#s010",
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient's blood pressure and sugar levels are being monitored closely, with no immediate issues reported post-surgery.",
+          "provenance": [
+            "audio:postop-interview#s012",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Can you confirm if there have been any changes, stoppages, or additions to your medication list since it was last recorded? Specifically, are you still taking Metformin 500mg Twice daily, Amlodipine 5mg Once daily, Metoprolol 25mg Once daily, Atorvastatin 20mg Once daily, and Lisinopril 10mg Once daily?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003",
+        "doc:med-list#c004",
+        "doc:med-list#c005"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that have not been documented in your records?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c007"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you provide more details about your history of GERD, specifically whether it has been resolved or if you still experience symptoms, as it may impact anesthesia management?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c014"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of hypertension, type 2 diabetes mellitus, and hyperlipidemia. Can you confirm if you have had any recent cardiovascular evaluations or if there have been any changes in your condition that may affect anesthesia?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c008",
+        "doc:gp-summary#c009",
+        "doc:gp-summary#c011"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Given your history of pneumonia in 2018, have you had any recent respiratory issues or infections that could impact your anesthesia and perioperative care?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c012"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You had general anesthesia for cholecystectomy in 2009 without complications. Have you had any other surgeries or procedures since then that involved anesthesia, and if so, were there any issues or complications?",
+      "reason": "stale",
+      "provenance": [
+        "doc:prior-anesthetic-record#c001"
+      ],
+      "review": null,
+      "edited_text": null
+    }
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "right radial artery line placed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": "1000 milliliters",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "mean arterial pressure dropped to 50",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "phenylephrine 150",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "event",
+      "value": "heart rate increased to 110",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "labetalol 20",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "left femoral nerve block performed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "ropivacaine 20",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "PONV risk due to multiple factors including opioid use for analgesia, history of GERD (though resolved), and prolonged surgery",
+    "Airway watch due to history of GERD (though resolved) and potential for rapid sequence induction challenges if needed",
+    "Glycemic control given Type 2 Diabetes Mellitus, requiring careful monitoring of blood glucose levels",
+    "Analgesia management considering femoral nerve block with ropivacaine, requiring monitoring for block efficacy and potential for opioid-sparing",
+    "Hemodynamic instability (hypotension) as evidenced by intra-op MAP drop to 50, requiring close monitoring",
+    "Hemodynamic instability (tachycardia) as evidenced by intra-op heart rate increase to 110, requiring close monitoring",
+    "Potential for hypotension due to Metoprolol and Amlodipine, requiring careful blood pressure management"
+  ],
+  "workflow": null
+}

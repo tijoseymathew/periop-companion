@@ -1,0 +1,177 @@
+{
+  "questions": [
+    "Can you please confirm if you have any allergies, particularly to Latex, which might not be documented?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size four",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "20",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "50",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "150",
+      "units": "mL per hour",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "1",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "2",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "160",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "History includes Type 2 Diabetes Mellitus, Hypertension, and Obesity (BMI 32)",
+    "Medications: Metformin 500mg Twice daily (continued), Lisinopril 10mg Once daily (continued), Atorvastatin 20mg Once daily (continued), Citalopram 20mg Once daily (stopped)",
+    "Allergies: Penicillin (rash), Latex (confirmed during pre-op interview)",
+    "ASA-PS: ASA 2 due to controlled comorbidities (Type 2 Diabetes Mellitus, Hypertension, Obesity)",
+    "Airway assessment and plan: General Anesthesia with Laryngeal Mask Airway (LMA) planned"
+  ],
+  "handoff_claims": [
+    "Patient has multiple comorbidities including Type 2 Diabetes Mellitus, Hypertension, and Obesity (BMI 32)",
+    "Anticipated intra-op course: Uncomplicated Laparoscopic Cholecystectomy under General Anesthesia with LMA",
+    "Key post-op considerations: Monitor for respiratory complications due to Obesity, manage blood glucose levels due to Diabetes, and be aware of Latex allergy"
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Fractured wrist at age 12, fully healed",
+    "Discontinued use of Omeprazole 2 years ago for GERD"
+  ]
+}

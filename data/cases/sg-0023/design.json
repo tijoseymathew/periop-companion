@@ -1,0 +1,97 @@
+{
+  "case_id": "sg-0023",
+  "persona_uuid": "7150254a9680452abd4f1db992706156",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA) and Ultrasound-Guided Regional Anesthesia (USRA) for postoperative pain management",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "1000 mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Insulin Glargine",
+      "dose": "40 units",
+      "frequency": "Once daily at bedtime",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "20 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "40 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150 mg",
+      "frequency": "Twice daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 1000 mg twice daily, Lisinopril 20 mg once daily, Atorvastatin 40 mg once daily. No allergies listed.",
+    "truth": "Patient has since added Insulin Glargine 40 units once daily at bedtime for better glycemic control, and has a known allergy to Penicillin which was not recorded.",
+    "gold_question": "Can you confirm the current list of medications and any allergies that have been diagnosed since your last medical review?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved infection with no residual effects, not relevant to current anesthesia planning"
+    },
+    {
+      "description": "Remote history of fractured right wrist (10 years ago)",
+      "why_irrelevant": "Fully healed, no impact on current physical status or anesthesia"
+    },
+    {
+      "description": "Previous use of Omeprazole for GERD, now discontinued",
+      "why_irrelevant": "Medication discontinued due to resolution of symptoms, not currently active"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "1000 mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "20 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "40 mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "History of pneumonia resolved 5 years ago",
+      "Remote history of fractured right wrist (10 years ago)",
+      "Previous use of Omeprazole for GERD, now discontinued"
+    ],
+    "prior_anesthesia": null
+  }
+}

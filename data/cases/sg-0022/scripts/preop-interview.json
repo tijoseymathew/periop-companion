@@ -1,0 +1,68 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your hip replacement surgery. I'd like to go through some questions to ensure your safety and comfort during the procedure. Is that alright with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I'm ready. I want to make sure everything goes smoothly for my hip."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Let's start with your medical history. You've been diagnosed with hypertension, type 2 diabetes, osteoarthritis in both hips, and high cholesterol. Can you tell me a bit about how these conditions have been managed lately?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure, doctor. My blood pressure is okay with the Lisinopril, but sometimes it fluctuates a bit. My sugar levels have been under control with Metformin and Insulin Glargine. The hips have been really painful, that's why I'm having the surgery. And my cholesterol is managed with Atorvastatin."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that. Now, regarding your medications, I see you're on Metformin, Atorvastatin, Lisinopril, Insulin Glargine, and Paracetamol as needed. Can you confirm if you are currently taking any blood-thinning medications, including those you may have stopped in the past year?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, yes. I was on Clopidogrel for a while, but I stopped it about six months ago. I had a minor cardiac event, and after completing the prescribed course, my doctor said I could stop. I'm not on any antiplatelet therapy now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It's important we know about all medications, even those you've stopped. You mentioned Paracetamol as needed; how often have you been taking it for your hip pain?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not too often, doctor. Maybe once or twice a week when the pain gets really bad. I try not to take it too much."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, about allergies. You've listed penicillin as an allergy. Can you describe the reaction you had?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had a rash and some swelling the last time I took penicillin. So I've been avoiding it since."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that information. It's crucial for us to know. Now, regarding your surgery and anesthesia, we're planning for general anesthesia with an epidural for post-operative pain management. Have you had any previous anesthetics or surgeries that you'd like to share about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a cataract surgery a few years back, and that was under local anesthesia. No other major surgeries, so this will be my first under general anesthesia."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, that's helpful. Lastly, can you confirm your NPO status? Have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I've been fasting as instructed. Nothing since last night."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Thank you for going through all these questions with me. It's important we cover everything to ensure your safety. If you have any more questions or concerns, please don't hesitate to ask."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, doctor. I feel more at ease now. I'm ready for the surgery."
+    }
+  ]
+}

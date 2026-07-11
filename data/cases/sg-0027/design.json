@@ -1,0 +1,113 @@
+{
+  "case_id": "sg-0027",
+  "persona_uuid": "0f60bc0d513a4e2ab62b9af2402d892d",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Obesity (BMI 32)",
+    "Chronic Kidney Disease (Stage 2)"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Insulin Glargine",
+      "dose": "30 units",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Twice daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 500mg BID, Lisinopril 10mg OD, Atorvastatin 20mg OD, Insulin Glargine 30 units OD, Ranitidine 150mg BID (active)",
+    "truth": "Patient has stopped Ranitidine due to resolution of peptic ulcer disease 6 months ago; current medications: Metformin 500mg BID, Lisinopril 10mg OD, Atorvastatin 20mg OD, Insulin Glargine 30 units OD",
+    "gold_question": "Can you confirm if you are still taking Ranitidine, or has it been discontinued?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 2 years ago",
+      "why_irrelevant": "Resolved infection more than 2 years ago, not impacting current perioperative risk"
+    },
+    {
+      "description": "Remote history of right ankle fracture (15 years ago), fully healed",
+      "why_irrelevant": "Old injury with no ongoing issues or impact on current surgery or anesthesia"
+    },
+    {
+      "description": "Previous use of Omeprazole for GERD, discontinued 3 years ago",
+      "why_irrelevant": "Medication discontinued for a resolved condition, not relevant to current care"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Insulin Glargine",
+        "dose": "30 units",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Ranitidine",
+        "dose": "150mg",
+        "frequency": "Twice daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Obesity",
+      "Chronic Kidney Disease",
+      "Pneumonia (resolved 2 years ago)",
+      "Right ankle fracture (healed, 15 years ago)"
+    ],
+    "prior_anesthesia": null
+  }
+}

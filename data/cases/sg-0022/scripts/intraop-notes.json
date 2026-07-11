@@ -1,0 +1,147 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "epidural needle in, ten milliliters of bupivacaine"
+    },
+    {
+      "t": "08:10",
+      "text": "hypotension, mean arterial pressure down to fifty five, gave one hundred milliliters fluid bolus"
+    },
+    {
+      "t": "08:15",
+      "text": "fentanyl twenty micrograms for breakthrough pain"
+    },
+    {
+      "t": "08:30",
+      "text": "normotension maintained, started iv fluids at one hundred twenty milliliters per hour"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "ten",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "mean arterial pressure down to fifty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one hundred",
+      "units": "milliliters bolus",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "normotension maintained",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "fluid",
+      "value": "one hundred twenty",
+      "units": "milliliters per hour",
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    }
+  ]
+}

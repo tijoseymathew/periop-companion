@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Name]. I'm [Provider's Name], the anesthesiologist who'll be taking care of you during your surgery today. I'd like to go over a few things to make sure everything goes smoothly for your laparoscopic appendectomy under general anesthesia with an LMA."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. I'm ready, just a bit nervous lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely normal. Let's start with your current health. Can you tell me a bit about your symptoms and how long you've been having them?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've had tummy pain for about two days, mostly on the right side. It's been getting worse, and I've had some fever and loss of appetite. The doctor said it's appendicitis and needs to come out."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, let's go over your medications. I see you're on Atorvastatin, Omeprazole, and Paracetamol as needed. Can you confirm the current dose of Atorvastatin you're taking?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes. I was on 10 mg daily for a while, but my doctor increased it to 20 mg daily about three months ago because my cholesterol levels were still high."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. And how often are you taking the Omeprazole and Paracetamol?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I take Omeprazole every morning, and Paracetamol only when I have pain or fever. I actually stopped taking it a few days ago when the pain started."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Got it. And do you have any allergies we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had a rash when I took Penicillin before, so I'm allergic to that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted. We'll make sure to avoid Penicillin and related antibiotics. Now, about your health history — you mentioned obesity and hyperlipidemia. Are you managing these well?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I try my best, but with my BMI at 28.5, it's been a struggle. I walk a bit and watch my diet, but I know I need to do more."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's good to hear. Any other medical conditions or recent illnesses?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing else. I haven't been sick recently except for this."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Have you had any anesthesia before? Any issues with it?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I've never had surgery before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright. And finally, are you NPO as instructed? Nothing by mouth since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I haven't eaten or drunk anything since last night. Just a sip of water for my morning meds."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Thank you for going through all that with me. I'll be with you throughout the surgery and make sure you're comfortable and safe. Any questions before we proceed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thanks, doctor."
+    }
+  ]
+}

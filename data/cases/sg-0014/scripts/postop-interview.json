@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, I guess. A bit tired, but not in too much pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Can you tell me your pain level out of 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe a 3 or 4. It's more like discomfort than sharp pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we can manage that with medication. Are you feeling nauseous or have vomited at all?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No nausea, thank goodness. I was worried about that after reading online."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. How's your breathing? Any shortness of breath or discomfort in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine. I feel a bit stuffy from the tube, but it's getting better."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Do you remember anything from the operating room or waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I remember going to sleep and then waking up here. No scary moments, though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Since you have diabetes and high blood pressure, we’ll keep a close eye on your vitals and sugar levels."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thanks, I appreciate that. I was a bit worried about how my conditions might affect recovery."
+    }
+  ]
+}

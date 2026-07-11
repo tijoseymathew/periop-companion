@@ -1,0 +1,929 @@
+{
+  "case_id": "sg-0009",
+  "label": null,
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "31-year-old female, Unemployed, resident of Bishan, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Lisinopril 10mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Pneumonia (resolved)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Fractured wrist (healed)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "GERD (discontinued Omeprazole)",
+          "section": "Past History"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Metformin 500mg Twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Lisinopril 10mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20mg Once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Laparoscopic Cholecystectomy (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 20.0,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr./Ms. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through a few questions to make sure we're all set for your laparoscopic cholecystectomy under general anesthesia with an LMA. Is that okay with you?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 20.4,
+          "t1": 22.0,
+          "speaker": "PATIENT",
+          "text": "Yes, sure. I'm ready."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 22.4,
+          "t1": 37.2,
+          "speaker": "PROVIDER",
+          "text": "Great. Let's start with your medical history. You've been diagnosed with Type 2 Diabetes, Hypertension, and Obesity. Can you tell me a bit about how these are managed, and if you've had any recent changes or issues?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 37.6,
+          "t1": 56.0,
+          "speaker": "PATIENT",
+          "text": "My diabetes is controlled with Metformin, 500mg twice daily. Blood sugar levels have been okay, not too high or low. My blood pressure is managed with Lisinopril, 10mg once daily. I also take Atorvastatin for cholesterol and Citalopram, but I stopped that one already as instructed."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 56.4,
+          "t1": 71.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you for that. I see in your records that you have no known allergies. But just to be thorough, can you please confirm if you have any allergies, particularly to Latex, which might not be documented?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 71.6,
+          "t1": 88.0,
+          "speaker": "PATIENT",
+          "text": "Oh, actually, I think I am allergic to Latex. I remember once during a check-up, they used Latex gloves, and my hand got really itchy and red. I didn't think much of it then, but maybe it's important to mention now."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 88.4,
+          "t1": 102.8,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. It's very important for us to know. We'll make sure to note that and take all necessary precautions. Are you currently on any other medications or supplements besides what you've mentioned?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 103.2,
+          "t1": 109.6,
+          "speaker": "PATIENT",
+          "text": "No, that's all. I stopped Citalopram as per the instructions, and I haven't taken anything else."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 110.0,
+          "t1": 116.0,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 116.4,
+          "t1": 122.8,
+          "speaker": "PATIENT",
+          "text": "No, this is my first time. I've never had surgery before, so I'm a bit nervous."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 123.2,
+          "t1": 136.4,
+          "speaker": "PROVIDER",
+          "text": "It's completely normal to feel that way. We're here to make sure everything goes smoothly. Can you tell me about your NPO status? When was the last time you had food or drink?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 136.8,
+          "t1": 146.4,
+          "speaker": "PATIENT",
+          "text": "I had a light dinner last night around 7 PM and a sip of water this morning around 6 AM. Nothing else since then."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 146.8,
+          "t1": 158.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect, that's within the guidelines. Lastly, how would you describe your overall functional status? Are you able to walk, climb stairs, or do other daily activities without much difficulty?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 158.8,
+          "t1": 168.8,
+          "speaker": "PATIENT",
+          "text": "Yeah, I can walk and do my daily stuff, but sometimes I get a bit tired because of my weight. But I manage okay lah."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 169.2,
+          "t1": 182.4,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. It helps us understand your baseline. We'll make sure to support you throughout the process. Is there anything else you'd like to ask or share before we proceed?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 182.8,
+          "t1": 186.8,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all. Thank you for explaining everything."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 187.2,
+          "t1": 202.0,
+          "speaker": "PROVIDER",
+          "text": "You're very welcome. We're here to ensure your safety and comfort. I'll be with you every step of the way. We'll get started soon, and I'll make sure you're fully prepared before going into the operating room."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 6.4,
+          "speaker": "PROVIDER",
+          "text": "[08:02] LMA size four in place, secure airway"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.8,
+          "t1": 9.6,
+          "speaker": "PROVIDER",
+          "text": "[08:05] fentanyl twenty micrograms IV for analgesia"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 10.0,
+          "t1": 13.2,
+          "speaker": "PROVIDER",
+          "text": "[08:10] vecuronium fifty milligrams IV for muscle relaxation"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 13.6,
+          "t1": 19.6,
+          "speaker": "PROVIDER",
+          "text": "[08:20] normal saline one liter IV fluid running at one hundred fifty mL per hour"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 20.0,
+          "t1": 25.6,
+          "speaker": "PROVIDER",
+          "text": "[09:00] hypotension noted, mean arterial pressure forty five mmHg, atropine one milligram IV administered"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 26.0,
+          "t1": 32.4,
+          "speaker": "PROVIDER",
+          "text": "[09:15] surgery completed, emergence started with neostigmine two milligrams and sugammadex one hundred sixty milligrams IV"
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 3.6,
+          "speaker": "PROVIDER",
+          "text": "Good morning, how are you feeling after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.0,
+          "t1": 10.8,
+          "speaker": "PATIENT",
+          "text": "I'm okay, but I have some pain in my tummy and my back is aching a bit."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 11.2,
+          "t1": 16.4,
+          "speaker": "PROVIDER",
+          "text": "On a scale from 0 to 10, how would you rate the pain?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 16.8,
+          "t1": 22.4,
+          "speaker": "PATIENT",
+          "text": "Maybe around 4 or 5. It's not too bad, but I can feel it."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 22.8,
+          "t1": 27.2,
+          "speaker": "PROVIDER",
+          "text": "Have you felt nauseous or had any vomiting since the surgery?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 27.6,
+          "t1": 33.6,
+          "speaker": "PATIENT",
+          "text": "No, I haven't thrown up, but I feel a little bit sick in my stomach."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 34.0,
+          "t1": 40.4,
+          "speaker": "PROVIDER",
+          "text": "Are you comfortable with your breathing? Any shortness of breath or throat discomfort from the LMA?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 40.8,
+          "t1": 47.2,
+          "speaker": "PATIENT",
+          "text": "Breathing is fine, but my throat feels a bit sore. Like I have a slight cough."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 47.6,
+          "t1": 52.0,
+          "speaker": "PROVIDER",
+          "text": "Do you remember anything from the operating room or waking up?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 52.4,
+          "t1": 59.2,
+          "speaker": "PATIENT",
+          "text": "Not really, I was out cold. But I do remember waking up here in the recovery area."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 59.6,
+          "t1": 71.2,
+          "speaker": "PROVIDER",
+          "text": "You have a history of diabetes and high blood pressure. Have you noticed any dizziness, sweating, or other symptoms that might suggest low blood sugar or high blood pressure?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 71.6,
+          "t1": 78.4,
+          "speaker": "PATIENT",
+          "text": "No dizziness or anything like that. I feel a bit tired, but that's probably normal after surgery."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 78.8,
+          "t1": 88.0,
+          "speaker": "PROVIDER",
+          "text": "Alright, we'll keep an eye on your vitals and blood sugar levels. Let the nurse know if the pain or nausea gets worse."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "31-year-old female",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Diagnosed with Type 2 Diabetes, Hypertension, and Obesity",
+          "provenance": [
+            "audio:preop-interview#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "No previous surgeries or anesthesia",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Current medications: Metformin 500mg Twice daily",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Current medications: Lisinopril 10mg Once daily",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Current medications: Atorvastatin 20mg Once daily",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Discontinued Citalopram as instructed",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Confirmed allergy to Latex (itchy and red hand reaction to Latex gloves)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "No other drug allergies confirmed",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Last meal: light dinner around 7 PM the previous night",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Last drink: sip of water around 6 AM on the day of surgery",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Able to walk and perform daily activities with some tiredness due to weight",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "ASA-PS Class III (Patient has significant systemic disease that is not limiting the physical activity, e.g., well-controlled diabetes or hypertension)",
+          "provenance": [
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s003"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Planned procedure: Laparoscopic Cholecystectomy",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Planned anesthesia: General Anesthesia with Laryngeal Mask Airway (LMA)",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "08:00 Propofol 120 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "08:02 LMA size four in place, secure airway",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "08:05 Fentanyl 20 micrograms administered",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "08:10 Vercuronium 50 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "08:20 Normal saline 1000 mL IV fluid running at 150 mL per hour",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "09:00 Hypotension noted, mean arterial pressure 45 mmHg",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "09:15 Neostigmine 2 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "09:15 Sugammadex 160 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Risk of Post-Operative Nausea and Vomiting (PONV) due to Opioid Administration and Laparoscopic Procedure",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s003"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway Watch due to Obesity and Use of Laryngeal Mask Airway (LMA)",
+          "provenance": [
+            "audio:preop-interview#s003",
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic Control Monitoring due to Type 2 Diabetes",
+          "provenance": [
+            "audio:preop-interview#s003",
+            "doc:gp-summary#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hemodynamic Instability (Hypotension) due to Intra-Operative Event",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Analgesia Management due to Opioid Administration and Potential for Undetected Pain",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Latex Allergy Precautions",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Neuromuscular Function Recovery due to Reversal Agent Administration",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "unsupported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "31-year-old female undergoing Laparoscopic Cholecystectomy under General Anesthesia with LMA, with a background of Type 2 Diabetes, Hypertension, and Obesity.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s003",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has significant systemic diseases (well-controlled Diabetes and Hypertension) and is able to walk and perform daily activities with some tiredness due to weight. No previous surgeries or anesthesia.",
+          "provenance": [
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s003",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intra-op complications included Hypotension (MAP 45 mmHg) requiring intervention, and administration of Reversal Agents for Neuromuscular Blockade.",
+          "provenance": [
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Monitor for Post-Operative Nausea and Vomiting (PONV), Airway complications due to Obesity and LMA use, Glycemic Control, Hemodynamic Instability, and ensure Analgesia Management while watching for signs of Undetected Pain. Also, maintain Latex Allergy Precautions.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s003",
+            "audio:preop-interview#s003",
+            "doc:op-plan#c002",
+            "doc:gp-summary#c002",
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Current medications include Metformin, Lisinopril, Atorvastatin, and Citalopram was discontinued as instructed pre-op.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Confirmed Latex Allergy with no other drug allergies.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient reports abdominal pain rated 4-5/10 and back ache post-operatively.",
+          "provenance": [
+            "audio:postop-interview#s002",
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient experiences nausea but no vomiting since surgery.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient reports slight throat soreness and cough, but breathing is comfortable with no shortness of breath.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient has no recall of the operating room but remembers waking up in the recovery area.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient denies symptoms suggestive of low blood sugar or high blood pressure (e.g., dizziness, sweating).",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Latex allergy confirmed during pre-op interview, prompting precautionary measures.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "General Anesthesia with Laryngeal Mask Airway (LMA) was used for Laparoscopic Cholecystectomy.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient's current medications include Metformin, Lisinopril, and Atorvastatin, with Citalopram discontinued as instructed.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s004",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Can you confirm if you are still taking Metformin 500mg Twice daily, Lisinopril 10mg Once daily, and Atorvastatin 20mg Once daily, or have any of these medications been stopped, changed, or replaced since the last record?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any drug allergies, or any reactions to non-drug items such as latex, plasters, or foods, that have not been documented in your records?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c005"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you provide more details about your history of GERD, including the severity, frequency of symptoms, and the reason for discontinuing Omeprazole?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of pneumonia (resolved). Can you confirm the timeline of the illness, any residual respiratory symptoms, and if you have had any recent respiratory infections?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    }
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size four in place, secure airway",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl 20",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "vecuronium 50",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "normal saline 1000",
+      "units": "mL",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "hypotension noted, mean arterial pressure 45",
+      "units": "mmHg",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "neostigmine 2",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "sugammadex 160",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s007"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Risk of Post-Operative Nausea and Vomiting (PONV) due to Opioid Administration and Laparoscopic Procedure",
+    "Airway Watch due to Obesity and Use of Laryngeal Mask Airway (LMA)",
+    "Glycemic Control Monitoring due to Type 2 Diabetes",
+    "Hemodynamic Instability (Hypotension) due to Intra-Operative Event",
+    "Analgesia Management due to Opioid Administration and Potential for Undetected Pain",
+    "Latex Allergy Precautions",
+    "Neuromuscular Function Recovery due to Reversal Agent Administration"
+  ],
+  "workflow": null
+}

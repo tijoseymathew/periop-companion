@@ -1,0 +1,918 @@
+{
+  "case_id": "sg-0013",
+  "label": null,
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "45-year-old male, Associate Professional or Technician, resident of Bedok, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metformin 500 mg twice daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Lisinopril 10 mg once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Atorvastatin 20 mg once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "No known drug allergies recorded.",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Pneumonia (resolved 5 years ago)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Fractured right wrist (15 years ago, fully healed)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Hypothyroidism (resolved after treatment 8 years ago)",
+          "section": "Past History"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Metformin 500 mg twice daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Lisinopril 10 mg once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20 mg once daily.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Laparoscopic Cholecystectomy (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) for Post-Operative Pain Management",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 16.8,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr./Ms. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through a few questions to ensure we have all the necessary information for your safety and comfort."
+        },
+        {
+          "seg_id": "s002",
+          "t0": 17.2,
+          "t1": 20.4,
+          "speaker": "PATIENT",
+          "text": "Good morning, Doctor. I'm ready when you are."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 20.8,
+          "t1": 29.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Can you please confirm for me the reason for your surgery today and how long you've been experiencing symptoms?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 29.6,
+          "t1": 43.2,
+          "speaker": "PATIENT",
+          "text": "Yes, sure. I've been having a lot of pain on my right side, especially after eating. The doctor said it's due to gallstones and that the best option is to remove the gallbladder laparoscopically."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 43.6,
+          "t1": 59.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. Now, let's move on to your medications. Can you confirm your current list of medications, including any changes or discontinuations in the past year, and any new allergies or reactions since your last medical review?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 60.0,
+          "t1": 82.4,
+          "speaker": "PATIENT",
+          "text": "Okay, let me think. I'm still taking Metformin 500mg twice a day for my diabetes, Lisinopril 10mg once a day for blood pressure, and Atorvastatin 20mg at night for cholesterol. Oh, and I stopped taking Ranitidine about six months ago because my acid reflux got better, so now I'm taking Omeprazole 20mg once a day instead."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 82.8,
+          "t1": 99.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you for that update. It's important we have the most current information. Regarding allergies, you mentioned Penicillin causing a rash in the past. Have you had any new allergies or reactions to any medications, foods, or latex since your last review?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 100.0,
+          "t1": 104.4,
+          "speaker": "PATIENT",
+          "text": "No, Doctor. Just the Penicillin rash. Nothing new has come up."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 104.8,
+          "t1": 117.2,
+          "speaker": "PROVIDER",
+          "text": "Great, thank you. Now, in terms of your general health, can you tell me about your daily activities and any limitations you might have due to your obesity, diabetes, or hypertension?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 117.6,
+          "t1": 136.0,
+          "speaker": "PATIENT",
+          "text": "Well, I do find it harder to move around because of my weight, and sometimes I get short of breath. But I can still do most daily tasks, just slower. My diabetes and blood pressure are managed with medication, and I check my sugar levels regularly."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 136.4,
+          "t1": 149.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. It helps us understand how to support you better during and after surgery. Have you had any previous surgeries or anesthesia? If so, were there any issues?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 149.6,
+          "t1": 158.4,
+          "speaker": "PATIENT",
+          "text": "Yes, I had a cesarean section about 10 years ago, and that went smoothly. No issues with the anesthesia that I remember."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 158.8,
+          "t1": 167.2,
+          "speaker": "PROVIDER",
+          "text": "Excellent. And finally, can you confirm when you last had food and drink? It's important for your safety under general anesthesia."
+        },
+        {
+          "seg_id": "s014",
+          "t0": 167.6,
+          "t1": 177.6,
+          "speaker": "PATIENT",
+          "text": "I had my last meal around 8 PM last night and a sip of water at 10 PM. Nothing since then, as per the instructions."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 178.0,
+          "t1": 190.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect, thank you. We'll be using general anesthesia for your laparoscopic cholecystectomy and also performing an ultrasound-guided TAP block for post-operative pain management. This should help keep you comfortable after surgery."
+        },
+        {
+          "seg_id": "s016",
+          "t0": 190.8,
+          "t1": 195.6,
+          "speaker": "PATIENT",
+          "text": "That sounds good. I'm hoping the pain won't be too bad after."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 196.0,
+          "t1": 205.2,
+          "speaker": "PROVIDER",
+          "text": "We'll do our best to manage your pain effectively. If you have any questions or concerns before we proceed, please let me know."
+        },
+        {
+          "seg_id": "s018",
+          "t0": 205.6,
+          "t1": 208.8,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all. Thank you, Doctor."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 209.2,
+          "t1": 216.0,
+          "speaker": "PROVIDER",
+          "text": "You're very welcome. We'll take good care of you. I'll see you in the operating room shortly."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.6,
+          "speaker": "PROVIDER",
+          "text": "[08:05] tube in, grade one view"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.0,
+          "t1": 10.4,
+          "speaker": "PROVIDER",
+          "text": "[08:10] 18 gauge peripheral line placed, 500 ml lactated ringers bolus"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 10.8,
+          "t1": 14.8,
+          "speaker": "PROVIDER",
+          "text": "[08:15] ultrasound-guided TAP block performed with 0.5% bupivacaine twenty milligrams"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 15.2,
+          "t1": 20.0,
+          "speaker": "PROVIDER",
+          "text": "[08:30] blood pressure drop to eighty over fifty, atropine one milligram given"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 20.4,
+          "t1": 25.2,
+          "speaker": "PROVIDER",
+          "text": "[09:00] surgery completed, reversal with neostigmine two milligrams and sugammadex fifty milligrams"
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 4.0,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling now after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.4,
+          "t1": 10.0,
+          "speaker": "PATIENT",
+          "text": "I'm okay, I guess. Still a bit groggy, but the pain isn't too bad."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 10.4,
+          "t1": 15.6,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. Can you tell me your pain level out of 10?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 16.0,
+          "t1": 20.8,
+          "speaker": "PATIENT",
+          "text": "Maybe a 3 or 4? It's more like discomfort than sharp pain."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 21.2,
+          "t1": 26.8,
+          "speaker": "PROVIDER",
+          "text": "That's expected with the TAP block still working. Are you feeling nauseous at all?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 27.2,
+          "t1": 30.8,
+          "speaker": "PATIENT",
+          "text": "No, not really. A bit thirsty, but no nausea."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 31.2,
+          "t1": 34.8,
+          "speaker": "PROVIDER",
+          "text": "Great. How's your breathing? Any tightness or difficulty breathing?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 35.2,
+          "t1": 40.4,
+          "speaker": "PATIENT",
+          "text": "No, I'm breathing fine. Just a bit tired from the anesthesia, I think."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 40.8,
+          "t1": 44.4,
+          "speaker": "PROVIDER",
+          "text": "Good. Do you remember anything from the operating room?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 44.8,
+          "t1": 51.6,
+          "speaker": "PATIENT",
+          "text": "Not really. I went to sleep and woke up here, so I think I was out completely."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 52.0,
+          "t1": 63.2,
+          "speaker": "PROVIDER",
+          "text": "That's normal under general anesthesia. Given your diabetes and high blood pressure, we'll keep a close eye on your vitals and sugar levels. Any concerns from your side?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 63.6,
+          "t1": 68.0,
+          "speaker": "PATIENT",
+          "text": "No, everything seems fine. Just want to go home and rest."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 68.4,
+          "t1": 77.6,
+          "speaker": "PROVIDER",
+          "text": "We'll get you ready for that soon. Let the nurse know if the pain increases or if you feel unwell in any way."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "45-year-old male",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Elective laparoscopic cholecystectomy for gallstones",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Diabetes managed with Metformin 500 mg twice daily",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hypertension managed with Lisinopril 10 mg once daily",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hyperlipidemia managed with Atorvastatin 20 mg once daily",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Omeprazole 20 mg once daily for acid reflux (replaced Ranitidine 6 months ago)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "No known drug allergies except for Penicillin (rash)",
+          "provenance": [
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Last meal at 8 PM, last sip of water at 10 PM",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "No airway concerns discussed or observed during pre-op interview",
+          "provenance": [
+            "audio:preop-interview#s001",
+            "audio:preop-interview#s018"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "ASA-PS II (patient with mild systemic disease, controlled diabetes and hypertension)",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) planned for post-operative pain management",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Propofol 120 milligrams administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Endotracheal tube placed with grade one view at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "18 gauge peripheral line placed at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "500 ml fluid bolus administered at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Bupivacaine 20 milligrams administered for ultrasound-guided TAP block at 08:15",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Blood pressure dropped to 80 over 50 mmHg at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Atropine 1 milligram administered at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Surgery completed at 09:00",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Neostigmine 2 milligrams administered for reversal at 09:00",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Sugammadex 50 milligrams administered for reversal at 09:00",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "PONV risk due to laparoscopic surgery and potential opioid use",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway watch due to potential residual neuromuscular blockade",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control given diabetes managed with Metformin",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hemodynamic instability (hypotension) due to anesthesia and fluid shifts",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Analgesia management with TAP block and potential opioid needs",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Potential for increased acid reflux or aspiration risk post-op",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s014"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "45-year-old male post-elective laparoscopic cholecystectomy for gallstones, currently recovering under general anesthesia with ultrasound-guided TAP block for post-operative pain management.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient has a history of diabetes managed with Metformin, hypertension managed with Lisinopril, hyperlipidemia managed with Atorvastatin, and acid reflux managed with Omeprazole. No known drug allergies except for Penicillin (rash).",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intra-operative course included administration of Propofol, endotracheal tube placement, peripheral line, fluid bolus, and Bupivacaine for TAP block. Notable events: blood pressure drop to 80/50 mmHg, treated with Atropine. Reversal with Neostigmine and Sugammadex.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Anticipated issues include PONV risk due to laparoscopic surgery and potential opioid use, airway watch due to potential residual neuromuscular blockade, need for glycemic control given diabetes, hemodynamic instability due to anesthesia and fluid shifts, analgesia management with TAP block and potential opioid needs, and potential for increased acid reflux or aspiration risk post-op.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s004",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Monitor for post-operative nausea and vomiting, ensure airway protection due to residual blockade risk, maintain glycemic control, watch for hemodynamic instability, manage analgesia needs considering the TAP block and potential opioid requirements, and be alert for signs of increased acid reflux or aspiration.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s004",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient reports pain level of 3 or 4 out of 10, describing it as discomfort rather than sharp pain.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient denies nausea and reports only thirst, indicating no current gastrointestinal distress.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient reports no difficulty breathing and feels only tiredness from anesthesia, suggesting no immediate respiratory issues.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient has no recall of the operating room, indicating effective general anesthesia.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Recovery course is uneventful so far, with patient feeling 'okay' and ready to rest at home soon.",
+          "provenance": [
+            "audio:postop-interview#s002",
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "TAP block was performed intraoperatively for post-operative pain management, aligning with the patient's current discomfort level.",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "audio:postop-interview#s005"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Has there been any change to your medication list since it was last recorded? Specifically, have you stopped, started, or changed the dose of Metformin, Lisinopril, or Atorvastatin?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Do you have any known allergies to drugs, foods, latex, or any other substances not documented in your record?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c005"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm the resolution of your past pneumonia and whether you have experienced any residual cardiorespiratory issues or symptoms since then?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm whether your hypothyroidism has been fully resolved and whether you are currently on any thyroid-related medication or monitoring?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    }
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "18 gauge peripheral line placed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500",
+      "units": "ml",
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "bupivacaine 20",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "blood pressure drop to 80 over 50",
+      "units": "mmHg",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine 1",
+      "units": "milligram",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "surgery completed",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "neostigmine 2",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "sugammadex 50",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "PONV risk due to laparoscopic surgery and potential opioid use",
+    "Airway watch due to potential residual neuromuscular blockade",
+    "Glycemic control given diabetes managed with Metformin",
+    "Hemodynamic instability (hypotension) due to anesthesia and fluid shifts",
+    "Analgesia management with TAP block and potential opioid needs",
+    "Potential for increased acid reflux or aspiration risk post-op"
+  ],
+  "workflow": null
+}

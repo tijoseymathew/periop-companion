@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who'll be taking care of you during your surgery today. I'd like to go over a few things to make sure everything goes smoothly for you. Can you please tell me a bit about why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. I've been having a lot of pain in my tummy, especially after eating. The doctor said it's because of gallstones, so they're removing my gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. And how long have you been experiencing these symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "About six months now, on and off. It got worse last week, so they decided to take it out."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, let's go over your medical history. You have a history of type 2 diabetes, hypertension, and obesity. Are all these conditions well under control?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, lah. My sugar levels are okay with the metformin, blood pressure is stable with lisinopril, and I'm trying to eat better and walk more."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great to hear that. Now, let's talk about your medications. You're currently on metformin 500 mg twice daily, lisinopril 10 mg once daily, atorvastatin 20 mg once daily, and you've stopped ranitidine. Is that correct?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, that's right. I stopped the ranitidine as advised."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Now, regarding allergies, the records say 'no known allergies', but I understand there might be something more to add here. Can you confirm if you have any allergies to antibiotics, including cephalosporins, in addition to penicillin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, right. I forgot to mention that. I had a reaction to a cephalosporin antibiotic once — I think it was ceftriaxone — and I had nausea and vomiting. Not as bad as the penicillin rash, but still a reaction."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for letting me know. That's very important. We'll make sure to avoid cephalosporins during your care. Are you currently on any other medications or supplements, including traditional or herbal remedies?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just the ones I mentioned. No herbs or anything like that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, did you have any issues with it?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a minor procedure a few years back, a colonoscopy, and I was under sedation. I woke up fine, no problems."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. And how are you with your mobility and daily activities? Can you walk up a flight of stairs without difficulty?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I can still walk and do most things, though I do get a bit tired sometimes. But I can manage my daily activities."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Lastly, have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I've been fasting as instructed. Just a sip of water with my morning meds, but that was hours ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. We'll be using general anesthesia for your surgery, and we'll also be using intraoperative neuromonitoring as part of the procedure. If you have any questions or concerns, feel free to ask."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, doctor. I think that's all covered."
+    }
+  ]
+}

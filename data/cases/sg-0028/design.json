@@ -1,0 +1,87 @@
+{
+  "case_id": "sg-0028",
+  "persona_uuid": "39a743d6fff04f0982a38850c66ffe3c",
+  "surgery": "Appendectomy (Laparoscopic)",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 28.5 kg/m²)",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Paracetamol",
+      "dose": "500 mg",
+      "frequency": "As needed",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Atorvastatin 10 mg Daily, Omeprazole 20 mg Daily",
+    "truth": "Atorvastatin was increased to 20 mg Daily 3 months ago",
+    "gold_question": "Can you confirm the current dose of Atorvastatin you are taking?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Remote infection, fully resolved, no impact on current anesthesia risk"
+    },
+    {
+      "description": "Fractured left wrist at age 10, fully healed",
+      "why_irrelevant": "Old trauma, no residual issues or implications for surgery/anesthesia"
+    },
+    {
+      "description": "Completed a 6-week smoking cessation program 2 years ago",
+      "why_irrelevant": "Patient has been smoke-free for over a year, no current respiratory issues"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Atorvastatin",
+        "dose": "10 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Paracetamol",
+        "dose": "500 mg",
+        "frequency": "As needed",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Appendicitis (current presentation)",
+      "Obesity",
+      "Hyperlipidemia",
+      "Pneumonia (resolved 5 years ago)",
+      "Fractured left wrist (age 10, fully healed)",
+      "Smoking cessation program completed 2 years ago"
+    ],
+    "prior_anesthesia": null
+  }
+}

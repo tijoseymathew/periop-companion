@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Last Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go over some questions to ensure we provide the best and safest care for you. Is that okay with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, sure, doctor. I'm ready."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Let's start with your medical history. You're having a laparoscopic cholecystectomy today. Can you tell me a bit about your symptoms that led to this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes. I've been having pain on the right side of my belly, especially after eating. Had some scans, and they found gallstones. So, doctor said it's best to remove the gallbladder."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. Now, regarding your medications: I see you're on Metformin, Lisinopril, Atorvastatin, and you've stopped Ranitidine. Are there any other medications or supplements you're taking that aren't listed here?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. I stopped the Ranitidine as per the doctor's advice before the surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Now, about allergies. Your records say 'No known allergies,' but I like to double-check. Have you had any allergic reactions to foods, especially nuts, or any other substances not listed in your records?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, actually, yes. I forgot to mention it before. I'm allergic to nuts. Had a really bad reaction once, like my throat swelled up and everything. That's anaphylaxis, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Yes, that does sound like anaphylaxis. Thank you so much for telling me. We'll make sure to note that in your records and avoid any potential triggers during your care. Are you allergic to anything else, like latex or any medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just the nuts. And I already mentioned the penicillin allergy, right? Got a rash from that once."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Yes, we have that down. Moving on, have you had any previous surgeries or anesthesia? And if so, were there any issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had my appendix out many years ago. No problems with the anesthesia that I remember."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Now, about your current health: you have type 2 diabetes, hypertension, and obesity. How have these been managed lately? Any recent changes or complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "My blood sugar and blood pressure have been under control with the medications. I've been trying to lose some weight, but it's tough, lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I understand. Lastly, have you had anything to eat or drink since midnight? It's important to confirm your NPO status."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I haven't had anything since last night. Followed the instructions given."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Thank you for going through all this with me. I think we have everything we need. If you have any questions or concerns, feel free to ask."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, doctor. I'm in good hands, I hope."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You are indeed. We'll take excellent care of you. I'll be speaking with you again before the surgery to confirm a few things and answer any last-minute questions. Take care, and we'll see you in the operating room."
+    }
+  ]
+}

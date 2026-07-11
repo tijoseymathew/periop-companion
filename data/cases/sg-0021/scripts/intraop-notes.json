@@ -1,0 +1,209 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:05",
+      "text": "single-shot spinal anesthesia with bupivacaine fifteen milligrams"
+    },
+    {
+      "t": "08:10",
+      "text": "iv access: two large bore peripheral lines, one in right antecubital fossa, one in left hand"
+    },
+    {
+      "t": "08:15",
+      "text": "fluid bolus: five hundred milliliters of balanced crystalloid"
+    },
+    {
+      "t": "08:25",
+      "text": "notable event: mean arterial pressure dropped to fifty five mmHg, treated with phenylephrine ten micrograms"
+    },
+    {
+      "t": "08:40",
+      "text": "maintenance fluid: one hundred milliliters per hour of normal saline"
+    },
+    {
+      "t": "08:55",
+      "text": "notable event: transient bradycardia to forty five bpm, treated with atropine zero point six milligrams"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "fifteen",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "two large bore peripheral lines",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "one in right antecubital fossa",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "one in left hand",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "five hundred milliliters",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "balanced crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five mmHg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "ten micrograms",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "fluid",
+      "value": "one hundred milliliters per hour",
+      "units": "milliliters per hour",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:55",
+      "category": "event",
+      "value": "transient bradycardia to forty five bpm",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:55"
+      ]
+    },
+    {
+      "t": "08:55",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:55"
+      ]
+    },
+    {
+      "t": "08:55",
+      "category": "dose",
+      "value": "zero point six",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:55"
+      ]
+    }
+  ]
+}

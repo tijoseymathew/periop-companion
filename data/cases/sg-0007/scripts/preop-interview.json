@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning! I'm going to be your anesthesiologist for your laparoscopic appendectomy today. I'd like to go through a few questions to make sure everything goes smoothly for you. Can you start by telling me a bit about your medical history?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure, doctor. I have type 2 diabetes, which I manage with Metformin and lifestyle changes. I also take Lisinopril for blood pressure and was on low-dose Aspirin, but I stopped that a few days ago as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that. I see you have a history of obesity, with a BMI of 28.5. How have you been managing with that? Any breathing difficulties or other issues related to it?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, I do get a bit of shortness of breath when I walk fast or climb stairs, but it's not too bad. I don't need any medication for that, just trying to keep fit lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, regarding allergies, your records say 'no known allergies,' but I always like to double-check. Have you ever had any reactions to medications, especially antibiotics?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, actually, I think I had a reaction to a different antibiotic before. Not Penicillin, but something else... I think it was a Cephalosporin. I had nausea and vomiting after taking it once."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It's important we note that. So, to confirm, you had nausea and vomiting with a Cephalosporin, and a rash with Penicillin. Is that correct?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, exactly. The rash with Penicillin was a while back, and the Cephalosporin reaction was more recent, maybe a year ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Appreciate the details. Now, about your current medications: you're on Metformin once daily, Lisinopril once daily, and Aspirin was stopped. Are you taking any other medications or supplements?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just those three. I stopped the Aspirin as per the surgeon's advice."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. And have you had any previous surgeries or anesthesia before?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I'm a bit nervous, to be honest."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "It's completely normal to feel that way. We'll make sure you're comfortable and safe throughout. Now, just to confirm, when was your last meal or drink?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a light dinner around 8 PM last night and nothing since midnight. Just a sip of water this morning for my medications."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect, that fits within the NPO guidelines. Finally, how have you been functioning day-to-day? Any limitations in your activities?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I can do most things, but sometimes I get tired faster, especially if I walk too much. But I can still do my daily routine without too much trouble."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for all that information. We'll be using general anesthesia with Propofol, Fentanyl, and Vecuronium, and then maintain with Sevoflurane and spontaneous breathing. Given your allergies, we'll avoid Penicillin and Cephalosporins. Any questions for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you, doctor."
+    }
+  ]
+}

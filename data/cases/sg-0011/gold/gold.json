@@ -1,0 +1,158 @@
+{
+  "questions": [
+    "Can you confirm if you are still taking Aspirin, and if not, when did you stop and why?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#chunk_1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "40",
+      "units": "size",
+      "provenance": [
+        "voice_notes#chunk_2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": "two liters",
+      "provenance": [
+        "voice_notes#chunk_3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "2",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#chunk_4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "increased blood pressure",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_4"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "paracetamol",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1000",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#chunk_5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "pain management",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_5"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "1.5",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "blood pressure stabilized",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documented patient history includes hypertension, type 2 diabetes mellitus, benign prostatic hyperplasia (BPH), and osteoarthritis of the knees.",
+    "Medications listed with current status: Losartan 100 mg once daily (active), Metformin 500 mg twice daily (active), Tamsulosin 0.4 mg once daily (active), Diclofenac 50 mg as needed for pain (active), and Aspirin 75 mg once daily (stopped 2 years ago due to gastrointestinal discomfort).",
+    "ASA-PS classification of 3 with rationale: patient has controlled but stable comorbidities including hypertension, type 2 diabetes mellitus, and benign prostatic hyperplasia.",
+    "Airway assessment and anesthetic plan documented: General Anesthesia with Laryngeal Mask Airway (LMA) planned for elective inguinal hernia repair."
+  ],
+  "handoff_claims": [
+    "Key history communicated: patient has hypertension, type 2 diabetes mellitus, BPH, and osteoarthritis, with no known allergies.",
+    "Intraoperative course expectation: Uneventful elective inguinal hernia repair under general anesthesia with LMA, no major blood loss anticipated.",
+    "Anticipated issue: Potential for postoperative pain requiring Diclofenac as needed, and monitoring for hypotension or bradycardia due to tamsulosin and anesthetic effects."
+  ],
+  "distractors": [
+    "Pneumonia (resolved 5 years ago)",
+    "Fractured right wrist (healed, 15 years ago)",
+    "Discontinued Simvastatin (due to muscle pain) 3 years ago"
+  ]
+}

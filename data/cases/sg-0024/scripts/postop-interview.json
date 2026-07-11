@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good afternoon, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm feeling a bit tired, but okay. My tummy is sore, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. On a scale from 0 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4? It's manageable, but I can feel it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we can manage that with medication. Are you feeling any nausea or dizziness from the anesthesia?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little bit earlier, but it's better now. I didn't throw up or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How about your breathing? Any discomfort or tightness in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. My throat is a bit sore from the tube, but it's not bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected after intubation. Do you remember anything from the operation itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't remember anything. I was out completely."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That’s normal under general anesthesia. Given your diabetes and high blood pressure, we’ll keep a close eye on your vitals and sugar levels. Any other concerns for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you, doctor."
+    }
+  ]
+}

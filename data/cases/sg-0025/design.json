@@ -1,0 +1,128 @@
+{
+  "case_id": "sg-0025",
+  "persona_uuid": "dbffb937b433432698ffa7ca3c67ee5b",
+  "surgery": "Prostatectomy (Transurethral Resection of the Prostate, TURP)",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Spinal Anesthesia (Combined Spinal-Epidural Anesthesia)",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Benign Prostatic Hyperplasia (BPH)",
+    "Chronic Kidney Disease (Stage 3)"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Dutasteride",
+      "dose": "0.5mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin, Lisinopril, Amlodipine, Dutasteride, Aspirin, Omeprazole (active)",
+    "truth": "Omeprazole was discontinued 6 months ago due to resolution of gastritis; patient now uses Pantoprazole 30mg once daily as needed",
+    "gold_question": "Can you confirm if there have been any changes to your medication list since your last hospital visit, particularly regarding any acid-reducing medications?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 2 years ago",
+      "why_irrelevant": "Resolved and not impacting current perioperative risk"
+    },
+    {
+      "description": "Remote history of left femur fracture (30 years ago), fully healed",
+      "why_irrelevant": "Old injury with no ongoing implications for anesthesia or surgery"
+    },
+    {
+      "description": "Previous use of Warfarin for atrial fibrillation, discontinued 4 years ago",
+      "why_irrelevant": "Discontinued and not relevant to current anticoagulation status"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Dutasteride",
+        "dose": "0.5mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin"
+    ],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Benign Prostatic Hyperplasia (BPH)",
+      "Chronic Kidney Disease (Stage 3)",
+      "History of pneumonia resolved 2 years ago",
+      "Remote history of left femur fracture (30 years ago), fully healed",
+      "Previous use of Warfarin for atrial fibrillation, discontinued 4 years ago"
+    ],
+    "prior_anesthesia": null
+  }
+}

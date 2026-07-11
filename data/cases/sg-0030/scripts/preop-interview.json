@@ -1,0 +1,84 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through a few important questions to ensure your safety and comfort during the procedure. Is that okay with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, of course. I'm ready."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Let's start with your medical history. Can you briefly tell me about the reason for your surgery today?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've been having a lot of pain in my abdomen, especially after eating. The doctor found stones in my gallbladder, so they're removing it laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Now, regarding your medications, I see from your records that you're on Metformin, Gliclazide, Atorvastatin, and you've stopped Ranitidine. Can you please confirm if there have been any changes to your medication list since your last review?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Actually, yes. I stopped taking Gliclazide a few months ago because I was having too many low sugar episodes. My doctor switched me to Sitagliptin 100mg once daily instead."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for letting me know. It's important we have the most up-to-date information. Have you experienced any new allergic reactions to medications recently?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, yes. I had an allergic reaction to Ceftriaxone last year. I got hives all over my body, so I shouldn't have that antibiotic again."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. We'll make sure to note that in your chart. Your allergies were previously listed as only Penicillin with a rash. This is an important update."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I should have mentioned it earlier, but it slipped my mind."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "No worries at all. That's why we do this interview — to catch any updates. Now, regarding your diabetes, how well-controlled is it on your current medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It's been pretty good since I switched to Sitagliptin. My fasting sugar is usually around 120-140, and I don't have as many spikes as before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. And how about your weight and mobility? You're listed as having a BMI of 32. How do you feel about your overall fitness level?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I know I'm overweight, but I can still walk and do daily activities without too much trouble. I just get tired faster than before."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's helpful to know. Have you had any previous surgeries or anesthesia before?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I'm a bit nervous, but I trust the team."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely normal. We're here to make sure everything goes smoothly. Finally, have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I've been fasting as instructed. Just a sip of water with my morning meds, but that was hours ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Thank you so much for going through all that with me. I'll be using general anesthesia for your surgery, and we'll also be doing a Transversus Abdominis Plane block under ultrasound guidance to help with your pain after surgery. Any questions for me before we proceed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you for explaining everything so clearly."
+    }
+  ]
+}

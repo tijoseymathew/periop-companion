@@ -5,9 +5,16 @@ atomic cited claims (agents/doses/times, airway, lines, fluids, notable
 events). Each claim cites the event segments; dangling citations are dropped.
 """
 
-from periop.agents.context import provenance_resolves, render_sources
-from periop.agents.preop_note import WriterOutput
-from periop.schemas import ArtifactRecord, Case, Claim, Event, SourceType
+from typing import Any, Mapping
+
+from periop.agents.context import render_sources
+from periop.agents.event_extractor import (
+    EVENTS_KEY,
+    ExtractedEvent,
+    render_event_log,
+)
+from periop.agents.preop_note import WriterOutput, filtered_claims
+from periop.schemas import ArtifactRecord, Case, Event, SourceType
 
 INTRAOP_RECORD_ID = "record:intra-op"
 
@@ -32,35 +39,50 @@ segment id(s) the fact came from, exactly as bracketed).
 """
 
 
+def _events_from_state(state: Mapping[str, Any]) -> list[ExtractedEvent]:
+    return [ExtractedEvent.model_validate(e) for e in state.get(EVENTS_KEY) or []]
+
+
+def prompt(case: Case, state: Mapping[str, Any]) -> str:
+    return PROMPT.format(
+        events=render_event_log(_events_from_state(state)),
+        sources=render_sources(case, types=(SourceType.AUDIO,)),
+    )
+
+
+def apply(
+    case: Case, out: WriterOutput, state: Mapping[str, Any]
+) -> tuple[str, dict[str, Any]]:
+    from periop.adk.runtime import case_delta
+
+    # the verified event log is first-class case state, carried to downstream
+    # stages (issue anticipation) even if the prose record is sparse.
+    case.intraop_events = [
+        Event(t=e.t, category=e.category, value=e.value, units=e.units,
+              provenance=e.provenance)
+        for e in _events_from_state(state)
+    ]
+    artifact = ArtifactRecord(
+        artifact_id=INTRAOP_RECORD_ID, claims=filtered_claims(case, out)
+    )
+    case.add_artifact(artifact)
+    return f"{len(artifact.claims)} claims", case_delta(case)
+
+
 class IntraOpRecordWriter:
+    """Facade: run the ADK record-writer step standalone over one case."""
+
     def __init__(self, chat) -> None:
         self.chat = chat
 
     def write(self, case: Case, events) -> ArtifactRecord:
-        # the verified event log is first-class case state, carried to
-        # downstream stages (issue anticipation) even if the prose record is
-        # sparse.
-        case.intraop_events = [
-            Event(t=e.t, category=e.category, value=e.value, units=e.units,
-                  provenance=e.provenance)
-            for e in events
-        ]
-        event_log = "\n".join(
-            f"- {e.t} [{e.category}] {e.value} {e.units or ''} "
-            f"({', '.join(e.provenance)})"
-            for e in events
+        from periop.adk.runtime import run_agent, sync_case
+        from periop.adk.stages import intraop_record_step
+
+        result, _ = run_agent(
+            intraop_record_step(self.chat),
+            case,
+            extra_state={EVENTS_KEY: [e.model_dump(mode="json") for e in events]},
         )
-        prompt = PROMPT.format(
-            events=event_log,
-            sources=render_sources(case, types=(SourceType.AUDIO,)),
-        )
-        out = self.chat.complete_structured(prompt, schema=WriterOutput, system=SYSTEM)
-        claims: list[Claim] = []
-        for wc in out.claims:
-            if provenance_resolves(case, wc.provenance):
-                claims.append(
-                    Claim(claim_id=f"c-{len(claims) + 1:03d}", text=wc.text, provenance=wc.provenance)
-                )
-        artifact = ArtifactRecord(artifact_id=INTRAOP_RECORD_ID, claims=claims)
-        case.add_artifact(artifact)
-        return artifact
+        sync_case(case, result)
+        return case.get_artifact(INTRAOP_RECORD_ID)

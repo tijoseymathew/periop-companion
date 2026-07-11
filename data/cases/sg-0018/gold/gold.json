@@ -1,0 +1,151 @@
+{
+  "questions": [
+    "Have there been any changes to your medication list in the past year, particularly regarding your gastrointestinal symptoms?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "one",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "one hundred fifty",
+      "units": "ml per hour",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "morphine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "heart rate increased to one hundred ten",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "esmolol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "five",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient's medical history includes obesity (BMI 32), type 2 diabetes mellitus, and hypertension.",
+    "Current medications include metformin 500mg twice daily, lisinopril 20mg once daily, and atorvastatin 40mg once daily.",
+    "Patient has a true allergy to penicillin.",
+    "Ranitidine 150mg twice daily was discontinued 6 months ago due to resolution of GERD symptoms.",
+    "ASA-PS classification is 2, due to mild systemic disease (hypertension and type 2 diabetes mellitus).",
+    "Airway assessment and plan for general anesthesia with laryngeal mask airway (LMA) should be documented."
+  ],
+  "handoff_claims": [
+    "Patient has a history of type 2 diabetes mellitus, hypertension, and obesity (BMI 32).",
+    "Intraoperative course: Elective laparoscopic cholecystectomy under general anesthesia with LMA, without complications.",
+    "Anticipated postoperative issues include potential delayed recovery due to obesity and diabetes, and need for glycemic control monitoring."
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of left arm fracture (healed) from 10 years ago",
+    "Previous use of Omeprazole for GERD, discontinued 2 years ago"
+  ]
+}

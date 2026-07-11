@@ -64,6 +64,11 @@ stage-appropriate documentation where each statement is traceable:
 ```
 
 **Design rule:** ADK owns orchestration, NAT owns observability and evaluation.
+Stages are `SequentialAgent` compositions of `LlmAgent` generate→validate
+steps (`LoopAgent` retries with validation-error feedback), the independent
+post-op writers run under a `ParallelAgent`, claim verification fans out in
+bounded parallel batches, and the Case travels in ADK session state — see
+[docs/adk-orchestration.md](docs/adk-orchestration.md).
 See [docs/provenance-design.md](docs/provenance-design.md) for how provenance is
 made structural, and [docs/attribution.md](docs/attribution.md) for what was
 reused from the blueprint versus built.

@@ -1,0 +1,164 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "fentanyl ten micrograms intravenous"
+    },
+    {
+      "t": "08:05",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "rocuronium fifty milligrams intravenous"
+    },
+    {
+      "t": "08:15",
+      "text": "peripheral line in, left arm"
+    },
+    {
+      "t": "08:20",
+      "text": "lactated ringers one thousand milliliters given"
+    },
+    {
+      "t": "09:00",
+      "text": "mean arterial pressure dropped to fifty five, atropine one milligram intravenous given"
+    },
+    {
+      "t": "09:20",
+      "text": "surgical incision to closure time forty minutes"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "ten",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral line in, left arm",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one thousand",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "event",
+      "value": "surgical incision to closure time forty minutes",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:20"
+      ]
+    }
+  ]
+}

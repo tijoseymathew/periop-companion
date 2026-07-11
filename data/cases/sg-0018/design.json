@@ -1,0 +1,102 @@
+{
+  "case_id": "sg-0018",
+  "persona_uuid": "b1f96f31082343b397fad71612c59204",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "40mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Twice daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications: Metformin 500mg Twice daily, Lisinopril 20mg Once daily, Atorvastatin 40mg Once daily, Ranitidine 150mg Twice daily (active)",
+    "truth": "Medications: Metformin 500mg Twice daily, Lisinopril 20mg Once daily, Atorvastatin 40mg Once daily. Ranitidine discontinued 6 months ago due to resolution of GERD symptoms.",
+    "gold_question": "Have there been any changes to your medication list in the past year, particularly regarding your gastrointestinal symptoms?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved and not relevant to current surgical or anesthetic risk"
+    },
+    {
+      "description": "Remote history of left arm fracture (healed) from 10 years ago",
+      "why_irrelevant": "Healed fracture, not impacting current surgery or anesthesia"
+    },
+    {
+      "description": "Previous use of Omeprazole for GERD, discontinued 2 years ago",
+      "why_irrelevant": "Discontinued and not current, but may confuse medication history"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "40mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Ranitidine",
+        "dose": "150mg",
+        "frequency": "Twice daily",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin"
+    ],
+    "past_history": [
+      "Obesity",
+      "Type 2 Diabetes Mellitus",
+      "Hypertension",
+      "History of pneumonia (resolved)",
+      "Remote left arm fracture (healed)",
+      "Previous GERD treated with Omeprazole (discontinued)"
+    ],
+    "prior_anesthesia": null
+  }
+}

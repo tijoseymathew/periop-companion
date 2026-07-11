@@ -1,0 +1,80 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms./Mrs. [Last Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your upcoming total hip replacement surgery. I'd like to go through some questions to ensure your safety and comfort during the procedure. Is that okay with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I'm ready. I want to make sure everything goes smoothly for my hip surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Let's start with your current health. You're having this surgery for osteoarthritis, particularly in your left hip. Can you tell me a bit about your symptoms and how they've been affecting your daily life?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure, doctor. My left hip has been really painful, especially when I walk or stand for too long. It's been getting worse over the past couple of years. I can't even climb stairs properly anymore, so I'm hoping this surgery will help me move around better."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. Now, let's go over your medications. I see you're on Atorvastatin, Metformin, Losartan, Aspirin, and Ranitidine. Have there been any changes to your medication list in the last 12 months, particularly regarding medications for stomach acid or ulcer prevention?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, yes, doctor. I actually stopped taking Ranitidine about six months ago because I heard there were concerns about some contamination issues. My family doctor switched me to Omeprazole 20 mg daily instead for my stomach protection."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for letting me know. That's very important. Are you currently taking all your other medications as prescribed, including Aspirin, which we usually continue up to the day of surgery for patients like you with cardiovascular considerations?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I take all my medications regularly, including the Aspirin. I haven't missed any doses."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Now, regarding allergies, I see you have a rash to Penicillin. Have you had any other allergic reactions to medications, foods, or latex that I should be aware of?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. Just that one reaction to Penicillin when I was younger. No issues with anything else."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to know. Let's talk about your medical history. You have Hypertension, Type 2 Diabetes, and Stage 3 Chronic Kidney Disease. How well are these conditions controlled? Have you had any recent complications or hospitalizations?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "My blood pressure and sugar levels have been pretty stable, doctor. I check my blood sugar regularly and it's within the target range. My kidney function is monitored, and while it's not perfect, it hasn't gotten worse recently. No hospitalizations in the past year."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's reassuring. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a cataract surgery a few years back, and that went smoothly. No issues with the anesthesia at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Now, regarding your fasting status for surgery: when was the last time you had food and drink?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had dinner around 7 PM last night and a small sip of water with my morning medications at 6 AM this morning. Nothing else since then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect, thank you. Finally, I'd like to outline the anesthesia plan for you. We're planning for General Anesthesia with Spinal Anesthesia as a co-anesthesia. Additionally, we'll be performing an Ultrasound-Guided Peripheral Nerve Block for postoperative pain management. This should help keep you comfortable after surgery. Do you have any questions about this plan?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. It sounds like a good plan. I'm just looking forward to having my hip fixed and being able to walk without so much pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I'm glad to hear that. If any questions come up before surgery, don't hesitate to reach out. We're here to ensure the best possible outcome for you."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your surgery tomorrow. I'd like to go through some questions to make sure we're all set for your laparoscopic cholecystectomy under general anesthesia. Is that okay with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. I'm ready. I want to make sure everything goes smoothly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Let's start with your medical history. You've been diagnosed with hypertension, type 2 diabetes, and hyperlipidemia. Are you currently managing these conditions with your medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I take my medications regularly. I'm on Atorvastatin 20mg once daily for cholesterol, Metformin 500mg twice daily for diabetes, and Lisinopril 10mg once daily for blood pressure."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. I also see that you were on Aspirin 75mg once daily, but the records mention it's still active. Can you confirm the current antiplatelet medication and the reason for any changes from Aspirin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, right. I actually stopped taking Aspirin about six months ago because it was giving me stomach discomfort. My cardiologist then put me on Clopidogrel 75mg once daily instead for secondary prevention of heart issues."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I see. That's important to know. Thank you for clarifying. Now, regarding allergies, you mentioned a rash with Penicillin. Any other allergies we should be aware of?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just Penicillin. That's the only one."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had a hernia repair about 10 years ago. The anesthesia was fine then, no problems at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Now, about your current condition—how has the gallbladder issue been affecting you? Any episodes of pain, especially after eating?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I get this sharp pain on the right side, especially after fatty meals. It's been happening more often, so the doctor said it's best to remove it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. And finally, have you fasted as instructed? Nothing by mouth after midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I had dinner early last night and only sipped water this morning. Nothing else since then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Just one more thing—do you have any concerns or questions about the anesthesia or the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I think you've covered everything. I'm just ready to get this done and feel better."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great, Mr. Tan. We'll take good care of you. I'll see you in the holding area before the surgery. Any issues, just give us a call."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, doctor. I appreciate it."
+    }
+  ]
+}

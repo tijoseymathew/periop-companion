@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit sore, but okay lah. Still sleepy one."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected. On a scale of 0 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Eh, maybe 4 or 5. My tummy is aching a bit, and I feel some burning from the tubes."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Are you feeling nauseous or have you vomited at all since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No vomiting, but my stomach feels a bit uneasy. Like I might throw up if I move too much."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, we can give you something for that. How’s your breathing? Any shortness of breath or discomfort?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine, but my throat is a bit sore from the tube, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That can happen with the breathing tube. Do you remember anything from the operation itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don’t remember anything. I just fell asleep and then woke up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. We’ll keep an eye on your blood pressure and overall condition. You have a history of hypertension and high cholesterol, so we’ll monitor those as well."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Okay, thank you. I hope I can go home soon."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We’ll see how you progress. For now, rest and let the nurses know if you need anything."
+    }
+  ]
+}

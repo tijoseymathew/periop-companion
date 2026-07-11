@@ -1,0 +1,168 @@
+{
+  "questions": [
+    "Have you experienced any reactions to latex products in the past?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "intubated",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "20",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine concentration",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "0.5",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "tachycardia",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "labetalol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "5",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "2",
+      "units": "liters",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "1",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documented patient history includes obesity (BMI 28.5 kg/m²) and mild asthma (intermittent, exercise-triggered)",
+    "Medications listed with status: Montelukast 10 mg daily (current), Salbutamol Inhaler 2 puffs as needed PRN (current), Atorvastatin 20 mg daily (stopped)",
+    "Allergies documented: Penicillin (rash), Latex (confirmed during pre-op interview)",
+    "ASA-PS classification: ASA 2 with rationale including stable comorbidities (obesity, mild asthma)",
+    "Airway assessment and anesthetic plan documented, including general anesthesia with ultrasound-guided femoral nerve block"
+  ],
+  "handoff_claims": [
+    "Key history handed off: Latex allergy and Penicillin allergy with rash",
+    "Intra-op course expectation: Uncomplicated arthroscopic left knee meniscectomy under general anesthesia with regional block",
+    "Anticipated issues: Potential for respiratory complications due to mild asthma, need for post-op pain management and monitoring of nerve block effects"
+  ],
+  "distractors": [
+    "History of left ankle fracture (healed, 2018)",
+    "Pneumonia (resolved, 2020)",
+    "Discontinued metformin (2019) for prediabetes"
+  ]
+}

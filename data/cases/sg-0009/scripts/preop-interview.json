@@ -1,0 +1,72 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through a few questions to make sure we're all set for your laparoscopic cholecystectomy under general anesthesia with an LMA. Is that okay with you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, sure. I'm ready."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Let's start with your medical history. You've been diagnosed with Type 2 Diabetes, Hypertension, and Obesity. Can you tell me a bit about how these are managed, and if you've had any recent changes or issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "My diabetes is controlled with Metformin, 500mg twice daily. Blood sugar levels have been okay, not too high or low. My blood pressure is managed with Lisinopril, 10mg once daily. I also take Atorvastatin for cholesterol and Citalopram, but I stopped that one already as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for that. I see in your records that you have no known allergies. But just to be thorough, can you please confirm if you have any allergies, particularly to Latex, which might not be documented?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, actually, I think I am allergic to Latex. I remember once during a check-up, they used Latex gloves, and my hand got really itchy and red. I didn't think much of it then, but maybe it's important to mention now."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It's very important for us to know. We'll make sure to note that and take all necessary precautions. Are you currently on any other medications or supplements besides what you've mentioned?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, that's all. I stopped Citalopram as per the instructions, and I haven't taken anything else."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, this is my first time. I've never had surgery before, so I'm a bit nervous."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "It's completely normal to feel that way. We're here to make sure everything goes smoothly. Can you tell me about your NPO status? When was the last time you had food or drink?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had a light dinner last night around 7 PM and a sip of water this morning around 6 AM. Nothing else since then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect, that's within the guidelines. Lastly, how would you describe your overall functional status? Are you able to walk, climb stairs, or do other daily activities without much difficulty?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, I can walk and do my daily stuff, but sometimes I get a bit tired because of my weight. But I manage okay lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. It helps us understand your baseline. We'll make sure to support you throughout the process. Is there anything else you'd like to ask or share before we proceed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you for explaining everything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You're very welcome. We're here to ensure your safety and comfort. I'll be with you every step of the way. We'll get started soon, and I'll make sure you're fully prepared before going into the operating room."
+    }
+  ]
+}

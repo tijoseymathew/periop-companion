@@ -1,0 +1,122 @@
+{
+  "case_id": "sg-0022",
+  "persona_uuid": "bc4772be1a98408499aef35f96da7017",
+  "surgery": "Elective Left Hip Replacement",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Epidural Anesthesia for Post-Operative Pain Management",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Osteoarthritis (bilateral hips)",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Insulin Glargine",
+      "dose": "20 units",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Paracetamol",
+      "dose": "500 mg",
+      "frequency": "As needed",
+      "active": true
+    },
+    {
+      "name": "Clopidogrel",
+      "dose": "75 mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 500 mg daily, Atorvastatin 20 mg daily, Lisinopril 10 mg daily, Insulin Glargine 20 units daily, Paracetamol 500 mg as needed. No mention of Clopidogrel.",
+    "truth": "Patient stopped Clopidogrel 6 months ago due to completion of prescribed course for minor cardiac event; currently not on any antiplatelet therapy.",
+    "gold_question": "Can you confirm if you are currently taking any blood-thinning medications, including those you may have stopped in the past year?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia in 2010, fully resolved",
+      "why_irrelevant": "Resolved over a decade ago, no impact on current perioperative risk"
+    },
+    {
+      "description": "Fractured right wrist in 2005, treated with casting",
+      "why_irrelevant": "Remote, fully healed, no functional impairment"
+    },
+    {
+      "description": "Completed a course of Ciprofloxacin for UTI in 2018",
+      "why_irrelevant": "Single, short course for acute infection, no recurrence or related issues"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Insulin Glargine",
+        "dose": "20 units",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Paracetamol",
+        "dose": "500 mg",
+        "frequency": "As needed",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin"
+    ],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Osteoarthritis (bilateral hips)",
+      "Hyperlipidemia",
+      "Pneumonia (2010)",
+      "Fractured right wrist (2005)",
+      "Completed course of Ciprofloxacin for UTI (2018)"
+    ],
+    "prior_anesthesia": null
+  }
+}

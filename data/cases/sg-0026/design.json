@@ -1,0 +1,100 @@
+{
+  "case_id": "sg-0026",
+  "persona_uuid": "676f155b1cb64a1e9bfc301a24404dc6",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with endotracheal intubation",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, Aspirin 75mg once daily (active).",
+    "truth": "Aspirin was discontinued 6 months ago due to gastrointestinal side effects; patient is now on Clopidogrel 75mg once daily for secondary prevention of cardiovascular events.",
+    "gold_question": "Can you confirm the current antiplatelet medication and the reason for any changes from Aspirin?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved infection, not impacting current surgical or anesthetic risk"
+    },
+    {
+      "description": "Remote history of left femoral fracture (age 25), fully healed",
+      "why_irrelevant": "Old injury with no residual functional impairment or impact on current surgery"
+    },
+    {
+      "description": "Previous use of Omeprazole for GERD, discontinued 2 years ago",
+      "why_irrelevant": "Medication for resolved condition, not currently active"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "History of pneumonia resolved 5 years ago",
+      "Remote history of left femoral fracture (age 25), fully healed",
+      "Previous use of Omeprazole for GERD, discontinued 2 years ago"
+    ],
+    "prior_anesthesia": null
+  }
+}

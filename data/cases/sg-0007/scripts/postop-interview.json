@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm feeling a bit groggy, but okay. My tummy is sore, but I expected that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's understandable. Can you tell me your pain level on a scale from 1 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5. It's manageable, but I can feel it when I move."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we'll make sure to manage your pain. Are you feeling any nausea or dizziness?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little bit nauseous, but not too bad. I haven't eaten anything yet, though."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, we'll keep an eye on that. How's your breathing? Any discomfort or shortness of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine. I'm a bit stuffy from the tube, but I can breathe okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Do you remember anything from the surgery or when you were waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I remember going to sleep and then waking up here. No strange dreams or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Since you have a higher BMI and diabetes, we'll monitor you closely for any complications, but so far everything looks good."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thanks, doctor. I appreciate it. I'm just ready to go home and rest."
+    }
+  ]
+}

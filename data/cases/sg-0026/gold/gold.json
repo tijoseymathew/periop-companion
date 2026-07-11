@@ -1,0 +1,150 @@
+{
+  "questions": [
+    "Can you confirm the current antiplatelet medication and the reason for any changes from Aspirin?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty milligrams",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "two large bore peripheral lines",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one thousand milliliters",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "hypotension noted",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "forty five",
+      "units": "mmHg",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atenolol infusion",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "zero point two micrograms per kilogram per minute",
+      "units": "micrograms per kilogram per minute",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "intraoperative peak airway pressure",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "dose",
+      "value": "twenty eight",
+      "units": "cm H2O",
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documentation of comprehensive history including hypertension, type 2 diabetes mellitus, and hyperlipidemia",
+    "List of current medications with status: Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, and Clopidogrel 75mg once daily (with note that Aspirin was discontinued 6 months ago due to gastrointestinal side effects)",
+    "Allergy to Penicillin (rash) clearly documented",
+    "ASA-PS classification of 3 with rationale provided (e.g., due to controlled but significant comorbidities)",
+    "Airway assessment and anesthesia plan documented, including the decision for general anesthesia with endotracheal intubation"
+  ],
+  "handoff_claims": [
+    "Summary of key history elements relevant to PACU care: hypertension, diabetes, and the reason for Aspirin discontinuation and switch to Clopidogrel",
+    "Intraoperative course expectations: anticipated smooth emergence from general anesthesia with endotracheal intubation, and potential for postoperative pain management considerations",
+    "Anticipated issues in PACU: monitoring for signs of bleeding due to antiplatelet therapy (Clopidogrel), management of potential hypertension, and glucose level monitoring"
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of left femoral fracture (age 25), fully healed",
+    "Previous use of Omeprazole for GERD, discontinued 2 years ago"
+  ]
+}

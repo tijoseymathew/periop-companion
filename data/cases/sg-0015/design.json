@@ -1,0 +1,90 @@
+{
+  "case_id": "sg-0015",
+  "persona_uuid": "ee88f31cfe254508a7cf1c7d7b82f25e",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Balanced Technique, including Propofol, Remifentanil, and Sevoflurane",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150 mg",
+      "frequency": "Twice daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Allergic to Nuts (anaphylaxis)",
+    "gold_question": "Have you had any allergic reactions to foods, especially nuts, or any other substances not listed in your records?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia (resolved, 5 years ago)",
+      "why_irrelevant": "Remote infection, fully resolved, not impacting current perioperative risk"
+    },
+    {
+      "description": "Fractured wrist (healed, 10 years ago)",
+      "why_irrelevant": "Old injury, fully healed, no residual impairment"
+    },
+    {
+      "description": "Discontinued Metformin (due to side effects, 2 years ago, then restarted)",
+      "why_irrelevant": "Medication was temporarily discontinued but is currently active; change is already reflected in the updated medication list"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia (resolved, 5 years ago)",
+      "Fractured wrist (healed, 10 years ago)"
+    ],
+    "prior_anesthesia": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Eh, a bit sore, but I think it's manageable. My tummy is aching a little."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, can you tell me your pain level on a scale from 1 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5? It's not too bad, but I can feel it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, and are you feeling any nausea or dizziness right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, not really. I feel a bit thirsty, but no vomiting or anything."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How's your breathing? Any discomfort or tightness in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. My throat is a bit sore from the tube, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That can happen with the LMA. Do you remember anything from the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't remember anything. I just woke up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's normal under general anesthesia. Given your diabetes and high blood pressure, are you having any chest pain, shortness of breath, or unusual symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing like that. Just the usual tiredness and a bit of pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. We'll keep monitoring your vitals and manage your pain and blood sugar closely. Let the nurse know if you need anything."
+    }
+  ]
+}
