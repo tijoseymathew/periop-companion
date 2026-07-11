@@ -10,6 +10,7 @@
  * columns again (v2-ui feedback). The one forward action adapts to the
  * case's stage (sign off / acknowledge / continue).
  */
+import { useState } from "react";
 import type { BriefModel, ChainNode } from "../../lib/catchup";
 import type { PrimaryAction } from "../../lib/workflow";
 import type { SourceRequest } from "./SourceModal";
@@ -31,6 +32,8 @@ export function BriefScreen({
   canViewStage = () => false,
   onSelectStage,
   generating = null,
+  onEditClaim,
+  onAddClaim,
 }: {
   model: BriefModel;
   queue: QueueNav | null;
@@ -46,8 +49,22 @@ export function BriefScreen({
    * has no FlowChrome to fold the live status into, so it shows minimally
    * in the action panel instead of taking over the screen */
   generating?: string | null;
+  /** provider corrections before sign-off (v2-ui feedback): rewrite one of
+   * an artifact's claims / add a provider-asserted fact to it. Both land as
+   * human-attested edits on the case record; omitted = read-only. */
+  onEditClaim?: (artifactId: string, claimId: string, text: string) => void;
+  onAddClaim?: (artifactId: string, text: string) => void;
 }) {
   const first = model.title.split(" ")[0] || "this patient";
+
+  // where provider edits land while the shown stage is still live: the
+  // story so far edits the pre-op note; the issues column edits the
+  // anticipated-issues note. Sign-off freezes both (the stage moves on).
+  const canEdit = canReview && !model.viewingPast && !!onEditClaim && !!onAddClaim;
+  const storyTarget =
+    canEdit && model.stage === "preop" ? model.keyFactsSource : null;
+  const issuesTarget =
+    canEdit && model.stage === "intraop" ? model.issuesArtifact : null;
 
   // the one forward action — a bar under the columns (intra-op and post-op)
   const actionBar = (
@@ -162,11 +179,24 @@ export function BriefScreen({
                     {model.attentionItems.map((it, i) => (
                       <li key={i} className="flex gap-2.5 text-[14.5px] leading-relaxed text-ink-body">
                         <span className="flex-none text-gold">◆</span>
-                        <span>{it}</span>
+                        {storyTarget && it.claimId ? (
+                          <EditableLine
+                            text={it.text}
+                            onSave={(t) => onEditClaim!(storyTarget, it.claimId!, t)}
+                          />
+                        ) : (
+                          <span>{it.text}</span>
+                        )}
                       </li>
                     ))}
                   </ul>
                 </div>
+              )}
+              {storyTarget && (
+                <AddLine
+                  placeholder="Add to the story so far…"
+                  onAdd={(t) => onAddClaim!(storyTarget, t)}
+                />
               )}
             </div>
             <div className="flex-none border-t border-surface-overlay bg-surface-sunken px-6 pb-5 pt-4">
@@ -236,7 +266,12 @@ export function BriefScreen({
 
             <div className="min-w-0 flex-1 overflow-y-auto border-l border-surface-chromeline px-6 pb-10 pt-6">
               <Eyebrow>Anticipated issues</Eyebrow>
-              <IssuesList model={model} />
+              <IssuesList
+                model={model}
+                editTarget={issuesTarget}
+                onEditClaim={onEditClaim}
+                onAddClaim={onAddClaim}
+              />
             </div>
           </div>
           {actionBar}
@@ -339,27 +374,158 @@ function TheatreTimeline({
   );
 }
 
-function IssuesList({ model }: { model: BriefModel }) {
-  if (model.issues.length === 0) {
+function IssuesList({
+  model,
+  editTarget = null,
+  onEditClaim,
+  onAddClaim,
+}: {
+  model: BriefModel;
+  /** the anticipated-issues artifact id while its stage is live — enables
+   * provider edits and additions on the list */
+  editTarget?: string | null;
+  onEditClaim?: (artifactId: string, claimId: string, text: string) => void;
+  onAddClaim?: (artifactId: string, text: string) => void;
+}) {
+  return (
+    <>
+      {model.issues.length === 0 ? (
+        <SectionPlaceholder>
+          {model.reachedTheatre
+            ? "No post-op issues were anticipated for this case."
+            : "Anticipated post-op issues appear once the theatre record is generated."}
+        </SectionPlaceholder>
+      ) : (
+        <div className="mt-3 flex flex-col gap-2.5">
+          {model.issues.map((r, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
+            >
+              <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
+              {editTarget && r.claimId ? (
+                <EditableLine
+                  className="text-[15px] leading-relaxed text-ink-body"
+                  text={r.text}
+                  onSave={(t) => onEditClaim!(editTarget, r.claimId!, t)}
+                />
+              ) : (
+                <span className="text-[15px] leading-relaxed text-ink-body">{r.text}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+      {editTarget && (
+        <AddLine
+          placeholder="Add an anticipated issue…"
+          onAdd={(t) => onAddClaim!(editTarget, t)}
+        />
+      )}
+    </>
+  );
+}
+
+/** One provider-editable list line: text with a pencil that swaps to an
+ * inline textarea; saving hands the trimmed text back. */
+function EditableLine({
+  text,
+  onSave,
+  className = "",
+}: {
+  text: string;
+  onSave: (text: string) => void;
+  className?: string;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(text);
+
+  if (!editing) {
     return (
-      <SectionPlaceholder>
-        {model.reachedTheatre
-          ? "No post-op issues were anticipated for this case."
-          : "Anticipated post-op issues appear once the theatre record is generated."}
-      </SectionPlaceholder>
+      <span className="flex min-w-0 flex-1 items-start justify-between gap-2">
+        <span className={className}>{text}</span>
+        <button
+          type="button"
+          aria-label={`Edit: ${text}`}
+          onClick={() => {
+            setDraft(text);
+            setEditing(true);
+          }}
+          className="flex-none rounded px-1 text-[13px] text-ink-faint hover:text-ink-primary"
+        >
+          ✎
+        </button>
+      </span>
     );
   }
   return (
-    <div className="mt-3 flex flex-col gap-2.5">
-      {model.issues.map((r, i) => (
-        <div
-          key={i}
-          className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
+    <span className="min-w-0 flex-1">
+      <textarea
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        aria-label={`Edit: ${text}`}
+        className="min-h-[64px] w-full rounded-[9px] border border-surface-overlay bg-surface-base px-2.5 py-2 text-[13.5px] leading-relaxed text-ink-primary outline-none focus:border-brand"
+      />
+      <span className="mt-1.5 flex justify-end gap-2">
+        <button
+          type="button"
+          onClick={() => setEditing(false)}
+          className="rounded-[8px] px-2.5 py-1 text-[12.5px] font-semibold text-ink-dim"
         >
-          <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
-          <span className="text-[15px] leading-relaxed text-ink-body">{r}</span>
-        </div>
-      ))}
+          Cancel
+        </button>
+        <button
+          type="button"
+          disabled={!draft.trim()}
+          onClick={() => {
+            onSave(draft.trim());
+            setEditing(false);
+          }}
+          className="rounded-[8px] bg-brand px-3 py-1 text-[12.5px] font-semibold text-ink-onBrand disabled:opacity-40"
+        >
+          Save
+        </button>
+      </span>
+    </span>
+  );
+}
+
+/** The add-your-own input under a provider-editable list. */
+function AddLine({
+  placeholder,
+  onAdd,
+}: {
+  placeholder: string;
+  onAdd: (text: string) => void;
+}) {
+  const [draft, setDraft] = useState("");
+
+  function submit() {
+    const text = draft.trim();
+    if (!text) return;
+    onAdd(text);
+    setDraft("");
+  }
+
+  return (
+    <div className="mt-3 flex gap-2">
+      <input
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") submit();
+        }}
+        placeholder={placeholder}
+        className="min-w-0 flex-1 rounded-[9px] border border-surface-overlay bg-surface-base px-2.5 py-2 text-[13px] text-ink-primary outline-none placeholder:text-ink-ghost focus:border-brand"
+      />
+      <button
+        type="button"
+        disabled={!draft.trim()}
+        onClick={submit}
+        className="flex-none rounded-[9px] border border-surface-overlay bg-surface-base px-3 py-1.5 text-[12.5px] font-semibold text-ink-muted disabled:opacity-40"
+      >
+        + Add
+      </button>
     </div>
   );
 }

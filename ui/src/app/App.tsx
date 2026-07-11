@@ -20,9 +20,11 @@ import { RecordsScreen, type StagedDoc } from "../components/flow/RecordsScreen"
 import { ProviderPicker } from "../components/ProviderPicker";
 import {
   acknowledgeHandoff,
+  addArtifactClaim,
   addDocumentText,
   analyzeQuestions,
   createCase,
+  editArtifactClaim,
   fetchCase,
   fetchCases,
   fetchProviders,
@@ -294,6 +296,26 @@ export default function App() {
     void handleGenerate();
   }, [view, kase, me, running, busy]);
 
+  /** Provider corrections on the brief before sign-off (v2-ui feedback):
+   * both land as human-attested edits citing the provider's own source. */
+  async function handleEditClaim(artifactId: string, claimId: string, text: string) {
+    if (!kase || !me) return;
+    try {
+      setKase(await editArtifactClaim(kase.case_id, artifactId, claimId, text, me));
+    } catch (e) {
+      setError(readDetail(e));
+    }
+  }
+
+  async function handleAddClaim(artifactId: string, text: string) {
+    if (!kase || !me) return;
+    try {
+      setKase(await addArtifactClaim(kase.case_id, artifactId, text, me));
+    } catch (e) {
+      setError(readDetail(e));
+    }
+  }
+
   async function handleAcknowledge() {
     if (!kase || !me) return;
     try {
@@ -395,6 +417,8 @@ export default function App() {
         canViewStage={canViewStage}
         onSelectStage={handleSelectStage}
         generating={generatingLabel}
+        onEditClaim={(a, c, t) => void handleEditClaim(a, c, t)}
+        onAddClaim={(a, t) => void handleAddClaim(a, t)}
       />
     );
   }

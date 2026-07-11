@@ -339,6 +339,14 @@ export function providerChain(wf: Workflow | null, providers: Provider[]): Chain
   return chain;
 }
 
+/** One line of the story-so-far / anticipated-issues lists. `claimId` links
+ * it back to the claim it renders (for provider edits); null = derived from
+ * an open question, which was already reviewed at the interview gate. */
+export interface BriefListItem {
+  text: string;
+  claimId: string | null;
+}
+
 export interface BriefModel {
   caseId: string;
   title: string;
@@ -350,14 +358,17 @@ export interface BriefModel {
   reachedTheatre: boolean;
   assembledFrom: string;
   attentionCount: number;
-  attentionItems: string[];
+  attentionItems: BriefListItem[];
   keyFacts: KeyFact[];
   keyFactsSource: string | null;
   /** the post-op stage's second writer — shown beside the PACU handoff */
   postopEval: KeyFact[];
   events: TimelineEvent[];
   intraopPerformer: string | null;
-  issues: string[];
+  issues: BriefListItem[];
+  /** set when the anticipated-issues artifact exists — the target for
+   * provider edits/additions to the issues list */
+  issuesArtifact: string | null;
   needs: NeedItem[];
   pendingReview: number;
   chain: ChainNode[];
@@ -435,14 +446,14 @@ export function buildBrief(
     hasProv: e.provenance.length > 0,
   }));
 
-  // anticipated issues: the plain-string list, else the artifact's claim texts
-  let issues = kase.anticipated_issues;
-  if (issues.length === 0) {
-    issues =
-      kase.artifacts
-        .find((a) => a.artifact_id === "note:anticipated-issues")
-        ?.claims.map((c) => c.text) ?? [];
-  }
+  // anticipated issues: the artifact's claims carry ids (and provider
+  // edits), so they win over the generation-time plain-string mirror
+  const issuesArtifactRecord = kase.artifacts.find(
+    (a) => a.artifact_id === "note:anticipated-issues",
+  );
+  const issues: BriefListItem[] = issuesArtifactRecord
+    ? issuesArtifactRecord.claims.map((c) => ({ text: c.text, claimId: c.claim_id }))
+    : kase.anticipated_issues.map((text) => ({ text, claimId: null }));
 
   // needs you now = gap-analysis open questions, minus the ones the reviewer
   // dismissed (kept in the record, but not something that "needs you now")
@@ -459,11 +470,17 @@ export function buildBrief(
     .filter((n) => kase.open_questions[n.key].review !== "dismissed");
   const pendingReview = needs.filter((n) => !n.reviewed).length;
 
-  // attention summary (the design's hand-written "story so far", derived)
-  const attentionItems = [
-    ...keyFacts.filter((f) => f.flagged).map((f) => f.text),
-    ...needs.filter((n) => !n.reviewed).map((n) => n.title),
-  ].slice(0, 4);
+  // attention summary (the design's hand-written "story so far", derived):
+  // flagged facts, plus anything a provider personally attested — an edited
+  // flagged fact turns supported but must not vanish from the story, and an
+  // added note lands here too (both cite the provider's edit: source)
+  const humanAttested = (f: KeyFact) => f.refs.some((r) => r.startsWith("edit:"));
+  const attentionItems: BriefListItem[] = [
+    ...keyFacts
+      .filter((f) => f.flagged || humanAttested(f))
+      .map((f) => ({ text: f.text, claimId: f.claimId })),
+    ...needs.filter((n) => !n.reviewed).map((n) => ({ text: n.title, claimId: null })),
+  ];
 
   // provider chain
   const chain = providerChain(wf, providers);
@@ -521,6 +538,7 @@ export function buildBrief(
     events,
     intraopPerformer: providerName(providers, intraop?.signed_off_by ?? intraop?.performed_by ?? null),
     issues,
+    issuesArtifact: issuesArtifactRecord?.artifact_id ?? null,
     needs,
     pendingReview,
     chain,

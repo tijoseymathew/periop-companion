@@ -61,6 +61,86 @@ describe("buildBrief — adaptive patient view", () => {
     expect(brief.pendingReview).toBe(1);
   });
 
+  it("links story-so-far items to their claims and keeps human-attested ones", () => {
+    const kase = CaseSchema.parse({
+      case_id: "sg-story",
+      label: "Whitfield — hernia",
+      workflow: {
+        created_by: PROVIDERS[0],
+        created_at: "2026-04-02T06:00:00Z",
+        stages: {
+          preop: stage({ status: "awaiting_review", performed_by: "p-lim" }),
+          intraop: stage(),
+          postop: stage(),
+        },
+      },
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [
+            {
+              claim_id: "c-001",
+              text: "Records list aspirin as current.",
+              provenance: ["doc:gp-summary#c1"],
+              status: "conflicting",
+            },
+            // edited by a provider: supported now, but must stay in the story
+            {
+              claim_id: "c-002",
+              text: "Aspirin was stopped last Tuesday (confirmed with patient).",
+              provenance: ["doc:gp-summary#c1", "edit:p-lim#c1"],
+              status: "supported",
+            },
+            // machine-supported and untouched — key facts only, not the story
+            {
+              claim_id: "c-003",
+              text: "Diabetes is diet controlled.",
+              provenance: ["doc:gp-summary#c2"],
+              status: "supported",
+            },
+          ],
+        },
+      ],
+      open_questions: [{ question: "Confirm fasting time", reason: null, review: null }],
+    });
+    const brief = buildBrief(kase, PROVIDERS);
+
+    expect(brief.attentionItems).toEqual([
+      { text: "Records list aspirin as current.", claimId: "c-001" },
+      {
+        text: "Aspirin was stopped last Tuesday (confirmed with patient).",
+        claimId: "c-002",
+      },
+      { text: "Confirm fasting time", claimId: null },
+    ]);
+  });
+
+  it("reads anticipated issues from the artifact's claims, falling back to the strings", () => {
+    const withArtifact = CaseSchema.parse({
+      case_id: "sg-a",
+      anticipated_issues: ["Stale mirror text"],
+      artifacts: [
+        {
+          artifact_id: "note:anticipated-issues",
+          claims: [{ claim_id: "c-020", text: "Elevated PONV risk post-op." }],
+        },
+      ],
+    });
+    expect(buildBrief(withArtifact, PROVIDERS).issues).toEqual([
+      { text: "Elevated PONV risk post-op.", claimId: "c-020" },
+    ]);
+    expect(buildBrief(withArtifact, PROVIDERS).issuesArtifact).toBe("note:anticipated-issues");
+
+    const stringsOnly = CaseSchema.parse({
+      case_id: "sg-b",
+      anticipated_issues: ["Watch for PONV"],
+    });
+    expect(buildBrief(stringsOnly, PROVIDERS).issues).toEqual([
+      { text: "Watch for PONV", claimId: null },
+    ]);
+    expect(buildBrief(stringsOnly, PROVIDERS).issuesArtifact).toBeNull();
+  });
+
   it("resolves the primary action to sign-off for a generated, unsigned pre-op case", () => {
     const kase = CaseSchema.parse({
       case_id: "sg-preop",
