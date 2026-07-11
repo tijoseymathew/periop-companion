@@ -219,28 +219,20 @@ export default function App() {
     }
   }
 
-  async function handleUploadAudio(file: File) {
+  /** Save a stage recording. On pre-op, `reviewed` carries the question
+   * list as the provider left it (keeps, dismissals, additions) — there is
+   * no approve button, so the upload passes the question gate (v2 §4.1)
+   * right before the audio lands. */
+  async function handleUploadAudio(file: File, reviewed: OpenQuestion[] | null = null) {
     if (!kase || !me) return;
     const stage = headlineStage(kase.workflow) ?? "preop";
     setBusy(true);
     setNotice(null);
     try {
+      if (reviewed) {
+        setKase(await reviewQuestions(kase.case_id, reviewed, me));
+      }
       setKase(await uploadAudio(kase.case_id, AUDIO_KIND[stage], file, me, true));
-    } catch (e) {
-      setNotice(readDetail(e));
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  /** Approve/dismiss the pre-op clarification questions, passing the
-   * question gate so the note can generate (v2 §4.1). */
-  async function handleApproveQuestions(questions: OpenQuestion[]) {
-    if (!kase || !me) return;
-    setBusy(true);
-    setNotice(null);
-    try {
-      setKase(await reviewQuestions(kase.case_id, questions, me));
     } catch (e) {
       setNotice(readDetail(e));
     } finally {
@@ -489,7 +481,6 @@ export default function App() {
             notice={notice}
             canWrite={!!me}
             genFailed={genFailed}
-            onApproveQuestions={handleApproveQuestions}
             onUploadAudio={handleUploadAudio}
             onGenerate={() => void handleGenerate()}
             liveEvents={running ? genEvents : []}

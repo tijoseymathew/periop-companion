@@ -9,10 +9,11 @@
  * to a signed-off, acknowledged handoff:
  *
  *   worklist → new case intake → describe the case + stage the GP summary
- *   intake   → create intake (build ring) → review & approve the questions
- *   pre-op   → upload the interview → transcript lands → generate → sign off
+ *   intake   → create intake (build ring) → review the questions, add one
+ *   pre-op   → upload the interview (approves the review) → transcript lands
+ *              → the brief generates itself → sign off
  *   intra-op → voice memo → transcript lands → generate the record → sign off
- *   post-op  → post-op interview → generate the handoff → acknowledge
+ *   post-op  → post-op interview → the handoff generates itself → acknowledge
  *
  * It boots the real FastAPI server against the hermetic e2e fixture store
  * (e2e/setup-fixture.mjs — a couple of seed cases for worklist context) with
@@ -362,28 +363,29 @@ async function walk(page, inputs) {
   const caseId = await newCaseId(before);
   console.log(`     case_id = ${caseId}`);
 
-  // --- interview: review & approve the clarification questions -------------
-  const approve = page.getByRole("button", { name: /Approve questions & continue/ });
+  // --- interview: review the clarification questions (no approve gate) -----
+  const review = page.getByText("Review the questions");
   // gap analysis is a real reasoning-tier LLM call whether or not --live is set
-  await approve.waitFor({ timeout: LIVE ? GEN_TIMEOUT : 30000 }); // the flow flips when prep lands
-  await chapter("Reviewing & approving the clarifying questions");
+  await review.waitFor({ timeout: LIVE ? GEN_TIMEOUT : 30000 }); // the flow flips when prep lands
+  await chapter("Reviewing the clarifying questions");
   await beat(1400); // read the questions
-  await slowClick(page, approve, { after: 1100 });
+  await chapter("Adding a question of our own");
+  await slowType(page, 'input[placeholder="Add your own question…"]', "Any loose teeth or dental work?", {
+    after: 300,
+  });
+  await slowClick(page, page.getByRole("button", { name: "+ Add question" }), { after: 900 });
 
-  // --- interview: upload the recording, watch the transcript land ----------
+  // --- interview: upload the recording — the reviewed list travels with it -
   const audioInput = page.locator('input[type="file"][accept*="audio"]');
-  await chapter("Uploading the pre-op interview");
+  await chapter("Uploading the pre-op interview — the review is approved with it");
   await audioInput.setInputFiles(inputs.wav);
   await waitTranscribed(caseId, "preop");
   await chapter("The transcript lands moments after the upload");
   await page.getByText("✓ transcribed").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1400);
 
-  // --- pre-op: generate → review → sign off -------------------------------
-  await chapter("Generating the pre-op brief (live SSE)");
-  await slowClick(page, page.getByRole("button", { name: /Generate pre-op brief/ }), {
-    after: 500,
-  });
+  // --- pre-op: auto-generate → review → sign off ---------------------------
+  await chapter("The pre-op brief generates itself (live SSE)");
   await waitForBrief(page);
   await chapter("Reading the pre-op brief");
   await smoothScroll(page, 420);
@@ -421,8 +423,7 @@ async function walk(page, inputs) {
   await waitTranscribed(caseId, "postop");
   await page.getByTestId("transcript").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1200);
-  await chapter("Generating the handoff & post-op note (live SSE)");
-  await slowClick(page, page.getByRole("button", { name: /Generate handoff/ }), { after: 500 });
+  await chapter("The PACU handoff & post-op note generate themselves (live SSE)");
   await waitForBrief(page);
   await chapter("Reading the final handoff brief");
   await smoothScroll(page, 520);

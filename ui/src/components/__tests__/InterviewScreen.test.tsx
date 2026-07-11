@@ -46,7 +46,6 @@ function interviewCase(patch: (c: Case) => void = () => {}): Case {
 
 function renderScreen(kase: Case, extra: { genFailed?: boolean } = {}) {
   const props = {
-    onApproveQuestions: vi.fn(),
     onUploadAudio: vi.fn(),
     onGenerate: vi.fn(),
   };
@@ -56,22 +55,69 @@ function renderScreen(kase: Case, extra: { genFailed?: boolean } = {}) {
   return props;
 }
 
+function uploadRecording() {
+  const input = document.querySelector('input[type="file"][accept*="audio"]') as HTMLInputElement;
+  return userEvent.upload(input, new File(["riff"], "interview.wav", { type: "audio/wav" }));
+}
+
 describe("InterviewScreen", () => {
-  it("hides Generate while questions are still under review — Approve is the one green action", () => {
+  it("has no approve gate — the recording can be added while the review is open", () => {
     renderScreen(interviewCase());
     expect(screen.queryByRole("button", { name: /Generate pre-op brief/ })).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Approve questions/ })).toBeEnabled();
+    expect(screen.queryByRole("button", { name: /Approve questions/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Record" })).toBeEnabled();
   });
 
-  it("submits the reviewed list, honouring a dismiss", async () => {
+  it("submits the reviewed list with the upload, honouring a dismiss", async () => {
     const props = renderScreen(interviewCase());
     await userEvent.click(screen.getAllByRole("button", { name: "Dismiss" })[1]);
-    await userEvent.click(screen.getByRole("button", { name: /Approve questions/ }));
-    const submitted = props.onApproveQuestions.mock.calls[0][0];
-    expect(submitted.map((q: { review: string }) => q.review)).toEqual([
+    await uploadRecording();
+    const [, reviewed] = props.onUploadAudio.mock.calls[0];
+    expect(reviewed.map((q: { review: string }) => q.review)).toEqual([
       "approved",
       "dismissed",
     ]);
+  });
+
+  it("lets the provider add their own questions, carried on the upload", async () => {
+    const props = renderScreen(interviewCase());
+    await userEvent.type(
+      screen.getByPlaceholderText("Add your own question…"),
+      "Any loose teeth or dental work?{Enter}",
+    );
+    expect(screen.getByText("Any loose teeth or dental work?")).toBeInTheDocument();
+    await uploadRecording();
+    const [, reviewed] = props.onUploadAudio.mock.calls[0];
+    expect(reviewed).toHaveLength(3);
+    expect(reviewed[2]).toMatchObject({
+      question: "Any loose teeth or dental work?",
+      review: "approved",
+    });
+  });
+
+  it("drops a removed added question from the reviewed list", async () => {
+    const props = renderScreen(interviewCase());
+    await userEvent.type(
+      screen.getByPlaceholderText("Add your own question…"),
+      "Scratch this one{Enter}",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Remove Scratch this one" }));
+    expect(screen.queryByText("Scratch this one")).not.toBeInTheDocument();
+    await uploadRecording();
+    const [, reviewed] = props.onUploadAudio.mock.calls[0];
+    expect(reviewed).toHaveLength(2);
+  });
+
+  it("passes reviewed as null once the questions are already approved", async () => {
+    const props = renderScreen(
+      interviewCase((c) => {
+        c.workflow!.stages.preop.questions_approved_at = "2026-07-01T07:00:00Z";
+        c.open_questions[0].review = "approved";
+        c.open_questions[1].review = "approved";
+      }),
+    );
+    await uploadRecording();
+    expect(props.onUploadAudio.mock.calls[0][1]).toBeNull();
   });
 
   it("shows approved questions as the ask-list and hides dismissed ones", () => {

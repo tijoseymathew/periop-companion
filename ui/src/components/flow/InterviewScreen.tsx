@@ -1,8 +1,10 @@
 /**
  * Pre-op · Interview (PeriOp Workflow.dc.html "isInterview"). Left: the
- * clarifying questions raised from the records — reviewed here (keep /
- * dismiss / approve, the pre-op question gate, v2 §4.1), then kept on screen
- * as the list to ask. Right: the interview recording with its transcript,
+ * clarifying questions raised from the records — kept, dismissed, or added
+ * to here (the pre-op question gate, v2 §4.1), then kept on screen as the
+ * list to ask. There is no approve button: uploading the interview
+ * recording submits the reviewed list as it stands and passes the gate in
+ * the same breath. Right: the interview recording with its transcript,
  * which lands moments after upload — and the brief starts generating on its
  * own the moment it does (App's auto-generate). A manual generate appears
  * only on the recovery paths: a failed transcription (the run transcribes at
@@ -23,7 +25,6 @@ export function InterviewScreen({
   notice,
   canWrite,
   genFailed = false,
-  onApproveQuestions,
   onUploadAudio,
   onGenerate,
   liveEvents = [],
@@ -34,15 +35,15 @@ export function InterviewScreen({
   canWrite: boolean;
   /** the last stage run failed — offer the manual generate again */
   genFailed?: boolean;
-  onApproveQuestions: (questions: OpenQuestion[]) => void;
-  onUploadAudio: (file: File) => void;
+  /** `reviewed` is the question list to approve alongside the upload —
+   * null once the gate has already been passed */
+  onUploadAudio: (file: File, reviewed: OpenQuestion[] | null) => void;
   onGenerate: () => void;
   /** this session's own stage-run SSE events, while one is in flight */
   liveEvents?: RunEvent[];
 }) {
   const preop = kase.workflow?.stages.preop ?? null;
   const approved = !!preop?.questions_approved_at;
-  const questions = kase.open_questions;
   const source = audioSource(kase, "preop");
   const inputsRecorded = !!preop?.inputs_recorded_at;
   const transcribing = transcriptionBusy(kase, "preop");
@@ -57,8 +58,18 @@ export function InterviewScreen({
     (genFailed || jobState === "failed" || jobState === null);
   const canGenerate = canWrite && needsManualGenerate && !busy;
 
+  // the review state lives here so the recording panel can submit it:
+  // keep/dismiss decisions plus any questions the provider added
+  const [decisions, setDecisions] = useState<Record<number, "approved" | "dismissed">>({});
+  const [added, setAdded] = useState<OpenQuestion[]>([]);
+  const questions = [...kase.open_questions, ...added];
+  const decisionFor = (i: number) => decisions[i] ?? "approved";
+  const reviewed = approved
+    ? null
+    : questions.map((q, i) => ({ ...q, review: decisionFor(i) }));
+
   const askList = approved
-    ? questions.filter((q) => q.review !== "dismissed")
+    ? kase.open_questions.filter((q) => q.review !== "dismissed")
     : questions;
 
   return (
@@ -74,7 +85,7 @@ export function InterviewScreen({
           <p className="mt-2 max-w-[600px] text-[14.5px] leading-relaxed text-ink-secondary">
             {approved
               ? "Ask these during the interview, then add the audio — the brief starts generating the moment it's transcribed."
-              : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest."}
+              : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest, add your own — then upload the recording when you're ready."}
           </p>
         </div>
         {/* no standing "Generate" button — the brief generates itself once
@@ -115,7 +126,31 @@ export function InterviewScreen({
               )}
             </>
           ) : (
-            <QuestionReview questions={questions} busy={busy} onApprove={onApproveQuestions} />
+            <QuestionReview
+              questions={kase.open_questions}
+              added={added}
+              decisionFor={decisionFor}
+              onDecide={(i, d) => setDecisions((prev) => ({ ...prev, [i]: d }))}
+              onAdd={(text) =>
+                setAdded((prev) => [
+                  ...prev,
+                  { question: text, reason: null, provenance: [], review: null, edited_text: null },
+                ])
+              }
+              onRemoveAdded={(j) => {
+                setAdded((prev) => prev.filter((_, k) => k !== j));
+                setDecisions((prev) => {
+                  const keep: Record<number, "approved" | "dismissed"> = {};
+                  const gone = kase.open_questions.length + j;
+                  for (const [k, v] of Object.entries(prev)) {
+                    const idx = Number(k);
+                    if (idx === gone) continue;
+                    keep[idx > gone ? idx - 1 : idx] = v;
+                  }
+                  return keep;
+                });
+              }}
+            />
           )}
           <LiveResults events={liveEvents} />
         </div>
@@ -127,7 +162,7 @@ export function InterviewScreen({
           source={source}
           busy={busy}
           canWrite={canWrite}
-          onUploadAudio={onUploadAudio}
+          onUploadAudio={(file) => onUploadAudio(file, reviewed)}
         />
       </div>
     </StageContainer>
@@ -147,7 +182,6 @@ function QuestionCard({ q }: { q: OpenQuestion }) {
         >
           {meta.label}
         </span>
-        {q.reason && <span className="truncate text-[12px] text-ink-faint">↳ {q.reason}</span>}
       </div>
       <div className="text-[15.5px] leading-normal text-ink-primary">
         {q.edited_text ?? q.question}
@@ -157,76 +191,113 @@ function QuestionCard({ q }: { q: OpenQuestion }) {
 }
 
 /**
- * Keep/dismiss each question, submit the reviewed list once (the whole list
- * is the record of the review — dismissals are kept, never deleted).
- * Approving an empty list is valid: it records that nothing needed asking.
+ * Keep/dismiss each question and add your own; the reviewed list travels
+ * with the recording upload (the whole list is the record of the review —
+ * dismissals are kept, never deleted). An empty list is valid: uploading
+ * records that nothing needed asking.
  */
 function QuestionReview({
   questions,
-  busy,
-  onApprove,
+  added,
+  decisionFor,
+  onDecide,
+  onAdd,
+  onRemoveAdded,
 }: {
   questions: OpenQuestion[];
-  busy: boolean;
-  onApprove: (questions: OpenQuestion[]) => void;
+  added: OpenQuestion[];
+  decisionFor: (i: number) => "approved" | "dismissed";
+  onDecide: (i: number, d: "approved" | "dismissed") => void;
+  onAdd: (text: string) => void;
+  onRemoveAdded: (j: number) => void;
 }) {
-  const [decisions, setDecisions] = useState<Record<number, "approved" | "dismissed">>({});
-  const decisionFor = (i: number) => decisions[i] ?? "approved";
+  const [draft, setDraft] = useState("");
+  const all = [...questions, ...added];
+
+  function submitDraft() {
+    const text = draft.trim();
+    if (!text) return;
+    onAdd(text);
+    setDraft("");
+  }
 
   return (
     <div>
-      {questions.map((q, i) => {
+      {all.map((q, i) => {
+        const isAdded = i >= questions.length;
         const meta = categorizeReason(q.reason);
         const decision = decisionFor(i);
         return (
           <div key={i} className={`mb-2.5 rounded-[13px] border ${meta.borderClass} ${meta.bgClass} p-4`}>
-            <span
-              className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] ${meta.textClass}`}
-            >
-              <span className={`h-1.5 w-1.5 rounded-full ${meta.dotClass}`} />
-              {meta.label}
-            </span>
+            <div className="flex items-center justify-between gap-3">
+              <span
+                className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] ${meta.textClass}`}
+              >
+                <span className={`h-1.5 w-1.5 rounded-full ${meta.dotClass}`} />
+                {isAdded ? "Added by you" : meta.label}
+              </span>
+              <span className="flex flex-none items-center gap-2">
+                <span className="inline-flex rounded-[10px] border border-surface-overlay bg-surface-panel p-[3px]">
+                  {(["approved", "dismissed"] as const).map((opt) => {
+                    const on = decision === opt;
+                    return (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => onDecide(i, opt)}
+                        className={`rounded-md px-3.5 py-1.5 text-[12.5px] font-semibold ${
+                          on
+                            ? "bg-surface-base text-ink-primary shadow-[0_1px_2px_rgba(35,27,15,.08)]"
+                            : "text-ink-dim"
+                        }`}
+                      >
+                        {opt === "approved" ? "Keep" : "Dismiss"}
+                      </button>
+                    );
+                  })}
+                </span>
+                {isAdded && (
+                  <button
+                    type="button"
+                    aria-label={`Remove ${q.question}`}
+                    onClick={() => onRemoveAdded(i - questions.length)}
+                    className="flex h-[30px] w-[30px] flex-none items-center justify-center rounded-lg border border-surface-overlay bg-surface-base text-[13px] text-ink-faint"
+                  >
+                    ✕
+                  </button>
+                )}
+              </span>
+            </div>
             <div className="mt-2 text-[15.5px] font-semibold leading-snug text-ink-primary">
               {q.edited_text ?? q.question}
-            </div>
-            {q.reason && (
-              <div className="mt-1 text-[13px] leading-relaxed text-ink-secondary">{q.reason}</div>
-            )}
-            <div className="mt-3 inline-flex rounded-[10px] border border-surface-overlay bg-surface-panel p-[3px]">
-              {(["approved", "dismissed"] as const).map((opt) => {
-                const on = decision === opt;
-                return (
-                  <button
-                    key={opt}
-                    type="button"
-                    onClick={() => setDecisions((d) => ({ ...d, [i]: opt }))}
-                    className={`rounded-md px-3.5 py-1.5 text-[12.5px] font-semibold ${
-                      on
-                        ? "bg-surface-base text-ink-primary shadow-[0_1px_2px_rgba(35,27,15,.08)]"
-                        : "text-ink-dim"
-                    }`}
-                  >
-                    {opt === "approved" ? "Keep" : "Dismiss"}
-                  </button>
-                );
-              })}
             </div>
           </div>
         );
       })}
-      {questions.length === 0 && (
+      {all.length === 0 && (
         <p className="mb-2.5 rounded-[12px] border border-dashed border-[#cdbfa4] px-4 py-3.5 text-[13.5px] text-ink-dim">
-          The records didn't raise anything to clarify — approve to continue.
+          The records didn't raise anything to clarify — record the interview when you're ready.
         </p>
       )}
-      <button
-        type="button"
-        disabled={busy}
-        onClick={() => onApprove(questions.map((q, i) => ({ ...q, review: decisionFor(i) })))}
-        className="mt-1 flex min-h-[48px] items-center rounded-[11px] bg-brand px-5 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-50"
-      >
-        Approve questions &amp; continue &nbsp;→
-      </button>
+      <div className="mt-1 flex gap-2.5">
+        <input
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") submitDraft();
+          }}
+          placeholder="Add your own question…"
+          className="min-w-0 flex-1 rounded-[10px] border border-surface-overlay bg-surface-sunken px-3.5 py-2.5 text-[14px] text-ink-primary outline-none placeholder:text-ink-ghost"
+        />
+        <button
+          type="button"
+          disabled={!draft.trim()}
+          onClick={submitDraft}
+          className="flex min-h-[44px] flex-none items-center rounded-[10px] border border-surface-overlay bg-surface-base px-4 text-[13.5px] font-semibold text-ink-muted disabled:opacity-40"
+        >
+          + Add question
+        </button>
+      </div>
     </div>
   );
 }
