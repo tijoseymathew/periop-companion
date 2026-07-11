@@ -197,8 +197,16 @@ async def add_document(request: Request, case_id: str) -> Case:
     if not text.strip():
         raise HTTPException(status_code=422, detail="document has no text content")
 
+    # every typed slot is singular per case except "other" — that's the
+    # catchall for whatever doesn't fit the named slots, so a second (or
+    # third) one shouldn't 409; give it the next free suffix instead
     source_id = f"doc:{doc_type}"
-    if case.get_source(source_id) is not None:
+    if doc_type == "other":
+        n = 2
+        while case.get_source(source_id) is not None:
+            source_id = f"doc:{doc_type}-{n}"
+            n += 1
+    elif case.get_source(source_id) is not None:
         raise HTTPException(
             status_code=409,
             detail=f"{source_id} already provided (the source registry is append-only)",
@@ -208,7 +216,7 @@ async def add_document(request: Request, case_id: str) -> Case:
     # batch pipeline see the same inputs as the API path
     records_dir = request.app.state.case_dir / case_id / "records"
     records_dir.mkdir(parents=True, exist_ok=True)
-    (records_dir / f"{doc_type}.md").write_text(text)
+    (records_dir / f"{source_id.removeprefix('doc:')}.md").write_text(text)
 
     source = ingest_document(source_id, text)
     source.captured_at = _now()

@@ -311,6 +311,22 @@ class TestDocumentPaste:
         resp = paste(wclient, "tkr-mrs-w", "malware/../x", GP_TEXT)
         assert resp.status_code == 422
 
+    def test_other_slot_is_repeatable(self, wclient):
+        """"other" is the catchall tag — unlike the named slots it may be
+        used more than once per case (v2-ui feedback: the tag dropdown was
+        unusable once every named slot was claimed)."""
+        first = paste(wclient, "tkr-mrs-w", "other", "First extra document.")
+        assert first.status_code == 201
+        case = Case.model_validate(first.json())
+        assert case.get_source("doc:other") is not None
+
+        second = paste(wclient, "tkr-mrs-w", "other", "Second extra document.")
+        assert second.status_code == 201
+        case = Case.model_validate(second.json())
+        assert case.get_source("doc:other") is not None
+        assert case.get_source("doc:other-2") is not None
+        assert case.get_source("doc:other-2").chunks[0].text == "Second extra document."
+
     def test_blank_text_rejected(self, wclient):
         resp = paste(wclient, "tkr-mrs-w", "gp-summary", "   ")
         assert resp.status_code == 422

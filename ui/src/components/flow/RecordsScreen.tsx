@@ -28,6 +28,14 @@ const RECOMMENDED = [
   { key: "prior-anesthetic-record", label: "Prior anaesthetic record" },
 ];
 
+/** "other" is a repeatable catchall (the backend suffixes doc:other-2, -3…);
+ * every other tag is a singular slot, so normalize a suffixed source_id back
+ * to its tag for uniqueness bookkeeping. */
+function tagOf(sourceId: string): string {
+  const raw = sourceId.replace(/^doc:/, "");
+  return raw === "other" || /^other-\d+$/.test(raw) ? "other" : raw;
+}
+
 function guessTag(name: string, free: string[]): string {
   const n = name.toLowerCase();
   const guess = /gp|summary|letter/.test(n)
@@ -37,7 +45,7 @@ function guessTag(name: string, free: string[]): string {
       : /ana?esthetic|anesthesia/.test(n)
         ? "prior-anesthetic-record"
         : "other";
-  return free.includes(guess) ? guess : (free[0] ?? "other");
+  return free.includes(guess) ? guess : (free.includes("other") ? "other" : (free[0] ?? "other"));
 }
 
 export function RecordsScreen({
@@ -65,11 +73,25 @@ export function RecordsScreen({
   const fileInput = useRef<HTMLInputElement>(null);
 
   const existingDocs = (kase?.sources ?? []).filter((s) => s.type === "document");
-  const usedTags = new Set([
-    ...existingDocs.map((s) => s.source_id.replace(/^doc:/, "")),
-    ...staged.map((d) => d.tag),
-  ]);
-  const freeTags = DOC_TAGS.map((t) => t.value).filter((t) => !usedTags.has(t));
+  // "other" never blocks — every other tag is a singular slot
+  const usedTags = new Set(
+    [...existingDocs.map((s) => tagOf(s.source_id)), ...staged.map((d) => d.tag)].filter(
+      (t) => t !== "other",
+    ),
+  );
+  /** Every tag a staged row may be switched to: its own tag, "other" (always
+   * repeatable), or any tag not already claimed by a different row. */
+  function optionsFor(index: number): typeof DOC_TAGS {
+    const usedElsewhere = new Set(
+      [
+        ...existingDocs.map((s) => tagOf(s.source_id)),
+        ...staged.filter((_, j) => j !== index).map((d) => d.tag),
+      ].filter((t) => t !== "other"),
+    );
+    return DOC_TAGS.filter(
+      (t) => t.value === "other" || t.value === staged[index].tag || !usedElsewhere.has(t.value),
+    );
+  }
 
   const described = kase
     ? existingDocs.some((s) => s.source_id === "doc:op-plan")
@@ -87,8 +109,8 @@ export function RecordsScreen({
         onUploadDocument(guessTag(file.name, free), file);
       } else {
         setStaged((prev) => {
-          const used = new Set(prev.map((d) => d.tag));
-          const free = DOC_TAGS.map((t) => t.value).filter((t) => !used.has(t));
+          const used = new Set(prev.map((d) => d.tag).filter((t) => t !== "other"));
+          const free = DOC_TAGS.map((t) => t.value).filter((t) => t === "other" || !used.has(t));
           if (free.length === 0) return prev;
           return [...prev, { file, tag: guessTag(file.name, free) }];
         });
@@ -215,7 +237,7 @@ export function RecordsScreen({
                     }
                     className="flex-none rounded-full border border-surface-overlay bg-surface-sunken px-3 py-1.5 text-[12.5px] font-semibold text-ink-muted outline-none"
                   >
-                    {DOC_TAGS.filter((t) => t.value === d.tag || freeTags.includes(t.value)).map(
+                    {optionsFor(i).map(
                       (t) => (
                         <option key={t.value} value={t.value}>
                           {t.label}
