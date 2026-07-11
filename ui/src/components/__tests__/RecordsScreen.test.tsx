@@ -110,6 +110,35 @@ describe("RecordsScreen — new case", () => {
   });
 });
 
+describe("RecordsScreen — existing case", () => {
+  it("renders the saved documents as tabs with their content", async () => {
+    renderScreen({
+      kase: CaseSchema.parse({
+        case_id: "sg-t",
+        label: "Amara Okafor",
+        sources: [
+          {
+            source_id: "doc:op-plan",
+            type: "document",
+            chunks: [{ chunk_id: "c001", text: "Elective lap chole under GA." }],
+          },
+          {
+            source_id: "doc:gp-summary",
+            type: "document",
+            chunks: [{ chunk_id: "c001", text: "On amlodipine.", section: "Medications" }],
+          },
+        ],
+      }),
+    });
+    // the first document opens by default; the others are a tab away
+    expect(screen.getByText("Elective lap chole under GA.")).toBeInTheDocument();
+    expect(screen.queryByText("On amlodipine.")).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole("tab", { name: "GP summary" }));
+    expect(screen.getByText("On amlodipine.")).toBeInTheDocument();
+    expect(screen.getByText("Medications")).toBeInTheDocument();
+  });
+});
+
 describe("RecordsScreen — question prep failure", () => {
   it("shows a retry banner instead of blocking the records", async () => {
     const onRetry = vi.fn();
