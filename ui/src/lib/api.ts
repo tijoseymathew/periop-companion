@@ -4,14 +4,18 @@ import { z } from "zod";
 import {
   CaseSchema,
   CaseSummarySchema,
+  ChatMessageSchema,
   ClaimReviewsSchema,
   ProviderSchema,
+  StockLevelSchema,
   type Case,
   type CaseSummary,
+  type ChatMessage,
   type ClaimReviews,
   type ClaimReviewState,
   type OpenQuestion,
   type Provider,
+  type StockLevel,
 } from "./schema";
 
 export async function fetchCases(): Promise<CaseSummary[]> {
@@ -188,4 +192,16 @@ export async function acknowledgeHandoff(caseId: string, providerId: string): Pr
     { provider_id: providerId },
   );
   return CaseSchema.parse(data);
+}
+
+// ---- case chatbot + equipment store ------------------------------------------
+
+export async function fetchChatHistory(caseId: string): Promise<ChatMessage[]> {
+  const { data } = await axios.get(`/api/cases/${encodeURIComponent(caseId)}/chat`);
+  return z.array(ChatMessageSchema).parse(data);
+}
+
+export async function fetchEquipment(): Promise<StockLevel[]> {
+  const { data } = await axios.get("/api/equipment");
+  return z.array(StockLevelSchema).parse(data);
 }

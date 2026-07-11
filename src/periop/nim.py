@@ -207,6 +207,42 @@ class NimChat:
             record.response = response
         return strip_reasoning(response.choices[0].message.content or "")
 
+    def complete_chat(
+        self,
+        messages: list[dict[str, Any]],
+        tools: list[dict[str, Any]] | None = None,
+        **kwargs: Any,
+    ) -> Any:
+        """One turn over a full message list, optionally with OpenAI tools.
+
+        Returns the raw assistant message (``choices[0].message``) so callers
+        see ``tool_calls`` — the seam the ADK tool-calling adapter
+        (``periop.adk.model.ToolChatModel``) drives. ``system_prefix``
+        (``/no_think``) rides on the leading system message like
+        :meth:`complete`.
+        """
+        from periop.nat.telemetry import traced_llm_call
+
+        messages = [dict(m) for m in messages]
+        if self.system_prefix:
+            if messages and messages[0].get("role") == "system":
+                messages[0]["content"] = f"{self.system_prefix}\n{messages[0]['content']}"
+            else:
+                messages.insert(0, {"role": "system", "content": self.system_prefix})
+        if self.default_max_tokens is not None:
+            kwargs.setdefault("max_tokens", self.default_max_tokens)
+        if tools:
+            kwargs["tools"] = tools
+        with traced_llm_call(self.model, messages) as record:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=kwargs.pop("temperature", self.temperature),
+                **kwargs,
+            )
+            record.response = response
+        return response.choices[0].message
+
     def complete_structured(
         self, user: str, schema: type[M], system: str | None = None, **kwargs: Any
     ) -> M:

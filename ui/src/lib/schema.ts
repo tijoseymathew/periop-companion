@@ -191,3 +191,33 @@ export const CaseSummarySchema = z.object({
   workflow: WorkflowSchema.nullable().default(null),
 });
 export type CaseSummary = z.infer<typeof CaseSummarySchema>;
+
+// ---- case chatbot (mirror of periop.api.routers.chat) -----------------------
+
+export const ChatMessageSchema = z.object({
+  role: z.enum(["user", "assistant"]),
+  text: z.string(),
+});
+export type ChatMessage = z.infer<typeof ChatMessageSchema>;
+
+// ---- equipment store (mirror of periop.equipment) ---------------------------
+
+export const ReservationSchema = z.object({
+  item_id: z.string(),
+  case_id: z.string(),
+  qty: z.number(),
+  by: z.string(),
+  at: z.string(),
+});
+export type Reservation = z.infer<typeof ReservationSchema>;
+
+export const StockLevelSchema = z.object({
+  item_id: z.string(),
+  name: z.string(),
+  category: z.string(),
+  total: z.number(),
+  reserved: z.number(),
+  available: z.number(),
+  reservations: z.array(ReservationSchema).default([]),
+});
+export type StockLevel = z.infer<typeof StockLevelSchema>;

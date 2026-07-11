@@ -80,6 +80,64 @@ class FakeStreamingTranscriber:
         return [{"type": "final", "text": self.FINAL}]
 
 
+class StubChatRuntime:
+    """Deterministic case-chat double for hermetic e2e (``PERIOP_STUB_RUNNER=1``).
+
+    Same surface as ``periop.agents.case_chat.CaseChatRuntime`` (``history`` /
+    ``send``) with scripted behavior: a message that asks to reserve or order
+    reserves one 7.0 ETT through the *real* equipment ledger (so the stock
+    view shows the assignment), anything else answers with the case's first
+    matching passage via the real search helper.
+    """
+
+    STUB_ITEM = "ett-7.0"
+
+    def __init__(self, out_dir) -> None:
+        from periop.equipment import EquipmentStore
+
+        self.out_dir = out_dir
+        self.equipment = EquipmentStore(out_dir)
+        self._history: dict[str, list[dict]] = {}
+
+    def history(self, case_id: str) -> list[dict]:
+        return list(self._history.get(case_id, []))
+
+    def send(self, case_id: str, message: str, provider_id: str, emit) -> str:
+        from periop.agents.case_chat import search_case_texts
+        from periop.equipment import CATALOG_BY_ID
+        from periop.store import CaseStore
+
+        turns = self._history.setdefault(case_id, [])
+        turns.append({"role": "user", "text": message})
+
+        lowered = message.lower()
+        if "reserve" in lowered or "order" in lowered:
+            emit("tool_call", {"name": "reserve_equipment",
+                               "args": {"item_id": self.STUB_ITEM, "quantity": 1}})
+            try:
+                self.equipment.reserve(self.STUB_ITEM, case_id, 1, provider_id)
+                name = CATALOG_BY_ID[self.STUB_ITEM].name
+                reply = f"Reserved 1 × {name} for this case."
+                emit("tool_result", {"name": "reserve_equipment",
+                                     "result": {"reserved": {"item_id": self.STUB_ITEM}}})
+            except ValueError as exc:
+                reply = f"Could not reserve: {exc}"
+                emit("tool_result", {"name": "reserve_equipment", "result": {"error": str(exc)}})
+        else:
+            emit("tool_call", {"name": "search_case", "args": {"query": message}})
+            case = CaseStore(self.out_dir).load(case_id)
+            hits = search_case_texts(case, message)
+            emit("tool_result", {"name": "search_case", "result": {"results": hits}})
+            reply = (
+                f"The record says: “{hits[0]['text']}” ({hits[0]['ref']})"
+                if hits
+                else "I couldn't find anything about that in this case's record."
+            )
+
+        turns.append({"role": "assistant", "text": reply})
+        return reply
+
+
 class StubPipelineRunner:
     """Instant deterministic runner for hermetic e2e (``PERIOP_STUB_RUNNER=1``).
 

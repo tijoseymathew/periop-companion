@@ -11,6 +11,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BriefScreen } from "../components/catchup/BriefScreen";
 import { SourceModal, type SourceRequest } from "../components/catchup/SourceModal";
 import { Worklist } from "../components/catchup/Worklist";
+import { CaseChatPanel } from "../components/chat/CaseChatPanel";
+import { StockScreen } from "../components/equipment/StockScreen";
 import { CaptureScreen } from "../components/flow/CaptureScreen";
 import { FlowChrome } from "../components/flow/FlowChrome";
 import { InterviewScreen } from "../components/flow/InterviewScreen";
@@ -45,7 +47,7 @@ import { headlineStage, PRIMARY_ARTIFACT, type PrimaryAction } from "../lib/work
 
 const PROVIDER_STORAGE_KEY = "periop-provider";
 
-type View = "worklist" | "case";
+type View = "worklist" | "case" | "stock";
 
 interface UploadProgress {
   done: number;
@@ -520,10 +522,16 @@ export default function App() {
             providerControl={providerControl}
             onOpen={openCase}
             onNewCase={newCase}
+            onStock={() => setView("stock")}
           />
         )}
+        {view === "stock" && <StockScreen onBack={goWorklist} />}
         {view === "case" && renderCase()}
       </main>
+      {view === "case" && kase && (
+        // remount per case so one conversation never bleeds into another
+        <CaseChatPanel key={kase.case_id} caseId={kase.case_id} me={me} />
+      )}
       {source && kase && (
         <SourceModal kase={kase} request={source} onClose={() => setSource(null)} />
       )}

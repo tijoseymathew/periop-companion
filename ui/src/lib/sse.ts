@@ -69,24 +69,23 @@ function parseBlock(block: string): RunEvent | null {
   }
 }
 
-export async function streamStageRun(
-  caseId: string,
-  stage: string,
-  providerId: string,
+/** POST `payload` and forward the SSE stream; rejects with the server's
+ * message on a non-200 gate response or an `error` event. */
+export async function streamSse(
+  url: string,
+  payload: Record<string, unknown>,
   onEvent: (event: RunEvent) => void,
+  failureLabel = "request failed",
 ): Promise<void> {
-  const resp = await fetch(
-    `/api/cases/${encodeURIComponent(caseId)}/stages/${encodeURIComponent(stage)}/run`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ provider_id: providerId }),
-    },
-  );
+  const resp = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
   if (!resp.ok || !resp.body) {
     const body = await resp.json().catch(() => null);
     throw new Error(
-      (body as { detail?: string } | null)?.detail ?? `stage run failed (${resp.status})`,
+      (body as { detail?: string } | null)?.detail ?? `${failureLabel} (${resp.status})`,
     );
   }
 
@@ -105,9 +104,43 @@ export async function streamStageRun(
       if (!parsed) continue;
       onEvent(parsed);
       if (parsed.event === "error") {
-        failure = String(parsed.data.message ?? "stage run failed");
+        failure = String(parsed.data.message ?? failureLabel);
       }
     }
   }
   if (failure) throw new Error(failure);
+}
+
+export async function streamStageRun(
+  caseId: string,
+  stage: string,
+  providerId: string,
+  onEvent: (event: RunEvent) => void,
+): Promise<void> {
+  await streamSse(
+    `/api/cases/${encodeURIComponent(caseId)}/stages/${encodeURIComponent(stage)}/run`,
+    { provider_id: providerId },
+    onEvent,
+    "stage run failed",
+  );
+}
+
+/** One chatbot turn: tool_call / tool_result progress events, then `reply`. */
+export async function streamChatTurn(
+  caseId: string,
+  message: string,
+  providerId: string,
+  onEvent: (event: RunEvent) => void,
+): Promise<string> {
+  let reply = "";
+  await streamSse(
+    `/api/cases/${encodeURIComponent(caseId)}/chat`,
+    { message, provider_id: providerId },
+    (ev) => {
+      if (ev.event === "reply") reply = String(ev.data.text ?? "");
+      onEvent(ev);
+    },
+    "chat turn failed",
+  );
+  return reply;
 }

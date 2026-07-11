@@ -19,8 +19,10 @@ from fastapi import FastAPI
 from periop.api.routers import (
     audio,
     cases,
+    chat,
     claim_reviews,
     edits,
+    equipment,
     stage_runs,
     stream_asr,
     workflow,
@@ -64,6 +66,7 @@ def create_app(
     providers_path: Path | str | None = None,
     runner=None,
     streaming_asr_factory=None,
+    chat_runtime=None,
 ) -> FastAPI:
     # uvicorn/`python -m periop.api` bypass the CLI wrappers that call
     # load_dotenv themselves; resolve from the working directory like the
@@ -108,6 +111,22 @@ def create_app(
 
     app.state.streaming_asr_factory = streaming_asr_factory
 
+    from periop.equipment import EquipmentStore
+
+    app.state.equipment_store = EquipmentStore(out_dir)
+    if chat_runtime is None:
+        if stub:
+            from periop.api.runner import StubChatRuntime
+
+            chat_runtime = StubChatRuntime(out_dir)
+        else:
+            # lazy: the runtime builds its agent + fast-tier client on the
+            # first turn, so creating the app needs no network or keys
+            from periop.agents.case_chat import CaseChatRuntime
+
+            chat_runtime = CaseChatRuntime(out_dir)
+    app.state.chat_runtime = chat_runtime
+
     @app.get("/api/health")
     def health() -> dict[str, str]:
         return {"status": "ok"}
@@ -119,6 +138,8 @@ def create_app(
     app.include_router(claim_reviews.router, prefix="/api")
     app.include_router(edits.router, prefix="/api")
     app.include_router(stream_asr.router, prefix="/api")
+    app.include_router(chat.router, prefix="/api")
+    app.include_router(equipment.router, prefix="/api")
 
     ui_dist = Path(ui_dist) if ui_dist is not None else UI_DIST
     if ui_dist.is_dir():

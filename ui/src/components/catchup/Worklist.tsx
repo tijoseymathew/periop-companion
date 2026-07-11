@@ -12,11 +12,13 @@ export function Worklist({
   providerControl,
   onOpen,
   onNewCase,
+  onStock,
 }: {
   rows: WorklistRow[];
   providerControl?: ReactNode;
   onOpen: (caseId: string) => void;
   onNewCase: () => void;
+  onStock?: () => void;
 }) {
   // null = auto: follow the data (show "waiting for you" when it has cases,
   // otherwise fall back to all). An explicit click pins the choice.
@@ -56,13 +58,24 @@ export function Worklist({
             everything you need, and who's responsible at each step.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={onNewCase}
-          className="flex min-h-[48px] flex-none items-center rounded-[11px] bg-brand px-5 py-3 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] hover:bg-brand-soft"
-        >
-          + &nbsp;New case intake
-        </button>
+        <div className="flex flex-none items-center gap-3">
+          {onStock && (
+            <button
+              type="button"
+              onClick={onStock}
+              className="flex min-h-[48px] flex-none items-center rounded-[11px] border border-surface-overlay bg-surface-panel px-5 py-3 text-[14px] font-semibold text-ink-muted hover:text-ink-primary"
+            >
+              Equipment stock
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={onNewCase}
+            className="flex min-h-[48px] flex-none items-center rounded-[11px] bg-brand px-5 py-3 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] hover:bg-brand-soft"
+          >
+            + &nbsp;New case intake
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-none items-center gap-4 border-b border-surface-line px-10 py-4">
