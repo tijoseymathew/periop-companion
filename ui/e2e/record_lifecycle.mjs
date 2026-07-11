@@ -40,6 +40,15 @@
  *   # watch it happen (non-headless) and force a fresh production build:
  *   node ui/e2e/record_lifecycle.mjs --headed --build
  *
+ *   # live: real NIMs for note/record generation too (not just transcription
+ *   # and gap analysis, which always run for real regardless of the stub
+ *   # flag), and real recorded audio instead of the synthetic tone — much
+ *   # slower, needs reachable NIM endpoints (.env / configs/selfhosted.env):
+ *   node ui/e2e/record_lifecycle.mjs --live \
+ *     --preop-wav /path/to/preop-interview.wav \
+ *     --intraop-wav /path/to/intraop-notes.wav \
+ *     --postop-wav /path/to/postop-interview.wav
+ *
  * Run from the repo root (paths below resolve relative to ui/). Requires the
  * UI's dev deps (`cd ui && npm install`) — it reuses the Playwright chromium
  * the e2e suite already installs.
@@ -75,6 +84,18 @@ const PACE = Number(opt("pace", "1")); // 1.0 = default; higher = slower
 const HEADED = flag("headed");
 const FORCE_BUILD = flag("build");
 const PROVIDER = opt("provider", "p-lim"); // "Dr A. Lim (consultant)"
+
+// --live: real NIMs for stage generation, real recorded audio in place of the
+// synthetic tone. Transcription and gap analysis are never stubbed either
+// way — this only swaps the stage-run (note/record) generation.
+const LIVE = flag("live");
+const PREOP_WAV = opt("preop-wav", null);
+const INTRAOP_WAV = opt("intraop-wav", null);
+const POSTOP_WAV = opt("postop-wav", null);
+// live generation can take a long time (real reasoning-tier LLM calls);
+// hermetic stub artifacts land instantly.
+const GEN_TIMEOUT = LIVE ? 20 * 60 * 1000 : 30000;
+const XCRIBE_TIMEOUT = LIVE ? 5 * 60 * 1000 : 15000;
 
 // A beat between steps, scaled by --pace so the whole film can be slowed at once.
 const beat = (ms) => new Promise((r) => setTimeout(r, Math.round(ms * PACE)));
@@ -135,7 +156,9 @@ async function bootServer() {
   await run("node", [`${uiRoot}e2e/setup-fixture.mjs`], repoRoot); // seed cases
   const port = await freePort();
   BASE_URL = `http://127.0.0.1:${port}`;
-  console.log(`→ booting server on ${BASE_URL} (fixture: ${fixtureDir})`);
+  console.log(
+    `→ booting server on ${BASE_URL} (fixture: ${fixtureDir})${LIVE ? " [live: real NIM generation]" : ""}`,
+  );
   const server = spawn(
     "uv",
     ["run", "uvicorn", "periop.api.app:app", "--host", "127.0.0.1", "--port", String(port)],
@@ -146,14 +169,18 @@ async function bootServer() {
         ...process.env,
         PERIOP_CASE_DIR: fixtureDir,
         PERIOP_OUT_DIR: `${fixtureDir}/_out`,
-        PERIOP_STUB_RUNNER: "1", // hermetic: instant stub artifacts, no NIMs
+        // hermetic by default: instant stub artifacts, no NIMs. --live drops
+        // this so stage generation hits the real reasoning/fast NIMs from
+        // .env / the parent shell env (transcription and gap analysis run
+        // for real either way).
+        ...(LIVE ? {} : { PERIOP_STUB_RUNNER: "1" }),
         LANGFUSE_PUBLIC_KEY: "",
         LANGFUSE_SECRET_KEY: "",
         LANGFUSE_BASE_URL: "",
       },
     },
   );
-  await waitHealthy(BASE_URL);
+  await waitHealthy(BASE_URL, LIVE ? 120000 : 60000);
   return server;
 }
 
@@ -182,7 +209,9 @@ function makeWav(seconds) {
 }
 
 /** Write the throwaway inputs the intake screen uploads (docs + interviews).
- * The operative plan is typed into the case-description field, not uploaded. */
+ * The operative plan is typed into the case-description field, not uploaded.
+ * --live substitutes real recorded audio (per stage) for the synthetic tone;
+ * the three stages otherwise share one short clip. */
 function writeInputs() {
   const dir = mkdtempSync(join(tmpdir(), "periop-record-"));
   writeFileSync(
@@ -190,9 +219,19 @@ function writeInputs() {
     "# GP summary\n\nAmara Okafor, 62. Hypertension on amlodipine.\n\n" +
       "Aspirin 100 mg daily, started after a TIA in 2019.\n\nNo known drug allergies.\n",
   );
+  if (LIVE) {
+    for (const [flagName, path] of [
+      ["--preop-wav", PREOP_WAV],
+      ["--intraop-wav", INTRAOP_WAV],
+      ["--postop-wav", POSTOP_WAV],
+    ]) {
+      if (!path || !existsSync(path)) die(`--live needs ${flagName} pointing at a real .wav`);
+    }
+    return { dir, gp: join(dir, "gp-summary.md"), wav: PREOP_WAV, intraopWav: INTRAOP_WAV, postopWav: POSTOP_WAV };
+  }
   const wav = join(dir, "interview.wav");
   writeFileSync(wav, makeWav(4));
-  return { dir, gp: join(dir, "gp-summary.md"), wav };
+  return { dir, gp: join(dir, "gp-summary.md"), wav, intraopWav: wav, postopWav: wav };
 }
 
 // --------------------------------------------------------------------------- #
@@ -207,7 +246,7 @@ async function apiGet(path) {
 
 /** Poll until a stage's uploaded audio has been transcribed server-side —
  * the UI shows the transcript moments later via its own poll. */
-async function waitTranscribed(caseId, stage, timeoutMs = 15000) {
+async function waitTranscribed(caseId, stage, timeoutMs = XCRIBE_TIMEOUT) {
   const deadline = Date.now() + timeoutMs;
   let last = null;
   while (Date.now() < deadline) {
@@ -278,7 +317,7 @@ async function smoothScroll(page, delta, { steps = 30, stepMs = 55 } = {}) {
 
 /** Wait for the generating screen's SSE checklist to hand off to the brief. */
 async function waitForBrief(page) {
-  await page.getByText("The story so far").waitFor({ timeout: 30000 });
+  await page.getByText("The story so far").waitFor({ timeout: GEN_TIMEOUT });
   await beat(1000);
 }
 
@@ -325,7 +364,8 @@ async function walk(page, inputs) {
 
   // --- interview: review & approve the clarification questions -------------
   const approve = page.getByRole("button", { name: /Approve questions & continue/ });
-  await approve.waitFor({ timeout: 30000 }); // the flow flips when prep lands
+  // gap analysis is a real reasoning-tier LLM call whether or not --live is set
+  await approve.waitFor({ timeout: LIVE ? GEN_TIMEOUT : 30000 }); // the flow flips when prep lands
   await chapter("Reviewing & approving the clarifying questions");
   await beat(1400); // read the questions
   await slowClick(page, approve, { after: 1100 });
@@ -336,7 +376,7 @@ async function walk(page, inputs) {
   await audioInput.setInputFiles(inputs.wav);
   await waitTranscribed(caseId, "preop");
   await chapter("The transcript lands moments after the upload");
-  await page.getByText("✓ transcribed").waitFor({ timeout: 15000 });
+  await page.getByText("✓ transcribed").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1400);
 
   // --- pre-op: generate → review → sign off -------------------------------
@@ -366,7 +406,7 @@ async function walk(page, inputs) {
     generateButton: /Generate intra-op record/,
     generate: "Generating the theatre record (live SSE)",
     signOff: "Sign off intra-op",
-    wav: inputs.wav,
+    wav: inputs.intraopWav,
   });
 
   // --- post-op: interview → generate → acknowledge ------------------------
@@ -377,9 +417,9 @@ async function walk(page, inputs) {
   await slowClick(page, page.getByRole("button", { name: /Record post-op interview/ }), {
     after: 800,
   });
-  await audioInput.setInputFiles(inputs.wav);
+  await audioInput.setInputFiles(inputs.postopWav);
   await waitTranscribed(caseId, "postop");
-  await page.getByTestId("transcript").waitFor({ timeout: 15000 });
+  await page.getByTestId("transcript").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1200);
   await chapter("Generating the handoff & post-op note (live SSE)");
   await slowClick(page, page.getByRole("button", { name: /Generate handoff/ }), { after: 500 });
@@ -412,7 +452,7 @@ async function runCaptureStage(page, c) {
   const audioInput = page.locator('input[type="file"][accept*="audio"]');
   await audioInput.setInputFiles(c.wav);
   await waitTranscribed(c.caseId, c.stage);
-  await page.getByTestId("transcript").waitFor({ timeout: 15000 });
+  await page.getByTestId("transcript").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1200);
   await chapter(c.generate);
   await slowClick(page, page.getByRole("button", { name: c.generateButton }), { after: 500 });
