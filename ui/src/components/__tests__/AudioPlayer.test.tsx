@@ -83,6 +83,18 @@ describe("AudioPlayer", () => {
     expect(audio!.play).toHaveBeenCalled();
   });
 
+  it("defers seekToTime until metadata loads when the wav is still loading", () => {
+    // reproduces the provenance-jump bug: switching SourceModal to a new
+    // audio source seeks before the fresh src has loaded metadata
+    mockReadyState(0); // HAVE_NOTHING
+    const { ref, audio } = setup();
+    act(() => ref.current!.seekToTime(96.4));
+    expect(audio!.currentTime).toBe(0); // not applied yet
+    mockReadyState(1);
+    fireEvent(audio!, new Event("loadedmetadata"));
+    expect(audio!.currentTime).toBe(96.4);
+  });
+
   it("shows a clip-region marker while a clip is active and clears it after", () => {
     Object.defineProperty(window.HTMLMediaElement.prototype, "duration", {
       configurable: true,

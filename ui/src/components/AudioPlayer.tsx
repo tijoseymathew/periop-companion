@@ -44,6 +44,7 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
 ) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const pendingClipRef = useRef<{ t0: number; t1: number } | null>(null);
+  const pendingSeekRef = useRef<number | null>(null);
   const [clip, setClip] = useState<{ t0: number; t1: number } | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(NaN);
@@ -62,8 +63,16 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
       const el = audioRef.current;
       if (!el) return;
       setClip(null);
-      el.currentTime = seconds;
-      setCurrentTime(seconds);
+      // a fresh `src` hasn't loaded metadata yet (readyState 0) — setting
+      // currentTime now is silently reset to 0 once it does, so the
+      // provenance jump would land back at the start; queue it instead,
+      // same as playClip's pendingClipRef below
+      if (el.readyState >= 1) {
+        el.currentTime = seconds;
+        setCurrentTime(seconds);
+      } else {
+        pendingSeekRef.current = seconds;
+      }
     },
     playClip(t0: number, t1: number) {
       const el = audioRef.current;
@@ -88,10 +97,18 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
     const el = audioRef.current;
     if (!el) return;
     setDuration(el.duration);
-    const pending = pendingClipRef.current;
-    if (pending) {
+    const pendingClip = pendingClipRef.current;
+    if (pendingClip) {
       pendingClipRef.current = null;
-      startClip(el, pending.t0, pending.t1);
+      pendingSeekRef.current = null;
+      startClip(el, pendingClip.t0, pendingClip.t1);
+      return;
+    }
+    const pendingSeek = pendingSeekRef.current;
+    if (pendingSeek !== null) {
+      pendingSeekRef.current = null;
+      el.currentTime = pendingSeek;
+      setCurrentTime(pendingSeek);
     }
   }
 
