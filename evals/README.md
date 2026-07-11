@@ -7,6 +7,71 @@ thinking-off run of the **ADK-native pipeline over all 30 cases with the
 2026-07-11 prompt experiments applied** (next section), scored with the fixed
 question judge (finding 4).
 
+## 2026-07-12 — is the intra-op extraction verify pass necessary? (n=30 A/B)
+
+The intra-op EventExtractor runs two tiers (`event_extractor.py`, spec §8): a
+Nano-9B first pass proposes events, then a Super-49B verify pass corrects them.
+The `verify=True` arm is what every `report.json` above measures; the cost of
+that second pass is **~60 s of Super-49B/case** (`specs/v2-speed.md` §1 trace:
+1,649→469 tok @ 7.8 tok/s) — one of the seven Super calls that are 96.6% of a
+case's latency. The `extraction_ab` harness (`periop/evals/ab.py`) was built to
+measure whether it earns that cost but had only ever run as a **mock unit
+test** (`tests/test_ab.py`), so no real number existed. `scripts/measure_extraction_ab.py`
+now runs both arms live over all 30 cases and dumps each arm's event list for
+audit (full trace in `traces/extraction-ab-n30.json`, thinking-off default,
+live Super-49B/Nano-9B, n=1/case).
+
+| extraction_f1 (n=30) | nano-only | nano→super | Δ |
+|---|---|---|---|
+| **f1** | 0.481 | **0.509** | **+0.028** |
+| precision | **0.752** | 0.742 | −0.010 |
+| recall | 0.358 | **0.393** | +0.035 |
+
+Per case: **13 improve, 13 tie, 4 regress.** The whole net gain is recall; the
+verify pass slightly *lowers* precision. +0.028 sits inside this metric's
+documented run-to-run noise band (the /no_think A/B below saw extraction_f1
+stable at 0.55 while other n=1 metrics swung ±0.3–0.5), so the mean alone is
+not decisive. The event-level audit is, and it says the delta is **not a
+reasoning-quality signal** — it is the known agent/dose granularity mismatch
+(finding 2) resolving differently per case:
+
+- **Gains are un-merging.** Where Super wins it splits a drug event Nano
+  *collapsed* into the gold's one-row-per-drug shape and recovers 1–3 missed
+  events (the +0.035 recall). sg-0013 (Δ+0.202): Nano emitted one
+  `neostigmine 2, sugammadex 50` event; Super split it into two proper `agent`
+  rows and re-added atropine + the lactated-ringers fluid. Same mechanism on
+  sg-0012/0019/0020. This is the second pass's one durable benefit.
+- **Regressions are re-categorization against the gold convention**, not
+  corrupted facts. sg-0003 (Δ−0.037): Super moved `propofol/bupivacaine/
+  fentanyl/ephedrine/labetalol` from `agent` (gold's category) to `dose`,
+  losing every agent-row match. sg-0004 (Δ−0.200): Super folded clean
+  `[agent] phenylephrine 150 mcg` rows into `[event]` narratives ("MAP dropped
+  to 50, treated with 150 mcg phenylephrine") — a real structured-quality loss,
+  and evidence the verify pass is **not monotonically safe**.
+- **sg-0023 (Δ−0.133) is pure metric noise.** Super's "changed" events are
+  byte-for-byte the same facts minus a `mmHg` token and `four`→`4`; the F1
+  value-token matcher just flipped on formatting. A reminder that per-case
+  deltas at these denominators are partly matcher artifacts.
+
+**Verdict: the two passes are not justified by this measurement.** The verify
+pass buys a noise-band F1 delta (+0.028, all recall) at the price of the single
+most expensive call tier, and it demonstrably corrupts categories on some cases
+(sg-0004). Its one real benefit — un-merging Nano's collapsed multi-drug events
+— is a *first-pass prompt fix* ("emit one event per drug/dose"), not something
+worth a 60 s reasoning call. Recommended: **default `verify=False`** and, if the
+un-merging recall proves to matter, recover it in the Nano prompt; keep the
+second pass only if the narrativizing regression is fixed in the verify prompt
+*and* a larger-n run shows the recall gain clearing noise. The `verify` flag and
+`extraction_ab` harness stay either way, so this is a low-regret flip.
+
+Caveat carried from the extractor's own limits: extraction_f1 is scored against
+a gold that splits `agent`/`dose` into separate rows while both models emit
+free-form granularity, so this metric partly measures convention-fit, not
+clinical correctness. No dose *value* error (the safety-relevant failure) was
+observed being introduced or fixed by either arm in the audit — the movement is
+all categorization and merging. A dose-value-specific check would be the right
+gate before removing the pass in a real deployment.
+
 ## 2026-07-11 — two prompt experiments, gated on the 30-case baseline
 
 The 30-case baseline (following section) pointed at two prompt-level fixes.
