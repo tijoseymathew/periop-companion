@@ -57,9 +57,10 @@ function renderScreen(kase: Case) {
 }
 
 describe("InterviewScreen", () => {
-  it("keeps Generate disabled until questions are approved and audio landed", () => {
+  it("hides Generate while questions are still under review — Approve is the one green action", () => {
     renderScreen(interviewCase());
-    expect(screen.getByRole("button", { name: /Generate pre-op brief/ })).toBeDisabled();
+    expect(screen.queryByRole("button", { name: /Generate pre-op brief/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Approve questions/ })).toBeEnabled();
   });
 
   it("submits the reviewed list, honouring a dismiss", async () => {

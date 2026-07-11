@@ -57,14 +57,19 @@ export function InterviewScreen({
               : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest."}
           </p>
         </div>
-        <button
-          type="button"
-          disabled={!canGenerate}
-          onClick={onGenerate}
-          className="flex min-h-[50px] flex-none items-center rounded-[11px] bg-brand px-6 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-40"
-        >
-          Generate pre-op brief &nbsp;→
-        </button>
+        {/* while questions are still under review, "Approve & continue"
+            below is the one recommended action — a second green button up
+            here (even disabled) reads as a competing call to action */}
+        {approved && (
+          <button
+            type="button"
+            disabled={!canGenerate}
+            onClick={onGenerate}
+            className="flex min-h-[50px] flex-none items-center rounded-[11px] bg-brand px-6 text-[15px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-40"
+          >
+            Generate pre-op brief &nbsp;→
+          </button>
+        )}
       </div>
 
       {notice && (
