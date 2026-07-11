@@ -148,3 +148,18 @@ class TestWorkflowIntegration:
         assert events[0][1] == {"stage": "preop", "agent": "GapAnalyst"}
         assert events[-1][1]["artifact_id"] == "note:pre-anesthesia-eval"
         assert events[-1][1]["claims"] == 2
+
+        # each drafting/verification step's agent_end rides a short preview
+        # of what it actually produced (v2-ui feedback: show intermediate
+        # results, not just a count), not merely a summary string
+        gap_end, note_end, verifier_end = events[1], events[5], events[7]
+        assert gap_end[1]["agent"] == "GapAnalyst"
+        assert gap_end[1]["preview"] == ["Is the patient still taking aspirin?"]
+        assert note_end[1]["agent"] == "PreOpNoteWriter"
+        assert note_end[1]["preview"] == [
+            "Aspirin was stopped 6 days before surgery.",
+            "Scheduled for laparoscopic cholecystectomy.",
+        ]
+        assert verifier_end[1]["agent"] == "ClaimVerifier"
+        assert len(verifier_end[1]["preview"]) == 2
+        assert all(p.startswith("supported: ") for p in verifier_end[1]["preview"])

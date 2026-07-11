@@ -167,7 +167,13 @@ class StubPipelineRunner:
             )
             self._emit(
                 emit, "agent_end",
-                {"stage": stage, "agent": "PreOpNoteWriter", "summary": "2 claims"},
+                {
+                    "stage": stage, "agent": "PreOpNoteWriter", "summary": "2 claims",
+                    "preview": [
+                        "Aspirin was stopped six days before surgery.",
+                        "Records still list aspirin as current.",
+                    ],
+                },
             )
             self._emit(
                 emit, "artifact_complete",
@@ -205,7 +211,10 @@ class StubPipelineRunner:
             )
             self._emit(
                 emit, "agent_end",
-                {"stage": stage, "agent": "EventExtractor", "summary": "1 event"},
+                {
+                    "stage": stage, "agent": "EventExtractor", "summary": "1 event",
+                    "preview": ["08:02 [agent] Propofol 120 mg"],
+                },
             )
             self._emit(emit, "artifact_complete", {"artifact_id": "record:intra-op", "claims": 1})
             return case
@@ -243,7 +252,13 @@ class StubPipelineRunner:
         )
         self._emit(
             emit, "agent_end",
-            {"stage": stage, "agent": "HandoffComposer", "summary": "composed"},
+            {
+                "stage": stage, "agent": "HandoffComposer", "summary": "composed",
+                "preview": [
+                    "Aspirin held pre-op; restart per surgical team.",
+                    "No pain or nausea reported in recovery.",
+                ],
+            },
         )
         self._emit(
             emit, "artifact_complete",

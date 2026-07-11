@@ -16,7 +16,7 @@ from typing import Any, Mapping
 
 from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import normalize_refs, render_sources
+from periop.agents.context import normalize_refs, preview_texts, render_sources
 from periop.schemas import Case, OpenQuestion, SourceType
 
 
@@ -89,7 +89,9 @@ def apply(
         OpenQuestion(question=q.question, reason=q.reason, provenance=q.provenance)
         for q in valid
     ]
-    return f"{len(valid)} questions", case_delta(case)
+    delta = case_delta(case)
+    delta["__preview__"] = preview_texts([q.question for q in valid])
+    return f"{len(valid)} questions", delta
 
 
 def _citations_resolve(case: Case, q: ClarificationQuestion) -> bool:

@@ -8,6 +8,17 @@ in context (spec §3.3).
 from periop.schemas import ArtifactRecord, Case, SourceType
 
 
+def preview_texts(texts: list[str], limit: int = 4, maxlen: int = 90) -> list[str]:
+    """Trim a step's output to a short list of one-line previews for the SSE
+    stream (ui.md §7) — the provider's live look at what an agent is drafting,
+    not a copy of the full output."""
+    out = []
+    for text in texts[:limit]:
+        text = " ".join(text.split())  # collapse embedded newlines/whitespace
+        out.append(text if len(text) <= maxlen else text[: maxlen - 1].rstrip() + "…")
+    return out
+
+
 def render_claims(artifact: ArtifactRecord) -> str:
     """Render an artifact's claims with global refs (``artifact_id#claim_id``).
 

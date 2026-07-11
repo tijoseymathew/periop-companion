@@ -7,7 +7,7 @@ events). Each claim cites the event segments; dangling citations are dropped.
 
 from typing import Any, Mapping
 
-from periop.agents.context import render_sources
+from periop.agents.context import preview_texts, render_sources
 from periop.agents.event_extractor import (
     EVENTS_KEY,
     ExtractedEvent,
@@ -66,7 +66,9 @@ def apply(
         artifact_id=INTRAOP_RECORD_ID, claims=filtered_claims(case, out)
     )
     case.add_artifact(artifact)
-    return f"{len(artifact.claims)} claims", case_delta(case)
+    delta = case_delta(case)
+    delta["__preview__"] = preview_texts([c.text for c in artifact.claims])
+    return f"{len(artifact.claims)} claims", delta
 
 
 class IntraOpRecordWriter:

@@ -17,7 +17,7 @@ from typing import Any, Mapping
 
 from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import normalize_refs, render_claims
+from periop.agents.context import normalize_refs, preview_texts, render_claims
 from periop.agents.intraop_record import INTRAOP_RECORD_ID
 from periop.agents.issue_anticipator import ANTICIPATED_ISSUES_ID
 from periop.agents.preop_note import PREOP_NOTE_ID
@@ -103,7 +103,8 @@ def apply(
     # parked in state, not appended: the ledger commit is a downstream agent
     # so artifact order never depends on writer completion order
     return f"{len(artifact.claims)} claims", {
-        HANDOFF_STATE_KEY: artifact.model_dump(mode="json")
+        HANDOFF_STATE_KEY: artifact.model_dump(mode="json"),
+        "__preview__": preview_texts([c.text for c in artifact.claims]),
     }
 
 

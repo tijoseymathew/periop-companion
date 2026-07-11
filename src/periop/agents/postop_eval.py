@@ -10,7 +10,7 @@ is parked in session state — the post-op stage runs both writers under a
 
 from typing import Any, Mapping
 
-from periop.agents.context import render_sources
+from periop.agents.context import preview_texts, render_sources
 from periop.agents.preop_note import WriterOutput, filtered_claims
 from periop.schemas import ArtifactRecord, Case
 
@@ -53,7 +53,8 @@ def apply(
         artifact_id=POSTOP_NOTE_ID, claims=filtered_claims(case, out)
     )
     return f"{len(artifact.claims)} claims", {
-        POSTOP_STATE_KEY: artifact.model_dump(mode="json")
+        POSTOP_STATE_KEY: artifact.model_dump(mode="json"),
+        "__preview__": preview_texts([c.text for c in artifact.claims]),
     }
 
 

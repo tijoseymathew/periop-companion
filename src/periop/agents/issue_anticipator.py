@@ -12,7 +12,7 @@ from typing import Any, Mapping
 
 from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import normalize_refs, render_claims, render_sources
+from periop.agents.context import normalize_refs, preview_texts, render_claims, render_sources
 from periop.agents.intraop_record import INTRAOP_RECORD_ID
 from periop.agents.preop_note import PREOP_NOTE_ID
 from periop.schemas import ArtifactRecord, Case, Claim
@@ -95,7 +95,9 @@ def apply(
     artifact = ArtifactRecord(artifact_id=ANTICIPATED_ISSUES_ID, claims=claims)
     case.add_artifact(artifact)
     case.anticipated_issues = [c.text for c in claims]
-    return f"{len(claims)} issues", case_delta(case)
+    delta = case_delta(case)
+    delta["__preview__"] = preview_texts([c.text for c in claims])
+    return f"{len(claims)} issues", delta
 
 
 def _resolve_refs(case: Case, refs: list[str]) -> list[str]:

@@ -11,7 +11,12 @@ from typing import Any, Mapping
 
 from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import normalize_refs, provenance_resolves, render_sources
+from periop.agents.context import (
+    normalize_refs,
+    preview_texts,
+    provenance_resolves,
+    render_sources,
+)
 from periop.schemas import ArtifactRecord, Case, Claim
 
 PREOP_NOTE_ID = "note:pre-anesthesia-eval"
@@ -112,7 +117,9 @@ def apply(
 
     artifact = ArtifactRecord(artifact_id=PREOP_NOTE_ID, claims=filtered_claims(case, out))
     case.add_artifact(artifact)
-    return f"{len(artifact.claims)} claims", case_delta(case)
+    delta = case_delta(case)
+    delta["__preview__"] = preview_texts([c.text for c in artifact.claims])
+    return f"{len(artifact.claims)} claims", delta
 
 
 class PreOpNoteWriter:

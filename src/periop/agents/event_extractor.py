@@ -13,7 +13,7 @@ from typing import Any, Mapping
 
 from pydantic import BaseModel, Field
 
-from periop.agents.context import render_sources
+from periop.agents.context import preview_texts, render_sources
 from periop.schemas import Case, EventCategory, SourceType
 
 FIRST_PASS_KEY = "event_extract__first"
@@ -88,6 +88,10 @@ def resolved_events(case: Case, events: list[ExtractedEvent]) -> list[ExtractedE
     return [e for e in events if _resolves(case, e)]
 
 
+def _event_line(e: ExtractedEvent) -> str:
+    return f"{e.t} [{e.category}] {e.value}" + (f" {e.units}" if e.units else "")
+
+
 def apply_first_pass(final: bool):
     """First-pass apply: stash raw events for the verify step; when the pass
     is final (verify disabled, the A/B arm) also commit the resolved list."""
@@ -102,6 +106,7 @@ def apply_first_pass(final: bool):
         if final:
             events = resolved_events(case, events)
             delta[EVENTS_KEY] = [e.model_dump(mode="json") for e in events]
+        delta["__preview__"] = preview_texts([_event_line(e) for e in events])
         return f"{len(events)} events", delta
 
     return _apply
@@ -112,7 +117,8 @@ def apply_verify(
 ) -> tuple[str, dict[str, Any]]:
     events = resolved_events(case, out.events)
     return f"{len(events)} events", {
-        EVENTS_KEY: [e.model_dump(mode="json") for e in events]
+        EVENTS_KEY: [e.model_dump(mode="json") for e in events],
+        "__preview__": preview_texts([_event_line(e) for e in events]),
     }
 
 

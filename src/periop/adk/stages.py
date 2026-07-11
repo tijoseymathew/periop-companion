@@ -25,9 +25,10 @@ from periop.adk.deterministic import (
     RecordIngestor,
     Transcriber,
 )
-from periop.adk.runtime import emit
+from periop.adk.runtime import emit, get_case
 from periop.adk.steps import structured_step
 from periop.adk.verifier import ClaimVerifierAgent
+from periop.agents.context import preview_texts
 
 
 def gap_analyst_step(chat: Any, *, skip_when_present: bool = True) -> LoopAgent:
@@ -188,8 +189,17 @@ def _verifier_block(
         return None
 
     def _end(callback_context):
-        emit("agent_end", {"stage": stage, "agent": "ClaimVerifier",
-                           "summary": "verified"})
+        case = get_case(callback_context.state)
+        lines = [
+            f"{claim.status.value}: {claim.text}"
+            for artifact_id, _ in artifacts
+            if (artifact := case.get_artifact(artifact_id)) is not None
+            for claim in artifact.claims
+        ]
+        emit("agent_end", {
+            "stage": stage, "agent": "ClaimVerifier", "summary": "verified",
+            "preview": preview_texts(lines),
+        })
         return None
 
     return SequentialAgent(

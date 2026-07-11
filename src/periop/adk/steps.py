@@ -33,7 +33,10 @@ from periop.schemas import Case
 # prompt_fn(case, state) -> the step's user prompt
 PromptFn = Callable[[Case, Mapping[str, Any]], str]
 # apply_fn(case, parsed, state) -> (agent_end summary, extra state delta);
-# include the updated case in the delta via runtime.case_delta when mutated
+# include the updated case in the delta via runtime.case_delta when mutated.
+# extra may also carry "__preview__": list[str] — a few lines of what this
+# step actually produced (see agents.context.preview_texts); StructuredValidator
+# pops it and rides it on the agent_end SSE event instead of session state.
 ApplyFn = Callable[[Case, Any, Mapping[str, Any]], tuple[str, dict[str, Any]]]
 SkipFn = Callable[[Case, Mapping[str, Any]], bool]
 
@@ -92,9 +95,16 @@ class StructuredValidator(BaseAgent):
 
         case = get_case(state)
         summary, extra = self.apply_fn(case, parsed, state)
+        # an apply_fn may attach a few lines of what it actually produced
+        # (claim/event text) under this reserved key for the SSE stream; it
+        # is never part of session state, so pop it before extra becomes the
+        # state_delta below
+        preview = extra.pop("__preview__", None)
         if self.announce_end:
-            emit("agent_end", {"stage": self.stage, "agent": self.label,
-                               "summary": summary})
+            payload = {"stage": self.stage, "agent": self.label, "summary": summary}
+            if preview:
+                payload["preview"] = preview
+            emit("agent_end", payload)
         if self.artifact_state_key and self.artifact_state_key in extra:
             artifact = extra[self.artifact_state_key]
             emit("artifact_complete", {
