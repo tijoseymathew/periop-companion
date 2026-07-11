@@ -132,6 +132,36 @@ export async function reopenStage(
   return CaseSchema.parse(data);
 }
 
+/** Add a provider-asserted fact to a stage artifact; the new claim cites
+ * the provider's own `edit:<provider_id>` source. */
+export async function addArtifactClaim(
+  caseId: string,
+  artifactId: string,
+  text: string,
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/artifacts/${encodeURIComponent(artifactId)}/claims`,
+    { text, provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}
+
+/** Rewrite one claim's text as a provider-attested correction. */
+export async function editArtifactClaim(
+  caseId: string,
+  artifactId: string,
+  claimId: string,
+  text: string,
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.put(
+    `/api/cases/${encodeURIComponent(caseId)}/artifacts/${encodeURIComponent(artifactId)}/claims/${encodeURIComponent(claimId)}`,
+    { text, provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}
+
 export async function fetchClaimReviews(caseId: string): Promise<ClaimReviews> {
   const { data } = await axios.get(
     `/api/cases/${encodeURIComponent(caseId)}/claim-reviews`,

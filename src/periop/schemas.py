@@ -7,7 +7,7 @@ Conflicts are first-class claim states, never silently resolved.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import StrEnum
 from typing import Annotated, Any
 
@@ -313,6 +313,30 @@ class Case(BaseModel):
         if self.get_source(source.source_id) is not None:
             raise ValueError(f"source {source.source_id!r} already registered (registry is append-only)")
         self.sources.append(source)
+
+    def record_human_edit(self, provider: Provider, text: str, context: str) -> str:
+        """Register a human-attested statement; return its provenance ref.
+
+        Human edits and additions live in a per-provider document source
+        (``edit:<provider_id>``) in the same append-only registry as every
+        other source, so an edited claim or question cites the provider who
+        asserted it exactly like it cites a GP summary. Each edit appends one
+        chunk: its text is the asserted statement, its section names what was
+        edited and by whom.
+        """
+        source_id = f"edit:{provider.provider_id}"
+        source = self.get_source(source_id)
+        if source is None:
+            source = Source(
+                source_id=source_id,
+                type=SourceType.DOCUMENT,
+                captured_at=datetime.now(timezone.utc),
+                provided_by=provider.provider_id,
+            )
+            self.sources.append(source)
+        chunk_id = f"e{len(source.chunks) + 1:03d}"
+        source.chunks.append(Chunk(chunk_id=chunk_id, text=text, section=context))
+        return f"{source_id}#{chunk_id}"
 
     def get_source(self, source_id: str) -> Source | None:
         return next((s for s in self.sources if s.source_id == source_id), None)

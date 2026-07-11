@@ -16,7 +16,15 @@ from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 
-from periop.api.routers import audio, cases, claim_reviews, stage_runs, stream_asr, workflow
+from periop.api.routers import (
+    audio,
+    cases,
+    claim_reviews,
+    edits,
+    stage_runs,
+    stream_asr,
+    workflow,
+)
 
 DEFAULT_CASE_DIR = Path("data/cases")
 DEFAULT_PROVIDERS = Path("data/providers.json")
@@ -109,6 +117,7 @@ def create_app(
     app.include_router(workflow.router, prefix="/api")
     app.include_router(stage_runs.router, prefix="/api")
     app.include_router(claim_reviews.router, prefix="/api")
+    app.include_router(edits.router, prefix="/api")
     app.include_router(stream_asr.router, prefix="/api")
 
     ui_dist = Path(ui_dist) if ui_dist is not None else UI_DIST

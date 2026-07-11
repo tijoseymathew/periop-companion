@@ -267,10 +267,14 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
     """Persist the provider-reviewed question list and pass the question gate.
 
     Dismissals are kept, never deleted (v2 §4.1): the submitted list *is* the
-    record of the review, including what was dismissed.
+    record of the review, including what was dismissed. Edited and newly
+    added questions get a provenance ref into the acting provider's
+    ``edit:<provider_id>`` source, so a human rewording is attributed the
+    same way a GapAnalyst question cites its triggering chunk.
     """
     case = load_case(request, case_id)
     require_writable(case)
+    provider = require_provider(request, body.provider_id)
 
     # approving mid-analysis would race the analysis's own save of the case
     if case.workflow.stages["preop"].gap_analysis in (
@@ -297,6 +301,24 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
                     status_code=422,
                     detail=f"question {q.question!r} cites unresolvable provenance {ref}",
                 ) from None
+
+    # attribute human rewordings and additions to the acting provider —
+    # stamped after the validation above because these refs resolve against
+    # chunks record_human_edit is registering right now
+    prior = {q.question: q for q in case.open_questions}
+    for q in body.questions:
+        before = prior.get(q.question)
+        if before is None:
+            asserted, verb = q.effective_text, "added"
+        elif q.edited_text and q.edited_text != before.edited_text:
+            asserted, verb = q.edited_text, "edited"
+        else:
+            continue
+        ref = case.record_human_edit(
+            provider, asserted, f"pre-op question {verb} by {provider.name}"
+        )
+        if ref not in q.provenance:
+            q.provenance.append(ref)
 
     case.open_questions = body.questions
     case.workflow.stages["preop"].questions_approved_at = _now()
