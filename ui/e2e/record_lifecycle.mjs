@@ -317,10 +317,13 @@ async function smoothScroll(page, delta, { steps = 30, stepMs = 55 } = {}) {
 }
 
 /** Wait for the generating screen's SSE checklist to hand off to the brief.
- * "Key facts" is the anchor because it survives the layout fork: pre-op
- * briefs read story-in-rail + key facts, later stages read three columns. */
+ * The anchor survives the layout fork: pre-op and in-theatre briefs lead
+ * with "Key facts"; the recovery brief leads with the PACU handoff column. */
 async function waitForBrief(page) {
-  await page.getByText("Key facts").first().waitFor({ timeout: GEN_TIMEOUT });
+  await page
+    .getByText(/^(Key facts|PACU handoff)$/)
+    .first()
+    .waitFor({ timeout: GEN_TIMEOUT });
   await beat(1000);
 }
 
