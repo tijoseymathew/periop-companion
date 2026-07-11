@@ -26,6 +26,8 @@ function makeWorkflow(overrides: Partial<Record<string, object>> = {}): Workflow
     gap_analysis: null,
     gap_analysis_error: null,
     inputs_recorded_at: null,
+    transcription: null,
+    transcription_error: null,
     handoff_acknowledged_by: null,
     handoff_acknowledged_at: null,
     reopens: [],

@@ -23,6 +23,7 @@ import type {
   ClaimStatus,
   Provider,
   StageKey,
+  Workflow,
 } from "./schema";
 
 // ---- shared palette meta (mirrors the design's SM / stageMeta maps) ---------
@@ -303,6 +304,37 @@ export interface ChainNode {
   state: "done" | "current" | "todo";
 }
 
+/** Who has the case at each stage — shared by the brief and the capture
+ * chrome (design: the top-bar provider chain). Unreached stages are omitted. */
+export function providerChain(wf: Workflow | null, providers: Provider[]): ChainNode[] {
+  const chain: ChainNode[] = [];
+  if (!wf) return chain;
+  const head = headlineStage(wf);
+  const roles: Record<StageKey, string> = {
+    preop: "PRE-OP EVAL",
+    intraop: "IN THEATRE",
+    postop: "RECOVERY",
+  };
+  (["preop", "intraop", "postop"] as StageKey[]).forEach((st) => {
+    const s = wf.stages[st];
+    const performerId = s.signed_off_by ?? s.performed_by;
+    if (!performerId && st !== head) return; // stage not reached
+    const name = providerName(providers, performerId ?? wf.created_by.provider_id) ?? "—";
+    const signedAt = timeHM(s.signed_off_at);
+    const nodeState: ChainNode["state"] =
+      s.status === "signed_off" ? "done" : st === head ? "current" : performerId ? "done" : "todo";
+    const meta = signedAt
+      ? `signed ${signedAt}`
+      : s.status === "generating"
+        ? "generating"
+        : performerId
+          ? "in progress"
+          : "waiting";
+    chain.push({ role: roles[st], name, initials: initialsOf(name), meta, state: nodeState });
+  });
+  return chain;
+}
+
 export interface BriefModel {
   caseId: string;
   title: string;
@@ -408,32 +440,7 @@ export function buildBrief(
   ].slice(0, 4);
 
   // provider chain
-  const head = headlineStage(wf);
-  const chain: ChainNode[] = [];
-  if (wf) {
-    const roles: Record<StageKey, string> = {
-      preop: "PRE-OP EVAL",
-      intraop: "IN THEATRE",
-      postop: "RECOVERY",
-    };
-    (["preop", "intraop", "postop"] as StageKey[]).forEach((st) => {
-      const s = wf.stages[st];
-      const performerId = s.signed_off_by ?? s.performed_by;
-      if (!performerId && st !== head) return; // stage not reached
-      const name = providerName(providers, performerId ?? wf.created_by.provider_id) ?? "—";
-      const signedAt = timeHM(s.signed_off_at);
-      const nodeState: ChainNode["state"] =
-        s.status === "signed_off" ? "done" : st === head ? "current" : performerId ? "done" : "todo";
-      const meta = signedAt
-        ? `signed ${signedAt}`
-        : s.status === "generating"
-          ? "generating"
-          : performerId
-            ? "in progress"
-            : "waiting";
-      chain.push({ role: roles[st], name, initials: initialsOf(name), meta, state: nodeState });
-    });
-  }
+  const chain = providerChain(wf, providers);
 
   // assembled-from line
   const docCount = kase.sources.filter((s) => s.type === "document").length;

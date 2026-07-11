@@ -124,6 +124,13 @@ export const StageStateSchema = z.object({
     .default(null),
   gap_analysis_error: z.string().nullable().default(null),
   inputs_recorded_at: z.string().nullable().default(null),
+  // background upload-time transcription (same lifecycle vocabulary as
+  // gap_analysis); the transcript lands on the case moments after an upload
+  transcription: z
+    .enum(["pending", "running", "complete", "failed"])
+    .nullable()
+    .default(null),
+  transcription_error: z.string().nullable().default(null),
   handoff_acknowledged_by: z.string().nullable().default(null),
   handoff_acknowledged_at: z.string().nullable().default(null),
   reopens: z
