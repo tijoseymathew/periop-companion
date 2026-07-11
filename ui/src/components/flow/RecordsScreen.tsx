@@ -69,6 +69,7 @@ export function RecordsScreen({
   onCreateIntake,
   onUploadDocument,
   onContinue,
+  gapFailure = null,
 }: {
   kase: Case | null;
   busy: boolean;
@@ -79,6 +80,9 @@ export function RecordsScreen({
   /** existing case: records land as they're picked */
   onUploadDocument: (docType: string, file: File) => void;
   onContinue: () => void;
+  /** question prep stopped after the records were saved (v2-speed §3.2) —
+   * the records are safe either way, so this is a retry, not a blocker */
+  gapFailure?: { message: string; onRetry: () => void } | null;
 }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -146,6 +150,21 @@ export function RecordsScreen({
             every fact can be traced back to it.
           </p>
         </div>
+
+        {gapFailure && (
+          <div className="mb-6 flex items-center justify-between gap-4 rounded-[12px] border border-status-conflicting/40 bg-status-conflicting/[0.08] px-4 py-3 text-[13.5px] text-status-conflicting">
+            <span>
+              Question prep stopped — {gapFailure.message}. Your records are saved.
+            </span>
+            <button
+              type="button"
+              onClick={gapFailure.onRetry}
+              className="min-h-[36px] flex-none rounded-[9px] border border-status-conflicting/50 bg-surface-base px-3.5 text-[13px] font-semibold text-status-conflicting"
+            >
+              Try again
+            </button>
+          </div>
+        )}
 
         {notice && (
           <div className="mb-6 rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">

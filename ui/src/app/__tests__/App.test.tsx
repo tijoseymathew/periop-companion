@@ -102,6 +102,27 @@ function preopReadyCase() {
   });
 }
 
+/** A pre-op case whose question prep is still running in the background. */
+function preopBuildingCase() {
+  return CaseSchema.parse({
+    case_id: "sg-building",
+    label: "Kwan — appendix",
+    workflow: {
+      created_by: PROVIDERS[0],
+      created_at: "2026-04-02T06:00:00Z",
+      stages: {
+        preop: { status: "awaiting_inputs", gap_analysis: "running" },
+        intraop: { status: "awaiting_inputs" },
+        postop: { status: "awaiting_inputs" },
+      },
+    },
+    sources: [
+      { source_id: "doc:op-plan", type: "document", chunks: [] },
+      { source_id: "doc:gp-summary", type: "document", chunks: [] },
+    ],
+  });
+}
+
 describe("Catch-Up app", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -219,5 +240,23 @@ describe("Catch-Up app", () => {
     sseController!.close();
     expect(await screen.findByText("The story so far")).toBeInTheDocument();
     expect(screen.queryByTestId("generating-strip")).not.toBeInTheDocument();
+  });
+
+  it("folds the intake build into the chrome strip — records stay visible, no full-screen takeover", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const building = preopBuildingCase();
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-building", label: "Kwan — appendix", workflow: building.workflow }),
+    ]);
+    vi.mocked(api.fetchCase).mockResolvedValue(building);
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-building/ }));
+
+    // still the records screen underneath, not a separate full-screen ring
+    expect(await screen.findByText("Add the records")).toBeInTheDocument();
+    expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
+      "Preparing the interview questions",
+    );
   });
 });

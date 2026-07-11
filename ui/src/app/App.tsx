@@ -13,7 +13,6 @@ import { SourceModal, type SourceRequest } from "../components/catchup/SourceMod
 import { Worklist } from "../components/catchup/Worklist";
 import { CaptureScreen } from "../components/flow/CaptureScreen";
 import { FlowChrome } from "../components/flow/FlowChrome";
-import { IntakeBuildScreen, type UploadProgress } from "../components/flow/IntakeBuildScreen";
 import { InterviewScreen } from "../components/flow/InterviewScreen";
 import { RecordsScreen, type StagedDoc } from "../components/flow/RecordsScreen";
 import { ProviderPicker } from "../components/ProviderPicker";
@@ -46,6 +45,11 @@ import { headlineStage, type PrimaryAction } from "../lib/workflow";
 const PROVIDER_STORAGE_KEY = "periop-provider";
 
 type View = "worklist" | "case";
+
+interface UploadProgress {
+  done: number;
+  total: number;
+}
 
 export default function App() {
   const [cases, setCases] = useState<CaseSummary[]>([]);
@@ -378,6 +382,21 @@ export default function App() {
   // uploads in flight render as the intake build; otherwise follow the flow
   const screen: FlowScreen = screenOverride ?? (uploads ? "intake-generating" : flowScreen(kase));
 
+  // building the intake (uploads landing, then gap analysis) folds into the
+  // same minimal chrome strip as a stage run — no full-screen takeover, and
+  // the records screen it's built from stays visible underneath (v2-ui
+  // feedback). A failed run isn't "in flight" any more, so it drops out of
+  // the strip in favor of RecordsScreen's own retry banner below.
+  const buildingLabel: string | null =
+    screen !== "intake-generating" || gap === "failed"
+      ? null
+      : uploads && uploads.done < uploads.total
+        ? `Saving the records (${uploads.done} of ${uploads.total})`
+        : gap === "running"
+          ? "Preparing the interview questions"
+          : "Reading the records for gaps and conflicts";
+  const chromeStatus = generatingLabel ?? buildingLabel;
+
   const canReach = (target: FlowScreen): boolean => {
     if (!kase) return false;
     switch (target) {
@@ -410,9 +429,9 @@ export default function App() {
           setScreenOverride(s);
         }}
         canReach={canReach}
-        generating={generatingLabel}
+        generating={chromeStatus}
       >
-        {screen === "records" && (
+        {(screen === "records" || screen === "intake-generating") && (
           <RecordsScreen
             kase={kase}
             busy={busy}
@@ -421,16 +440,16 @@ export default function App() {
             onCreateIntake={handleCreateIntake}
             onUploadDocument={handleUploadDocument}
             onContinue={() => setScreenOverride(null)}
-          />
-        )}
-        {screen === "intake-generating" && (
-          <IntakeBuildScreen
-            title={kase?.label ?? kase?.case_id ?? "New case"}
-            uploads={uploads}
-            gap={gap}
-            gapError={kase?.workflow?.stages.preop.gap_analysis_error ?? null}
-            onRetry={() => void handleRetryQuestions()}
-            onBackToRecords={() => setScreenOverride("records")}
+            gapFailure={
+              gap === "failed"
+                ? {
+                    message:
+                      kase?.workflow?.stages.preop.gap_analysis_error ??
+                      "the analysis could not finish",
+                    onRetry: () => void handleRetryQuestions(),
+                  }
+                : null
+            }
           />
         )}
         {screen === "interview" && kase && (
