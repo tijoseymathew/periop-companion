@@ -7,6 +7,7 @@
  */
 import {
   forwardRef,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -25,6 +26,14 @@ interface AudioPlayerProps {
   src: string | null;
   /** Which of the case's recordings is loaded (source_id). */
   label: string | null;
+  /**
+   * Seek here once `src`'s metadata is ready — declarative, for "open
+   * already pointed at the cited moment" (e.g. SourceModal). Distinct from
+   * the imperative seekToTime handle below, which a user's own click (e.g.
+   * a transcript segment) drives and never races the mount, since the
+   * element already exists by the time that fires.
+   */
+  seekTo?: number | null;
   onTimeUpdate?: (seconds: number) => void;
   onError?: () => void;
 }
@@ -39,7 +48,7 @@ function fmt(seconds: number): string {
 }
 
 export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(function AudioPlayer(
-  { src, label, onTimeUpdate, onError },
+  { src, label, seekTo = null, onTimeUpdate, onError },
   ref,
 ) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -49,6 +58,23 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(NaN);
   const [paused, setPaused] = useState(true);
+
+  // runs after the DOM has the current `src`'s <audio> element mounted
+  // (unlike an imperative ref call from the parent, which can fire before
+  // it exists), so the provenance jump on open is never silently dropped
+  useEffect(() => {
+    // clear any still-pending seek from a previous src/seekTo pair first, so
+    // a stale target can't land on loadedmetadata for a source it wasn't for
+    pendingSeekRef.current = null;
+    const el = audioRef.current;
+    if (!el || seekTo == null) return;
+    if (el.readyState >= 1) {
+      el.currentTime = seekTo;
+      setCurrentTime(seekTo);
+    } else {
+      pendingSeekRef.current = seekTo;
+    }
+  }, [src, seekTo]);
 
   function startClip(el: HTMLAudioElement, t0: number, t1: number) {
     el.currentTime = t0;

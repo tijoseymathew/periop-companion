@@ -88,7 +88,7 @@ export function SourceModal({
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  // Load the active audio source and seek to its cited segment.
+  // Load the active audio source.
   useEffect(() => {
     if (!active?.source || active.source.type !== "audio") {
       setLoadedSrc(null);
@@ -99,15 +99,19 @@ export function SourceModal({
       return;
     }
     setLoadedSrc(audioUrl(kase.case_id, active.sourceId));
-    const seg = active.source.segments.find((x) => x.seg_id === active.anchor);
-    if (seg) {
-      // seekToTime after the element mounts/loads
-      requestAnimationFrame(() => playerRef.current?.seekToTime(seg.t0));
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx, active?.sourceId]);
 
   const src = active?.source;
+  // The cited segment's start, handed to AudioPlayer as a prop rather than
+  // driven imperatively from here: right after a fresh source loads, the
+  // <audio> element doesn't exist in the DOM yet (src was null the render
+  // before), so a ref call at that moment silently no-ops and the seek is
+  // lost — AudioPlayer applies this once its own element is ready.
+  const citedT0 =
+    src?.type === "audio"
+      ? (src.segments.find((x) => x.seg_id === active.anchor)?.t0 ?? null)
+      : null;
 
   return (
     <div
@@ -206,6 +210,7 @@ export function SourceModal({
                       <AudioPlayer
                         ref={playerRef}
                         src={loadedSrc}
+                        seekTo={citedT0}
                         label={src.source_id}
                         onTimeUpdate={setPlayerTime}
                         onError={() => {

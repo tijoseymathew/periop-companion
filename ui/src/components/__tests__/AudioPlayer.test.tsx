@@ -95,6 +95,50 @@ describe("AudioPlayer", () => {
     expect(audio!.currentTime).toBe(96.4);
   });
 
+  it("applies seekTo once the element mounts, even though it didn't exist when src went from null to a URL", () => {
+    // reproduces the actual SourceModal bug: the modal opens with src=null
+    // (no <audio> in the DOM yet), then an effect sets a real src — a ref
+    // call made at that same moment can fire before the element exists and
+    // silently no-op; seekTo is a declarative prop instead, applied by an
+    // effect inside AudioPlayer itself once its own element is there.
+    mockReadyState(0); // HAVE_NOTHING — metadata not loaded on the new src yet
+    const onTimeUpdate = vi.fn();
+    const { rerender, container } = render(
+      <AudioPlayer ref={null} src={null} seekTo={null} label={null} onTimeUpdate={onTimeUpdate} />,
+    );
+    expect(container.querySelector("audio")).toBeNull();
+
+    rerender(
+      <AudioPlayer
+        ref={null}
+        src="/api/cases/sg-t/audio/audio%3Apreop-interview"
+        seekTo={214.3}
+        label="audio:preop-interview"
+        onTimeUpdate={onTimeUpdate}
+      />,
+    );
+    const audio = container.querySelector("audio")!;
+    expect(audio.currentTime).toBe(0); // not applied yet — metadata still loading
+
+    mockReadyState(1);
+    fireEvent(audio, new Event("loadedmetadata"));
+    expect(audio.currentTime).toBe(214.3);
+  });
+
+  it("clears a stale pending seekTo when the src changes again before metadata lands", () => {
+    mockReadyState(0);
+    const { rerender, container } = render(
+      <AudioPlayer ref={null} src="/audio/a" seekTo={10} label="a" />,
+    );
+    // switch to a different source (and a different citation) before "a"
+    // ever finished loading — the pending seek for "a" must not leak onto "b"
+    rerender(<AudioPlayer ref={null} src="/audio/b" seekTo={null} label="b" />);
+    const audio = container.querySelector("audio")!;
+    mockReadyState(1);
+    fireEvent(audio, new Event("loadedmetadata"));
+    expect(audio.currentTime).toBe(0);
+  });
+
   it("shows a clip-region marker while a clip is active and clears it after", () => {
     Object.defineProperty(window.HTMLMediaElement.prototype, "duration", {
       configurable: true,
