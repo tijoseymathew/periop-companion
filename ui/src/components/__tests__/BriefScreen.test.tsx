@@ -16,7 +16,6 @@ function renderBrief(model: ReturnType<typeof buildBrief>) {
       onBack={vi.fn()}
       onOpenSource={vi.fn()}
       onAction={vi.fn()}
-      onReviewNeed={vi.fn()}
     />,
   );
 }
@@ -63,12 +62,27 @@ describe("BriefScreen", () => {
     expect(screen.queryByText("Needs you now")).not.toBeInTheDocument();
   });
 
-  it("shows the theatre timeline, issues, and needs-you-now once past pre-op", () => {
+  it("shows three columns past pre-op — key facts, theatre timeline, issues; no story or needs-you-now", () => {
     const model = buildBrief(makeCase(), PROVIDERS); // demo case lands on postop
     expect(model.stage).toBe("postop");
     renderBrief(model);
 
+    expect(screen.getByText("Key facts")).toBeInTheDocument();
     expect(screen.getByText("In theatre")).toBeInTheDocument();
     expect(screen.getByText("Anticipated issues")).toBeInTheDocument();
+    expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
+    expect(screen.queryByText("Needs you now")).not.toBeInTheDocument();
+  });
+
+  it("reads the recovery brief's key facts from the PACU handoff, not the pre-op note", () => {
+    const model = buildBrief(makeCase(), PROVIDERS);
+    renderBrief(model);
+
+    // fixture: "Aspirin held pre-op." lives on note:pacu-handoff;
+    // "Aspirin was discontinued…" on note:pre-anesthesia-eval
+    expect(screen.getByText("Aspirin held pre-op.")).toBeInTheDocument();
+    expect(
+      screen.queryByText("Aspirin was discontinued 6 days prior to surgery."),
+    ).not.toBeInTheDocument();
   });
 });

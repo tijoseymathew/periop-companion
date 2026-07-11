@@ -1,10 +1,11 @@
 /**
- * The patient view (PeriOp Catch-Up.dc.html "BRIEF"), generalised so its shape
- * holds at every stage of a case — pre-op, in theatre, recovery, and complete.
- * A clinician reads it top-to-bottom in about a minute: story → key facts (each
- * with a verification badge and a jump to its source) → theatre timeline →
- * anticipated issues, with a "needs you now" rail. The one forward action in the
- * rail adapts to the case's stage (sign off / acknowledge / continue).
+ * The patient view (PeriOp Catch-Up.dc.html "BRIEF"). Pre-op keeps the
+ * narrative page — story → key facts, action rail. Once the case is past
+ * pre-op the brief reads as three columns — key facts · in theatre ·
+ * anticipated issues — over one action bar (v2-ui feedback: no "story so
+ * far" or "needs you now" after pre-op; the open questions were already
+ * reviewed at the interview gate). The one forward action adapts to the
+ * case's stage (sign off / acknowledge / continue).
  */
 import type { BriefModel, ChainNode } from "../../lib/catchup";
 import type { PrimaryAction } from "../../lib/workflow";
@@ -24,7 +25,6 @@ export function BriefScreen({
   onBack,
   onOpenSource,
   onAction,
-  onReviewNeed,
   generating = null,
 }: {
   model: BriefModel;
@@ -33,7 +33,6 @@ export function BriefScreen({
   onBack: () => void;
   onOpenSource: (req: SourceRequest) => void;
   onAction: (action: PrimaryAction) => void;
-  onReviewNeed: (key: number, reviewed: boolean) => void;
   /** non-null while this session's own stage run is streaming — the brief
    * has no FlowChrome to fold the live status into, so it shows minimally
    * in the action panel instead of taking over the screen */
@@ -99,230 +98,91 @@ export function BriefScreen({
         <StageStepper steps={model.stageSteps} />
       </div>
 
-      {/* body */}
-      <div className="flex min-h-0 flex-1">
-        {/* main column */}
-        <div className="min-w-0 flex-1 overflow-y-auto px-8 pb-12 pt-6">
-          <Eyebrow>The story so far</Eyebrow>
-          <div className="mt-0.5 text-[12.5px] text-ink-faint">{model.assembledFrom}</div>
-          {model.attentionCount > 0 && (
-            <div className="mb-8 mt-3 max-w-[760px]">
-              <p className="font-serif text-[19px] leading-relaxed text-ink-body">
-                {model.attentionCount === 1
-                  ? "One thing is worth your attention"
-                  : `${model.attentionCount} things are worth your attention`}{" "}
-                before you take over {first}:
-              </p>
-              <ul className="mt-3 space-y-1.5">
-                {model.attentionItems.map((it, i) => (
-                  <li key={i} className="flex gap-2.5 text-[15px] leading-relaxed text-ink-body">
-                    <span className="flex-none text-gold">◆</span>
-                    <span>{it}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {model.attentionCount === 0 && <div className="mb-8" />}
-
-          {/* key facts */}
-          <div className="flex items-baseline justify-between gap-4">
-            <Eyebrow>Key facts</Eyebrow>
-            <div className="text-[12.5px] text-ink-faint">
-              Open a source to see the original, highlighted
-            </div>
-          </div>
-          <div className="mb-9 mt-1.5">
-            {model.keyFacts.map((f) => (
-              <div key={f.claimId} className="border-t border-surface-line px-3 py-3.5">
-                <div className="flex items-baseline justify-between gap-5">
-                  <span className="flex-1 text-[16.5px] leading-snug text-ink-primary">
-                    {f.text}
-                  </span>
-                  <span className="flex flex-none items-center gap-2">
-                    {f.showStatus && (
-                      <span className={`text-[12px] font-semibold ${f.statusMeta.className}`}>
-                        {f.statusMeta.label}
-                      </span>
-                    )}
-                    <span
-                      className={`flex h-5 w-5 items-center justify-center rounded-full text-[11px] ${f.statusMeta.dotClassName} ${f.statusMeta.className}`}
-                    >
-                      {f.statusMeta.glyph}
-                    </span>
-                  </span>
-                </div>
-                <div className="mt-2 flex justify-end">
-                  {f.hasProv ? (
-                    <SourceLink onClick={() => onOpenSource({ title: f.text, refs: f.refs })}>
-                      {f.provLabel}
-                    </SourceLink>
-                  ) : (
-                    <span className="text-[12.5px] text-ink-ghost">Awaiting a source</span>
-                  )}
-                </div>
+      {/* body — pre-op keeps the narrative page; in theatre and recovery
+          read as three columns over one action bar */}
+      {model.stage === "preop" ? (
+        <div className="flex min-h-0 flex-1">
+          {/* main column */}
+          <div className="min-w-0 flex-1 overflow-y-auto px-8 pb-12 pt-6">
+            <Eyebrow>The story so far</Eyebrow>
+            <div className="mt-0.5 text-[12.5px] text-ink-faint">{model.assembledFrom}</div>
+            {model.attentionCount > 0 && (
+              <div className="mb-8 mt-3 max-w-[760px]">
+                <p className="font-serif text-[19px] leading-relaxed text-ink-body">
+                  {model.attentionCount === 1
+                    ? "One thing is worth your attention"
+                    : `${model.attentionCount} things are worth your attention`}{" "}
+                  before you take over {first}:
+                </p>
+                <ul className="mt-3 space-y-1.5">
+                  {model.attentionItems.map((it, i) => (
+                    <li key={i} className="flex gap-2.5 text-[15px] leading-relaxed text-ink-body">
+                      <span className="flex-none text-gold">◆</span>
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-            {model.keyFacts.length === 0 && (
-              <p className="border-t border-surface-line py-6 text-[14px] text-ink-subtle">
-                No facts have been extracted for this case yet.
-              </p>
             )}
+            {model.attentionCount === 0 && <div className="mb-8" />}
+
+            <div className="flex items-baseline justify-between gap-4">
+              <Eyebrow>Key facts</Eyebrow>
+              <div className="text-[12.5px] text-ink-faint">
+                Open a source to see the original, highlighted
+              </div>
+            </div>
+            <div className="mb-9 mt-1.5">
+              <KeyFactsList facts={model.keyFacts} onOpenSource={onOpenSource} />
+            </div>
           </div>
 
-          {/* theatre timeline + anticipated issues aren't reached yet at
-              pre-op — the pre-op brief is story + key facts only */}
-          {model.stage !== "preop" && (
-            <>
+          {/* right rail: just the one forward action — the open questions
+              were already reviewed at the interview gate */}
+          <div className="flex w-[410px] flex-none flex-col border-l border-surface-chromeline bg-surface-sunken">
+            <div className="flex-1" />
+            <div className="flex-none border-t border-surface-overlay bg-surface-sunken px-6 pb-5 pt-4">
+              <div className="rounded-[15px] border border-surface-overlay bg-surface-base p-4">
+                <ActionPanel
+                  model={model}
+                  canReview={canReview}
+                  generating={generating}
+                  first={first}
+                  onAction={onAction}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="flex min-h-0 flex-1">
+            <div className="min-w-0 flex-1 overflow-y-auto px-6 pb-10 pt-6">
+              <div className="flex items-baseline justify-between gap-4">
+                <Eyebrow>Key facts</Eyebrow>
+                <div className="text-[12.5px] text-ink-faint">Open a source for the original</div>
+              </div>
+              <div className="mt-1.5">
+                <KeyFactsList facts={model.keyFacts} onOpenSource={onOpenSource} />
+              </div>
+            </div>
+
+            <div className="min-w-0 flex-1 overflow-y-auto border-l border-surface-chromeline px-6 pb-10 pt-6">
               <Eyebrow>
                 In theatre{model.intraopPerformer ? ` · ${model.intraopPerformer}` : ""}
               </Eyebrow>
-              {model.events.length > 0 ? (
-                <>
-                  <div className="mb-9 mt-3.5">
-                    {model.events.map((e, i) => (
-                      <div key={i} className="flex gap-4">
-                        <div className="w-[52px] flex-none pt-px text-right text-[13.5px] font-semibold text-ink-muted">
-                          {e.t}
-                        </div>
-                        <div className="flex flex-none flex-col items-center">
-                          <span className="mt-1.5 h-2.5 w-2.5 flex-none rounded-full border-2 border-gold-soft bg-surface-base" />
-                          {i < model.events.length - 1 && (
-                            <span className="my-0.5 w-0.5 flex-1 bg-surface-overlay" />
-                          )}
-                        </div>
-                        <div className="min-w-0 flex-1 pb-[18px]">
-                          <div className="text-[15.5px] leading-snug text-ink-primary">{e.text}</div>
-                          {e.hasProv && (
-                            <SourceLink
-                              className="mt-1.5"
-                              onClick={() => onOpenSource({ title: e.text, refs: e.refs })}
-                            >
-                              Play the dictation
-                            </SourceLink>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <SectionPlaceholder>
-                  {model.reachedTheatre
-                    ? "No dictation was recorded for the theatre record."
-                    : "Not in the operating room yet — the theatre timeline fills in live once the case reaches theatre."}
-                </SectionPlaceholder>
-              )}
+              <TheatreTimeline model={model} onOpenSource={onOpenSource} />
+            </div>
 
+            <div className="min-w-0 flex-1 overflow-y-auto border-l border-surface-chromeline px-6 pb-10 pt-6">
               <Eyebrow>Anticipated issues</Eyebrow>
-              {model.issues.length > 0 ? (
-                <div className="mt-3 flex max-w-[760px] flex-col gap-2.5">
-                  {model.issues.map((r, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
-                    >
-                      <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
-                      <span className="text-[15px] leading-relaxed text-ink-body">{r}</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <SectionPlaceholder>
-                  {model.reachedTheatre
-                    ? "No post-op issues were anticipated for this case."
-                    : "Anticipated post-op issues appear once the theatre record is generated."}
-                </SectionPlaceholder>
-              )}
-            </>
-          )}
-        </div>
+              <IssuesList model={model} />
+            </div>
+          </div>
 
-        {/* right rail */}
-        <div className="flex w-[410px] flex-none flex-col border-l border-surface-chromeline bg-surface-sunken">
-          {/* the pre-op brief skips "needs you now" — those open questions
-              were already reviewed in the interview step (the generation
-              gate requires it), so re-listing them here is pure clutter */}
-          {model.stage !== "preop" && (
-            <>
-              <div className="flex flex-none items-center gap-2.5 px-6 pb-3 pt-5">
-                <span className="text-[12px] font-bold uppercase tracking-[.12em] text-status-conflicting">
-                  Needs you now
-                </span>
-                {model.pendingReview > 0 && (
-                  <span className="rounded-full bg-status-conflicting px-2 py-0.5 text-[11.5px] font-bold text-ink-onBrand">
-                    {model.pendingReview}
-                  </span>
-                )}
-              </div>
-              <div className="flex-1 overflow-y-auto px-6 pb-3">
-                {model.needs.map((n) => (
-                  <div
-                    key={n.key}
-                    className={`mb-3 rounded-[14px] border ${n.reason.borderClass} ${n.reason.bgClass} p-4`}
-                    style={{ opacity: n.reviewed ? 0.6 : 1 }}
-                  >
-                    <div className="mb-2 flex items-center justify-between gap-2.5">
-                      <span
-                        className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] ${n.reason.textClass}`}
-                      >
-                        <span className={`h-1.5 w-1.5 rounded-full ${n.reason.dotClass}`} />
-                        {n.reason.label}
-                      </span>
-                      {n.reviewed && (
-                        <span className="text-[11.5px] font-semibold text-status-supported">
-                          ✓ Reviewed
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-[15px] font-semibold leading-snug text-ink-primary">
-                      {n.title}
-                    </div>
-                    {n.detail && (
-                      <div className="mt-1.5 text-[13.5px] leading-relaxed text-ink-secondary">
-                        {n.detail}
-                      </div>
-                    )}
-                    <div className="mt-3 flex items-center gap-4">
-                      {canReview &&
-                        (n.reviewed ? (
-                          <button
-                            type="button"
-                            onClick={() => onReviewNeed(n.key, false)}
-                            className="text-[12.5px] text-ink-subtle underline"
-                          >
-                            Undo
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() => onReviewNeed(n.key, true)}
-                            className={`min-h-[40px] rounded-[9px] border bg-surface-base px-3.5 py-2 text-[13px] font-semibold ${n.reason.borderClass} ${n.reason.textClass}`}
-                          >
-                            Mark reviewed
-                          </button>
-                        ))}
-                      {n.hasProv && (
-                        <SourceLink onClick={() => onOpenSource({ title: n.title, refs: n.refs })}>
-                          See the sources
-                        </SourceLink>
-                      )}
-                    </div>
-                  </div>
-                ))}
-                {model.needs.length === 0 && (
-                  <p className="rounded-[14px] border border-surface-overlay bg-surface-base p-4 text-[13.5px] text-ink-secondary">
-                    Nothing outstanding — no open questions on this case.
-                  </p>
-                )}
-              </div>
-            </>
-          )}
-          {model.stage === "preop" && <div className="flex-1" />}
-
-          {/* the one forward action — adapts to the case's stage */}
-          <div className="flex-none border-t border-surface-overlay bg-surface-sunken px-6 pb-5 pt-4">
-            <div className="rounded-[15px] border border-surface-overlay bg-surface-base p-4">
+          {/* the one forward action — a bar under the columns */}
+          <div className="flex-none border-t border-surface-chromeline bg-surface-sunken px-8 py-4">
+            <div className="ml-auto w-[400px] max-w-full rounded-[15px] border border-surface-overlay bg-surface-base p-4">
               <ActionPanel
                 model={model}
                 canReview={canReview}
@@ -332,8 +192,126 @@ export function BriefScreen({
               />
             </div>
           </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+/** The key-facts rows — each with its verification badge and source jump. */
+function KeyFactsList({
+  facts,
+  onOpenSource,
+}: {
+  facts: BriefModel["keyFacts"];
+  onOpenSource: (req: SourceRequest) => void;
+}) {
+  return (
+    <>
+      {facts.map((f) => (
+        <div key={f.claimId} className="border-t border-surface-line px-3 py-3.5">
+          <div className="flex items-baseline justify-between gap-5">
+            <span className="flex-1 text-[16.5px] leading-snug text-ink-primary">{f.text}</span>
+            <span className="flex flex-none items-center gap-2">
+              {f.showStatus && (
+                <span className={`text-[12px] font-semibold ${f.statusMeta.className}`}>
+                  {f.statusMeta.label}
+                </span>
+              )}
+              <span
+                className={`flex h-5 w-5 items-center justify-center rounded-full text-[11px] ${f.statusMeta.dotClassName} ${f.statusMeta.className}`}
+              >
+                {f.statusMeta.glyph}
+              </span>
+            </span>
+          </div>
+          <div className="mt-2 flex justify-end">
+            {f.hasProv ? (
+              <SourceLink onClick={() => onOpenSource({ title: f.text, refs: f.refs })}>
+                {f.provLabel}
+              </SourceLink>
+            ) : (
+              <span className="text-[12.5px] text-ink-ghost">Awaiting a source</span>
+            )}
+          </div>
         </div>
-      </div>
+      ))}
+      {facts.length === 0 && (
+        <p className="border-t border-surface-line py-6 text-[14px] text-ink-subtle">
+          No facts have been extracted for this case yet.
+        </p>
+      )}
+    </>
+  );
+}
+
+function TheatreTimeline({
+  model,
+  onOpenSource,
+}: {
+  model: BriefModel;
+  onOpenSource: (req: SourceRequest) => void;
+}) {
+  if (model.events.length === 0) {
+    return (
+      <SectionPlaceholder>
+        {model.reachedTheatre
+          ? "No dictation was recorded for the theatre record."
+          : "Not in the operating room yet — the theatre timeline fills in live once the case reaches theatre."}
+      </SectionPlaceholder>
+    );
+  }
+  return (
+    <div className="mt-3.5">
+      {model.events.map((e, i) => (
+        <div key={i} className="flex gap-4">
+          <div className="w-[52px] flex-none pt-px text-right text-[13.5px] font-semibold text-ink-muted">
+            {e.t}
+          </div>
+          <div className="flex flex-none flex-col items-center">
+            <span className="mt-1.5 h-2.5 w-2.5 flex-none rounded-full border-2 border-gold-soft bg-surface-base" />
+            {i < model.events.length - 1 && (
+              <span className="my-0.5 w-0.5 flex-1 bg-surface-overlay" />
+            )}
+          </div>
+          <div className="min-w-0 flex-1 pb-[18px]">
+            <div className="text-[15.5px] leading-snug text-ink-primary">{e.text}</div>
+            {e.hasProv && (
+              <SourceLink
+                className="mt-1.5"
+                onClick={() => onOpenSource({ title: e.text, refs: e.refs })}
+              >
+                Play the dictation
+              </SourceLink>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function IssuesList({ model }: { model: BriefModel }) {
+  if (model.issues.length === 0) {
+    return (
+      <SectionPlaceholder>
+        {model.reachedTheatre
+          ? "No post-op issues were anticipated for this case."
+          : "Anticipated post-op issues appear once the theatre record is generated."}
+      </SectionPlaceholder>
+    );
+  }
+  return (
+    <div className="mt-3 flex flex-col gap-2.5">
+      {model.issues.map((r, i) => (
+        <div
+          key={i}
+          className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
+        >
+          <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
+          <span className="text-[15px] leading-relaxed text-ink-body">{r}</span>
+        </div>
+      ))}
     </div>
   );
 }

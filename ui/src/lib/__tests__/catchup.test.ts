@@ -126,6 +126,50 @@ describe("buildBrief — adaptive patient view", () => {
     expect(brief.handedFrom).toBe("Dr B. Tan");
   });
 
+  it("keys the facts to the displayed stage — theatre reads the pre-op note, recovery the handoff", () => {
+    const artifacts = [
+      {
+        artifact_id: "note:pre-anesthesia-eval",
+        claims: [{ claim_id: "p1", text: "Pre-op fact." }],
+      },
+      {
+        artifact_id: "note:pacu-handoff",
+        claims: [{ claim_id: "h1", text: "Handoff fact." }],
+      },
+    ];
+    const inTheatre = CaseSchema.parse({
+      case_id: "sg-theatre",
+      workflow: {
+        created_by: PROVIDERS[0],
+        created_at: "2026-04-02T06:00:00Z",
+        stages: { preop: signedStage("p-lim"), intraop: stage(), postop: stage() },
+      },
+      artifacts,
+    });
+    const theatreBrief = buildBrief(inTheatre, PROVIDERS);
+    expect(theatreBrief.stage).toBe("intraop");
+    expect(theatreBrief.keyFactsSource).toBe("note:pre-anesthesia-eval");
+    expect(theatreBrief.keyFacts.map((f) => f.text)).toEqual(["Pre-op fact."]);
+
+    const inRecovery = CaseSchema.parse({
+      case_id: "sg-recovery",
+      workflow: {
+        created_by: PROVIDERS[0],
+        created_at: "2026-04-02T06:00:00Z",
+        stages: {
+          preop: signedStage("p-lim"),
+          intraop: signedStage("p-tan"),
+          postop: stage({ status: "awaiting_review" }),
+        },
+      },
+      artifacts,
+    });
+    const recoveryBrief = buildBrief(inRecovery, PROVIDERS);
+    expect(recoveryBrief.stage).toBe("postop");
+    expect(recoveryBrief.keyFactsSource).toBe("note:pacu-handoff");
+    expect(recoveryBrief.keyFacts.map((f) => f.text)).toEqual(["Handoff fact."]);
+  });
+
   it("has no action for a read-only demo case (no workflow)", () => {
     const kase = CaseSchema.parse({
       case_id: "sg-demo",

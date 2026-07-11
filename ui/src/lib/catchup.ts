@@ -370,8 +370,6 @@ export interface BriefModel {
   acknowledgedMeta: string | null;
 }
 
-const KEY_FACT_ARTIFACTS = ["note:pre-anesthesia-eval", "note:pacu-handoff"];
-
 function mapKeyFact(claim: Claim, alwaysShowStatus: boolean): KeyFact {
   const has = claim.provenance.length > 0;
   return {
@@ -395,10 +393,17 @@ export function buildBrief(
   const wf = kase.workflow;
   const stage = headlineStage(wf) ?? newestStageWithArtifacts(kase) ?? "postop";
 
-  // key facts: prefer the pre-op evaluation (patient-level facts), else handoff
-  const factArtifact = KEY_FACT_ARTIFACTS.map((id) =>
-    kase.artifacts.find((a) => a.artifact_id === id),
-  ).find(Boolean);
+  // key facts follow the displayed stage: pre-op and in-theatre read the
+  // pre-op evaluation (patient-level facts); the recovery brief reads the
+  // PACU handoff — before this it fell back to the pre-op note, so the
+  // post-op brief re-showed the intra-op era's facts
+  const factOrder =
+    stage === "postop"
+      ? ["note:pacu-handoff", "note:pre-anesthesia-eval"]
+      : ["note:pre-anesthesia-eval", "note:pacu-handoff"];
+  const factArtifact = factOrder
+    .map((id) => kase.artifacts.find((a) => a.artifact_id === id))
+    .find(Boolean);
   let keyFacts = (factArtifact?.claims ?? []).map((c) =>
     mapKeyFact(c, !!opts.alwaysShowStatus),
   );

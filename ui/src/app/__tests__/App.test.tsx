@@ -61,11 +61,13 @@ function livePreopCase() {
   });
 }
 
-/** The seed fixture has no workflow, so it lands under "All cases"; open it. */
+/** The seed fixture has no workflow, so it lands under "All cases"; open it.
+ * It reads as a recovery case, so the brief is the three-column view with
+ * its key facts drawn from the PACU handoff. */
 async function openBrief() {
   render(<App />);
   await userEvent.click(await screen.findByRole("button", { name: /sg-t/ }));
-  await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+  await screen.findByText("Aspirin held pre-op.");
 }
 
 /** A pre-op case that has cleared the interview gate but hasn't generated
@@ -131,17 +133,20 @@ describe("Catch-Up app", () => {
 
   afterEach(() => vi.unstubAllGlobals());
 
-  it("shows the worklist and opens a case's brief", async () => {
+  it("shows the worklist and opens a case's brief — three columns for a recovery case", async () => {
     render(<App />);
     expect(await screen.findByRole("heading", { name: "Cases" })).toBeInTheDocument();
     await userEvent.click(await screen.findByRole("button", { name: /sg-t/ }));
+    // key facts come from the PACU handoff, not the pre-op note
+    expect(await screen.findByText("Aspirin held pre-op.")).toBeInTheDocument();
     expect(
-      await screen.findByText("Aspirin was discontinued 6 days prior to surgery."),
-    ).toBeInTheDocument();
-    expect(
-      screen.getAllByText("Records list aspirin 100mg daily as current.").length,
-    ).toBeGreaterThan(0);
-    expect(screen.getByText("Conflicting")).toBeInTheDocument();
+      screen.queryByText("Aspirin was discontinued 6 days prior to surgery."),
+    ).not.toBeInTheDocument();
+    // the three columns, with story-so-far gone past pre-op
+    expect(screen.getByText("Key facts")).toBeInTheDocument();
+    expect(screen.getByText(/In theatre/)).toBeInTheDocument();
+    expect(screen.getByText("Anticipated issues")).toBeInTheDocument();
+    expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
   });
 
   it("opens the cited source for a key fact and shows the highlighted segment", async () => {

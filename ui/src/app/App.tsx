@@ -345,19 +345,6 @@ export default function App() {
     }
   }
 
-  /** Toggle an open question's review state (design: "Needs you now" cards). */
-  async function handleReviewNeed(key: number, reviewed: boolean) {
-    if (!kase || !me) return;
-    const questions = kase.open_questions.map((q, i) =>
-      i === key ? { ...q, review: reviewed ? ("approved" as const) : null } : q,
-    );
-    try {
-      setKase(await reviewQuestions(kase.case_id, questions, me));
-    } catch (e) {
-      setError(readDetail(e));
-    }
-  }
-
   const providerControl = (
     <ProviderPicker providers={providers} selected={me} onSelect={pickProvider} />
   );
@@ -392,7 +379,6 @@ export default function App() {
         onBack={goWorklist}
         onOpenSource={setSource}
         onAction={handleAction}
-        onReviewNeed={handleReviewNeed}
         generating={generatingLabel}
       />
     );
