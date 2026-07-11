@@ -1,6 +1,7 @@
 /**
- * The patient view (PeriOp Catch-Up.dc.html "BRIEF"). Pre-op keeps the
- * narrative page — story → key facts, action rail. Once the case is past
+ * The patient view (PeriOp Catch-Up.dc.html "BRIEF"). Pre-op reads as key
+ * facts with the story so far in the rail, above the sign-off (v2-ui
+ * feedback). Once the case is past
  * pre-op the brief reads as three columns — key facts · in theatre ·
  * anticipated issues — over one action bar (v2-ui feedback: no "story so
  * far" or "needs you now" after pre-op; the open questions were already
@@ -115,28 +116,6 @@ export function BriefScreen({
         <div className="flex min-h-0 flex-1">
           {/* main column */}
           <div className="min-w-0 flex-1 overflow-y-auto px-8 pb-12 pt-6">
-            <Eyebrow>The story so far</Eyebrow>
-            <div className="mt-0.5 text-[12.5px] text-ink-faint">{model.assembledFrom}</div>
-            {model.attentionCount > 0 && (
-              <div className="mb-8 mt-3 max-w-[760px]">
-                <p className="font-serif text-[19px] leading-relaxed text-ink-body">
-                  {model.attentionCount === 1
-                    ? "One thing is worth your attention"
-                    : `${model.attentionCount} things are worth your attention`}{" "}
-                  before you take over {first}:
-                </p>
-                <ul className="mt-3 space-y-1.5">
-                  {model.attentionItems.map((it, i) => (
-                    <li key={i} className="flex gap-2.5 text-[15px] leading-relaxed text-ink-body">
-                      <span className="flex-none text-gold">◆</span>
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {model.attentionCount === 0 && <div className="mb-8" />}
-
             <div className="flex items-baseline justify-between gap-4">
               <Eyebrow>Key facts</Eyebrow>
               <div className="text-[12.5px] text-ink-faint">
@@ -148,10 +127,31 @@ export function BriefScreen({
             </div>
           </div>
 
-          {/* right rail: just the one forward action — the open questions
-              were already reviewed at the interview gate */}
+          {/* right rail: the story so far over the one forward action — the
+              open questions were already reviewed at the interview gate */}
           <div className="flex w-[410px] flex-none flex-col border-l border-surface-chromeline bg-surface-sunken">
-            <div className="flex-1" />
+            <div className="min-h-0 flex-1 overflow-y-auto px-6 pb-5 pt-6">
+              <Eyebrow>The story so far</Eyebrow>
+              <div className="mt-0.5 text-[12.5px] text-ink-faint">{model.assembledFrom}</div>
+              {model.attentionCount > 0 && (
+                <div className="mt-3">
+                  <p className="font-serif text-[17px] leading-relaxed text-ink-body">
+                    {model.attentionCount === 1
+                      ? "One thing is worth your attention"
+                      : `${model.attentionCount} things are worth your attention`}{" "}
+                    before you take over {first}:
+                  </p>
+                  <ul className="mt-3 space-y-1.5">
+                    {model.attentionItems.map((it, i) => (
+                      <li key={i} className="flex gap-2.5 text-[14.5px] leading-relaxed text-ink-body">
+                        <span className="flex-none text-gold">◆</span>
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
             <div className="flex-none border-t border-surface-overlay bg-surface-sunken px-6 pb-5 pt-4">
               <div className="rounded-[15px] border border-surface-overlay bg-surface-base p-4">
                 <ActionPanel
