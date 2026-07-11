@@ -7,7 +7,7 @@
  * (`lib/flow`) decides which capture screen a case is on; explicit
  * navigation (sub-stage pills, the brief's primary action) overrides it.
  */
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BriefScreen } from "../components/catchup/BriefScreen";
 import { SourceModal, type SourceRequest } from "../components/catchup/SourceModal";
 import { Worklist } from "../components/catchup/Worklist";
@@ -32,6 +32,7 @@ import {
 import { buildBrief, worklistRow } from "../lib/catchup";
 import {
   AUDIO_KIND,
+  autoGenerateReady,
   flowScreen,
   hasPreopRecords,
   transcriptionBusy,
@@ -70,6 +71,9 @@ export default function App() {
   // a stage run in flight — folded into the stage chrome as a minimal live
   // status instead of a full-screen takeover (v2-ui feedback)
   const [running, setRunning] = useState(false);
+  // the last stage run (auto or manual) ended in an error — the capture
+  // screens surface a manual generate again so the provider can retry
+  const [genFailed, setGenFailed] = useState(false);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -255,6 +259,7 @@ export default function App() {
     const stage = headlineStage(kase.workflow) ?? "preop";
     setGenEvents([]);
     setNotice(null);
+    setGenFailed(false);
     setRunning(true);
     try {
       await streamStageRun(kase.case_id, stage, me, (ev) => {
@@ -267,11 +272,26 @@ export default function App() {
     } catch (e) {
       // gate (409) or run error — back to the flow with the plain reason
       setNotice(readDetail(e));
+      setGenFailed(true);
       setScreenOverride(null);
     } finally {
       setRunning(false);
     }
   }
+
+  // Pre-op and post-op generate themselves the moment the transcript lands
+  // (no "Generate" click after the recording). One attempt per recording:
+  // a failed run leaves its notice plus a manual generate, never a loop.
+  const autoGenAttempted = useRef<string | null>(null);
+  useEffect(() => {
+    if (view !== "case" || !kase || !me || running || busy) return;
+    const stage = headlineStage(kase.workflow) ?? "preop";
+    if (!autoGenerateReady(kase, stage)) return;
+    const key = `${kase.case_id}:${stage}:${kase.workflow?.stages[stage].inputs_recorded_at}`;
+    if (autoGenAttempted.current === key) return;
+    autoGenAttempted.current = key;
+    void handleGenerate();
+  }, [view, kase, me, running, busy]);
 
   async function handleAcknowledge() {
     if (!kase || !me) return;
@@ -458,6 +478,7 @@ export default function App() {
             busy={busy || running}
             notice={notice}
             canWrite={!!me}
+            genFailed={genFailed}
             onApproveQuestions={handleApproveQuestions}
             onUploadAudio={handleUploadAudio}
             onGenerate={() => void handleGenerate()}
@@ -471,6 +492,7 @@ export default function App() {
             busy={busy || running}
             notice={notice}
             canWrite={!!me}
+            genFailed={genFailed}
             liveEvents={running ? genEvents : []}
             onUploadAudio={handleUploadAudio}
             onGenerate={() => void handleGenerate()}

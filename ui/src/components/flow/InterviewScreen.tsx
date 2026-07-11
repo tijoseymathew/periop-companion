@@ -3,11 +3,14 @@
  * clarifying questions raised from the records — reviewed here (keep /
  * dismiss / approve, the pre-op question gate, v2 §4.1), then kept on screen
  * as the list to ask. Right: the interview recording with its transcript,
- * which lands moments after upload. One primary action: generate the brief.
+ * which lands moments after upload — and the brief starts generating on its
+ * own the moment it does (App's auto-generate). A manual generate appears
+ * only on the recovery paths: a failed transcription (the run transcribes at
+ * generate time) or a failed run.
  */
 import { useState } from "react";
 import { categorizeReason } from "../../lib/catchup";
-import { audioSource, transcriptionBusy } from "../../lib/flow";
+import { audioSource, transcriptionBusy, transcriptionState } from "../../lib/flow";
 import type { Case, OpenQuestion } from "../../lib/schema";
 import type { RunEvent } from "../../lib/sse";
 import { LiveResults } from "./LiveResults";
@@ -19,6 +22,7 @@ export function InterviewScreen({
   busy,
   notice,
   canWrite,
+  genFailed = false,
   onApproveQuestions,
   onUploadAudio,
   onGenerate,
@@ -28,6 +32,8 @@ export function InterviewScreen({
   busy: boolean;
   notice: string | null;
   canWrite: boolean;
+  /** the last stage run failed — offer the manual generate again */
+  genFailed?: boolean;
   onApproveQuestions: (questions: OpenQuestion[]) => void;
   onUploadAudio: (file: File) => void;
   onGenerate: () => void;
@@ -40,7 +46,16 @@ export function InterviewScreen({
   const source = audioSource(kase, "preop");
   const inputsRecorded = !!preop?.inputs_recorded_at;
   const transcribing = transcriptionBusy(kase, "preop");
-  const canGenerate = canWrite && approved && inputsRecorded && !transcribing && !busy;
+  // the brief generates itself once the transcript lands; the button exists
+  // only for the paths auto-generate never fires on: a failed run, a failed
+  // transcription, or a legacy case with no transcription state at all
+  const jobState = transcriptionState(kase, "preop");
+  const needsManualGenerate =
+    approved &&
+    inputsRecorded &&
+    !transcribing &&
+    (genFailed || jobState === "failed" || jobState === null);
+  const canGenerate = canWrite && needsManualGenerate && !busy;
 
   const askList = approved
     ? questions.filter((q) => q.review !== "dismissed")
@@ -58,14 +73,13 @@ export function InterviewScreen({
           </h1>
           <p className="mt-2 max-w-[600px] text-[14.5px] leading-relaxed text-ink-secondary">
             {approved
-              ? "Ask these during the interview, then add the audio and generate the brief."
+              ? "Ask these during the interview, then add the audio — the brief starts generating the moment it's transcribed."
               : "These came from gaps and conflicts in the records. Keep the ones worth asking, dismiss the rest."}
           </p>
         </div>
-        {/* while questions are still under review, "Approve & continue"
-            below is the one recommended action — a second green button up
-            here (even disabled) reads as a competing call to action */}
-        {approved && (
+        {/* no standing "Generate" button — the brief generates itself once
+            the transcript lands; this appears only on the recovery paths */}
+        {needsManualGenerate && (
           <button
             type="button"
             disabled={!canGenerate}

@@ -44,14 +44,14 @@ function interviewCase(patch: (c: Case) => void = () => {}): Case {
   return c;
 }
 
-function renderScreen(kase: Case) {
+function renderScreen(kase: Case, extra: { genFailed?: boolean } = {}) {
   const props = {
     onApproveQuestions: vi.fn(),
     onUploadAudio: vi.fn(),
     onGenerate: vi.fn(),
   };
   render(
-    <InterviewScreen kase={kase} busy={false} notice={null} canWrite {...props} />,
+    <InterviewScreen kase={kase} busy={false} notice={null} canWrite {...extra} {...props} />,
   );
   return props;
 }
@@ -97,11 +97,13 @@ describe("InterviewScreen", () => {
       }),
     );
     expect(screen.getByText(/Transcribing/)).toBeInTheDocument();
-    // mid-transcription the run gate would 409 — the button says not yet
-    expect(screen.getByRole("button", { name: /Generate pre-op brief/ })).toBeDisabled();
+    // the brief will generate itself when the transcript lands — no button
+    expect(
+      screen.queryByRole("button", { name: /Generate pre-op brief/ }),
+    ).not.toBeInTheDocument();
   });
 
-  it("shows the transcript and enables Generate once it lands", () => {
+  it("shows the transcript with no Generate button — the brief generates itself", () => {
     renderScreen(
       interviewCase((c) => {
         c.workflow!.stages.preop.questions_approved_at = "2026-07-01T07:00:00Z";
@@ -127,6 +129,32 @@ describe("InterviewScreen", () => {
     expect(
       screen.getByText("I stopped the amlodipine about six months ago."),
     ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /Generate pre-op brief/ }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("offers a manual Generate when the upload's transcription failed", () => {
+    renderScreen(
+      interviewCase((c) => {
+        c.workflow!.stages.preop.questions_approved_at = "2026-07-01T07:00:00Z";
+        c.workflow!.stages.preop.inputs_recorded_at = "2026-07-01T07:20:00Z";
+        c.workflow!.stages.preop.transcription = "failed";
+      }),
+    );
     expect(screen.getByRole("button", { name: /Generate pre-op brief/ })).toBeEnabled();
+  });
+
+  it("offers a manual Generate again after a failed run", async () => {
+    const props = renderScreen(
+      interviewCase((c) => {
+        c.workflow!.stages.preop.questions_approved_at = "2026-07-01T07:00:00Z";
+        c.workflow!.stages.preop.inputs_recorded_at = "2026-07-01T07:20:00Z";
+        c.workflow!.stages.preop.transcription = "complete";
+      }),
+      { genFailed: true },
+    );
+    await userEvent.click(screen.getByRole("button", { name: /Generate pre-op brief/ }));
+    expect(props.onGenerate).toHaveBeenCalled();
   });
 });

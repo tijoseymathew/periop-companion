@@ -242,6 +242,56 @@ describe("Catch-Up app", () => {
     expect(screen.queryByTestId("generating-strip")).not.toBeInTheDocument();
   });
 
+  it("auto-generates the pre-op brief the moment the transcript has landed — no click", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const ready = preopReadyCase();
+    ready.workflow!.stages.preop.transcription = "complete";
+    const generated = CaseSchema.parse({
+      ...ready,
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "c1", text: "Aspirin held pre-op.", status: "supported" }],
+        },
+      ],
+    });
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-ready", label: "Doyle — knee", workflow: ready.workflow }),
+    ]);
+    vi.mocked(api.fetchCase).mockResolvedValueOnce(ready).mockResolvedValue(generated);
+
+    const sse = vi.fn(async (url: RequestInfo | URL) => {
+      void url;
+      return {
+        ok: true,
+        status: 200,
+        body: new ReadableStream<Uint8Array>({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode('event: complete\ndata: {"case_id": "sg-ready"}\n\n'),
+            );
+            controller.close();
+          },
+        }),
+      } as unknown as Response;
+    });
+    vi.stubGlobal("fetch", sse);
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-ready/ }));
+
+    // the run starts on its own and the brief takes over when it finishes
+    expect(await screen.findByText("The story so far")).toBeInTheDocument();
+    expect(sse).toHaveBeenCalledTimes(1);
+    expect(String(vi.mocked(sse).mock.calls[0][0])).toContain(
+      "/api/cases/sg-ready/stages/preop/run",
+    );
+    // no standing Generate button anywhere in this flow
+    expect(
+      screen.queryByRole("button", { name: /Generate pre-op brief/ }),
+    ).not.toBeInTheDocument();
+  });
+
   it("folds the intake build into the chrome strip — records stay visible, no full-screen takeover", async () => {
     localStorage.setItem("periop-provider", "p-lim");
     const building = preopBuildingCase();

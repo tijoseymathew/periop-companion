@@ -41,6 +41,24 @@ export function transcriptionBusy(kase: Case | null, stage: StageKey): boolean {
   return state === "pending" || state === "running";
 }
 
+/**
+ * Should this stage's output start generating on its own right now?
+ * Pre-op and post-op generate the moment their recording's transcript lands
+ * (v2-ui feedback: no "Generate" click after the interview). Intra-op memos
+ * accumulate, so the provider still says when the theatre record is ready.
+ * A failed transcription never auto-fires — the capture screens keep their
+ * manual generate for that path (the run transcribes at generate time).
+ */
+export function autoGenerateReady(kase: Case | null, stage: StageKey): boolean {
+  if (!kase?.workflow || stage === "intraop") return false;
+  const state = kase.workflow.stages[stage];
+  if (state.status !== "ready_to_generate") return false;
+  if (stage === "preop" && !state.questions_approved_at) return false;
+  if (!state.inputs_recorded_at) return false;
+  if (transcriptionState(kase, stage) !== "complete") return false;
+  return !kase.artifacts.some((a) => a.artifact_id === PRIMARY_ARTIFACT[stage]);
+}
+
 /** Intake gate (v2 §4.1): the op plan plus at least one other record. */
 export function hasPreopRecords(kase: Case | null): boolean {
   if (!kase) return false;

@@ -4,7 +4,10 @@
  * designed for a tablet at arm's length — with upload as the quiet
  * alternative. The transcript appears moments after the recording lands
  * (upload-time transcription); intra-op memos accumulate into one running
- * timeline. One primary action once audio exists: generate the stage.
+ * timeline. Intra-op keeps its explicit generate (only the provider knows
+ * when the dictation is done); post-op generates itself the moment the
+ * transcript lands (App's auto-generate), so its manual generate appears
+ * only on the recovery paths (failed transcription / failed run).
  */
 import { useRef } from "react";
 import { audioUrl } from "../../lib/api";
@@ -32,9 +35,9 @@ const COPY: Record<
   postop: {
     eyebrow: "Post-op · Interview",
     h1: "Record the post-op interview",
-    sub: "Capture the recovery conversation — pain, nausea, obs — then generate the PACU handoff.",
+    sub: "Capture the recovery conversation — pain, nausea, obs. The PACU handoff generates on its own once the recording is transcribed.",
     doneTitle: "Interview captured",
-    doneSub: "Ready to bring the whole case — pre-op, theatre and recovery — together into the handoff.",
+    doneSub: "The handoff is bringing the whole case — pre-op, theatre and recovery — together. It starts on its own; stay on this screen or come back any time.",
   },
 };
 
@@ -44,6 +47,7 @@ export function CaptureScreen({
   busy,
   notice,
   canWrite,
+  genFailed = false,
   onUploadAudio,
   onGenerate,
   liveEvents = [],
@@ -53,6 +57,8 @@ export function CaptureScreen({
   busy: boolean;
   notice: string | null;
   canWrite: boolean;
+  /** the last stage run failed — offer the manual generate again */
+  genFailed?: boolean;
   onUploadAudio: (file: File) => void;
   onGenerate: () => void;
   /** this session's own stage-run SSE events, while one is in flight */
@@ -67,6 +73,13 @@ export function CaptureScreen({
   const inputsRecorded = !!kase.workflow?.stages[stage].inputs_recorded_at;
   const captured = source !== null && source.segments.length > 0;
   const canGenerate = canWrite && inputsRecorded && !transcribing && !busy;
+  // post-op generates itself; its button exists only for the paths
+  // auto-generate never fires on (failed run / failed or absent transcription)
+  const manualGenerate =
+    stage === "intraop" ||
+    failed ||
+    genFailed ||
+    transcriptionState(kase, stage) === null;
 
   return (
     <StageContainer fullHeight>
@@ -217,14 +230,16 @@ export function CaptureScreen({
             <div className="mt-1.5 text-[13.5px] leading-relaxed text-ink-secondary">
               {copy.doneSub}
             </div>
-            <button
-              type="button"
-              disabled={!canGenerate}
-              onClick={onGenerate}
-              className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-[11px] bg-brand px-4 text-[14.5px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-40"
-            >
-              {GENERATE_LABELS[stage]} &nbsp;→
-            </button>
+            {manualGenerate && (
+              <button
+                type="button"
+                disabled={!canGenerate}
+                onClick={onGenerate}
+                className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-[11px] bg-brand px-4 text-[14.5px] font-semibold text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset] disabled:opacity-40"
+              >
+                {GENERATE_LABELS[stage]} &nbsp;→
+              </button>
+            )}
             {stage === "intraop" && (
               <button
                 type="button"

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { CaseSchema, type Case } from "../schema";
 import {
   audioSource,
+  autoGenerateReady,
   flowScreen,
   hasPreopRecords,
   subLabel,
@@ -108,6 +109,73 @@ describe("records gate & transcript selectors", () => {
     c.workflow!.stages.preop.transcription = "complete";
     expect(transcriptionBusy(c, "preop")).toBe(false);
     expect(audioSource(c, "preop")?.segments).toHaveLength(1);
+  });
+});
+
+describe("autoGenerateReady", () => {
+  /** A pre-op case that has cleared every auto-generate gate. */
+  function readyPreop(patch: (c: Case) => void = () => {}): Case {
+    return liveCase((k) => {
+      withPreopRecords(k);
+      const preop = k.workflow!.stages.preop;
+      preop.status = "ready_to_generate";
+      preop.questions_approved_at = "2026-04-02T06:30:00Z";
+      preop.inputs_recorded_at = "2026-04-02T06:45:00Z";
+      preop.transcription = "complete";
+      patch(k);
+    });
+  }
+
+  it("fires for pre-op once the transcript lands behind the question gate", () => {
+    expect(autoGenerateReady(readyPreop(), "preop")).toBe(true);
+  });
+
+  it("never fires for intra-op — memos accumulate until the provider says done", () => {
+    const c = liveCase((k) => {
+      const intraop = k.workflow!.stages.intraop;
+      intraop.status = "ready_to_generate";
+      intraop.inputs_recorded_at = "2026-04-02T09:00:00Z";
+      intraop.transcription = "complete";
+    });
+    expect(autoGenerateReady(c, "intraop")).toBe(false);
+  });
+
+  it("fires for post-op on the same transcript-landed condition", () => {
+    const c = liveCase((k) => {
+      const postop = k.workflow!.stages.postop;
+      postop.status = "ready_to_generate";
+      postop.inputs_recorded_at = "2026-04-02T12:00:00Z";
+      postop.transcription = "complete";
+    });
+    expect(autoGenerateReady(c, "postop")).toBe(true);
+  });
+
+  it("holds while transcription is busy, failed, or absent (legacy cases)", () => {
+    for (const state of ["pending", "running", "failed", null] as const) {
+      const c = readyPreop((k) => {
+        k.workflow!.stages.preop.transcription = state;
+      });
+      expect(autoGenerateReady(c, "preop")).toBe(false);
+    }
+  });
+
+  it("holds behind the question gate and once the artifact exists", () => {
+    const unapproved = readyPreop((k) => {
+      k.workflow!.stages.preop.questions_approved_at = null;
+    });
+    expect(autoGenerateReady(unapproved, "preop")).toBe(false);
+    const generated = readyPreop((k) => {
+      k.artifacts.push({ artifact_id: "note:pre-anesthesia-eval", claims: [] });
+    });
+    expect(autoGenerateReady(generated, "preop")).toBe(false);
+  });
+
+  it("never fires on demo cases or mid-generation", () => {
+    expect(autoGenerateReady(makeCase(), "preop")).toBe(false);
+    const generating = readyPreop((k) => {
+      k.workflow!.stages.preop.status = "generating";
+    });
+    expect(autoGenerateReady(generating, "preop")).toBe(false);
   });
 });
 
