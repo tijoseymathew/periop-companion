@@ -329,7 +329,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("case_id")
     p.add_argument(
         "doc_type",
-        choices=("gp-summary", "med-list", "prior-anesthetic-record", "op-plan", "other"),
+        choices=(
+            "gp-summary",
+            "med-list",
+            "prior-anesthetic-record",
+            "op-notes",
+            "investigations",
+            "discharge-summary",
+            "allergy-record",
+            "op-plan",
+            "other",
+        ),
     )
     p.add_argument("path", nargs="?", help="file to upload; omit to paste --text or stdin")
     p.add_argument("--text", help="paste the document text inline")

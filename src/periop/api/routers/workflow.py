@@ -45,7 +45,17 @@ AUDIO_KIND_TO_STAGE = {
 
 # typed record slots (v2 §4.1 step 2); names match the synthetic bundles'
 # records/ files so live and seeded cases share one convention
-DOC_TYPES = ("gp-summary", "med-list", "prior-anesthetic-record", "op-plan", "other")
+DOC_TYPES = (
+    "gp-summary",
+    "med-list",
+    "prior-anesthetic-record",
+    "op-notes",
+    "investigations",
+    "discharge-summary",
+    "allergy-record",
+    "op-plan",
+    "other",
+)
 
 router = APIRouter()
 

@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { RecordsScreen } from "../flow/RecordsScreen";
+import { CaseSchema } from "../../lib/schema";
 
 function renderScreen(over: Partial<Parameters<typeof RecordsScreen>[0]> = {}) {
   const props = {
@@ -73,5 +74,52 @@ describe("RecordsScreen — new case", () => {
     renderScreen({ canWrite: false });
     expect(screen.getByText(/Pick a provider/)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Create intake/ })).toBeDisabled();
+  });
+
+  it("guesses the newer document types from the filename too", async () => {
+    renderScreen();
+    await fillCase();
+    await stageFile("prior-operation-report.txt");
+    expect(
+      (screen.getByLabelText("Tag for prior-operation-report.txt") as HTMLSelectElement).value,
+    ).toBe("op-notes");
+    await stageFile("bloods-panel.txt");
+    expect((screen.getByLabelText("Tag for bloods-panel.txt") as HTMLSelectElement).value).toBe(
+      "investigations",
+    );
+  });
+
+  it("offers every document type in the tag dropdown, not just the guess", async () => {
+    renderScreen();
+    await fillCase();
+    await stageFile("mystery.txt");
+    const tag = screen.getByLabelText("Tag for mystery.txt") as HTMLSelectElement;
+    const options = Array.from(tag.options).map((o) => o.value);
+    expect(options).toEqual(
+      expect.arrayContaining([
+        "gp-summary",
+        "med-list",
+        "prior-anesthetic-record",
+        "op-notes",
+        "investigations",
+        "discharge-summary",
+        "allergy-record",
+        "other",
+      ]),
+    );
+  });
+});
+
+describe("RecordsScreen — question prep failure", () => {
+  it("shows a retry banner instead of blocking the records", async () => {
+    const onRetry = vi.fn();
+    renderScreen({
+      kase: CaseSchema.parse({ case_id: "sg-t", label: "Amara Okafor" }),
+      gapFailure: { message: "the NIM timed out", onRetry },
+    });
+    expect(screen.getByText(/Question prep stopped/)).toBeInTheDocument();
+    expect(screen.getByText(/the NIM timed out/)).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Try again" }));
+    expect(onRetry).toHaveBeenCalled();
   });
 });

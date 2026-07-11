@@ -19,6 +19,10 @@ export const DOC_TAGS: { value: string; label: string }[] = [
   { value: "gp-summary", label: "GP summary" },
   { value: "med-list", label: "Medication list" },
   { value: "prior-anesthetic-record", label: "Prior anaesthetic" },
+  { value: "op-notes", label: "Previous op notes" },
+  { value: "investigations", label: "Investigations (bloods/imaging/ECG)" },
+  { value: "discharge-summary", label: "Discharge summary" },
+  { value: "allergy-record", label: "Allergy record" },
   { value: "other", label: "Other document" },
 ];
 
@@ -39,13 +43,21 @@ function tagOf(sourceId: string): string {
 
 function guessTag(name: string, free: string[]): string {
   const n = name.toLowerCase();
-  const guess = /gp|summary|letter/.test(n)
-    ? "gp-summary"
-    : /med|drug|prescri/.test(n)
-      ? "med-list"
-      : /ana?esthetic|anesthesia/.test(n)
-        ? "prior-anesthetic-record"
-        : "other";
+  const guess = /med|drug|prescri/.test(n)
+    ? "med-list"
+    : /ana?esthetic|anesthesia/.test(n)
+      ? "prior-anesthetic-record"
+      : /operat|op[\s._-]?(note|report)|surg/.test(n)
+        ? "op-notes"
+        : /blood|lab|invest|imaging|x-?ray|scan|ecg|echo/.test(n)
+          ? "investigations"
+          : /discharge/.test(n)
+            ? "discharge-summary"
+            : /allerg/.test(n)
+              ? "allergy-record"
+              : /gp|summary|letter/.test(n)
+                ? "gp-summary"
+                : "other";
   return free.includes(guess) ? guess : (free.includes("other") ? "other" : (free[0] ?? "other"));
 }
 
