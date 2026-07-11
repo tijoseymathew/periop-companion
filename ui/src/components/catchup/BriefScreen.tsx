@@ -1,11 +1,13 @@
 /**
  * The patient view (PeriOp Catch-Up.dc.html "BRIEF"). Pre-op reads as key
  * facts with the story so far in the rail, above the sign-off (v2-ui
- * feedback). Once the case is past
- * pre-op the brief reads as three columns — key facts · in theatre ·
- * anticipated issues — over one action bar (v2-ui feedback: no "story so
- * far" or "needs you now" after pre-op; the open questions were already
- * reviewed at the interview gate). The one forward action adapts to the
+ * feedback). In theatre the brief reads as three columns — key facts ·
+ * theatre timeline · anticipated issues — over one action bar (v2-ui
+ * feedback: no "story so far" or "needs you now" after pre-op; the open
+ * questions were already reviewed at the interview gate). The recovery
+ * brief shows the post-op run's own two writers side by side — the PACU
+ * handoff and the post-anaesthesia evaluation — not the intra-op era's
+ * columns again (v2-ui feedback). The one forward action adapts to the
  * case's stage (sign off / acknowledge / continue).
  */
 import type { BriefModel, ChainNode } from "../../lib/catchup";
@@ -46,6 +48,21 @@ export function BriefScreen({
   generating?: string | null;
 }) {
   const first = model.title.split(" ")[0] || "this patient";
+
+  // the one forward action — a bar under the columns (intra-op and post-op)
+  const actionBar = (
+    <div className="flex-none border-t border-surface-chromeline bg-surface-sunken px-8 py-4">
+      <div className="ml-auto w-[400px] max-w-full rounded-[15px] border border-surface-overlay bg-surface-base p-4">
+        <ActionPanel
+          model={model}
+          canReview={canReview}
+          generating={generating}
+          first={first}
+          onAction={onAction}
+        />
+      </div>
+    </div>
+  );
 
   return (
     <div className="flex h-full flex-col overflow-hidden">
@@ -165,6 +182,38 @@ export function BriefScreen({
             </div>
           </div>
         </div>
+      ) : model.stage === "postop" ? (
+        <>
+          {/* recovery: the post-op run's own two writers, side by side */}
+          <div className="flex min-h-0 flex-1">
+            <div className="min-w-0 flex-1 overflow-y-auto px-6 pb-10 pt-6">
+              <div className="flex items-baseline justify-between gap-4">
+                <Eyebrow>
+                  {model.keyFactsSource === "note:pacu-handoff" ? "PACU handoff" : "Key facts"}
+                </Eyebrow>
+                <div className="text-[12.5px] text-ink-faint">Open a source for the original</div>
+              </div>
+              <div className="mt-1.5">
+                <KeyFactsList facts={model.keyFacts} onOpenSource={onOpenSource} />
+              </div>
+            </div>
+
+            <div className="min-w-0 flex-1 overflow-y-auto border-l border-surface-chromeline px-6 pb-10 pt-6">
+              <Eyebrow>Post-anaesthesia evaluation</Eyebrow>
+              {model.postopEval.length > 0 ? (
+                <div className="mt-1.5">
+                  <KeyFactsList facts={model.postopEval} onOpenSource={onOpenSource} />
+                </div>
+              ) : (
+                <SectionPlaceholder>
+                  The post-anaesthesia evaluation appears once the post-op interview is
+                  generated.
+                </SectionPlaceholder>
+              )}
+            </div>
+          </div>
+          {actionBar}
+        </>
       ) : (
         <>
           <div className="flex min-h-0 flex-1">
@@ -190,19 +239,7 @@ export function BriefScreen({
               <IssuesList model={model} />
             </div>
           </div>
-
-          {/* the one forward action — a bar under the columns */}
-          <div className="flex-none border-t border-surface-chromeline bg-surface-sunken px-8 py-4">
-            <div className="ml-auto w-[400px] max-w-full rounded-[15px] border border-surface-overlay bg-surface-base p-4">
-              <ActionPanel
-                model={model}
-                canReview={canReview}
-                generating={generating}
-                first={first}
-                onAction={onAction}
-              />
-            </div>
-          </div>
+          {actionBar}
         </>
       )}
     </div>

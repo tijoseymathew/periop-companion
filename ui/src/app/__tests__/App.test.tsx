@@ -142,10 +142,12 @@ describe("Catch-Up app", () => {
     expect(
       screen.queryByText("Aspirin was discontinued 6 days prior to surgery."),
     ).not.toBeInTheDocument();
-    // the three columns, with story-so-far gone past pre-op
-    expect(screen.getByText("Key facts")).toBeInTheDocument();
-    expect(screen.getByText(/In theatre/)).toBeInTheDocument();
-    expect(screen.getByText("Anticipated issues")).toBeInTheDocument();
+    // the recovery brief shows the post-op run's two writers, with
+    // story-so-far and the intra-op columns gone
+    expect(screen.getByText("PACU handoff")).toBeInTheDocument();
+    expect(screen.getByText("Post-anaesthesia evaluation")).toBeInTheDocument();
+    expect(screen.queryByText(/In theatre/)).not.toBeInTheDocument();
+    expect(screen.queryByText("Anticipated issues")).not.toBeInTheDocument();
     expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
   });
 
@@ -156,9 +158,11 @@ describe("Catch-Up app", () => {
     expect(await screen.findByText("I stopped the aspirin last Tuesday.")).toBeInTheDocument();
   });
 
-  it("surfaces the theatre timeline", async () => {
-    await openBrief();
-    expect(screen.getByText(/In theatre/)).toBeInTheDocument();
+  it("surfaces the theatre timeline on the intra-op stage view", async () => {
+    await openBrief(); // lands on the recovery brief
+    await userEvent.click(screen.getByRole("button", { name: /Intra-op/ }));
+    // "In theatre" appears twice: the header stage badge and the column
+    expect(await screen.findAllByText(/In theatre/)).toHaveLength(2);
     expect(screen.getByText("propofol 120 mg")).toBeInTheDocument();
   });
 

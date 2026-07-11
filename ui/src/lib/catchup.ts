@@ -353,6 +353,8 @@ export interface BriefModel {
   attentionItems: string[];
   keyFacts: KeyFact[];
   keyFactsSource: string | null;
+  /** the post-op stage's second writer — shown beside the PACU handoff */
+  postopEval: KeyFact[];
   events: TimelineEvent[];
   intraopPerformer: string | null;
   issues: string[];
@@ -417,6 +419,12 @@ export function buildBrief(
   if (opts.flaggedFirst) {
     keyFacts = keyFacts.slice().sort((a, b) => (a.flagged ? 0 : 1) - (b.flagged ? 0 : 1));
   }
+
+  // the post-op run's second writer — the recovery brief shows it as its own
+  // column beside the PACU handoff
+  const postopEval = (
+    kase.artifacts.find((a) => a.artifact_id === "note:post-anesthesia-eval")?.claims ?? []
+  ).map((c) => mapKeyFact(c, !!opts.alwaysShowStatus));
 
   // theatre timeline
   const intraop = wf?.stages.intraop;
@@ -509,6 +517,7 @@ export function buildBrief(
     attentionItems,
     keyFacts,
     keyFactsSource: factArtifact?.artifact_id ?? null,
+    postopEval,
     events,
     intraopPerformer: providerName(providers, intraop?.signed_off_by ?? intraop?.performed_by ?? null),
     issues,

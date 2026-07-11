@@ -62,16 +62,29 @@ describe("BriefScreen", () => {
     expect(screen.queryByText("Needs you now")).not.toBeInTheDocument();
   });
 
-  it("shows three columns past pre-op — key facts, theatre timeline, issues; no story or needs-you-now", () => {
+  it("shows three columns in theatre — key facts, theatre timeline, issues; no story or needs-you-now", () => {
+    const model = buildBrief(makeCase(), PROVIDERS, { stage: "intraop" });
+    renderBrief(model);
+
+    expect(screen.getByText("Key facts")).toBeInTheDocument();
+    // "In theatre" appears twice: the header stage badge and the column
+    expect(screen.getAllByText("In theatre")).toHaveLength(2);
+    expect(screen.getByText("propofol 120 mg")).toBeInTheDocument();
+    expect(screen.getByText("Anticipated issues")).toBeInTheDocument();
+    expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
+    expect(screen.queryByText("Needs you now")).not.toBeInTheDocument();
+  });
+
+  it("shows the post-op run's two writers in recovery — not the intra-op columns again", () => {
     const model = buildBrief(makeCase(), PROVIDERS); // demo case lands on postop
     expect(model.stage).toBe("postop");
     renderBrief(model);
 
-    expect(screen.getByText("Key facts")).toBeInTheDocument();
-    expect(screen.getByText("In theatre")).toBeInTheDocument();
-    expect(screen.getByText("Anticipated issues")).toBeInTheDocument();
-    expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
-    expect(screen.queryByText("Needs you now")).not.toBeInTheDocument();
+    expect(screen.getByText("PACU handoff")).toBeInTheDocument();
+    expect(screen.getByText("Post-anaesthesia evaluation")).toBeInTheDocument();
+    expect(screen.getByText("Recovered without airway complications.")).toBeInTheDocument();
+    expect(screen.queryByText("In theatre")).not.toBeInTheDocument();
+    expect(screen.queryByText("Anticipated issues")).not.toBeInTheDocument();
   });
 
   it("reads the recovery brief's key facts from the PACU handoff, not the pre-op note", () => {
