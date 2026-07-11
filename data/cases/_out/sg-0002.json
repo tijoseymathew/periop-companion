@@ -460,50 +460,46 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Currently taking Metformin 500mg Twice daily",
+          "text": "Currently taking Metformin 500mg Twice daily as prescribed",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:med-list#c001",
             "audio:preop-interview#s004"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-005",
-          "text": "Currently taking Perindopril 8mg Once daily",
+          "text": "Currently taking Perindopril 8mg Once daily as prescribed",
           "provenance": [
             "doc:gp-summary#c002",
-            "doc:med-list#c002",
             "audio:preop-interview#s004"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-006",
-          "text": "Currently taking Indapamide 1.25mg Once daily",
+          "text": "Currently taking Indapamide 1.25mg Once daily as prescribed",
           "provenance": [
             "doc:gp-summary#c004",
-            "doc:med-list#c003",
             "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Currently taking Atorvastatin 20mg Once daily",
+          "text": "Currently taking Atorvastatin 20mg Once daily as prescribed",
           "provenance": [
             "doc:gp-summary#c005",
-            "doc:med-list#c004",
             "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Stopped Amlodipine 10mg Once daily approximately six months ago due to ankle swelling",
+          "text": "Stopped taking Amlodipine 10mg Once daily six months ago due to ankle swelling",
           "provenance": [
             "audio:preop-interview#s004",
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s005"
           ],
           "status": "supported"
         },
@@ -518,50 +514,15 @@
         },
         {
           "claim_id": "c-010",
-          "text": "No current or past history of drug allergies related to anesthetic agents or medications listed",
+          "text": "No recent food or drink since midnight, except a sip of water for morning pills",
           "provenance": [
-            "audio:preop-interview#s008"
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-011",
-          "text": "Pneumonia resolved in 2015, no recent respiratory issues reported",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s014"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "No current blood-thinning medications or supplements reported",
-          "provenance": [
-            "audio:preop-interview#s011"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "GERD previously managed with omeprazole, discontinued in 2020; no current GERD symptoms or need for re-initiation reported",
-          "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s013"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Right wrist fracture in 2008, fully healed; no updates or concerns for positioning or movement during surgery",
-          "provenance": [
-            "doc:gp-summary#c009",
-            "audio:preop-interview#s012"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Previous appendectomy under general anesthesia in 2005 with no complications; no previous anesthesia-related issues reported",
+          "text": "No previous surgeries or anesthesia since appendectomy in 2005 with no complications",
           "provenance": [
             "doc:prior-anesthetic-record#c001",
             "audio:preop-interview#s012"
@@ -569,42 +530,10 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "No recent respiratory issues that might impact anesthesia",
+          "claim_id": "c-012",
+          "text": "Able to walk up a flight of stairs without shortness of breath, indicating adequate functional capacity",
           "provenance": [
             "audio:preop-interview#s014"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-017",
-          "text": "No current or past history of drug allergies related to anesthetic agents or medications listed",
-          "provenance": [
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-018",
-          "text": "Patient reports ability to walk to hawker center daily for lunch (~10 minutes) and climb a flight of stairs without shortness of breath; limited by hernia discomfort",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-019",
-          "text": "ASA-PS I: Patient is a healthy individual with no more than mild systemic disease",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-020",
-          "text": "NPO since midnight, except for a sip of water to take morning medications as instructed",
-          "provenance": [
-            "audio:preop-interview#s010"
           ],
           "status": "supported"
         }
@@ -663,31 +592,15 @@
         },
         {
           "claim_id": "c-007",
-          "text": "Mean arterial pressure dropped to 55 millimeters of mercury at 08:10",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Mean arterial pressure improved to 65 millimeters of mercury at 08:10",
+          "text": "Mean arterial pressure improved to 65 mmHg at 08:10",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Heart rate increased to 95 beats per minute at 08:15",
-          "provenance": [
-            "audio:intraop-notes#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Metoprolol 10 milligrams administered at 08:15",
+          "claim_id": "c-008",
+          "text": "Heart rate increased to 95 bpm at 08:15",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -700,50 +613,54 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV): The patient received Fentanyl (50 micrograms) and Propofol (120 milligrams) during induction, which are known to contribute to PONV. Additionally, the patient is undergoing a surgical procedure (open inguinal hernia repair) that is associated with a moderate risk of PONV.",
+          "text": "Risk of Post-Operative Nausea and Vomiting (PONV) due to Fentanyl administration and potential fluid imbalance",
           "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002"
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway Watch: Although the LMA was inserted with a good seal and ventilation was without difficulty, the patient has a history of GERD (previously managed with omeprazole, discontinued in 2020). While no current symptoms are reported, the potential for GERD-related airway complications during emergence or in the PACU cannot be entirely ruled out.",
+          "text": "Airway Compromise upon Extubation due to LMA use and potential residual Propofol effects",
           "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s013",
-            "audio:intraop-notes#s003"
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic Control: The patient is on Metformin (500mg Twice daily) for diabetes management. Given the stress of surgery and potential for disrupted oral intake postoperatively, monitoring for hypoglycemia or hyperglycemia is warranted.",
+          "text": "Glycemic Control due to Metformin continuation and potential stress response to surgery",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:med-list#c001",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c002"
+            "doc:med-list#c001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia: The patient received Fentanyl during surgery, but the duration of its analgesic effect may be limited. Given the nature of the surgery (open inguinal hernia repair), which can be painful, ensuring adequate postoperative analgesia is important to prevent discomfort and its associated complications.",
+          "text": "Analgesia Management due to Fentanyl use and potential for acute pain",
           "provenance": [
             "audio:intraop-notes#s002",
-            "doc:op-plan#c001"
+            "audio:preop-interview#s010"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic Watch: The patient experienced a drop in mean arterial pressure (to 55 mmHg) during surgery, which was addressed with fluid bolus. The subsequent administration of Metoprolol (10 milligrams) for an increased heart rate (to 95 bpm) also warrants monitoring for potential hemodynamic instability in the postoperative period.",
+          "text": "Hemodynamic Instability (Hypotension) due to Propofol and fluid administration",
           "provenance": [
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Potential for Bradycardia or Hypotension due to Metoprolol administration for tachycardia",
+          "provenance": [
             "audio:intraop-notes#s008"
           ],
           "status": "inference"
@@ -765,28 +682,21 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient is currently taking Metformin 500mg twice daily, Perindopril 8mg once daily, Indapamide 1.25mg once daily, and Atorvastatin 20mg once daily. Amlodipine 10mg once daily was stopped six months ago due to ankle swelling. No known drug allergies, and no current or past history of drug allergies related to anesthetic agents or medications listed. Previous appendectomy under general anesthesia in 2005 with no complications.",
+          "text": "Medications: Indapamide 1.25mg daily, Atorvastatin 20mg daily. Stopped Amlodipine 6 months ago due to ankle swelling. No drug allergies. NPO since midnight except sip of water for morning pills.",
           "provenance": [
-            "doc:gp-summary#c001",
-            "doc:med-list#c001",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c002",
-            "doc:med-list#c002",
             "doc:gp-summary#c004",
-            "doc:med-list#c003",
+            "audio:preop-interview#s004",
             "doc:gp-summary#c005",
-            "doc:med-list#c004",
-            "audio:preop-interview#s006",
+            "audio:preop-interview#s005",
             "doc:gp-summary#c007",
             "audio:preop-interview#s008",
-            "doc:prior-anesthetic-record#c001",
-            "audio:preop-interview#s012"
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative course included administration of Propofol 120mg and Fentanyl 50 micrograms at 08:00, LMA insertion with good seal at 08:02, 18G IV in left antecubital fossa at 08:03, NS infusion at 150mL/hr from 08:05, and a 500mL fluid bolus at 08:10. Transient drop in MAP to 55mmHg at 08:10, improved to 65mmHg after bolus. HR increased to 95bpm at 08:15, treated with Metoprolol 10mg.",
+          "text": "Intraoperative course: Propofol and Fentanyl administered. LMA inserted with good seal. IV access established, fluids running at 150 mL/hr with a 500 mL bolus given. MAP improved to 65 mmHg, HR increased to 95 bpm.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
@@ -801,19 +711,30 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Monitor for PONV given Fentanyl and Propofol use, as well as the surgical procedure's moderate PONV risk. Watch for airway complications due to history of GERD, despite no current symptoms. Monitor glycemic control due to Metformin use and surgical stress. Ensure adequate postoperative analgesia following Fentanyl administration. Watch for hemodynamic instability post-Metoprolol and after intraoperative blood pressure fluctuations.",
+          "text": "Anticipated issues include risk of PONV, airway compromise upon extubation, glycemic control, analgesia management, and hemodynamic instability.",
           "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s013",
-            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s001",
             "doc:gp-summary#c001",
             "doc:med-list#c001",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c002",
+            "audio:preop-interview#s010",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Monitor for signs of PONV, ensure airway stability post-extubation, manage pain adequately, and watch for hemodynamic instability or bradycardia.",
+          "provenance": [
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s005",
             "audio:intraop-notes#s006",
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s001",
+            "audio:preop-interview#s010",
             "audio:intraop-notes#s007",
             "audio:intraop-notes#s008"
           ],
@@ -826,152 +747,57 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is a 49-year-old male.",
-          "provenance": [
-            "doc:gp-summary#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Patient is on Metformin 500mg Twice daily for diabetes.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Patient is on Perindopril 8mg Once daily for blood pressure.",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient is on Indapamide 1.25mg Once daily for blood pressure.",
-          "provenance": [
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient is on Atorvastatin 20mg Once daily for cholesterol.",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "doc:med-list#c004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient stopped Amlodipine 10mg due to ankle swelling 6 months ago.",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Patient has no known drug allergies.",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Patient had pneumonia in 2015, now resolved.",
-          "provenance": [
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Patient had a right wrist fracture in 2008, fully healed.",
-          "provenance": [
-            "doc:gp-summary#c009"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient discontinued omeprazole for GERD in 2020.",
-          "provenance": [
-            "doc:gp-summary#c010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Patient underwent elective open inguinal hernia repair under general anesthesia with LMA.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Patient had previous general anesthesia for appendectomy in 2005 with no complications.",
-          "provenance": [
-            "doc:prior-anesthetic-record#c001",
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Patient reports pain score of 4 or 5 out of 10 at the incision site, described as a dull ache.",
+          "text": "Patient reports pain score of 4 or 5 out of 10, described as a dull ache around the incision site.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "Patient feels a bit queasy but has not vomited since waking up.",
+          "claim_id": "c-002",
+          "text": "Patient experiences mild nausea but no vomiting since waking up from surgery.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-015",
-          "text": "Patient reports throat soreness but is breathing comfortably.",
+          "claim_id": "c-003",
+          "text": "Patient reports a sore throat but is breathing comfortably post-operatively.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "Patient recalls nothing during the operation, indicating no awareness.",
+          "claim_id": "c-004",
+          "text": "Patient recalls no awareness or memory of the operation, indicating no intraoperative awareness.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-017",
-          "text": "Blood sugar levels were normal before and after surgery, with no episodes of low or high blood sugar.",
+          "claim_id": "c-005",
+          "text": "Blood glucose levels were checked pre and post-operatively, with all readings reported as normal.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-018",
-          "text": "Patient took blood pressure and cholesterol medications as usual before surgery, with stable blood pressure.",
+          "claim_id": "c-006",
+          "text": "Patient confirms taking blood pressure and cholesterol medications as usual before surgery, with stable blood pressure reported.",
           "provenance": [
             "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "No post-operative issues or concerns raised by the patient beyond the reported pain, mild nausea, and sore throat.",
+          "provenance": [
+            "audio:postop-interview#s014"
           ],
           "status": "supported"
         }
@@ -980,32 +806,9 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you have any current or past history of drug allergies, especially related to any anesthetic agents or medications listed?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c007"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you had any recent respiratory issues or updates to your pneumonia history from 2015 that might impact anesthesia?",
+      "question": "Can you confirm if you are still taking all the medications listed in your current medication list (Metformin 500mg Twice daily, Perindopril 8mg Once daily, Indapamide 1.25mg Once daily, Atorvastatin 20mg Once daily, Amlodipine 10mg Once daily), and have none been stopped, changed, or replaced since this list was created?",
       "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c008"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Are you currently taking any blood-thinning medications or supplements that were not listed in your current medication records?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c002",
-        "doc:gp-summary#c003",
-        "doc:gp-summary#c004",
-        "doc:gp-summary#c005",
-        "doc:gp-summary#c006",
         "doc:med-list#c001",
         "doc:med-list#c002",
         "doc:med-list#c003",
@@ -1016,7 +819,34 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your GERD history and why omeprazole was discontinued in 2020?",
+      "question": "Are you aware of any drug allergies, or have you ever had any reactions to drugs, latex, plasters, foods, or any other substances, beyond what is documented in your records?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c007"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you provide more details about your pneumonia in 2015, specifically how it was treated and if you have had any residual breathing issues since then?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You had a right wrist fracture in 2008 that is documented as fully healed. Can you confirm if you have had any ongoing issues with this wrist or if you have had any other fractures or injuries since then?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c009"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You discontinued omeprazole for GERD in 2020. Can you confirm if you have had any recurrence of GERD symptoms since then, and if so, how they have been managed?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c010"
@@ -1025,16 +855,7 @@
       "edited_text": null
     },
     {
-      "question": "Is there any update on your wrist fracture from 2008 that might affect positioning or movement during surgery?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c009"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you had any previous anesthesia-related complications or issues during the appendectomy in 2005 that are not documented?",
+      "question": "Your prior anesthetic record indicates general anesthesia for appendectomy in 2005 with no complications. Can you confirm if you have had any other surgeries or anesthesia since then, and if so, were there any issues?",
       "reason": "stale",
       "provenance": [
         "doc:prior-anesthetic-record#c001"
@@ -1101,17 +922,8 @@
     {
       "t": "08:10",
       "category": "event",
-      "value": "mean arterial pressure dropped to 55",
-      "units": "millimeters of mercury",
-      "provenance": [
-        "audio:intraop-notes#s006"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "event",
       "value": "mean arterial pressure improved to 65",
-      "units": "millimeters of mercury",
+      "units": "mmHg",
       "provenance": [
         "audio:intraop-notes#s007"
       ]
@@ -1120,27 +932,19 @@
       "t": "08:15",
       "category": "event",
       "value": "heart rate increased to 95",
-      "units": "beats per minute",
-      "provenance": [
-        "audio:intraop-notes#s008"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "dose",
-      "value": "metoprolol 10",
-      "units": "milligrams",
+      "units": "bpm",
       "provenance": [
         "audio:intraop-notes#s008"
       ]
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV): The patient received Fentanyl (50 micrograms) and Propofol (120 milligrams) during induction, which are known to contribute to PONV. Additionally, the patient is undergoing a surgical procedure (open inguinal hernia repair) that is associated with a moderate risk of PONV.",
-    "Airway Watch: Although the LMA was inserted with a good seal and ventilation was without difficulty, the patient has a history of GERD (previously managed with omeprazole, discontinued in 2020). While no current symptoms are reported, the potential for GERD-related airway complications during emergence or in the PACU cannot be entirely ruled out.",
-    "Glycemic Control: The patient is on Metformin (500mg Twice daily) for diabetes management. Given the stress of surgery and potential for disrupted oral intake postoperatively, monitoring for hypoglycemia or hyperglycemia is warranted.",
-    "Analgesia: The patient received Fentanyl during surgery, but the duration of its analgesic effect may be limited. Given the nature of the surgery (open inguinal hernia repair), which can be painful, ensuring adequate postoperative analgesia is important to prevent discomfort and its associated complications.",
-    "Hemodynamic Watch: The patient experienced a drop in mean arterial pressure (to 55 mmHg) during surgery, which was addressed with fluid bolus. The subsequent administration of Metoprolol (10 milligrams) for an increased heart rate (to 95 bpm) also warrants monitoring for potential hemodynamic instability in the postoperative period."
+    "Risk of Post-Operative Nausea and Vomiting (PONV) due to Fentanyl administration and potential fluid imbalance",
+    "Airway Compromise upon Extubation due to LMA use and potential residual Propofol effects",
+    "Glycemic Control due to Metformin continuation and potential stress response to surgery",
+    "Analgesia Management due to Fentanyl use and potential for acute pain",
+    "Hemodynamic Instability (Hypotension) due to Propofol and fluid administration",
+    "Potential for Bradycardia or Hypotension due to Metoprolol administration for tachycardia"
   ],
   "workflow": null
 }

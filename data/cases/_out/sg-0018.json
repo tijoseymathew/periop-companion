@@ -436,15 +436,15 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Type 2 Diabetes Mellitus (relevant for anesthetic management of blood glucose levels)",
+          "text": "Type 2 Diabetes Mellitus",
           "provenance": [
             "doc:gp-summary#c008"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Hypertension (relevant for perioperative blood pressure management)",
+          "text": "Hypertension",
           "provenance": [
             "doc:gp-summary#c009"
           ],
@@ -452,7 +452,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Obesity (relevant for airway management, drug dosing, and potential cardiorespiratory issues)",
+          "text": "Obesity",
           "provenance": [
             "doc:gp-summary#c007"
           ],
@@ -460,68 +460,75 @@
         },
         {
           "claim_id": "c-006",
-          "text": "History of pneumonia (resolved, no current respiratory symptoms reported)",
+          "text": "Current Medications: Metformin 500mg Twice daily",
           "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s003"
+            "doc:med-list#c001",
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Current Medications: Metformin 500mg Twice daily",
+          "text": "Current Medications: Lisinopril 20mg Once daily",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "audio:preop-interview#s004",
+            "doc:med-list#c002",
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Current Medications: Lisinopril 20mg Once daily",
+          "text": "Current Medications: Atorvastatin 40mg Once daily",
           "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s004",
+            "doc:med-list#c003",
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-009",
-          "text": "Current Medications: Atorvastatin 40mg Once daily",
+          "text": "Ranitidine 150mg Twice daily was discontinued approximately six months ago due to improved acid reflux",
           "provenance": [
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Ranitidine 150mg Twice daily (discontinued approximately six months ago, as per patient report)",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "doc:med-list#c004",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "Allergy to Penicillin (reported rash, no other allergies since recorded)",
+          "claim_id": "c-010",
+          "text": "Allergy to Penicillin (reported rash)",
           "provenance": [
             "doc:gp-summary#c006",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s017"
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
+          "claim_id": "c-011",
+          "text": "No known allergies to latex, adhesives, or other materials beyond Penicillin",
+          "provenance": [
+            "audio:preop-interview#s007"
+          ],
+          "status": "unsupported"
+        },
+        {
           "claim_id": "c-012",
+          "text": "GERD (Gastroesophageal Reflux Disease) was previously treated with Omeprazole, which has been discontinued; no recent symptoms or treatment required since discontinuation",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "No recent cardiac evaluation or echocardiogram has been performed prior to surgery",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-014",
           "text": "NPO status confirmed: nothing to eat or drink since midnight, except a sip of water with morning medications",
           "provenance": [
             "audio:preop-interview#s011",
@@ -530,27 +537,15 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "No reported difficulty with mask ventilation or known airway issues (relevant for LMA use)",
+          "claim_id": "c-015",
+          "text": "ASA-PS Class III (patient has severe systemic disease affecting the respiratory, cardiovascular, or renal systems, but is still able to perform light physical activity)",
           "provenance": [
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s015"
+            "audio:preop-interview#s014"
           ],
           "status": "unsupported"
         },
         {
-          "claim_id": "c-014",
-          "text": "ASA-PS II (moderate systemic disease: Type 2 Diabetes Mellitus, Hypertension, Obesity) with no evidence of severe impairment",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
+          "claim_id": "c-016",
           "text": "Procedure: Laparoscopic Cholecystectomy (elective)",
           "provenance": [
             "doc:op-plan#c001"
@@ -558,8 +553,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "Anesthesia: General Anesthesia with Laryngeal Mask Airway (LMA)",
+          "claim_id": "c-017",
+          "text": "Anesthesia Plan: General Anesthesia with Laryngeal Mask Airway (LMA)",
           "provenance": [
             "doc:op-plan#c002"
           ],
@@ -572,7 +567,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Propofol 120 milligrams administered at 08:00",
+          "text": "At 08:00, propofol 120 milligrams was administered for induction.",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -580,7 +575,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Endotracheal tube placed with grade one view at 08:02",
+          "text": "At 08:02, tube was inserted with a grade one view.",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -588,7 +583,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Normal saline 1000 milliliters initiated at 08:05",
+          "text": "At 08:05, normal saline 1000 milliliters was administered to run at 150 ml per hour.",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -596,7 +591,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Sevoflurane increased to 2% at 08:10",
+          "text": "At 08:10, sevoflurane was increased to 2% due to increased blood pressure.",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -604,7 +599,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Morphine 1 milligram administered at 08:20",
+          "text": "At 08:20, morphine 1 milligram was administered for pain management.",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -612,7 +607,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Heart rate increased to 110 at 08:25",
+          "text": "At 08:25, patient's heart rate increased to 110.",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -620,7 +615,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "Esmolol 5 milligrams administered at 08:25",
+          "text": "At 08:25, esmolol 5 milligrams was administered.",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -633,57 +628,59 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "PONV risk due to history of GERD and use of opioids (Morphine)",
+          "text": "Increased risk of Post-Operative Nausea and Vomiting (PONV) due to multiple factors including history of GERD, use of opioids (morphine), and sevoflurane anesthesia.",
           "provenance": [
             "doc:gp-summary#c012",
-            "audio:intraop-notes#s005"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Airway watch due to obesity and potential for difficult mask ventilation",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s015"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Glycemic control due to Type 2 Diabetes Mellitus",
-          "provenance": [
-            "doc:gp-summary#c008"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Hypertension management due to pre-existing condition and intra-op blood pressure changes",
-          "provenance": [
-            "doc:gp-summary#c009",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s010",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s005",
             "audio:intraop-notes#s004"
           ],
           "status": "inference"
         },
         {
-          "claim_id": "c-005",
-          "text": "Analgesia management due to opioid administration and potential for inadequate pain control",
+          "claim_id": "c-002",
+          "text": "Airway watch due to history of GERD and use of Laryngeal Mask Airway (LMA), which may increase risk of aspiration or airway complications post-operatively.",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s006",
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control monitoring necessary due to Type 2 Diabetes Mellitus, as surgical stress and perioperative medications can affect blood glucose levels.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s011",
+            "audio:preop-interview#s012"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia management considering the patient's opioid dose (morphine) during surgery and potential for inadequate pain control or over-sedation post-operatively.",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
           "status": "inference"
         },
         {
-          "claim_id": "c-006",
-          "text": "Hemodynamic watch due to tachycardia and administration of esmolol",
+          "claim_id": "c-005",
+          "text": "Hemodynamic watch due to Hypertension and the intraoperative increase in blood pressure requiring sevoflurane adjustment, as well as the administration of esmolol for tachycardia.",
           "provenance": [
+            "doc:gp-summary#c009",
+            "audio:intraop-notes#s004",
             "audio:intraop-notes#s006"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Risk of respiratory complications due to Obesity (as indicated in medical history) and the use of LMA, which may lead to difficulties in ventilation or oxygenation post-operatively.",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "doc:op-plan#c002"
           ],
           "status": "inference"
         }
@@ -694,7 +691,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "34-year-old male, Senior Official or Manager, resident of Sengkang, Singapore, undergoing elective Laparoscopic Cholecystectomy under General Anesthesia with Laryngeal Mask Airway (LMA).",
+          "text": "34-year-old male undergoing elective Laparoscopic Cholecystectomy with General Anesthesia via Laryngeal Mask Airway (LMA).",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
@@ -704,72 +701,48 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of Type 2 Diabetes Mellitus, Hypertension, Obesity, and resolved pneumonia. Current medications include Metformin, Lisinopril, Atorvastatin, and previously Ranitidine (discontinued six months ago). Patient is NPO since midnight, except a sip of water with morning medications, and has an allergy to Penicillin (reported rash).",
+          "text": "Patient has Type 2 Diabetes Mellitus, Hypertension, and a history of GERD. Medications include Metformin, Lisinopril, Atorvastatin, and was previously on Ranitidine which was discontinued. Allergic to Penicillin.",
           "provenance": [
             "doc:gp-summary#c008",
             "doc:gp-summary#c009",
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s003",
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s010",
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "doc:gp-summary#c005",
-            "doc:med-list#c004",
+            "doc:gp-summary#c012",
             "audio:preop-interview#s006",
+            "doc:med-list#c001",
+            "audio:preop-interview#s010",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
             "doc:gp-summary#c006",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s017",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intraoperative events include increased BP managed with sevoflurane, tachycardia managed with esmolol, and morphine administered for pain. NPO status confirmed.",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006",
             "audio:preop-interview#s011",
             "audio:preop-interview#s012"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Intraoperative course included administration of Propofol, Endotracheal tube placement with grade one view, Normal saline infusion, Sevoflurane increase, and Morphine for analgesia. Notable events include increased heart rate to 110, managed with Esmolol. Anticipated issues include PONV risk due to GERD and opioid use, airway watch due to obesity, glycemic control due to Diabetes, hypertension management, analgesia management, and hemodynamic watch due to tachycardia and Esmolol administration.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s006",
-            "doc:gp-summary#c012",
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s015",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
           "claim_id": "c-004",
-          "text": "Monitor for PONV, ensure airway patency due to obesity, maintain glycemic control, manage hypertension, adjust analgesia as needed, and continue hemodynamic monitoring. Consider LMA use with caution and be prepared for potential difficult mask ventilation.",
+          "text": "Watch for Post-Operative Nausea and Vomiting (PONV), Airway complications, Glycemic control issues, Analgesia management challenges, Hemodynamic instability, and Respiratory complications due to Obesity and LMA use.",
           "provenance": [
             "doc:gp-summary#c012",
+            "audio:preop-interview#s006",
             "audio:intraop-notes#s005",
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s015",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s010",
             "audio:intraop-notes#s004",
-            "audio:intraop-notes#s006"
+            "doc:op-plan#c002",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s011",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c009",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c007"
           ],
           "status": "supported"
         }
@@ -780,111 +753,49 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "34-year-old male, Senior Official or Manager, resident of Sengkang, Singapore.",
+          "text": "Patient reports feeling a bit groggy but okay with soreness in the abdominal area.",
           "provenance": [
-            "doc:gp-summary#c001"
+            "audio:postop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of obesity, type 2 diabetes mellitus, hypertension, resolved pneumonia, healed remote left arm fracture, and previous GERD treated with Omeprazole (discontinued).",
+          "text": "Patient reports pain level of 4 or 5 out of 10, describing it as manageable.",
           "provenance": [
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
-            "doc:gp-summary#c010",
-            "doc:gp-summary#c011",
-            "doc:gp-summary#c012"
+            "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient is allergic to penicillin, with a history of rash reaction.",
+          "text": "Patient denies any nausea or vomiting since waking up.",
           "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s008"
+            "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Current medications include Metformin 500mg Twice daily, Lisinopril 20mg Once daily, Atorvastatin 40mg Once daily, and Ranitidine 150mg Twice daily (though patient reported stopping Ranitidine six months ago).",
+          "text": "Patient reports no breathing difficulties, discomfort, or tightness in the chest.",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "doc:gp-summary#c005",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "doc:med-list#c004",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s005",
-            "audio:preop-interview#s006"
+            "audio:postop-interview#s008"
           ],
-          "status": "conflicting"
+          "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Planned procedure is Laparoscopic Cholecystectomy under General Anesthesia with Laryngeal Mask Airway (LMA).",
+          "text": "Patient has no recall of events from the time of entering the operating room until waking up, which is consistent with general anesthesia.",
           "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s001"
+            "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Patient reported taking Metformin, Lisinopril, and Atorvastatin with a sip of water on the morning of surgery, and had nothing else to eat or drink since midnight.",
+          "text": "Patient denies any dizziness or vision changes, but reports feeling tired, which is being monitored in the context of diabetes and hypertension.",
           "provenance": [
-            "audio:preop-interview#s010",
-            "audio:preop-interview#s011",
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Patient describes overall energy level as moderately fit, able to walk and manage daily activities but gets tired easily.",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Intraoperative notes indicate induction with propofol 120mg, LMA insertion with grade one view, normal saline IV fluids at 150ml/hour, sevoflurane increased to 2% for elevated blood pressure, morphine 1mg administered for pain, and esmolol 5mg given for heart rate elevation to 110.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Postoperatively, patient reports feeling groggy with abdominal soreness, pain level of 4-5 out of 10, no nausea or vomiting, no breathing difficulties, and no dizziness or vision changes.",
-          "provenance": [
-            "audio:postop-interview#s002",
-            "audio:postop-interview#s004",
-            "audio:postop-interview#s006",
-            "audio:postop-interview#s008",
             "audio:postop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient has no recall of events during the surgery, which is consistent with general anesthesia.",
-          "provenance": [
-            "audio:postop-interview#s010",
-            "audio:postop-interview#s011"
           ],
           "status": "supported"
         }
@@ -893,61 +804,42 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you have any active respiratory issues or recent symptoms, given your history of resolved pneumonia?",
+      "question": "Has there been any change, stoppage, or replacement of the following medications since they were last documented: Metformin 500mg Twice daily, Lisinopril 20mg Once daily, Atorvastatin 40mg Once daily, Ranitidine 150mg Twice daily?",
       "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c010"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you confirm if you are still taking Ranitidine for GERD, and if you have any current symptoms of acid reflux?",
-      "reason": "conflicting",
-      "provenance": [
-        "doc:gp-summary#c012",
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003",
         "doc:med-list#c004"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "Is your obesity well-controlled with your current medications and lifestyle, and do you have any associated cardiorespiratory issues?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c007"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Please confirm if you have had any recent changes in your Metformin, Lisinopril, or Atorvastatin dosages, or if you have experienced any side effects?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c002",
-        "doc:gp-summary#c003",
-        "doc:gp-summary#c004",
-        "doc:med-list#c001",
-        "doc:med-list#c002",
-        "doc:med-list#c003"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Do you have any known difficulty with mask ventilation or airway issues that could impact the use of a Laryngeal Mask Airway (LMA) for your upcoming surgery?",
-      "reason": "missing",
-      "provenance": [
-        "doc:op-plan#c002"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you confirm if you are still allergic to Penicillin, and if so, have you experienced any other allergies since this was recorded?",
+      "question": "Do you have any allergies or reactions to any drugs, latex, adhesives, or other materials beyond the documented Penicillin allergy?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm the current status of your GERD (Gastroesophageal Reflux Disease), and whether you have had any recent symptoms or required any treatment since the discontinuation of Omeprazole?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c012"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Given your history of obesity, type 2 diabetes mellitus, and hypertension, have you had any recent cardiac evaluation or echocardiogram to assess your cardiac function prior to surgery?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c007",
+        "doc:gp-summary#c008",
+        "doc:gp-summary#c009"
       ],
       "review": null,
       "edited_text": null
@@ -985,7 +877,7 @@
       "t": "08:10",
       "category": "agent",
       "value": "sevoflurane 2%",
-      "units": "percent",
+      "units": null,
       "provenance": [
         "audio:intraop-notes#s004"
       ]
@@ -1002,7 +894,16 @@
     {
       "t": "08:25",
       "category": "event",
-      "value": "heart rate increased to 110, esmolol 5",
+      "value": "heart rate increased to 110",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "esmolol 5",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s006"
@@ -1010,12 +911,12 @@
     }
   ],
   "anticipated_issues": [
-    "PONV risk due to history of GERD and use of opioids (Morphine)",
-    "Airway watch due to obesity and potential for difficult mask ventilation",
-    "Glycemic control due to Type 2 Diabetes Mellitus",
-    "Hypertension management due to pre-existing condition and intra-op blood pressure changes",
-    "Analgesia management due to opioid administration and potential for inadequate pain control",
-    "Hemodynamic watch due to tachycardia and administration of esmolol"
+    "Increased risk of Post-Operative Nausea and Vomiting (PONV) due to multiple factors including history of GERD, use of opioids (morphine), and sevoflurane anesthesia.",
+    "Airway watch due to history of GERD and use of Laryngeal Mask Airway (LMA), which may increase risk of aspiration or airway complications post-operatively.",
+    "Glycemic control monitoring necessary due to Type 2 Diabetes Mellitus, as surgical stress and perioperative medications can affect blood glucose levels.",
+    "Analgesia management considering the patient's opioid dose (morphine) during surgery and potential for inadequate pain control or over-sedation post-operatively.",
+    "Hemodynamic watch due to Hypertension and the intraoperative increase in blood pressure requiring sevoflurane adjustment, as well as the administration of esmolol for tachycardia.",
+    "Risk of respiratory complications due to Obesity (as indicated in medical history) and the use of LMA, which may lead to difficulties in ventilation or oxygenation post-operatively."
   ],
   "workflow": null
 }

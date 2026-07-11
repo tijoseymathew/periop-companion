@@ -403,23 +403,15 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Occupation: Associate Professional or Technician",
+          "text": "Elective laparoscopic cholecystectomy for gallstones",
           "provenance": [
-            "doc:gp-summary#c001"
+            "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Resident of Bedok, Singapore",
-          "provenance": [
-            "doc:gp-summary#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Current Medications: Metformin 500 mg twice daily",
+          "text": "Diabetes managed with Metformin 500 mg twice daily",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
@@ -428,8 +420,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
-          "text": "Current Medications: Lisinopril 10 mg once daily",
+          "claim_id": "c-004",
+          "text": "Hypertension managed with Lisinopril 10 mg once daily",
           "provenance": [
             "doc:gp-summary#c003",
             "doc:med-list#c002",
@@ -438,8 +430,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Current Medications: Atorvastatin 20 mg once daily",
+          "claim_id": "c-005",
+          "text": "Hyperlipidemia managed with Atorvastatin 20 mg once daily",
           "provenance": [
             "doc:gp-summary#c004",
             "doc:med-list#c003",
@@ -448,33 +440,16 @@
           "status": "supported"
         },
         {
+          "claim_id": "c-006",
+          "text": "Omeprazole 20 mg once daily for acid reflux (replaced Ranitidine 6 months ago)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
           "claim_id": "c-007",
-          "text": "Discontinued Medication: Ranitidine (stopped 6 months ago)",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "New Medication: Omeprazole 20 mg once daily (started 6 months ago)",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "No known drug allergies recorded",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "History of Penicillin rash (reported in interview, not in records)",
+          "text": "No known drug allergies except for Penicillin (rash)",
           "provenance": [
             "audio:preop-interview#s007",
             "audio:preop-interview#s008"
@@ -482,96 +457,35 @@
           "status": "supported"
         },
         {
+          "claim_id": "c-008",
+          "text": "Last meal at 8 PM, last sip of water at 10 PM",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "No airway concerns discussed or observed during pre-op interview",
+          "provenance": [
+            "audio:preop-interview#s001",
+            "audio:preop-interview#s018"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "ASA-PS II (patient with mild systemic disease, controlled diabetes and hypertension)",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003"
+          ],
+          "status": "supported"
+        },
+        {
           "claim_id": "c-011",
-          "text": "Past History: Pneumonia (resolved 5 years ago)",
-          "provenance": [
-            "doc:gp-summary#c006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "No recent respiratory infections or breathing difficulties since resolved pneumonia (confirmed in interview)",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Past History: Fractured right wrist (15 years ago, fully healed) — not relevant to anesthetic plan",
-          "provenance": [
-            "doc:gp-summary#c007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Past History: Hypothyroidism (resolved after treatment 8 years ago)",
-          "provenance": [
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "No recent changes in thyroid function or symptoms suggesting hypothyroidism recurrence (confirmed in interview)",
-          "provenance": [
-            "audio:preop-interview#s011"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "No history of adverse reactions to anesthetics or medications, including local anesthetics (confirmed in interview)",
-          "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-017",
-          "text": "No history of heart disease, high blood pressure not controlled by Lisinopril, or other cardiovascular conditions (confirmed in interview)",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-018",
-          "text": "Last meal: 8 PM last night",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-019",
-          "text": "Last drink: sip of water at 10 PM",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-020",
-          "text": "ASA-PS Class III (Patient has well-controlled but active comorbidities: diabetes, hypertension, and obesity)",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-021",
-          "text": "Procedure: Laparoscopic Cholecystectomy (elective)",
-          "provenance": [
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-022",
-          "text": "Anesthesia: General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) for Post-Operative Pain Management",
+          "text": "General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) planned for post-operative pain management",
           "provenance": [
             "doc:op-plan#c002",
             "audio:preop-interview#s015"
@@ -609,7 +523,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "500 ml lactated ringers bolus administered at 08:10",
+          "text": "500 ml fluid bolus administered at 08:10",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -617,7 +531,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Bupivacaine 20 milligrams (0.5%) administered for ultrasound-guided TAP block at 08:15",
+          "text": "Bupivacaine 20 milligrams administered for ultrasound-guided TAP block at 08:15",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -625,7 +539,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Blood pressure dropped to 80 over 50 at 08:30",
+          "text": "Blood pressure dropped to 80 over 50 mmHg at 08:30",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -670,58 +584,56 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "PONV risk due to laparoscopic surgery and opioid use",
+          "text": "PONV risk due to laparoscopic surgery and potential opioid use",
           "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s006"
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to obesity and potential difficult airway",
+          "text": "Airway watch due to potential residual neuromuscular blockade",
           "provenance": [
-            "audio:preop-interview#s010",
-            "audio:intraop-notes#s002"
+            "audio:intraop-notes#s006"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control due to diabetes and potential stress response",
+          "text": "Glycemic control given diabetes managed with Metformin",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s010"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Analgesia management due to TAP block and potential opioid requirement",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s004"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Hemodynamic watch due to intraoperative hypotension and hypertension history",
-          "provenance": [
-            "audio:intraop-notes#s005",
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
             "audio:preop-interview#s006"
           ],
           "status": "inference"
         },
         {
-          "claim_id": "c-006",
-          "text": "Residual neuromuscular blockade due to sugammadex reversal",
+          "claim_id": "c-004",
+          "text": "Hemodynamic instability (hypotension) due to anesthesia and fluid shifts",
           "provenance": [
-            "audio:intraop-notes#s006"
+            "audio:intraop-notes#s005"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Analgesia management with TAP block and potential opioid needs",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Potential for increased acid reflux or aspiration risk post-op",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s014"
           ],
           "status": "inference"
         }
@@ -732,19 +644,18 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "45-year-old male undergoing elective laparoscopic cholecystectomy under general anesthesia with TAP block for post-operative pain management. Patient has well-controlled but active comorbidities including diabetes, hypertension, and obesity (ASA-PS Class III).",
+          "text": "45-year-old male post-elective laparoscopic cholecystectomy for gallstones, currently recovering under general anesthesia with ultrasound-guided TAP block for post-operative pain management.",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:op-plan#c001",
+            "audio:preop-interview#s004",
             "doc:op-plan#c002",
-            "audio:preop-interview#s015",
-            "audio:preop-interview#s010"
+            "audio:preop-interview#s015"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient's current medications include Metformin 500 mg twice daily, Lisinopril 10 mg once daily, and Atorvastatin 20 mg once daily. Omeprazole 20 mg once daily was started 6 months ago, and Ranitidine was discontinued at the same time. No known drug allergies, but reports a history of penicillin rash.",
+          "text": "Patient has a history of diabetes managed with Metformin, hypertension managed with Lisinopril, hyperlipidemia managed with Atorvastatin, and acid reflux managed with Omeprazole. No known drug allergies except for Penicillin (rash).",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
@@ -753,37 +664,14 @@
             "doc:med-list#c002",
             "doc:gp-summary#c004",
             "doc:med-list#c003",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Past medical history includes resolved pneumonia 5 years ago, fully healed right wrist fracture 15 years ago, and resolved hypothyroidism 8 years ago. No recent respiratory issues, no recurrence of hypothyroidism, and no history of adverse reactions to anesthetics or medications.",
-          "provenance": [
-            "doc:gp-summary#c006",
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s010",
-            "audio:preop-interview#s011",
-            "audio:preop-interview#s012"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient last ate at 8 PM and had a sip of water at 10 PM. No history of heart disease or uncontrolled hypertension.",
-          "provenance": [
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Intraoperative course included propofol induction, endotracheal intubation with grade one view, peripheral line placement, lactated ringers bolus, and TAP block with bupivacaine. Transient hypotension (80/50) occurred and was treated with atropine. Surgery completed without further complications.",
+          "text": "Intra-operative course included administration of Propofol, endotracheal tube placement, peripheral line, fluid bolus, and Bupivacaine for TAP block. Notable events: blood pressure drop to 80/50 mmHg, treated with Atropine. Reversal with Neostigmine and Sugammadex.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
@@ -795,69 +683,38 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Reversal of neuromuscular blockade was achieved with neostigmine and sugammadex.",
+          "claim_id": "c-004",
+          "text": "Anticipated issues include PONV risk due to laparoscopic surgery and potential opioid use, airway watch due to potential residual neuromuscular blockade, need for glycemic control given diabetes, hemodynamic instability due to anesthesia and fluid shifts, analgesia management with TAP block and potential opioid needs, and potential for increased acid reflux or aspiration risk post-op.",
           "provenance": [
-            "audio:intraop-notes#s006"
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s004",
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Monitor for post-operative nausea and vomiting (PONV) due to laparoscopic surgery and potential opioid use.",
+          "claim_id": "c-005",
+          "text": "Monitor for post-operative nausea and vomiting, ensure airway protection due to residual blockade risk, maintain glycemic control, watch for hemodynamic instability, manage analgesia needs considering the TAP block and potential opioid requirements, and be alert for signs of increased acid reflux or aspiration.",
           "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Maintain vigilance for airway complications due to patient's obesity and potential for difficult airway management.",
-          "provenance": [
-            "audio:preop-interview#s010",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Ensure glycemic control considering the patient's diabetes and the stress response to surgery.",
-          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s006",
             "doc:gp-summary#c002",
             "doc:med-list#c001",
             "audio:preop-interview#s006",
-            "audio:preop-interview#s010"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Manage analgesia carefully, balancing the effect of the TAP block with potential opioid requirements.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s004"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Monitor hemodynamics closely given the history of hypertension and intraoperative hypotension.",
-          "provenance": [
             "audio:intraop-notes#s005",
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s006"
+            "audio:intraop-notes#s004",
+            "audio:preop-interview#s014"
           ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Watch for signs of residual neuromuscular blockade following sugammadex reversal.",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "unsupported"
+          "status": "supported"
         }
       ]
     },
@@ -866,91 +723,51 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is a 45-year-old male.",
+          "text": "Patient reports pain level of 3 or 4 out of 10, describing it as discomfort rather than sharp pain.",
           "provenance": [
-            "doc:gp-summary#c001"
+            "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient's current medications include Metformin 500 mg twice daily, Lisinopril 10 mg once daily, and Atorvastatin 20 mg once daily.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Patient has no known drug allergies.",
-          "provenance": [
-            "doc:gp-summary#c005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient's past medical history includes resolved pneumonia (5 years ago), fully healed fractured right wrist (15 years ago), and resolved hypothyroidism (after treatment 8 years ago).",
-          "provenance": [
-            "doc:gp-summary#c006",
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Scheduled procedure is Laparoscopic Cholecystectomy under General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) for Post-Operative Pain Management.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient reported pain level of 3 or 4 out of 10, describing it as discomfort rather than sharp pain, expected with TAP block.",
-          "provenance": [
-            "audio:postop-interview#s004",
-            "audio:postop-interview#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Patient denies nausea, only reports thirst.",
+          "text": "Patient denies nausea and reports only thirst, indicating no current gastrointestinal distress.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Patient reports no difficulty breathing or tightness, only tiredness from anesthesia.",
+          "claim_id": "c-003",
+          "text": "Patient reports no difficulty breathing and feels only tiredness from anesthesia, suggesting no immediate respiratory issues.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Patient has no recall of the operating room, which is normal under general anesthesia.",
+          "claim_id": "c-004",
+          "text": "Patient has no recall of the operating room, indicating effective general anesthesia.",
           "provenance": [
-            "audio:postop-interview#s010",
-            "audio:postop-interview#s011"
+            "audio:postop-interview#s010"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "No immediate post-op concerns raised by patient beyond desire to rest at home.",
+          "claim_id": "c-005",
+          "text": "Recovery course is uneventful so far, with patient feeling 'okay' and ready to rest at home soon.",
           "provenance": [
+            "audio:postop-interview#s002",
             "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "TAP block was performed intraoperatively for post-operative pain management, aligning with the patient's current discomfort level.",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "audio:postop-interview#s005"
           ],
           "status": "supported"
         }
@@ -959,26 +776,8 @@
   ],
   "open_questions": [
     {
-      "question": "Do you have any history of adverse reactions to any anesthetics or medications, including local anesthetics?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c005"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you had any recent respiratory infections or breathing difficulties since your resolved pneumonia 5 years ago?",
+      "question": "Has there been any change to your medication list since it was last recorded? Specifically, have you stopped, started, or changed the dose of Metformin, Lisinopril, or Atorvastatin?",
       "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c006"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Are you currently taking any medications not listed in your current records, including over-the-counter drugs or supplements?",
-      "reason": "missing",
       "provenance": [
         "doc:med-list#c001",
         "doc:med-list#c002",
@@ -988,16 +787,25 @@
       "edited_text": null
     },
     {
-      "question": "Do you have any history of heart disease, high blood pressure not controlled by Lisinopril, or any other cardiovascular conditions?",
+      "question": "Do you have any known allergies to drugs, foods, latex, or any other substances not documented in your record?",
       "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c003"
+        "doc:gp-summary#c005"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "Have you had any recent changes in your thyroid function or symptoms suggesting hypothyroidism recurrence since it was resolved 8 years ago?",
+      "question": "Can you confirm the resolution of your past pneumonia and whether you have experienced any residual cardiorespiratory issues or symptoms since then?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm whether your hypothyroidism has been fully resolved and whether you are currently on any thyroid-related medication or monitoring?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c008"
@@ -1038,16 +846,16 @@
       "t": "08:10",
       "category": "fluid",
       "value": "500",
-      "units": "ml lactated ringers bolus",
+      "units": "ml",
       "provenance": [
         "audio:intraop-notes#s003"
       ]
     },
     {
       "t": "08:15",
-      "category": "dose",
+      "category": "agent",
       "value": "bupivacaine 20",
-      "units": "milligrams (0.5%)",
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s004"
       ]
@@ -1056,7 +864,7 @@
       "t": "08:30",
       "category": "event",
       "value": "blood pressure drop to 80 over 50",
-      "units": null,
+      "units": "mmHg",
       "provenance": [
         "audio:intraop-notes#s005"
       ]
@@ -1099,12 +907,12 @@
     }
   ],
   "anticipated_issues": [
-    "PONV risk due to laparoscopic surgery and opioid use",
-    "Airway watch due to obesity and potential difficult airway",
-    "Glycemic control due to diabetes and potential stress response",
-    "Analgesia management due to TAP block and potential opioid requirement",
-    "Hemodynamic watch due to intraoperative hypotension and hypertension history",
-    "Residual neuromuscular blockade due to sugammadex reversal"
+    "PONV risk due to laparoscopic surgery and potential opioid use",
+    "Airway watch due to potential residual neuromuscular blockade",
+    "Glycemic control given diabetes managed with Metformin",
+    "Hemodynamic instability (hypotension) due to anesthesia and fluid shifts",
+    "Analgesia management with TAP block and potential opioid needs",
+    "Potential for increased acid reflux or aspiration risk post-op"
   ],
   "workflow": null
 }

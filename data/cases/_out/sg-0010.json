@@ -417,7 +417,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Elective Laparoscopic Cholecystectomy",
+          "text": "Undergoing elective Laparoscopic Cholecystectomy",
           "provenance": [
             "doc:op-plan#c001"
           ],
@@ -425,65 +425,63 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Symptoms of gallstones for 6 months, worsening last week",
+          "text": "Diagnosed with gallstones, experiencing epigastric pain worsened over the past week",
           "provenance": [
+            "audio:preop-interview#s002",
             "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Type 2 Diabetes, currently controlled with Metformin",
+          "text": "History of type 2 diabetes, currently controlled with Metformin",
           "provenance": [
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Hypertension, currently controlled with Lisinopril",
+          "text": "History of hypertension, currently controlled with Lisinopril",
           "provenance": [
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Obesity, with efforts to eat better and walk more",
+          "text": "History of obesity, patient reports attempting lifestyle modifications",
           "provenance": [
+            "audio:preop-interview#s005",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "No recent respiratory issues, despite history of pneumonia resolved 5 years ago",
+          "text": "Previously used Omeprazole for GERD, discontinued 2 years ago; currently no symptoms of acid reflux or dyspepsia",
           "provenance": [
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c006"
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s014"
           ],
-          "status": "conflicting"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-008",
-          "text": "No current symptoms of GERD, despite previous use of Omeprazole discontinued 2 years ago",
+          "text": "No recent respiratory infections, shortness of breath, or pulmonary symptoms",
           "provenance": [
-            "audio:preop-interview#s012",
-            "doc:gp-summary#c008"
+            "audio:preop-interview#s014"
           ],
           "status": "unsupported"
         },
         {
           "claim_id": "c-009",
-          "text": "No known drug allergies recorded, but patient reports a reaction to ceftriaxone (nausea and vomiting)",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
           "text": "Current Medications: Metformin 500 mg Twice daily",
           "provenance": [
             "doc:gp-summary#c002",
@@ -493,7 +491,7 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
+          "claim_id": "c-010",
           "text": "Current Medications: Lisinopril 10 mg Once daily",
           "provenance": [
             "doc:gp-summary#c003",
@@ -503,7 +501,7 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
+          "claim_id": "c-011",
           "text": "Current Medications: Atorvastatin 20 mg Once daily",
           "provenance": [
             "doc:gp-summary#c004",
@@ -513,7 +511,41 @@
           "status": "supported"
         },
         {
+          "claim_id": "c-012",
+          "text": "Previously used Ranitidine for GERD, discontinued as advised",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
           "claim_id": "c-013",
+          "text": "No current use of other medications or supplements, including traditional or herbal remedies",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Allergy to cephalosporins (specifically ceftriaxone), manifested as nausea and vomiting",
+          "provenance": [
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "No known drug allergies other than cephalosporins, and no non-drug allergies (e.g., latex, plasters, foods)",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s009",
+            "audio:preop-interview#s010"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-016",
           "text": "Patient has been fasting since midnight, with only a sip of water for morning medications",
           "provenance": [
             "audio:preop-interview#s018"
@@ -521,9 +553,10 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "ASA-PS II: Patient is a healthy individual with no functional limitation and mild systemic disease (controlled diabetes and hypertension)",
+          "claim_id": "c-017",
+          "text": "ASA-PS Class II (controlled diabetes, hypertension, and obesity without significant systemic impairment)",
           "provenance": [
+            "audio:preop-interview#s005",
             "audio:preop-interview#s006",
             "doc:gp-summary#c002",
             "doc:gp-summary#c003"
@@ -531,10 +564,11 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-015",
+          "claim_id": "c-018",
           "text": "General Anesthesia with Intraoperative Neuromonitoring planned for Laparoscopic Cholecystectomy",
           "provenance": [
-            "doc:op-plan#c002"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s019"
           ],
           "status": "supported"
         }
@@ -545,7 +579,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Propofol 120 milligrams administered at 08:00",
+          "text": "Propofol 120 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -553,7 +587,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Fentanyl 10 micrograms administered at 08:02",
+          "text": "Fentanyl 10 micrograms administered",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -561,7 +595,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Endotracheal tube placed with grade one view at 08:05",
+          "text": "CL grade 1, intubated",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -569,7 +603,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Rocuronium 50 milligrams administered at 08:10",
+          "text": "Rocuronium 50 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -577,7 +611,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Peripheral IV line placed in left arm at 08:15",
+          "text": "Peripheral line inserted in left arm",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -585,7 +619,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Lactated Ringer's 1000 milliliters administered at 08:20",
+          "text": "Lactated Ringers 1000 milliliters given",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -593,7 +627,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "Mean Arterial Pressure dropped to 55 at 09:00",
+          "text": "Mean arterial pressure dropped to 55, atropine 1 milligram administered",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -601,15 +635,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "Atropine 1 milligram administered at 09:00",
-          "provenance": [
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Surgical incision to closure time was 40 minutes at 09:20",
+          "text": "Surgical incision to closure time 40 minutes",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -622,18 +648,20 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Post-Operative Nausea and Vomiting (PONV) Risk due to Opioid Use (Fentanyl) and History of Reaction to Cephalosporin",
+          "text": "PONV risk due to history of GERD and opioid administration",
           "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s010",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s008",
             "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway Watch due to Obesity and Potential for Difficult Extubation",
+          "text": "Airway watch due to obesity and potential difficult intubation",
           "provenance": [
+            "audio:preop-interview#s005",
             "audio:preop-interview#s006",
             "audio:intraop-notes#s003"
           ],
@@ -641,35 +669,42 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic Control Monitoring due to Type 2 Diabetes",
+          "text": "Glycemic control due to type 2 diabetes",
           "provenance": [
+            "audio:preop-interview#s005",
             "audio:preop-interview#s006",
-            "doc:gp-summary#c002"
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s007"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Hypotension Monitoring due to Intraoperative Drop in Mean Arterial Pressure",
+          "text": "Analgesia management due to opioid administration and potential for increased pain post-laparoscopic surgery",
           "provenance": [
-            "audio:intraop-notes#s007"
+            "audio:intraop-notes#s002",
+            "doc:op-plan#c001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Pain Management (Analgesia) considering Obesity and Diabetes",
+          "text": "Hemodynamic watch due to hypertension and intraoperative hypotension",
           "provenance": [
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:intraop-notes#s007"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-006",
-          "text": "Hemodynamic Watch due to Hypertension and Intraoperative Hypotension",
+          "text": "Risk of antibiotic-associated reaction due to cephalosporin allergy",
           "provenance": [
-            "audio:preop-interview#s006",
-            "audio:intraop-notes#s007"
+            "audio:preop-interview#s010"
           ],
           "status": "inference"
         }
@@ -680,38 +715,24 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "31-year-old female undergoing elective laparoscopic cholecystectomy for symptomatic gallstones over the past 6 months, with worsening symptoms in the last week.",
+          "text": "31-year-old female undergoing elective Laparoscopic Cholecystectomy for gallstones, with a history of controlled type 2 diabetes, hypertension, and obesity.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has type 2 diabetes controlled with metformin, hypertension controlled with lisinopril, obesity with ongoing lifestyle modifications, and no recent respiratory issues despite a remote history of pneumonia.",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c006"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Patient denies current GERD symptoms and has no known drug allergies, though reports a prior reaction to ceftriaxone (nausea and vomiting).",
-          "provenance": [
-            "audio:preop-interview#s012",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Current medications include metformin 500 mg twice daily, lisinopril 10 mg once daily, and atorvastatin 20 mg once daily. Patient has been fasting since midnight with only a sip of water for morning medications.",
+          "text": "Medications include Metformin, Lisinopril, and Atorvastatin. Allergy to cephalosporins (nausea and vomiting). Fasting since midnight with minimal water intake.",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
@@ -720,80 +741,44 @@
             "doc:med-list#c002",
             "doc:gp-summary#c004",
             "doc:med-list#c003",
+            "audio:preop-interview#s010",
             "audio:preop-interview#s018"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
-          "text": "Patient is classified as ASA-PS II, indicating a healthy individual with mild systemic disease (controlled diabetes and hypertension). General anesthesia with intraoperative neuromonitoring was planned for the procedure.",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Intraoperative course included administration of propofol, fentanyl, and rocuronium, with endotracheal intubation achieving a grade one view. A peripheral IV was placed, and 1000 mL of lactated Ringer's were administered. Mean arterial pressure dropped to 55, prompting administration of atropine. Surgical time was 40 minutes.",
+          "claim_id": "c-003",
+          "text": "Intraoperative course included administration of Propofol, Fentanyl, and Rocuronium. Transient hypotension (MAP 55) treated with Atropine. Surgical time was 40 minutes.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003",
             "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s006",
             "audio:intraop-notes#s007",
             "audio:intraop-notes#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Monitor for post-operative nausea and vomiting due to opioid use and history of reaction to cephalosporin.",
+          "claim_id": "c-004",
+          "text": "Monitor for PONV due to history of GERD and opioid use, airway complications due to obesity, glycemic control, analgesia management, hemodynamic stability due to hypertension and intraoperative hypotension, and potential allergic reactions to antibiotics.",
           "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s010",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Maintain airway vigilance due to obesity and potential for difficult extubation.",
-          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s008",
+            "audio:intraop-notes#s002",
+            "audio:preop-interview#s005",
             "audio:preop-interview#s006",
-            "audio:intraop-notes#s003"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Ensure glycemic control monitoring due to type 2 diabetes.",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "doc:gp-summary#c002"
+            "audio:intraop-notes#s003",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s007",
+            "doc:op-plan#c001",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:intraop-notes#s007",
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Continue hemodynamic monitoring due to intraoperative hypotension and history of hypertension.",
-          "provenance": [
-            "audio:intraop-notes#s007",
-            "audio:preop-interview#s006"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Optimize pain management considering obesity and diabetes.",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "unsupported"
         }
       ]
     },
@@ -802,168 +787,63 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is a 31-year-old female.",
+          "text": "Patient reports being 'okay' and 'a bit groggy' post-surgery.",
           "provenance": [
-            "doc:gp-summary#c001"
+            "audio:postop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient is on Metformin 500 mg Twice daily for Type 2 Diabetes.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "audio:preop-interview#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Patient is on Lisinopril 10 mg Once daily for Hypertension.",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient is on Atorvastatin 20 mg Once daily for Hyperlipidemia.",
-          "provenance": [
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient has no known drug allergies recorded in the medical history.",
-          "provenance": [
-            "doc:gp-summary#c005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient had a reaction to cephalosporin antibiotic (ceftriaxone) with nausea and vomiting.",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Patient's past medical history includes resolved pneumonia 5 years ago.",
-          "provenance": [
-            "doc:gp-summary#c006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Patient has a remote history of left wrist fracture (healed).",
-          "provenance": [
-            "doc:gp-summary#c007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Patient previously used Omeprazole for GERD, discontinued 2 years ago.",
-          "provenance": [
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient underwent Laparoscopic Cholecystectomy (elective) under General Anesthesia with Intraoperative Neuromonitoring.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s019"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Induction agents included Propofol 120 mg and Fentanyl 10 μg IV.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Patient received Rocuronium 50 mg IV for muscle relaxation.",
-          "provenance": [
-            "audio:intraop-notes#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Patient's airway was secured with a tube, grade one view.",
-          "provenance": [
-            "audio:intraop-notes#s003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Patient experienced a drop in Mean Arterial Pressure to 55 mmHg, treated with Atropine 1 mg IV.",
-          "provenance": [
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Surgical incision to closure time was 40 minutes.",
-          "provenance": [
-            "audio:intraop-notes#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "Postoperatively, patient reports pain level of 4-5 at the incision site.",
+          "text": "Patient reports pain level of 4 or 5 out of 10, describing it as 'some soreness in the tummy area'.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-017",
-          "text": "Patient denies nausea, vomiting, or dizziness postoperatively.",
+          "claim_id": "c-003",
+          "text": "Patient denies any nausea or vomiting since waking up.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-018",
-          "text": "Patient's breathing is reported as normal with no shortness of breath or discomfort on deep breaths.",
+          "claim_id": "c-004",
+          "text": "Patient reports feeling 'a bit thirsty' but no other symptoms related to nausea.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient confirms breathing is 'fine' and can take deep breaths without pain.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-019",
-          "text": "Patient denies any awareness or discomfort during the surgery.",
+          "claim_id": "c-006",
+          "text": "Patient denies any awareness or discomfort during the surgery, stating 'I was out the whole time'.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-020",
-          "text": "Patient with known diabetes and hypertension reports no unusual symptoms such as dizziness, chest pain, or vision changes postoperatively.",
+          "claim_id": "c-007",
+          "text": "Patient denies any unusual symptoms related to diabetes or high blood pressure, such as dizziness, chest pain, or vision changes.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient reports feeling 'stable, just tired' in the context of their diabetes and high blood pressure.",
           "provenance": [
             "audio:postop-interview#s012"
           ],
@@ -974,8 +854,19 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you have any drug allergies that have not been recorded?",
-      "reason": "missing",
+      "question": "Can you confirm if you are still taking Metformin 500 mg Twice daily, Lisinopril 10 mg Once daily, and Atorvastatin 20 mg Once daily, or have any of these medications been stopped, changed, or replaced since they were last recorded?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any drug or non-drug allergies, such as reactions to latex, plasters, or foods, that have not been documented in your records?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c005"
       ],
@@ -983,16 +874,7 @@
       "edited_text": null
     },
     {
-      "question": "Have you had any recent respiratory issues or symptoms, given your history of pneumonia?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c006"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Are you currently experiencing any symptoms of GERD, even though you discontinued Omeprazole 2 years ago?",
+      "question": "You have a history of GERD for which you previously used Omeprazole, which was discontinued 2 years ago. Are you currently experiencing any symptoms of acid reflux or dyspepsia that might require management during the perioperative period?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c008"
@@ -1001,15 +883,10 @@
       "edited_text": null
     },
     {
-      "question": "Can you confirm the current use and dosage of Metformin, Lisinopril, and Atorvastatin as listed in both your GP summary and medication list?",
-      "reason": "conflicting",
+      "question": "You have a history of pneumonia that resolved 5 years ago. Have you had any recent respiratory infections, shortness of breath, or other pulmonary symptoms that could impact anesthesia or postoperative recovery?",
+      "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c002",
-        "doc:gp-summary#c003",
-        "doc:gp-summary#c004",
-        "doc:med-list#c001",
-        "doc:med-list#c002",
-        "doc:med-list#c003"
+        "doc:gp-summary#c006"
       ],
       "review": null,
       "edited_text": null
@@ -1037,7 +914,7 @@
     {
       "t": "08:05",
       "category": "airway",
-      "value": "tube in, grade one view",
+      "value": "CL grade 1, intubated",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s003"
@@ -1073,17 +950,8 @@
     {
       "t": "09:00",
       "category": "event",
-      "value": "mean arterial pressure dropped to 55",
+      "value": "mean arterial pressure dropped to 55, atropine 1 given",
       "units": null,
-      "provenance": [
-        "audio:intraop-notes#s007"
-      ]
-    },
-    {
-      "t": "09:00",
-      "category": "agent",
-      "value": "atropine 1",
-      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s007"
       ]
@@ -1099,12 +967,12 @@
     }
   ],
   "anticipated_issues": [
-    "Post-Operative Nausea and Vomiting (PONV) Risk due to Opioid Use (Fentanyl) and History of Reaction to Cephalosporin",
-    "Airway Watch due to Obesity and Potential for Difficult Extubation",
-    "Glycemic Control Monitoring due to Type 2 Diabetes",
-    "Hypotension Monitoring due to Intraoperative Drop in Mean Arterial Pressure",
-    "Pain Management (Analgesia) considering Obesity and Diabetes",
-    "Hemodynamic Watch due to Hypertension and Intraoperative Hypotension"
+    "PONV risk due to history of GERD and opioid administration",
+    "Airway watch due to obesity and potential difficult intubation",
+    "Glycemic control due to type 2 diabetes",
+    "Analgesia management due to opioid administration and potential for increased pain post-laparoscopic surgery",
+    "Hemodynamic watch due to hypertension and intraoperative hypotension",
+    "Risk of antibiotic-associated reaction due to cephalosporin allergy"
   ],
   "workflow": null
 }

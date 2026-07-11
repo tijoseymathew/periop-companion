@@ -48,6 +48,12 @@ For each handoff item: section (Situation/Background/Assessment/
 Recommendation, or a clinical grouping), text (the handoff phrasing),
 source_claims (the id(s) of the existing claim(s) it is built from, exactly as
 bracketed — at least one).
+
+Select for PACU relevance only: do NOT carry over resolved or remote history
+with no bearing on this recovery (healed fractures, infections cleared years
+ago, long-discontinued medications). If a background claim would not change
+what the PACU nurse watches for or does, leave it out — do not mention it
+even as context.
 """
 
 

@@ -431,7 +431,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "72-year-old male, Retired, resident of Ang Mo Kio, Singapore.",
+          "text": "72-year-old male",
           "provenance": [
             "doc:gp-summary#c001"
           ],
@@ -439,23 +439,24 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Undergoing elective Prostatectomy (Transurethral Resection of the Prostate, TURP).",
+          "text": "Retired, resident of Ang Mo Kio, Singapore",
           "provenance": [
-            "doc:op-plan#c001"
+            "doc:gp-summary#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "History of Benign Prostatic Hyperplasia (BPH) leading to TURP.",
+          "text": "Benign Prostatic Hyperplasia (BPH) requiring Transurethral Resection of the Prostate (TURP)",
           "provenance": [
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s004",
+            "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Hypertension, currently controlled with medications (BP ~130/80).",
+          "text": "Hypertension, currently controlled with blood pressure readings around 130/80 mmHg",
           "provenance": [
             "doc:gp-summary#c009",
             "audio:preop-interview#s006"
@@ -464,7 +465,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Type 2 Diabetes Mellitus, managed with Metformin, sugar levels reported as 'okay'.",
+          "text": "Type 2 Diabetes Mellitus, currently managed with Metformin 500mg twice daily",
           "provenance": [
             "doc:gp-summary#c010",
             "audio:preop-interview#s006"
@@ -473,7 +474,15 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Allergy to Penicillin (rash reaction).",
+          "text": "Chronic Kidney Disease (Stage 3), no recent update on kidney function provided",
+          "provenance": [
+            "doc:gp-summary#c012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "History of penicillin allergy with rash reaction",
           "provenance": [
             "doc:gp-summary#c008",
             "audio:preop-interview#s010"
@@ -481,16 +490,53 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "No known allergies other than Penicillin, and no reactions to anesthetics in the past (hernia repair and cataract surgeries).",
+          "claim_id": "c-008",
+          "text": "Current medications: Metformin 500mg twice daily",
           "provenance": [
-            "audio:preop-interview#s010"
+            "doc:med-list#c001",
+            "audio:preop-interview#s006"
           ],
-          "status": "conflicting"
+          "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Omeprazole 20mg Once daily (as per records), but patient reports switching to Pantoprazole 30mg Once daily as needed for stomach discomfort.",
+          "claim_id": "c-009",
+          "text": "Current medications: Lisinopril 10mg once daily",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Current medications: Amlodipine 5mg once daily",
+          "provenance": [
+            "doc:med-list#c003",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Current medications: Dutasteride 0.5mg once daily",
+          "provenance": [
+            "doc:med-list#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Current medications: Aspirin 75mg once daily",
+          "provenance": [
+            "doc:med-list#c005",
+            "audio:preop-interview#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Discontinued medications: Omeprazole (stopped 6 months ago, now using Pantoprazole 30mg once daily as needed)",
           "provenance": [
             "doc:med-list#c006",
             "audio:preop-interview#s008"
@@ -498,44 +544,48 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Blood pressure readings are stable around 130/80, with no recent adjustments to antihypertensive regimen.",
+          "claim_id": "c-014",
+          "text": "No recent episodes of atrial fibrillation since discontinuation of Warfarin 4 years ago, currently not on any anticoagulant or antiplatelet medication besides Aspirin",
           "provenance": [
-            "audio:preop-interview#s006"
+            "doc:gp-summary#c015",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "No recent HbA1c level provided, but patient reports sugar levels as 'okay' with Metformin.",
+          "claim_id": "c-015",
+          "text": "Experiencing lower urinary tract symptoms including frequent urination and occasional difficulty urinating, prompting the need for TURP",
           "provenance": [
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s004"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "NPO status confirmed: last meal around 7pm last night, sipped water before 6am.",
+          "claim_id": "c-016",
+          "text": "Patient reports being NPO since 6am, with last meal around 7pm the previous night",
           "provenance": [
             "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "ASA-PS Class III (patient has more than mild systemic disease: hypertension, type 2 diabetes, stage 3 CKD).",
+          "claim_id": "c-017",
+          "text": "ASA-PS I (healthy patient with no systemic disease that would affect physical fitness, undergoing elective surgery)",
           "provenance": [
+            "doc:gp-summary#c001",
             "doc:gp-summary#c009",
             "doc:gp-summary#c010",
             "doc:gp-summary#c012"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Anesthesia Plan: General Anesthesia with Spinal Anesthesia (Combined Spinal-Epidural Anesthesia) for TURP.",
+          "claim_id": "c-018",
+          "text": "Plan for General Anesthesia with Spinal Anesthesia (Combined Spinal-Epidural Anesthesia) for TURP",
           "provenance": [
-            "doc:op-plan#c002"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s011"
           ],
           "status": "supported"
         }
@@ -546,7 +596,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "08:00 propofol 120 milligrams administered",
+          "text": "08:00 Propofol 120 milligrams administered for induction",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -554,7 +604,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "08:02 endotracheal tube placed with grade one view",
+          "text": "08:02 Endotracheal tube placed with grade one view",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -562,7 +612,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "08:05 bupivacaine 2.5 milligrams administered",
+          "text": "08:05 Bupivacaine 2.5 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -570,7 +620,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "08:05 fentanyl 10 micrograms administered",
+          "text": "08:05 Fentanyl 10 micrograms administered",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -578,7 +628,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "08:10 epidural catheter placed",
+          "text": "08:10 Epidural catheter placed",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -586,7 +636,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "08:15 normal saline 1 liter bolus administered",
+          "text": "08:15 Normal saline 1 liter bolus administered",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -594,7 +644,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "08:30 blood pressure recorded as 160/100",
+          "text": "08:30 Blood pressure recorded as 160/100",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -602,7 +652,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "08:30 labetalol 20 milligrams administered",
+          "text": "08:30 Labetalol 20 milligrams IV administered",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -610,7 +660,7 @@
         },
         {
           "claim_id": "c-009",
-          "text": "09:00 surgery completed",
+          "text": "09:00 Surgery completed",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -618,7 +668,7 @@
         },
         {
           "claim_id": "c-010",
-          "text": "09:00 desflurane turned off",
+          "text": "09:00 Desflurane turned off",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -626,7 +676,7 @@
         },
         {
           "claim_id": "c-011",
-          "text": "09:00 reversal of anesthesia completed",
+          "text": "09:00 Reversal of anesthesia completed",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -634,7 +684,7 @@
         },
         {
           "claim_id": "c-012",
-          "text": "09:00 patient extubated",
+          "text": "09:00 Patient extubated",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -647,7 +697,43 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Hypertension Management: Risk of post-operative hypertension or hypotension due to intra-operative blood pressure fluctuations and antihypertensive medications.",
+          "text": "Risk of Post-Operative Nausea and Vomiting (PONV) due to Propofol use and history of PONV not explicitly mentioned but potential due to anesthesia type",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "audio:intraop-notes#s001"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Airway watch due to history of BPH and potential for urinary retention post-op, which might lead to discomfort and agitation affecting airway",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:op-plan#c001"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic control necessary due to Type 2 Diabetes Mellitus, managed with Metformin, requiring monitoring of blood sugar levels post-op",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s006",
+            "doc:med-list#c001"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Analgesia management considering the use of spinal anesthesia (Bupivacaine and Fentanyl) which may wear off, necessitating additional pain management",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic watch due to Hypertension (controlled with medications) and intra-op hypertension (160/100 mmHg) requiring Labetalol",
           "provenance": [
             "doc:gp-summary#c009",
             "audio:preop-interview#s006",
@@ -656,57 +742,19 @@
           "status": "inference"
         },
         {
-          "claim_id": "c-002",
-          "text": "Glycemic Control: Risk of hyperglycemia or hypoglycemia post-operatively due to Type 2 Diabetes Mellitus and potential impact of NPO status and surgery on blood sugar levels.",
-          "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s014"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "PONV (Post-Operative Nausea and Vomiting) Risk: Increased due to use of opioids (fentanyl) during surgery and history of anesthesia.",
-          "provenance": [
-            "audio:intraop-notes#s003",
-            "audio:preop-interview#s010"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Airway Watch: Potential for airway complications post-extubation due to history of spinal surgery (although remote) and use of general anesthesia.",
-          "provenance": [
-            "doc:gp-summary#c014",
-            "audio:intraop-notes#s007"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Analgesia Management: Potential need for careful pain management due to combined spinal-epidural anesthesia and risk of breakthrough pain.",
-          "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s003"
-          ],
-          "status": "inference"
-        },
-        {
           "claim_id": "c-006",
-          "text": "Renal Function Monitoring: Stage 3 Chronic Kidney Disease increases risk for fluid and electrolyte imbalances post-operatively.",
+          "text": "Risk of Acute Kidney Injury (AKI) post-op due to Stage 3 Chronic Kidney Disease, requiring careful fluid management and monitoring of renal function",
           "provenance": [
-            "doc:gp-summary#c012",
-            "audio:intraop-notes#s005"
+            "doc:gp-summary#c012"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-007",
-          "text": "Medication Reconciliation: Patient's switch from Omeprazole to Pantoprazole and potential for drug interactions or gastrointestinal issues post-operatively.",
+          "text": "Monitoring for signs of aspiration or respiratory depression post-extubation, given the patient's age and potential for decreased airway protection",
           "provenance": [
-            "doc:med-list#c006",
-            "audio:preop-interview#s008"
+            "doc:gp-summary#c001",
+            "audio:intraop-notes#s007"
           ],
           "status": "inference"
         }
@@ -717,11 +765,11 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "72-year-old male undergoing elective Transurethral Resection of the Prostate (TURP) for Benign Prostatic Hyperplasia (BPH). He has a history of hypertension, type 2 diabetes mellitus, and stage 3 chronic kidney disease (CKD).",
+          "text": "72-year-old male undergoing TURP for Benign Prostatic Hyperplasia (BPH) with a history of controlled Hypertension, Type 2 Diabetes Mellitus, and Stage 3 Chronic Kidney Disease.",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:op-plan#c001",
             "audio:preop-interview#s004",
+            "doc:op-plan#c001",
             "doc:gp-summary#c009",
             "audio:preop-interview#s006",
             "doc:gp-summary#c010",
@@ -731,66 +779,51 @@
         },
         {
           "claim_id": "c-002",
-          "text": "The patient is currently controlled on antihypertensive medications with blood pressure around 130/80, and his diabetes is managed with Metformin. He has an allergy to penicillin (rash reaction) but no known reactions to anesthetics. He is NPO since last night and had a combined spinal-epidural anesthesia with general anesthesia for the procedure.",
+          "text": "Patient is on multiple medications including Metformin, Lisinopril, Amlodipine, Dutasteride, and Aspirin. He has a penicillin allergy with a rash reaction and has been NPO since 6am.",
           "provenance": [
-            "doc:gp-summary#c009",
-            "audio:preop-interview#s006",
-            "doc:gp-summary#c010",
             "doc:gp-summary#c008",
             "audio:preop-interview#s010",
-            "audio:preop-interview#s014",
-            "doc:op-plan#c002"
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "doc:med-list#c005",
+            "audio:preop-interview#s007",
+            "doc:med-list#c006",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intra-operatively, the patient received propofol, fentanyl, bupivacaine, and had a blood pressure spike to 160/100, which was treated with labetalol. Surgery was completed without complications, and the patient was extubated after reversal of anesthesia.",
+          "text": "Intraoperative course included General Anesthesia with Spinal Anesthesia, with episodes of hypertension managed with Labetalol. Patient received Propofol, Bupivacaine, and Fentanyl.",
           "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s011",
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s003",
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s007"
+            "audio:intraop-notes#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Anticipated post-operative issues include hypertension or hypotension due to intra-operative blood pressure fluctuations, glycemic instability due to diabetes and NPO status, increased risk of PONV from opioid use, potential airway complications post-extubation, need for careful analgesia management due to combined spinal-epidural anesthesia, and monitoring for renal function due to stage 3 CKD.",
+          "text": "Monitor for Post-Operative Nausea and Vomiting (PONV), airway complications due to BPH and potential urinary retention, glycemic control, analgesia needs as spinal anesthesia wears off, hemodynamic stability due to history of hypertension, and risk of Acute Kidney Injury (AKI) requiring careful fluid management and renal function monitoring. Also, watch for signs of aspiration or respiratory depression post-extubation.",
           "provenance": [
-            "doc:gp-summary#c009",
-            "audio:preop-interview#s006",
-            "audio:intraop-notes#s006",
+            "doc:gp-summary#c001",
+            "audio:intraop-notes#s001",
+            "audio:preop-interview#s004",
+            "doc:op-plan#c001",
             "doc:gp-summary#c010",
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s003",
-            "audio:preop-interview#s010",
-            "doc:gp-summary#c014",
-            "audio:intraop-notes#s007",
-            "doc:op-plan#c002",
-            "doc:gp-summary#c012",
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Monitor blood pressure closely and adjust antihypertensive medications as needed. Check blood glucose levels regularly and manage accordingly. Watch for signs of PONV and consider antiemetics. Assess airway and respiratory status post-extubation. Provide adequate analgesia while monitoring for breakthrough pain. Ensure renal function is monitored and maintain fluid balance. Reconcile the patient's PPI use (Pantoprazole) and monitor for gastrointestinal issues.",
-          "provenance": [
-            "doc:gp-summary#c009",
             "audio:preop-interview#s006",
-            "audio:intraop-notes#s006",
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s014",
+            "doc:med-list#c001",
             "audio:intraop-notes#s003",
-            "audio:preop-interview#s010",
-            "doc:gp-summary#c014",
-            "audio:intraop-notes#s007",
-            "doc:op-plan#c002",
+            "doc:gp-summary#c009",
+            "audio:intraop-notes#s006",
             "doc:gp-summary#c012",
-            "audio:intraop-notes#s005",
-            "doc:med-list#c006",
-            "audio:preop-interview#s008"
+            "audio:intraop-notes#s007"
           ],
           "status": "supported"
         }
@@ -801,215 +834,76 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "72-year-old male, Retired, resident of Ang Mo Kio, Singapore.",
-          "provenance": [
-            "doc:gp-summary#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Diagnosed with Hypertension.",
-          "provenance": [
-            "doc:gp-summary#c009"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Diagnosed with Type 2 Diabetes Mellitus.",
-          "provenance": [
-            "doc:gp-summary#c010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Diagnosed with Benign Prostatic Hyperplasia (BPH).",
-          "provenance": [
-            "doc:gp-summary#c011"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Diagnosed with Chronic Kidney Disease (Stage 3).",
-          "provenance": [
-            "doc:gp-summary#c012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "History of pneumonia resolved 2 years ago.",
-          "provenance": [
-            "doc:gp-summary#c013"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Remote history of left femur fracture (30 years ago), fully healed.",
-          "provenance": [
-            "doc:gp-summary#c014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Previous use of Warfarin for atrial fibrillation, discontinued 4 years ago.",
-          "provenance": [
-            "doc:gp-summary#c015"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Allergic to Penicillin, with a history of rash.",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Current medications include Metformin 500mg Twice daily.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Current medications include Lisinopril 10mg Once daily.",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Current medications include Amlodipine 5mg Once daily.",
-          "provenance": [
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Current medications include Dutasteride 0.5mg Once daily.",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "doc:med-list#c004",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Current medications include Aspirin 75mg Once daily.",
-          "provenance": [
-            "doc:gp-summary#c006",
-            "doc:med-list#c005",
-            "audio:preop-interview#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Previously took Omeprazole 20mg Once daily, but stopped 6 months ago due to improved gastritis. Now takes Pantoprazole 30mg Once daily as needed for stomach discomfort.",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "doc:med-list#c006",
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "Undergoing Prostatectomy (Transurethral Resection of the Prostate, TURP) (elective).",
-          "provenance": [
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-017",
-          "text": "Anesthesia plan includes General Anesthesia with Spinal Anesthesia (Combined Spinal-Epidural Anesthesia).",
-          "provenance": [
-            "doc:op-plan#c002",
-            "audio:preop-interview#s011"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-018",
-          "text": "Induction with Propofol 120 milligrams.",
-          "provenance": [
-            "audio:intraop-notes#s001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-019",
-          "text": "Spinal needle inserted with Bupivacaine 2.5 milligrams and Fentanyl 10 micrograms.",
-          "provenance": [
-            "audio:intraop-notes#s003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-020",
-          "text": "Epidural catheter placed with Bupivacaine 1 milligram test dose.",
-          "provenance": [
-            "audio:intraop-notes#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-021",
-          "text": "Intraoperative blood pressure was 160/100, treated with Labetalol 20 milligrams IV.",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-022",
-          "text": "Patient reports postoperative pain level of 3 or 4 on a scale of 0 to 10.",
+          "text": "Patient reports post-operative pain level of 3 or 4 on a scale of 0 to 10, describing it as manageable.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-023",
-          "text": "Patient denies postoperative nausea or vomiting.",
+          "claim_id": "c-002",
+          "text": "Patient denies experiencing nausea or sickness to the stomach post-operatively.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-024",
-          "text": "Patient reports no difficulty breathing or respiratory issues postoperatively.",
+          "claim_id": "c-003",
+          "text": "Patient reports breathing comfortably with no tightness or difficulty breathing post-operatively.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-025",
-          "text": "Patient denies any awareness or discomfort during the surgery.",
+          "claim_id": "c-004",
+          "text": "Patient recalls no awareness or discomfort during the surgery, describing being 'out cold'.",
           "provenance": [
             "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient's hypertension and diabetes are under close monitoring for post-operative vitals and blood sugar levels.",
+          "provenance": [
+            "audio:postop-interview#s011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient received combined spinal-epidural anesthesia with bupivacaine and fentanyl for the procedure.",
+          "provenance": [
+            "audio:intraop-notes#s003",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Patient was induced with propofol (120mg) and had a grade one view upon intubation.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient experienced an increase in blood pressure (160/100) during surgery, managed with labetalol (20mg IV).",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient was extubated after surgery completion with reversal of anesthesia and is currently breathing comfortably.",
+          "provenance": [
+            "audio:intraop-notes#s007",
+            "audio:postop-interview#s008"
           ],
           "status": "supported"
         }
@@ -1018,51 +912,9 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you have any known allergies other than Penicillin, and if you have experienced any reactions to any anesthetics or other medications in the past?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c008"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you provide details about your previous use of Warfarin for atrial fibrillation, including the reason for discontinuation and any subsequent monitoring or treatment for atrial fibrillation?",
+      "question": "Can you confirm if there have been any changes, stoppages, or additions to your medication list since it was last updated? Specifically, please confirm the current status of Metformin, Lisinopril, Amlodipine, Dutasteride, Aspirin, and Omeprazole.",
       "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c015"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you had any recent changes in your kidney function or any episodes of acute kidney injury since your last documentation of Stage 3 Chronic Kidney Disease?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c012"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Please confirm if you have any current respiratory symptoms or a history of lung disease that might impact anesthesia, given your past history of pneumonia?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c013"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you clarify if you are still taking all the listed medications (Metformin, Lisinopril, Amlodipine, Dutasteride, Aspirin, Omeprazole) and if there have been any changes in dosage or frequency?",
-      "reason": "conflicting",
-      "provenance": [
-        "doc:gp-summary#c002",
-        "doc:gp-summary#c003",
-        "doc:gp-summary#c004",
-        "doc:gp-summary#c005",
-        "doc:gp-summary#c006",
-        "doc:gp-summary#c007",
         "doc:med-list#c001",
         "doc:med-list#c002",
         "doc:med-list#c003",
@@ -1074,8 +926,44 @@
       "edited_text": null
     },
     {
-      "question": "Given your history of hypertension and current medications (Lisinopril, Amlodipine), can you confirm your current blood pressure readings and if you have had any recent adjustments to your antihypertensive regimen?",
+      "question": "Are you aware of any allergies or reactions to drugs, latex, adhesives (like plasters), or any other substances not already documented?",
       "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of Chronic Kidney Disease (Stage 3). Can you provide an update on your current kidney function, including any recent blood tests (e.g., eGFR, serum creatinine)?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c012"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You previously used Warfarin for atrial fibrillation, which was discontinued 4 years ago. Can you confirm if you have had any episodes of atrial fibrillation since then, or if you are currently on any other anticoagulant or antiplatelet medication?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c015"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of Benign Prostatic Hyperplasia (BPH) and are scheduled for a prostatectomy. Have you experienced any recent urinary retention, difficulty urinating, or other lower urinary tract symptoms that might impact anesthesia or postoperative recovery?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c011"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of hypertension and are on multiple antihypertensive medications (Lisinopril, Amlodipine). Can you confirm your most recent blood pressure readings and whether your hypertension has been well-controlled on the current regimen?",
+      "reason": "missing",
       "provenance": [
         "doc:gp-summary#c009"
       ],
@@ -1083,8 +971,8 @@
       "edited_text": null
     },
     {
-      "question": "With your diagnosis of Type 2 Diabetes Mellitus, can you provide your most recent HbA1c level and confirm if you have any neuropathy, retinopathy, or other complications related to diabetes?",
-      "reason": "stale",
+      "question": "You have Type 2 Diabetes Mellitus and are on Metformin. Can you provide your most recent HbA1c level and any updates on your glucose control?",
+      "reason": "missing",
       "provenance": [
         "doc:gp-summary#c010"
       ],
@@ -1160,7 +1048,7 @@
       "t": "08:30",
       "category": "agent",
       "value": "labetalol 20",
-      "units": "milligrams",
+      "units": "milligrams iv",
       "provenance": [
         "audio:intraop-notes#s006"
       ]
@@ -1203,13 +1091,13 @@
     }
   ],
   "anticipated_issues": [
-    "Hypertension Management: Risk of post-operative hypertension or hypotension due to intra-operative blood pressure fluctuations and antihypertensive medications.",
-    "Glycemic Control: Risk of hyperglycemia or hypoglycemia post-operatively due to Type 2 Diabetes Mellitus and potential impact of NPO status and surgery on blood sugar levels.",
-    "PONV (Post-Operative Nausea and Vomiting) Risk: Increased due to use of opioids (fentanyl) during surgery and history of anesthesia.",
-    "Airway Watch: Potential for airway complications post-extubation due to history of spinal surgery (although remote) and use of general anesthesia.",
-    "Analgesia Management: Potential need for careful pain management due to combined spinal-epidural anesthesia and risk of breakthrough pain.",
-    "Renal Function Monitoring: Stage 3 Chronic Kidney Disease increases risk for fluid and electrolyte imbalances post-operatively.",
-    "Medication Reconciliation: Patient's switch from Omeprazole to Pantoprazole and potential for drug interactions or gastrointestinal issues post-operatively."
+    "Risk of Post-Operative Nausea and Vomiting (PONV) due to Propofol use and history of PONV not explicitly mentioned but potential due to anesthesia type",
+    "Airway watch due to history of BPH and potential for urinary retention post-op, which might lead to discomfort and agitation affecting airway",
+    "Glycemic control necessary due to Type 2 Diabetes Mellitus, managed with Metformin, requiring monitoring of blood sugar levels post-op",
+    "Analgesia management considering the use of spinal anesthesia (Bupivacaine and Fentanyl) which may wear off, necessitating additional pain management",
+    "Hemodynamic watch due to Hypertension (controlled with medications) and intra-op hypertension (160/100 mmHg) requiring Labetalol",
+    "Risk of Acute Kidney Injury (AKI) post-op due to Stage 3 Chronic Kidney Disease, requiring careful fluid management and monitoring of renal function",
+    "Monitoring for signs of aspiration or respiratory depression post-extubation, given the patient's age and potential for decreased airway protection"
   ],
   "workflow": null
 }

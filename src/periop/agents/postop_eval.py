@@ -33,6 +33,12 @@ Sources (cite by the bracketed id):
 Cover: recovery course, pain, PONV/nausea, airway/respiratory status,
 recall/awareness, and any issue linked to the anticipated post-op concerns.
 Each claim: text (one fact), section, provenance (the supporting id(s)).
+
+This note is about THIS recovery, not a history summary. Do not recite past
+medical history from the records: resolved conditions, healed injuries, and
+discontinued medications must not appear at all — not even prefixed with
+"history of" or "resolved" — unless the item directly explains a finding in
+this post-operative course, in which case state that connection in the claim.
 """
 
 

@@ -59,9 +59,12 @@ resolved conditions (a pneumonia cleared years ago, a healed fracture),
 long-discontinued medications, and incidental items with no anesthetic
 implication. Before writing any claim from past history, apply this test:
 would this item change the anesthetic plan, airway management, drug choice,
-or post-op monitoring? If no, leave it out entirely. If yes,
-state that reason in the claim text (e.g. "... — relevant because ...");
-a historical item without a stated anesthetic reason does not belong here.
+or post-op monitoring? If no, OMIT the item completely: do not name it at
+all, not even to remark that it is resolved, healed, or irrelevant — a claim
+like "healed wrist fracture, not relevant to anesthesia" is an error because
+it names the item. If yes, state that reason in the claim text (e.g. "... —
+relevant because ..."); a historical item without a stated anesthetic reason
+does not belong here.
 """
 
 

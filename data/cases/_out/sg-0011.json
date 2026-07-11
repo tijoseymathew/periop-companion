@@ -408,6 +408,14 @@
         },
         {
           "claim_id": "c-002",
+          "text": "Retired, resident of Ang Mo Kio, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
           "text": "Diagnosed with hypertension, type 2 diabetes, benign prostatic hyperplasia, and osteoarthritis in knees",
           "provenance": [
             "audio:preop-interview#s003"
@@ -415,7 +423,46 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
+          "claim_id": "c-004",
+          "text": "Losartan 100 mg Once daily (current, as confirmed)",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Metformin 500 mg Twice daily (current, as confirmed)",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Tamsulosin 0.4 mg Once daily (current, as confirmed)",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Aspirin 75 mg Once daily (STOPPED, discontinued due to stomach discomfort approximately 2 years ago)",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
           "text": "No known drug allergies",
           "provenance": [
             "doc:gp-summary#c006",
@@ -424,92 +471,42 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-004",
-          "text": "Currently taking losartan 100 mg once daily, metformin 500 mg twice daily, and tamsulosin 0.4 mg once daily",
-          "provenance": [
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Stopped taking aspirin 75 mg daily approximately two years ago due to stomach discomfort",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Uses diclofenac as needed for knee pain",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "No history of difficult intubation, airway surgery, or issues with previous anesthesia",
-          "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Experienced nausea after previous general anesthesia",
-          "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
           "claim_id": "c-009",
-          "text": "No current respiratory symptoms or history of chronic lung disease",
+          "text": "No allergies to non-drug items (e.g., latex, plasters, foods) as per patient report",
           "provenance": [
-            "audio:preop-interview#s003"
+            "audio:preop-interview#s010"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
           "claim_id": "c-010",
-          "text": "No history of cardiac disease (heart attack, arrhythmia, heart failure)",
+          "text": "History of pneumonia (resolved 5 years ago), no ongoing respiratory symptoms reported",
           "provenance": [
-            "audio:preop-interview#s003"
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s014"
           ],
           "status": "unsupported"
         },
         {
           "claim_id": "c-011",
-          "text": "No recent changes in blood pressure or episodes of dizziness/fainting",
-          "provenance": [
-            "audio:preop-interview#s003"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "NPO since 8 PM last night, except for a bit of water with morning medications",
+          "text": "NPO status: Nothing to eat or drink since 8 PM last night, except a bit of water with morning medications",
           "provenance": [
             "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "ASA-PS II (Patient has mild systemic disease, well-controlled hypertension and diabetes)",
+          "claim_id": "c-012",
+          "text": "ASA-PS Class II (patient with mild systemic disease, controlled hypertension and diabetes)",
           "provenance": [
             "audio:preop-interview#s003",
-            "doc:gp-summary#c001"
+            "audio:preop-interview#s014"
           ],
           "status": "unsupported"
         },
         {
-          "claim_id": "c-014",
-          "text": "Elective inguinal hernia repair under general anesthesia with Laryngeal Mask Airway (LMA)",
+          "claim_id": "c-013",
+          "text": "Elective inguinal hernia repair under General Anesthesia with Laryngeal Mask Airway (LMA)",
           "provenance": [
             "doc:op-plan#c001",
             "doc:op-plan#c002",
@@ -524,7 +521,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "At 08:00, propofol 120 milligrams was administered for induction.",
+          "text": "Propofol 120 milligrams administered at 08:00",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -532,7 +529,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "At 08:02, LMA 40 size was inserted without difficulty.",
+          "text": "LMA 40 size inserted with no difficulty at 08:02",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -540,7 +537,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "At 08:05, IV line was established with two liters of normal saline running.",
+          "text": "IV line established at 08:05",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -548,7 +545,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "At 08:10, sevoflurane was increased to 2% percent due to increased blood pressure.",
+          "text": "Sevoflurane increased to 2 percent at 08:10 due to increased blood pressure",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -556,7 +553,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "At 08:20, paracetamol 1000 milligrams was administered IV for pain management.",
+          "text": "Paracetamol 1000 milligrams administered IV for pain management at 08:20",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -564,7 +561,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "At 08:40, sevoflurane was decreased to 1.5% percent as blood pressure stabilized.",
+          "text": "Sevoflurane decreased to 1.5 percent at 08:40 as blood pressure stabilized",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -577,7 +574,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Postoperative Nausea and Vomiting (PONV) Risk due to History of Nausea after General Anesthesia",
+          "text": "PONV (Postoperative Nausea and Vomiting) Risk due to Propofol Administration and History of Nausea with Previous Anesthesia",
           "provenance": [
             "audio:preop-interview#s012"
           ],
@@ -585,12 +582,9 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Airway Watch due to Use of Laryngeal Mask Airway (LMA) and Potential for Postoperative Airway Obstruction",
+          "text": "Airway Watch due to LMA Use in a Patient with History of Respiratory Issue (Resolved Pneumonia)",
           "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s017",
-            "audio:intraop-notes#s002"
+            "doc:op-plan#c002"
           ],
           "status": "inference"
         },
@@ -598,40 +592,9 @@
           "claim_id": "c-003",
           "text": "Glycemic Control Monitoring due to Type 2 Diabetes",
           "provenance": [
-            "audio:preop-interview#s003",
-            "doc:gp-summary#c002",
-            "doc:med-list#c002"
+            "doc:gp-summary#c003"
           ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Analgesia Management considering Use of Paracetamol Intraoperatively and Potential for Insufficient Pain Control",
-          "provenance": [
-            "audio:intraop-notes#s005",
-            "audio:preop-interview#s004"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Hemodynamic Watch for Potential Hypertension Fluctuations due to History of Hypertension and Intraoperative Blood Pressure Changes",
-          "provenance": [
-            "audio:preop-interview#s003",
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Urinary Retention Watch due to Benign Prostatic Hyperplasia and Use of Tamsulosin",
-          "provenance": [
-            "audio:preop-interview#s003",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
-          ],
-          "status": "inference"
+          "status": "unsupported"
         }
       ]
     },
@@ -640,7 +603,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "80-year-old male undergoing elective inguinal hernia repair under general anesthesia with Laryngeal Mask Airway (LMA).",
+          "text": "80-year-old male undergoing elective inguinal hernia repair under General Anesthesia with Laryngeal Mask Airway (LMA).",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
@@ -651,41 +614,34 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of hypertension, type 2 diabetes, benign prostatic hyperplasia, and osteoarthritis in knees. Current medications include losartan, metformin, tamsulosin, and as-needed diclofenac for knee pain. Aspirin was discontinued two years ago due to stomach discomfort.",
+          "text": "Patient has a history of hypertension, type 2 diabetes, benign prostatic hyperplasia, and osteoarthritis in knees. Current medications include Losartan 100 mg daily, Metformin 500 mg twice daily, and Tamsulosin 0.4 mg daily. Aspirin was discontinued two years ago due to stomach discomfort. No known drug or non-drug allergies.",
           "provenance": [
             "audio:preop-interview#s003",
+            "doc:gp-summary#c002",
             "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
             "audio:preop-interview#s008",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "doc:gp-summary#c005",
             "audio:preop-interview#s006",
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "No known drug allergies. Patient experienced nausea after previous general anesthesia and has no history of difficult intubation, airway surgery, or issues with previous anesthesia.",
+          "text": "Patient has been NPO since 8 PM last night, except for a small amount of water with morning medications.",
           "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s010",
-            "audio:preop-interview#s012"
+            "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Patient is NPO since 8 PM last night, except for a bit of water with morning medications. Classified as ASA-PS II with mild systemic disease.",
-          "provenance": [
-            "audio:preop-interview#s016",
-            "audio:preop-interview#s003",
-            "doc:gp-summary#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Intraoperative course included induction with propofol, uneventful LMA insertion, IV fluids with normal saline, and sevoflurane adjustment for blood pressure management. Paracetamol was administered for pain.",
+          "text": "Intraoperative course included administration of Propofol 120 mg at 08:00, successful LMA 40 insertion at 08:02, IV line established at 08:05, and Paracetamol 1000 mg IV for pain at 08:20. Sevoflurane was adjusted twice for blood pressure management.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
@@ -697,62 +653,30 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Monitor for postoperative nausea and vomiting due to history of nausea after general anesthesia.",
+          "claim_id": "c-005",
+          "text": "Patient is at risk for Postoperative Nausea and Vomiting (PONV) due to Propofol administration and a history of nausea with previous anesthesia.",
           "provenance": [
             "audio:preop-interview#s012"
           ],
           "status": "unsupported"
         },
         {
+          "claim_id": "c-006",
+          "text": "Airway monitoring is warranted due to the use of LMA in a patient with a history of resolved pneumonia.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "unsupported"
+        },
+        {
           "claim_id": "c-007",
-          "text": "Maintain airway vigilance due to use of LMA and potential for postoperative airway obstruction.",
+          "text": "Monitor for signs of PONV and manage accordingly. Maintain vigilance for airway complications. Consider glycemic control monitoring given the patient's type 2 diabetes.",
           "provenance": [
-            "doc:op-plan#c001",
+            "audio:preop-interview#s012",
             "doc:op-plan#c002",
-            "audio:preop-interview#s017",
-            "audio:intraop-notes#s002"
+            "doc:gp-summary#c003"
           ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Ensure glycemic control monitoring given the patient's type 2 diabetes.",
-          "provenance": [
-            "audio:preop-interview#s003",
-            "doc:gp-summary#c002",
-            "doc:med-list#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Manage analgesia carefully considering intraoperative paracetamol administration and potential for insufficient pain control.",
-          "provenance": [
-            "audio:intraop-notes#s005",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Watch for hypertension fluctuations due to history of hypertension and intraoperative blood pressure changes.",
-          "provenance": [
-            "audio:preop-interview#s003",
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Be alert to signs of urinary retention given benign prostatic hyperplasia and use of tamsulosin.",
-          "provenance": [
-            "audio:preop-interview#s003",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
+          "status": "unsupported"
         }
       ]
     },
@@ -761,121 +685,38 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is an 80-year-old male, retired, residing in Ang Mo Kio, Singapore.",
+          "text": "Patient reports being tired but not experiencing significant distress following surgery.",
           "provenance": [
-            "doc:gp-summary#c001"
+            "audio:postop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of hypertension, type 2 diabetes, benign prostatic hyperplasia, and osteoarthritis in the knees.",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Patient had pneumonia (resolved 5 years ago) and a fractured right wrist (healed, 15 years ago).",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Current medications include Losartan 100 mg Once daily, Metformin 500 mg Twice daily, Tamsulosin 0.4 mg Once daily.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient stopped taking Aspirin 75 mg Once daily approximately two years ago due to stomach discomfort.",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient reports no known drug allergies.",
-          "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Procedure was elective inguinal hernia repair under General Anesthesia with Laryngeal Mask Airway (LMA).",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Induction with Propofol 120 mg, LMA 40 size inserted without difficulty.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Intraoperative sevoflurane adjusted (2% then reduced to 1.5%) for blood pressure management.",
-          "provenance": [
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "IV Paracetamol 1000 mg administered for pain management.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Postoperative pain level reported as 4 or 5 out of 10, mostly at the hernia site, described as manageable.",
+          "text": "Patient reports pain level of 4 or 5 out of 10, primarily at the hernia site, and describes it as manageable.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Patient reports no nausea, vomiting, or dizziness postoperatively, but feels somewhat tired.",
+          "claim_id": "c-003",
+          "text": "Patient denies any nausea or vomiting since waking up from surgery.",
           "provenance": [
-            "audio:postop-interview#s002",
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Patient experiences mild throat soreness but no breathing difficulties or discomfort from LMA use.",
+          "claim_id": "c-004",
+          "text": "Patient reports mild throat soreness but no breathing difficulties or discomfort related to the LMA.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
+          "claim_id": "c-005",
           "text": "Patient has no recollection of the surgery, indicating effective anesthesia.",
           "provenance": [
             "audio:postop-interview#s010"
@@ -883,10 +724,35 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-015",
-          "text": "Patient reports usual knee aching but no new or unusual postoperative issues related to pre-existing conditions.",
+          "claim_id": "c-006",
+          "text": "Patient denies chest pain, dizziness, or urinary difficulty, but mentions usual knee aching.",
           "provenance": [
             "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "General anesthesia with Laryngeal Mask Airway (LMA) was used for the elective inguinal hernia repair.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Patient's current medications include Losartan, Metformin, Tamsulosin, and occasional Diclofenac, with Aspirin discontinued two years ago due to stomach discomfort.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004",
+            "doc:gp-summary#c005",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004"
           ],
           "status": "supported"
         }
@@ -895,17 +761,20 @@
   ],
   "open_questions": [
     {
-      "question": "Do you have any history of difficult intubation, airway surgery, or any issues with previous anesthesia that we should be aware of?",
-      "reason": "missing",
+      "question": "Can you confirm if you are still taking all the medications listed (Losartan 100 mg Once daily, Metformin 500 mg Twice daily, Tamsulosin 0.4 mg Once daily, Aspirin 75 mg Once daily) and if there have been any changes, stoppages, or new medications added since this list was recorded?",
+      "reason": "stale",
       "provenance": [
-        "doc:op-plan#c002"
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003",
+        "doc:med-list#c004"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "Have you experienced any adverse reactions to medications or anesthesia in the past?",
-      "reason": "missing",
+      "question": "Are you aware of any drug or non-drug allergies (such as to latex, plasters, foods, or anything else) that are not documented in your record?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
       ],
@@ -913,17 +782,8 @@
       "edited_text": null
     },
     {
-      "question": "Are you currently experiencing any respiratory symptoms or do you have a history of chronic lung disease?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c007"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you stopped or changed any medications recently, especially aspirin, given its implications for bleeding risk during surgery?",
-      "reason": "stale",
+      "question": "As you are on Aspirin 75 mg daily, can you confirm whether you have been instructed to stop or continue this medication prior to surgery, and if you have discussed this with your surgeon or cardiologist?",
+      "reason": "missing",
       "provenance": [
         "doc:gp-summary#c005",
         "doc:med-list#c004"
@@ -932,20 +792,19 @@
       "edited_text": null
     },
     {
-      "question": "Do you have any history of cardiac disease, such as heart attack, arrhythmia, or heart failure, especially given your age and use of antihypertensive medication?",
+      "question": "You have a history of pneumonia that was resolved 5 years ago. Do you have any ongoing respiratory symptoms or concerns that might affect anesthesia or surgery?",
       "reason": "missing",
       "provenance": [
-        "doc:gp-summary#c001",
-        "doc:gp-summary#c002"
+        "doc:gp-summary#c007"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "Have you had any recent changes in your blood pressure or any episodes of dizziness or fainting?",
-      "reason": "stale",
+      "question": "Given your age and the use of multiple medications, do you have any history of orthostatic hypotension, dizziness, or falls that could be relevant to anesthesia management?",
+      "reason": "missing",
       "provenance": [
-        "doc:gp-summary#c002"
+        "doc:gp-summary#c001"
       ],
       "review": null,
       "edited_text": null
@@ -982,7 +841,7 @@
     {
       "t": "08:10",
       "category": "agent",
-      "value": "sevoflurane 2%",
+      "value": "sevoflurane 2",
       "units": "percent",
       "provenance": [
         "audio:intraop-notes#s004"
@@ -1000,7 +859,7 @@
     {
       "t": "08:40",
       "category": "agent",
-      "value": "sevoflurane 1.5%",
+      "value": "sevoflurane 1.5",
       "units": "percent",
       "provenance": [
         "audio:intraop-notes#s006"
@@ -1008,12 +867,9 @@
     }
   ],
   "anticipated_issues": [
-    "Postoperative Nausea and Vomiting (PONV) Risk due to History of Nausea after General Anesthesia",
-    "Airway Watch due to Use of Laryngeal Mask Airway (LMA) and Potential for Postoperative Airway Obstruction",
-    "Glycemic Control Monitoring due to Type 2 Diabetes",
-    "Analgesia Management considering Use of Paracetamol Intraoperatively and Potential for Insufficient Pain Control",
-    "Hemodynamic Watch for Potential Hypertension Fluctuations due to History of Hypertension and Intraoperative Blood Pressure Changes",
-    "Urinary Retention Watch due to Benign Prostatic Hyperplasia and Use of Tamsulosin"
+    "PONV (Postoperative Nausea and Vomiting) Risk due to Propofol Administration and History of Nausea with Previous Anesthesia",
+    "Airway Watch due to LMA Use in a Patient with History of Respiratory Issue (Resolved Pneumonia)",
+    "Glycemic Control Monitoring due to Type 2 Diabetes"
   ],
   "workflow": null
 }

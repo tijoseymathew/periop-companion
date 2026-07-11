@@ -434,7 +434,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "54-year-old female, Homemaker, resident of Tanglin, Singapore.",
+          "text": "54-year-old female",
           "provenance": [
             "doc:gp-summary#c001"
           ],
@@ -442,107 +442,102 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Undergoing elective cholecystectomy for symptomatic gallstones.",
+          "text": "Resident of Tanglin, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Undergoing elective cholecystectomy for symptomatic gallstones",
           "provenance": [
             "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Planned anesthesia: General Anesthesia with Laryngeal Mask Airway (LMA).",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
           "claim_id": "c-004",
-          "text": "Hypertension, currently controlled with Lisinopril 10 mg Daily.",
+          "text": "Hypertension",
           "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s005"
+            "doc:gp-summary#c007"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Type 2 Diabetes Mellitus, managed with Metformin 500 mg Twice daily; HbA1c 7.2% at last check, indicating fair control.",
+          "text": "Type 2 Diabetes Mellitus",
           "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s011",
-            "audio:preop-interview#s012"
+            "doc:gp-summary#c008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Hyperlipidemia, treated with Atorvastatin 20 mg Daily.",
+          "text": "Hyperlipidemia",
           "provenance": [
-            "doc:gp-summary#c009",
-            "audio:preop-interview#s005"
+            "doc:gp-summary#c009"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Currently taking Metformin 500 mg Twice daily, Lisinopril 10 mg Daily, and Atorvastatin 20 mg Daily without issues.",
+          "text": "Currently taking Atorvastatin 20 mg Daily without issues",
           "provenance": [
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "doc:med-list#c001",
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Stopped Aspirin 75 mg Daily six months ago due to stomach issues; switched to Clopidogrel 75 mg Daily.",
+          "text": "Currently taking Metformin 500 mg Twice daily without issues",
           "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-009",
-          "text": "Allergic to Penicillin (rash); no other allergies reported.",
+          "text": "Currently taking Lisinopril 10 mg Daily without issues",
           "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
-            "audio:preop-interview#s008"
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-010",
-          "text": "No active respiratory issues or shortness of breath reported.",
+          "text": "Previously took Aspirin 75 mg Daily but stopped 6 months ago due to stomach issues, replaced with Clopidogrel 75 mg Daily",
           "provenance": [
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-011",
-          "text": "No symptoms related to irritable bowel syndrome in the last 5 years.",
+          "text": "Allergic to Penicillin (rash)",
           "provenance": [
-            "doc:gp-summary#c012",
-            "audio:preop-interview#s011"
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-012",
-          "text": "No other medications (including OTC or supplements) reported besides the current list.",
+          "text": "No other allergies to drugs, latex, foods, or other substances",
           "provenance": [
-            "audio:preop-interview#s003",
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s008"
           ],
-          "status": "conflicting"
+          "status": "supported"
         },
         {
           "claim_id": "c-013",
-          "text": "Last meal at 8 PM the night before; nothing by mouth after midnight, adhering to NPO guidelines.",
+          "text": "Last meal at 8 pm last night, only water since then, nothing after midnight",
           "provenance": [
             "audio:preop-interview#s016"
           ],
@@ -550,21 +545,35 @@
         },
         {
           "claim_id": "c-014",
-          "text": "No prior airway problems reported; previous general anesthesia for appendectomy complicated by sore throat only.",
+          "text": "No history of difficult intubation, airway issues, or prior anesthesia complications beyond a sore throat after general anesthesia for appendectomy 10 years ago",
           "provenance": [
-            "audio:preop-interview#s010",
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-015",
-          "text": "ASA-PS II: Patient with mild systemic disease (controlled hypertension and diabetes).",
+          "text": "ASA-PS II (Patient has mild systemic disease, controlled hypertension and diabetes)",
           "provenance": [
             "doc:gp-summary#c007",
             "doc:gp-summary#c008",
-            "audio:preop-interview#s005",
-            "audio:preop-interview#s011"
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "General Anesthesia with Laryngeal Mask Airway (LMA) planned",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Irritable bowel syndrome in remission for 5 years, no recent symptoms",
+          "provenance": [
+            "doc:gp-summary#c012"
           ],
           "status": "supported"
         }
@@ -575,7 +584,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Propofol 120 milligrams administered at 08:00",
+          "text": "08:00 Propofol 120 milligrams administered for induction",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -583,7 +592,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Endotracheal tube inserted with grade one view at 08:02",
+          "text": "08:02 Endotracheal tube inserted with grade one view",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -591,7 +600,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Fentanyl 50 micrograms administered at 08:05",
+          "text": "08:05 Fentanyl 50 micrograms administered",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -599,7 +608,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Rocuronium 30 milligrams administered at 08:10",
+          "text": "08:10 Rocuronium 30 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -607,7 +616,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "LMA 16 in place at 08:15",
+          "text": "08:15 LMA 16 placed in position",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -615,7 +624,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Lactated Ringers 1 liter bolus administered at 08:20",
+          "text": "08:20 Lactated Ringers 1 liter bolus administered",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -623,7 +632,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "Mean arterial pressure dropped to 55 mmHg at 08:30",
+          "text": "08:30 Mean arterial pressure dropped to 55 mmHg",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -631,7 +640,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "Atenolol 10 milligrams IV administered at 08:30",
+          "text": "08:30 Atenolol 10 milligrams IV administered",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -639,7 +648,7 @@
         },
         {
           "claim_id": "c-009",
-          "text": "Surgery started at 08:40",
+          "text": "08:40 Surgery started",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -647,7 +656,7 @@
         },
         {
           "claim_id": "c-010",
-          "text": "Desflurane at 6 percent administered at 09:00",
+          "text": "09:00 Desflurane set to 6 percent",
           "provenance": [
             "audio:intraop-notes#s009"
           ],
@@ -655,7 +664,7 @@
         },
         {
           "claim_id": "c-011",
-          "text": "Blood pressure stable after fluid bolus at 09:20",
+          "text": "09:20 Blood pressure stabilized after fluid bolus, heart rate 70",
           "provenance": [
             "audio:intraop-notes#s010"
           ],
@@ -668,57 +677,53 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Post-Operative Nausea and Vomiting (PONV) due to multiple factors including female gender, use of opioids (Fentanyl), and history of gallstones (which may indicate a higher baseline risk for PONV).",
+          "text": "PONV risk due to history of sore throat after general anesthesia and use of opioids (Fentanyl) during surgery",
           "provenance": [
-            "doc:op-plan#c001",
+            "audio:preop-interview#s010",
             "audio:intraop-notes#s003"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to history of sore throat after previous general anesthesia, which may indicate increased risk of airway irritation or post-operative airway complications.",
+          "text": "Airway watch due to use of LMA and history of sore throat after general anesthesia, although no direct airway issues reported",
           "provenance": [
             "audio:preop-interview#s010",
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s002"
+            "doc:op-plan#c002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control monitoring due to Type 2 Diabetes Mellitus with fair control (HbA1c 7.2%), requiring careful management of blood glucose levels post-operatively to prevent hyperglycemia or hypoglycemia.",
+          "text": "Glycemic control necessary due to Type 2 Diabetes Mellitus, with HbA1c 7.2% indicating suboptimal control",
           "provenance": [
             "doc:gp-summary#c008",
-            "audio:preop-interview#s011",
-            "audio:preop-interview#s012",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s012"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management considering the patient's opioid exposure (Fentanyl) during surgery, which may lead to post-operative pain requiring balanced analgesic approach to avoid over-sedation or under-treatment.",
+          "text": "Analgesia management considering opioid use (Fentanyl) during surgery and potential for increased post-op pain due to cholecystectomy",
           "provenance": [
-            "audio:intraop-notes#s003"
+            "audio:intraop-notes#s003",
+            "doc:op-plan#c001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic watch due to intra-operative hypotension (MAP 55 mmHg) requiring intervention with Atenolol and fluid bolus, indicating potential for post-operative hemodynamic instability.",
+          "text": "Hemodynamic watch due to intra-op hypotension (MAP 55 mmHg) requiring Atenolol administration, in a patient with Hypertension",
           "provenance": [
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s010"
+            "doc:gp-summary#c007",
+            "audio:intraop-notes#s007"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-006",
-          "text": "Risk of bleeding or coagulation issues due to recent change from Aspirin to Clopidogrel, which may affect platelet function and increase bleeding risk during or after surgery.",
+          "text": "Risk of bleeding or thrombotic events due to change from Aspirin to Clopidogrel 6 months ago, requiring monitoring for bleeding during and after surgery",
           "provenance": [
-            "doc:gp-summary#c005",
             "audio:preop-interview#s004"
           ],
           "status": "inference"
@@ -730,105 +735,63 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "54-year-old female undergoing elective cholecystectomy for symptomatic gallstones. Planned anesthesia was General Anesthesia with Laryngeal Mask Airway (LMA), but an endotracheal tube was inserted with grade one view.",
+          "text": "54-year-old female undergoing elective cholecystectomy for symptomatic gallstones. Patient has a history of hypertension, type 2 diabetes mellitus, and hyperlipidemia, all managed with medications.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s002"
+            "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of controlled hypertension (Lisinopril 10 mg Daily), Type 2 Diabetes Mellitus (Metformin 500 mg Twice daily, HbA1c 7.2%), and Hyperlipidemia (Atorvastatin 20 mg Daily). She is also on Clopidogrel 75 mg Daily after stopping Aspirin due to stomach issues. No active respiratory issues, and no symptoms related to irritable bowel syndrome in the last 5 years.",
+          "text": "Patient is on multiple medications including Atorvastatin, Metformin, Lisinopril, and Clopidogrel. She has an allergy to Penicillin (rash) but no other known allergies.",
           "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s005",
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s011",
-            "audio:preop-interview#s012",
-            "doc:gp-summary#c009",
-            "doc:gp-summary#c005",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
             "audio:preop-interview#s004",
-            "audio:preop-interview#s014",
-            "doc:gp-summary#c012"
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient is allergic to Penicillin (rash) and has no other reported allergies. Last meal was at 8 PM the night before, adhering to NPO guidelines. No prior airway problems reported, but previous general anesthesia for appendectomy was complicated by sore throat only.",
+          "text": "Intraoperative course included induction with Propofol, Endotracheal tube insertion with grade one view, followed by administration of Fentanyl, Rocuronium, and placement of LMA 16. Patient experienced a drop in mean arterial pressure to 55 mmHg, which was managed with Atenolol. Surgery started at 09:40 with Desflurane set to 6 percent.",
           "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s016",
-            "audio:preop-interview#s010",
-            "audio:preop-interview#s014"
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s009"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Intra-operative course included administration of Propofol, Fentanyl, Rocuronium, and Desflurane. A drop in mean arterial pressure to 55 mmHg was managed with Atenolol and a lactated Ringers bolus. Surgery started at 08:40 and blood pressure stabilized after fluid bolus.",
+          "text": "Monitor for postoperative nausea and vomiting (PONV) due to history of sore throat after general anesthesia and use of opioids. Watch for airway issues due to LMA use. Manage glycemic control as patient has suboptimal control (HbA1c 7.2%). Consider analgesia management due to opioid use during surgery. Monitor hemodynamics due to intraoperative hypotension. Be aware of potential bleeding or thrombotic events due to change from Aspirin to Clopidogrel.",
           "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s009",
-            "audio:intraop-notes#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient is at risk for Post-Operative Nausea and Vomiting (PONV) due to female gender, opioid use (Fentanyl), and history of gallstones. Airway watch is recommended due to previous sore throat after general anesthesia. Glycemic control monitoring is necessary due to Type 2 Diabetes with fair control (HbA1c 7.2%).",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s003",
             "audio:preop-interview#s010",
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "doc:op-plan#c002",
             "doc:gp-summary#c008",
-            "audio:preop-interview#s011",
             "audio:preop-interview#s012",
-            "doc:gp-summary#c005",
+            "doc:op-plan#c001",
+            "doc:gp-summary#c007",
+            "audio:intraop-notes#s007",
             "audio:preop-interview#s004"
           ],
           "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Analgesia management should consider the patient's opioid exposure during surgery to avoid over-sedation or under-treatment. Hemodynamic watch is advised due to intra-operative hypotension requiring intervention. Risk of bleeding or coagulation issues exists due to recent change from Aspirin to Clopidogrel.",
-          "provenance": [
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s010",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Monitor for PONV, manage airway carefully, maintain glycemic control, balance analgesia, watch hemodynamics, and be cautious of bleeding risks post-operatively.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s003",
-            "audio:preop-interview#s010",
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s002",
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s011",
-            "audio:preop-interview#s012",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s004",
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s010"
-          ],
-          "status": "unsupported"
         }
       ]
     },
@@ -837,134 +800,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is a 54-year-old female, Homemaker, resident of Tanglin, Singapore.",
-          "provenance": [
-            "doc:gp-summary#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Patient has a medical history of Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, Pneumonia (resolved 10 years ago), Fractured wrist (full recovery 20 years ago), and Irritable bowel syndrome (no active symptoms for 5 years).",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
-            "doc:gp-summary#c010",
-            "doc:gp-summary#c011",
-            "doc:gp-summary#c012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Patient is allergic to Penicillin (rash).",
-          "provenance": [
-            "doc:gp-summary#c006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient's current medications include Atorvastatin 20 mg Daily, Metformin 500 mg Twice daily, Lisinopril 10 mg Daily, and Aspirin 75 mg Daily as per medical summary.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "doc:gp-summary#c005",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "doc:med-list#c004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient stopped Aspirin 75 mg Daily six months ago due to stomach issues and was switched to Clopidogrel 75 mg daily for protection.",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient's procedure is an elective Cholecystectomy for symptomatic gallstones.",
-          "provenance": [
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Anesthesia plan is General Anesthesia with Laryngeal Mask Airway (LMA).",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Patient experienced a sore throat after previous general anesthesia for appendix surgery.",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Patient reports no issues with breathing or airway problems in the past.",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient's diabetes is managed with Metformin, with blood sugars generally under control (HbA1c 7.2% at last check).",
-          "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Patient had dinner around 8 pm last night and water in the morning, nothing after midnight, adhering to NPO instructions.",
-          "provenance": [
-            "audio:preop-interview#s016"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Induction with Propofol 120 mg, Fentanyl 50 micrograms, and Rocuronium 30 mg was administered.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "LMA 16 was placed with a grade one view.",
-          "provenance": [
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Patient experienced a drop in Mean Arterial Pressure to 55, treated with Atenolol 10 mg IV.",
-          "provenance": [
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Patient reports feeling a bit groggy post-surgery with soreness in the tummy area.",
+          "text": "Patient reports being 'a bit groggy' post-operatively, indicating residual sedation or emergence from anesthesia.",
           "provenance": [
             "audio:postop-interview#s001",
             "audio:postop-interview#s002"
@@ -972,8 +808,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "Patient rates post-operative pain as 4 or 5 out of 10, describing it as manageable.",
+          "claim_id": "c-002",
+          "text": "Patient describes abdominal pain rated between 4 to 5 out of 10, which is expected post-cholecystectomy.",
           "provenance": [
             "audio:postop-interview#s003",
             "audio:postop-interview#s004"
@@ -981,8 +817,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-017",
-          "text": "Patient experienced mild nausea upon waking up, which has since improved.",
+          "claim_id": "c-003",
+          "text": "Patient experienced mild nausea upon waking, which has since improved.",
           "provenance": [
             "audio:postop-interview#s005",
             "audio:postop-interview#s006"
@@ -990,8 +826,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-018",
-          "text": "Patient reports no breathing discomfort, only a sore throat from the LMA.",
+          "claim_id": "c-004",
+          "text": "Patient reports no breathing discomfort, indicating no immediate respiratory issues post-intubation with LMA.",
           "provenance": [
             "audio:postop-interview#s007",
             "audio:postop-interview#s008"
@@ -999,11 +835,29 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-019",
-          "text": "Patient has no recall of the surgery itself, as expected with general anesthesia.",
+          "claim_id": "c-005",
+          "text": "Patient has a sore throat, a common side effect of LMA use.",
+          "provenance": [
+            "audio:postop-interview#s008",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient recalls nothing from the surgery, indicating effective anesthesia.",
           "provenance": [
             "audio:postop-interview#s009",
             "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "No immediate post-operative concerns raised by the patient related to hypertension or diabetes.",
+          "provenance": [
+            "audio:postop-interview#s011",
+            "audio:postop-interview#s012"
           ],
           "status": "supported"
         }
@@ -1012,26 +866,8 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you have any active respiratory issues or shortness of breath?",
+      "question": "Can you confirm if you are still taking all the medications listed: Atorvastatin 20 mg Daily, Metformin 500 mg Twice daily, Lisinopril 10 mg Daily, and Aspirin 75 mg Daily? Have any been stopped, changed, or replaced since this list was created?",
       "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c010"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you experienced any symptoms related to irritable bowel syndrome in the last 5 years?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c012"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Are you currently taking any medications not listed in your current records, including over-the-counter drugs or supplements?",
-      "reason": "missing",
       "provenance": [
         "doc:med-list#c001",
         "doc:med-list#c002",
@@ -1042,8 +878,8 @@
       "edited_text": null
     },
     {
-      "question": "Do you have any allergies other than the documented rash to penicillin?",
-      "reason": "missing",
+      "question": "Are you aware of any allergies or reactions to drugs, latex, foods, or any other substances beyond the documented Penicillin (rash) allergy?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
       ],
@@ -1051,7 +887,16 @@
       "edited_text": null
     },
     {
-      "question": "Can you confirm the resolution of your hypertension and type 2 diabetes mellitus with your current medications?",
+      "question": "Do you have any history of difficult intubation, airway issues, or prior anesthesia complications that are not documented in the records?",
+      "reason": "missing",
+      "provenance": [
+        "doc:op-plan#c002"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm if your hypertension and diabetes are well-controlled with your current medications, and if you have had any recent changes in your condition or treatment?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c007",
@@ -1061,11 +906,10 @@
       "edited_text": null
     },
     {
-      "question": "Have you had any recent changes in your Aspirin dosage or any bleeding issues since starting it?",
+      "question": "Have you experienced any symptoms or episodes related to your irritable bowel syndrome in the last 5 years, or is it truly in remission?",
       "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c005",
-        "doc:med-list#c004"
+        "doc:gp-summary#c012"
       ],
       "review": null,
       "edited_text": null
@@ -1173,12 +1017,12 @@
     }
   ],
   "anticipated_issues": [
-    "Risk of Post-Operative Nausea and Vomiting (PONV) due to multiple factors including female gender, use of opioids (Fentanyl), and history of gallstones (which may indicate a higher baseline risk for PONV).",
-    "Airway watch due to history of sore throat after previous general anesthesia, which may indicate increased risk of airway irritation or post-operative airway complications.",
-    "Glycemic control monitoring due to Type 2 Diabetes Mellitus with fair control (HbA1c 7.2%), requiring careful management of blood glucose levels post-operatively to prevent hyperglycemia or hypoglycemia.",
-    "Analgesia management considering the patient's opioid exposure (Fentanyl) during surgery, which may lead to post-operative pain requiring balanced analgesic approach to avoid over-sedation or under-treatment.",
-    "Hemodynamic watch due to intra-operative hypotension (MAP 55 mmHg) requiring intervention with Atenolol and fluid bolus, indicating potential for post-operative hemodynamic instability.",
-    "Risk of bleeding or coagulation issues due to recent change from Aspirin to Clopidogrel, which may affect platelet function and increase bleeding risk during or after surgery."
+    "PONV risk due to history of sore throat after general anesthesia and use of opioids (Fentanyl) during surgery",
+    "Airway watch due to use of LMA and history of sore throat after general anesthesia, although no direct airway issues reported",
+    "Glycemic control necessary due to Type 2 Diabetes Mellitus, with HbA1c 7.2% indicating suboptimal control",
+    "Analgesia management considering opioid use (Fentanyl) during surgery and potential for increased post-op pain due to cholecystectomy",
+    "Hemodynamic watch due to intra-op hypotension (MAP 55 mmHg) requiring Atenolol administration, in a patient with Hypertension",
+    "Risk of bleeding or thrombotic events due to change from Aspirin to Clopidogrel 6 months ago, requiring monitoring for bleeding during and after surgery"
   ],
   "workflow": null
 }

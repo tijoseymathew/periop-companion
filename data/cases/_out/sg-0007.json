@@ -427,54 +427,55 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Obesity with BMI 28.5",
+          "text": "Obesity (BMI 28.5) with shortness of breath on exertion (e.g., walking fast or climbing stairs)",
           "provenance": [
-            "audio:preop-interview#s003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Shortness of breath on exertion (e.g., walking fast or climbing stairs)",
-          "provenance": [
+            "doc:gp-summary#c007",
             "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
-          "text": "History of pneumonia (resolved, no recent respiratory issues)",
+          "claim_id": "c-004",
+          "text": "History of pneumonia (resolved, no residual breathing issues reported)",
           "provenance": [
             "doc:gp-summary#c009",
-            "audio:preop-interview#s003"
+            "audio:preop-interview#s005"
           ],
           "status": "supported"
         },
         {
+          "claim_id": "c-005",
+          "text": "No known drug allergies to Penicillin (rash) or Cephalosporins (nausea and vomiting)",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "conflicting"
+        },
+        {
           "claim_id": "c-006",
-          "text": "Current medications: Metformin 500 mg Once daily",
+          "text": "Currently taking Metformin 500 mg Once daily",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
-            "audio:preop-interview#s002",
-            "audio:preop-interview#s010"
+            "audio:preop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Current medications: Lisinopril 10 mg Once daily",
+          "text": "Currently taking Lisinopril 10 mg Once daily",
           "provenance": [
             "doc:gp-summary#c003",
             "doc:med-list#c002",
-            "audio:preop-interview#s002",
-            "audio:preop-interview#s010"
+            "audio:preop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Aspirin 75 mg Once daily (stopped a few days ago as per surgeon's advice)",
+          "text": "Aspirin 75 mg Once daily, stopped a few days ago as per surgeon's advice",
           "provenance": [
             "doc:gp-summary#c004",
             "doc:med-list#c003",
@@ -485,24 +486,14 @@
         },
         {
           "claim_id": "c-009",
-          "text": "No known drug allergies recorded in GP summary",
+          "text": "No other medications or supplements reported",
           "provenance": [
-            "doc:gp-summary#c005"
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-010",
-          "text": "Reported reaction to Cephalosporin (nausea and vomiting) and rash with Penicillin",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s007",
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
           "text": "Last meal around 8 PM last night, nothing since midnight except a sip of water for medications",
           "provenance": [
             "audio:preop-interview#s014"
@@ -510,19 +501,26 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "ASA-PS II (healthy patient with well-controlled type 2 diabetes and obesity)",
+          "claim_id": "c-011",
+          "text": "No previous surgeries or anesthesia reported",
           "provenance": [
-            "doc:gp-summary#c001",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "ASA-PS II (healthy patient with no functional limitation but with well-controlled comorbidities like Type 2 Diabetes Mellitus and Obesity)",
+          "provenance": [
             "doc:gp-summary#c008",
-            "audio:preop-interview#s002",
-            "audio:preop-interview#s003"
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s016"
           ],
           "status": "unsupported"
         },
         {
           "claim_id": "c-013",
-          "text": "General Anesthesia with Propofol, Fentanyl, and Vecuronium, maintained with Sevoflurane and Spontaneous Breathing",
+          "text": "General Anesthesia with Propofol, Fentanyl, and Vecuronium, maintained with Sevoflurane and Spontaneous Breathing planned",
           "provenance": [
             "doc:op-plan#c002",
             "audio:preop-interview#s017"
@@ -544,7 +542,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "08:00 Propofol 120 milligrams administered",
+          "text": "Propofol 120 milligrams administered at 08:00",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -552,7 +550,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "08:02 Fentanyl 20 micrograms administered",
+          "text": "Fentanyl 20 micrograms administered at 08:02",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -560,7 +558,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "08:04 Vecuronium 8 milligrams administered",
+          "text": "Vecuronium 8 milligrams administered at 08:04",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -568,7 +566,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "08:06 Endotracheal tube placed with grade one view",
+          "text": "Endotracheal tube inserted with grade one view at 08:06",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -576,7 +574,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "08:10 Sevoflurane at 1.5 percent administered",
+          "text": "Sevoflurane at 1.5 percent administered at 08:10",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -584,7 +582,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "08:20 Mean arterial pressure 75 mmHg recorded",
+          "text": "Mean arterial pressure 75 mmHg at 08:20",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -592,7 +590,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "08:20 Phenylephrine 10 micrograms administered",
+          "text": "Phenylephrine 10 micrograms administered at 08:20",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -600,7 +598,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "08:40 2000 milliliters of crystalloid fluid administered",
+          "text": "Crystalloid 2000 milliliters administered at 08:40",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -608,7 +606,15 @@
         },
         {
           "claim_id": "c-009",
-          "text": "08:50 Heart rate 85 bpm and mean arterial pressure 90 mmHg recorded",
+          "text": "Heart rate 85 bpm at 08:50",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Mean arterial pressure 90 mmHg at 08:50",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -621,7 +627,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "PONV risk due to multiple factors including opioid use (Fentanyl), history of nausea/vomiting with Cephalosporin, and female gender",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Opioid use (Fentanyl) and History of Cephalosporin-induced Nausea and Vomiting",
           "provenance": [
             "audio:preop-interview#s006",
             "audio:preop-interview#s007",
@@ -632,16 +638,16 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to obesity (BMI 28.5) and history of shortness of breath on exertion, indicating potential for airway complications post-extubation",
+          "text": "Potential for Airway Compromise due to Obesity (BMI 28.5) and Shortness of Breath on Exertion",
           "provenance": [
-            "audio:preop-interview#s003",
+            "doc:gp-summary#c007",
             "audio:preop-interview#s004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control necessary due to Type 2 Diabetes Mellitus, requiring monitoring of blood glucose levels post-operatively",
+          "text": "Need for Glycemic Control Monitoring due to Type 2 Diabetes Mellitus",
           "provenance": [
             "doc:gp-summary#c008",
             "audio:preop-interview#s002"
@@ -650,31 +656,33 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management considering opioid use (Fentanyl) and potential for increased pain due to laparoscopic surgery, requiring adequate post-operative pain control",
+          "text": "Hemodynamic Watch for Hypotension given Use of Propofol and Lisinopril",
           "provenance": [
-            "audio:intraop-notes#s002",
-            "doc:op-plan#c001"
+            "audio:intraop-notes#s001",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic watch due to history of hypertension (managed with Lisinopril) and intra-operative hypotension requiring phenylephrine",
+          "text": "Analgesia Management Considerations due to Aspirin Discontinuation and Potential for Increased Thrombosis Risk",
           "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
             "audio:preop-interview#s002",
-            "audio:preop-interview#s010",
-            "audio:intraop-notes#s006"
+            "audio:preop-interview#s010"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-006",
-          "text": "Risk of respiratory depression post-operatively due to opioid use (Fentanyl) and potential for decreased respiratory drive in a patient with history of obesity and shortness of breath",
+          "text": "Respiratory Function Monitoring Post-Extubation due to History of Pneumonia and Obesity",
           "provenance": [
-            "audio:intraop-notes#s002",
-            "audio:preop-interview#s003",
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s005",
+            "doc:gp-summary#c007",
             "audio:preop-interview#s004"
           ],
           "status": "inference"
@@ -686,51 +694,38 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "28-year-old female with Type 2 Diabetes Mellitus and Obesity (BMI 28.5) undergoing general anesthesia.",
+          "text": "28-year-old female with Type 2 Diabetes Mellitus and Obesity (BMI 28.5) undergoing general anesthesia, with recent cessation of Aspirin.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:gp-summary#c008",
             "audio:preop-interview#s002",
-            "audio:preop-interview#s003"
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient reports shortness of breath on exertion, history of resolved pneumonia, and takes Metformin, Lisinopril, and Aspirin (stopped pre-op). No known drug allergies, but has history of nausea/vomiting with Cephalosporin and rash with Penicillin.",
+          "text": "Patient has a history of resolved pneumonia with no residual breathing issues, and reported allergies to Penicillin (rash) and Cephalosporins (nausea and vomiting). Last meal was around 8 PM, with nothing since midnight except a sip of water for medications.",
           "provenance": [
-            "audio:preop-interview#s004",
             "doc:gp-summary#c009",
-            "audio:preop-interview#s003",
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "audio:preop-interview#s002",
-            "audio:preop-interview#s010",
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "doc:gp-summary#c005",
+            "audio:preop-interview#s005",
             "audio:preop-interview#s006",
             "audio:preop-interview#s007",
-            "audio:preop-interview#s008"
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Last meal around 8 PM last night, nothing since midnight except a sip of water for medications. General anesthesia with Propofol, Fentanyl, and Vecuronium, maintained with Sevoflurane and Spontaneous Breathing. Avoid Penicillin and Cephalosporins due to reported allergies.",
+          "text": "Intraoperative course included administration of Propofol, Fentanyl, and Vecuronium, with maintenance by Sevoflurane and spontaneous breathing. Vital signs showed initial hypotension (MAP 75 mmHg) requiring Phenylephrine, stabilizing to MAP 90 mmHg with HR 85 bpm. 2000 mL of crystalloid were administered.",
           "provenance": [
-            "audio:preop-interview#s014",
             "doc:op-plan#c002",
-            "audio:preop-interview#s017"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Intra-op course: Propofol, Fentanyl, and Vecuronium administered. Endotracheal tube placed with grade one view. Sevoflurane maintained. BP stable after initial hypotension requiring Phenylephrine. 2000 mL crystalloid fluid administered.",
-          "provenance": [
+            "audio:preop-interview#s017",
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
             "audio:intraop-notes#s003",
@@ -743,44 +738,27 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
-          "text": "Anticipated issues include PONV risk due to opioid use, history of nausea/vomiting with Cephalosporin, and female gender. Airway watch due to obesity and shortness of breath on exertion. Glycemic control necessary due to Type 2 Diabetes Mellitus. Analgesia management considering opioid use and potential for increased pain. Hemodynamic watch due to history of hypertension and intra-op hypotension. Risk of respiratory depression due to opioid use and potential for decreased respiratory drive in a patient with obesity and shortness of breath.",
+          "claim_id": "c-004",
+          "text": "Monitor for Postoperative Nausea and Vomiting (PONV) due to Fentanyl use and history of Cephalosporin-induced nausea and vomiting. Watch for potential Airway Compromise due to Obesity and shortness of breath on exertion. Ensure Glycemic Control and Hemodynamic stability, considering the use of Propofol and Lisinopril. Manage Analgesia with consideration for Aspirin discontinuation and potential increased thrombosis risk. Provide close Respiratory Function Monitoring post-extubation due to history of pneumonia and Obesity.",
           "provenance": [
             "audio:preop-interview#s006",
             "audio:preop-interview#s007",
             "audio:preop-interview#s008",
             "audio:intraop-notes#s002",
-            "audio:preop-interview#s003",
+            "doc:gp-summary#c007",
             "audio:preop-interview#s004",
             "doc:gp-summary#c008",
             "audio:preop-interview#s002",
-            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
             "doc:gp-summary#c003",
             "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
             "audio:preop-interview#s010",
-            "audio:intraop-notes#s006"
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s005"
           ],
           "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Monitor for PONV, manage airway carefully post-extubation, maintain glycemic control, ensure adequate analgesia, monitor hemodynamics, and watch for signs of respiratory depression.",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s007",
-            "audio:preop-interview#s008",
-            "audio:intraop-notes#s002",
-            "audio:preop-interview#s003",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s002",
-            "doc:op-plan#c001",
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s010",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "unsupported"
         }
       ]
     },
@@ -789,63 +767,55 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is a 28-year-old female, Associate Professional or Technician, resident of Queenstown, Singapore.",
+          "text": "Patient reports feeling a bit groggy but okay, with soreness in the abdominal area as expected.",
           "provenance": [
-            "doc:gp-summary#c001"
+            "audio:postop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of appendicitis (current presentation), obesity, type 2 diabetes mellitus, history of pneumonia (resolved), fractured right wrist (healed), and completed treatment for hypothyroidism.",
+          "text": "Patient reports a pain level of 4 or 5 on a scale from 1 to 10, describing it as manageable but noticeable with movement.",
           "provenance": [
-            "doc:gp-summary#c006",
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
-            "doc:gp-summary#c010",
-            "doc:gp-summary#c011"
+            "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient's current medications include Metformin 500 mg once daily, Lisinopril 10 mg once daily, and Aspirin 75 mg once daily (stopped a few days ago as instructed).",
+          "text": "Patient experiences mild nausea but notes it's not too bad and hasn't eaten anything yet.",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "audio:preop-interview#s002",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003"
+            "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Patient reported no known drug allergies, but had a rash with Penicillin and nausea/vomiting with a Cephalosporin in the past.",
+          "text": "Patient reports breathing is fine, with only a bit of stuffiness from the tube, but no discomfort or shortness of breath.",
           "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s007",
-            "audio:preop-interview#s008"
+            "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Patient underwent elective laparoscopic appendectomy under general anesthesia with Propofol, Fentanyl, and Vecuronium, maintained with Sevoflurane and spontaneous breathing.",
+          "text": "Patient recalls going to sleep and waking up in the recovery area, with no memory of the surgery itself or any unusual dreams.",
           "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s017"
+            "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Induction agents included Propofol (120 mg), Fentanyl (20 mcg), and Vecuronium (8 mg). Endotracheal tube placement was confirmed with a grade one view.",
+          "text": "Given the patient's higher BMI and diabetes, close monitoring for complications is planned, with the current recovery course appearing good.",
+          "provenance": [
+            "audio:postop-interview#s011"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Anesthesia was induced with Propofol (120 mg), Fentanyl (20 micrograms), and Vecuronium (8 mg), with a grade 1 view of the tube upon insertion.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
@@ -855,66 +825,27 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Maintenance anesthesia included Sevoflurane at 1.5%. Intraoperative vital signs included mean arterial pressure of 75 mmHg (requiring Phenylephrine 10 mcg bolus) and heart rate of 85 bpm with mean arterial pressure of 90 mmHg later in the surgery.",
+          "claim_id": "c-008",
+          "text": "Maintenance of anesthesia was achieved with Sevoflurane at 1.5% under spontaneous breathing.",
           "provenance": [
-            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Intraoperative vital signs included a mean arterial pressure of 75 mmHg, prompting the administration of Phenylephrine (10 micrograms), and a heart rate of 85 bpm with a mean arterial pressure of 90 mmHg later in the surgery.",
+          "provenance": [
             "audio:intraop-notes#s006",
             "audio:intraop-notes#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Patient received 2000 mL of crystalloid fluid intraoperatively.",
+          "claim_id": "c-010",
+          "text": "A total of 2000 mL of crystalloid fluid was administered intraoperatively.",
           "provenance": [
             "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Postoperatively, patient reports feeling a bit groggy with soreness in the abdominal area, rating pain at 4 or 5 out of 10.",
-          "provenance": [
-            "audio:postop-interview#s001",
-            "audio:postop-interview#s002",
-            "audio:postop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient experiences mild nausea but no dizziness, with no food intake since midnight except for a sip of water for medications.",
-          "provenance": [
-            "audio:postop-interview#s005",
-            "audio:postop-interview#s006",
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Patient's breathing is fine postoperatively, with some stuffiness from the endotracheal tube but no shortness of breath.",
-          "provenance": [
-            "audio:postop-interview#s007",
-            "audio:postop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Patient has no recall of the surgery or any unusual dreams upon waking, indicating effective amnesia from anesthesia.",
-          "provenance": [
-            "audio:postop-interview#s009",
-            "audio:postop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Given patient's higher BMI and diabetes, close monitoring for complications is planned, but immediate postoperative course is uneventful.",
-          "provenance": [
-            "audio:postop-interview#s011"
           ],
           "status": "supported"
         }
@@ -923,8 +854,19 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you have any known drug allergies, especially to any anesthetic agents or medications listed in your current medication list?",
-      "reason": "missing",
+      "question": "Please confirm if you are still taking Metformin 500 mg, Lisinopril 10 mg, and Aspirin 75 mg as listed, and if any of these medications have been stopped, changed, or replaced since the list was written?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that are not documented in your record?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c005"
       ],
@@ -932,8 +874,8 @@
       "edited_text": null
     },
     {
-      "question": "How long ago was your pneumonia, and have you had any respiratory issues or infections since then?",
-      "reason": "stale",
+      "question": "Can you provide more details about your history of pneumonia? Specifically, when did it occur, how was it treated, and have you had any residual breathing issues since then?",
+      "reason": "missing",
       "provenance": [
         "doc:gp-summary#c009"
       ],
@@ -941,42 +883,30 @@
       "edited_text": null
     },
     {
-      "question": "Can you confirm the current status of your hypothyroidism and whether you are still on treatment?",
-      "reason": "stale",
+      "question": "You have a history of obesity and type 2 diabetes mellitus. Have you had any recent assessments of your cardiorespiratory function or any symptoms suggestive of heart disease (e.g., shortness of breath on exertion, chest pain)?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c007",
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Given your current use of Aspirin and the planned surgery, have you been instructed to continue or stop Aspirin prior to the procedure, and are you aware of any bleeding risks?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c004",
+        "doc:op-plan#c001"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of hypothyroidism. Is this condition currently well-controlled, and are you still on treatment for it?",
+      "reason": "missing",
       "provenance": [
         "doc:gp-summary#c011"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you confirm if you have any history of sleep apnea or if you use a CPAP machine at home?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c007"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you confirm if you have any history of keloid scarring or excessive scarring at surgical sites, especially relevant for laparoscopic procedures?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c010"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you taken any of your current medications (Metformin, Lisinopril, Aspirin) on the day of surgery, and are you aware of any instructions to hold or continue them perioperatively?",
-      "reason": "conflicting",
-      "provenance": [
-        "doc:gp-summary#c002",
-        "doc:gp-summary#c003",
-        "doc:gp-summary#c004",
-        "doc:med-list#c001",
-        "doc:med-list#c002",
-        "doc:med-list#c003"
       ],
       "review": null,
       "edited_text": null
@@ -1032,7 +962,7 @@
       "t": "08:20",
       "category": "event",
       "value": "mean arterial pressure 75",
-      "units": null,
+      "units": "mmHg",
       "provenance": [
         "audio:intraop-notes#s006"
       ]
@@ -1058,20 +988,29 @@
     {
       "t": "08:50",
       "category": "event",
-      "value": "heart rate 85, mean arterial pressure 90",
-      "units": null,
+      "value": "heart rate 85",
+      "units": "bpm",
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "mean arterial pressure 90",
+      "units": "mmHg",
       "provenance": [
         "audio:intraop-notes#s008"
       ]
     }
   ],
   "anticipated_issues": [
-    "PONV risk due to multiple factors including opioid use (Fentanyl), history of nausea/vomiting with Cephalosporin, and female gender",
-    "Airway watch due to obesity (BMI 28.5) and history of shortness of breath on exertion, indicating potential for airway complications post-extubation",
-    "Glycemic control necessary due to Type 2 Diabetes Mellitus, requiring monitoring of blood glucose levels post-operatively",
-    "Analgesia management considering opioid use (Fentanyl) and potential for increased pain due to laparoscopic surgery, requiring adequate post-operative pain control",
-    "Hemodynamic watch due to history of hypertension (managed with Lisinopril) and intra-operative hypotension requiring phenylephrine",
-    "Risk of respiratory depression post-operatively due to opioid use (Fentanyl) and potential for decreased respiratory drive in a patient with history of obesity and shortness of breath"
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to Opioid use (Fentanyl) and History of Cephalosporin-induced Nausea and Vomiting",
+    "Potential for Airway Compromise due to Obesity (BMI 28.5) and Shortness of Breath on Exertion",
+    "Need for Glycemic Control Monitoring due to Type 2 Diabetes Mellitus",
+    "Hemodynamic Watch for Hypotension given Use of Propofol and Lisinopril",
+    "Analgesia Management Considerations due to Aspirin Discontinuation and Potential for Increased Thrombosis Risk",
+    "Respiratory Function Monitoring Post-Extubation due to History of Pneumonia and Obesity"
   ],
   "workflow": null
 }

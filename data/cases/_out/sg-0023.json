@@ -389,39 +389,22 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Resident of Ang Mo Kio, Singapore",
+          "text": "Elective Laparoscopic Cholecystectomy",
           "provenance": [
-            "doc:gp-summary#c001"
+            "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "History of resolved pneumonia 5 years ago — relevant because it may impact respiratory assessment and anesthesia management",
+          "text": "Reports symptoms of tummy pain especially after eating, with scans confirming gallstones",
           "provenance": [
-            "doc:gp-summary#c006"
+            "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Remote history of fractured right wrist (10 years ago) — not relevant for anesthesia planning as it is healed and does not affect current airway, drug choice, or monitoring",
-          "provenance": [
-            "doc:gp-summary#c007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Previous use of Omeprazole for GERD, now discontinued — relevant because it indicates a history of acid reflux which may impact airway management",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
           "text": "Current medications: Metformin 1000 mg Twice daily",
           "provenance": [
             "doc:gp-summary#c002",
@@ -431,7 +414,7 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
+          "claim_id": "c-005",
           "text": "Current medications: Lisinopril 20 mg Once daily",
           "provenance": [
             "doc:gp-summary#c003",
@@ -441,7 +424,7 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
+          "claim_id": "c-006",
           "text": "Current medications: Atorvastatin 40 mg Once daily",
           "provenance": [
             "doc:gp-summary#c004",
@@ -451,23 +434,23 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Current medications: Insulin Glargine 40 units Once at night",
+          "claim_id": "c-007",
+          "text": "Current medications: Insulin Glargine 40 units Once at night (recent addition)",
           "provenance": [
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Discontinued medication: Ranitidine (as per patient report)",
+          "claim_id": "c-008",
+          "text": "Discontinued: Ranitidine (as per doctor's advice)",
           "provenance": [
             "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
+          "claim_id": "c-009",
           "text": "No known drug allergies recorded in medical documents",
           "provenance": [
             "doc:gp-summary#c005"
@@ -475,35 +458,50 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Patient reports a previously unrecorded allergy to Penicillin",
+          "claim_id": "c-010",
+          "text": "Reports a Penicillin allergy not previously recorded",
           "provenance": [
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Patient denies having anything to eat or drink since midnight, except for a small amount of water with morning medications",
+          "claim_id": "c-011",
+          "text": "No other drug or non-drug allergies (e.g., latex, plasters, foods) reported",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Fasting since midnight, with only a small amount of water for morning medications",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "ASA-PS Class III (patient has more than mild systemic disease — type 2 diabetes, hypertension, hyperlipidemia)",
+          "claim_id": "c-013",
+          "text": "Previous anesthesia experience 5 years ago with general anesthesia, no issues or reactions reported",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "No history of difficult intubation, previous anesthesia complications, or concerns regarding airway management reported",
+          "provenance": [
+            "audio:preop-interview#s011",
+            "audio:preop-interview#s012"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-015",
-          "text": "Patient is able to walk up a flight of stairs with mild shortness of breath — indicates moderate functional capacity",
+          "text": "Fairly active, able to walk up stairs with occasional tiredness, especially after heavy meals; manages daily tasks without significant trouble",
           "provenance": [
             "audio:preop-interview#s014"
           ],
@@ -511,20 +509,28 @@
         },
         {
           "claim_id": "c-016",
-          "text": "Planned procedure: Laparoscopic Cholecystectomy (elective)",
+          "text": "ASA-PS Class II (well-controlled comorbidities, able to perform daily activities with minimal limitation)",
           "provenance": [
-            "doc:op-plan#c001"
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-017",
-          "text": "Planned anesthesia: General Anesthesia with Laryngeal Mask Airway (LMA) and Ultrasound-Guided Regional Anesthesia (USRA) for postoperative pain management",
+          "text": "General Anesthesia with Laryngeal Mask Airway (LMA) and Ultrasound-Guided Regional Anesthesia (USRA) for postoperative pain management planned",
           "provenance": [
             "doc:op-plan#c002",
             "audio:preop-interview#s015"
           ],
           "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Patient has no active symptoms or conditions that would significantly affect cardiorespiratory status for the upcoming surgery",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "unsupported"
         }
       ]
     },
@@ -541,7 +547,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "08:02 LMA size four inserted with good seal, confirmed by capnograph waveform",
+          "text": "08:02 LMA size four inserted with good seal, capnograph waveform confirmed",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -549,7 +555,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "08:05 Bupivacaine 20 milligrams administered via ultrasound-guided right subcostal transversus abdominis plane block",
+          "text": "08:05 Bupivacaine 20 milligrams administered for ultrasound-guided right subcostal transversus abdominis plane block",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -594,10 +600,9 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to General Anesthesia and History of GERD",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Laparoscopic Surgery and Opioid Use",
           "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s008",
+            "audio:preop-interview#s004",
             "doc:op-plan#c002",
             "audio:preop-interview#s015"
           ],
@@ -605,37 +610,36 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Airway Compromise due to LMA Use in a Patient with History of GERD",
+          "text": "Airway Compromise upon Extubation due to LMA Use and Potential Residual Propofol Effects",
           "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s008",
-            "audio:intraop-notes#s002"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Hypoglycemia Risk due to Insulin Use and Intraoperative NPO Status",
+          "text": "Glycemic Control Issues due to Diabetes and Intraoperative Fluid Administration",
           "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
             "audio:preop-interview#s006",
-            "audio:preop-interview#s010"
+            "audio:intraop-notes#s004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Hypertension Management Post-Operatively due to Chronic Hypertension",
+          "text": "Hypotension in Recovery due to Residual Anesthetic Effects and Hypersensitivity to Vasopressors",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "audio:preop-interview#s006"
+            "audio:intraop-notes#s004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Pain Management Challenges due to Regional Anesthesia (USRA) and Potential for Breakthrough Pain",
+          "text": "Pain Management Challenges due to Transversus Abdominis Plane (TAP) Block Efficacy and Opioid Sensitivity",
           "provenance": [
             "doc:op-plan#c002",
             "audio:preop-interview#s015",
@@ -645,17 +649,10 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Hemodynamic Instability Post-Induction due to Intraoperative Hypotension",
+          "text": "Delayed Recovery due to Combined Effects of Propofol, Bupivacaine, and Potential Opioid Use",
           "provenance": [
-            "audio:intraop-notes#s004"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Delayed Recovery due to Propofol Use for Induction",
-          "provenance": [
-            "audio:intraop-notes#s001"
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s003"
           ],
           "status": "inference"
         }
@@ -666,27 +663,17 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "39-year-old male from Singapore undergoing elective laparoscopic cholecystectomy.",
+          "text": "39-year-old male undergoing elective laparoscopic cholecystectomy for symptomatic gallstones, now concluding surgery and transferring to PACU.",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:op-plan#c001"
+            "doc:op-plan#c001",
+            "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of resolved pneumonia, GERD with previous use of Omeprazole (discontinued), and a reported allergy to Penicillin not previously recorded.",
-          "provenance": [
-            "doc:gp-summary#c006",
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Current medications include Metformin, Lisinopril, Atorvastatin, and Insulin Glargine. No known drug allergies except for the newly reported Penicillin allergy.",
+          "text": "Patient has type 2 diabetes managed with metformin, lisinopril, atorvastatin, and recently added insulin glargine. No known drug allergies except for a newly reported penicillin allergy.",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
@@ -700,20 +687,18 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-004",
-          "text": "Patient is ASA-PS Class III with type 2 diabetes, hypertension, and hyperlipidemia. He has moderate functional capacity, able to walk up a flight of stairs with mild shortness of breath.",
+          "claim_id": "c-003",
+          "text": "Patient was fasting since midnight with minimal water intake for morning medications and had general anesthesia with LMA and ultrasound-guided regional block for pain control.",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s010",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
-          "text": "Intraoperative course included induction with Propofol, LMA insertion, and ultrasound-guided regional anesthesia for postoperative pain management. Hypotension was noted and managed with fluid resuscitation.",
+          "claim_id": "c-004",
+          "text": "Intraoperative course included induction with propofol, successful LMA placement, and transversus abdominis plane block with bupivacaine. Transient hypotension occurred but responded to fluid resuscitation with Ringer's lactate.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
@@ -723,56 +708,70 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Normotension was restored and maintained. Surgery commenced with a grade one view after tube placement.",
+          "claim_id": "c-005",
+          "text": "Patient is currently normotensive with stable vital signs as surgery concludes.",
           "provenance": [
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s005"
+            "audio:intraop-notes#s006"
           ],
           "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Monitor for postoperative nausea and vomiting due to laparoscopic surgery and potential opioid use.",
+          "provenance": [
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
+          ],
+          "status": "unsupported"
         },
         {
           "claim_id": "c-007",
-          "text": "Monitor for postoperative nausea and vomiting (PONV) due to general anesthesia and history of GERD. Be cautious of airway compromise due to LMA use in a patient with GERD history.",
+          "text": "Assess airway and level of consciousness closely upon extubation due to LMA use and possible residual propofol effects.",
           "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s008",
             "doc:op-plan#c002",
             "audio:preop-interview#s015",
-            "audio:intraop-notes#s002"
+            "audio:intraop-notes#s001"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-008",
-          "text": "Watch for hypoglycemia due to insulin use and intraoperative NPO status. Manage hypertension postoperatively given the patient's chronic condition.",
+          "text": "Maintain vigilance for glycemic instability given diabetes and intraoperative fluid administration.",
           "provenance": [
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s010",
             "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004"
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s004"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-009",
-          "text": "Anticipate potential pain management challenges due to regional anesthesia and possible breakthrough pain. Be prepared for delayed recovery due to Propofol use for induction.",
+          "text": "Watch for potential hypotension in recovery due to residual anesthetic effects and possible hypersensitivity to vasopressors.",
           "provenance": [
-            "doc:op-plan#c002",
-            "audio:preop-interview#s015",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s001"
+            "audio:intraop-notes#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-010",
-          "text": "Continue to monitor for hemodynamic instability post-induction due to intraoperative hypotension.",
+          "text": "Evaluate pain control effectiveness, considering the transversus abdominis plane block and potential opioid sensitivity.",
           "provenance": [
-            "audio:intraop-notes#s004"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s003"
           ],
           "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Anticipate possible delayed recovery due to combined effects of propofol, bupivacaine, and potential opioid administration.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s003"
+          ],
+          "status": "unsupported"
         }
       ]
     },
@@ -781,131 +780,61 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient is a 39-year-old male.",
+          "text": "Patient reports feeling okay with manageable pain, rating it around 3 or 4 on a scale from 0 to 10.",
           "provenance": [
-            "doc:gp-summary#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Patient is on Metformin 1000 mg Twice daily for diabetes.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Patient is on Lisinopril 20 mg Once daily for blood pressure.",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient is on Atorvastatin 40 mg Once daily for cholesterol.",
-          "provenance": [
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient has a newly reported allergy to Penicillin.",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Patient had a history of pneumonia resolved 5 years ago.",
-          "provenance": [
-            "doc:gp-summary#c006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Patient had a remote history of fractured right wrist (10 years ago).",
-          "provenance": [
-            "doc:gp-summary#c007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Patient previously used Omeprazole for GERD, now discontinued.",
-          "provenance": [
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Patient underwent Laparoscopic Cholecystectomy under general anesthesia with LMA and USRA for postoperative pain management.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s015"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient's recovery course is uneventful with no immediate post-op complications reported.",
-          "provenance": [
-            "audio:postop-interview#s001",
-            "audio:postop-interview#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Patient reports pain level of 3 or 4 post-operatively, describing it as manageable.",
-          "provenance": [
+            "audio:postop-interview#s002",
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Patient denies any nausea or vomiting sensation post-operatively.",
+          "claim_id": "c-002",
+          "text": "Patient denies any nausea or feeling of vomiting postoperatively.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Patient reports no breathing difficulties or chest discomfort post-operatively.",
+          "claim_id": "c-003",
+          "text": "Patient reports no breathing discomfort or tightness in the chest.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "Patient recalls no awareness or discomfort during the surgery.",
+          "claim_id": "c-004",
+          "text": "Patient recalls no awareness or discomfort during the surgery, indicating no intraoperative awareness.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-015",
-          "text": "Patient denies any dizziness or vision changes post-operatively, despite diabetes and high blood pressure history.",
+          "claim_id": "c-005",
+          "text": "Patient denies any dizziness or vision changes, which is relevant given the patient's diabetes and high blood pressure.",
           "provenance": [
-            "audio:preop-interview#s014",
-            "audio:postop-interview#s012"
+            "audio:postop-interview#s012",
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "General Anesthesia with Laryngeal Mask Airway (LMA) and Ultrasound-Guided Regional Anesthesia (USRA) was administered as planned for postoperative pain management.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Intraoperative hypotension (65/40) was managed with one liter of Ringer's lactate, resulting in normalized blood pressure (120/75).",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s006"
           ],
           "status": "supported"
         }
@@ -914,8 +843,19 @@
   ],
   "open_questions": [
     {
-      "question": "Do you have any known drug allergies that have not been recorded?",
-      "reason": "missing",
+      "question": "Can you confirm if there have been any changes, stoppages, or replacements to your medication regimen since the last record, including Metformin 1000 mg Twice daily, Lisinopril 20 mg Once daily, and Atorvastatin 40 mg Once daily?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that have not been documented in your records?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c005"
       ],
@@ -923,17 +863,8 @@
       "edited_text": null
     },
     {
-      "question": "Can you confirm the current use of Omeprazole for GERD or if it has been permanently discontinued?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c008"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you had any recent respiratory issues or symptoms since your history of pneumonia 5 years ago?",
-      "reason": "stale",
+      "question": "Can you provide more details about your history of pneumonia and its resolution, including any residual effects or ongoing respiratory issues?",
+      "reason": "missing",
       "provenance": [
         "doc:gp-summary#c006"
       ],
@@ -941,12 +872,20 @@
       "edited_text": null
     },
     {
-      "question": "Are you currently taking any medications not listed, including over-the-counter drugs or supplements?",
+      "question": "Do you have any history of difficult intubation, previous anesthesia complications, or concerns regarding airway management for the planned General Anesthesia with Laryngeal Mask Airway (LMA)?",
       "reason": "missing",
       "provenance": [
-        "doc:med-list#c001",
-        "doc:med-list#c002",
-        "doc:med-list#c003"
+        "doc:op-plan#c002"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you confirm if you have any active symptoms or conditions that might affect your cardiorespiratory status for the upcoming Laparoscopic Cholecystectomy under General Anesthesia?",
+      "reason": "missing",
+      "provenance": [
+        "doc:op-plan#c001",
+        "doc:op-plan#c002"
       ],
       "review": null,
       "edited_text": null
@@ -993,7 +932,7 @@
       "t": "08:10",
       "category": "fluid",
       "value": "1 liter of Ringer's lactate",
-      "units": "liters",
+      "units": "liter",
       "provenance": [
         "audio:intraop-notes#s004"
       ]
@@ -1018,13 +957,12 @@
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV) due to General Anesthesia and History of GERD",
-    "Airway Compromise due to LMA Use in a Patient with History of GERD",
-    "Hypoglycemia Risk due to Insulin Use and Intraoperative NPO Status",
-    "Hypertension Management Post-Operatively due to Chronic Hypertension",
-    "Pain Management Challenges due to Regional Anesthesia (USRA) and Potential for Breakthrough Pain",
-    "Hemodynamic Instability Post-Induction due to Intraoperative Hypotension",
-    "Delayed Recovery due to Propofol Use for Induction"
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to Laparoscopic Surgery and Opioid Use",
+    "Airway Compromise upon Extubation due to LMA Use and Potential Residual Propofol Effects",
+    "Glycemic Control Issues due to Diabetes and Intraoperative Fluid Administration",
+    "Hypotension in Recovery due to Residual Anesthetic Effects and Hypersensitivity to Vasopressors",
+    "Pain Management Challenges due to Transversus Abdominis Plane (TAP) Block Efficacy and Opioid Sensitivity",
+    "Delayed Recovery due to Combined Effects of Propofol, Bupivacaine, and Potential Opioid Use"
   ],
   "workflow": null
 }

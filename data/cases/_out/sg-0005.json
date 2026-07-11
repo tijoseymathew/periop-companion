@@ -478,7 +478,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Elective total knee arthroplasty (elective) planned.",
+          "text": "Elective total knee arthroplasty planned.",
           "provenance": [
             "doc:op-plan#c001"
           ],
@@ -494,7 +494,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Hypertension, diabetes, and high cholesterol, all reported as controlled with medications.",
+          "text": "History of hypertension, diabetes, and high cholesterol, all reported as controlled with medications.",
           "provenance": [
             "audio:preop-interview#s004"
           ],
@@ -502,48 +502,23 @@
         },
         {
           "claim_id": "c-005",
-          "text": "No recent respiratory issues or infections reported, despite history of pneumonia resolved 5 years ago.",
+          "text": "Current medications include Amlodipine 5mg daily, Metoprolol 50mg twice daily, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg daily, and Aspirin 75mg daily.",
           "provenance": [
-            "audio:preop-interview#s011",
-            "doc:gp-summary#c010"
+            "audio:preop-interview#s006"
           ],
-          "status": "unsupported"
+          "status": "conflicting"
         },
         {
           "claim_id": "c-006",
-          "text": "Current medications: Amlodipine 5mg daily, Metoprolol 50mg twice daily, Metformin 500mg twice daily, Sitagliptin 100mg daily, Atorvastatin 20mg daily, Aspirin 75mg daily.",
+          "text": "Lisinopril was stopped last week as instructed, as reported by the patient.",
           "provenance": [
-            "audio:preop-interview#s006",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "doc:med-list#c004",
-            "doc:med-list#c005",
-            "doc:med-list#c006"
+            "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Lisinopril 10mg daily was stopped last week as instructed, prior to the pre-op interview.",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Aspirin 75mg daily is continued into the elective surgery, indication not specified in the interview but assumed for cardiovascular protection.",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "doc:med-list#c006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Penicillin allergy reported during pre-op interview, described as itchy red spots all over, occurring 20 years ago, not previously recorded.",
+          "text": "Patient reports a history of penicillin allergy, manifesting as itchy red spots all over the body approximately 20 years ago, which resolved after discontinuing the medication.",
           "provenance": [
             "audio:preop-interview#s008",
             "audio:preop-interview#s010"
@@ -551,24 +526,24 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "No known drug allergies were recorded in the general practitioner's summary.",
+          "claim_id": "c-008",
+          "text": "No other drug or non-drug allergies (such as reactions to latex, plasters, or foods) were reported beyond the penicillin allergy.",
           "provenance": [
-            "doc:gp-summary#c009"
+            "audio:preop-interview#s007"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
-          "claim_id": "c-011",
-          "text": "Patient reports no food or drink since midnight, except for a little water for medications.",
+          "claim_id": "c-009",
+          "text": "Patient has not eaten or drunk anything since midnight, except for sipping a little water for medications.",
           "provenance": [
             "audio:preop-interview#s012"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "ASA-PS Class 2 (healthy patient with mild systemic disease, e.g., well-controlled hypertension, diabetes, hyperlipidemia) justified by controlled comorbidities and no recent acute issues.",
+          "claim_id": "c-010",
+          "text": "ASA-PS II (Patient has controlled comorbidities including hypertension, diabetes, and hyperlipidemia, but they do not present with severe systemic disease that would limit physiological function or increase anesthetic risk significantly).",
           "provenance": [
             "audio:preop-interview#s004",
             "doc:gp-summary#c002",
@@ -580,20 +555,39 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Spinal anesthesia with sedation planned for elective total knee arthroplasty.",
+          "claim_id": "c-011",
+          "text": "Planned anesthesia for the procedure is spinal anesthesia with sedation.",
           "provenance": [
-            "doc:op-plan#c002"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "Previous experience with spinal anesthesia for cataract surgery was uncomplicated, with the patient being awake but sleepy.",
+          "claim_id": "c-012",
+          "text": "Patient has a history of previous anesthesia for cataract surgery five years ago with spinal anesthesia and sedation, with no reported complications.",
           "provenance": [
             "audio:preop-interview#s014"
           ],
           "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "No details on residual lung function issues from pneumonia 5 years ago were provided, and the patient did not report any ongoing respiratory symptoms.",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s003"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "No history of aspiration or reflux issues since the discontinuation of Omeprazole 2 years ago for resolved GERD.",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s003"
+          ],
+          "status": "unsupported"
         }
       ]
     },
@@ -602,7 +596,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "08:00 propofol 120 milligrams administered",
+          "text": "08:00 Propofol 120 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -610,7 +604,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "08:02 bupivacaine 15 milligrams administered",
+          "text": "08:02 Bupivacaine 15 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -618,7 +612,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "08:02 fentanyl 20 micrograms administered",
+          "text": "08:02 Fentanyl 20 micrograms administered",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -626,7 +620,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "08:05 midazolam 3 milligrams administered",
+          "text": "08:05 Midazolam 3 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -634,7 +628,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "08:07 endotracheal tube placed with grade 1 laryngeal view",
+          "text": "08:07 Endotracheal tube placed, Grade 1 view",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -642,7 +636,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "08:10 sixteen gauge IV catheter placed in left radial vein",
+          "text": "08:10 16-gauge IV catheter placed in left radial vein",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -650,7 +644,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "08:12 arterial line placed in right radial artery",
+          "text": "08:12 Arterial line placed in right radial artery",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -658,7 +652,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "08:15 lactated Ringer's solution 500 milliliters administered",
+          "text": "08:15 Lactated Ringer's solution 500 milliliters administered",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -666,7 +660,7 @@
         },
         {
           "claim_id": "c-009",
-          "text": "08:20 hypotension BP 80 over 50 treated with ephedrine 10 milligrams IV and 200 milliliter fluid bolus",
+          "text": "08:20 Hypotension (BP 80/50) treated with Ephedrine 10 milligrams IV",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -674,7 +668,7 @@
         },
         {
           "claim_id": "c-010",
-          "text": "08:25 tachycardia heart rate 110 beats per minute treated with esmolol 10 milligrams IV",
+          "text": "08:25 Tachycardia (Heart Rate 110) treated with Esmolol 10 milligrams IV",
           "provenance": [
             "audio:intraop-notes#s009"
           ],
@@ -687,38 +681,39 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "PONV (Post-Operative Nausea and Vomiting) risk due to multiple factors including opioid use (fentanyl), history of spinal anesthesia with sedation, and potential for dehydration from prolonged fasting.",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including opioid administration (Fentanyl), history of spinal anesthesia with sedation, and potential for residual effects of Propofol and Midazolam.",
           "provenance": [
-            "audio:preop-interview#s012",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
-            "doc:op-plan#c002"
+            "audio:intraop-notes#s003"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to history of spinal anesthesia with sedation, potential for respiratory depression from midazolam and fentanyl, and need for endotracheal intubation during surgery.",
+          "text": "Airway Watch: Potential for airway complications post-extubation due to history of spinal anesthesia with sedation and potential residual effects of sedatives.",
           "provenance": [
             "doc:op-plan#c002",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s002",
+            "audio:preop-interview#s017",
             "audio:intraop-notes#s004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control monitoring needed due to patient's diabetes history, potential impact of stress response on blood glucose levels, and use of medications affecting glucose (steroids not mentioned but possible in intra-op context).",
+          "text": "Glycemic Control: Patient's diabetes (controlled with Metformin and Sitagliptin) may be affected by the stress of surgery, potential for hyperglycemia or hypoglycemia.",
           "provenance": [
             "audio:preop-interview#s004",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
+            "doc:gp-summary#c003",
+            "doc:gp-summary#c004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management considering patient's chronic pain from osteoarthritis, intra-operative opioid administration (fentanyl), and need for balanced post-op pain control to avoid hyperalgesia or under-treatment.",
+          "text": "Analgesia Management: Patient's history of significant pain from osteoarthritis may necessitate careful postoperative pain management to prevent uncontrolled pain.",
           "provenance": [
             "audio:preop-interview#s002",
             "audio:intraop-notes#s002"
@@ -727,17 +722,16 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic watch for potential hypotension or tachycardia episodes post-operatively, as patient experienced intra-op hypotension (treated with ephedrine and fluid bolus) and tachycardia (treated with esmolol), which may recur or have lingering effects.",
+          "text": "Hemodynamic Watch: Episodes of intraoperative hypotension and tachycardia treated with Ephedrine and Esmolol, indicating potential for postoperative hemodynamic instability.",
           "provenance": [
             "audio:intraop-notes#s008",
-            "audio:intraop-notes#s009",
-            "audio:preop-interview#s004"
+            "audio:intraop-notes#s009"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-006",
-          "text": "Allergy watch for penicillin allergy (reported as itchy red spots all over, 20 years ago), ensuring no penicillin or related antibiotics are administered post-operatively.",
+          "text": "Allergy Watch: History of penicillin allergy with rash, ensuring no penicillin or related antibiotics are administered.",
           "provenance": [
             "audio:preop-interview#s008",
             "audio:preop-interview#s010"
@@ -751,60 +745,37 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "60-year-old female undergoing elective total knee arthroplasty for osteoarthritis of the right knee, with a history of hypertension, diabetes, and high cholesterol, all controlled with medications.",
+          "text": "60-year-old female post-elective total knee arthroplasty under spinal anesthesia with sedation.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
-            "audio:preop-interview#s002",
-            "audio:preop-interview#s004"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a penicillin allergy (itchy red spots all over, 20 years ago) and no recent respiratory issues. Current medications include Amlodipine, Metoprolol, Metformin, Sitagliptin, Atorvastatin, and Aspirin. Lisinopril was stopped pre-operatively.",
+          "text": "Patient has a history of controlled hypertension, diabetes, and high cholesterol. Medications include Amlodipine, Metoprolol, Metformin, Sitagliptin, Atorvastatin, and Aspirin. Lisinopril was stopped last week.",
           "provenance": [
-            "audio:preop-interview#s011",
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s006",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "doc:med-list#c004",
-            "doc:med-list#c005",
-            "doc:med-list#c006",
-            "doc:gp-summary#c008",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient reported a penicillin allergy (itchy red spots) 20 years ago.",
+          "provenance": [
             "audio:preop-interview#s008",
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Patient is ASA-PS Class 2, with a history of uncomplicated spinal anesthesia for cataract surgery. Spinal anesthesia with sedation is planned for this procedure.",
-          "provenance": [
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "doc:gp-summary#c005",
-            "doc:gp-summary#c006",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
           "claim_id": "c-004",
-          "text": "Intra-operative course included administration of propofol, bupivacaine, fentanyl, and midazolam. Endotracheal intubation, IV, and arterial line placements were performed. Hypotension and tachycardia were treated with ephedrine, fluid bolus, and esmolol.",
+          "text": "Intraoperative events: Hypotension (80/50) treated with Ephedrine, Tachycardia (HR 110) treated with Esmolol.",
           "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s007",
             "audio:intraop-notes#s008",
             "audio:intraop-notes#s009"
           ],
@@ -812,62 +783,34 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Monitor for PONV due to opioid use, history of spinal anesthesia with sedation, and potential dehydration from fasting.",
+          "text": "Receiving spinal anesthesia with sedation, similar to previous uncomplicated cataract surgery anesthesia.",
           "provenance": [
-            "audio:preop-interview#s012",
-            "audio:intraop-notes#s002",
-            "doc:op-plan#c002"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Maintain airway vigilance due to history of spinal anesthesia with sedation and potential respiratory depression from midazolam and fentanyl.",
+          "text": "Monitor for Postoperative Nausea and Vomiting (PONV), Airway complications, Glycemic excursions, Uncontrolled pain, Hemodynamic instability, and ensure no penicillin or related antibiotics are administered.",
           "provenance": [
             "doc:op-plan#c002",
-            "audio:intraop-notes#s003",
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
-            "audio:intraop-notes#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Ensure glycemic control monitoring due to diabetes history and potential impact of surgical stress on blood glucose levels.",
-          "provenance": [
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
             "audio:preop-interview#s004",
+            "doc:gp-summary#c003",
             "doc:gp-summary#c004",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Manage analgesia carefully considering chronic pain from osteoarthritis, intra-operative opioid administration, and need for balanced post-op pain control.",
-          "provenance": [
             "audio:preop-interview#s002",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Watch for potential post-operative hypotension or tachycardia, as patient experienced intra-op episodes treated with ephedrine, fluid bolus, and esmolol.",
-          "provenance": [
             "audio:intraop-notes#s008",
             "audio:intraop-notes#s009",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Ensure no penicillin or related antibiotics are administered post-operatively due to reported penicillin allergy.",
-          "provenance": [
             "audio:preop-interview#s008",
             "audio:preop-interview#s010"
           ],
-          "status": "unsupported"
+          "status": "conflicting"
         }
       ]
     },
@@ -876,91 +819,68 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "60-year-old female, Homemaker, resident of Bedok, Singapore.",
+          "text": "Patient reports numbness in the leg and a pain level of 4 or 5 on a scale of 1 to 10",
           "provenance": [
-            "doc:gp-summary#c001"
+            "audio:postop-interview#s002",
+            "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient reports a history of osteoarthritis, leading to elective total knee arthroplasty.",
+          "text": "Patient experiences some nausea, described as a 'funny' stomach feeling, but no vomiting",
           "provenance": [
-            "audio:preop-interview#s002"
+            "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient has a history of high blood pressure, diabetes, and high cholesterol, all controlled with medications.",
+          "text": "Patient reports being very thirsty and requests water",
           "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Patient reports a penicillin allergy, manifesting as an itchy red rash 20 years ago.",
-          "provenance": [
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient underwent cholecystectomy under general anesthesia 15 years ago with no complications, and cataract surgery with spinal anesthesia 5 years ago, being awake but sleepy with no problems.",
-          "provenance": [
-            "doc:prior-anesthetic-record#c001",
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Planned procedure: Elective total knee arthroplasty under spinal anesthesia with sedation.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s017"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Intraoperative notes indicate spinal anesthesia with bupivacaine 15mg and fentanyl 20 micrograms, midazolam 3mg for sedation, propofol 120mg for induction.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Postoperative recovery: Patient reports numbness in the leg, pain rated 4/10, some nausea with a funny stomach feeling, and thirst.",
-          "provenance": [
-            "audio:postop-interview#s002",
-            "audio:postop-interview#s004",
             "audio:postop-interview#s006",
             "audio:postop-interview#s012"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Patient denies shortness of breath or chest tightness, reports sore back from prolonged lying, and heavy legs (normal after spinal anesthesia).",
+          "claim_id": "c-004",
+          "text": "Patient denies any shortness of breath or chest tightness, reporting normal breathing",
           "provenance": [
-            "audio:postop-interview#s008",
+            "audio:postop-interview#s008"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient recalls hearing voices during surgery, describing it as 'like a dream' and not very clear",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient reports heaviness in legs, which is noted as a normal effect of spinal anesthesia",
+          "provenance": [
+            "audio:postop-interview#s012",
+            "audio:postop-interview#s013"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Patient expresses concern about blood sugar levels, indicating awareness of diabetes management post-surgery",
+          "provenance": [
             "audio:postop-interview#s012"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Patient recalls hearing voices during surgery, akin to a dream, indicating partial awareness.",
+          "claim_id": "c-008",
+          "text": "Patient reports back soreness from prolonged lying down during surgery",
           "provenance": [
-            "audio:postop-interview#s010"
+            "audio:postop-interview#s008"
           ],
           "status": "supported"
         }
@@ -969,35 +889,7 @@
   ],
   "open_questions": [
     {
-      "question": "Do you have any known drug allergies that have not been recorded?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c009"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Can you confirm the current use of Aspirin 75mg daily and its indication, especially in the context of elective surgery?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c007",
-        "doc:med-list#c006"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Have you had any recent respiratory issues or infections, given your history of pneumonia?",
-      "reason": "stale",
-      "provenance": [
-        "doc:gp-summary#c010"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "Are you still taking all the medications listed in your current medication list, and have there been any changes since the last record?",
+      "question": "Can you confirm if there have been any changes, stoppages, or additions to your medication list since it was last recorded? Specifically, we need to confirm the current status of Amlodipine, Metoprolol, Metformin, Sitagliptin, Atorvastatin, Aspirin, and Lisinopril.",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -1012,8 +904,35 @@
       "edited_text": null
     },
     {
-      "question": "Can you describe your experience with spinal anesthesia from your previous surgery, and were there any complications?",
+      "question": "Are you aware of any drug or non-drug allergies (such as reactions to latex, plasters, or foods) that have not been documented in your records?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c009"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you provide more details about your resolved pneumonia from 5 years ago? Specifically, was there any impact on your lung function or any residual issues that might affect anesthesia?",
       "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c010"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You were previously on Omeprazole for GERD, which was discontinued 2 years ago. Is there any history of aspiration or reflux issues that might pose a risk during anesthesia?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c012"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Your prior anesthetic record mentions a cholecystectomy under general anesthesia 15 years ago with no complications. Have you had any other surgeries or anesthetic exposures since then that are not documented here?",
+      "reason": "stale",
       "provenance": [
         "doc:prior-anesthetic-record#c001"
       ],
@@ -1024,7 +943,7 @@
   "intraop_events": [
     {
       "t": "08:00",
-      "category": "agent",
+      "category": "dose",
       "value": "propofol 120",
       "units": "milligrams",
       "provenance": [
@@ -1033,7 +952,7 @@
     },
     {
       "t": "08:02",
-      "category": "agent",
+      "category": "dose",
       "value": "bupivacaine 15",
       "units": "milligrams",
       "provenance": [
@@ -1042,7 +961,7 @@
     },
     {
       "t": "08:02",
-      "category": "agent",
+      "category": "dose",
       "value": "fentanyl 20",
       "units": "micrograms",
       "provenance": [
@@ -1051,7 +970,7 @@
     },
     {
       "t": "08:05",
-      "category": "agent",
+      "category": "dose",
       "value": "midazolam 3",
       "units": "milligrams",
       "provenance": [
@@ -1061,7 +980,7 @@
     {
       "t": "08:07",
       "category": "airway",
-      "value": "CL grade 1, intubated",
+      "value": "tube in, grade one view",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s004"
@@ -1097,7 +1016,7 @@
     {
       "t": "08:20",
       "category": "event",
-      "value": "hypotension BP 80 over 50 treated with ephedrine 10 milligrams",
+      "value": "hypotension BP 80/50 treated with ephedrine 10 milligrams",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s008"
@@ -1106,7 +1025,7 @@
     {
       "t": "08:25",
       "category": "event",
-      "value": "tachycardia heart rate 110 beats per minute treated with esmolol 10 milligrams",
+      "value": "tachycardia heart rate 110 treated with esmolol 10 milligrams",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s009"
@@ -1114,12 +1033,12 @@
     }
   ],
   "anticipated_issues": [
-    "PONV (Post-Operative Nausea and Vomiting) risk due to multiple factors including opioid use (fentanyl), history of spinal anesthesia with sedation, and potential for dehydration from prolonged fasting.",
-    "Airway watch due to history of spinal anesthesia with sedation, potential for respiratory depression from midazolam and fentanyl, and need for endotracheal intubation during surgery.",
-    "Glycemic control monitoring needed due to patient's diabetes history, potential impact of stress response on blood glucose levels, and use of medications affecting glucose (steroids not mentioned but possible in intra-op context).",
-    "Analgesia management considering patient's chronic pain from osteoarthritis, intra-operative opioid administration (fentanyl), and need for balanced post-op pain control to avoid hyperalgesia or under-treatment.",
-    "Hemodynamic watch for potential hypotension or tachycardia episodes post-operatively, as patient experienced intra-op hypotension (treated with ephedrine and fluid bolus) and tachycardia (treated with esmolol), which may recur or have lingering effects.",
-    "Allergy watch for penicillin allergy (reported as itchy red spots all over, 20 years ago), ensuring no penicillin or related antibiotics are administered post-operatively."
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including opioid administration (Fentanyl), history of spinal anesthesia with sedation, and potential for residual effects of Propofol and Midazolam.",
+    "Airway Watch: Potential for airway complications post-extubation due to history of spinal anesthesia with sedation and potential residual effects of sedatives.",
+    "Glycemic Control: Patient's diabetes (controlled with Metformin and Sitagliptin) may be affected by the stress of surgery, potential for hyperglycemia or hypoglycemia.",
+    "Analgesia Management: Patient's history of significant pain from osteoarthritis may necessitate careful postoperative pain management to prevent uncontrolled pain.",
+    "Hemodynamic Watch: Episodes of intraoperative hypotension and tachycardia treated with Ephedrine and Esmolol, indicating potential for postoperative hemodynamic instability.",
+    "Allergy Watch: History of penicillin allergy with rash, ensuring no penicillin or related antibiotics are administered."
   ],
   "workflow": null
 }

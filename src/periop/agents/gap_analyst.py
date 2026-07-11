@@ -62,6 +62,15 @@ ask the patient before surgery. For each question:
   least one real chunk id from the list.
 Prioritize items that affect anesthetic safety (allergies, anticoagulants,
 airway history, prior anesthetic complications, cardiorespiratory disease).
+
+Two questions are mandatory in every list, because records are routinely
+stale on exactly these points:
+- a full medication-reconciliation question that names every medication on
+  record and asks whether any have been stopped, changed, or replaced since
+  the list was written (cite the med-list chunk);
+- an allergy question that asks about any reaction — drug or non-drug (e.g.
+  latex, plasters, foods) — beyond those documented (cite the chunk that
+  records allergies or states none).
 """
 
 
