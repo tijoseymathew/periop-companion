@@ -13,9 +13,13 @@ import { claimFlagged } from "./claims";
 import {
   headlineStage,
   primaryAction,
+  stageNodeState,
+  STAGE_TITLES,
   STATUS_WORDS,
   type PrimaryAction,
+  type StageNodeState,
 } from "./workflow";
+import { STAGE_KEYS } from "./schema";
 import type {
   Case,
   CaseSummary,
@@ -340,6 +344,8 @@ export interface BriefModel {
   title: string;
   stage: StageKey;
   stageDisplay: StageDisplay;
+  /** Pre-op → Intra-op → Post-op, for the header stepper (mirrors FlowChrome's) */
+  stageSteps: { key: StageKey; label: string; state: StageNodeState }[];
   /** true once the case has left the operating room (timeline is real, not pending) */
   reachedTheatre: boolean;
   assembledFrom: string;
@@ -473,11 +479,18 @@ export function buildBrief(
     }
   }
 
+  const stageSteps = STAGE_KEYS.map((key) => ({
+    key,
+    label: STAGE_TITLES[key],
+    state: stageNodeState(kase, key),
+  }));
+
   return {
     caseId: kase.case_id,
     title: kase.label ?? kase.case_id,
     stage,
     stageDisplay: STAGE_DISPLAY[stage],
+    stageSteps,
     reachedTheatre,
     assembledFrom,
     attentionCount: attentionItems.length,

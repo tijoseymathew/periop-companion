@@ -91,6 +91,7 @@ export function BriefScreen({
           </div>
           <ProviderChain chain={model.chain} />
         </div>
+        <StageStepper steps={model.stageSteps} />
       </div>
 
       {/* body */}
@@ -164,145 +165,155 @@ export function BriefScreen({
             )}
           </div>
 
-          {/* theatre timeline — always present so the page shape holds at every
-              stage; a calm placeholder stands in until the case reaches theatre */}
-          <Eyebrow>
-            In theatre{model.intraopPerformer ? ` · ${model.intraopPerformer}` : ""}
-          </Eyebrow>
-          {model.events.length > 0 ? (
+          {/* theatre timeline + anticipated issues aren't reached yet at
+              pre-op — the pre-op brief is story + key facts only */}
+          {model.stage !== "preop" && (
             <>
-              <div className="mb-9 mt-3.5">
-                {model.events.map((e, i) => (
-                  <div key={i} className="flex gap-4">
-                    <div className="w-[52px] flex-none pt-px text-right text-[13.5px] font-semibold text-ink-muted">
-                      {e.t}
-                    </div>
-                    <div className="flex flex-none flex-col items-center">
-                      <span className="mt-1.5 h-2.5 w-2.5 flex-none rounded-full border-2 border-gold-soft bg-surface-base" />
-                      {i < model.events.length - 1 && (
-                        <span className="my-0.5 w-0.5 flex-1 bg-surface-overlay" />
-                      )}
-                    </div>
-                    <div className="min-w-0 flex-1 pb-[18px]">
-                      <div className="text-[15.5px] leading-snug text-ink-primary">{e.text}</div>
-                      {e.hasProv && (
-                        <SourceLink
-                          className="mt-1.5"
-                          onClick={() => onOpenSource({ title: e.text, refs: e.refs })}
-                        >
-                          Play the dictation
-                        </SourceLink>
-                      )}
-                    </div>
+              <Eyebrow>
+                In theatre{model.intraopPerformer ? ` · ${model.intraopPerformer}` : ""}
+              </Eyebrow>
+              {model.events.length > 0 ? (
+                <>
+                  <div className="mb-9 mt-3.5">
+                    {model.events.map((e, i) => (
+                      <div key={i} className="flex gap-4">
+                        <div className="w-[52px] flex-none pt-px text-right text-[13.5px] font-semibold text-ink-muted">
+                          {e.t}
+                        </div>
+                        <div className="flex flex-none flex-col items-center">
+                          <span className="mt-1.5 h-2.5 w-2.5 flex-none rounded-full border-2 border-gold-soft bg-surface-base" />
+                          {i < model.events.length - 1 && (
+                            <span className="my-0.5 w-0.5 flex-1 bg-surface-overlay" />
+                          )}
+                        </div>
+                        <div className="min-w-0 flex-1 pb-[18px]">
+                          <div className="text-[15.5px] leading-snug text-ink-primary">{e.text}</div>
+                          {e.hasProv && (
+                            <SourceLink
+                              className="mt-1.5"
+                              onClick={() => onOpenSource({ title: e.text, refs: e.refs })}
+                            >
+                              Play the dictation
+                            </SourceLink>
+                          )}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <SectionPlaceholder>
-              {model.reachedTheatre
-                ? "No dictation was recorded for the theatre record."
-                : "Not in the operating room yet — the theatre timeline fills in live once the case reaches theatre."}
-            </SectionPlaceholder>
-          )}
+                </>
+              ) : (
+                <SectionPlaceholder>
+                  {model.reachedTheatre
+                    ? "No dictation was recorded for the theatre record."
+                    : "Not in the operating room yet — the theatre timeline fills in live once the case reaches theatre."}
+                </SectionPlaceholder>
+              )}
 
-          {/* anticipated issues — always present; the section fills in once the
-              theatre record is generated */}
-          <Eyebrow>Anticipated issues</Eyebrow>
-          {model.issues.length > 0 ? (
-            <div className="mt-3 flex max-w-[760px] flex-col gap-2.5">
-              {model.issues.map((r, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
-                >
-                  <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
-                  <span className="text-[15px] leading-relaxed text-ink-body">{r}</span>
+              <Eyebrow>Anticipated issues</Eyebrow>
+              {model.issues.length > 0 ? (
+                <div className="mt-3 flex max-w-[760px] flex-col gap-2.5">
+                  {model.issues.map((r, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
+                    >
+                      <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
+                      <span className="text-[15px] leading-relaxed text-ink-body">{r}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <SectionPlaceholder>
-              {model.reachedTheatre
-                ? "No post-op issues were anticipated for this case."
-                : "Anticipated post-op issues appear once the theatre record is generated."}
-            </SectionPlaceholder>
+              ) : (
+                <SectionPlaceholder>
+                  {model.reachedTheatre
+                    ? "No post-op issues were anticipated for this case."
+                    : "Anticipated post-op issues appear once the theatre record is generated."}
+                </SectionPlaceholder>
+              )}
+            </>
           )}
         </div>
 
         {/* right rail */}
         <div className="flex w-[410px] flex-none flex-col border-l border-surface-chromeline bg-surface-sunken">
-          <div className="flex flex-none items-center gap-2.5 px-6 pb-3 pt-5">
-            <span className="text-[12px] font-bold uppercase tracking-[.12em] text-status-conflicting">
-              Needs you now
-            </span>
-            {model.pendingReview > 0 && (
-              <span className="rounded-full bg-status-conflicting px-2 py-0.5 text-[11.5px] font-bold text-ink-onBrand">
-                {model.pendingReview}
-              </span>
-            )}
-          </div>
-          <div className="flex-1 overflow-y-auto px-6 pb-3">
-            {model.needs.map((n) => (
-              <div
-                key={n.key}
-                className={`mb-3 rounded-[14px] border ${n.reason.borderClass} ${n.reason.bgClass} p-4`}
-                style={{ opacity: n.reviewed ? 0.6 : 1 }}
-              >
-                <div className="mb-2 flex items-center justify-between gap-2.5">
-                  <span
-                    className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] ${n.reason.textClass}`}
-                  >
-                    <span className={`h-1.5 w-1.5 rounded-full ${n.reason.dotClass}`} />
-                    {n.reason.label}
+          {/* the pre-op brief skips "needs you now" — those open questions
+              were already reviewed in the interview step (the generation
+              gate requires it), so re-listing them here is pure clutter */}
+          {model.stage !== "preop" && (
+            <>
+              <div className="flex flex-none items-center gap-2.5 px-6 pb-3 pt-5">
+                <span className="text-[12px] font-bold uppercase tracking-[.12em] text-status-conflicting">
+                  Needs you now
+                </span>
+                {model.pendingReview > 0 && (
+                  <span className="rounded-full bg-status-conflicting px-2 py-0.5 text-[11.5px] font-bold text-ink-onBrand">
+                    {model.pendingReview}
                   </span>
-                  {n.reviewed && (
-                    <span className="text-[11.5px] font-semibold text-status-supported">
-                      ✓ Reviewed
-                    </span>
-                  )}
-                </div>
-                <div className="text-[15px] font-semibold leading-snug text-ink-primary">
-                  {n.title}
-                </div>
-                {n.detail && (
-                  <div className="mt-1.5 text-[13.5px] leading-relaxed text-ink-secondary">
-                    {n.detail}
-                  </div>
                 )}
-                <div className="mt-3 flex items-center gap-4">
-                  {canReview &&
-                    (n.reviewed ? (
-                      <button
-                        type="button"
-                        onClick={() => onReviewNeed(n.key, false)}
-                        className="text-[12.5px] text-ink-subtle underline"
-                      >
-                        Undo
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => onReviewNeed(n.key, true)}
-                        className={`min-h-[40px] rounded-[9px] border bg-surface-base px-3.5 py-2 text-[13px] font-semibold ${n.reason.borderClass} ${n.reason.textClass}`}
-                      >
-                        Mark reviewed
-                      </button>
-                    ))}
-                  {n.hasProv && (
-                    <SourceLink onClick={() => onOpenSource({ title: n.title, refs: n.refs })}>
-                      See the sources
-                    </SourceLink>
-                  )}
-                </div>
               </div>
-            ))}
-            {model.needs.length === 0 && (
-              <p className="rounded-[14px] border border-surface-overlay bg-surface-base p-4 text-[13.5px] text-ink-secondary">
-                Nothing outstanding — no open questions on this case.
-              </p>
-            )}
-          </div>
+              <div className="flex-1 overflow-y-auto px-6 pb-3">
+                {model.needs.map((n) => (
+                  <div
+                    key={n.key}
+                    className={`mb-3 rounded-[14px] border ${n.reason.borderClass} ${n.reason.bgClass} p-4`}
+                    style={{ opacity: n.reviewed ? 0.6 : 1 }}
+                  >
+                    <div className="mb-2 flex items-center justify-between gap-2.5">
+                      <span
+                        className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.09em] ${n.reason.textClass}`}
+                      >
+                        <span className={`h-1.5 w-1.5 rounded-full ${n.reason.dotClass}`} />
+                        {n.reason.label}
+                      </span>
+                      {n.reviewed && (
+                        <span className="text-[11.5px] font-semibold text-status-supported">
+                          ✓ Reviewed
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[15px] font-semibold leading-snug text-ink-primary">
+                      {n.title}
+                    </div>
+                    {n.detail && (
+                      <div className="mt-1.5 text-[13.5px] leading-relaxed text-ink-secondary">
+                        {n.detail}
+                      </div>
+                    )}
+                    <div className="mt-3 flex items-center gap-4">
+                      {canReview &&
+                        (n.reviewed ? (
+                          <button
+                            type="button"
+                            onClick={() => onReviewNeed(n.key, false)}
+                            className="text-[12.5px] text-ink-subtle underline"
+                          >
+                            Undo
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => onReviewNeed(n.key, true)}
+                            className={`min-h-[40px] rounded-[9px] border bg-surface-base px-3.5 py-2 text-[13px] font-semibold ${n.reason.borderClass} ${n.reason.textClass}`}
+                          >
+                            Mark reviewed
+                          </button>
+                        ))}
+                      {n.hasProv && (
+                        <SourceLink onClick={() => onOpenSource({ title: n.title, refs: n.refs })}>
+                          See the sources
+                        </SourceLink>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {model.needs.length === 0 && (
+                  <p className="rounded-[14px] border border-surface-overlay bg-surface-base p-4 text-[13.5px] text-ink-secondary">
+                    Nothing outstanding — no open questions on this case.
+                  </p>
+                )}
+              </div>
+            </>
+          )}
+          {model.stage === "preop" && <div className="flex-1" />}
 
           {/* the one forward action — adapts to the case's stage */}
           <div className="flex-none border-t border-surface-overlay bg-surface-sunken px-6 pb-5 pt-4">
@@ -317,6 +328,48 @@ export function BriefScreen({
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+/** Compact Pre-op › Intra-op › Post-op progress, mirroring FlowChrome's
+ * stepper — the brief has its own header and never rendered inside
+ * FlowChrome, so without this the stage progress disappeared entirely
+ * once a case left the capture flow. */
+function StageStepper({ steps }: { steps: BriefModel["stageSteps"] }) {
+  return (
+    <div className="mt-3 flex items-center gap-1.5">
+      {steps.map((s, i) => {
+        const done = s.state === "done";
+        const current = s.state === "current";
+        return (
+          <div key={s.key} className="flex items-center">
+            {i > 0 && <div className="mx-1.5 h-px w-5 bg-surface-overlay" />}
+            <span
+              className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11.5px] font-semibold ${
+                current
+                  ? "bg-brand text-ink-onBrand"
+                  : done
+                    ? "text-status-supported"
+                    : "text-ink-faint"
+              }`}
+            >
+              <span
+                className={`flex h-[15px] w-[15px] flex-none items-center justify-center rounded-full text-[9px] font-bold ${
+                  done
+                    ? "bg-status-supported/20 text-status-supported"
+                    : current
+                      ? "bg-white/20 text-ink-onBrand"
+                      : "border border-surface-overlay text-ink-faint"
+                }`}
+              >
+                {done ? "✓" : i + 1}
+              </span>
+              {s.label}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }

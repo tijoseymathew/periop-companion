@@ -92,6 +92,12 @@ describe("buildBrief — adaptive patient view", () => {
     // pre-op case has not left theatre → timeline renders as a placeholder
     expect(brief.reachedTheatre).toBe(false);
     expect(brief.writable).toBe(true);
+    // the brief header stepper mirrors FlowChrome's stage progress
+    expect(brief.stageSteps.map((s) => [s.key, s.state])).toEqual([
+      ["preop", "current"],
+      ["intraop", "todo"],
+      ["postop", "todo"],
+    ]);
   });
 
   it("resolves acknowledge-handoff for a recovery case with an un-acknowledged handoff", () => {
