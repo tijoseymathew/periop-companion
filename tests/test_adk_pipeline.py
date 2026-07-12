@@ -69,7 +69,17 @@ class TestPipelineStructure:
         assert isinstance(writer, LlmAgent) and writer.name == "gap_analyst_writer"
         assert isinstance(validator, StructuredValidator)
 
-    def test_intraop_extraction_is_two_tier(self):
+    def test_intraop_first_pass_only_by_default(self, monkeypatch):
+        # The Super verify pass is off by default (evals/README.md 2026-07-12
+        # A/B: +0.028 f1, inside noise, for the run's most expensive call).
+        monkeypatch.delenv("PERIOP_EXTRACT_VERIFY", raising=False)
+        pipeline = build_case_pipeline("x", chat=object(), fast_chat=object())
+        intraop = pipeline.sub_agents[1]
+        names = [a.name for a in intraop.sub_agents]
+        assert "event_first_pass" in names and "event_verify" not in names
+
+    def test_intraop_verify_pass_is_two_tier_when_enabled(self, monkeypatch):
+        monkeypatch.setenv("PERIOP_EXTRACT_VERIFY", "1")
         fast, reasoning = object(), object()
         pipeline = build_case_pipeline("x", chat=reasoning, fast_chat=fast)
         intraop = pipeline.sub_agents[1]
