@@ -107,10 +107,13 @@ def run_agent(
 ) -> tuple[Case, dict[str, Any]]:
     """Synchronous seam over :func:`run_agent_async` for the stage functions.
 
-    Safe to call from a thread that already runs an event loop (the NAT
-    function deliberately blocks its private loop, spec v2-nat §3.1): the
-    pipeline then runs on a one-off worker thread with the caller's context
-    copied, so ``traced_llm_call`` still reaches NAT's step stream.
+    Normally called from a loop-less thread (the NAT function runs the stage
+    in ``asyncio.to_thread``, spec v2-nat §3.1) and runs the pipeline right
+    there. Still safe under a running event loop (sync callers inside a
+    coroutine, e.g. tests): the pipeline then moves to a one-off worker
+    thread with the caller's context copied. Either way ``traced_llm_call``
+    reaches NAT's step stream — off-loop pushes marshal to the bound export
+    loop (periop.nat.telemetry).
     """
     token = _EMIT.set(emit_fn) if emit_fn is not None else None
     try:
