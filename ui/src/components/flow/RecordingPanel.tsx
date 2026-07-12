@@ -39,7 +39,7 @@ export function RecordingPanel({
   const ready = source !== null && source.segments.length > 0;
 
   return (
-    <div className="w-[380px] flex-none rounded-[15px] border border-surface-overlay bg-surface-sunken p-5">
+    <div className="max-h-full w-[380px] flex-none self-start overflow-y-auto rounded-[15px] border border-surface-overlay bg-surface-sunken p-5">
       <div className="mb-3.5 text-[11.5px] font-bold uppercase tracking-[.11em] text-ink-faint">
         {title}
       </div>

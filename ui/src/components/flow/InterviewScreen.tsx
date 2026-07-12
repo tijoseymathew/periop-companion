@@ -78,7 +78,7 @@ export function InterviewScreen({
 
   return (
     <StageContainer>
-      <div className="mb-6 flex items-start justify-between gap-6">
+      <div className="mb-6 flex flex-none items-start justify-between gap-6">
         <div>
           <div className="text-[12px] font-bold uppercase tracking-[.13em] text-gold">
             Pre-op · Interview
@@ -109,13 +109,14 @@ export function InterviewScreen({
       </div>
 
       {notice && (
-        <div className="mb-6 rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
+        <div className="mb-6 flex-none rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
           {notice}
         </div>
       )}
 
-      <div className="flex items-start gap-7">
-        <div className="min-w-0 flex-1">
+      {/* the question list scrolls on its own; the recording rail stays put */}
+      <div className="flex min-h-0 flex-1 items-stretch gap-7">
+        <div className="min-w-0 flex-1 overflow-y-auto pr-1">
           <div className="mb-3 text-[12px] font-bold uppercase tracking-[.12em] text-gold">
             {preparing
               ? "Preparing the questions"

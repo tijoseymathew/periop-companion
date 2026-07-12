@@ -150,7 +150,7 @@ export function RecordsScreen({
 
   return (
     <StageContainer>
-      <div className="mb-6">
+      <div className="mb-6 flex-none">
         <div className="text-[12px] font-bold uppercase tracking-[.13em] text-gold">
           Pre-op · Intake
         </div>
@@ -164,7 +164,7 @@ export function RecordsScreen({
       </div>
 
       {gapFailure && (
-        <div className="mb-6 flex items-center justify-between gap-4 rounded-[12px] border border-status-conflicting/40 bg-status-conflicting/[0.08] px-4 py-3 text-[13.5px] text-status-conflicting">
+        <div className="mb-6 flex flex-none items-center justify-between gap-4 rounded-[12px] border border-status-conflicting/40 bg-status-conflicting/[0.08] px-4 py-3 text-[13.5px] text-status-conflicting">
           <span>
             Question prep stopped — {gapFailure.message}. Your records are saved.
           </span>
@@ -179,14 +179,15 @@ export function RecordsScreen({
       )}
 
       {notice && (
-        <div className="mb-6 rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
+        <div className="mb-6 flex-none rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
           {notice}
         </div>
       )}
 
-      <div className="flex items-start gap-9">
+      {/* the two columns scroll on their own so the footer action stays put */}
+      <div className="flex min-h-0 flex-1 items-stretch gap-9">
         {/* left column: who the patient is and what's planned */}
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 overflow-y-auto pr-1">
           <Label>Patient &amp; case description</Label>
           {kase ? (
             <div className="mb-6 rounded-[13px] border border-surface-overlay bg-surface-sunken px-5 py-4">
@@ -251,7 +252,7 @@ export function RecordsScreen({
 
         {/* right column: the documents — staged rows before the intake
             exists, a tabbed reader of the saved records after */}
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 overflow-y-auto pr-1">
           <Label>Documents</Label>
           <button
             type="button"
@@ -327,7 +328,7 @@ export function RecordsScreen({
         </div>
       </div>
 
-      <div className="mt-6 flex items-center gap-4 border-t border-surface-line pt-5">
+      <div className="mt-5 flex flex-none items-center gap-4 border-t border-surface-line pt-5">
         <div className="flex-1 text-[13.5px] leading-relaxed text-ink-dim">
           {!canWrite
             ? "Pick a provider (top right) to start the intake."

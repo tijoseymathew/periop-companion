@@ -87,8 +87,8 @@ export function CaptureScreen({
   const postopColumns = stage === "postop" && liveEvents.length > 0;
 
   return (
-    <StageContainer fullHeight>
-      <div className="mb-5">
+    <StageContainer>
+      <div className="mb-5 flex-none">
         <div className="text-[12px] font-bold uppercase tracking-[.13em] text-gold">
           {copy.eyebrow}
         </div>
@@ -99,7 +99,7 @@ export function CaptureScreen({
       </div>
 
       {notice && (
-        <div className="mb-5 rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
+        <div className="mb-5 flex-none rounded-[12px] border border-status-unsupported/40 bg-status-unsupported/[0.08] px-4 py-3 text-[13.5px] text-status-unsupported">
           {notice}
         </div>
       )}
@@ -199,10 +199,11 @@ export function CaptureScreen({
         </div>
       )}
 
-      {/* captured: transcript + the one action */}
+      {/* captured: transcript + the one action — the transcript column
+          scrolls on its own so the action rail stays in view */}
       {captured && source && (
-        <div className="flex items-start gap-7">
-          <div className="min-w-0 flex-1">
+        <div className="flex min-h-0 flex-1 items-stretch gap-7">
+          <div className="min-w-0 flex-1 overflow-y-auto pr-1">
             <div className="mb-4 rounded-[13px] border border-surface-overlay bg-surface-sunken px-4 pb-2 pt-3">
               <div className="px-0.5 text-[13.5px] font-semibold text-ink-primary">
                 {stage === "intraop" ? "Theatre memos" : "Post-op interview"}
@@ -228,7 +229,7 @@ export function CaptureScreen({
           )}
 
           {!postopColumns && (
-          <div className="sticky top-0 w-[300px] flex-none rounded-[15px] border border-surface-overlay bg-surface-sunken px-5 py-5">
+          <div className="max-h-full w-[300px] flex-none self-start overflow-y-auto rounded-[15px] border border-surface-overlay bg-surface-sunken px-5 py-5">
             {transcribing ? (
               <div className="mb-3 flex h-[34px] w-[34px] items-center justify-center rounded-full bg-brand/10">
                 <span
@@ -305,7 +306,7 @@ function WriterColumn({
   const result = agentResults(events).find((r) => r.agent === agent);
   const started = events.some((e) => e.event === "agent_start" && e.data.agent === agent);
   return (
-    <div className="min-w-0 flex-1 rounded-[15px] border border-surface-overlay bg-surface-sunken px-5 py-5">
+    <div className="min-w-0 flex-1 overflow-y-auto rounded-[15px] border border-surface-overlay bg-surface-sunken px-5 py-5">
       <div className="mb-3 text-[11px] font-bold uppercase tracking-[.09em] text-ink-faint">
         {title}
       </div>

@@ -196,7 +196,9 @@ export function FlowChrome({
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto">{children}</div>
+      {/* the stage never scrolls as a page — regions inside a screen scroll
+          on their own so one view holds everything (v2-ui feedback) */}
+      <div className="min-h-0 flex-1 overflow-hidden">{children}</div>
     </CaseSheet>
   );
 }
