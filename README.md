@@ -1,394 +1,78 @@
 # PeriOp Companion
 
-An agentic peri-operative documentation assistant for anesthesia providers,
-built on the NVIDIA Ambient Provider blueprint, orchestrated with **Google
-ADK**, instrumented and evaluated with the **NVIDIA NeMo Agent Toolkit (NAT)**,
-and grounded in Singapore demographics via **Nemotron-Personas-Singapore**.
+An agentic peri-operative documentation assistant for anesthesia providers. It
+follows one patient through pre-op, intra-op, and post-op — flagging record gaps,
+transcribing interviews and voice notes, and drafting the notes and PACU handoff.
 
-**Every claim in every generated note carries provenance** to either a source
-record chunk or a timestamped, diarized audio segment. Clinicians will not
-trust — and sovereign-health regulators will not accept — generated notes that
-cannot show their work.
+**Every claim in every generated note carries provenance** to a source record
+chunk or a timestamped, diarized audio segment. Clinicians will not trust — and
+sovereign-health regulators will not accept — generated notes that cannot show
+their work.
+
+Built on the NVIDIA Ambient Provider blueprint, orchestrated with **Google ADK**,
+evaluated with the **NVIDIA NeMo Agent Toolkit (NAT)**, powered by **NVIDIA NIMs**
+(Nemotron Super 49B + Nano 9B, Parakeet ASR, Magpie TTS).
 
 > Reference/demonstration project. All data is **synthetic, no PHI**.
-> Documentation-support tool only; **not a medical device** and not a clinical
+> Documentation-support tool only — **not a medical device** and not a clinical
 > decision-making system.
 
-See [specs/v1.md](specs/v1.md) for the full specification and
-[specs/progress.md](specs/progress.md) for build status.
+📖 **[Full documentation →](https://tijoseymathew.github.io/periop-companion/)**
 
-## The problem in one sentence
+## Try it in your browser
 
-Three phases (pre-op, intra-op, post-op), scattered truth (documents + audio),
-and trust that requires provenance.
+One click runs the full app — API + review UI — in the browser. No GPU. With
+**no API key** it runs a keyless demo over committed synthetic cases; add an
+`NGC_API_KEY` ([get one at build.nvidia.com](https://build.nvidia.com)) to switch
+to live generation.
 
-## What it does
+- **GitHub Codespaces** — *Code → Codespaces → Create*. Builds, starts, and
+  forwards the port automatically.
+- **Docker** — `docker build -t periop-companion . && docker run --rm -p 7860:7860 periop-companion` → <http://localhost:7860>
+- **Hugging Face Space** — duplicate it and add your `NGC_API_KEY` secret.
 
-PeriOp Companion follows one patient through all three phases, generating
-stage-appropriate documentation where each statement is traceable:
+See **[Run in your browser →](https://tijoseymathew.github.io/periop-companion/deploy/)**.
 
-- **Pre-op** — ingests prior records, runs a **GapAnalyst** that flags what to
-  clarify (missing / stale / conflicting, each citing the triggering chunk),
-  transcribes the diarized interview, writes a claim-structured
-  **pre-anesthesia note** aligning each generated question to the interview
-  segments that answered it, and **verifies** every claim against its cited
-  spans.
-- **Intra-op** — transcribes the anesthetist's voice notes, extracts structured
-  events (**Nemotron Nano first pass → Super verification**), writes the
-  chronological record, and anticipates post-op issues with provenance spanning
-  *both* stages.
-- **Post-op** — composes a **PACU handoff** from existing claims only (the
-  `HandoffComposer` may select/order/rephrase but never introduce a new claim —
-  provenance is inherited), plus a post-anesthesia evaluation note.
-
-## Architecture
-
-**Design rule:** ADK owns orchestration, NAT owns observability and evaluation,
-the `Case` is the single source of truth. Three ways in (React SPA, terminal
-CLI, agent skill) converge on one FastAPI process, which drives the
-ADK stage pipeline — pre-op → intra-op → post-op, each stage a `SequentialAgent`
-of generate→validate steps — plus two tool-calling agents outside the
-pipeline proper ([specs/v2-agents.md](specs/v2-agents.md): an
-**EquipmentAdvisor** that suggests kit during pre-op note writing, and a
-**CaseChat** assistant providers can query over the record), against
-env-selected NVIDIA NIMs (hosted on build.nvidia.com by default, or
-self-hosted with no code change).
-
-**[docs/architecture.md](docs/architecture.md)** is the full map — system
-diagram, agent-handoff diagram, and component tables. Companion docs:
-[docs/adk-orchestration.md](docs/adk-orchestration.md) (the ADK composition),
-[docs/provenance.md](docs/provenance.md) (how provenance is
-structural, not annotated), [docs/frontend.md](docs/frontend.md)
-(the React SPA — screens, invariants, status vocabulary), and
-[docs/attribution.md](docs/attribution.md) (what was reused from the blueprint
-versus built).
-
-## Quickstart
-
-### Run it in your browser (no local setup)
-
-One click gets the full app — API + review UI — running in the browser. No GPU;
-the default path uses hosted NIMs, and with **no API key** it runs a keyless
-demo over committed synthetic cases. See [docs/deploy.md](docs/deploy.md).
-
-- **GitHub Codespaces / Dev Container** — *Code → Codespaces → Create*; it
-  builds, starts, and forwards the port automatically ([`.devcontainer/`](.devcontainer/)).
-- **Docker** — `docker build -t periop-companion . && docker run --rm -p 7860:7860 periop-companion` → <http://localhost:7860>.
-- **Hugging Face Docker Space** — a public live URL; duplicate it and add your
-  own `NGC_API_KEY` secret to go live ([deploy/hf-space/](deploy/hf-space/)).
-
-Add your own NVIDIA NIM key (`NGC_API_KEY`, get one at
-[build.nvidia.com](https://build.nvidia.com)) in any of these to switch from the
-demo to live generation.
-
-### Local (uv)
+## Run locally
 
 ```bash
 uv sync                 # Python 3.12 environment
-uv run pytest           # run the test suite (no network)
+uv run pytest           # test suite, no network
+
+# live runs need an NVIDIA key (NGC_API_KEY in .env); no GPU required
+uv run periop create "Hip repair" --provider p-lim   # drive the workflow from the terminal
+uv run python -m periop.api                # → http://localhost:8000 (build ui/ first)
 ```
 
-Live runs need an NVIDIA API key (`NGC_API_KEY` in `.env`). No GPU required —
-the default path uses hosted NIMs on build.nvidia.com.
+Every path is env-selected: the **same code runs against hosted NIMs or
+self-hosted NIMs with no code change** (`PERIOP_*_BASE_URL`). The reference
+sovereign deployment co-tenants all four NIMs on a single DGX Spark GB10 —
+see **[Self-hosted NIMs →](https://tijoseymathew.github.io/periop-companion/selfhosted/)**.
 
-```bash
-# smoke-test the model tiers
-uv run python scripts/smoke_llm.py
+## How it works
 
-# generate synthetic case bundles (resumable; re-run after rate limits)
-uv run python scripts/fetch_personas.py
-uv run python scripts/generate_cases.py --n 5
+| | |
+|---|---|
+| **Pre-op** | A **GapAnalyst** flags what to clarify (missing / stale / conflicting, each citing its chunk); the diarized interview is transcribed; a claim-structured pre-anesthesia note is written and every claim verified. |
+| **Intra-op** | Voice notes are transcribed and structured into events; the chronological record is written; post-op issues are anticipated with cross-stage provenance. |
+| **Post-op** | The SBAR **PACU handoff** is composed from existing claims only — selected and reordered, never newly invented — plus a post-anesthesia evaluation. |
 
-# run one case end-to-end and print every claim with provenance
-uv run python -m periop.cli.run_case sg-0001
+**Three ways in — one workflow.** A React SPA, a terminal CLI (`periop`), and an
+[agent skill](https://github.com/NVIDIA/NemoClaw)-style `SKILL.md` all converge
+on one FastAPI process. Conformance tests pin them together: **CLI == API ==
+batch**, byte-identical ledgers.
 
-# or drive it through NAT (ADK pipeline + profiler/traces)
-uv run nat run --config_file configs/workflow.yml --input sg-0001
+**Provenance is structural, not annotated** — notes are rendered *from* a claim
+set, so a claim cannot exist without a citation. Click a claim in the review UI
+and it plays the exact audio clip `(t0 → t1)` or highlights the cited document
+chunk.
 
-# evaluate against gold
-uv run python scripts/run_eval.py
+Read more: **[Architecture](https://tijoseymathew.github.io/periop-companion/architecture/)** ·
+**[ADK orchestration](https://tijoseymathew.github.io/periop-companion/adk-orchestration/)** ·
+**[Provenance & explainability](https://tijoseymathew.github.io/periop-companion/provenance/)** ·
+**[Front-end](https://tijoseymathew.github.io/periop-companion/frontend/)** ·
+**[Attribution](https://tijoseymathew.github.io/periop-companion/attribution/)**
 
-# render the HTML review page for processed cases (offline)
-uv run python scripts/render_review.py sg-0002
+## License
 
-# review UI (offline): build the SPA once, then serve UI + API in one process
-(cd ui && npm install && npm run build)
-uv run python -m periop.api            # → http://localhost:8000
-
-# or drive the same provider workflow from the terminal
-uv run periop --help
-```
-
-The server loads `.env` itself, so the `PERIOP_*` endpoint variables apply to
-live generation too. If a local NIM already holds port 8000 (the reasoning
-NIM in `configs/selfhosted.env` does), move the API:
-
-```bash
-PERIOP_API_PORT=8080 uv run python -m periop.api    # → http://localhost:8080
-PERIOP_API_PORT=8080 npm run dev                    # (in ui/) proxy follows
-```
-
-The entry point warns at startup when a chat-tier URL points back at the
-API's own port — that misconfiguration would otherwise make the server call
-itself on submit.
-
-### Self-hosted NIMs (no API key, no rate limits)
-
-The same code runs against locally deployed NIMs — endpoint selection is
-environment-driven (`PERIOP_*_BASE_URL` variables, see `src/periop/nim.py`
-and spec §8.1). With all four NIMs on one GPU box:
-
-```bash
-set -a; source configs/selfhosted.env; set +a   # edit host/ports to taste
-uv run python scripts/smoke_llm.py               # same commands as above
-```
-
-Reference deployment (all four NIMs co-tenant on a single DGX Spark GB10,
-120 GB unified memory) is documented in `docs/selfhosted.md`.
-
-## Provenance, made tangible
-
-Each claim renders with its status and cited span — for audio, the speaker and
-`(t0, t1)` so a reviewer knows which clip to play:
-
-```
-✓ (supported) Metformin discontinued approximately one year ago per patient report.
-    ↳ [doc:med-list#c002] [Current Medications] "Metformin 500mg twice daily."
-    ↳ [audio:preop-interview#s004] (PATIENT, 37.6-43.6s) "…but metformin, stopped
-       already one year plus."
-    ↳ [audio:preop-interview#s006] (PATIENT, 47.6-56.0s) "…HbA1c last check was
-       6.2%, so doctor say can stop metformin."
-```
-
-The records still list metformin as current; the GapAnalyst catches the
-conflict, and the note states the interview truth and cites it.
-
-The same ledger drives the **review UI** ([specs/ui.md](specs/ui.md)) — a
-three-column workspace with the case list, the claim ledger grouped by stage,
-and a provenance panel (documents ⟷ diarized transcripts) with an audio
-player:
-
-![Review UI](docs/images/review-ui.png)
-
-- Click a claim (or a provenance chip): a document citation highlights the
-  exact chunk; an audio citation **plays the exact clip** (`t0`→`t1`,
-  auto-pause) from the cited recording while the transcript follows along.
-- The reverse index ("cited by *n* claims") walks from any chunk/segment back
-  to every claim citing it — a segment cited by both a `supported` and a
-  `conflicting` claim is the record-vs-patient story made legible.
-- No rendered wavs (they are gitignored)? The UI degrades to timestamp-only
-  mode; regenerate audio with `scripts/render_audio.py`.
-- Dev loop: `uv run uvicorn periop.api.app:app --reload` + `cd ui && npm run
-  dev`. Tests: `npm test` (vitest) and `npm run test:e2e` (Playwright,
-  headless, hermetic fixture store — no network).
-
-For zero-dependency review there is still the self-contained static page
-([`data/cases/_out/sg-0002.html`](data/cases/_out/sg-0002.html), no server
-needed): claims grouped by artifact with unsupported/conflicting ones
-visually flagged, each expandable to its cited spans, and every citation
-linking into a source-registry section.
-
-## Provider workflow (v2)
-
-[specs/v2.md](specs/v2.md) wraps the same pipeline in a **live clinical
-workflow**: providers create cases from the browser and feed each stage its
-inputs at the point of care, instead of reviewing pre-baked bundles.
-
-- **Case lifecycle** — created → pre-op → intra-op → post-op → closed, each
-  stage the same shape: *inputs → generate → review → sign off*. Per-stage
-  status, provider attribution (`performed_by`, `signed_off_by`), and
-  timestamps live in an additive `workflow` block; every pre-v2 case JSON
-  loads unchanged and renders read-only ("Review only").
-- **Intake** — paste or upload (`.txt`/`.md`/`.pdf`) prior records and the op
-  plan into typed slots; the **GapAnalyst runs at intake** (it needs no
-  audio) as a background generation — uploads return as soon as the document
-  is durable, the intake screen polls until the questions arrive, and a
-  failed analysis retries from the next upload or an explicit re-run
-  ([specs/v2-speed.md](specs/v2-speed.md) §3.2). The questions, each citing
-  the triggering chunk, go through a human review — dismiss / reword / add —
-  before the interview. Dismissals are kept: a dismissed question that later
-  proves relevant is a finding.
-- **Audio capture** — in-browser recording (MediaRecorder) or file upload for
-  the interview, intra-op voice memos (append-style), and the post-op
-  interview; the server normalizes everything to 16 kHz mono wav (ffmpeg,
-  with a wav passthrough fallback) so ASR and clip playback work unchanged.
-- **Stage runs stream progress** — `POST /stages/{stage}/run` returns SSE
-  (per-agent start/end, artifact completion) read with fetch +
-  ReadableStream; gates return 409s that name the next action ("sign off the
-  preop stage before…"). One run at a time per server.
-- **Handoff acknowledge** — the receiving provider opens the SBAR handoff,
-  plays any cited clip, and acknowledges receipt; the case records who and
-  when. Not a signature — a demonstration of a transfer that is *received,
-  traceable, acknowledged*.
-- **Worklist** — the sidebar shows every case's headline stage + status in
-  plain words, who acted last, and conflict indicators, filterable by stage
-  and status. One primary action per case state (unit-tested): a provider who
-  only ever presses the big button completes the whole workflow.
-- **Conformance** — a pytest walks a synthetic case through the entire API
-  workflow and asserts the resulting ledger is identical to the batch
-  pipeline's ([tests/test_lifecycle_conformance.py](tests/test_lifecycle_conformance.py)):
-  the workflow layer is a re-plumbing, not a fork.
-- Hermetic Playwright e2e drives all of it — three provider identities, one
-  case, creation to acknowledged handoff — against the real server with an
-  instant stub runner (`PERIOP_STUB_RUNNER=1`). A recorded run:
-  [docs/images/provider-workflow-demo.webm](docs/images/provider-workflow-demo.webm).
-
-### Terminal workflow (CLI)
-
-The same workflow drives from the terminal — `periop` is a thin HTTP client
-over the identical API (a running server via `--api-url`/`PERIOP_API_URL`, or
-an app auto-hosted on an ephemeral port for the life of the command, NAT
-session included, so live stage runs stay traced either way):
-
-```bash
-export PERIOP_PROVIDER=p-lim                      # acting provider (attribution)
-periop create "Hip repair"                        # → hip-repair
-periop add-document hip-repair gp-summary notes.md
-periop add-document hip-repair op-plan --text "Elective right hip repair under GA."
-periop questions hip-repair                       # GapAnalyst prepped these in the background
-periop approve-questions hip-repair --dismiss 2   # dismissals kept, never deleted
-periop add-audio hip-repair preop-interview interview.wav
-periop run hip-repair preop                       # streams per-agent progress
-periop show hip-repair                            # claim ledger with provenance
-periop signoff hip-repair preop
-# … intraop (p-tan), postop (p-rahman), then:
-periop ack-handoff hip-repair --provider p-rahman
-periop list                                       # the worklist, in words
-```
-
-The CLI owns no workflow logic — stage gates, error copy, and demo-case
-immutability are the API's, and failures print the server's next-action
-message verbatim. A second conformance test
-([tests/test_cli_conformance.py](tests/test_cli_conformance.py)) walks a
-synthetic bundle end-to-end through `periop` commands and asserts the ledger
-is identical to the batch pipeline's: CLI == API == batch, one seam. Build
-status: [specs/progress-cli.md](specs/progress-cli.md).
-
-An agent skill —
-[.agents/skills/periop-provider-workflow/SKILL.md](.agents/skills/periop-provider-workflow/SKILL.md),
-written in the [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw) skills
-style — teaches coding-agent harnesses to drive this workflow themselves.
-
-The v2 stretch list shipped too:
-
-- **Live intra-op dictation** — the theatre screen is dictation-first: mic
-  audio downsamples to 16 kHz PCM16 in the browser and streams up
-  `WS /api/cases/{id}/sources/audio/stream`; partial/final words render as
-  they are spoken (Parakeet *streaming* profile live, injectable fake in
-  tests), and stop lands citable segments with wav-offset times so
-  click-to-play provenance works unchanged. Mic, socket, or ASR failure
-  degrades to the memo recorder in words — dictation is never the only way
-  through the stage. Live smoke:
-  `uv run python scripts/smoke_stream_asr.py`.
-- **Per-claim review actions** — quiet *Mark reviewed / Flag* toggles on
-  live-case claim rows, persisted as sidecar state
-  (`_out/<case_id>.review.json`) so the pipeline-written case JSON stays
-  byte-identical; reviewed counts and reviewer-flagged claims feed the
-  sign-off summary and jump list.
-- **Department dashboard + "my cases"** — one screen answering "where is
-  every case, and what needs a reviewer": stage columns with status counts
-  in words, a waiting-for-a-reviewer queue naming who generated each output,
-  outstanding-conflict totals; plus a worklist filter for cases the picked
-  provider has touched.
-- **Tablet-width layout** — below desktop width the provenance rail hides
-  and the worklist folds into a drawer behind a labelled *Cases* button, so
-  the intra-op capture screen is one big column (asserted at iPad viewport
-  in e2e).
-
-Build status: [specs/progress-v2.md](specs/progress-v2.md).
-
-## Synthetic data & sovereign-AI grounding
-
-No real patients. Synthetic patients are sampled from
-Nemotron-Personas-Singapore (stratified across age band × sex), each assigned a
-surgery, comorbidity bundle, medication list, a **deliberate documentation
-defect** (missing allergy / stale med list / record-patient conflict), and
-**distractor history** (resolved/irrelevant items). The defect makes the
-GapAnalyst evaluable (gold = "these questions should have been asked"); the
-distractors make relevance judgment evaluable (they must not surface in notes).
-
-## Evaluation
-
-Custom metrics in [`src/periop/evals/`](src/periop/evals/): provenance
-precision/coverage, claim recall vs gold, hallucinated-claim rate,
-gap-analysis P/R, distractor leakage, structured-extraction F1, clinical-term
-KER. A/B experiments: word boosting on/off, **Nano vs Super for extraction**,
-constrained vs free-generation handoff. See
-[`evals/report.json`](evals/) for the committed run.
-
-## Profiling (NAT-traced live run)
-
-`nat eval --config_file configs/profile_config.yml` runs the full pipeline
-with the NAT profiler collecting every LLM call (NimChat emits
-LLM_START/LLM_END intermediate steps with token usage, since the ADK plugin
-only hooks litellm). Committed reports from one full case (sg-0001, hosted
-NIMs on build.nvidia.com) live in [`evals/profile/`](evals/profile/):
-
-| | Nemotron Super 49B (reasoning) | Nemotron Nano 9B (fast) |
-|---|---|---|
-| Calls | 7 | 44 |
-| Role | note generation, gap analysis, event verification | per-claim verification, extraction first pass |
-| Avg latency / call | 85.4 s | 8.1 s |
-| p95 latency | 171.5 s | 17.3 s |
-| Tokens (prompt + completion) | 12,833 + 16,251 | 17,717 + 15,814 |
-
-Full case wall-clock: ~16 min, sequential. The bottleneck report
-(`workflow_profiling_report.txt`) confirms the model-tiering story from
-spec §8: Super's reasoning latency dominates (bottleneck score 85.4 vs 8.1),
-while Nano absorbs 86% of the calls at ~10× lower per-call latency — which is
-exactly why verification and the extraction first pass run on the fast tier.
-
-## Observability (Langfuse, live and batch alike)
-
-The provider-facing path is observed exactly like the batch path
-([specs/v2-nat.md](specs/v2-nat.md)): every stage run triggered from the
-browser executes inside a real NAT `Runner`, so the same
-`LLM_START`/`LLM_END` steps the profiler consumes also export as OTel spans.
-Tracing is opt-in by environment — set `LANGFUSE_PUBLIC_KEY`,
-`LANGFUSE_SECRET_KEY`, and `LANGFUSE_BASE_URL` and both `nat run`/`nat eval`
-and the API server export to the same Langfuse project; leave any unset and
-the app runs normally after one startup warning (the committed configs'
-`_type: periop_langfuse` block is non-secret and inert without credentials).
-
-The committed parity artifact
-([`evals/traces/live-preop-trace.json`](evals/traces/live-preop-trace.json),
-produced by `scripts/smoke_live_trace.py`) is one live, API-driven pre-op
-stage run — `POST /api/cases/{id}/stages/preop/run` against self-hosted
-NIMs — fetched back out of Langfuse: 18 observations in one trace, the
-`WORKFLOW` bracket plus one Super-49B `GENERATION` (the note writer,
-1,911 → 2,183 tokens) and 15 Nano-9B `GENERATION`s (per-claim verification,
-~1.5 s each) — the batch profiler's tiering table, visible per-click on the
-live path.
-
-## Status
-
-M0–M6 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
-pipeline, all agents, eval harness, NAT-profiled live run, self-hosted NIM
-path with TTS+ASR). The review UI ([specs/ui.md](specs/ui.md), U0–U2+U4 —
-see [specs/progress-ui.md](specs/progress-ui.md)) ships the claim ledger with
-click-to-play audio provenance. The v2 provider workflow
-([specs/v2.md](specs/v2.md), W0–W9 — see
-[specs/progress-v2.md](specs/progress-v2.md)) adds the write path: case
-creation, staged intake with question review, audio capture, SSE-streamed
-stage runs (promoting ui.md's U3 from stretch to shipped), sign-off/reopen,
-and handoff acknowledge, pinned to the batch pipeline by a lifecycle
-conformance test — plus the full stretch list: live intra-op dictation over
-the Parakeet streaming profile, per-claim review actions, the department
-dashboard with a "my cases" filter, and the tablet layout. W8
-([specs/v2-nat.md](specs/v2-nat.md)) closes the observability gap: live
-stage runs execute inside a NAT `Runner` and export to Langfuse when the
-environment provides credentials. W9 ([specs/v2-speed.md](specs/v2-speed.md))
-cuts the application-controlled latency out of a live run: reasoning-tier
-thinking off by default, gap analysis off the request path, a bounded
-ClaimVerifier fan-out, and concurrent post-op writers. The pipeline is now
-the ADK-native composition described in
-[docs/architecture.md](docs/architecture.md) — see also
-[docs/adk-orchestration.md](docs/adk-orchestration.md) — and has grown two
-tool-calling agents beyond the three-stage pipeline
-([specs/v2-agents.md](specs/v2-agents.md)): an **EquipmentAdvisor** that
-suggests equipment during pre-op note writing (reserved at sign-off) and a
-**CaseChat** assistant providers can ask questions of over the record. The
-eval dataset scale-up to 30 cases (`evals/README.md`'s 2026-07-11 entry) is
-also done. Live NIM paths (LLM tiers, full case runs, traced profiling) are
-exercised with an NGC key; the ASR/TTS speech NIMs use documented hosted NVCF
-endpoints (see [docs/attribution.md](docs/attribution.md)).
+[Apache-2.0](LICENSE). Synthetic data only, no PHI. Not a medical device.
