@@ -11,68 +11,50 @@ NVIDIA NIMs on [build.nvidia.com](https://build.nvidia.com), no local GPU.
 | [Docker (local)](#2-docker-local) | Running on your own machine | No | Docker |
 | [Hugging Face Docker Space](#3-hugging-face-docker-space) | Sharing a live link | **Yes** | HF account |
 
-## Two runtime modes
+> **Two runtime modes.** The app auto-detects: no `NGC_API_KEY` → instant
+> **stub demo** (synthetic cases, no network calls); with `NGC_API_KEY` →
+> **live** hosted-NIM generation. Force either with `PERIOP_STUB_RUNNER=1`
+> (demo) or `=0` (live). Logic lives in
+> [`docker/entrypoint.sh`](../docker/entrypoint.sh) and
+> [`.devcontainer/start.sh`](../.devcontainer/start.sh).
 
-The app boots in one of two modes, chosen automatically from the environment
-(logic in [`docker/entrypoint.sh`](../docker/entrypoint.sh) and
-[`.devcontainer/start.sh`](../.devcontainer/start.sh)):
+## Getting a NIM API key
 
-- **Stub demo (no key).** The *real* server with an instant stub pipeline: the
-  full review UI over committed **synthetic** cases, stage runs that complete
-  immediately, no network calls. Nothing to configure — this is what you get
-  with no API key. Great for exploring the workflow and the click-to-play audio
-  provenance.
-- **Live (your NIM key).** Set `NGC_API_KEY` and the reasoning
-  (`llama-3.3-nemotron-super-49b`) and fast (`nemotron-nano-9b`) tiers call
-  hosted NIMs for real generation — gap analysis, note writing, per-claim
-  verification with fresh provenance.
+The live modes use **your own** NVIDIA NIM API key — it stays in your
+environment/secrets and is never committed or shipped in an image.
 
-You can force either mode with `PERIOP_STUB_RUNNER=1` (demo) or `0` (live).
+1. Sign in at **[build.nvidia.com](https://build.nvidia.com)** (free), the
+   hosted front door to [NVIDIA NIM](https://developer.nvidia.com/nim).
+2. Open any model (e.g. *llama-3.3-nemotron-super-49b-v1.5*) and click
+   **Get API Key** (top-right). It looks like `nvapi-…`.
+3. The one key authorizes both tiers this app calls. Provide it as:
+   - **Codespaces / local:** `NGC_API_KEY` in `.env` (copy from `.env.example`),
+     or `-e NGC_API_KEY=…` on `docker run`.
+   - **Hugging Face Space:** a **secret** named `NGC_API_KEY`
+     (Settings → Variables and secrets).
 
-> **A note on speech.** The hosted key covers the LLM tiers. The keyless demo
-> already exercises the whole UI including audio provenance, replayed from
-> committed cases.
->
-> The **speech-to-text** pipeline can also run hosted, GPU-free, against
-> NVIDIA's hosted Parakeet ASR over NVCF using the same `NGC_API_KEY` —
-> including **speaker diarization** for the pre-op interview:
+`NVIDIA_API_KEY` is accepted as a synonym everywhere `NGC_API_KEY` is.
+
+> **Speech-to-text too.** The same key also drives hosted, GPU-free
+> speech-to-text — including speaker diarization — via NVIDIA's Parakeet ASR
+> over NVCF:
 >
 > ```bash
 > PERIOP_ASR_GRPC_URL=grpc.nvcf.nvidia.com:443
 > PERIOP_ASR_USE_SSL=1
-> PERIOP_ASR_FUNCTION_ID=<function id — see below>
+> PERIOP_ASR_FUNCTION_ID=<function id>
 > ```
 >
-> **Finding the function id.** It's per-model and can rotate, so look it up
-> rather than hardcoding one:
+> Get the function id from the **Try API** curl example on the
+> [Parakeet CTC 1.1B page](https://build.nvidia.com/nvidia/parakeet-ctc-1_1b-asr/api)
+> — it's the UUID in `https://<FUNCTION_ID>.invocation.api.nvcf.nvidia.com/…`.
+> It rotates, so look it up rather than hardcoding one. Note: the endpoint is
+> streaming-only (handled transparently by the app), and diarization only
+> comes back over that gRPC streaming path, not the plain HTTP route.
 >
-> 1. Go to the Parakeet CTC 1.1B model page:
->    [build.nvidia.com/nvidia/parakeet-ctc-1_1b-asr/api](https://build.nvidia.com/nvidia/parakeet-ctc-1_1b-asr/api).
-> 2. Find the `curl` example under **Try API**. It calls
->    `https://<FUNCTION_ID>.invocation.api.nvcf.nvidia.com/v1/audio/transcriptions`
->    — the UUID between `https://` and `.invocation.api.nvcf.nvidia.com` is the
->    function id. Copy that into `PERIOP_ASR_FUNCTION_ID`.
->
-> That curl example itself hits the OpenAI-style HTTP transcription route,
-> which returns plain text with no speaker info. The *same* function id, used
-> over the gRPC streaming path (what this app does), does return diarization —
-> verified end to end against a real interview recording.
->
-> Two things to know about the hosted endpoint:
->
-> - **It's streaming-only** — `offline_recognize` is rejected
->   (`INVALID_ARGUMENT: … type=offline`). The app handles this transparently:
->   batch uploads (pre-op interview, intra-op notes) are fed through the
->   streaming API internally, so `transcribe()` behaves the same as against a
->   local NIM. Diarized segments and word timings come back unchanged.
-> - **Diarization only comes back over gRPC streaming.** The OpenAI-style HTTP
->   `/v1/audio/transcriptions` route (the curl example above) never returns
->   speaker info, even for a diarization-capable function — you have to use the
->   gRPC path to see speaker tags at all.
->
-> **Text-to-speech (Magpie TTS)** has no hosted equivalent and still needs a
-> **self-hosted** NIM — see [selfhosted.md](selfhosted.md). It's only used to
-> *render* synthetic case audio, not in the review flow.
+> **Text-to-speech (Magpie TTS)** has no hosted equivalent — see
+> [selfhosted.md](selfhosted.md). It's only used to render synthetic case
+> audio, not the review flow itself.
 
 ---
 
@@ -120,6 +102,8 @@ Handy overrides: `-e PERIOP_STUB_RUNNER=1` forces the demo; `-e PORT=8080 -p
 
 ## 3. Hugging Face Docker Space
 
+> **Status: to be tested.**
+
 Gives the app a **public live URL**. The Space builds the same root
 `Dockerfile`; Hugging Face exposes port 7860 (its Docker-Space default) which
 the image already listens on.
@@ -134,23 +118,6 @@ Full step-by-step (create the Space, push, add the key secret):
 [`deploy/hf-space/README.md`](../deploy/hf-space/README.md).
 
 ---
-
-## Getting a NIM API key
-
-The live modes use **your own** NVIDIA NIM API key — it stays in your
-environment/secrets and is never committed or shipped in an image.
-
-1. Sign in at **[build.nvidia.com](https://build.nvidia.com)** (free), the
-   hosted front door to [NVIDIA NIM](https://developer.nvidia.com/nim).
-2. Open any model (e.g. *llama-3.3-nemotron-super-49b-v1.5*) and click
-   **Get API Key** (top-right). It looks like `nvapi-…`.
-3. The one key authorizes both tiers this app calls. Provide it as:
-   - **Codespaces / local:** `NGC_API_KEY` in `.env` (copy from `.env.example`),
-     or `-e NGC_API_KEY=…` on `docker run`.
-   - **Hugging Face Space:** a **secret** named `NGC_API_KEY`
-     (Settings → Variables and secrets).
-
-`NVIDIA_API_KEY` is accepted as a synonym everywhere `NGC_API_KEY` is.
 
 ## Optional: Langfuse tracing
 
