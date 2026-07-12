@@ -1148,10 +1148,11 @@ class TestNatWiring:
 # ------------------------------------------------- sign-off / reopen / ack
 
 
-def signoff(client, stage, provider="p-lim", case_id="tkr-mrs-w"):
-    return client.post(
-        f"/api/cases/{case_id}/stages/{stage}/signoff", json={"provider_id": provider}
-    )
+def signoff(client, stage, provider="p-lim", case_id="tkr-mrs-w", equipment=None):
+    body = {"provider_id": provider}
+    if equipment is not None:
+        body["equipment"] = equipment
+    return client.post(f"/api/cases/{case_id}/stages/{stage}/signoff", json=body)
 
 
 class TestSignoff:
@@ -1198,6 +1199,73 @@ class TestSignoff:
 
     def test_demo_case_409(self, wclient):
         assert signoff(wclient, "preop", case_id="sg-demo").status_code == 409
+
+
+class TestSignoffEquipment:
+    """Ticked equipment suggestions reserve through the ledger at sign-off."""
+
+    def _ready(self, wclient):
+        make_preop_ready(wclient)
+        run_stage(wclient, "preop")
+
+    def test_ticked_items_reserved_and_attributed(self, wclient, dirs):
+        from periop.equipment import EquipmentStore
+
+        out_dir, _, _ = dirs
+        self._ready(wclient)
+        resp = signoff(wclient, "preop", equipment=["video-laryngoscope", "ett-7.0"])
+        assert resp.status_code == 200
+        held = EquipmentStore(out_dir).case_reservations("tkr-mrs-w")
+        assert {(r.item_id, r.qty, r.by) for r in held} == {
+            ("video-laryngoscope", 1, "p-lim"),
+            ("ett-7.0", 1, "p-lim"),
+        }
+
+    def test_shortage_rolls_back_and_409s(self, wclient, dirs):
+        from periop.equipment import CATALOG_BY_ID, EquipmentStore
+
+        out_dir, _, _ = dirs
+        self._ready(wclient)
+        store = EquipmentStore(out_dir)
+        # drain the video laryngoscopes (total 2) into another case
+        store.reserve("video-laryngoscope", "other-case",
+                      CATALOG_BY_ID["video-laryngoscope"].total, "p-tan")
+        resp = signoff(wclient, "preop", equipment=["ett-7.0", "video-laryngoscope"])
+        assert resp.status_code == 409
+        assert "video laryngoscope" in resp.json()["detail"].lower()
+        # the ETT reserved before the failure came back off the case
+        assert store.case_reservations("tkr-mrs-w") == []
+        # and the stage did not flip
+        case = Case.model_validate(
+            wclient.get("/api/cases/tkr-mrs-w").json()
+        )
+        assert case.workflow.stages["preop"].status is StageStatus.AWAITING_REVIEW
+
+    def test_already_held_item_not_duplicated(self, wclient, dirs):
+        from periop.equipment import EquipmentStore
+
+        out_dir, _, _ = dirs
+        self._ready(wclient)
+        store = EquipmentStore(out_dir)
+        store.reserve("ett-7.0", "tkr-mrs-w", 1, "p-lim")  # e.g. via the chatbot
+        assert signoff(wclient, "preop", equipment=["ett-7.0"]).status_code == 200
+        held = store.case_reservations("tkr-mrs-w")
+        assert [(r.item_id, r.qty) for r in held] == [("ett-7.0", 1)]
+
+    def test_unknown_item_422(self, wclient):
+        self._ready(wclient)
+        resp = signoff(wclient, "preop", equipment=["ecmo"])
+        assert resp.status_code == 422
+        assert "ecmo" in resp.json()["detail"]
+
+    def test_equipment_on_other_stages_422(self, wclient):
+        self._ready(wclient)
+        signoff(wclient, "preop")
+        upload_audio(wclient, "tkr-mrs-w", "intraop-notes", make_wav())
+        wait_transcription(wclient, "tkr-mrs-w", "intraop", "complete", "failed")
+        run_stage(wclient, "intraop")
+        resp = signoff(wclient, "intraop", equipment=["ett-7.0"])
+        assert resp.status_code == 422
 
 
 class TestReopen:

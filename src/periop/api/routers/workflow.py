@@ -16,9 +16,10 @@ from datetime import datetime, timezone
 from uuid import uuid4
 
 from fastapi import APIRouter, HTTPException, Request
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, field_validator
 
 from periop.api.gap_analysis import launch_gap_analysis
+from periop.equipment import CATALOG_BY_ID
 from periop.api.transcription import launch_transcription
 from periop.api.routers.cases import load_case
 from periop.schemas import (
@@ -456,6 +457,13 @@ class ProviderAction(BaseModel):
     provider_id: str
 
 
+class SignoffAction(ProviderAction):
+    """Sign-off body; ``equipment`` is pre-op only — the suggested items the
+    provider ticked, reserved for the case as part of completing the stage."""
+
+    equipment: list[str] = Field(default_factory=list)
+
+
 def _require_stage(case: Case, stage: str):
     if case.workflow is None or stage not in case.workflow.stages:
         raise HTTPException(status_code=404, detail=f"no such stage: {stage}")
@@ -463,11 +471,16 @@ def _require_stage(case: Case, stage: str):
 
 
 @router.post("/cases/{case_id}/stages/{stage}/signoff")
-def signoff_stage(request: Request, case_id: str, stage: str, body: ProviderAction) -> Case:
+def signoff_stage(request: Request, case_id: str, stage: str, body: SignoffAction) -> Case:
     """Assert 'I have reviewed this stage's output' (v2 §4.5).
 
     Allowed with outstanding conflicts — the ledger keeps them visible; the
     sign-off screen is responsible for surfacing them, not hiding them.
+
+    On pre-op, ``equipment`` carries the suggested items the provider ticked:
+    each is reserved for the case (qty 1, attributed to the signer) before
+    the stage flips. A shortage rolls this request's reservations back and
+    409s so the provider can untick the item and sign off again.
     """
     case = load_case(request, case_id)
     require_writable(case)
@@ -481,6 +494,32 @@ def signoff_stage(request: Request, case_id: str, stage: str, body: ProviderActi
             status_code=409,
             detail=f"nothing to sign off — generate the {stage} output first",
         )
+
+    if body.equipment:
+        if stage != "preop":
+            raise HTTPException(
+                status_code=422,
+                detail="equipment reservations only ride the pre-op sign-off",
+            )
+        unknown = [i for i in body.equipment if i not in CATALOG_BY_ID]
+        if unknown:
+            raise HTTPException(
+                status_code=422,
+                detail=f"no such equipment item(s): {', '.join(unknown)}",
+            )
+        ledger = request.app.state.equipment_store
+        already_held = {r.item_id for r in ledger.case_reservations(case_id)}
+        reserved: list[str] = []
+        try:
+            for item_id in dict.fromkeys(body.equipment):
+                if item_id in already_held:
+                    continue  # e.g. ordered through the chatbot earlier
+                ledger.reserve(item_id, case_id, 1, body.provider_id)
+                reserved.append(item_id)
+        except ValueError as exc:
+            for item_id in reserved:
+                ledger.release(item_id, case_id, 1)
+            raise HTTPException(status_code=409, detail=str(exc)) from None
 
     state.status = StageStatus.SIGNED_OFF
     state.signed_off_by = body.provider_id
