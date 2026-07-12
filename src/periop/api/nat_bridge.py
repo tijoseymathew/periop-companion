@@ -39,12 +39,16 @@ def run_stage_in_nat(
             StageRunBridge(runner=runner, emit=emit, out_dir=out_dir, case_dir=case_dir)
         )
         message = StageRunInput(case_id=case_id, stage=stage, mode=mode)
-        async with nat_sessions.run(message) as nat_runner:
-            # subscribe before the workflow starts (same shape as `nat eval`)
-            steps_task = asyncio.ensure_future(pull_intermediate())
-            runner_task = asyncio.create_task(nat_runner.result(to_type=str))
-            result = await runner_task
-            steps = await steps_task
+        # conversation_id becomes `session.id` on every exported span,
+        # which Langfuse adopts as the trace's Session — so all of a
+        # case's stage runs group under the case id in Langfuse
+        async with nat_sessions.session(conversation_id=case_id) as nat_session:
+            async with nat_session.run(message) as nat_runner:
+                # subscribe before the workflow starts (same shape as `nat eval`)
+                steps_task = asyncio.ensure_future(pull_intermediate())
+                runner_task = asyncio.create_task(nat_runner.result(to_type=str))
+                result = await runner_task
+                steps = await steps_task
         logger.info(
             "case %s %s ran inside NAT: %d intermediate steps [%s]",
             case_id,

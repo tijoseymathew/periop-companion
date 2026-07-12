@@ -86,6 +86,26 @@ workflow:
         assert captured["case_dir"] == tmp_path / "cases" / "sg-0001"
         assert "sg-0001" in result
 
+    async def test_batch_run_adopts_case_id_as_trace_session(
+        self, config_file, monkeypatch
+    ):
+        """Langfuse groups traces by a `session.id` span attribute, which
+        NAT's span exporter copies from `conversation_id` — the function body
+        sets it to the case id so every case's runs share one session."""
+        import periop.agents.pipeline as agents_pipeline
+
+        from nat.builder.context import Context
+
+        seen = {}
+
+        async def fake_run_case(case, pipeline=None):
+            seen["conversation_id"] = Context.get().conversation_id
+            return case
+
+        monkeypatch.setattr(agents_pipeline, "run_case", fake_run_case)
+        await run_workflow(config_file, "sg-0777")
+        assert seen["conversation_id"] == "sg-0777"
+
 
 # ---------------------------------------------------------- periop_stage_run
 
@@ -144,6 +164,50 @@ class TestPeriopStageRun:
             await run_workflow(
                 stage_config_file, '{"case_id": "sg-does-not-exist", "stage": "preop"}'
             )
+
+    async def test_live_stage_run_adopts_case_id_as_trace_session(self, tmp_path):
+        """The API bridge enters the NAT session with the case id as its
+        conversation id (→ `session.id` on every span, including the
+        WORKFLOW_START root span opened before the function body runs), so
+        Langfuse shows one session per case with a trace per stage run."""
+        import asyncio
+
+        from nat.builder.context import Context
+        from nat.runtime.loader import load_workflow
+
+        from periop.api.nat_bridge import run_stage_in_nat
+
+        config = tmp_path / "api.yml"
+        config.write_text(
+            f"""\
+workflow:
+  _type: periop_stage_run
+  case_dir: {tmp_path / "cases"}
+"""
+        )
+        store = CaseStore(tmp_path / "cases" / "_out")
+        seed_case_with_document(store, "sg-0500")
+        seen: dict = {}
+
+        class CapturingRunner:
+            def run_stage(self, case, stage, case_dir, emit):
+                seen["conversation_id"] = Context.get().conversation_id
+                return case
+
+        async with load_workflow(config) as sessions:
+            # off-loop, like the stage-run worker thread that calls it live
+            await asyncio.to_thread(
+                run_stage_in_nat,
+                sessions,
+                CapturingRunner(),
+                "sg-0500",
+                "preop",
+                tmp_path / "cases" / "_out",
+                tmp_path / "cases",
+                lambda e, d: None,
+            )
+
+        assert seen["conversation_id"] == "sg-0500"
 
     async def test_stage_run_keeps_the_session_loop_free_for_export(self, tmp_path):
         """The runner is blocking, so it must run *off* the NAT loop thread:

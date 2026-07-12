@@ -40,7 +40,7 @@ class PeriopPipelineConfig(FunctionBaseConfig, name="periop_pipeline"):
 @register_function(config_type=PeriopPipelineConfig)
 async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
     from periop.agents.pipeline import build_case_pipeline, run_case
-    from periop.nat.telemetry import bind_export_loop
+    from periop.nat.telemetry import bind_export_loop, set_trace_session
     from periop.nim import fast_chat, reasoning_chat
 
     # bundles live in <case_dir>/<case_id>/; processed cases in <case_dir>/_out
@@ -49,6 +49,7 @@ async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
     async def _run(case_id: str) -> str:
         bind_export_loop()  # steps pushed from worker threads marshal here
         case_id = case_id.strip()
+        set_trace_session(case_id)  # Langfuse: one session per case
         try:
             case = store.load(case_id)
         except KeyError:
@@ -122,10 +123,11 @@ class PeriopStageRunConfig(FunctionBaseConfig, name="periop_stage_run"):
 @register_function(config_type=PeriopStageRunConfig)
 async def periop_stage_run(config: PeriopStageRunConfig, _builder: Builder):
     from periop.api.runner import LivePipelineRunner, StubPipelineRunner
-    from periop.nat.telemetry import bind_export_loop
+    from periop.nat.telemetry import bind_export_loop, set_trace_session
 
     async def _run(input: StageRunInput) -> str:
         bind_export_loop()  # steps pushed from worker threads marshal here
+        set_trace_session(input.case_id)  # Langfuse: one session per case
         bridge = _LIVE_BRIDGE.get()
         if bridge is None:  # standalone `nat run` — everything from config
             bridge = StageRunBridge(
