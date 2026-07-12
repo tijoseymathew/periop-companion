@@ -98,9 +98,18 @@ export default function App() {
   // (v2-speed §3.2); while either is in flight on an open case, poll until it
   // settles so questions and transcripts appear the moment they land.
   const gap = kase?.workflow?.stages.preop.gap_analysis ?? null;
+  // A stage can also be generating without this session streaming it — the
+  // page was reloaded mid-run, or another session started it. The run
+  // survives server-side; its durable status on the case is the truth, so
+  // poll that until it settles and the output lands on its own.
+  const generatingUnwatched =
+    !running &&
+    kase !== null &&
+    STAGE_KEYS.some((s) => kase.workflow?.stages[s].status === "generating");
   const jobsBusy =
     gap === "pending" ||
     gap === "running" ||
+    generatingUnwatched ||
     (kase !== null && STAGE_KEYS.some((s) => transcriptionBusy(kase, s)));
   useEffect(() => {
     if (view !== "case" || !kase || !jobsBusy) return;
@@ -256,18 +265,80 @@ export default function App() {
     }
   }
 
+  // watchRunSettled must not keep touching state for a case the provider
+  // has left — reopening the case resumes the watch via the jobs poll
+  const selectedIdRef = useRef<string | null>(null);
+  selectedIdRef.current = selectedId;
+
+  /** The SSE stream is only a progress feed — the run itself survives a
+   * dropped connection, and the durable stage status on the case says how
+   * it ended (generating → awaiting_review | ready_to_generate). Poll that
+   * until it settles; null when the provider moved to another case. */
+  async function watchRunSettled(caseId: string, stage: StageKey): Promise<Case | null> {
+    let announced = false;
+    for (;;) {
+      if (selectedIdRef.current !== caseId) return null;
+      try {
+        const fresh = await fetchCase(caseId);
+        if (fresh.workflow?.stages[stage].status !== "generating") return fresh;
+        if (selectedIdRef.current !== caseId) return null;
+        setKase(fresh);
+        if (!announced) {
+          announced = true;
+          setGenEvents((prev) => [
+            ...prev,
+            {
+              event: "status",
+              data: { message: "Connection interrupted — the run is still going; waiting for it to finish…" },
+            },
+          ]);
+        }
+      } catch {
+        /* transient — the run outlives a brief API blip */
+      }
+      await sleep(1500);
+    }
+  }
+
   async function handleGenerate() {
     if (!kase || !me) return;
+    const caseId = kase.case_id;
     const stage = headlineStage(kase.workflow) ?? "preop";
     setGenEvents([]);
     setNotice(null);
     setGenFailed(false);
     setRunning(true);
+    // `complete`/`error` is the server's verdict on the run; a stream that
+    // ends without one just lost its connection mid-run
+    let verdict = false;
     try {
-      await streamStageRun(kase.case_id, stage, me, (ev) => {
-        setGenEvents((prev) => [...prev, ev]);
-      });
-      const fresh = await fetchCase(kase.case_id);
+      let streamError: unknown = null;
+      try {
+        await streamStageRun(caseId, stage, me, (ev) => {
+          if (ev.event === "complete" || ev.event === "error") verdict = true;
+          setGenEvents((prev) => [...prev, ev]);
+        });
+      } catch (e) {
+        streamError = e;
+      }
+      if (streamError && verdict) throw streamError; // the run failed — the server said so
+
+      let fresh: Case;
+      if (verdict) {
+        fresh = await fetchCase(caseId);
+      } else {
+        // no verdict (dropped stream, or a gate rejection — the first poll
+        // settles which): follow the durable status instead of guessing
+        const settled = await watchRunSettled(caseId, stage);
+        if (!settled) return; // moved to another case; reopening resumes the watch
+        fresh = settled;
+      }
+      if (!fresh.artifacts.some((a) => a.artifact_id === PRIMARY_ARTIFACT[stage])) {
+        throw (
+          streamError ??
+          new Error("the run was interrupted before it finished — generate again when ready")
+        );
+      }
       setKase(fresh);
       await refreshCases();
       setStageView(null); // land on the freshly generated stage's brief
@@ -442,7 +513,12 @@ export default function App() {
         : gap === "running"
           ? "Preparing the interview questions"
           : "Reading the records for gaps and conflicts";
-  const chromeStatus = generatingLabel ?? buildingLabel;
+  // a run this session isn't streaming (reopened mid-run) still gets the
+  // chrome strip — the jobs poll lands its output the moment it settles
+  const watchingLabel = generatingUnwatched
+    ? "Generating — reconnected to a run in progress"
+    : null;
+  const chromeStatus = generatingLabel ?? buildingLabel ?? watchingLabel;
 
   const canReach = (target: FlowScreen): boolean => {
     if (!kase) return false;
@@ -509,7 +585,7 @@ export default function App() {
         {screen === "interview" && kase && (
           <InterviewScreen
             kase={kase}
-            busy={busy || running}
+            busy={busy || running || generatingUnwatched}
             notice={notice}
             canWrite={!!me}
             genFailed={genFailed}
@@ -523,7 +599,7 @@ export default function App() {
           <CaptureScreen
             stage={stage}
             kase={kase}
-            busy={busy || running}
+            busy={busy || running || generatingUnwatched}
             notice={notice}
             canWrite={!!me}
             genFailed={genFailed}
@@ -569,6 +645,8 @@ export default function App() {
     </div>
   );
 }
+
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 /** Pull the FastAPI `detail` off an axios error, else the message. */
 function readDetail(e: unknown): string {

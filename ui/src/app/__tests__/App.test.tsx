@@ -318,6 +318,95 @@ describe("Catch-Up app", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("reattaches to the run when the SSE stream drops mid-generation", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const ready = preopReadyCase();
+    const generating = CaseSchema.parse(structuredClone(ready));
+    generating.workflow!.stages.preop.status = "generating";
+    const generated = CaseSchema.parse({
+      ...structuredClone(ready),
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "c1", text: "Aspirin held pre-op.", status: "supported" }],
+        },
+      ],
+    });
+    generated.workflow!.stages.preop.status = "awaiting_review";
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-ready", label: "Doyle — knee", workflow: ready.workflow }),
+    ]);
+    // open → watch sees the run still going → next poll finds it settled
+    vi.mocked(api.fetchCase)
+      .mockResolvedValueOnce(ready)
+      .mockResolvedValueOnce(generating)
+      .mockResolvedValue(generated);
+
+    // the stream dies after one progress event, with no complete/error
+    // verdict — the connection dropped, not the run
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({
+        ok: true,
+        status: 200,
+        body: new ReadableStream<Uint8Array>({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode(
+                'event: agent_start\ndata: {"stage": "preop", "agent": "PreOpNoteWriter"}\n\n',
+              ),
+            );
+            controller.close();
+          },
+        }),
+      }) as unknown as Response),
+    );
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-ready/ }));
+    await userEvent.click(await screen.findByRole("button", { name: /Generate pre-op brief/ }));
+
+    // no failure declared — the chrome says the run is being followed
+    expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
+      "Connection interrupted — the run is still going",
+    );
+    // and when the durable status settles, the brief lands as usual
+    expect(await screen.findByText("The story so far", {}, { timeout: 4000 })).toBeInTheDocument();
+    expect(screen.queryByText(/interrupted before it finished/)).not.toBeInTheDocument();
+  });
+
+  it("reopening a case mid-generation follows the run instead of freezing", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const generating = preopReadyCase();
+    generating.workflow!.stages.preop.status = "generating";
+    const generated = CaseSchema.parse({
+      ...structuredClone(generating),
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "c1", text: "Aspirin held pre-op.", status: "supported" }],
+        },
+      ],
+    });
+    generated.workflow!.stages.preop.status = "awaiting_review";
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-ready", label: "Doyle — knee", workflow: generating.workflow }),
+    ]);
+    vi.mocked(api.fetchCase)
+      .mockResolvedValueOnce(generating)
+      .mockResolvedValue(generated);
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-ready/ }));
+
+    // this session never started the run, but the chrome still shows it
+    expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
+      "Generating — reconnected to a run in progress",
+    );
+    // the jobs poll lands the output the moment the run settles
+    expect(await screen.findByText("The story so far", {}, { timeout: 4000 })).toBeInTheDocument();
+  });
+
   it("folds the intake build into the chrome strip — records stay visible, no full-screen takeover", async () => {
     localStorage.setItem("periop-provider", "p-lim");
     const building = preopBuildingCase();
