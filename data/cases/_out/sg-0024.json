@@ -414,22 +414,46 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Elective Laparoscopic Cholecystectomy",
+          "text": "Occupation: Senior Official or Manager",
           "provenance": [
-            "doc:op-plan#c001"
+            "doc:gp-summary#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "General Anesthesia with Endotracheal Intubation planned",
+          "text": "Resident of Bukit Batok, Singapore",
           "provenance": [
-            "doc:op-plan#c002"
+            "doc:gp-summary#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
+          "text": "Hypertension (relevant because may impact blood pressure management during anesthesia)",
+          "provenance": [
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Type 2 Diabetes Mellitus (relevant because may impact glycemic control during and after surgery)",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Hyperlipidemia (relevant because may be associated with cardiovascular risk)",
+          "provenance": [
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
           "text": "Currently taking Atorvastatin 20mg once daily",
           "provenance": [
             "doc:med-list#c001",
@@ -438,7 +462,7 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
+          "claim_id": "c-008",
           "text": "Currently taking Metformin 500mg twice daily",
           "provenance": [
             "doc:med-list#c002",
@@ -447,7 +471,7 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
+          "claim_id": "c-009",
           "text": "Currently taking Lisinopril 10mg once daily",
           "provenance": [
             "doc:med-list#c003",
@@ -456,15 +480,15 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Stopped Aspirin 75mg once daily approximately 6 months ago due to stomach discomfort",
+          "claim_id": "c-010",
+          "text": "Stopped taking Aspirin 75mg once daily approximately 6 months ago due to stomach discomfort",
           "provenance": [
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
+          "claim_id": "c-011",
           "text": "Penicillin allergy (rash)",
           "provenance": [
             "doc:gp-summary#c006",
@@ -473,41 +497,12 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "No other allergies besides Penicillin (rash)",
+          "claim_id": "c-012",
+          "text": "No other known allergies to medications, non-drug items, or foods beyond Penicillin",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Hypertension managed with Lisinopril; no recent blood pressure readings provided",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s005",
-            "audio:preop-interview#s007"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Type 2 Diabetes Mellitus; no recent HbA1c levels provided",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s007"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "No residual respiratory issues from pneumonia (resolved 5 years ago)",
-          "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s011"
-          ],
-          "status": "unsupported"
         },
         {
           "claim_id": "c-013",
@@ -519,13 +514,48 @@
         },
         {
           "claim_id": "c-014",
+          "text": "No prior history of respiratory issues such as asthma, COPD, or breathing difficulties",
+          "provenance": [
+            "audio:preop-interview#s015",
+            "doc:gp-summary#c010"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Previous minor procedure with no issues under anesthesia",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "Fairly active, but has some trouble with stairs due to knee issue",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
           "text": "ASA-PS II (healthy patient with well-controlled comorbidities)",
           "provenance": [
             "doc:gp-summary#c007",
             "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
             "audio:preop-interview#s016"
           ],
           "status": "unsupported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Laparoscopic Cholecystectomy (elective) under General Anesthesia with Endotracheal Intubation planned",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
         }
       ]
     },
@@ -534,7 +564,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Propofol 120 mg administered at 08:00",
+          "text": "Propofol 120 milligrams administered at 08:00",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -566,7 +596,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Mean arterial pressure dropped to 50 mmHg at 08:20",
+          "text": "Mean arterial pressure dropped to 50 at 08:20",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -574,7 +604,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Atropine 1 mg administered at 08:20",
+          "text": "Atropine 1 milligram given at 08:20",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -582,7 +612,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "Heart rate increased to 120 bpm at 08:25",
+          "text": "Heart rate increased to 120 at 08:25",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -590,7 +620,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "Esmolol 2 mg administered at 08:25",
+          "text": "Esmolol 2 milligrams given at 08:25",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -603,63 +633,65 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Administration and Laparoscopic Surgery",
+          "text": "Hypotension management due to intra-op hypotension episode and pre-existing hypertension",
           "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s001"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Airway Compromise Monitoring due to Endotracheal Intubation with Grade One View",
-          "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Glycemic Control Monitoring in a Patient with Type 2 Diabetes Mellitus",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s007"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Hypotension Monitoring Following Intraoperative Drop in Mean Arterial Pressure",
-          "provenance": [
+            "doc:gp-summary#c007",
             "audio:intraop-notes#s005"
           ],
           "status": "inference"
         },
         {
-          "claim_id": "c-005",
-          "text": "Tachycardia Monitoring Following Intraoperative Heart Rate Increase",
+          "claim_id": "c-002",
+          "text": "Potential for post-operative tachycardia given intra-op tachycardia and need for monitoring",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
           "status": "inference"
         },
         {
-          "claim_id": "c-006",
-          "text": "Potential for Delayed Emergence or Residual Sedation due to Propofol Administration",
+          "claim_id": "c-003",
+          "text": "Glycemic control due to Type 2 Diabetes Mellitus",
           "provenance": [
-            "audio:intraop-notes#s001"
+            "doc:gp-summary#c008"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Risk of PONV (Postoperative Nausea and Vomiting) following general anesthesia with propofol induction",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Airway management watch due to endotracheal intubation",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Analgesia requirements post-laparoscopic surgery",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-007",
-          "text": "Monitoring for Hypertension or Hypotension given History of Hypertension",
+          "text": "Monitoring for cardiovascular instability due to pre-existing hyperlipidemia and intra-op hemodynamic fluctuations",
           "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s005",
-            "audio:preop-interview#s007"
+            "doc:gp-summary#c009",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
           ],
           "status": "inference"
         }
@@ -670,7 +702,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "58-year-old male following elective laparoscopic cholecystectomy under general anesthesia with endotracheal intubation.",
+          "text": "58-year-old male undergoing elective Laparoscopic Cholecystectomy under General Anesthesia with Endotracheal Intubation.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
@@ -680,13 +712,15 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of hypertension (on Lisinopril), Type 2 Diabetes Mellitus (on Metformin), and a penicillin allergy (rash).",
+          "text": "Relevant medical history includes Hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia. Patient is on Atorvastatin, Metformin, and Lisinopril, with a Penicillin allergy (rash).",
           "provenance": [
             "doc:gp-summary#c007",
-            "audio:preop-interview#s005",
-            "audio:preop-interview#s007",
             "doc:gp-summary#c008",
-            "audio:preop-interview#s004",
+            "doc:gp-summary#c009",
+            "doc:med-list#c001",
+            "audio:preop-interview#s008",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
             "doc:gp-summary#c006",
             "audio:preop-interview#s010"
           ],
@@ -694,7 +728,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative events included a drop in mean arterial pressure to 50 mmHg, treated with Atropine, followed by tachycardia (HR 120 bpm) treated with Esmolol.",
+          "text": "Intra-op complications included a drop in mean arterial pressure to 50, requiring Atropine, and a subsequent tachycardia (HR 120) managed with Esmolol.",
           "provenance": [
             "audio:intraop-notes#s005",
             "audio:intraop-notes#s006"
@@ -703,29 +737,17 @@
         },
         {
           "claim_id": "c-004",
-          "text": "At risk for postoperative nausea and vomiting (PONV) due to propofol and laparoscopic surgery, potential delayed emergence or residual sedation from propofol, and requires monitoring for airway compromise and glycemic control.",
+          "text": "Monitor for hypotension, tachycardia, and cardiovascular instability due to intra-op hemodynamic fluctuations and pre-existing conditions. Watch for signs of PONV and ensure glycemic control. Maintain airway management vigilance post-intubation.",
           "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s001",
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s002",
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Monitor for hypotension/hypertension, tachycardia, and signs of PONV. Ensure airway stability and maintain glycemic control.",
-          "provenance": [
+            "doc:gp-summary#c007",
             "audio:intraop-notes#s005",
             "audio:intraop-notes#s006",
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s005",
-            "audio:preop-interview#s007",
+            "doc:gp-summary#c008",
+            "audio:intraop-notes#s001",
             "doc:op-plan#c001",
-            "audio:intraop-notes#s001"
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s002",
+            "doc:gp-summary#c009"
           ],
           "status": "supported"
         }
@@ -753,7 +775,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient reports no breathing discomfort or chest tightness, but notes mild throat soreness from intubation.",
+          "text": "Patient denies any breathing discomfort or chest tightness, but notes mild throat soreness from intubation.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -761,7 +783,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient has no recall of the operation, which is consistent with general anesthesia.",
+          "text": "Patient has no recall of the operation, consistent with general anesthesia.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
@@ -769,17 +791,15 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Given patient's history of diabetes and hypertension, close monitoring of vitals and sugar levels is planned.",
+          "text": "Given patient's diabetes and hypertension, close monitoring of vitals and blood sugar levels is planned.",
           "provenance": [
-            "audio:postop-interview#s011",
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008"
+            "audio:postop-interview#s011"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Patient denies any other postoperative concerns.",
+          "text": "No other concerns or issues raised by the patient during the postoperative interview.",
           "provenance": [
             "audio:postop-interview#s012"
           ],
@@ -790,7 +810,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are currently taking all the medications listed (Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, Aspirin 75mg once daily) or if any have been stopped, changed, or replaced since the list was created?",
+      "question": "Can you confirm if you are still taking all the medications listed in your current medication list (Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, Aspirin 75mg once daily) and have not stopped, changed, or replaced any of them since the list was recorded?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -802,7 +822,7 @@
       "edited_text": null
     },
     {
-      "question": "Are you aware of any other allergies (drug, food, latex, or environmental) not listed in your records, besides the documented penicillin allergy (rash)?",
+      "question": "Are you aware of any other allergies, including reactions to drugs not listed (such as antibiotics, anesthetics, or local anesthetics), non-drug items like latex, adhesives, or foods, beyond the documented Penicillin allergy (rash)?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
@@ -811,7 +831,7 @@
       "edited_text": null
     },
     {
-      "question": "How is your hypertension managed besides Lisinopril? Are there any recent blood pressure readings or concerns that might impact anesthesia?",
+      "question": "Can you provide more details about your history of hypertension, including whether it is well-controlled, any associated complications, or if you have experienced any recent changes in your blood pressure readings?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c007"
@@ -820,7 +840,7 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your Type 2 Diabetes Mellitus management, including any recent HbA1c levels, and how it might affect surgical outcomes or anesthesia?",
+      "question": "Can you elaborate on your history of Type 2 Diabetes Mellitus, including your current glycemic control, any diabetes-related complications, and whether you have experienced any recent episodes of hypoglycemia or hyperglycemia?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c008"
@@ -829,7 +849,7 @@
       "edited_text": null
     },
     {
-      "question": "Given your history of pneumonia (resolved 5 years ago), are there any residual respiratory issues or recent concerns that could affect intubation or recovery under general anesthesia?",
+      "question": "Please confirm if you have any history of respiratory issues, including asthma, COPD, or any breathing difficulties, especially in light of your past history of pneumonia (resolved 5 years ago)?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c010"
@@ -843,7 +863,7 @@
       "t": "08:00",
       "category": "agent",
       "value": "propofol 120",
-      "units": "mg",
+      "units": null,
       "provenance": [
         "audio:intraop-notes#s001"
       ]
@@ -869,8 +889,8 @@
     {
       "t": "08:10",
       "category": "fluid",
-      "value": "lactated ringers 1",
-      "units": "liter",
+      "value": "lactated ringers 1 liter",
+      "units": null,
       "provenance": [
         "audio:intraop-notes#s004"
       ]
@@ -878,17 +898,8 @@
     {
       "t": "08:20",
       "category": "event",
-      "value": "mean arterial pressure dropped to 50",
-      "units": "mmHg",
-      "provenance": [
-        "audio:intraop-notes#s005"
-      ]
-    },
-    {
-      "t": "08:20",
-      "category": "agent",
-      "value": "atropine 1",
-      "units": "mg",
+      "value": "mean arterial pressure dropped to 50, atropine 1 milligram given",
+      "units": null,
       "provenance": [
         "audio:intraop-notes#s005"
       ]
@@ -896,30 +907,33 @@
     {
       "t": "08:25",
       "category": "event",
-      "value": "heart rate increased to 120",
-      "units": "bpm",
-      "provenance": [
-        "audio:intraop-notes#s006"
-      ]
-    },
-    {
-      "t": "08:25",
-      "category": "agent",
-      "value": "esmolol 2",
-      "units": "mg",
+      "value": "heart rate increased to 120, esmolol 2 milligrams given",
+      "units": null,
       "provenance": [
         "audio:intraop-notes#s006"
       ]
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Administration and Laparoscopic Surgery",
-    "Airway Compromise Monitoring due to Endotracheal Intubation with Grade One View",
-    "Glycemic Control Monitoring in a Patient with Type 2 Diabetes Mellitus",
-    "Hypotension Monitoring Following Intraoperative Drop in Mean Arterial Pressure",
-    "Tachycardia Monitoring Following Intraoperative Heart Rate Increase",
-    "Potential for Delayed Emergence or Residual Sedation due to Propofol Administration",
-    "Monitoring for Hypertension or Hypotension given History of Hypertension"
+    "Hypotension management due to intra-op hypotension episode and pre-existing hypertension",
+    "Potential for post-operative tachycardia given intra-op tachycardia and need for monitoring",
+    "Glycemic control due to Type 2 Diabetes Mellitus",
+    "Risk of PONV (Postoperative Nausea and Vomiting) following general anesthesia with propofol induction",
+    "Airway management watch due to endotracheal intubation",
+    "Analgesia requirements post-laparoscopic surgery",
+    "Monitoring for cardiovascular instability due to pre-existing hyperlipidemia and intra-op hemodynamic fluctuations"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope improves intubation success in elective GA with ETT, especially in patients with potential difficult airway anatomy."
+    },
+    {
+      "item_id": "bougie",
+      "name": "Tracheal tube introducer (bougie)",
+      "reason": "Bougie aids in difficult intubation scenarios, which may arise despite video laryngoscope use in this ASA-II patient."
+    }
   ],
   "workflow": null
 }

@@ -421,34 +421,26 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Previously took Loratadine 10 mg Once daily but has stopped due to cost; now takes Montelukast 10mg once a day instead.",
+          "text": "Stopped taking Loratadine 10 mg Once daily due to cost; replaced with Montelukast 10mg once a day.",
           "provenance": [
-            "doc:gp-summary#c004",
             "audio:preop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Previously took Omeprazole 20mg once a day but has stopped; no specific reason given for discontinuation.",
+          "text": "No known drug allergies recorded in GP summary, but reported new allergy to Cefuroxime (rash) and confirmed previous allergy to Penicillin (rash).",
           "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s002"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Allergy to Penicillin (rash) and Cefuroxime (rash).",
-          "provenance": [
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s004",
             "audio:preop-interview#s005",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "No recent respiratory infections or breathing difficulties reported since resolved pneumonia (3 years ago).",
+          "claim_id": "c-006",
+          "text": "History of resolved Pneumonia (3 years ago) with no reported respiratory issues or infections since, not impacting current respiratory status for anesthesia.",
           "provenance": [
             "doc:gp-summary#c006",
             "audio:preop-interview#s007"
@@ -456,24 +448,16 @@
           "status": "unsupported"
         },
         {
+          "claim_id": "c-007",
+          "text": "GERD was resolved with Omeprazole discontinued; no recent symptoms or treatment required since discontinuation.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s003"
+          ],
+          "status": "unsupported"
+        },
+        {
           "claim_id": "c-008",
-          "text": "No known drug or non-drug allergies beyond Penicillin and Cefuroxime.",
-          "provenance": [
-            "audio:preop-interview#s003",
-            "audio:preop-interview#s004"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Last meal around 7pm last night and only sipped water until 8pm; nothing since then.",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
           "text": "No previous surgeries or anesthesia; first time for both.",
           "provenance": [
             "audio:preop-interview#s012"
@@ -481,19 +465,24 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "ASA-PS II: Patient is a healthy 28-year-old with well-controlled diabetes and no active respiratory issues, but with a history of resolved conditions that do not impact current anesthesia plan.",
+          "claim_id": "c-009",
+          "text": "Last meal around 7pm last night, only sipped water until 8pm, nothing since then.",
           "provenance": [
-            "doc:gp-summary#c006",
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s007",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "ASA-PS I (Healthy patient) - No systemic disease, diabetes is well-controlled with no recent issues, and no other comorbidities affecting anesthesia.",
+          "provenance": [
             "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Procedure: Laparoscopic Cholecystectomy (elective) under General Anesthesia with Single-shot Spinal Anesthesia.",
+          "claim_id": "c-011",
+          "text": "Plan for general anesthesia combined with single-shot spinal anesthesia for Laparoscopic Cholecystectomy to minimize pain during and after surgery, with careful management of diabetes and allergies.",
           "provenance": [
             "doc:op-plan#c001",
             "doc:op-plan#c002",
@@ -540,7 +529,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Five hundred milliliters of balanced crystalloid fluid bolus administered at 08:15",
+          "text": "Fluid bolus of five hundred milliliters of balanced crystalloid administered at 08:15",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -548,7 +537,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Mean arterial pressure dropped to fifty five mmHg at 08:25, treated with phenylephrine 10 micrograms",
+          "text": "Mean arterial pressure dropped to 55 mmHg at 08:25, treated with phenylephrine 10 micrograms",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -564,7 +553,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "Transient bradycardia to forty five bpm at 08:55, treated with atropine 0.6 milligrams",
+          "text": "Transient bradycardia to 45 bpm at 08:55, treated with atropine 0.6 milligrams",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -577,58 +566,70 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to General Anesthesia and Opioid Use",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Administration and Laparoscopic Surgery",
           "provenance": [
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s012",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
             "audio:intraop-notes#s001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway Management Watch due to Grade One View During Intubation and Potential for Respiratory Compromise",
+          "text": "Potential Airway Complications due to Grade One View During Intubation",
           "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
             "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic Control Monitoring Given Diabetes Mellitus on Metformin and Sitagliptin",
+          "text": "Hypoglycemia Risk in PACU due to Diabetes and Prolonged Fasting",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s008"
+            "doc:med-list#c001",
+            "audio:preop-interview#s002",
+            "doc:med-list#c002",
+            "audio:preop-interview#s014"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia Management Following Single-shot Spinal Anesthesia with Bupivacaine",
+          "text": "Pain Management Challenges due to Single-shot Spinal Anesthesia with Bupivacaine",
           "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
             "audio:intraop-notes#s003"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic Instability Watch Following Intraoperative Hypotension and Bradycardia",
+          "text": "Hemodynamic Instability (Hypotension) due to Phenylephrine Administration and Spinal Anesthesia",
           "provenance": [
             "audio:intraop-notes#s006",
-            "audio:intraop-notes#s008"
+            "audio:intraop-notes#s003"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-006",
-          "text": "Allergy Vigilance for Penicillin and Cefuroxime Cross-Reactivity",
+          "text": "Bradycardia Risk in PACU due to Atropine Administration and Potential Underlying Cardiac Response",
           "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Allergic Reaction Risk due to Documented Allergies to Penicillin and Cefuroxime",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s004",
             "audio:preop-interview#s005",
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s006"
           ],
           "status": "inference"
         }
@@ -639,9 +640,10 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "28-year-old male, first-time for surgery and anesthesia, undergoing elective Laparoscopic Cholecystectomy under General Anesthesia with Single-shot Spinal Anesthesia.",
+          "text": "28-year-old male undergoing Laparoscopic Cholecystectomy under general anesthesia combined with single-shot spinal anesthesia. Patient is a healthy individual (ASA-PS I) with well-controlled diabetes and no previous surgeries or anesthesia.",
           "provenance": [
             "doc:gp-summary#c001",
+            "audio:preop-interview#s008",
             "audio:preop-interview#s012",
             "doc:op-plan#c001",
             "doc:op-plan#c002",
@@ -651,61 +653,62 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has well-controlled diabetes (on Metformin and Sitagliptin) and a history of resolved pneumonia (3 years ago) with no recent respiratory issues. Allergies to Penicillin and Cefuroxime (rash).",
+          "text": "Medications include Metformin 500mg twice daily, Sitagliptin 100mg once daily, and Montelukast 10mg once daily (replaced Loratadine due to cost). Allergies to Penicillin and Cefuroxime (rash). Last meal around 7pm, only sipped water until 8pm.",
           "provenance": [
             "doc:med-list#c001",
             "audio:preop-interview#s002",
             "doc:med-list#c002",
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s004",
             "audio:preop-interview#s005",
             "audio:preop-interview#s006",
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative complications included transient hypotension (treated with phenylephrine) and bradycardia (treated with atropine).",
+          "text": "Intraoperative complications included transient hypotension (treated with phenylephrine) and bradycardia (treated with atropine). Potential risks in PACU include PONV, airway complications, hypoglycemia, pain management challenges, hemodynamic instability, bradycardia, and allergic reactions.",
           "provenance": [
             "audio:intraop-notes#s006",
-            "audio:intraop-notes#s008"
+            "audio:intraop-notes#s008",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s002",
+            "doc:med-list#c002",
+            "audio:preop-interview#s014",
+            "audio:intraop-notes#s003",
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Risk factors for Postoperative Nausea and Vomiting (PONV), need for Glycemic Control Monitoring due to Diabetes, and potential for Airway Management issues due to Grade One View during intubation.",
+          "text": "Monitor for signs of PONV, hypoglycemia, and allergic reactions. Manage pain according to protocol, watching for challenges due to spinal anesthesia. Closely observe hemodynamics and heart rate, considering the patient's response to phenylephrine and atropine. Ensure airway stability given the grade one view during intubation.",
           "provenance": [
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s012",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
             "audio:intraop-notes#s001",
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s008",
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Monitor for PONV, maintain vigilant Airway Management, ensure strict Glycemic Control, and watch for Hemodynamic Instability. Be aware of Allergy Vigilance for Penicillin and Cefuroxime cross-reactivity.",
-          "provenance": [
+            "doc:med-list#c001",
+            "audio:preop-interview#s002",
+            "doc:med-list#c002",
             "audio:preop-interview#s014",
-            "audio:preop-interview#s012",
-            "audio:intraop-notes#s001",
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
-            "audio:intraop-notes#s002",
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s008",
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s008",
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s004",
             "audio:preop-interview#s005",
             "audio:preop-interview#s006",
-            "audio:preop-interview#s004"
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s002"
           ],
           "status": "supported"
         }
@@ -724,7 +727,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient denies nausea or feeling sick during or after surgery.",
+          "text": "Patient denies nausea or sickness during or after surgery.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
@@ -732,7 +735,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient reports normal breathing with slight awareness of the abdominal area but no difficulty breathing.",
+          "text": "Patient reports normal breathing with no tightness or difficulty.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -740,16 +743,15 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient has no recall of events in the operating room, which is expected given general anesthesia with spinal block.",
+          "text": "Patient has no recall of the operating room, consistent with general anesthesia.",
           "provenance": [
-            "audio:postop-interview#s010",
-            "doc:op-plan#c002"
+            "audio:postop-interview#s010"
           ],
-          "status": "unsupported"
+          "status": "conflicting"
         },
         {
           "claim_id": "c-005",
-          "text": "Patient denies signs of low sugar (shakiness or dizziness) post-operatively.",
+          "text": "Patient denies signs of low sugar (shakiness, dizziness) postoperatively.",
           "provenance": [
             "audio:postop-interview#s012"
           ],
@@ -757,25 +759,23 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Single-shot spinal anesthesia with bupivacaine 15mg was administered as part of the anesthetic plan.",
+          "text": "Single-shot spinal anesthesia with bupivacaine 15mg was administered intraoperatively.",
           "provenance": [
-            "audio:intraop-notes#s003",
-            "doc:op-plan#c002"
+            "audio:intraop-notes#s003"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Patient received propofol 120mg for induction of general anesthesia.",
+          "text": "Intraoperative notable event: mean arterial pressure dropped to 55 mmHg, treated with phenylephrine 10 micrograms.",
           "provenance": [
-            "audio:intraop-notes#s001",
-            "doc:op-plan#c002"
+            "audio:intraop-notes#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Transient bradycardia (45 bpm) occurred during surgery, treated with atropine 0.6mg.",
+          "text": "Intraoperative notable event: transient bradycardia to 45 bpm, treated with atropine 0.6 milligrams.",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -783,9 +783,17 @@
         },
         {
           "claim_id": "c-009",
-          "text": "Mean arterial pressure dropped to 55 mmHg during surgery, treated with phenylephrine 10mcg.",
+          "text": "Patient was induced with propofol 120 milligrams for general anesthesia.",
           "provenance": [
-            "audio:intraop-notes#s006"
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Patient was maintained with normal saline at 100 milliliters per hour intraoperatively.",
+          "provenance": [
+            "audio:intraop-notes#s007"
           ],
           "status": "supported"
         }
@@ -794,7 +802,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are currently taking Metformin 500 mg Twice daily, Sitagliptin 100 mg Once daily, and Loratadine 10 mg Once daily, and if any of these medications have been stopped, changed, or replaced since the last record?",
+      "question": "Can you confirm if you are currently taking Metformin 500 mg Twice daily, Sitagliptin 100 mg Once daily, and Loratadine 10 mg Once daily, and whether any of these medications have been stopped, changed, or replaced since the list was recorded?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -805,7 +813,7 @@
       "edited_text": null
     },
     {
-      "question": "Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that are not documented in your record?",
+      "question": "Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that have not been documented in your records?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c005"
@@ -814,7 +822,7 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your history of GERD, specifically whether you have had any recent symptoms or required treatment since it was noted as resolved with Omeprazole discontinued?",
+      "question": "Can you provide more details about your history of GERD, specifically whether you have had any recent symptoms or required any treatment since it was noted as resolved and Omeprazole was discontinued?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c008"
@@ -823,10 +831,20 @@
       "edited_text": null
     },
     {
-      "question": "Given your history of pneumonia (resolved 3 years ago), have you had any recent respiratory infections or breathing difficulties that might impact anesthesia?",
+      "question": "You have a history of pneumonia that was resolved 3 years ago. Have you had any respiratory issues or infections since then that might impact your current respiratory status for anesthesia?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Given your current medications, including Metformin and Sitagliptin for diabetes management, can you confirm your current blood sugar control and any recent adjustments to your diabetes treatment?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c002",
+        "doc:gp-summary#c003"
       ],
       "review": null,
       "edited_text": null
@@ -872,7 +890,7 @@
     {
       "t": "08:15",
       "category": "fluid",
-      "value": "five hundred",
+      "value": "five hundred milliliters",
       "units": "milliliters",
       "provenance": [
         "audio:intraop-notes#s005"
@@ -881,8 +899,8 @@
     {
       "t": "08:25",
       "category": "event",
-      "value": "mean arterial pressure dropped to fifty five mmHg, treated with phenylephrine 10",
-      "units": "micrograms",
+      "value": "mean arterial pressure dropped to 55 mmHg, treated with phenylephrine 10 micrograms",
+      "units": "mmHg, micrograms",
       "provenance": [
         "audio:intraop-notes#s006"
       ]
@@ -890,7 +908,7 @@
     {
       "t": "08:40",
       "category": "fluid",
-      "value": "one hundred",
+      "value": "one hundred milliliters per hour",
       "units": "milliliters per hour",
       "provenance": [
         "audio:intraop-notes#s007"
@@ -899,20 +917,38 @@
     {
       "t": "08:55",
       "category": "event",
-      "value": "transient bradycardia to forty five bpm, treated with atropine 0.6",
-      "units": "milligrams",
+      "value": "transient bradycardia to 45 bpm, treated with atropine 0.6 milligrams",
+      "units": "bpm, milligrams",
       "provenance": [
         "audio:intraop-notes#s008"
       ]
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV) due to General Anesthesia and Opioid Use",
-    "Airway Management Watch due to Grade One View During Intubation and Potential for Respiratory Compromise",
-    "Glycemic Control Monitoring Given Diabetes Mellitus on Metformin and Sitagliptin",
-    "Analgesia Management Following Single-shot Spinal Anesthesia with Bupivacaine",
-    "Hemodynamic Instability Watch Following Intraoperative Hypotension and Bradycardia",
-    "Allergy Vigilance for Penicillin and Cefuroxime Cross-Reactivity"
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Administration and Laparoscopic Surgery",
+    "Potential Airway Complications due to Grade One View During Intubation",
+    "Hypoglycemia Risk in PACU due to Diabetes and Prolonged Fasting",
+    "Pain Management Challenges due to Single-shot Spinal Anesthesia with Bupivacaine",
+    "Hemodynamic Instability (Hypotension) due to Phenylephrine Administration and Spinal Anesthesia",
+    "Bradycardia Risk in PACU due to Atropine Administration and Potential Underlying Cardiac Response",
+    "Allergic Reaction Risk due to Documented Allergies to Penicillin and Cefuroxime"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope improves difficult airway management in first-time anesthesia patients."
+    },
+    {
+      "item_id": "syringe-pump",
+      "name": "Syringe pump (TIVA)",
+      "reason": "Syringe pump enables precise TIVA dosing for diabetic patient with metabolic considerations."
+    },
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA size 4 provides secure airway for obese patient with potential difficult intubation."
+    }
   ],
   "workflow": null
 }

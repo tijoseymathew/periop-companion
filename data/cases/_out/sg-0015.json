@@ -398,55 +398,15 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Undergoing elective Laparoscopic Cholecystectomy",
+          "text": "Occupation: Associate Professional or Technician, resident of Yishun, Singapore",
           "provenance": [
-            "doc:op-plan#c001"
+            "doc:gp-summary#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Diagnosed with gallstones, presenting with right-sided abdominal pain after eating",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "History of type 2 diabetes, currently controlled with medications",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "History of hypertension, currently controlled with medications",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "History of obesity, with ongoing efforts to lose weight",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Previous surgery: appendectomy, with no recalled anesthesia issues",
-          "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Current medications: Metformin 500 mg Twice daily",
+          "text": "Current Medications: Metformin 500 mg Twice daily",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
@@ -455,8 +415,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Current medications: Lisinopril 10 mg Once daily",
+          "claim_id": "c-004",
+          "text": "Current Medications: Lisinopril 10 mg Once daily",
           "provenance": [
             "doc:gp-summary#c003",
             "doc:med-list#c002",
@@ -465,8 +425,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Current medications: Atorvastatin 20 mg Once daily",
+          "claim_id": "c-005",
+          "text": "Current Medications: Atorvastatin 20 mg Once daily",
           "provenance": [
             "doc:gp-summary#c004",
             "doc:med-list#c003",
@@ -475,56 +435,57 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "Ranitidine has been stopped as per pre-surgical instructions",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Allergy to nuts, with a history of anaphylaxis (throat swelling)",
+          "claim_id": "c-006",
+          "text": "Allergy to Nuts (anaphylaxis reaction)",
           "provenance": [
             "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Allergy to penicillin, with a history of rash",
+          "claim_id": "c-007",
+          "text": "Allergy to Penicillin (rash reaction)",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "No known allergies to latex, plasters, or other substances besides nuts and penicillin",
+          "claim_id": "c-008",
+          "text": "No known drug allergies (other than Penicillin and Nuts) recorded",
           "provenance": [
-            "audio:preop-interview#s010"
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s007"
           ],
-          "status": "conflicting"
+          "status": "supported"
         },
         {
-          "claim_id": "c-015",
-          "text": "Patient reports no food or drink since midnight, confirming NPO status",
+          "claim_id": "c-009",
+          "text": "NPO status confirmed: Nothing to eat or drink since midnight",
           "provenance": [
             "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "ASA-PS Class III (patient has more than mild systemic disease, controlled, but not well-compensated)",
+          "claim_id": "c-010",
+          "text": "ASA-PS: II (Patient has mild systemic disease: type 2 diabetes, hypertension, and obesity, all under control with medications)",
           "provenance": [
             "audio:preop-interview#s014"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
-          "claim_id": "c-017",
-          "text": "Anesthesia plan: General Anesthesia with Balanced Technique, including Propofol, Remifentanil, and Sevoflurane",
+          "claim_id": "c-011",
+          "text": "Procedure: Laparoscopic Cholecystectomy (elective)",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Anesthesia Plan: General Anesthesia with Balanced Technique, including Propofol, Remifentanil, and Sevoflurane",
           "provenance": [
             "doc:op-plan#c002"
           ],
@@ -545,7 +506,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Endotracheal tube inserted with grade one view at 08:02",
+          "text": "Endotracheal tube placed with grade one view at 08:02",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -561,7 +522,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Sevoflurane administered at 2.5 percent at 08:10",
+          "text": "Sevoflurane set at two percent, increased to two point five percent at 08:10",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -569,7 +530,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Fluid bolus of 500 milliliters administered at 08:20",
+          "text": "Five hundred milliliters fluid bolus administered for hypotension at 08:20",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -577,7 +538,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Remifentanil 2 micrograms administered at 08:40",
+          "text": "Remifentanil 2 micrograms administered for tachycardia at 08:40",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -590,17 +551,17 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "PONV risk due to propensity from Sevoflurane and history of obesity",
+          "text": "Risk of Post-Operative Nausea and Vomiting (PONV) due to use of Propofol and Sevoflurane, and history of Laparoscopic Surgery",
           "provenance": [
-            "audio:preop-interview#s014",
-            "doc:op-plan#c002",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
             "audio:intraop-notes#s004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to obesity and potential for difficult mask ventilation or intubation",
+          "text": "Airway Watch due to Obesity and potential for difficult mask ventilation or intubation, despite successful intubation with grade one view",
           "provenance": [
             "audio:preop-interview#s014",
             "audio:intraop-notes#s002"
@@ -609,32 +570,36 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control monitoring due to Type 2 Diabetes",
+          "text": "Glycemic Control Monitoring due to Type 2 Diabetes managed with Metformin, with potential for surgical stress and anesthesia effects on blood glucose levels",
           "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
             "audio:preop-interview#s014"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management considering Renitidine discontinuation and potential for increased pain sensitivity",
+          "text": "Analgesia Management considering the use of Remifentanil during surgery, which may lead to higher post-operative pain expectations and require adequate analgesic regimen",
           "provenance": [
-            "audio:preop-interview#s006"
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s006"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic watch due to history of Hypertension and intra-op hypotension requiring fluid bolus",
+          "text": "Hemodynamic Watch for potential Hypotension or Tachycardia, as evidenced by intra-operative fluid bolus for hypotension and Remifentanil administration for tachycardia",
           "provenance": [
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s005"
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s006"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-006",
-          "text": "Allergy vigilance (nuts and penicillin) to prevent anaphylactic reactions",
+          "text": "Allergy Watch for Nuts (anaphylaxis reaction) and Penicillin (rash reaction) to prevent accidental exposure in PACU",
           "provenance": [
             "audio:preop-interview#s008",
             "audio:preop-interview#s010"
@@ -648,48 +613,80 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "38-year-old male undergoing elective Laparoscopic Cholecystectomy for gallstones, presenting with controlled type 2 diabetes and hypertension.",
+          "text": "38-year-old male undergoing elective Laparoscopic Cholecystectomy with General Anesthesia, now in PACU for recovery.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s014"
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of obesity, previous appendectomy without anesthesia issues, and allergies to nuts (anaphylaxis with throat swelling) and penicillin (rash).",
+          "text": "Patient has a history of Type 2 Diabetes, Hypertension, and Obesity, all under control with Metformin, Lisinopril, and Atorvastatin. Known allergies include Nuts (anaphylaxis) and Penicillin (rash).",
           "provenance": [
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s012",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
             "audio:preop-interview#s008",
-            "audio:preop-interview#s010"
+            "audio:preop-interview#s010",
+            "doc:gp-summary#c005",
+            "audio:preop-interview#s007"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intra-op management included General Anesthesia with Propofol, Remifentanil, and Sevoflurane. A fluid bolus was administered due to hypotension. Patient is NPO since midnight.",
+          "text": "Intra-operative course included Propofol, Remifentanil, and Sevoflurane for anesthesia. Experienced hypotension (treated with fluid bolus) and tachycardia (treated with Remifentanil). Endotracheal tube placed with grade one view.",
           "provenance": [
             "doc:op-plan#c002",
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s003",
             "audio:intraop-notes#s004",
             "audio:intraop-notes#s005",
-            "audio:preop-interview#s016"
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Monitor for PONV due to Sevoflurane and obesity, watch for airway complications due to obesity, maintain glycemic control for Type 2 Diabetes, manage analgesia considering Renitidine discontinuation, and ensure hemodynamic stability following intra-op hypotension and fluid bolus. Maintain vigilance for allergic reactions to nuts and penicillin.",
+          "text": "Anticipated issues in PACU include Post-Operative Nausea and Vomiting (PONV), Airway Watch due to Obesity, Glycemic Control Monitoring, Analgesia Management, Hemodynamic Watch, and Allergy Watch for Nuts and Penicillin.",
           "provenance": [
-            "audio:preop-interview#s014",
-            "doc:op-plan#c002",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
             "audio:intraop-notes#s004",
+            "audio:preop-interview#s014",
             "audio:intraop-notes#s002",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
             "audio:preop-interview#s006",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s005",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Monitor for PONV, maintain Airway vigilance, closely watch Blood Glucose levels, ensure adequate Analgesia, continue Hemodynamic monitoring, and strictly avoid Nuts and Penicillin in PACU care.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s004",
+            "audio:preop-interview#s014",
+            "audio:intraop-notes#s002",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s006",
             "audio:intraop-notes#s005",
             "audio:preop-interview#s008",
             "audio:preop-interview#s010"
@@ -703,7 +700,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient reports feeling a bit groggy but okay post-surgery.",
+          "text": "Patient reports feeling groggy and sleepy post-operatively.",
           "provenance": [
             "audio:postop-interview#s002"
           ],
@@ -719,7 +716,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient denies vomiting but reports a feeling of nausea with a 'funny' stomach sensation.",
+          "text": "Patient experiences nausea with a sensation of feeling sick but no vomiting.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
@@ -727,7 +724,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient reports sore throat, likely due to intubation.",
+          "text": "Patient reports sore throat likely due to intubation.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -762,9 +759,16 @@
         },
         {
           "claim_id": "c-008",
-          "text": "Intraoperative management included fluid bolus for hypotension and additional Remifentanil for tachycardia.",
+          "text": "Intra-operative hypotension was treated with a 500 mL fluid bolus.",
           "provenance": [
-            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient received additional Remifentanil for tachycardia during the procedure.",
+          "provenance": [
             "audio:intraop-notes#s006"
           ],
           "status": "supported"
@@ -774,7 +778,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are still taking Metformin 500 mg Twice daily, Lisinopril 10 mg Once daily, and Atorvastatin 20 mg Once daily, or have any of these medications been stopped, changed, or replaced since they were recorded?",
+      "question": "Can you confirm if you are still taking Metformin 500 mg Twice daily, Lisinopril 10 mg Once daily, and Atorvastatin 20 mg Once daily, or have any of these medications been stopped, changed, or replaced since the last record?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -785,7 +789,7 @@
       "edited_text": null
     },
     {
-      "question": "Are you aware of any drug or non-drug allergies (such as to latex, plasters, or foods) that have not been documented in your records?",
+      "question": "Are you aware of any drug or non-drug allergies (e.g., to latex, plasters, foods, or any other substances) that have not been documented in your records?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c005"
@@ -794,7 +798,7 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your past pneumonia episode, such as the severity, treatment received, and any residual respiratory issues, as this may impact anesthesia management?",
+      "question": "Can you provide more details about your past pneumonia (resolved, 5 years ago), such as the cause, severity, and any residual respiratory issues that may impact anesthesia?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c006"
@@ -806,8 +810,8 @@
   "intraop_events": [
     {
       "t": "08:00",
-      "category": "dose",
-      "value": "propofol 120",
+      "category": "agent",
+      "value": "propofol",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s001"
@@ -815,7 +819,7 @@
     },
     {
       "t": "08:02",
-      "category": "airway",
+      "category": "line",
       "value": "tube in, grade one view",
       "units": null,
       "provenance": [
@@ -834,7 +838,7 @@
     {
       "t": "08:10",
       "category": "agent",
-      "value": "sevoflurane 2.5",
+      "value": "sevoflurane",
       "units": "percent",
       "provenance": [
         "audio:intraop-notes#s004"
@@ -843,7 +847,7 @@
     {
       "t": "08:20",
       "category": "fluid",
-      "value": "fluid bolus 500",
+      "value": "five hundred",
       "units": "milliliters",
       "provenance": [
         "audio:intraop-notes#s005"
@@ -860,12 +864,24 @@
     }
   ],
   "anticipated_issues": [
-    "PONV risk due to propensity from Sevoflurane and history of obesity",
-    "Airway watch due to obesity and potential for difficult mask ventilation or intubation",
-    "Glycemic control monitoring due to Type 2 Diabetes",
-    "Analgesia management considering Renitidine discontinuation and potential for increased pain sensitivity",
-    "Hemodynamic watch due to history of Hypertension and intra-op hypotension requiring fluid bolus",
-    "Allergy vigilance (nuts and penicillin) to prevent anaphylactic reactions"
+    "Risk of Post-Operative Nausea and Vomiting (PONV) due to use of Propofol and Sevoflurane, and history of Laparoscopic Surgery",
+    "Airway Watch due to Obesity and potential for difficult mask ventilation or intubation, despite successful intubation with grade one view",
+    "Glycemic Control Monitoring due to Type 2 Diabetes managed with Metformin, with potential for surgical stress and anesthesia effects on blood glucose levels",
+    "Analgesia Management considering the use of Remifentanil during surgery, which may lead to higher post-operative pain expectations and require adequate analgesic regimen",
+    "Hemodynamic Watch for potential Hypotension or Tachycardia, as evidenced by intra-operative fluid bolus for hypotension and Remifentanil administration for tachycardia",
+    "Allergy Watch for Nuts (anaphylaxis reaction) and Penicillin (rash reaction) to prevent accidental exposure in PACU"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscopy improves difficult airway management in obese patients with ASA-PS II."
+    },
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA size 4 is suitable for obese patients with anticipated difficult intubation."
+    }
   ],
   "workflow": null
 }

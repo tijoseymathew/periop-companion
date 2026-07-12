@@ -421,7 +421,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Elective laparoscopic cholecystectomy",
+          "text": "Undergoing elective laparoscopic cholecystectomy",
           "provenance": [
             "doc:op-plan#c001"
           ],
@@ -429,79 +429,14 @@
         },
         {
           "claim_id": "c-004",
-          "text": "General Anesthesia with Balanced Technique, including Fentanyl, Propofol, and Sevoflurane; Muscle Relaxant (Rocuronium) for intubation and surgery",
+          "text": "Reports stomach pains, especially after eating, leading to the decision for laparoscopic cholecystectomy",
           "provenance": [
-            "doc:op-plan#c002"
+            "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Currently taking Metformin 500mg Twice daily",
-          "provenance": [
-            "doc:gp-summary#c001",
-            "audio:preop-interview#s006",
-            "doc:med-list#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Currently taking Lisinopril 10mg Once daily",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s006",
-            "doc:med-list#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Currently taking Atorvastatin 20mg Once daily",
-          "provenance": [
-            "doc:gp-summary#c004",
-            "audio:preop-interview#s006",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Stopped taking Ranitidine 150mg Once daily six months ago due to side effects",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "No other medications, supplements, or herbal remedies besides the confirmed ones",
-          "provenance": [
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Allergy to Penicillin (rash)",
-          "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "No other allergies to medications or foods besides Penicillin",
-          "provenance": [
-            "audio:preop-interview#s009",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
           "text": "No previous surgeries or anesthesia",
           "provenance": [
             "audio:preop-interview#s012"
@@ -509,18 +444,115 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Experiences fatigue more easily than before, but manages daily activities (context: diabetes)",
+          "claim_id": "c-006",
+          "text": "Currently taking Metformin 500mg Twice daily",
           "provenance": [
-            "audio:preop-interview#s014"
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
+          "claim_id": "c-007",
+          "text": "Currently taking Lisinopril 10mg Once daily",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Currently taking Atorvastatin 20mg Once daily",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Stopped taking Ranitidine 150mg Once daily six months ago due to side effects; not currently taking any H2 blocker",
+          "provenance": [
+            "doc:gp-summary#c005",
+            "doc:med-list#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "No other medications, supplements, or herbal remedies currently",
+          "provenance": [
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Allergic to Penicillin (rash reaction)",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "No other allergies or reactions to medications, foods, or non-drug items (e.g., latex, IV contrast, adhesive tapes)",
+          "provenance": [
+            "audio:preop-interview#s009",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "No current respiratory symptoms; history of pneumonia resolved 5 years ago with no lingering effects",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s014"
+          ],
+          "status": "unsupported"
+        },
+        {
           "claim_id": "c-014",
-          "text": "NPO since midnight as instructed for surgery",
+          "text": "No reactions to Amoxicillin (taken for dental infection 2 years ago) or any other antibiotics since Penicillin allergy",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s011"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Fasting since last night as instructed for surgery",
           "provenance": [
             "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "ASA-PS Class II (patient has well-controlled diabetes and hypertension, with no active cardiac or pulmonary issues)",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
+            "audio:preop-interview#s014"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "General Anesthesia with Balanced Technique, including Fentanyl, Propofol, and Sevoflurane; Muscle Relaxant (Rocuronium) for intubation and surgery planned",
+          "provenance": [
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         }
@@ -547,7 +579,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Rocuronium 60 milligrams administered at 08:07",
+          "text": "Rocuronium 60 milligrams administered for intubation at 08:07",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -563,7 +595,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Sevoflurane at 1.5 percent administered at 08:15",
+          "text": "Sevoflurane set to 1.5 percent at 08:15",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -571,7 +603,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Lactated Ringers 2 liters administered at 08:20",
+          "text": "Lactated Ringer's 2 liters administered at 08:20",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -603,7 +635,7 @@
         },
         {
           "claim_id": "c-010",
-          "text": "Sugammadex 15 milligrams administered at 09:00",
+          "text": "Reversal with Sugammadex 15 milligrams at 09:00",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -616,53 +648,60 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to use of multiple emetogenic agents (Propofol, Fentanyl, Sevoflurane) and history of diabetes which may increase susceptibility.",
+          "text": "PONV (Postoperative Nausea and Vomiting) Risk due to Opioid Use (Fentanyl) and Laparoscopic Surgery",
           "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s005",
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s004",
+            "audio:intraop-notes#s002"
           ],
-          "status": "inference"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to use of Rocuronium for intubation and potential for residual neuromuscular blockade despite Sugammadex reversal, especially in a patient with diabetes which may affect neuromuscular function.",
+          "text": "Airway Watch due to Intubation with Muscle Relaxant (Rocuronium) and Reversal with Sugammadex",
           "provenance": [
-            "doc:op-plan#c002",
             "audio:intraop-notes#s003",
-            "audio:intraop-notes#s008",
-            "audio:preop-interview#s014"
+            "audio:intraop-notes#s008"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control issues perioperatively due to diabetes, exacerbated by stress of surgery and potential for insulin resistance from steroids or other factors not directly mentioned but inferred from diabetes history.",
+          "text": "Glycemic Control Monitoring due to Diabetes Mellitus (Metformin Use)",
           "provenance": [
-            "doc:gp-summary#c001",
-            "audio:preop-interview#s006",
+            "doc:gp-summary#c002",
             "doc:med-list#c001",
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management challenges due to intra-op use of Fentanyl which may not provide sufficient postoperative pain control for laparoscopic surgery, requiring additional analgesics.",
+          "text": "Analgesia Management due to Surgery and Opioid Sensitivity (Fentanyl Use)",
           "provenance": [
-            "doc:op-plan#c002",
+            "audio:preop-interview#s004",
             "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic instability (hypotension) as evidenced by intra-op drop in MAP to 55 requiring Phenylephrine, which may persist into post-op period due to residual anesthetic effects and fluid status.",
+          "text": "Hemodynamic Watch due to Hypertension (Lisinopril Use) and Intra-op Hypotension",
           "provenance": [
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s006"
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008",
+            "audio:intraop-notes#s007"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Potential for Antibiotic Prophylaxis Review due to Penicillin Allergy",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s010"
           ],
           "status": "inference"
         }
@@ -673,60 +712,66 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "44-year-old female status post elective laparoscopic cholecystectomy under general anesthesia with balanced technique, including Fentanyl, Propofol, and Sevoflurane, with Rocuronium for intubation.",
+          "text": "44-year-old female undergoing elective laparoscopic cholecystectomy due to stomach pains, especially after eating.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
-            "doc:op-plan#c002"
+            "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of diabetes, managed with Metformin 500mg twice daily, and hypertension, managed with Lisinopril 10mg once daily and Atorvastatin 20mg once daily. Patient is allergic to Penicillin (rash).",
+          "text": "Patient is a resident of Punggol, Singapore, with no previous surgeries or anesthesia. Current medications include Metformin 500mg Twice daily, Lisinopril 10mg Once daily, and Atorvastatin 20mg Once daily. Patient is allergic to Penicillin (rash reaction) but has no other allergies.",
           "provenance": [
             "doc:gp-summary#c001",
-            "audio:preop-interview#s006",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c002",
             "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008",
             "doc:gp-summary#c003",
             "doc:med-list#c002",
             "doc:gp-summary#c004",
             "doc:med-list#c003",
             "doc:gp-summary#c006",
-            "audio:preop-interview#s010"
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s009"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative concerns included a drop in mean arterial pressure to 55 mmHg, requiring Phenylephrine 0.2mg, and potential for residual neuromuscular blockade despite Sugammadex reversal. Patient experienced fatigue preoperatively, which may exacerbate recovery challenges.",
+          "text": "Intraoperative course included General Anesthesia with Fentanyl, Propofol, and Sevoflurane; muscle relaxation with Rocuronium. Notable events: mean arterial pressure drop to 55, treated with Phenylephrine. Surgery completed uneventfully.",
           "provenance": [
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s008",
             "doc:op-plan#c002",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
             "audio:intraop-notes#s003",
-            "audio:preop-interview#s014"
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Monitor for postoperative nausea and vomiting (PONV) due to multiple emetogenic agents used. Ensure close glycemic control due to diabetes. Watch for signs of residual neuromuscular blockade and manage analgesia carefully, as Fentanyl may not suffice for postoperative pain. Be alert for potential hemodynamic instability.",
+          "text": "Monitor for Postoperative Nausea and Vomiting (PONV) due to opioid use and laparoscopic surgery. Ensure airway watch due to intubation with muscle relaxant and reversal with Sugammadex. Maintain glycemic control due to diabetes mellitus. Manage analgesia considering opioid sensitivity. Watch hemodynamics due to hypertension and intra-op hypotension. Review antibiotic prophylaxis considering Penicillin allergy.",
           "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s001",
+            "audio:preop-interview#s004",
             "audio:intraop-notes#s002",
-            "audio:intraop-notes#s005",
-            "audio:preop-interview#s014",
-            "doc:gp-summary#c001",
-            "audio:preop-interview#s006",
-            "doc:med-list#c001",
             "audio:intraop-notes#s003",
             "audio:intraop-notes#s008",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s008",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
             "audio:intraop-notes#s007",
-            "audio:intraop-notes#s006"
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s010"
           ],
-          "status": "supported"
+          "status": "unsupported"
         }
       ]
     },
@@ -735,7 +780,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient reports feeling a bit groggy but overall okay with manageable abdominal soreness.",
+          "text": "Patient reports feeling a bit groggy but okay with manageable tummy soreness.",
           "provenance": [
             "audio:postop-interview#s002"
           ],
@@ -743,7 +788,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient reports a pain level of 4 or 5 out of 10.",
+          "text": "Patient reports pain level of 4 or 5 out of 10.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
@@ -751,7 +796,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient denies any nausea or vomiting since waking up, only reports a bit of dry mouth.",
+          "text": "No nausea or vomiting reported since waking up.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
@@ -759,7 +804,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient reports breathing fine with no discomfort or tightness in the chest.",
+          "text": "Patient reports no discomfort or tightness in chest, breathing fine.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -767,7 +812,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Patient recalls nothing from the operation, which is normal for general anesthesia.",
+          "text": "No recall of the operation, which is normal for general anesthesia.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
@@ -775,39 +820,31 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Anesthesia included Fentanyl, Propofol, and Sevoflurane, with Rocuronium for intubation.",
+          "text": "Anesthesia included Fentanyl, Propofol, and Sevoflurane as per plan.",
           "provenance": [
+            "audio:preop-interview#s009",
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s005",
-            "doc:op-plan#c002"
+            "audio:intraop-notes#s005"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Patient's current medications include Metformin, Lisinopril, and Atorvastatin, with Ranitidine discontinued six months ago due to side effects.",
+          "text": "Ranitidine was discontinued six months ago due to side effects, not taken currently.",
           "provenance": [
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s008",
-            "doc:gp-summary#c001",
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "doc:med-list#c004"
+            "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Patient has a history of penicillin allergy (rash reaction).",
+          "text": "Current medications include Metformin, Lisinopril, and Atorvastatin, confirmed during pre-op interview.",
           "provenance": [
-            "audio:preop-interview#s010",
-            "doc:gp-summary#c006"
+            "audio:preop-interview#s008",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003"
           ],
           "status": "supported"
         }
@@ -816,7 +853,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are still taking Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, and Ranitidine 150mg Once daily, or have any of these medications been stopped, changed, or replaced since the last record was made?",
+      "question": "Can you confirm if you are still taking all the medications listed (Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, Ranitidine 150mg Once daily) and if any have been stopped, changed, or replaced since this list was created?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -828,7 +865,7 @@
       "edited_text": null
     },
     {
-      "question": "Are you aware of any other allergies, including reactions to drugs not listed (such as latex, plasters, or foods), in addition to the documented Penicillin (rash) allergy?",
+      "question": "Are you aware of any allergies or reactions to drugs (such as antibiotics, anesthetics, or painkillers), non-drug items (like latex, IV contrast, or adhesive tapes), or foods that are not documented in your records?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
@@ -837,8 +874,8 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your history of pneumonia resolved 5 years ago, such as the severity, treatment received, and any residual respiratory issues?",
-      "reason": "missing",
+      "question": "You have a history of pneumonia that resolved 5 years ago. Do you have any current respiratory symptoms, or any history of lung disease that might affect your breathing during or after surgery?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c007"
       ],
@@ -846,10 +883,19 @@
       "edited_text": null
     },
     {
-      "question": "Given your history of pneumonia, have you had any recent respiratory infections or breathing difficulties that may impact anesthesia?",
-      "reason": "missing",
+      "question": "You have a documented allergy to Penicillin (rash). Have you had any other reactions to antibiotics or medications since that time, or any reactions during previous medical procedures?",
+      "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c007"
+        "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You completed a course of Amoxicillin for a dental infection 2 years ago without issues. Have you had any other dental or surgical procedures since then, and if so, did you experience any complications or reactions during anesthesia or recovery?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c009"
       ],
       "review": null,
       "edited_text": null
@@ -913,17 +959,8 @@
     {
       "t": "08:35",
       "category": "event",
-      "value": "mean arterial pressure dropped to 55",
+      "value": "mean arterial pressure dropped to 55, gave phenylephrine 0.2",
       "units": null,
-      "provenance": [
-        "audio:intraop-notes#s007"
-      ]
-    },
-    {
-      "t": "08:35",
-      "category": "agent",
-      "value": "phenylephrine 0.2",
-      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s007"
       ]
@@ -931,16 +968,7 @@
     {
       "t": "09:00",
       "category": "event",
-      "value": "surgery completed",
-      "units": null,
-      "provenance": [
-        "audio:intraop-notes#s008"
-      ]
-    },
-    {
-      "t": "09:00",
-      "category": "agent",
-      "value": "sugammadex 15",
+      "value": "surgery completed, reversed with sugammadex 15",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s008"
@@ -948,11 +976,24 @@
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV) due to use of multiple emetogenic agents (Propofol, Fentanyl, Sevoflurane) and history of diabetes which may increase susceptibility.",
-    "Airway watch due to use of Rocuronium for intubation and potential for residual neuromuscular blockade despite Sugammadex reversal, especially in a patient with diabetes which may affect neuromuscular function.",
-    "Glycemic control issues perioperatively due to diabetes, exacerbated by stress of surgery and potential for insulin resistance from steroids or other factors not directly mentioned but inferred from diabetes history.",
-    "Analgesia management challenges due to intra-op use of Fentanyl which may not provide sufficient postoperative pain control for laparoscopic surgery, requiring additional analgesics.",
-    "Hemodynamic instability (hypotension) as evidenced by intra-op drop in MAP to 55 requiring Phenylephrine, which may persist into post-op period due to residual anesthetic effects and fluid status."
+    "PONV (Postoperative Nausea and Vomiting) Risk due to Opioid Use (Fentanyl) and Laparoscopic Surgery",
+    "Airway Watch due to Intubation with Muscle Relaxant (Rocuronium) and Reversal with Sugammadex",
+    "Glycemic Control Monitoring due to Diabetes Mellitus (Metformin Use)",
+    "Analgesia Management due to Surgery and Opioid Sensitivity (Fentanyl Use)",
+    "Hemodynamic Watch due to Hypertension (Lisinopril Use) and Intra-op Hypotension",
+    "Potential for Antibiotic Prophylaxis Review due to Penicillin Allergy"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope improves difficult airway management in obese patients with GERD."
+    },
+    {
+      "item_id": "ett-7.0",
+      "name": "Endotracheal tube 7.0 mm",
+      "reason": "Larger endotracheal tube size (7.0 mm) may be needed for obese patients with GERD."
+    }
   ],
   "workflow": null
 }

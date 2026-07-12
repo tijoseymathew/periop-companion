@@ -461,33 +461,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "History of pneumonia resolved 5 years ago, no recent respiratory issues reported",
-          "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s012"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Remote history of left femoral fracture (age 25), fully healed, no anesthetic implications",
-          "provenance": [
-            "doc:gp-summary#c011"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Previous use of Omeprazole for GERD, discontinued 2 years ago, no recent episodes of heartburn, dyspepsia, or regurgitation reported",
-          "provenance": [
-            "doc:gp-summary#c012",
-            "audio:preop-interview#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Current Medications: Atorvastatin 20mg once daily",
+          "text": "Currently taking Atorvastatin 20mg once daily",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c001",
@@ -496,8 +470,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "Current Medications: Metformin 500mg twice daily",
+          "claim_id": "c-008",
+          "text": "Currently taking Metformin 500mg twice daily",
           "provenance": [
             "doc:gp-summary#c003",
             "doc:med-list#c002",
@@ -506,8 +480,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Current Medications: Lisinopril 10mg once daily",
+          "claim_id": "c-009",
+          "text": "Currently taking Lisinopril 10mg once daily",
           "provenance": [
             "doc:gp-summary#c004",
             "doc:med-list#c003",
@@ -516,42 +490,59 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Current Medications: Clopidogrel 75mg once daily (replaced Aspirin due to stomach discomfort)",
+          "claim_id": "c-010",
+          "text": "Stopped taking Aspirin 75mg once daily six months ago due to stomach discomfort; switched to Clopidogrel 75mg once daily for secondary prevention of heart issues",
           "provenance": [
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "No known drug allergies recorded, except for Penicillin (rash)",
+          "claim_id": "c-011",
+          "text": "No known drug allergies except for Penicillin (rash)",
           "provenance": [
             "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
             "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-015",
-          "text": "No other drug or non-drug allergies (e.g., latex, plasters, foods) reported",
+          "claim_id": "c-012",
+          "text": "No other allergies (drug, non-drug, latex, foods, etc.) reported",
           "provenance": [
             "audio:preop-interview#s007"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "Patient confirms fasting since midnight as instructed",
+          "claim_id": "c-013",
+          "text": "History of GERD, previously treated with Omeprazole (discontinued 2 years ago); no recent symptoms of acid reflux or dyspepsia reported",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Undergoing Laparoscopic Cholecystectomy (elective) under General Anesthesia with endotracheal intubation",
+          "provenance": [
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "Fasted as instructed; nothing by mouth after midnight",
           "provenance": [
             "audio:preop-interview#s014"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-017",
-          "text": "ASA-PS II: Patient has mild systemic disease (Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia) without substantive limitations of activity",
+          "claim_id": "c-016",
+          "text": "ASA-PS Class III (Patient has severe systemic disease, e.g., controlled hypertension, diabetes, hyperlipidemia)",
           "provenance": [
             "doc:gp-summary#c007",
             "doc:gp-summary#c008",
@@ -560,29 +551,20 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-018",
-          "text": "Planned procedure: Laparoscopic Cholecystectomy (elective) under General Anesthesia with endotracheal intubation",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-019",
-          "text": "Patient experienced anesthesia without complications in previous hernia repair surgery",
+          "claim_id": "c-017",
+          "text": "No previous surgeries or anesthesia complications reported; last surgery was hernia repair 10 years ago without issues",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-020",
-          "text": "Gallbladder issue presents with sharp pain on the right side, especially after fatty meals, indicating the need for elective laparoscopic cholecystectomy",
+          "claim_id": "c-018",
+          "text": "No recent cardiac evaluation or stress testing mentioned",
           "provenance": [
-            "audio:preop-interview#s012"
+            "audio:preop-interview#s005"
           ],
-          "status": "supported"
+          "status": "unsupported"
         }
       ]
     },
@@ -652,7 +634,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "PONV risk due to history of GERD and use of Omeprazole in the past, combined with intraoperative use of opioids (Remifentanil)",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including history of GERD, use of opioids, and laparoscopic surgery",
           "provenance": [
             "doc:gp-summary#c012",
             "audio:preop-interview#s005",
@@ -662,7 +644,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to elevated intraoperative peak airway pressure, which may indicate potential airway obstruction or respiratory issue",
+          "text": "Airway Watch due to elevated intraoperative peak airway pressure",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -670,7 +652,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control monitoring due to Type 2 Diabetes Mellitus, requiring careful management of blood glucose levels post-operatively",
+          "text": "Glycemic Control Monitoring due to Type 2 Diabetes Mellitus",
           "provenance": [
             "doc:gp-summary#c008"
           ],
@@ -678,24 +660,24 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management considering the patient's history of sharp pain on the right side (gallbladder issue) and potential for post-operative pain",
+          "text": "Analgesia Management considering patient's opioid use and potential for increased postoperative pain",
           "provenance": [
-            "audio:preop-interview#s012"
+            "audio:intraop-notes#s006"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic watch due to intraoperative hypotension (MAP 45 mmHg) and history of hypertension, requiring careful blood pressure management",
+          "text": "Hemodynamic Watch for potential hypotension or hypertension episodes considering history of hypertension and intraoperative hypotension",
           "provenance": [
-            "audio:intraop-notes#s005",
-            "doc:gp-summary#c007"
+            "doc:gp-summary#c007",
+            "audio:intraop-notes#s005"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-006",
-          "text": "Potential for increased bleeding or impaired hemostasis due to current use of Clopidogrel, an antiplatelet agent",
+          "text": "Monitoring for Aspirin/Clopidogrel related bleeding risk or thrombocytopenia due to recent switch from Aspirin to Clopidogrel",
           "provenance": [
             "audio:preop-interview#s006"
           ],
@@ -708,21 +690,17 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "58-year-old male, ASA-PS II, undergoing elective Laparoscopic Cholecystectomy under General Anesthesia with endotracheal intubation for gallbladder issue presenting with sharp pain on the right side, especially after fatty meals.",
+          "text": "58-year-old male undergoing Laparoscopic Cholecystectomy under General Anesthesia with endotracheal intubation, now in PACU for recovery.",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
             "doc:op-plan#c001",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s012"
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of Hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia. Current medications include Atorvastatin, Metformin, Lisinopril, and Clopidogrel. No known drug allergies except for Penicillin (rash).",
+          "text": "Patient has a history of controlled Hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia, currently managed with Lisinopril, Metformin, and Atorvastatin. No known drug allergies except for Penicillin (rash).",
           "provenance": [
             "doc:gp-summary#c007",
             "doc:gp-summary#c008",
@@ -734,38 +712,44 @@
             "doc:med-list#c002",
             "doc:gp-summary#c004",
             "doc:med-list#c003",
-            "audio:preop-interview#s006",
             "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
             "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative complications included hypotension (MAP 45 mmHg) and elevated peak airway pressure (28 cm H2O). Patient received Propofol, Remifentanil, and a fluid bolus. Endotracheal tube placed with grade one view.",
+          "text": "Patient stopped Aspirin due to stomach discomfort six months ago and is now on Clopidogrel for secondary prevention of heart issues.",
           "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s004"
+            "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Monitor for PONV due to history of GERD and opioid use; watch airway for potential obstruction due to elevated intraoperative peak airway pressure; manage blood glucose levels due to Type 2 Diabetes Mellitus; carefully manage blood pressure due to history of hypertension and intraoperative hypotension; consider increased bleeding risk due to Clopidogrel use.",
+          "text": "Patient is at risk for Postoperative Nausea and Vomiting (PONV), requires Airway Watch, Glycemic Control Monitoring, and Hemodynamic Watch.",
           "provenance": [
             "doc:gp-summary#c012",
             "audio:preop-interview#s005",
             "audio:intraop-notes#s006",
             "audio:intraop-notes#s007",
             "doc:gp-summary#c008",
-            "audio:intraop-notes#s005",
             "doc:gp-summary#c007",
-            "audio:preop-interview#s006"
+            "audio:intraop-notes#s005"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Monitor for PONV, maintain Airway Watch, ensure Glycemic Control, and watch for hypotension or hypertension episodes. Consider Analgesia Management given opioid use.",
+          "provenance": [
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s005",
+            "audio:intraop-notes#s006",
+            "audio:intraop-notes#s007",
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c007",
+            "audio:intraop-notes#s005"
           ],
           "status": "supported"
         }
@@ -776,7 +760,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient reports being a bit tired but okay, with sore abdomen and mild nausea.",
+          "text": "Patient reports feeling a bit tired but otherwise okay, with soreness in the abdominal area and a sensation of nausea.",
           "provenance": [
             "audio:postop-interview#s002"
           ],
@@ -784,7 +768,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient rates current pain as 4 or 5 on a scale of 0 to 10, describing it as manageable.",
+          "text": "Patient rates current pain level as 4 or 5 on a scale from 0 to 10, describing it as manageable.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
@@ -800,7 +784,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient reports no shortness of breath or chest discomfort, only a sore throat attributed to intubation.",
+          "text": "Patient reports no shortness of breath or chest discomfort, indicating normal respiratory function.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -808,34 +792,44 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Patient recalls nothing from the surgery, consistent with effective general anesthesia.",
+          "text": "Patient experiences sore throat, likely due to intubation during surgery.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient recalls nothing from the surgery, consistent with expected effects of general anesthesia.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Provider notes the need for close monitoring of vitals and blood sugar levels due to patient's hypertension and diabetes.",
+          "claim_id": "c-007",
+          "text": "Anesthesia and surgical team will monitor vitals and blood sugar levels closely due to patient's hypertension and diabetes.",
           "provenance": [
             "audio:postop-interview#s011"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Intraoperative hypotension was managed with atenolol infusion.",
+          "claim_id": "c-008",
+          "text": "No intraoperative complications noted regarding airway management or anesthesia delivery.",
           "provenance": [
-            "audio:intraop-notes#s005"
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s007"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Patient was induced with propofol 120mg and had a grade 1 view upon intubation.",
+          "claim_id": "c-009",
+          "text": "Induction and maintenance of anesthesia achieved with propofol and remifentanil, respectively.",
           "provenance": [
             "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002"
+            "audio:intraop-notes#s006"
           ],
           "status": "supported"
         }
@@ -844,16 +838,19 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are still taking Aspirin 75mg once daily, and if there have been any changes, stops, or new medications added since the last record was made?",
+      "question": "Can you confirm if you are still taking all the medications listed (Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, Aspirin 75mg once daily) and if there have been any changes, stoppages, or new medications added since this list was created?",
       "reason": "stale",
       "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003",
         "doc:med-list#c004"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that have not been documented in your records?",
+      "question": "Are you aware of any drug or non-drug allergies (such as to latex, plasters, foods, or any other substances) that are not documented in your records?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
@@ -862,17 +859,26 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your history of pneumonia? Specifically, was it community-acquired, hospital-acquired, or related to an underlying condition, and have you had any respiratory issues since then?",
-      "reason": "missing",
+      "question": "Can you provide more details about your history of hypertension, including how well it is controlled with Lisinopril and if you have experienced any recent symptoms such as dizziness or chest pain?",
+      "reason": "stale",
       "provenance": [
-        "doc:gp-summary#c010"
+        "doc:gp-summary#c007"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "You have a history of GERD for which you previously took Omeprazole. Have you had any recent episodes of heartburn, dyspepsia, or regurgitation that might suggest ongoing GERD, especially in the context of upcoming anesthesia?",
-      "reason": "missing",
+      "question": "How is your Type 2 Diabetes Mellitus currently managed, and have you experienced any recent episodes of hypoglycemia or hyperglycemia?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You previously used Omeprazole for GERD, which was discontinued 2 years ago. Have you had any recent symptoms of acid reflux or dyspepsia that might suggest ongoing gastrointestinal issues?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c012"
       ],
@@ -880,11 +886,12 @@
       "edited_text": null
     },
     {
-      "question": "Given your history of hypertension and diabetes, have you had any recent cardiovascular evaluations, such as an ECG or echocardiogram, and are you currently experiencing any symptoms like chest pain, palpitations, or shortness of breath?",
+      "question": "Given your history of hypertension, diabetes, and hyperlipidemia, have you undergone any recent cardiac evaluation or stress testing that the anesthetic team should be aware of?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c007",
-        "doc:gp-summary#c008"
+        "doc:gp-summary#c008",
+        "doc:gp-summary#c009"
       ],
       "review": null,
       "edited_text": null
@@ -956,12 +963,29 @@
     }
   ],
   "anticipated_issues": [
-    "PONV risk due to history of GERD and use of Omeprazole in the past, combined with intraoperative use of opioids (Remifentanil)",
-    "Airway watch due to elevated intraoperative peak airway pressure, which may indicate potential airway obstruction or respiratory issue",
-    "Glycemic control monitoring due to Type 2 Diabetes Mellitus, requiring careful management of blood glucose levels post-operatively",
-    "Analgesia management considering the patient's history of sharp pain on the right side (gallbladder issue) and potential for post-operative pain",
-    "Hemodynamic watch due to intraoperative hypotension (MAP 45 mmHg) and history of hypertension, requiring careful blood pressure management",
-    "Potential for increased bleeding or impaired hemostasis due to current use of Clopidogrel, an antiplatelet agent"
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including history of GERD, use of opioids, and laparoscopic surgery",
+    "Airway Watch due to elevated intraoperative peak airway pressure",
+    "Glycemic Control Monitoring due to Type 2 Diabetes Mellitus",
+    "Analgesia Management considering patient's opioid use and potential for increased postoperative pain",
+    "Hemodynamic Watch for potential hypotension or hypertension episodes considering history of hypertension and intraoperative hypotension",
+    "Monitoring for Aspirin/Clopidogrel related bleeding risk or thrombocytopenia due to recent switch from Aspirin to Clopidogrel"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope aids in difficult intubation due to patient's ASA-PS Class III status and potential airway challenges."
+    },
+    {
+      "item_id": "bougie",
+      "name": "Tracheal tube introducer (bougie)",
+      "reason": "Bougie facilitates safe intubation in a patient with comorbidities like hypertension and diabetes, reducing esophageal intubation risk."
+    },
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA-4 provides a non-invasive airway option if intubation proves difficult in this ASA-PS Class III patient with comorbidities."
+    }
   ],
   "workflow": null
 }

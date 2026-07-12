@@ -438,6 +438,14 @@
         },
         {
           "claim_id": "c-002",
+          "text": "Retired, resident of Jurong West, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
           "text": "Elective total hip replacement (THR) due to osteoarthritis (elective)",
           "provenance": [
             "doc:op-plan#c001"
@@ -445,24 +453,35 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Hypertension - relevant for anesthetic management of blood pressure",
-          "provenance": [
-            "doc:gp-summary#c010"
-          ],
-          "status": "unsupported"
-        },
-        {
           "claim_id": "c-004",
-          "text": "Type 2 Diabetes Mellitus - relevant for glycemic control perioperatively",
+          "text": "Osteoarthritis (bilateral hip, worse on left), affecting daily life, especially when walking or standing for too long, and climbing stairs",
           "provenance": [
-            "doc:gp-summary#c011"
+            "doc:gp-summary#c013",
+            "audio:preop-interview#s004"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Chronic Kidney Disease (Stage 3) - recent function stable, no worsening",
+          "text": "Hypertension, controlled, no recent complications",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Type 2 Diabetes Mellitus, stable, with regular blood sugar checks within target range, no recent hypoglycemia or hyperglycemia episodes mentioned",
+          "provenance": [
+            "doc:gp-summary#c011",
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Chronic Kidney Disease (Stage 3), monitored, not worsened recently, no dietary restrictions or other management strategies mentioned beyond current medications",
           "provenance": [
             "doc:gp-summary#c012",
             "audio:preop-interview#s012"
@@ -470,8 +489,16 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Atorvastatin 20 mg once daily (confirmed current)",
+          "claim_id": "c-008",
+          "text": "Cataract surgery in the past, no anesthesia complications",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Atorvastatin 20 mg once daily (current)",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:med-list#c001",
@@ -480,8 +507,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Metformin 500 mg twice daily (confirmed current)",
+          "claim_id": "c-010",
+          "text": "Metformin 500 mg twice daily (current)",
           "provenance": [
             "doc:gp-summary#c002",
             "doc:med-list#c002",
@@ -490,8 +517,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Losartan 100 mg once daily (confirmed current)",
+          "claim_id": "c-011",
+          "text": "Losartan 100 mg once daily (current)",
           "provenance": [
             "doc:gp-summary#c004",
             "doc:med-list#c003",
@@ -500,19 +527,19 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Aspirin 75 mg once daily (confirmed current, continued up to day of surgery)",
+          "claim_id": "c-012",
+          "text": "Aspirin 75 mg once daily (current), continued up to the day of surgery",
           "provenance": [
             "doc:gp-summary#c005",
             "doc:med-list#c004",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Ranitidine 150 mg twice daily - STOPPED 6 months ago, switched to Omeprazole 20 mg daily",
+          "claim_id": "c-013",
+          "text": "Ranitidine discontinued 6 months ago due to contamination concerns, switched to Omeprazole 20 mg daily",
           "provenance": [
             "doc:gp-summary#c006",
             "audio:preop-interview#s006"
@@ -520,7 +547,7 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
+          "claim_id": "c-014",
           "text": "Penicillin allergy (rash)",
           "provenance": [
             "doc:gp-summary#c007",
@@ -529,32 +556,24 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "No other allergies to medications, foods, or latex",
+          "claim_id": "c-015",
+          "text": "No other allergies or reactions to medications, foods, latex, adhesives, or other substances beyond documented Penicillin rash",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Last meal at 7 PM the night before, last sip of water at 6 AM the morning of surgery",
+          "claim_id": "c-016",
+          "text": "Last meal at 7 PM the night before, last drink (small sip of water with morning medications) at 6 AM on the day of the interview",
           "provenance": [
             "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "No history of difficult airway, intubation issues, or prior anesthetic complications",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "ASA-PS Class III - due to controlled but present systemic diseases (Hypertension, Type 2 Diabetes Mellitus, Chronic Kidney Disease Stage 3)",
+          "claim_id": "c-017",
+          "text": "ASA-PS Class III (Patient has severe systemic disease, e.g., poorly controlled hypertension, diabetes with complications, or chronic kidney disease, which may impact anesthesia and surgery outcome)",
           "provenance": [
             "doc:gp-summary#c010",
             "doc:gp-summary#c011",
@@ -563,12 +582,21 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "General anesthesia with spinal anesthesia as co-anesthesia, with ultrasound-guided peripheral nerve block for postoperative pain management",
+          "claim_id": "c-018",
+          "text": "General Anesthesia with Spinal Anesthesia as co-anesthesia, and Ultrasound-Guided Peripheral Nerve Block for postoperative pain management planned",
           "provenance": [
-            "doc:op-plan#c002"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
           ],
           "status": "supported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "No previous neuraxial procedures or nerve blocks mentioned, so tolerance unknown",
+          "provenance": [
+            "audio:preop-interview#s015"
+          ],
+          "status": "unsupported"
         }
       ]
     },
@@ -577,7 +605,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "08:00 Propofol 120 milligrams administered",
+          "text": "At 08:00, propofol 120 milligrams was administered for induction.",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -585,7 +613,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "08:02 Endotracheal tube placed with grade one view",
+          "text": "At 08:02, endotracheal tube was placed with a grade one view.",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -593,7 +621,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "08:05 Bupivacaine 25 milligrams administered for spinal anesthesia",
+          "text": "At 08:05, spinal anesthesia was administered with 25 milligrams of bupivacaine.",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -601,7 +629,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "08:10 Ropivacaine 10 milliliters administered for ultrasound-guided peripheral nerve block",
+          "text": "At 08:10, ultrasound-guided peripheral nerve block was performed with 10 milliliters of ropivacaine.",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -609,7 +637,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "08:15 Hypotension noted with mean arterial pressure 45 mmHg",
+          "text": "At 08:15, hypotension was noted with a mean arterial pressure of 45 mmHg, and 1 milligram of phenylephrine was administered.",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -617,31 +645,15 @@
         },
         {
           "claim_id": "c-006",
-          "text": "08:15 Phenylephrine 1 milligram administered for hypotension",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "09:00 Lactated Ringers 2 liters administered",
+          "text": "At 09:00, 2 liters of lactated ringers were administered.",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "09:20 Tachycardia noted with heart rate 120 beats per minute",
-          "provenance": [
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "09:20 Fentanyl 25 micrograms administered for tachycardia",
+          "claim_id": "c-007",
+          "text": "At 09:20, tachycardia was noted with a heart rate of 120 beats per minute, and an incremental dose of fentanyl 25 micrograms was administered.",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -654,42 +666,45 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including opioid administration (Fentanyl), history of General Anesthesia, and potential fluid overload.",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including opioid use (Fentanyl), history of anesthesia without prior neuraxial procedures or nerve blocks, and potential for prolonged surgery.",
           "provenance": [
-            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
             "audio:intraop-notes#s007"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to General Anesthesia with Endotracheal Tube placement, though grade one view suggests no immediate difficulty, but still requires monitoring post-op for potential edema or obstruction.",
+          "text": "Airway watch due to general anesthesia with endotracheal intubation and potential for airway edema or reaction to medications, given history of Penicillin allergy (rash).",
           "provenance": [
-            "doc:op-plan#c002",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s010",
             "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control necessary due to Type 2 Diabetes Mellitus, exacerbated by stress response from surgery and potential fluid shifts.",
+          "text": "Glycemic control necessary due to Type 2 Diabetes Mellitus, stable but requiring monitoring postoperatively to prevent hyperglycemia or hypoglycemia.",
           "provenance": [
-            "doc:gp-summary#c011"
+            "doc:gp-summary#c011",
+            "audio:preop-interview#s012"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management considering Ultrasound-Guided Peripheral Nerve Block with Ropivacaine, but potential for breakthrough pain or block wear-off requiring opioid supplementation and its side effects.",
+          "text": "Analgesia management required due to major surgery (Total Hip Replacement) and the use of peripheral nerve block with Ropivacaine, necessitating monitoring for adequate pain control and potential for local anesthetic systemic toxicity (LAST).",
           "provenance": [
-            "doc:op-plan#c002",
+            "doc:gp-summary#c013",
+            "audio:preop-interview#s004",
             "audio:intraop-notes#s004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic instability watch due to intra-op Hypotension (MAP 45 mmHg) and Tachycardia (HR 120 bpm), indicating potential for continued fluid balance issues or cardiac response to surgical stress.",
+          "text": "Hemodynamic watch due to episodes of hypotension (MAP 45 mmHg) and tachycardia (HR 120 bpm) during surgery, indicating potential for cardiovascular instability postoperatively.",
           "provenance": [
             "audio:intraop-notes#s005",
             "audio:intraop-notes#s007"
@@ -698,7 +713,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Renal function monitoring due to Stage 3 Chronic Kidney Disease, considering intra-op fluid administration (2L Lactated Ringers) and potential for post-operative acute kidney injury.",
+          "text": "Renal function monitoring due to Stage 3 Chronic Kidney Disease, with potential impact from intraoperative fluid administration (2L Lactated Ringer’s) and contrast or other nephrotoxic agents if used.",
           "provenance": [
             "doc:gp-summary#c012",
             "audio:preop-interview#s012",
@@ -713,76 +728,53 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "69-year-old male post-elective total hip replacement due to osteoarthritis.",
+          "text": "69-year-old male undergoing elective total hip replacement due to osteoarthritis, with a history of hypertension, type 2 diabetes, and stage 3 chronic kidney disease.",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:op-plan#c001"
+            "doc:op-plan#c001",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c012"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Comorbidities include controlled Hypertension, Type 2 Diabetes Mellitus, and stable Stage 3 Chronic Kidney Disease. Medications include Atorvastatin, Metformin, Losartan, Aspirin, and Omeprazole.",
+          "text": "Patient received general anesthesia with spinal anesthesia and ultrasound-guided peripheral nerve block for pain management. Last meal at 7 PM the night before, and a small sip of water with morning medications at 6 AM.",
           "provenance": [
-            "doc:gp-summary#c010",
-            "doc:gp-summary#c011",
-            "doc:gp-summary#c012",
-            "audio:preop-interview#s012",
-            "doc:gp-summary#c001",
-            "doc:med-list#c001",
-            "audio:preop-interview#s008",
-            "doc:gp-summary#c002",
-            "doc:med-list#c002",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "doc:gp-summary#c005",
-            "doc:med-list#c004",
-            "audio:preop-interview#s007",
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s006"
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Penicillin allergy (rash) and no other known allergies.",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Intra-op complications included hypotension (MAP 45 mmHg) treated with Phenylephrine, and tachycardia (HR 120 bpm) treated with Fentanyl. Received spinal anesthesia with bupivacaine, and ultrasound-guided peripheral nerve block with ropivacaine for pain management.",
+          "text": "Intraoperative complications included hypotension (MAP 45 mmHg) requiring phenylephrine and tachycardia (HR 120 bpm) requiring fentanyl. Also, 2L of lactated ringers were administered.",
           "provenance": [
             "audio:intraop-notes#s005",
             "audio:intraop-notes#s007",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Received 2 liters of Lactated Ringers intra-operatively.",
-          "provenance": [
             "audio:intraop-notes#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Monitor for postoperative nausea and vomiting (PONV), airway edema or obstruction, glycemic control, breakthrough pain or block wear-off, hemodynamic instability, and renal function due to Stage 3 Chronic Kidney Disease and intra-op fluid administration.",
+          "claim_id": "c-004",
+          "text": "Monitor for postoperative nausea and vomiting (PONV), airway edema, glycemic control, adequate pain management, potential for local anesthetic systemic toxicity (LAST), cardiovascular instability, and renal function due to stage 3 chronic kidney disease.",
           "provenance": [
-            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
             "audio:intraop-notes#s007",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s010",
             "audio:intraop-notes#s002",
             "doc:gp-summary#c011",
+            "audio:preop-interview#s012",
+            "doc:gp-summary#c013",
+            "audio:preop-interview#s004",
             "audio:intraop-notes#s004",
             "audio:intraop-notes#s005",
             "doc:gp-summary#c012",
-            "audio:preop-interview#s012",
             "audio:intraop-notes#s006"
           ],
           "status": "supported"
@@ -794,7 +786,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient reports a pain level of 3 on a scale from 0 to 10, indicating effective pain control from the ultrasound-guided peripheral nerve block.",
+          "text": "Patient reports current pain level of 3/10, noting the nerve block is effective.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
@@ -802,7 +794,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient denies any nausea or vomiting since waking up from surgery.",
+          "text": "Patient denies nausea or vomiting since waking up.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
@@ -810,7 +802,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient reports no difficulty breathing and confirms chest feels fine, indicating no immediate respiratory concerns.",
+          "text": "Patient reports no breathing difficulties or discomfort, with clear chest sensation.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -818,35 +810,51 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient has no recall of the surgery, consistent with the administration of general anesthesia.",
+          "text": "Patient recalls nothing about the surgery, consistent with general anesthesia.",
           "provenance": [
-            "audio:postop-interview#s010",
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002"
+            "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Recovery course is uncomplicated, with patient feeling 'okay' and 'a bit sleepy' post-surgery.",
-          "provenance": [
-            "audio:postop-interview#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Intraoperative hypotension (MAP 45 mmHg) was managed with phenylephrine, indicating transient instability.",
+          "text": "Intraoperative hypotension (MAP 45 mmHg) was managed with phenylephrine.",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Tachycardia (HR 120 bpm) during surgery was treated with fentanyl, suggesting transient cardiac response.",
+          "claim_id": "c-006",
+          "text": "Intraoperative tachycardia (HR 120 bpm) was treated with fentanyl.",
           "provenance": [
             "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Patient received 2L of Lactated Ringer's intraoperatively for fluid resuscitation.",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Anesthesia plan of general anesthesia with spinal co-anesthesia and ultrasound-guided peripheral nerve block was executed as planned.",
+          "provenance": [
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Patient's diabetes and chronic kidney disease will be closely monitored postoperatively for fluid balance and blood sugar levels.",
+          "provenance": [
+            "audio:postop-interview#s011"
           ],
           "status": "supported"
         }
@@ -855,7 +863,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are still taking all the medications listed in your current medication list (Atorvastatin, Metformin, Losartan, Aspirin, Ranitidine), and have there been any changes, stoppages, or additions since this list was recorded?",
+      "question": "Can you confirm if you are still taking all the medications listed in your current medication list (Atorvastatin, Metformin, Losartan, Aspirin, Ranitidine) and if any have been stopped, changed, or replaced since the list was recorded?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -868,7 +876,7 @@
       "edited_text": null
     },
     {
-      "question": "You have a documented allergy to Penicillin (rash). Are you aware of any other allergies, including reactions to drugs (e.g., antibiotics, anesthetics), non-drug items (e.g., latex, plasters), or foods?",
+      "question": "Are you aware of any allergies or reactions to drugs, latex, adhesives, or other substances not already documented (beyond the noted Penicillin rash)?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c007"
@@ -877,44 +885,7 @@
       "edited_text": null
     },
     {
-      "question": "You have a history of Chronic Kidney Disease (Stage 3). Can you confirm your most recent renal function tests (e.g., eGFR, creatinine levels) and whether there have been any recent changes in your kidney function?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c012"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "You are scheduled for general anesthesia with spinal anesthesia and a peripheral nerve block. Do you have any history of difficult airway, intubation issues, or prior anesthetic complications?",
-      "reason": "missing",
-      "provenance": [
-        "doc:op-plan#c002"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "You have a history of Type 2 Diabetes Mellitus. What is your current glycemic control like (e.g., HbA1c levels), and are you experiencing any neuropathic or vascular complications?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c011"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "You are on Aspirin 75 mg daily. Is this being continued up to the day of surgery, and have you been instructed to stop or continue it by your managing physician?",
-      "reason": "conflicting",
-      "provenance": [
-        "doc:gp-summary#c005",
-        "doc:med-list#c004"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "You have a history of Hypertension and are on Losartan. Can you confirm your most recent blood pressure readings and whether your hypertension has been well-controlled recently?",
+      "question": "Can you provide more details about your history of hypertension, including how well it is controlled and whether you have ever experienced any complications related to it?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c010"
@@ -923,10 +894,28 @@
       "edited_text": null
     },
     {
-      "question": "You have a history of Pneumonia (2018). Have you had any recent respiratory infections, and do you have any chronic respiratory symptoms (e.g., cough, shortness of breath)?",
+      "question": "Can you elaborate on your Type 2 Diabetes Mellitus, including your current glycemic control, any episodes of hypoglycemia or hyperglycemia, and whether you have any diabetes-related complications?",
       "reason": "missing",
       "provenance": [
-        "doc:gp-summary#c008"
+        "doc:gp-summary#c011"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Please provide more information about your Chronic Kidney Disease (Stage 3), including your latest kidney function tests and any dietary restrictions or other management strategies in place?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c012"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Given your planned spinal anesthesia and peripheral nerve block, have you had any previous neuraxial procedures or nerve blocks, and if so, how did you tolerate them?",
+      "reason": "missing",
+      "provenance": [
+        "doc:op-plan#c002"
       ],
       "review": null,
       "edited_text": null
@@ -936,7 +925,7 @@
     {
       "t": "08:00",
       "category": "agent",
-      "value": "propofol 120",
+      "value": "propofol",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s001"
@@ -954,7 +943,7 @@
     {
       "t": "08:05",
       "category": "agent",
-      "value": "bupivacaine 25",
+      "value": "bupivacaine",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s003"
@@ -963,7 +952,7 @@
     {
       "t": "08:10",
       "category": "agent",
-      "value": "ropivacaine 10",
+      "value": "ropivacaine",
       "units": "milliliters",
       "provenance": [
         "audio:intraop-notes#s004"
@@ -972,7 +961,7 @@
     {
       "t": "08:15",
       "category": "event",
-      "value": "hypotension, mean arterial pressure 45",
+      "value": "hypotension, mean arterial pressure 45 mmHg",
       "units": "mmHg",
       "provenance": [
         "audio:intraop-notes#s005"
@@ -981,7 +970,7 @@
     {
       "t": "09:00",
       "category": "fluid",
-      "value": "lactated ringers 2",
+      "value": "lactated ringers",
       "units": "liters",
       "provenance": [
         "audio:intraop-notes#s006"
@@ -990,7 +979,7 @@
     {
       "t": "09:20",
       "category": "event",
-      "value": "tachycardia, heart rate 120",
+      "value": "tachycardia, heart rate 120 beats per minute",
       "units": "beats per minute",
       "provenance": [
         "audio:intraop-notes#s007"
@@ -998,12 +987,29 @@
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including opioid administration (Fentanyl), history of General Anesthesia, and potential fluid overload.",
-    "Airway watch due to General Anesthesia with Endotracheal Tube placement, though grade one view suggests no immediate difficulty, but still requires monitoring post-op for potential edema or obstruction.",
-    "Glycemic control necessary due to Type 2 Diabetes Mellitus, exacerbated by stress response from surgery and potential fluid shifts.",
-    "Analgesia management considering Ultrasound-Guided Peripheral Nerve Block with Ropivacaine, but potential for breakthrough pain or block wear-off requiring opioid supplementation and its side effects.",
-    "Hemodynamic instability watch due to intra-op Hypotension (MAP 45 mmHg) and Tachycardia (HR 120 bpm), indicating potential for continued fluid balance issues or cardiac response to surgical stress.",
-    "Renal function monitoring due to Stage 3 Chronic Kidney Disease, considering intra-op fluid administration (2L Lactated Ringers) and potential for post-operative acute kidney injury."
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to multiple factors including opioid use (Fentanyl), history of anesthesia without prior neuraxial procedures or nerve blocks, and potential for prolonged surgery.",
+    "Airway watch due to general anesthesia with endotracheal intubation and potential for airway edema or reaction to medications, given history of Penicillin allergy (rash).",
+    "Glycemic control necessary due to Type 2 Diabetes Mellitus, stable but requiring monitoring postoperatively to prevent hyperglycemia or hypoglycemia.",
+    "Analgesia management required due to major surgery (Total Hip Replacement) and the use of peripheral nerve block with Ropivacaine, necessitating monitoring for adequate pain control and potential for local anesthetic systemic toxicity (LAST).",
+    "Hemodynamic watch due to episodes of hypotension (MAP 45 mmHg) and tachycardia (HR 120 bpm) during surgery, indicating potential for cardiovascular instability postoperatively.",
+    "Renal function monitoring due to Stage 3 Chronic Kidney Disease, with potential impact from intraoperative fluid administration (2L Lactated Ringer’s) and contrast or other nephrotoxic agents if used."
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Ultrasound-guided peripheral nerve block requires precise placement, and a video laryngoscope ensures optimal visualization for nerve block accuracy."
+    },
+    {
+      "item_id": "spinal-25g",
+      "name": "Spinal needle 25G pencil-point",
+      "reason": "Spinal anesthesia requires precise needle placement, and a spinal needle 25G pencil-point is ideal for accurate delivery in this case."
+    },
+    {
+      "item_id": "bougie",
+      "name": "Tracheal tube introducer (bougie)",
+      "reason": "Ultrasound-guided peripheral nerve block requires precise placement, and a bougie ensures safe and accurate insertion of the nerve block catheter."
+    }
   ],
   "workflow": null
 }

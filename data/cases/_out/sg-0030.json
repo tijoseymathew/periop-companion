@@ -403,7 +403,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Elective Laparoscopic Cholecystectomy",
+          "text": "Undergoing elective Laparoscopic Cholecystectomy",
           "provenance": [
             "doc:op-plan#c001"
           ],
@@ -411,7 +411,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Abdominal pain after eating, diagnosed with gallbladder stones",
+          "text": "Diagnosed with gallstones, presenting with abdominal pain especially after eating",
           "provenance": [
             "audio:preop-interview#s004"
           ],
@@ -419,85 +419,100 @@
         },
         {
           "claim_id": "c-004",
-          "text": "No previous surgeries or anesthesia",
-          "provenance": [
-            "audio:preop-interview#s016"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Mild depression, not on medications, no recent treatment required",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s017"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Currently taking Metformin 500mg twice daily",
+          "text": "Current medications: Metformin 500mg Twice daily (confirmed)",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:med-list#c001",
             "audio:preop-interview#s006"
           ],
           "status": "unsupported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Discontinued Gliclazide due to frequent low sugar episodes, switched to Sitagliptin 100mg once daily",
+          "claim_id": "c-005",
+          "text": "Current medications: Atorvastatin 20mg Once daily (confirmed)",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Discontinued Gliclazide due to frequent hypoglycemic episodes; switched to Sitagliptin 100mg Once daily",
           "provenance": [
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Currently taking Atorvastatin 20mg once daily",
+          "claim_id": "c-007",
+          "text": "Allergy to Ceftriaxone (hives)",
           "provenance": [
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Allergic to Ceftriaxone (hives) and Penicillin (rash)",
+          "claim_id": "c-008",
+          "text": "Previously reported Penicillin allergy (rash) requires verification due to new Ceftriaxone allergy report",
           "provenance": [
-            "audio:preop-interview#s008",
             "audio:preop-interview#s009"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "No other drug or non-drug allergies documented",
+          "claim_id": "c-009",
+          "text": "No known drug allergies other than Ceftriaxone and possibly Penicillin (to be clarified)",
           "provenance": [
             "doc:gp-summary#c005",
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s009"
           ],
-          "status": "supported"
+          "status": "conflicting"
         },
         {
-          "claim_id": "c-011",
-          "text": "NPO since midnight, except for a sip of water with morning medications",
+          "claim_id": "c-010",
+          "text": "NPO status confirmed: nothing by mouth since midnight, except a sip of water for morning medications",
           "provenance": [
             "audio:preop-interview#s018"
           ],
           "status": "supported"
         },
         {
+          "claim_id": "c-011",
+          "text": "No prior history of surgeries or anesthesia",
+          "provenance": [
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
           "claim_id": "c-012",
-          "text": "No recent respiratory issues, chest infections, or breathing difficulties",
+          "text": "Mild depression, no current treatment or medical intervention specified",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "BMI 32, able to walk and perform daily activities with some fatigue",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "ASA-PS II (Patient with mild systemic disease controlled with medication, able to perform light physical activity)",
           "provenance": [
             "audio:preop-interview#s014"
           ],
           "status": "unsupported"
         },
         {
-          "claim_id": "c-013",
-          "text": "General Anesthesia with Single-shot Ultrasound-Guided Transversus Abdominis Plane (TAP) Block for Postoperative Pain Management",
+          "claim_id": "c-015",
+          "text": "General Anesthesia with Single-shot Ultrasound-Guided Transversus Abdominis Plane (TAP) Block for Postoperative Pain Management planned",
           "provenance": [
             "doc:op-plan#c002",
             "audio:preop-interview#s019"
@@ -511,7 +526,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "At 08:00, propofol 120 milligrams was administered for induction.",
+          "text": "Propofol 120 milligrams administered at 08:00",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -519,7 +534,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "At 08:02, the patient was intubated with a CL grade 1 view.",
+          "text": "Endotracheal tube placed with grade one view at 08:02",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -527,7 +542,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "At 08:05, an ultrasound-guided TAP block was initiated with bupivacaine 25 milligrams.",
+          "text": "Bupivacaine 25 milligrams used for ultrasound-guided TAP block at 08:05",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -535,7 +550,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "At 08:10, 2 liters of lactated ringers were administered.",
+          "text": "Two liters of lactated ringers administered at 08:10",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -543,7 +558,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "At 08:20, the mean arterial pressure dropped to 55 mmHg.",
+          "text": "Atropine 1 milligram administered for mean arterial pressure of 55 at 08:20",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -551,31 +566,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "At 08:20, atropine 1 milligram was administered.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "At 08:40, neostigmine 2 milligrams was administered for reversal.",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "At 08:40, sugammadex 16 milligrams was administered for reversal.",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "At 08:40, surgery completion was noted.",
+          "text": "Surgery completed at 08:40 with reversal using neostigmine 2 milligrams and sugammadex 16 milligrams",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -588,35 +579,35 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Laparoscopic Surgery and Opioid Use",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Anesthesia and Laparoscopic Procedure",
           "provenance": [
-            "audio:preop-interview#s004",
-            "audio:intraop-notes#s003"
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway Watch due to Potential Residual Neuromuscular Blockade",
+          "text": "Airway Watch due to Obesity (BMI 32) and Potential Difficult Airway",
           "provenance": [
-            "audio:intraop-notes#s006"
+            "audio:preop-interview#s014",
+            "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic Control Monitoring due to Diabetes and Intraoperative Fluid Administration",
+          "text": "Glycemic Control Monitoring due to Diabetes and Medication Changes",
           "provenance": [
             "doc:gp-summary#c001",
-            "doc:med-list#c001",
             "audio:preop-interview#s006",
-            "audio:intraop-notes#s004"
+            "audio:preop-interview#s012"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia Monitoring for Efficacy and Potential Local Anesthetic Toxicity",
+          "text": "Analgesia Monitoring due to TAP Block and Potential for Residual Pain",
           "provenance": [
             "doc:op-plan#c002",
             "audio:preop-interview#s019",
@@ -634,12 +625,10 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Allergy Vigilance for Antibiotic Administration",
+          "text": "Antibiotic Prophylaxis Adjustment due to Allergy to Ceftriaxone and Uncertain Penicillin Allergy",
           "provenance": [
             "audio:preop-interview#s008",
-            "audio:preop-interview#s009",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s009"
           ],
           "status": "inference"
         }
@@ -650,7 +639,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "28-year-old female undergoing elective laparoscopic cholecystectomy for gallbladder stones.",
+          "text": "28-year-old female undergoing elective Laparoscopic Cholecystectomy for gallstones, presenting with abdominal pain especially after eating.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
@@ -660,53 +649,59 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has a history of mild depression not requiring current medication, is allergic to Ceftriaxone (hives) and Penicillin (rash), and has no other documented allergies. She is currently taking Metformin, Sitagliptin, and Atorvastatin, and was NPO since midnight except for a sip of water with morning medications.",
+          "text": "Patient has a history of diabetes managed with Metformin 500mg twice daily and Atorvastatin 20mg once daily. Gliclazide was discontinued due to frequent hypoglycemic episodes and switched to Sitagliptin 100mg once daily. The patient reports an allergy to Ceftriaxone (hives) and a previously reported Penicillin allergy (rash) that requires verification.",
           "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s017",
             "doc:gp-summary#c001",
-            "doc:med-list#c001",
             "audio:preop-interview#s006",
             "doc:gp-summary#c004",
-            "doc:med-list#c003",
             "audio:preop-interview#s008",
-            "audio:preop-interview#s009",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s007",
-            "audio:preop-interview#s018"
+            "audio:preop-interview#s009"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative course included general anesthesia with a TAP block for pain management. Notable events included a drop in mean arterial pressure to 55 mmHg, managed with atropine. Reversal was achieved with neostigmine and sugammadex.",
+          "text": "Patient is NPO since midnight, except for a sip of water for morning medications. No prior history of surgeries or anesthesia. Mild depression with no current treatment. BMI of 32, able to walk and perform daily activities with some fatigue.",
+          "provenance": [
+            "audio:preop-interview#s018",
+            "audio:preop-interview#s016",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Intraoperative course included General Anesthesia with a Single-shot Ultrasound-Guided Transversus Abdominis Plane (TAP) Block for postoperative pain management. Propofol, Endotracheal tube placement, Bupivacaine for TAP block, Lactated Ringer's fluid administration, Atropine for hypotension, and reversal with Neostigmine and Sugammadex were part of the anesthesia management.",
           "provenance": [
             "doc:op-plan#c002",
             "audio:preop-interview#s019",
             "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
             "audio:intraop-notes#s005",
             "audio:intraop-notes#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-004",
-          "text": "Monitor for postoperative nausea and vomiting (PONV), airway complications due to potential residual neuromuscular blockade, glycemic control due to diabetes and fluid administration, analgesia efficacy and potential local anesthetic toxicity from the TAP block, hemodynamic instability, and vigilance for allergic reactions to antibiotics.",
+          "claim_id": "c-005",
+          "text": "Monitor for Postoperative Nausea and Vomiting (PONV) due to anesthesia and laparoscopic procedure. Maintain Airway Watch due to obesity (BMI 32) and potential for difficult airway. Ensure Glycemic Control Monitoring due to diabetes and recent medication changes. Provide Analgesia Monitoring due to TAP block and potential for residual pain. Continue Hemodynamic Watch due to intraoperative hypotension. Adjust Antibiotic Prophylaxis considering allergy to Ceftriaxone and uncertain Penicillin allergy.",
           "provenance": [
-            "audio:preop-interview#s004",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s006",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
+            "audio:preop-interview#s014",
+            "audio:intraop-notes#s002",
             "doc:gp-summary#c001",
-            "doc:med-list#c001",
             "audio:preop-interview#s006",
-            "audio:intraop-notes#s004",
+            "audio:preop-interview#s012",
             "doc:op-plan#c002",
             "audio:preop-interview#s019",
+            "audio:intraop-notes#s003",
             "audio:intraop-notes#s005",
             "audio:preop-interview#s008",
-            "audio:preop-interview#s009",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s009"
           ],
           "status": "supported"
         }
@@ -725,7 +720,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient denies nausea since waking up from surgery.",
+          "text": "Patient experiences no nausea since waking up after surgery.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
@@ -733,7 +728,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient reports no difficulty breathing or tightness in the chest post-operatively.",
+          "text": "Patient's breathing is unremarkable with no reported tightness or difficulty.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -745,55 +740,41 @@
           "provenance": [
             "audio:postop-interview#s010"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-005",
-          "text": "Post-operative plan includes close monitoring of sugar levels and mobility due to diabetes and weight (BMI 32).",
+          "text": "Recovery course is as expected with the patient feeling groggy but able to communicate.",
           "provenance": [
-            "audio:postop-interview#s011"
+            "audio:postop-interview#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Patient is alert and able to communicate post-operatively, though feeling tired from anesthesia.",
-          "provenance": [
-            "audio:postop-interview#s002",
-            "audio:postop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Transversus Abdominis Plane (TAP) block was administered intraoperatively for postoperative pain management under ultrasound guidance.",
+          "text": "Transversus Abdominis Plane (TAP) block with bupivacaine was administered intraoperatively for postoperative pain management.",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
           "status": "supported"
         },
         {
+          "claim_id": "c-007",
+          "text": "Patient's diabetes management will be monitored closely post-operatively due to her medical history and weight (BMI 32).",
+          "provenance": [
+            "audio:preop-interview#s013",
+            "audio:postop-interview#s011"
+          ],
+          "status": "supported"
+        },
+        {
           "claim_id": "c-008",
-          "text": "Intraoperative fluid administration included two liters of Lactated Ringer's solution.",
+          "text": "Patient's current medication list includes Metformin, Atorvastatin, and Sitagliptin (replacing Gliclazide), with no known drug allergies except for Ceftriaxone and Penicillin.",
           "provenance": [
-            "audio:intraop-notes#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Patient's diabetes management was updated pre-operatively, with Gliclazide discontinued and Sitagliptin 100mg once daily initiated instead.",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient reported an allergic reaction to Ceftriaxone (hives) in addition to the previously recorded Penicillin allergy (rash).",
-          "provenance": [
+            "audio:preop-interview#s006",
             "audio:preop-interview#s008",
-            "audio:preop-interview#s009"
+            "doc:med-list#c001",
+            "doc:med-list#c003"
           ],
           "status": "supported"
         }
@@ -802,7 +783,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are still taking Metformin 500mg twice daily, Gliclazide 60mg once daily, and Atorvastatin 20mg once daily, or have any of these medications been stopped, changed, or replaced since they were recorded?",
+      "question": "Can you confirm if you are still taking Metformin 500mg Twice daily, Gliclazide 60mg Once daily, and Atorvastatin 20mg Once daily, or have any of these medications been stopped, changed, or replaced since they were recorded?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -822,19 +803,10 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your history of mild depression, including whether you have ever been on medication for it or if it has required any treatment recently?",
+      "question": "Can you provide more details about your history of mild depression, including whether you have ever received treatment or if it has required any medical intervention?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c008"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "You have a history of pneumonia that was resolved 5 years ago. Have you had any recent respiratory issues, chest infections, or breathing difficulties that might affect your anesthesia or recovery?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c006"
       ],
       "review": null,
       "edited_text": null
@@ -844,7 +816,7 @@
     {
       "t": "08:00",
       "category": "agent",
-      "value": "propofol 120",
+      "value": "propofol",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s001"
@@ -852,8 +824,8 @@
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "CL grade 1, intubated",
+      "category": "event",
+      "value": "tube in, grade one view",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s002"
@@ -862,7 +834,7 @@
     {
       "t": "08:05",
       "category": "agent",
-      "value": "bupivacaine 25",
+      "value": "bupivacaine",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s003"
@@ -871,7 +843,7 @@
     {
       "t": "08:10",
       "category": "fluid",
-      "value": "lactated ringers 2",
+      "value": "lactated ringers",
       "units": "liters",
       "provenance": [
         "audio:intraop-notes#s004"
@@ -879,17 +851,8 @@
     },
     {
       "t": "08:20",
-      "category": "line",
-      "value": "mean arterial pressure dropped to 55",
-      "units": "mmHg",
-      "provenance": [
-        "audio:intraop-notes#s005"
-      ]
-    },
-    {
-      "t": "08:20",
       "category": "agent",
-      "value": "atropine 1",
+      "value": "atropine",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s005"
@@ -897,30 +860,38 @@
     },
     {
       "t": "08:40",
-      "category": "agent",
-      "value": "neostigmine 2",
-      "units": "milligrams",
-      "provenance": [
-        "audio:intraop-notes#s006"
-      ]
-    },
-    {
-      "t": "08:40",
-      "category": "agent",
-      "value": "sugammadex 16",
-      "units": "milligrams",
+      "category": "event",
+      "value": "surgery completion, reversal with neostigmine two milligrams and sugammadex sixteen milligrams",
+      "units": null,
       "provenance": [
         "audio:intraop-notes#s006"
       ]
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV) due to Laparoscopic Surgery and Opioid Use",
-    "Airway Watch due to Potential Residual Neuromuscular Blockade",
-    "Glycemic Control Monitoring due to Diabetes and Intraoperative Fluid Administration",
-    "Analgesia Monitoring for Efficacy and Potential Local Anesthetic Toxicity",
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to Anesthesia and Laparoscopic Procedure",
+    "Airway Watch due to Obesity (BMI 32) and Potential Difficult Airway",
+    "Glycemic Control Monitoring due to Diabetes and Medication Changes",
+    "Analgesia Monitoring due to TAP Block and Potential for Residual Pain",
     "Hemodynamic Watch due to Intraoperative Hypotension",
-    "Allergy Vigilance for Antibiotic Administration"
+    "Antibiotic Prophylaxis Adjustment due to Allergy to Ceftriaxone and Uncertain Penicillin Allergy"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope facilitates easier intubation in a patient with no prior airway history but potential obesity-related challenges."
+    },
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA-4 provides a secure airway option for obese patients with potential difficult intubation."
+    },
+    {
+      "item_id": "syringe-pump",
+      "name": "Syringe pump (TIVA)",
+      "reason": "Syringe pump enables controlled TIVA anesthesia for this obese ASA-II patient."
+    }
   ],
   "workflow": null
 }

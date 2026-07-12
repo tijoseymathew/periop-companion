@@ -389,7 +389,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Elective Arthroscopic Left Knee Meniscectomy planned",
+          "text": "Elective Arthroscopic Knee Meniscectomy (Left) planned",
           "provenance": [
             "doc:op-plan#c001"
           ],
@@ -407,7 +407,7 @@
           "claim_id": "c-004",
           "text": "Currently taking Montelukast 10 mg daily",
           "provenance": [
-            "doc:gp-summary#c001",
+            "doc:gp-summary#c002",
             "doc:med-list#c001",
             "audio:preop-interview#s006"
           ],
@@ -417,7 +417,7 @@
           "claim_id": "c-005",
           "text": "Currently using Salbutamol Inhaler 2 puffs as needed PRN",
           "provenance": [
-            "doc:gp-summary#c002",
+            "doc:gp-summary#c003",
             "doc:med-list#c002",
             "audio:preop-interview#s006"
           ],
@@ -425,7 +425,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Stopped Atorvastatin 20 mg daily a few weeks ago as advised",
+          "text": "Stopped taking Atorvastatin 20 mg daily a few weeks ago as advised",
           "provenance": [
             "audio:preop-interview#s006"
           ],
@@ -433,7 +433,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "Confirmed latex allergy with skin itchiness and redness upon exposure",
+          "text": "Confirmed latex allergy with skin reaction (itching and redness) upon exposure",
           "provenance": [
             "audio:preop-interview#s008"
           ],
@@ -441,7 +441,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "No known drug allergies other than confirmed latex allergy",
+          "text": "No known drug allergies recorded in GP summary, but patient did not report any during interview beyond latex",
           "provenance": [
             "doc:gp-summary#c005",
             "audio:preop-interview#s007",
@@ -451,7 +451,7 @@
         },
         {
           "claim_id": "c-009",
-          "text": "NPO since midnight, currently thirsty but managing",
+          "text": "NPO since midnight as instructed for surgery",
           "provenance": [
             "audio:preop-interview#s012"
           ],
@@ -459,7 +459,7 @@
         },
         {
           "claim_id": "c-010",
-          "text": "Mild asthma, only uses Salbutamol Inhaler when exercising or in dusty environments",
+          "text": "Mild asthma, only requires Salbutamol Inhaler during exercise or in dusty environments, no recent exacerbations reported",
           "provenance": [
             "audio:preop-interview#s014"
           ],
@@ -467,55 +467,19 @@
         },
         {
           "claim_id": "c-011",
-          "text": "Able to walk up stairs, but experiences mild breathlessness, especially when going too fast",
-          "provenance": [
-            "audio:preop-interview#s014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "No previous surgeries or general anesthesia",
+          "text": "No previous surgeries or anesthesia, first time under general anesthesia",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "ASA-PS I (Healthy, no systemic disease)",
+          "claim_id": "c-012",
+          "text": "Left ankle fracture in 2018, healed and not relevant to current anesthesia plan",
           "provenance": [
-            "audio:preop-interview#s014",
-            "doc:gp-summary#c008"
+            "doc:gp-summary#c006"
           ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Left ankle fracture in 2018, no residual issues or mobility limitations reported that may impact positioning during surgery",
-          "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s004"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Prediabetes in 2019, confirmed as resolved, no recent blood tests mentioned but no current glycemic concerns reported",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s004"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "Pneumonia in 2020, fully recovered, no lingering respiratory issues reported",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "audio:preop-interview#s004"
-          ],
-          "status": "conflicting"
+          "status": "supported"
         }
       ]
     },
@@ -540,7 +504,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "At 08:05, ultrasound-guided femoral nerve block with 20 milliliters of 0.5% bupivacaine was administered.",
+          "text": "At 08:05, ultrasound-guided femoral nerve block with 20 milliliters of bupivacaine 0.5% was administered.",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -577,16 +541,16 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Administration and Opioid Use",
+          "text": "PONV risk due to multiple factors including opioid use (though not explicitly mentioned, common in post-op for pain management), female gender (not applicable here but considered for general risk), and history of motion sickness or nausea with prior anesthesia (not mentioned, but as a first-time patient under general anesthesia, baseline risk exists). However, the primary concern here is the use of propofol for induction, which can contribute to PONV.",
           "provenance": [
-            "audio:preop-interview#s012",
+            "audio:preop-interview#s010",
             "audio:intraop-notes#s001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway Watch due to Mild Asthma and Intraoperative Endotracheal Intubation",
+          "text": "Airway watch is necessary due to the patient's mild asthma history, which may increase the risk of bronchospasm or airway reactivity post-extubation. Although the patient has not had recent exacerbations, the use of general anesthesia and endotracheal intubation can trigger bronchospasm.",
           "provenance": [
             "audio:preop-interview#s014",
             "audio:intraop-notes#s002"
@@ -595,16 +559,15 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic Control Monitoring due to History of Prediabetes",
+          "text": "Glycemic control may be a concern given the patient's history of prediabetes (resolved), indicating a potential for impaired glucose metabolism. While not directly impacting the immediate post-op period, monitoring is prudent to prevent hyperglycemia, especially in the context of surgical stress and potential steroid administration (not mentioned but possible in some protocols).",
           "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c008"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia Monitoring due to Femoral Nerve Block with Bupivacaine",
+          "text": "Analgesia management is crucial due to the femoral nerve block with bupivacaine, which provides initial pain control but may wear off. Monitoring for adequate pain relief and potential need for supplemental analgesia is important to prevent discomfort and its associated complications.",
           "provenance": [
             "doc:op-plan#c002",
             "audio:intraop-notes#s003"
@@ -613,7 +576,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Hemodynamic Watch due to Intraoperative Blood Pressure Fluctuations",
+          "text": "Hemodynamic watch is necessary due to intraoperative fluctuations in blood pressure and heart rate. The patient experienced tachycardia (HR 110 bpm) and hypotension (SBP 90 mmHg), which were managed with labetalol and phenylephrine, respectively. Post-operative monitoring is essential to ensure hemodynamic stability is maintained.",
           "provenance": [
             "audio:intraop-notes#s004",
             "audio:intraop-notes#s006"
@@ -622,7 +585,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Latex Allergy Precautions due to Confirmed Latex Allergy",
+          "text": "Latex allergy management to prevent anaphylactic reaction. The patient has a confirmed latex allergy with skin reaction (itching and redness) upon exposure, necessitating strict avoidance of latex-containing products in the post-operative setting.",
           "provenance": [
             "audio:preop-interview#s008"
           ],
@@ -635,7 +598,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "21-year-old male undergoing elective arthroscopic left knee meniscectomy under general anesthesia with ultrasound-guided femoral nerve block.",
+          "text": "21-year-old male undergoing elective arthroscopic knee meniscectomy on the left side under general anesthesia with ultrasound-guided femoral nerve block.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
@@ -645,88 +608,41 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient has mild asthma, uses Salbutamol Inhaler as needed, and is NPO since midnight but managing thirst.",
+          "text": "Patient has a confirmed latex allergy with skin reaction, is currently taking Montelukast and using a Salbutamol Inhaler as needed. No previous surgeries or anesthesia.",
           "provenance": [
+            "audio:preop-interview#s008",
             "doc:gp-summary#c002",
-            "doc:med-list#c002",
+            "doc:med-list#c001",
             "audio:preop-interview#s006",
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s012"
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient has a confirmed latex allergy with skin reactions and no other known drug allergies.",
+          "text": "Intraoperative events included tachycardia managed with labetalol and hypotension managed with phenylephrine. A femoral nerve block with bupivacaine was administered for pain control.",
           "provenance": [
-            "audio:preop-interview#s008",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Intraoperative course included propofol induction, endotracheal intubation, and femoral nerve block with bupivacaine. Intraoperative events included transient tachycardia treated with labetalol and hypotension treated with phenylephrine.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003",
             "audio:intraop-notes#s004",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Monitor for postoperative nausea and vomiting due to propofol and potential opioid use.",
-          "provenance": [
-            "audio:preop-interview#s012",
-            "audio:intraop-notes#s001"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Maintain airway vigilance due to mild asthma and recent endotracheal intubation.",
-          "provenance": [
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Ensure glycemic control monitoring due to history of prediabetes.",
-          "provenance": [
-            "doc:gp-summary#c008",
-            "audio:preop-interview#s004"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Monitor analgesia levels due to femoral nerve block with bupivacaine.",
-          "provenance": [
-            "doc:op-plan#c002",
+            "audio:intraop-notes#s006",
             "audio:intraop-notes#s003"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Continue hemodynamic monitoring due to intraoperative blood pressure fluctuations.",
+          "claim_id": "c-004",
+          "text": "Monitor for hemodynamic stability due to intraoperative fluctuations, watch for signs of PONV given propofol use, ensure strict latex avoidance, and manage analgesia as the nerve block may wear off. Also, consider airway watch due to mild asthma history.",
           "provenance": [
             "audio:intraop-notes#s004",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Adhere to latex allergy precautions throughout recovery.",
-          "provenance": [
-            "audio:preop-interview#s008"
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s010",
+            "audio:intraop-notes#s001",
+            "audio:preop-interview#s008",
+            "doc:op-plan#c002",
+            "audio:intraop-notes#s003",
+            "audio:preop-interview#s014",
+            "audio:intraop-notes#s002"
           ],
           "status": "supported"
         }
@@ -745,7 +661,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient denies nausea or feeling of sickness post-operatively.",
+          "text": "Patient denies any nausea or feeling of impending sickness post-operatively.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
@@ -753,7 +669,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "Patient reports no dizziness and is breathing fine with no chest discomfort or tightness.",
+          "text": "Patient reports no dizziness and is breathing fine, with only increased awareness of breathing.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -761,16 +677,15 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient with mild asthma reports no wheezing or shortness of breath and did not require inhaler use on the day of surgery.",
+          "text": "Patient confirms no wheezing or shortness of breath and did not require inhaler use on the day of surgery.",
           "provenance": [
-            "audio:preop-interview#s014",
             "audio:postop-interview#s010"
           ],
-          "status": "conflicting"
+          "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Patient has partial recall of waking up and being moved post-surgery, describing it as 'a bit fuzzy' but aware of the surgery being done.",
+          "text": "Patient has partial recall of the surgery, remembering waking up and being moved to recovery, but details are fuzzy.",
           "provenance": [
             "audio:postop-interview#s012"
           ],
@@ -778,44 +693,29 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Latex allergy was confirmed by the patient during pre-op interview, ensuring latex-free equipment was used.",
+          "text": "Patient is a 21-year-old male, undergoing elective arthroscopic knee meniscectomy (left) with general anesthesia and ultrasound-guided femoral nerve block.",
           "provenance": [
-            "audio:preop-interview#s008"
+            "doc:op-plan#c001",
+            "doc:op-plan#c002",
+            "doc:gp-summary#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "General anesthesia with ultrasound-guided femoral nerve block was administered as planned.",
+          "text": "Patient's current medications include Montelukast 10 mg daily and Salbutamol Inhaler as needed, both continued into the post-operative period.",
           "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s003"
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Patient received propofol (120 mg) for induction and had a grade one view upon intubation.",
+          "text": "Patient has a confirmed latex allergy, with previous reaction of itchiness and redness upon contact, requiring latex-free equipment.",
           "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Intraoperative vital signs included an increased heart rate to 110, treated with 5 mg labetalol, and a drop in systolic blood pressure to 90, treated with 1 mg phenylephrine.",
-          "provenance": [
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient received 2 liters of Lactated Ringer's solution intraoperatively.",
-          "provenance": [
-            "audio:intraop-notes#s005"
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         }
@@ -824,7 +724,7 @@
   ],
   "open_questions": [
     {
-      "question": "Please confirm if you have stopped, changed, or replaced any of the following medications since they were recorded: Montelukast 10 mg daily, Salbutamol Inhaler 2 puffs as needed PRN, Atorvastatin 20 mg daily.",
+      "question": "Has there been any change to your medication list since it was recorded? Specifically, have you stopped, started, or replaced Montelukast, Salbutamol Inhaler, or Atorvastatin?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -835,7 +735,7 @@
       "edited_text": null
     },
     {
-      "question": "Are you aware of any drug or non-drug allergies (e.g., latex, plasters, foods) that have not been documented in your records?",
+      "question": "Do you have any allergies, including reactions to drugs (e.g., antibiotics, anesthetics), non-drug items (e.g., latex, plasters), or foods, that are not documented in your record?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c005"
@@ -844,17 +744,8 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your left ankle fracture in 2018, specifically regarding any residual issues or mobility limitations that may impact positioning during surgery?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c006"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "You were noted to have prediabetes in 2019, which was marked as resolved. Can you confirm your current glycemic status and whether you have had any recent blood tests to confirm this?",
-      "reason": "missing",
+      "question": "Can you confirm the current status of your prediabetes, as it was noted as resolved in 2019? Is there any ongoing management or recent blood work to confirm this?",
+      "reason": "stale",
       "provenance": [
         "doc:gp-summary#c008"
       ],
@@ -862,10 +753,20 @@
       "edited_text": null
     },
     {
-      "question": "You had pneumonia in 2020. Can you confirm if you have fully recovered and if you have experienced any lingering respiratory issues since then?",
+      "question": "You have a history of pneumonia in 2020. Can you provide details on the type of pneumonia, its resolution, and any residual respiratory issues or follow-up?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c007"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Given your use of Montelukast and Salbutamol Inhaler, do you have a history of asthma or reactive airway disease that has not been explicitly documented?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c002",
+        "doc:gp-summary#c003"
       ],
       "review": null,
       "edited_text": null
@@ -883,7 +784,7 @@
     },
     {
       "t": "08:02",
-      "category": "airway",
+      "category": "event",
       "value": "tube in, grade one view",
       "units": null,
       "provenance": [
@@ -894,7 +795,7 @@
       "t": "08:05",
       "category": "agent",
       "value": "bupivacaine 20",
-      "units": "milliliters of 0.5% solution",
+      "units": "milliliters",
       "provenance": [
         "audio:intraop-notes#s003"
       ]
@@ -928,12 +829,24 @@
     }
   ],
   "anticipated_issues": [
-    "Risk of Postoperative Nausea and Vomiting (PONV) due to Propofol Administration and Opioid Use",
-    "Airway Watch due to Mild Asthma and Intraoperative Endotracheal Intubation",
-    "Glycemic Control Monitoring due to History of Prediabetes",
-    "Analgesia Monitoring due to Femoral Nerve Block with Bupivacaine",
-    "Hemodynamic Watch due to Intraoperative Blood Pressure Fluctuations",
-    "Latex Allergy Precautions due to Confirmed Latex Allergy"
+    "PONV risk due to multiple factors including opioid use (though not explicitly mentioned, common in post-op for pain management), female gender (not applicable here but considered for general risk), and history of motion sickness or nausea with prior anesthesia (not mentioned, but as a first-time patient under general anesthesia, baseline risk exists). However, the primary concern here is the use of propofol for induction, which can contribute to PONV.",
+    "Airway watch is necessary due to the patient's mild asthma history, which may increase the risk of bronchospasm or airway reactivity post-extubation. Although the patient has not had recent exacerbations, the use of general anesthesia and endotracheal intubation can trigger bronchospasm.",
+    "Glycemic control may be a concern given the patient's history of prediabetes (resolved), indicating a potential for impaired glucose metabolism. While not directly impacting the immediate post-op period, monitoring is prudent to prevent hyperglycemia, especially in the context of surgical stress and potential steroid administration (not mentioned but possible in some protocols).",
+    "Analgesia management is crucial due to the femoral nerve block with bupivacaine, which provides initial pain control but may wear off. Monitoring for adequate pain relief and potential need for supplemental analgesia is important to prevent discomfort and its associated complications.",
+    "Hemodynamic watch is necessary due to intraoperative fluctuations in blood pressure and heart rate. The patient experienced tachycardia (HR 110 bpm) and hypotension (SBP 90 mmHg), which were managed with labetalol and phenylephrine, respectively. Post-operative monitoring is essential to ensure hemodynamic stability is maintained.",
+    "Latex allergy management to prevent anaphylactic reaction. The patient has a confirmed latex allergy with skin reaction (itching and redness) upon exposure, necessitating strict avoidance of latex-containing products in the post-operative setting."
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA-4 suitable for general anesthesia with potential difficult airway from left ankle fracture history"
+    },
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope aids in difficult airway management for general anesthesia"
+    }
   ],
   "workflow": null
 }

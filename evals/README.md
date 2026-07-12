@@ -4,8 +4,57 @@
 pipeline over the generated cases, scores each against its gold with the LLM
 judge, and aggregates the §6 metrics. The committed `report.json` is one
 thinking-off run of the **ADK-native pipeline over all 30 cases with the
-2026-07-11 prompt experiments applied** (next section), scored with the fixed
-question judge (finding 4).
+2026-07-11 prompt experiments applied** (below), scored with the fixed
+question judge (finding 4). It was **re-run from scratch on 2026-07-13** — the
+committed file is now that resample; the next section records it and its
+comparison to the prior run.
+
+## 2026-07-13 — 30-case re-run of the committed config (same-config resample)
+
+The full eval was re-run from scratch (`run_eval.py --rerun`, live
+Super-49B/Nano-9B, thinking-off, extraction-verify off — the same config as the
+prior committed `report.json`). The committed file is now this run; the prior
+run's numbers survive as the **improved** column of the 2026-07-11 experiment
+table below.
+
+| Metric (n=30) | prev committed | re-run | Δ | read |
+|---|---|---|---|---|
+| preop_provenance_coverage | 1.000 | 1.000 | — | ceiling |
+| handoff_provenance_coverage | 1.000 | 1.000 | — | ceiling |
+| **gap_recall** (defect-catch) | 0.900 | **0.900** | +0.000 | reproduced exactly (27/30) |
+| preop_provenance_precision | 0.856 | 0.850 | −0.006 | noise |
+| gap_precision / gap_f1 | 0.188 / 0.308 | 0.177 / 0.294 | −0.011 / −0.014 | not gates; noise |
+| distractor_leakage (↓ better) | 0.222 | 0.233 | +0.011 | noise |
+| preop_claim_recall | 0.615 | 0.672 | +0.057 | ↑ (9↑/3↓/18=) |
+| handoff_claim_recall | 0.357 | 0.455 | +0.098 | ↑ (12↑/4↓/14=) |
+| handoff_hallucination_rate (↓ better) | 0.085 | 0.123 | +0.038 | wash (12↑/7↓/11=) |
+| **extraction_f1** | 0.516 | **0.428** | **−0.088** | one coherent move — below |
+
+**Verdict: the re-run reproduces the baseline.** gap_recall — the defect-catch
+signal — is identical at 0.900 (27/30), both provenance coverages hold at the
+1.000 ceiling, and every small-denominator judge metric lands inside the n=1
+noise bands documented throughout this file (the two claim-recall metrics even
+drift up, 9↑/3↓ and 12↑/4↓). Nothing suggests a pipeline change.
+
+Two moves are worth naming. **extraction_f1 fell 0.516 → 0.428, and it is broad,
+not an outlier** — 17 cases down, 3 up, 10 tied, no single case dominating
+(worst: sg-0004 −0.40, sg-0025 −0.39, sg-0014 −0.31). Each case moved within the
+±0.3–0.5 per-case swing this metric shows at n=1, but the coherent direction
+drops the mean just below the previously-quoted 0.49–0.58 band. This is
+consistent with sampling variance in the first-pass-only (Nano-only) extractor
+and the agent/dose convention-fit caveat this metric carries (2026-07-12
+section); it is the one number to re-sample before trusting.
+**handoff_hallucination_rate +0.038 is a symmetric wash** (12↑/7↓, ±0.2–0.3
+per case) around the forward-looking-claim verifier artifact already documented
+below.
+
+**Operational note:** on the first full pass, **5/30 cases failed** the
+intermittent `IssueAnticipator: model failed to produce valid AnticipatedIssues
+after 3 attempts` structured-output flake (sg-0001/0007/0009/0011/0018 — the
+same flake flagged for sg-0028 below). All cleared on retry (sg-0007/0009 needed
+two); first-pass yield was 25/30, and the 30-case report was assembled by
+regenerating those 5 fresh and re-scoring the run from cache. The flake now hits
+~1-in-6 cases per full run.
 
 ## 2026-07-12 — is the intra-op extraction verify pass necessary? (n=30 A/B)
 

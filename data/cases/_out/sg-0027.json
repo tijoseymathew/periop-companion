@@ -402,7 +402,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "69-year-old female, Service or Sales Worker, resident of Woodlands, Singapore.",
+          "text": "69-year-old female",
           "provenance": [
             "doc:gp-summary#c001"
           ],
@@ -410,125 +410,158 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Diagnosed with Hypertension.",
+          "text": "Resident of Woodlands, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Occupation: Service or Sales Worker",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hypertension",
           "provenance": [
             "doc:gp-summary#c008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Diagnosed with Type 2 Diabetes Mellitus.",
+          "claim_id": "c-005",
+          "text": "Type 2 Diabetes Mellitus",
           "provenance": [
             "doc:gp-summary#c009"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-004",
-          "text": "Diagnosed with Obesity.",
+          "claim_id": "c-006",
+          "text": "Obesity",
           "provenance": [
             "doc:gp-summary#c010"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
-          "claim_id": "c-005",
-          "text": "Diagnosed with Chronic Kidney Disease.",
+          "claim_id": "c-007",
+          "text": "Chronic Kidney Disease (stage and current function not specified)",
           "provenance": [
-            "doc:gp-summary#c011"
+            "doc:gp-summary#c011",
+            "audio:preop-interview#s004"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Elective Laparoscopic Cholecystectomy planned",
+          "provenance": [
+            "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "Current Medications: Metformin 500mg Twice daily.",
+          "claim_id": "c-009",
+          "text": "General Anesthesia with Laryngeal Mask Airway (LMA) planned",
           "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Current Medication: Metformin 500mg Twice daily",
+          "provenance": [
+            "doc:gp-summary#c002",
             "doc:med-list#c001",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Current Medications: Lisinopril 10mg Once daily.",
+          "claim_id": "c-011",
+          "text": "Current Medication: Lisinopril 10mg Once daily",
           "provenance": [
+            "doc:gp-summary#c003",
             "doc:med-list#c002",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "Current Medications: Atorvastatin 20mg Once daily.",
+          "claim_id": "c-012",
+          "text": "Current Medication: Atorvastatin 20mg Once daily",
           "provenance": [
+            "doc:gp-summary#c004",
             "doc:med-list#c003",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "Current Medications: Insulin Glargine 30 units Once daily.",
+          "claim_id": "c-013",
+          "text": "Current Medication: Insulin Glargine 30 units Once daily",
           "provenance": [
+            "doc:gp-summary#c005",
             "doc:med-list#c004",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Stopped taking Ranitidine 150mg Twice daily six months ago as per physician's advice.",
+          "claim_id": "c-014",
+          "text": "Discontinued Medication: Ranitidine (stopped 6 months ago)",
           "provenance": [
+            "doc:gp-summary#c006",
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "No known drug allergies recorded except for Penicillin (rash).",
+          "claim_id": "c-015",
+          "text": "No known drug allergies recorded, except for penicillin (rash)",
           "provenance": [
             "doc:gp-summary#c007",
+            "audio:preop-interview#s007",
             "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Patient reports no other drug or non-drug allergies.",
-          "provenance": [
-            "audio:preop-interview#s008"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Patient has had nothing to eat or drink since last night, except for a sip of water with morning insulin.",
+          "claim_id": "c-016",
+          "text": "Patient reports NPO since midnight, except for a sip of water with morning insulin",
           "provenance": [
             "audio:preop-interview#s012"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "No previous surgeries or anesthesia; no history of difficult intubation or complications during previous anesthesia.",
+          "claim_id": "c-017",
+          "text": "No prior history of anesthesia or surgery",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-015",
-          "text": "Patient's overall energy level is somewhat reduced, with tiredness especially after meals, but manages daily activities.",
+          "claim_id": "c-018",
+          "text": "No history of difficult intubation, airway issues, or sleep apnea reported",
           "provenance": [
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "ASA-PS Class: III (Patient has severe systemic disease, e.g., poorly controlled diabetes, hypertension, obesity, and chronic kidney disease).",
+          "claim_id": "c-019",
+          "text": "ASA-PS Class III (patient has more than mild systemic disease)",
           "provenance": [
+            "audio:preop-interview#s004",
             "doc:gp-summary#c008",
             "doc:gp-summary#c009",
             "doc:gp-summary#c010",
@@ -537,19 +570,10 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-017",
-          "text": "Procedure: Laparoscopic Cholecystectomy (elective).",
+          "claim_id": "c-020",
+          "text": "Overall energy level: able to perform daily activities with mild fatigue, especially after meals",
           "provenance": [
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-018",
-          "text": "Anesthesia: General Anesthesia with Laryngeal Mask Airway (LMA).",
-          "provenance": [
-            "doc:op-plan#c002",
-            "audio:preop-interview#s015"
+            "audio:preop-interview#s014"
           ],
           "status": "supported"
         }
@@ -560,7 +584,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "08:00 Propofol 120 milligrams administered",
+          "text": "Propofol 120 milligrams administered at 08:00",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -568,7 +592,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "08:02 LMA size four inserted, good seal, capnography confirmed",
+          "text": "LMA size four inserted with good seal, capnography confirmed at 08:02",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -576,7 +600,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "08:05 18-gauge IV in right antecubital fossa",
+          "text": "18-gauge IV placed in right antecubital fossa at 08:05",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -584,7 +608,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "08:05 500 mils of Ringer's lactate administered",
+          "text": "500 mils of Ringer's lactate administered at 08:15",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -592,7 +616,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "08:15 Mean arterial pressure dropped to fifty five mmHg",
+          "text": "Mean arterial pressure dropped to 55 mmHg at 08:15",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -600,7 +624,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "08:15 Phenylephrine 10 micrograms administered",
+          "text": "Phenylephrine 10 micrograms administered at 08:15",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -608,7 +632,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "08:30 Surgery completed, LMA removed, patient extubated smoothly",
+          "text": "Surgery completed, LMA removed, patient extubated smoothly at 08:30",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -621,52 +645,52 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Postoperative nausea and vomiting (PONV) risk due to history of obesity and diabetes",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Anesthesia and underlying conditions",
           "provenance": [
-            "doc:gp-summary#c010",
-            "doc:gp-summary#c009"
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c008",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Airway watch due to obesity and diabetes, which can lead to decreased lung compliance and increased risk of airway obstruction post-extubation",
+          "text": "Airway Watch due to Obesity and LMA use",
           "provenance": [
             "doc:gp-summary#c010",
-            "doc:gp-summary#c009"
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control monitoring necessary due to Type 2 Diabetes Mellitus, considering NPO status and potential for stress-induced hyperglycemia",
+          "text": "Glycemic Control given Diabetes and Perioperative Insulin Management",
           "provenance": [
             "doc:gp-summary#c009",
+            "doc:med-list#c004",
             "audio:preop-interview#s012"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Analgesia management challenge due to chronic kidney disease, requiring cautious use of nephrotoxic analgesics",
-          "provenance": [
-            "doc:gp-summary#c011"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Hemodynamic instability watch, as indicated by intraoperative hypotension requiring phenylephrine",
+          "text": "Hemodynamic Watch following Intraoperative Hypotension",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
           "status": "inference"
         },
         {
-          "claim_id": "c-006",
-          "text": "Potential for delayed emergence from anesthesia due to reduced energy level and tiredness, indicating possible decreased metabolic rate",
+          "claim_id": "c-005",
+          "text": "Analgesia Management considering underlying conditions and surgical procedure",
           "provenance": [
-            "audio:preop-interview#s014"
+            "doc:op-plan#c001",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c008"
           ],
           "status": "inference"
         }
@@ -677,13 +701,11 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "69-year-old female undergoing elective Laparoscopic Cholecystectomy under General Anesthesia with LMA, with a background of severe systemic diseases including Hypertension, Type 2 Diabetes Mellitus, Obesity, and Chronic Kidney Disease.",
+          "text": "69-year-old female resident of Singapore, with a background of hypertension, type 2 diabetes mellitus, and elective laparoscopic cholecystectomy performed under general anesthesia with LMA.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:gp-summary#c008",
             "doc:gp-summary#c009",
-            "doc:gp-summary#c010",
-            "doc:gp-summary#c011",
             "doc:op-plan#c001",
             "doc:op-plan#c002",
             "audio:preop-interview#s015"
@@ -692,45 +714,52 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient's current medications include Metformin, Lisinopril, Atorvastatin, and Insulin Glargine. The patient has a history of Penicillin allergy (rash) and reported no other drug or non-drug allergies.",
+          "text": "Patient is on multiple medications including metformin, lisinopril, atorvastatin, and insulin glargine. No known drug allergies except for penicillin (rash), and no prior history of anesthesia or surgery.",
           "provenance": [
+            "doc:gp-summary#c002",
             "doc:med-list#c001",
             "audio:preop-interview#s006",
+            "doc:gp-summary#c003",
             "doc:med-list#c002",
+            "doc:gp-summary#c004",
             "doc:med-list#c003",
+            "doc:gp-summary#c005",
             "doc:med-list#c004",
             "doc:gp-summary#c007",
-            "audio:preop-interview#s008"
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative notes: Propofol administered, LMA size four inserted with good seal, 500mls of Ringer's lactate given, transient hypotension (MAP 55 mmHg) managed with Phenylephrine, and smooth extubation after surgery completion. Anticipated issues include PONV, airway watch, glycemic control, cautious analgesia due to CKD, hemodynamic instability watch, and potential for delayed emergence from anesthesia.",
+          "text": "Intraoperative course included administration of propofol, successful LMA insertion, IV placement, fluid administration, and a transient drop in mean arterial pressure to 55 mmHg, which was managed with phenylephrine. Surgery was completed without complications, and the patient was extubated smoothly.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
             "audio:intraop-notes#s003",
             "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "doc:gp-summary#c010",
-            "doc:gp-summary#c009",
-            "audio:preop-interview#s012",
-            "doc:gp-summary#c011",
-            "audio:preop-interview#s014"
+            "audio:intraop-notes#s005"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "Monitor for PONV, maintain airway vigilance, closely manage glycemic levels, use analgesics cautiously considering CKD, watch for hemodynamic instability, and be alert to potential delayed emergence from anesthesia. Ensure NPO status is maintained as per protocol.",
+          "text": "Monitor for postoperative nausea and vomiting (PONV), maintain airway vigilance due to obesity and LMA use, ensure glycemic control given diabetes and perioperative insulin management, and continue hemodynamic monitoring following intraoperative hypotension. Also, manage analgesia considering the patient's underlying conditions and surgical procedure.",
           "provenance": [
-            "doc:gp-summary#c010",
             "doc:gp-summary#c009",
+            "doc:gp-summary#c008",
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s001",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s015",
+            "audio:intraop-notes#s002",
+            "doc:med-list#c004",
             "audio:preop-interview#s012",
-            "doc:gp-summary#c011",
-            "audio:intraop-notes#s004",
-            "audio:preop-interview#s014"
+            "audio:intraop-notes#s004"
           ],
           "status": "supported"
         }
@@ -741,7 +770,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient reports feeling a bit tired but okay with abdominal pain rated 4-5 on a scale of 0-10.",
+          "text": "Patient reports feeling a bit tired but okay with abdominal pain rated 4/10 and mild nausea.",
           "provenance": [
             "audio:postop-interview#s002",
             "audio:postop-interview#s004"
@@ -750,15 +779,15 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient experiences mild nausea post-operatively.",
+          "text": "Patient denies any nausea severe enough to require intervention at this time.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient denies any difficulty breathing post-operatively.",
+          "text": "Patient reports no difficulty breathing post-operatively.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
@@ -766,7 +795,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient reports a sore throat, likely due to LMA use.",
+          "text": "Patient experiences mild throat soreness likely attributed to LMA use.",
           "provenance": [
             "audio:postop-interview#s006",
             "doc:op-plan#c002"
@@ -775,7 +804,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Patient recalls no awareness or memory of the surgery.",
+          "text": "Patient recalls no intraoperative events, indicating no awareness during surgery.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -783,24 +812,25 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Anesthesia plan included general anesthesia with LMA, which was successfully used.",
+          "text": "Post-operative care to focus on close monitoring of vitals and fluid balance due to diabetes, kidney issues, and hypertension.",
           "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s002"
+            "audio:postop-interview#s009"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "Intraoperative fluid management included 500mls of Ringer's lactate bolus.",
+          "text": "Induction with propofol (120mg) and LMA (size 4) insertion with good seal and capnography confirmation were successful.",
           "provenance": [
-            "audio:intraop-notes#s003"
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "Patient's blood pressure was managed intraoperatively with phenylephrine due to a drop in mean arterial pressure.",
+          "text": "Intraoperative hypotension (MAP 55) was managed with phenylephrine (10mcg).",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -808,9 +838,9 @@
         },
         {
           "claim_id": "c-009",
-          "text": "Post-operative care to include monitoring of vitals and fluid balance due to diabetes, kidney issues, and hypertension.",
+          "text": "Surgery completed uneventfully with smooth LMA removal and extubation.",
           "provenance": [
-            "audio:postop-interview#s009"
+            "audio:intraop-notes#s005"
           ],
           "status": "supported"
         }
@@ -819,7 +849,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are currently taking all the medications listed in your current medication list (Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, Insulin Glargine 30 units Once daily, Ranitidine 150mg Twice daily) and have not stopped, changed, or replaced any of them since this list was created?",
+      "question": "Can you confirm if there have been any changes, stoppages, or additions to your medication list since it was recorded? Specifically, Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, Insulin Glargine 30 units Once daily, and Ranitidine 150mg Twice daily.",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -832,7 +862,7 @@
       "edited_text": null
     },
     {
-      "question": "Are you aware of any drug or non-drug allergies (such as to latex, plasters, or foods) that have not been documented in your records?",
+      "question": "Are you aware of any allergies or reactions to drugs, latex, foods, or any other substances not documented in your records?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c007"
@@ -841,7 +871,7 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your chronic kidney disease, including the stage, current kidney function, and any recent changes in your condition?",
+      "question": "Could you provide more details about your Chronic Kidney Disease, such as the stage, current kidney function, and any recent blood tests (e.g., eGFR, creatinine levels)?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c011"
@@ -850,19 +880,30 @@
       "edited_text": null
     },
     {
-      "question": "Given your history of obesity and type 2 diabetes mellitus, have you had any recent assessments of your cardiorespiratory function or sleep studies for possible sleep apnea?",
+      "question": "Given your history of Type 2 Diabetes Mellitus and current use of Insulin Glargine, how well is your blood sugar controlled? Are you experiencing any episodes of hypoglycemia or hyperglycemia?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c009",
-        "doc:gp-summary#c010"
+        "doc:gp-summary#c005"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "Do you have any history of difficult intubation or complications during previous anesthesia that is not documented in the provided records?",
+      "question": "With your history of Hypertension and current use of Lisinopril, do you have any symptoms of uncontrolled blood pressure, such as dizziness, headaches, or shortness of breath?",
       "reason": "missing",
       "provenance": [
+        "doc:gp-summary#c008",
+        "doc:gp-summary#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Considering your Obesity and upcoming Laparoscopic Cholecystectomy under General Anesthesia with LMA, do you have any history of difficult intubation, airway issues, or sleep apnea?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c010",
         "doc:op-plan#c002"
       ],
       "review": null,
@@ -873,7 +914,7 @@
     {
       "t": "08:00",
       "category": "agent",
-      "value": "propofol 120",
+      "value": "propofol",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s001"
@@ -898,10 +939,10 @@
       ]
     },
     {
-      "t": "08:05",
+      "t": "08:15",
       "category": "fluid",
-      "value": "500",
-      "units": "mils of Ringer's lactate",
+      "value": "500 mils of Ringer's lactate",
+      "units": "mils",
       "provenance": [
         "audio:intraop-notes#s003"
       ]
@@ -918,7 +959,7 @@
     {
       "t": "08:15",
       "category": "agent",
-      "value": "phenylephrine 10",
+      "value": "phenylephrine ten micrograms",
       "units": "micrograms",
       "provenance": [
         "audio:intraop-notes#s004"
@@ -935,12 +976,23 @@
     }
   ],
   "anticipated_issues": [
-    "Postoperative nausea and vomiting (PONV) risk due to history of obesity and diabetes",
-    "Airway watch due to obesity and diabetes, which can lead to decreased lung compliance and increased risk of airway obstruction post-extubation",
-    "Glycemic control monitoring necessary due to Type 2 Diabetes Mellitus, considering NPO status and potential for stress-induced hyperglycemia",
-    "Analgesia management challenge due to chronic kidney disease, requiring cautious use of nephrotoxic analgesics",
-    "Hemodynamic instability watch, as indicated by intraoperative hypotension requiring phenylephrine",
-    "Potential for delayed emergence from anesthesia due to reduced energy level and tiredness, indicating possible decreased metabolic rate"
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to Anesthesia and underlying conditions",
+    "Airway Watch due to Obesity and LMA use",
+    "Glycemic Control given Diabetes and Perioperative Insulin Management",
+    "Hemodynamic Watch following Intraoperative Hypotension",
+    "Analgesia Management considering underlying conditions and surgical procedure"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA size 4 suitable for planned LMA anesthesia in ASA III patient"
+    },
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope may aid in difficult intubation risk assessment for ASA III patient"
+    }
   ],
   "workflow": null
 }

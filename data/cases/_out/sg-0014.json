@@ -407,84 +407,117 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Undergoing elective Laparoscopic Cholecystectomy",
+          "text": "Occupation: Associate Professional or Technician",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Resident of Ang Mo Kio, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hypertension",
+          "provenance": [
+            "doc:gp-summary#c007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Type 2 Diabetes Mellitus",
+          "provenance": [
+            "doc:gp-summary#c008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Hyperlipidemia",
+          "provenance": [
+            "doc:gp-summary#c009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Elective Laparoscopic Cholecystectomy",
           "provenance": [
             "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Reports right-sided tummy pain after eating, diagnosed with gallstones",
-          "provenance": [
-            "audio:preop-interview#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Currently taking Losartan 50 mg Once Daily for hypertension",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Currently taking Metformin 500 mg Twice Daily for Type 2 Diabetes Mellitus",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Currently taking Atorvastatin 20 mg Once Daily for Hyperlipidemia",
-          "provenance": [
-            "doc:gp-summary#c004",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Previously took Ranitidine 150 mg Once Daily, now switched to Omeprazole 20 mg Daily for acid reflux",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
           "claim_id": "c-008",
-          "text": "Allergic to Penicillin with a reported reaction of a bad rash all over the body",
+          "text": "General Anesthesia with Single-shot Dose of Cefazolin for Prophylaxis",
           "provenance": [
-            "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
-            "audio:preop-interview#s008"
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-009",
-          "text": "No known allergies to non-drug substances (e.g., latex, plasters) or foods beyond Penicillin",
+          "text": "Losartan 50 mg Once Daily (confirmed current)",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Metformin 500 mg Twice Daily (confirmed current)",
+          "provenance": [
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Atorvastatin 20 mg Once Daily (confirmed current)",
+          "provenance": [
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Ranitidine discontinued; switched to Omeprazole 20 mg daily for acid reflux",
+          "provenance": [
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Penicillin allergy with rash reaction",
+          "provenance": [
+            "doc:gp-summary#c006",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "No other allergies documented or reported",
           "provenance": [
             "audio:preop-interview#s007"
           ],
           "status": "unsupported"
         },
         {
-          "claim_id": "c-010",
-          "text": "No previous surgeries or general anesthesia",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
+          "claim_id": "c-015",
           "text": "NPO after midnight, no food or drink since dinner last night",
           "provenance": [
             "audio:preop-interview#s012"
@@ -492,32 +525,37 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Able to walk up stairs but experiences shortness of breath if going too fast",
+          "claim_id": "c-016",
+          "text": "No prior surgeries or general anesthesia",
           "provenance": [
-            "audio:preop-interview#s014"
+            "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "ASA-PS Class II (controlled hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia without recent decompensation)",
+          "claim_id": "c-017",
+          "text": "Amlodipine discontinued 2 years ago; no other antihypertensive since then",
           "provenance": [
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c008",
-            "doc:gp-summary#c009",
-            "audio:preop-interview#s014"
+            "doc:gp-summary#c012",
+            "audio:preop-interview#s009"
           ],
           "status": "unsupported"
         },
         {
-          "claim_id": "c-014",
-          "text": "General Anesthesia planned with single-shot dose of Cefazolin for prophylaxis, considering Penicillin allergy",
+          "claim_id": "c-018",
+          "text": "No recent cardiac evaluation or stress tests",
           "provenance": [
-            "doc:op-plan#c002",
-            "audio:preop-interview#s007"
+            "audio:preop-interview#s009"
           ],
           "status": "unsupported"
+        },
+        {
+          "claim_id": "c-019",
+          "text": "Mild shortness of breath on stair climbing, but generally active",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
         }
       ]
     },
@@ -550,7 +588,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Fluid bolus of 1000 milliliters normal saline administered at 07:40",
+          "text": "Fluid bolus of 1000 milliliters administered at 07:40",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -558,7 +596,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Notable hypotension occurred at 08:15",
+          "text": "Notable hypotension treated with 50 micrograms phenylephrine at 08:15",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -566,23 +604,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Phenylephrine 50 micrograms administered at 08:15",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Notable tachycardia occurred at 08:45",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Metoprolol 10 milligrams IV administered at 08:45",
+          "text": "Notable tachycardia treated with 10 milligrams IV metoprolol at 08:45",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -592,102 +614,49 @@
     },
     {
       "artifact_id": "note:anticipated-issues",
-      "claims": [
-        {
-          "claim_id": "c-001",
-          "text": "PONV (Postoperative Nausea and Vomiting) risk due to use of opioids for analgesia and history of gallstones/gallbladder surgery which is associated with higher PONV risk.",
-          "provenance": [
-            "audio:preop-interview#s002",
-            "audio:intraop-notes#s001"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Airway watch due to shortness of breath on exertion, indicating possible underlying respiratory issue or deconditioning, and the fact that patient is undergoing general anesthesia with endotracheal intubation.",
-          "provenance": [
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s002"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Glycemic control monitoring given the patient's Type 2 Diabetes Mellitus, currently managed with Metformin, which was held pre-operatively (as per standard NPO protocol), requiring careful glucose monitoring post-op to avoid hyperglycemia or hypoglycemia.",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s012"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Analgesia management considering the nature of the surgery (Laparoscopic Cholecystectomy), which may require careful balancing of pain control with the risk of respiratory depression, especially in a patient with possible underlying respiratory issues.",
-          "provenance": [
-            "audio:preop-interview#s002",
-            "audio:preop-interview#s014"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Hemodynamic watch due to intraoperative episodes of hypotension and tachycardia, which may indicate fluid balance issues or underlying cardiac stress, requiring close monitoring of blood pressure and heart rate post-operatively.",
-          "provenance": [
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s006"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Hypertension management in the post-operative period, considering the patient's history of hypertension managed with Losartan, which may have been held pre-operatively, and the potential for post-operative blood pressure fluctuations.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s012"
-          ],
-          "status": "inference"
-        }
-      ]
+      "claims": []
     },
     {
       "artifact_id": "note:pacu-handoff",
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "56-year-old male undergoing elective Laparoscopic Cholecystectomy for gallstones, with a history of hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia.",
+          "text": "56-year-old male undergoing elective laparoscopic cholecystectomy under general anesthesia with single-shot dose of cefazolin for prophylaxis.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
-            "audio:preop-interview#s002",
-            "doc:gp-summary#c002",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004"
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Patient is NPO since last night, able to walk but experiences shortness of breath on exertion. Allergic to Penicillin with a rash reaction. No previous surgeries or general anesthesia.",
+          "text": "Patient has a history of hypertension, type 2 diabetes mellitus, and hyperlipidemia. Current medications include losartan 50 mg once daily, metformin 500 mg twice daily, and atorvastatin 20 mg once daily. Ranitidine was discontinued and switched to omeprazole 20 mg daily for acid reflux. The patient has a penicillin allergy with a rash reaction and reports no other allergies.",
           "provenance": [
-            "audio:preop-interview#s012",
-            "audio:preop-interview#s014",
+            "doc:gp-summary#c007",
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c002",
+            "doc:med-list#c001",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c003",
+            "doc:med-list#c002",
+            "doc:gp-summary#c004",
+            "doc:med-list#c003",
             "doc:gp-summary#c006",
-            "audio:preop-interview#s007",
             "audio:preop-interview#s008",
-            "audio:preop-interview#s010"
+            "audio:preop-interview#s007"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intra-op complications included hypotension and tachycardia, managed with Phenylephrine and Metoprolol. Received Propofol, has an endotracheal tube, and two large bore IV lines.",
+          "text": "Intraoperative course included administration of propofol, endotracheal tube placement with grade one view, establishment of two large bore IV lines, and a fluid bolus of 1000 milliliters. Notable hypotension was treated with phenylephrine and tachycardia with metoprolol.",
           "provenance": [
             "audio:intraop-notes#s001",
             "audio:intraop-notes#s002",
             "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
             "audio:intraop-notes#s005",
             "audio:intraop-notes#s006"
           ],
@@ -695,20 +664,13 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Monitor for PONV due to opioid use and gallbladder surgery. Watch airway due to shortness of breath on exertion. Manage analgesia carefully to balance pain control with respiratory depression risk. Monitor glycemic control and hemodynamics (BP and HR) post-operatively. Consider hypertension management in the post-op period.",
+          "text": "Monitor for signs of hypotension and tachycardia in the recovery period. Ensure NPO status is maintained until further notice. Be aware of the patient's diabetes and hypertension management needs postoperatively.",
           "provenance": [
-            "audio:preop-interview#s002",
-            "audio:intraop-notes#s001",
-            "audio:preop-interview#s014",
-            "audio:intraop-notes#s002",
-            "doc:gp-summary#c003",
-            "audio:preop-interview#s004",
             "audio:preop-interview#s012",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s006",
-            "doc:gp-summary#c002"
+            "doc:gp-summary#c007",
+            "doc:gp-summary#c008"
           ],
-          "status": "supported"
+          "status": "unsupported"
         }
       ]
     },
@@ -717,46 +679,54 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient reports pain level of 3 or 4 out of 10, describing it as discomfort rather than sharp pain.",
+          "text": "Patient reports being 'okay, I guess. A bit tired, but not in too much pain' post-surgery.",
+          "provenance": [
+            "audio:postop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient describes pain level as '3 or 4' out of 10, characterizing it as 'more like discomfort than sharp pain'.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-002",
-          "text": "Patient denies experiencing nausea or vomiting postoperatively.",
+          "claim_id": "c-003",
+          "text": "Patient denies any nausea or vomiting post-surgery.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-003",
-          "text": "Patient reports feeling a bit stuffy from the tube but notes improvement in breathing.",
+          "claim_id": "c-004",
+          "text": "Patient reports 'breathing is fine' with a feeling of being 'a bit stuffy from the tube, but it's getting better'.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-004",
-          "text": "Patient has no recall of events in the operating room or during waking up, with no reported scary moments.",
+          "claim_id": "c-005",
+          "text": "Patient has no recall of the operating room or waking up, stating 'I remember going to sleep and then waking up here'.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-005",
-          "text": "Patient's recovery is being closely monitored for vitals and sugar levels due to diabetes and high blood pressure.",
+          "claim_id": "c-006",
+          "text": "Due to patient's diabetes and high blood pressure, close monitoring of vitals and sugar levels is planned.",
           "provenance": [
             "audio:postop-interview#s011"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
+          "claim_id": "c-007",
           "text": "Patient was treated for notable hypotension with 50 micrograms of phenylephrine during surgery.",
           "provenance": [
             "audio:intraop-notes#s005"
@@ -764,8 +734,8 @@
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Patient was treated for notable tachycardia with 10 milligrams of IV metoprolol during surgery.",
+          "claim_id": "c-008",
+          "text": "Patient was treated for notable tachycardia with 10 milligrams IV metoprolol during surgery.",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -776,7 +746,7 @@
   ],
   "open_questions": [
     {
-      "question": "Can you confirm if you are currently taking Losartan 50 mg Once Daily, Metformin 500 mg Twice Daily, Atorvastatin 20 mg Once Daily, and Ranitidine 150 mg Once Daily, and whether any of these medications have been stopped, changed, or replaced since the last record was made?",
+      "question": "Have there been any changes to your medication list since it was last recorded? Specifically, have you stopped, started, or changed the dose of Losartan, Metformin, Atorvastatin, or Ranitidine?",
       "reason": "stale",
       "provenance": [
         "doc:med-list#c001",
@@ -788,7 +758,7 @@
       "edited_text": null
     },
     {
-      "question": "Are you aware of any allergies or reactions to drugs, non-drug substances (e.g., latex, plasters), or foods that have not been documented in your records?",
+      "question": "Do you have any allergies, including reactions to drugs (like antibiotics, anesthetics), non-drug items (like latex, plasters), or foods, that are not already documented?",
       "reason": "stale",
       "provenance": [
         "doc:gp-summary#c006"
@@ -797,7 +767,7 @@
       "edited_text": null
     },
     {
-      "question": "Can you provide more details about your past pneumonia in 2018, including the cause, treatment, and any residual effects on your respiratory system?",
+      "question": "Can you confirm the details of your previous pneumonia in 2018, including whether it required hospitalization and if you have had any respiratory issues since then?",
       "reason": "missing",
       "provenance": [
         "doc:gp-summary#c010"
@@ -806,40 +776,21 @@
       "edited_text": null
     },
     {
-      "question": "You have a history of hypertension, Type 2 Diabetes Mellitus, and Hyperlipidemia. Can you confirm if you have had any recent cardiovascular evaluations or if there have been any changes in your condition or management since the last record?",
-      "reason": "stale",
+      "question": "You were previously on Amlodipine for hypertension but it was discontinued two years ago. Can you confirm why it was stopped and if you have been on any other antihypertensive medications since then?",
+      "reason": "conflicting",
       "provenance": [
         "doc:gp-summary#c007",
-        "doc:gp-summary#c008",
-        "doc:gp-summary#c009"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "You had a left femur fracture at age 25. Can you confirm if this has led to any ongoing mobility issues, pain, or potential implications for positioning during surgery?",
-      "reason": "missing",
-      "provenance": [
-        "doc:gp-summary#c011"
-      ],
-      "review": null,
-      "edited_text": null
-    },
-    {
-      "question": "It is noted that Amlodipine was discontinued 2 years ago. Can you confirm the reason for discontinuation and if you have been on any other antihypertensive medications since then?",
-      "reason": "missing",
-      "provenance": [
         "doc:gp-summary#c012"
       ],
       "review": null,
       "edited_text": null
     },
     {
-      "question": "Given the planned use of General Anesthesia with a single-shot dose of Cefazolin for prophylaxis, and considering your documented Penicillin allergy, can you describe the nature of your Penicillin allergy and whether you have had any reactions to other antibiotics?",
-      "reason": "conflicting",
+      "question": "Given your history of hypertension and diabetes, have you had any recent cardiac evaluation or stress tests that might be relevant to anesthesia risk?",
+      "reason": "missing",
       "provenance": [
-        "doc:gp-summary#c006",
-        "doc:op-plan#c002"
+        "doc:gp-summary#c007",
+        "doc:gp-summary#c008"
       ],
       "review": null,
       "edited_text": null
@@ -885,17 +836,8 @@
     {
       "t": "08:15",
       "category": "event",
-      "value": "notable hypotension",
+      "value": "notable hypotension, treat with 50 micrograms phenylephrine",
       "units": null,
-      "provenance": [
-        "audio:intraop-notes#s005"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "agent",
-      "value": "phenylephrine 50",
-      "units": "micrograms",
       "provenance": [
         "audio:intraop-notes#s005"
       ]
@@ -903,29 +845,25 @@
     {
       "t": "08:45",
       "category": "event",
-      "value": "notable tachycardia",
+      "value": "notable tachycardia, treat with 10 milligrams IV metoprolol",
       "units": null,
-      "provenance": [
-        "audio:intraop-notes#s006"
-      ]
-    },
-    {
-      "t": "08:45",
-      "category": "agent",
-      "value": "metoprolol 10",
-      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s006"
       ]
     }
   ],
-  "anticipated_issues": [
-    "PONV (Postoperative Nausea and Vomiting) risk due to use of opioids for analgesia and history of gallstones/gallbladder surgery which is associated with higher PONV risk.",
-    "Airway watch due to shortness of breath on exertion, indicating possible underlying respiratory issue or deconditioning, and the fact that patient is undergoing general anesthesia with endotracheal intubation.",
-    "Glycemic control monitoring given the patient's Type 2 Diabetes Mellitus, currently managed with Metformin, which was held pre-operatively (as per standard NPO protocol), requiring careful glucose monitoring post-op to avoid hyperglycemia or hypoglycemia.",
-    "Analgesia management considering the nature of the surgery (Laparoscopic Cholecystectomy), which may require careful balancing of pain control with the risk of respiratory depression, especially in a patient with possible underlying respiratory issues.",
-    "Hemodynamic watch due to intraoperative episodes of hypotension and tachycardia, which may indicate fluid balance issues or underlying cardiac stress, requiring close monitoring of blood pressure and heart rate post-operatively.",
-    "Hypertension management in the post-operative period, considering the patient's history of hypertension managed with Losartan, which may have been held pre-operatively, and the potential for post-operative blood pressure fluctuations."
+  "anticipated_issues": [],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Patient has no prior surgeries or general anesthesia, making video laryngoscopy ideal for difficult airway anticipation."
+    },
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "Patient's hypertension and diabetes increase risk of difficult intubation, so a larger LMA size 4 is recommended for better airway control."
+    }
   ],
   "workflow": null
 }
