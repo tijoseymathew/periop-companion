@@ -512,6 +512,30 @@ class TestGapAnalysisOffTheRequestPath:
         assert fresh.workflow.stages["preop"].gap_analysis == "failed"
         assert "restart" in fresh.workflow.stages["preop"].gap_analysis_error
 
+    def test_interrupted_stage_run_reopens_on_restart(self, dirs, runner):
+        """A server crash mid-generation must not strand the stage in
+        "generating" forever — the reconnecting UI would wait on a run that
+        no longer exists. The next boot puts it back to ready_to_generate."""
+        out_dir, case_dir, providers = dirs
+        store = CaseStore(out_dir)
+        with TestClient(
+            create_app(
+                out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+            )
+        ) as client:
+            client.post("/api/cases", json={"label": "TKR Mrs W", "provider_id": "p-lim"})
+        case = store.load("tkr-mrs-w")
+        case.workflow.stages["preop"].status = StageStatus.GENERATING
+        store.save(case)
+        with TestClient(
+            create_app(
+                out_dir=out_dir, case_dir=case_dir, providers_path=providers, runner=runner
+            )
+        ) as client:
+            resp = client.get("/api/cases/tkr-mrs-w")
+        fresh = Case.model_validate(resp.json())
+        assert fresh.workflow.stages["preop"].status is StageStatus.READY_TO_GENERATE
+
 
 class TestAnalyzeQuestions:
     """Explicit (re)launch endpoint (v2-speed §3.2): a provider whose last

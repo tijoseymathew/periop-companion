@@ -40,6 +40,32 @@ class RunRequest(BaseModel):
     provider_id: str
 
 
+def fail_interrupted_stage_runs(out_dir) -> None:
+    """Boot-time sweep: a crash mid-generation must not strand a stage.
+
+    ``generating`` belongs to a worker thread of a live process; on a fresh
+    boot any survivor is an orphan — without this it stays ``generating``
+    forever and both the gate above and the UI's reconnect watcher wait on a
+    run that no longer exists. Back to ``ready_to_generate``: the inputs are
+    durable, so the provider just generates again.
+    """
+    store = CaseStore(out_dir)
+    for case_id in store.list_case_ids():
+        try:
+            case = store.load(case_id)
+        except Exception:
+            continue
+        if case.workflow is None:
+            continue
+        dirty = False
+        for state in case.workflow.stages.values():
+            if state.status is StageStatus.GENERATING:
+                state.status = StageStatus.READY_TO_GENERATE
+                dirty = True
+        if dirty:
+            store.save(case)
+
+
 def _sse(event: str, data: dict) -> str:
     return f"event: {event}\ndata: {json.dumps(data)}\n\n"
 
