@@ -54,10 +54,15 @@ def gap_analyst_step(chat: Any, *, skip_when_present: bool = True) -> LoopAgent:
     )
 
 
-def preop_note_step(chat: Any) -> LoopAgent:
-    from periop.agents import preop_note
+def preop_note_step(chat: Any, tool_chat: Any = None) -> BaseAgent:
+    """PreOpNoteWriter: the claim-structured note, then its EquipmentAdvisor
+    tool loop (1-3 store items suggested for sign-off). The advisor needs a
+    ``complete_chat`` client (tool calling); when the chat — live NimChat has
+    it — or an injected double doesn't speak it, the step is just the note,
+    exactly as before."""
+    from periop.agents import equipment_advisor, preop_note
 
-    return structured_step(
+    note = structured_step(
         name="preop_note",
         label="PreOpNoteWriter",
         stage="preop",
@@ -67,6 +72,13 @@ def preop_note_step(chat: Any) -> LoopAgent:
         prompt_fn=preop_note.prompt,
         apply_fn=preop_note.apply,
         model_name="nim-reasoning",
+    )
+    tool_chat = tool_chat if tool_chat is not None else chat
+    if not hasattr(tool_chat, "complete_chat"):
+        return note
+    return SequentialAgent(
+        name="preop_note_block",
+        sub_agents=[note, equipment_advisor.equipment_advisor_step(tool_chat)],
     )
 
 
@@ -252,7 +264,9 @@ def build_preop_stage(case_dir: Path | str, chat: Any, verifier_chat: Any = None
                 stage="preop",
                 label="InterviewTranscriber",
             ),
-            preop_note_step(chat),
+            # the advisor's tool loop runs on the fast tier (spec §8: simple
+            # selection), the same tier that verifies below
+            preop_note_step(chat, tool_chat=verifier_chat),
             _verifier_block(
                 "preop_verifier", "preop", verifier_chat, [(PREOP_NOTE_ID, False)]
             ),

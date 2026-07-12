@@ -5,6 +5,10 @@ The note is emitted as atomic claims, each citing record chunks and/or
 interview segments. The rendered document is assembled from claims, so
 provenance is structural (spec §4.1). Claims whose citations don't resolve
 are dropped before the artifact is committed.
+
+The step also carries an equipment-suggestion tool loop
+(``periop.agents.equipment_advisor``): after the note, 1-3 theatre-store
+items are recommended for the provider to confirm at pre-op sign-off.
 """
 
 from typing import Any, Mapping

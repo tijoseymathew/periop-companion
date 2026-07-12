@@ -157,6 +157,19 @@ class ArtifactRecord(BaseModel):
     claims: list[Claim] = Field(default_factory=list)
 
 
+class EquipmentSuggestion(BaseModel):
+    """One item the pre-op run recommends reserving (1-3 per case).
+
+    A recommendation, not a hold: nothing is taken off the shelf until the
+    provider ticks the item at pre-op sign-off. ``name`` is denormalized from
+    the catalog so the UI never joins against ``periop.equipment``.
+    """
+
+    item_id: str
+    name: str
+    reason: str
+
+
 class QuestionReviewState(StrEnum):
     APPROVED = "approved"
     DISMISSED = "dismissed"
@@ -301,6 +314,9 @@ class Case(BaseModel):
     open_questions: list[OpenQuestionField] = Field(default_factory=list)
     intraop_events: list[Event] = Field(default_factory=list)
     anticipated_issues: list[str] = Field(default_factory=list)
+    # pre-op equipment recommendations (suggest-only; reserving happens at
+    # sign-off through the equipment ledger, never here)
+    equipment_suggestions: list[EquipmentSuggestion] = Field(default_factory=list)
     # v2 §5.1: absent on synthetic bundles — such cases are reviewable
     # everywhere, writable nowhere
     workflow: Workflow | None = None
