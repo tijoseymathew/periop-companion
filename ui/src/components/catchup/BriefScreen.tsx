@@ -12,7 +12,7 @@
  */
 import { useState } from "react";
 import { CaseSheet } from "../CaseSheet";
-import type { BriefModel, ChainNode } from "../../lib/catchup";
+import { sourceLabel, type BriefModel, type ChainNode } from "../../lib/catchup";
 import type { PrimaryAction } from "../../lib/workflow";
 import { SourceLink } from "../SourceLink";
 import type { SourceRequest } from "./SourceModal";
@@ -199,14 +199,24 @@ export function BriefScreen({
                     {model.attentionItems.map((it, i) => (
                       <li key={i} className="flex gap-2.5 text-[14.5px] leading-relaxed text-ink-body">
                         <span className="flex-none text-gold">◆</span>
-                        {storyTarget && it.claimId ? (
-                          <EditableLine
-                            text={it.text}
-                            onSave={(t) => onEditClaim!(storyTarget, it.claimId!, t)}
-                          />
-                        ) : (
-                          <span>{it.text}</span>
-                        )}
+                        <span className="min-w-0 flex-1">
+                          {storyTarget && it.claimId ? (
+                            <EditableLine
+                              text={it.text}
+                              onSave={(t) => onEditClaim!(storyTarget, it.claimId!, t)}
+                            />
+                          ) : (
+                            <span>{it.text}</span>
+                          )}
+                          {it.refs.length > 0 && (
+                            <SourceLink
+                              className="mt-0.5 block text-left"
+                              onClick={() => onOpenSource({ title: it.text, refs: it.refs })}
+                            >
+                              {sourceLabel(it.refs)}
+                            </SourceLink>
+                          )}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -297,6 +307,7 @@ export function BriefScreen({
               <IssuesList
                 model={model}
                 editTarget={issuesTarget}
+                onOpenSource={onOpenSource}
                 onEditClaim={onEditClaim}
                 onAddClaim={onAddClaim}
               />
@@ -405,6 +416,7 @@ function TheatreTimeline({
 function IssuesList({
   model,
   editTarget = null,
+  onOpenSource,
   onEditClaim,
   onAddClaim,
 }: {
@@ -412,6 +424,7 @@ function IssuesList({
   /** the anticipated-issues artifact id while its stage is live — enables
    * provider edits and additions on the list */
   editTarget?: string | null;
+  onOpenSource: (req: SourceRequest) => void;
   onEditClaim?: (artifactId: string, claimId: string, text: string) => void;
   onAddClaim?: (artifactId: string, text: string) => void;
 }) {
@@ -431,15 +444,25 @@ function IssuesList({
               className="flex items-start gap-3 rounded-[11px] border border-surface-overlay bg-surface-warm px-4 py-3.5"
             >
               <span className="flex-none text-[13px] leading-relaxed text-gold">◆</span>
-              {editTarget && r.claimId ? (
-                <EditableLine
-                  className="text-[15px] leading-relaxed text-ink-body"
-                  text={r.text}
-                  onSave={(t) => onEditClaim!(editTarget, r.claimId!, t)}
-                />
-              ) : (
-                <span className="text-[15px] leading-relaxed text-ink-body">{r.text}</span>
-              )}
+              <span className="min-w-0 flex-1">
+                {editTarget && r.claimId ? (
+                  <EditableLine
+                    className="text-[15px] leading-relaxed text-ink-body"
+                    text={r.text}
+                    onSave={(t) => onEditClaim!(editTarget, r.claimId!, t)}
+                  />
+                ) : (
+                  <span className="text-[15px] leading-relaxed text-ink-body">{r.text}</span>
+                )}
+                {r.refs.length > 0 && (
+                  <SourceLink
+                    className="mt-1 block text-left"
+                    onClick={() => onOpenSource({ title: r.text, refs: r.refs })}
+                  >
+                    {sourceLabel(r.refs)}
+                  </SourceLink>
+                )}
+              </span>
             </div>
           ))}
         </div>

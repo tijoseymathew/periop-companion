@@ -106,12 +106,17 @@ describe("buildBrief — adaptive patient view", () => {
     const brief = buildBrief(kase, PROVIDERS);
 
     expect(brief.attentionItems).toEqual([
-      { text: "Records list aspirin as current.", claimId: "c-001" },
+      {
+        text: "Records list aspirin as current.",
+        claimId: "c-001",
+        refs: ["doc:gp-summary#c1"],
+      },
       {
         text: "Aspirin was stopped last Tuesday (confirmed with patient).",
         claimId: "c-002",
+        refs: ["doc:gp-summary#c1", "edit:p-lim#c1"],
       },
-      { text: "Confirm fasting time", claimId: null },
+      { text: "Confirm fasting time", claimId: null, refs: [] },
     ]);
   });
 
@@ -122,12 +127,22 @@ describe("buildBrief — adaptive patient view", () => {
       artifacts: [
         {
           artifact_id: "note:anticipated-issues",
-          claims: [{ claim_id: "c-020", text: "Elevated PONV risk post-op." }],
+          claims: [
+            {
+              claim_id: "c-020",
+              text: "Elevated PONV risk post-op.",
+              provenance: ["doc:gp-summary#c3", "audio:intraop-notes#s002"],
+            },
+          ],
         },
       ],
     });
     expect(buildBrief(withArtifact, PROVIDERS).issues).toEqual([
-      { text: "Elevated PONV risk post-op.", claimId: "c-020" },
+      {
+        text: "Elevated PONV risk post-op.",
+        claimId: "c-020",
+        refs: ["doc:gp-summary#c3", "audio:intraop-notes#s002"],
+      },
     ]);
     expect(buildBrief(withArtifact, PROVIDERS).issuesArtifact).toBe("note:anticipated-issues");
 
@@ -136,7 +151,7 @@ describe("buildBrief — adaptive patient view", () => {
       anticipated_issues: ["Watch for PONV"],
     });
     expect(buildBrief(stringsOnly, PROVIDERS).issues).toEqual([
-      { text: "Watch for PONV", claimId: null },
+      { text: "Watch for PONV", claimId: null, refs: [] },
     ]);
     expect(buildBrief(stringsOnly, PROVIDERS).issuesArtifact).toBeNull();
   });

@@ -324,6 +324,57 @@ describe("BriefScreen", () => {
     );
   });
 
+  it("cites a story-so-far item's source and leaves sourceless lines bare", async () => {
+    const model = buildBrief(livePreopCase(), PROVIDERS);
+    const onOpenSource = vi.fn();
+    render(
+      <BriefScreen
+        model={model}
+        queue={null}
+        canReview={model.writable}
+        onBack={vi.fn()}
+        onOpenSource={onOpenSource}
+        onAction={vi.fn()}
+      />,
+    );
+
+    // the flagged fact appears twice — key facts and the story — and both
+    // carry the jump; the question-derived line has no provenance, so the
+    // story shows exactly one extra link beyond the key-fact row's
+    const links = screen.getAllByTestId("source-link");
+    expect(links).toHaveLength(2);
+    await userEvent.click(links[1]);
+    expect(onOpenSource).toHaveBeenCalledWith({
+      title: "Records list aspirin as current.",
+      refs: ["doc:gp-summary#c1"],
+    });
+  });
+
+  it("cites each anticipated issue's source in theatre", async () => {
+    const model = buildBrief(liveIntraopCase(), PROVIDERS);
+    const onOpenSource = vi.fn();
+    render(
+      <BriefScreen
+        model={model}
+        queue={null}
+        canReview={model.writable}
+        onBack={vi.fn()}
+        onOpenSource={onOpenSource}
+        onAction={vi.fn()}
+      />,
+    );
+
+    // no key facts / timeline provenance on this fixture — the one link is
+    // the issue's
+    const links = screen.getAllByTestId("source-link");
+    expect(links).toHaveLength(1);
+    await userEvent.click(links[0]);
+    expect(onOpenSource).toHaveBeenCalledWith({
+      title: "Elevated PONV risk post-op.",
+      refs: ["doc:gp-summary#c2"],
+    });
+  });
+
   it("withholds the edit affordances when pinned to a completed stage", () => {
     const model = buildBrief(liveIntraopCase(), PROVIDERS, { stage: "preop" });
     expect(model.viewingPast).toBe(true);

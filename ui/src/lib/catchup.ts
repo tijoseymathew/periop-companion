@@ -342,10 +342,12 @@ export function providerChain(wf: Workflow | null, providers: Provider[]): Chain
 
 /** One line of the story-so-far / anticipated-issues lists. `claimId` links
  * it back to the claim it renders (for provider edits); null = derived from
- * an open question, which was already reviewed at the interview gate. */
+ * an open question, which was already reviewed at the interview gate.
+ * `refs` is the line's provenance — empty on legacy plain-string mirrors. */
 export interface BriefListItem {
   text: string;
   claimId: string | null;
+  refs: string[];
 }
 
 export interface BriefModel {
@@ -461,8 +463,12 @@ export function buildBrief(
     (a) => a.artifact_id === "note:anticipated-issues",
   );
   const issues: BriefListItem[] = issuesArtifactRecord
-    ? issuesArtifactRecord.claims.map((c) => ({ text: c.text, claimId: c.claim_id }))
-    : kase.anticipated_issues.map((text) => ({ text, claimId: null }));
+    ? issuesArtifactRecord.claims.map((c) => ({
+        text: c.text,
+        claimId: c.claim_id,
+        refs: c.provenance,
+      }))
+    : kase.anticipated_issues.map((text) => ({ text, claimId: null, refs: [] }));
 
   // needs you now = gap-analysis open questions, minus the ones the reviewer
   // dismissed (kept in the record, but not something that "needs you now")
@@ -487,8 +493,10 @@ export function buildBrief(
   const attentionItems: BriefListItem[] = [
     ...keyFacts
       .filter((f) => f.flagged || humanAttested(f))
-      .map((f) => ({ text: f.text, claimId: f.claimId })),
-    ...needs.filter((n) => !n.reviewed).map((n) => ({ text: n.title, claimId: null })),
+      .map((f) => ({ text: f.text, claimId: f.claimId, refs: f.refs })),
+    ...needs
+      .filter((n) => !n.reviewed)
+      .map((n) => ({ text: n.title, claimId: null, refs: n.refs })),
   ];
 
   // provider chain
