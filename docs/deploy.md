@@ -33,24 +33,47 @@ You can force either mode with `PERIOP_STUB_RUNNER=1` (demo) or `0` (live).
 > already exercises the whole UI including audio provenance, replayed from
 > committed cases.
 >
-> One speech leg *can* also run hosted, GPU-free: **intra-op live dictation**
-> transcribes against NVIDIA's hosted Parakeet ASR over NVCF using the same
-> `NGC_API_KEY`. Enable it by pointing ASR at the hosted endpoint:
+> The **speech-to-text** pipeline can also run hosted, GPU-free, against
+> NVIDIA's hosted Parakeet ASR over NVCF using the same `NGC_API_KEY` —
+> including **speaker diarization** for the pre-op interview. Point ASR at the
+> hosted **sortformer** function:
 >
 > ```bash
 > PERIOP_ASR_GRPC_URL=grpc.nvcf.nvidia.com:443
 > PERIOP_ASR_USE_SSL=1
-> PERIOP_ASR_FUNCTION_ID=<model's function id from build.nvidia.com>  # ids rotate
+> PERIOP_ASR_FUNCTION_ID=<sortformer function id — see below>
 > ```
 >
-> **⚠️ Caution — hosted ASR is streaming-only.** The hosted Parakeet function
-> serves *streaming* recognition only; `offline_recognize` is rejected there
-> (`INVALID_ARGUMENT: Unavailable model … type=offline`). So the **batch upload
-> paths — the diarized pre-op interview and the intra-op notes memo — do not
-> work against the hosted endpoint**, and speaker diarization (Sortformer) is
-> streaming-only regardless. Those legs, and Magpie TTS, still need **self-hosted**
-> speech NIMs — see [selfhosted.md](selfhosted.md). Function ids are per-model
-> and rotate; copy the current one from the model's API tab on build.nvidia.com.
+> **Finding the function id.** It's per-model and can rotate, so look it up
+> rather than hardcoding one:
+>
+> 1. Go to [build.nvidia.com](https://build.nvidia.com) and find the
+>    diarization-capable Parakeet model — the one whose name ends in
+>    **`-sortformer`** (currently
+>    `parakeet-1.1b-en-US-asr-streaming-silero-vad-sortformer`). *Sortformer* is
+>    the speaker-diarization component; a plain Parakeet model transcribes but
+>    tags every word as one speaker.
+> 2. Open it and switch to the **Try API / API Reference** tab, gRPC/Python
+>    example.
+> 3. Copy the UUID passed as `--metadata function-id "…"` (or `function-id=`) —
+>    that's your `PERIOP_ASR_FUNCTION_ID`.
+>
+> Two things to know about the hosted endpoint:
+>
+> - **It's streaming-only** — `offline_recognize` is rejected
+>   (`INVALID_ARGUMENT: … type=offline`). The app handles this transparently:
+>   batch uploads (pre-op interview, intra-op notes) are fed through the
+>   streaming API internally, so `transcribe()` behaves the same as against a
+>   local NIM. Diarized segments and word timings come back unchanged.
+> - **Diarization needs the `…-sortformer` function specifically** — and only
+>   over this gRPC path. A plain Parakeet function (e.g. CTC 0.6B) transcribes
+>   but returns every word as speaker 0, and the OpenAI-style HTTP
+>   `/v1/audio/transcriptions` route drops speaker info even on the sortformer
+>   model.
+>
+> **Text-to-speech (Magpie TTS)** has no hosted equivalent and still needs a
+> **self-hosted** NIM — see [selfhosted.md](selfhosted.md). It's only used to
+> *render* synthetic case audio, not in the review flow.
 
 ---
 
