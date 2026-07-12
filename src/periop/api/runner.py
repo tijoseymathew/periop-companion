@@ -286,6 +286,11 @@ class StubPipelineRunner:
         if stage == "intraop":
             if case.get_source("audio:intraop-notes") is None:
                 case.add_source(self._intraop_source("audio:intraop-notes"))
+            # the anticipated issues cite pre-op evidence too (live
+            # IssueAnticipator: provenance spans both stages), so a lone
+            # intra-op run still needs the interview source on the case
+            if case.get_source("audio:preop-interview") is None:
+                case.add_source(self._interview_source("audio:preop-interview"))
             self._emit(emit, "agent_start", {"stage": stage, "agent": "EventExtractor"})
             case.intraop_events = [
                 Event(
@@ -328,10 +333,6 @@ class StubPipelineRunner:
                     ],
                 )
             )
-            case.anticipated_issues = [
-                "Restarting aspirin — confirm the plan with the surgical team.",
-                "Day-case discharge: needs a responsible adult escort tonight.",
-            ]
             self._emit(
                 emit, "agent_end",
                 {
@@ -344,6 +345,42 @@ class StubPipelineRunner:
                 },
             )
             self._emit(emit, "artifact_complete", {"artifact_id": "record:intra-op", "claims": 3})
+
+            # anticipated issues land as a cited artifact (live: the
+            # IssueAnticipator), with the plain-string mirror kept alongside
+            self._emit(emit, "agent_start", {"stage": stage, "agent": "IssueAnticipator"})
+            case.add_artifact(
+                ArtifactRecord(
+                    artifact_id="note:anticipated-issues",
+                    claims=[
+                        Claim(
+                            claim_id="c-001",
+                            text="Restarting aspirin — confirm the plan with the surgical team.",
+                            provenance=["audio:preop-interview#s002", doc_ref],
+                            status=ClaimStatus.SUPPORTED,
+                        ),
+                        Claim(
+                            claim_id="c-002",
+                            text="Day-case discharge: needs a responsible adult escort tonight.",
+                            provenance=[doc_ref],
+                            status=ClaimStatus.SUPPORTED,
+                        ),
+                    ],
+                )
+            )
+            issues_artifact = case.get_artifact("note:anticipated-issues")
+            case.anticipated_issues = [c.text for c in issues_artifact.claims]
+            self._emit(
+                emit, "agent_end",
+                {
+                    "stage": stage, "agent": "IssueAnticipator", "summary": "2 issues",
+                    "preview": [c.text for c in issues_artifact.claims],
+                },
+            )
+            self._emit(
+                emit, "artifact_complete",
+                {"artifact_id": "note:anticipated-issues", "claims": 2},
+            )
             return case
 
         # postop: handoff inherits pre-op/intra-op provenance (no-new-claims
