@@ -1,7 +1,9 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { makeCase, makeSummary } from "../../test/fixtures";
+import { CaseSchema } from "../../lib/schema";
+import * as api from "../../lib/api";
 import App from "../App";
 
 const PROVIDERS = [
@@ -13,157 +15,413 @@ vi.mock("../../lib/api", () => ({
   fetchCases: vi.fn(async () => [makeSummary()]),
   fetchCase: vi.fn(async () => makeCase()),
   fetchProviders: vi.fn(async () => PROVIDERS),
-  createCase: vi.fn(async (label: string) => ({ ...makeCase(), case_id: "new-case", label })),
+  createCase: vi.fn(),
+  addDocumentText: vi.fn(),
+  analyzeQuestions: vi.fn(),
+  uploadAudio: vi.fn(),
+  uploadDocumentFile: vi.fn(),
+  reviewQuestions: vi.fn(),
+  signoffStage: vi.fn(),
+  acknowledgeHandoff: vi.fn(),
   audioUrl: (caseId: string, sourceId: string) =>
     `/api/cases/${caseId}/audio/${encodeURIComponent(sourceId)}`,
 }));
 
-/** Open the fixture case from the worklist. It lands on its most advanced note. */
-async function openCase() {
+/** A live, generated pre-op case whose one action is "sign off". */
+function livePreopCase() {
+  return CaseSchema.parse({
+    case_id: "sg-live",
+    label: "Nowak — hip",
+    workflow: {
+      created_by: PROVIDERS[0],
+      created_at: "2026-04-02T06:00:00Z",
+      stages: {
+        preop: {
+          status: "awaiting_review",
+          performed_by: "p-lim",
+          questions_approved_at: "2026-04-02T06:30:00Z",
+          inputs_recorded_at: "2026-04-02T06:45:00Z",
+        },
+        intraop: { status: "awaiting_inputs" },
+        postop: { status: "awaiting_inputs" },
+      },
+    },
+    sources: [
+      { source_id: "doc:op-plan", type: "document", chunks: [] },
+      { source_id: "doc:gp-summary", type: "document", chunks: [] },
+    ],
+    artifacts: [
+      {
+        artifact_id: "note:pre-anesthesia-eval",
+        claims: [
+          { claim_id: "c1", text: "Stopped amlodipine 6 months ago.", status: "supported" },
+        ],
+      },
+    ],
+  });
+}
+
+/** The seed fixture has no workflow, so it lands under "All cases"; open it.
+ * It reads as a recovery case, so the brief is the three-column view with
+ * its key facts drawn from the PACU handoff. */
+async function openBrief() {
   render(<App />);
   await userEvent.click(await screen.findByRole("button", { name: /sg-t/ }));
+  await screen.findByText("Aspirin held pre-op.");
 }
 
-/** Open the case, then step to the Pre-op evaluation → its claim review. */
-async function openPreopReview() {
-  await openCase();
-  await userEvent.click(await screen.findByRole("button", { name: /Pre-op evaluation/ }));
-  await screen.findByText("Aspirin was discontinued 6 days prior to surgery.");
+/** A pre-op case that has cleared the interview gate but hasn't generated
+ * its note yet — lands on the interview screen with "Generate" live. */
+function preopReadyCase() {
+  return CaseSchema.parse({
+    case_id: "sg-ready",
+    label: "Doyle — knee",
+    workflow: {
+      created_by: PROVIDERS[0],
+      created_at: "2026-04-02T06:00:00Z",
+      stages: {
+        preop: {
+          status: "ready_to_generate",
+          performed_by: "p-lim",
+          questions_approved_at: "2026-04-02T06:30:00Z",
+          inputs_recorded_at: "2026-04-02T06:45:00Z",
+        },
+        intraop: { status: "awaiting_inputs" },
+        postop: { status: "awaiting_inputs" },
+      },
+    },
+    sources: [
+      { source_id: "doc:op-plan", type: "document", chunks: [] },
+      { source_id: "doc:gp-summary", type: "document", chunks: [] },
+      {
+        source_id: "audio:preop-interview",
+        type: "audio",
+        segments: [
+          { seg_id: "s1", t0: 0, t1: 1, speaker: "PROVIDER", text: "Any blood thinners?" },
+        ],
+      },
+    ],
+  });
 }
 
-describe("App workspace", () => {
+/** A pre-op case whose question prep is still running in the background. */
+function preopBuildingCase() {
+  return CaseSchema.parse({
+    case_id: "sg-building",
+    label: "Kwan — appendix",
+    workflow: {
+      created_by: PROVIDERS[0],
+      created_at: "2026-04-02T06:00:00Z",
+      stages: {
+        preop: { status: "awaiting_inputs", gap_analysis: "running" },
+        intraop: { status: "awaiting_inputs" },
+        postop: { status: "awaiting_inputs" },
+      },
+    },
+    sources: [
+      { source_id: "doc:op-plan", type: "document", chunks: [] },
+      { source_id: "doc:gp-summary", type: "document", chunks: [] },
+    ],
+  });
+}
+
+describe("Catch-Up app", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     localStorage.clear();
   });
 
-  it("lists cases on the worklist and opens one on click", async () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("shows the worklist and opens a case's brief — three columns for a recovery case", async () => {
     render(<App />);
     expect(await screen.findByRole("heading", { name: "Cases" })).toBeInTheDocument();
     await userEvent.click(await screen.findByRole("button", { name: /sg-t/ }));
-    // a demo case opens on its most advanced note (the PACU handoff)
+    // key facts come from the PACU handoff, not the pre-op note
     expect(await screen.findByText("Aspirin held pre-op.")).toBeInTheDocument();
-  });
-
-  it("steps between stages via the stepper nodes", async () => {
-    await openCase();
-    // landed on the handoff (post-op) note
-    await screen.findByText("Aspirin held pre-op.");
-    // stepping to Pre-op shows its claims and hides the handoff's
-    await userEvent.click(await screen.findByRole("button", { name: /Pre-op evaluation/ }));
-    expect(
-      await screen.findByText("Aspirin was discontinued 6 days prior to surgery."),
-    ).toBeInTheDocument();
-    expect(screen.queryByText("Orphan claim.")).not.toBeInTheDocument();
-  });
-
-  it("doc-chunk citation click highlights the chunk in the source panel (U1 exit)", async () => {
-    await openPreopReview();
-    await userEvent.click(screen.getByRole("button", { name: /doc:gp-summary#c001/ }));
-    await waitFor(() =>
-      expect(screen.getByTestId("chunk-c001")).toHaveAttribute("data-highlighted", "true"),
-    );
-  });
-
-  it("audio citation click highlights the transcript segment (degraded, no wav yet)", async () => {
-    await openPreopReview();
-    await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
-    await waitFor(() =>
-      expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true"),
-    );
-  });
-
-  it("audio citation click loads the wav and plays the exact clip (U2)", async () => {
-    Object.defineProperty(window.HTMLMediaElement.prototype, "readyState", {
-      configurable: true,
-      get: () => 1,
-    });
-    window.HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
-    window.HTMLMediaElement.prototype.pause = vi.fn();
-    await openPreopReview();
-    const container = document.body;
-    await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
-    const audio = container.querySelector("audio")!;
-    expect(audio.getAttribute("src")).toContain("/api/cases/sg-t/audio/audio%3Apreop-interview");
-    await waitFor(() => expect(audio.currentTime).toBe(214.3));
-    expect(audio.play).toHaveBeenCalled();
-  });
-
-  it("degrades to highlight-only when the wav 404s", async () => {
-    await openPreopReview();
-    await userEvent.click(screen.getAllByRole("button", { name: /audio:preop-interview#s017$/ })[0]);
-    const audio = document.body.querySelector("audio")!;
-    fireEvent(audio, new Event("error"));
-    expect(await screen.findByText(/timestamp-only/i)).toBeInTheDocument();
-    expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true");
-  });
-
-  it("arrow keys walk the visible claims; Enter activates the first ref (U4)", async () => {
-    await openPreopReview();
-    await userEvent.keyboard("{ArrowDown}");
-    const first = document.getElementById("claim-note-pre-anesthesia-eval-c-001")!;
-    expect(first).toHaveAttribute("data-active", "true");
-    await userEvent.keyboard("{ArrowDown}");
-    expect(document.getElementById("claim-note-pre-anesthesia-eval-c-002")!).toHaveAttribute(
-      "data-active",
-      "true",
-    );
-    expect(first).toHaveAttribute("data-active", "false");
-    await userEvent.keyboard("{ArrowUp}");
-    expect(first).toHaveAttribute("data-active", "true");
-    await userEvent.keyboard("{Enter}");
-    await waitFor(() =>
-      expect(screen.getByTestId("segment-s017")).toHaveAttribute("data-highlighted", "true"),
-    );
-  });
-
-  it("status filter toggle hides matching claims in the ledger", async () => {
-    await openPreopReview();
-    await userEvent.click(screen.getByRole("button", { name: /filter supported/i }));
     expect(
       screen.queryByText("Aspirin was discontinued 6 days prior to surgery."),
     ).not.toBeInTheDocument();
-    expect(screen.getByText("Records list aspirin 100mg daily as current.")).toBeInTheDocument();
+    // the recovery brief shows the post-op run's two writers, with
+    // story-so-far and the intra-op columns gone
+    expect(screen.getByText("PACU handoff")).toBeInTheDocument();
+    expect(screen.getByText("Post-anaesthesia evaluation")).toBeInTheDocument();
+    expect(screen.queryByText(/In theatre/)).not.toBeInTheDocument();
+    expect(screen.queryByText("Anticipated issues")).not.toBeInTheDocument();
+    expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
   });
-});
 
-describe("App workflow shell (v2)", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    localStorage.clear();
+  it("opens the cited source for a key fact and shows the highlighted segment", async () => {
+    await openBrief();
+    await userEvent.click(screen.getAllByRole("button", { name: "See the source" })[0]);
+    expect(await screen.findByText("Source for this fact")).toBeInTheDocument();
+    expect(await screen.findByText("I stopped the aspirin last Tuesday.")).toBeInTheDocument();
   });
 
-  it("header offers the provider picker; the choice persists", async () => {
+  it("surfaces the theatre timeline on the intra-op stage view", async () => {
+    await openBrief(); // lands on the recovery brief
+    await userEvent.click(screen.getByRole("button", { name: /Intra-op/ }));
+    // "In theatre" appears twice: the header stage badge and the column
+    expect(await screen.findAllByText(/In theatre/)).toHaveLength(2);
+    expect(screen.getByText("propofol 120 mg")).toBeInTheDocument();
+  });
+
+  it("keeps a demo (no-workflow) case's handoff read-only", async () => {
+    await openBrief();
+    expect(screen.getByText(/read-only/i)).toBeInTheDocument();
+  });
+
+  it("navigates to a completed stage's output via the stage bubbles", async () => {
+    await openBrief(); // lands on the recovery brief
+    await userEvent.click(screen.getByRole("button", { name: /Pre-op/ }));
+
+    // the brief is pinned to the pre-op output: narrative layout, pre-op facts
+    expect(await screen.findByText("The story so far")).toBeInTheDocument();
+    expect(
+      screen.getByText("Aspirin was discontinued 6 days prior to surgery."),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/viewing this completed stage/)).toBeInTheDocument();
+
+    // and back to where the case is now
+    await userEvent.click(screen.getByRole("button", { name: /Post-op/ }));
+    expect(await screen.findByText("Aspirin held pre-op.")).toBeInTheDocument();
+    expect(screen.queryByText("The story so far")).not.toBeInTheDocument();
+  });
+
+  it("drives a live pre-op case to sign-off from the patient view", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const live = livePreopCase();
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-live", label: "Nowak — hip", workflow: live.workflow }),
+    ]);
+    vi.mocked(api.fetchCase).mockResolvedValue(live);
+    vi.mocked(api.signoffStage).mockResolvedValue(live);
+
     render(<App />);
-    const picker = await screen.findByLabelText(/working as/i);
-    await userEvent.selectOptions(picker, "p-tan");
-    expect(localStorage.getItem("periop-provider")).toBe("p-tan");
+    await userEvent.click(await screen.findByRole("button", { name: /sg-live/ }));
+
+    const signOff = await screen.findByRole("button", { name: "Sign off pre-op" });
+    await userEvent.click(signOff);
+    expect(api.signoffStage).toHaveBeenCalledWith("sg-live", "preop", "p-lim", []);
   });
 
-  it("demo cases read as review-only in the worklist", async () => {
-    render(<App />);
-    expect(await screen.findByText("Review only")).toBeInTheDocument();
-  });
+  it("keeps the interview screen mounted during generation, live status folded into the chrome", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const ready = preopReadyCase();
+    const generated = CaseSchema.parse({
+      ...ready,
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "c1", text: "Aspirin held pre-op.", status: "supported" }],
+        },
+      ],
+    });
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-ready", label: "Doyle — knee", workflow: ready.workflow }),
+    ]);
+    vi.mocked(api.fetchCase).mockResolvedValueOnce(ready).mockResolvedValueOnce(generated);
 
-  it("New case needs a provider picked, then creates and opens the case", async () => {
-    const api = await import("../../lib/api");
-    render(<App />);
-    await screen.findByRole("heading", { name: "Cases" });
-    await userEvent.click(screen.getByRole("button", { name: /start a new case/i }));
-    // no provider picked → form explains what to do (v2 §6.7)
-    expect(screen.getByText(/choose your name in the top-right picker/i)).toBeInTheDocument();
-    await userEvent.selectOptions(screen.getByLabelText(/working as/i), "p-lim");
-    await userEvent.type(screen.getByLabelText(/case label/i), "TKR Mrs W");
-    await userEvent.click(screen.getByRole("button", { name: /create case/i }));
-    await waitFor(() =>
-      expect(vi.mocked(api.createCase)).toHaveBeenCalledWith("TKR Mrs W", "p-lim"),
+    // held open until the test says so, so the intermediate "still on the
+    // interview screen, live status in the chrome" state is observable
+    // rather than racing straight through to the brief
+    let sseController: ReadableStreamDefaultController<Uint8Array> | null = null;
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(
+          new TextEncoder().encode(
+            'event: agent_start\ndata: {"stage": "preop", "agent": "PreOpNoteWriter"}\n\n' +
+              'event: agent_end\ndata: {"stage": "preop", "agent": "PreOpNoteWriter", ' +
+              '"summary": "1 claims", "preview": ["Aspirin held pre-op."]}\n\n',
+          ),
+        );
+        sseController = controller;
+      },
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({ ok: true, status: 200, body: stream }) as unknown as Response),
     );
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-ready/ }));
+    const generate = await screen.findByRole("button", { name: /Generate pre-op brief/ });
+    await userEvent.click(generate);
+
+    // still the interview screen underneath — no full-screen takeover
+    expect(
+      await screen.findByText("Questions to ask, then the recording"),
+    ).toBeInTheDocument();
+    expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
+      "PreOpNoteWriter — 1 claims",
+    );
+
+    // the completed step's actual output streams into the page itself —
+    // not just the chrome's one-line status
+    expect(await screen.findByText("Building live")).toBeInTheDocument();
+    expect(screen.getByText("PreOpNoteWriter")).toBeInTheDocument();
+    expect(screen.getByText("Aspirin held pre-op.")).toBeInTheDocument();
+
+    // now let the stream finish; the fresh case lands and the brief takes over
+    sseController!.close();
+    expect(await screen.findByText("The story so far")).toBeInTheDocument();
+    expect(screen.queryByTestId("generating-strip")).not.toBeInTheDocument();
   });
 
-  it("the New case form carries the synthetic-data note", async () => {
+  it("auto-generates the pre-op brief the moment the transcript has landed — no click", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const ready = preopReadyCase();
+    ready.workflow!.stages.preop.transcription = "complete";
+    const generated = CaseSchema.parse({
+      ...ready,
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "c1", text: "Aspirin held pre-op.", status: "supported" }],
+        },
+      ],
+    });
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-ready", label: "Doyle — knee", workflow: ready.workflow }),
+    ]);
+    vi.mocked(api.fetchCase).mockResolvedValueOnce(ready).mockResolvedValue(generated);
+
+    const sse = vi.fn(async (url: RequestInfo | URL) => {
+      void url;
+      return {
+        ok: true,
+        status: 200,
+        body: new ReadableStream<Uint8Array>({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode('event: complete\ndata: {"case_id": "sg-ready"}\n\n'),
+            );
+            controller.close();
+          },
+        }),
+      } as unknown as Response;
+    });
+    vi.stubGlobal("fetch", sse);
+
     render(<App />);
-    await screen.findByRole("heading", { name: "Cases" });
-    await userEvent.click(screen.getByRole("button", { name: /start a new case/i }));
-    expect(screen.getByText(/never enter real patient details/i)).toBeInTheDocument();
+    await userEvent.click(await screen.findByRole("button", { name: /sg-ready/ }));
+
+    // the run starts on its own and the brief takes over when it finishes
+    expect(await screen.findByText("The story so far")).toBeInTheDocument();
+    expect(sse).toHaveBeenCalledTimes(1);
+    expect(String(vi.mocked(sse).mock.calls[0][0])).toContain(
+      "/api/cases/sg-ready/stages/preop/run",
+    );
+    // no standing Generate button anywhere in this flow
+    expect(
+      screen.queryByRole("button", { name: /Generate pre-op brief/ }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("reattaches to the run when the SSE stream drops mid-generation", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const ready = preopReadyCase();
+    const generating = CaseSchema.parse(structuredClone(ready));
+    generating.workflow!.stages.preop.status = "generating";
+    const generated = CaseSchema.parse({
+      ...structuredClone(ready),
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "c1", text: "Aspirin held pre-op.", status: "supported" }],
+        },
+      ],
+    });
+    generated.workflow!.stages.preop.status = "awaiting_review";
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-ready", label: "Doyle — knee", workflow: ready.workflow }),
+    ]);
+    // open → watch sees the run still going → next poll finds it settled
+    vi.mocked(api.fetchCase)
+      .mockResolvedValueOnce(ready)
+      .mockResolvedValueOnce(generating)
+      .mockResolvedValue(generated);
+
+    // the stream dies after one progress event, with no complete/error
+    // verdict — the connection dropped, not the run
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({
+        ok: true,
+        status: 200,
+        body: new ReadableStream<Uint8Array>({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode(
+                'event: agent_start\ndata: {"stage": "preop", "agent": "PreOpNoteWriter"}\n\n',
+              ),
+            );
+            controller.close();
+          },
+        }),
+      }) as unknown as Response),
+    );
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-ready/ }));
+    await userEvent.click(await screen.findByRole("button", { name: /Generate pre-op brief/ }));
+
+    // no failure declared — the chrome says the run is being followed
+    expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
+      "Connection interrupted — the run is still going",
+    );
+    // and when the durable status settles, the brief lands as usual
+    expect(await screen.findByText("The story so far", {}, { timeout: 4000 })).toBeInTheDocument();
+    expect(screen.queryByText(/interrupted before it finished/)).not.toBeInTheDocument();
+  });
+
+  it("reopening a case mid-generation follows the run instead of freezing", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const generating = preopReadyCase();
+    generating.workflow!.stages.preop.status = "generating";
+    const generated = CaseSchema.parse({
+      ...structuredClone(generating),
+      artifacts: [
+        {
+          artifact_id: "note:pre-anesthesia-eval",
+          claims: [{ claim_id: "c1", text: "Aspirin held pre-op.", status: "supported" }],
+        },
+      ],
+    });
+    generated.workflow!.stages.preop.status = "awaiting_review";
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-ready", label: "Doyle — knee", workflow: generating.workflow }),
+    ]);
+    vi.mocked(api.fetchCase)
+      .mockResolvedValueOnce(generating)
+      .mockResolvedValue(generated);
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-ready/ }));
+
+    // this session never started the run, but the chrome still shows it
+    expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
+      "Generating — reconnected to a run in progress",
+    );
+    // the jobs poll lands the output the moment the run settles
+    expect(await screen.findByText("The story so far", {}, { timeout: 4000 })).toBeInTheDocument();
+  });
+
+  it("folds the intake build into the chrome strip — records stay visible, no full-screen takeover", async () => {
+    localStorage.setItem("periop-provider", "p-lim");
+    const building = preopBuildingCase();
+    vi.mocked(api.fetchCases).mockResolvedValue([
+      makeSummary({ case_id: "sg-building", label: "Kwan — appendix", workflow: building.workflow }),
+    ]);
+    vi.mocked(api.fetchCase).mockResolvedValue(building);
+
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /sg-building/ }));
+
+    // still the records screen underneath, not a separate full-screen ring
+    expect(await screen.findByText("Add the records")).toBeInTheDocument();
+    expect(await screen.findByTestId("generating-strip")).toHaveTextContent(
+      "Preparing the interview questions",
+    );
   });
 });

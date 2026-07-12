@@ -1,0 +1,105 @@
+{
+  "questions": [
+    "Can you confirm the current list of medications and any allergies that have been diagnosed since your last medical review?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA size four",
+      "units": null,
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one liter",
+      "units": "Ringer's lactate",
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:15"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "normotension maintained",
+      "units": null,
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Documented current medications: Metformin 1000 mg twice daily, Lisinopril 20 mg once daily, Atorvastatin 40 mg once daily, and Ranitidine 150 mg twice daily (stopped).",
+    "Documented allergies: Penicillin allergy.",
+    "ASA-PS II with reason: well-controlled type 2 diabetes mellitus and hypertension, obesity (BMI 32).",
+    "Airway assessment and plan: Laryngeal Mask Airway (LMA) used for general anesthesia.",
+    "Postoperative pain management plan: Ultrasound-Guided Regional Anesthesia (USRA) for postoperative pain control."
+  ],
+  "handoff_claims": [
+    "Key history: Type 2 Diabetes Mellitus, Hypertension, Obesity (BMI 32), and Penicillin allergy.",
+    "Intra-op course expectations: Uneventful Laparoscopic Cholecystectomy under General Anesthesia with LMA and USRA for pain management.",
+    "Anticipated issues: Monitor for postoperative pain, ensure glycemic control with continued Insulin Glargine 40 units once daily at bedtime."
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of fractured right wrist (10 years ago)",
+    "Previous use of Omeprazole for GERD, now discontinued"
+  ]
+}

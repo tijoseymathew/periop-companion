@@ -20,13 +20,12 @@ from pydantic import BaseModel
 
 from periop.api.routers.cases import load_case
 from periop.api.routers.workflow import AUDIO_KIND_TO_STAGE, require_writable
-from periop.schemas import Case, StageStatus
+from periop.api.run_lock import RUN_LOCK
+from periop.schemas import Case, GapAnalysisState, StageStatus
 from periop.store import CaseStore
 from periop.tools.ingest import has_transcript_inputs
 
 router = APIRouter()
-
-RUN_LOCK = threading.Lock()
 
 STAGE_KIND = {v: k for k, v in AUDIO_KIND_TO_STAGE.items()}  # stage → audio kind
 PRIMARY_ARTIFACT = {
@@ -39,6 +38,32 @@ PRIOR_STAGE = {"intraop": "preop", "postop": "intraop"}
 
 class RunRequest(BaseModel):
     provider_id: str
+
+
+def fail_interrupted_stage_runs(out_dir) -> None:
+    """Boot-time sweep: a crash mid-generation must not strand a stage.
+
+    ``generating`` belongs to a worker thread of a live process; on a fresh
+    boot any survivor is an orphan — without this it stays ``generating``
+    forever and both the gate above and the UI's reconnect watcher wait on a
+    run that no longer exists. Back to ``ready_to_generate``: the inputs are
+    durable, so the provider just generates again.
+    """
+    store = CaseStore(out_dir)
+    for case_id in store.list_case_ids():
+        try:
+            case = store.load(case_id)
+        except Exception:
+            continue
+        if case.workflow is None:
+            continue
+        dirty = False
+        for state in case.workflow.stages.values():
+            if state.status is StageStatus.GENERATING:
+                state.status = StageStatus.READY_TO_GENERATE
+                dirty = True
+        if dirty:
+            store.save(case)
 
 
 def _sse(event: str, data: dict) -> str:
@@ -62,10 +87,24 @@ def _check_gate(request: Request, case: Case, stage: str) -> None:
             status_code=409,
             detail=f"sign off the {prior} stage before generating the {stage} output",
         )
-    if stage == "preop" and state.questions_approved_at is None:
+    if stage == "preop":
+        if state.gap_analysis in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+            raise HTTPException(
+                status_code=409,
+                detail="interview questions are still being prepared — review them when they arrive",
+            )
+        if state.questions_approved_at is None:
+            raise HTTPException(
+                status_code=409,
+                detail="review and approve the clarification questions before generating the note",
+            )
+
+    # a run mid-transcription would race the transcript landing on the case;
+    # "failed" deliberately passes — the run's own Transcriber picks it up
+    if state.transcription in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
         raise HTTPException(
             status_code=409,
-            detail="review and approve the clarification questions before generating the note",
+            detail="the recording is still being transcribed — generate when the transcript lands",
         )
 
     case_dir = request.app.state.case_dir / case.case_id

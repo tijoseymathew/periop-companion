@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, I guess. Still a bit groggy, but I can talk."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected. On a scale from 0 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe a 3 or 4. There's some discomfort, but it's manageable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Have you felt nauseous at all since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, not really. My stomach feels fine so far."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. How's your breathing? Any tightness or difficulty catching your breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. Just a bit tired from the anesthesia, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Do you remember anything from the operating room today?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I remember going in and then waking up here. So I guess I was out completely."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's normal with general anesthesia. Given your diabetes and weight, we'll keep a close eye on your sugar levels and mobility post-op. Any concerns or questions from your side?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. I just want to go home soon and rest."
+    }
+  ]
+}

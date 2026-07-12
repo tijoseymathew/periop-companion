@@ -13,14 +13,18 @@ import io
 import json
 import re
 from datetime import datetime, timezone
+from uuid import uuid4
 
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.concurrency import run_in_threadpool
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, field_validator
 
+from periop.api.gap_analysis import launch_gap_analysis
+from periop.equipment import CATALOG_BY_ID
+from periop.api.transcription import launch_transcription
 from periop.api.routers.cases import load_case
 from periop.schemas import (
     Case,
+    GapAnalysisState,
     OpenQuestion,
     Provider,
     ReopenRecord,
@@ -42,7 +46,17 @@ AUDIO_KIND_TO_STAGE = {
 
 # typed record slots (v2 §4.1 step 2); names match the synthetic bundles'
 # records/ files so live and seeded cases share one convention
-DOC_TYPES = ("gp-summary", "med-list", "prior-anesthetic-record", "op-plan", "other")
+DOC_TYPES = (
+    "gp-summary",
+    "med-list",
+    "prior-anesthetic-record",
+    "op-notes",
+    "investigations",
+    "discharge-summary",
+    "allergy-record",
+    "op-plan",
+    "other",
+)
 
 router = APIRouter()
 
@@ -194,8 +208,16 @@ async def add_document(request: Request, case_id: str) -> Case:
     if not text.strip():
         raise HTTPException(status_code=422, detail="document has no text content")
 
+    # every typed slot is singular per case except "other" — that's the
+    # catchall for whatever doesn't fit the named slots, so a second (or
+    # third) one shouldn't 409; give it the next free suffix instead
     source_id = f"doc:{doc_type}"
-    if case.get_source(source_id) is not None:
+    if doc_type == "other":
+        n = 2
+        while case.get_source(source_id) is not None:
+            source_id = f"doc:{doc_type}-{n}"
+            n += 1
+    elif case.get_source(source_id) is not None:
         raise HTTPException(
             status_code=409,
             detail=f"{source_id} already provided (the source registry is append-only)",
@@ -205,34 +227,33 @@ async def add_document(request: Request, case_id: str) -> Case:
     # batch pipeline see the same inputs as the API path
     records_dir = request.app.state.case_dir / case_id / "records"
     records_dir.mkdir(parents=True, exist_ok=True)
-    (records_dir / f"{doc_type}.md").write_text(text)
+    (records_dir / f"{source_id.removeprefix('doc:')}.md").write_text(text)
 
     source = ingest_document(source_id, text)
     source.captured_at = _now()
     source.provided_by = provider_id
-    case.add_source(source)
-    if provider_id and case.workflow is not None:
-        case.workflow.stages["preop"].performed_by = provider_id
-    # the document is durable before any model runs: an LLM outage must never
-    # swallow a paste
-    _store(request).save(case)
 
-    # the GapAnalyst needs no audio (v2 §4.1 step 3): run it as soon as the
-    # op plan and at least one record exist, once — on a worker thread, because
-    # it is a long synchronous LLM call and inline it would block the event
-    # loop (freezing every other request until the model answers)
-    if not case.open_questions and _preop_inputs_present(case):
-        try:
-            await run_in_threadpool(request.app.state.runner.analyze_gaps, case)
-        except Exception as e:
-            raise HTTPException(
-                status_code=502,
-                detail=(
-                    f"the document was saved, but preparing interview questions "
-                    f"failed: {e} — adding the next record retries automatically"
-                ),
-            ) from e
-        _store(request).save(case)
+    def apply(fresh: Case) -> None:
+        fresh.add_source(source)
+        if provider_id and fresh.workflow is not None:
+            fresh.workflow.stages["preop"].performed_by = provider_id
+
+    # the document is durable before any model runs: an LLM outage must never
+    # swallow a paste — merged into the freshest copy, because a background
+    # question prep may be saving this case concurrently (v2-speed §3.2)
+    case = _store(request).mutate(case_id, apply)
+
+    # the GapAnalyst needs no audio (v2 §4.1 step 3): once the op plan and at
+    # least one record exist, launch question prep as a background generation
+    # (v2-speed §3.2) — the upload returns now that the document is durable,
+    # and a failed analysis relaunches when the next record lands
+    state = case.workflow.stages["preop"]
+    if (
+        not case.open_questions
+        and _preop_inputs_present(case)
+        and state.gap_analysis in (None, GapAnalysisState.FAILED)
+    ):
+        case = launch_gap_analysis(request.app.state, case_id)
 
     return case
 
@@ -247,10 +268,24 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
     """Persist the provider-reviewed question list and pass the question gate.
 
     Dismissals are kept, never deleted (v2 §4.1): the submitted list *is* the
-    record of the review, including what was dismissed.
+    record of the review, including what was dismissed. Edited and newly
+    added questions get a provenance ref into the acting provider's
+    ``edit:<provider_id>`` source, so a human rewording is attributed the
+    same way a GapAnalyst question cites its triggering chunk.
     """
     case = load_case(request, case_id)
     require_writable(case)
+    provider = require_provider(request, body.provider_id)
+
+    # approving mid-analysis would race the analysis's own save of the case
+    if case.workflow.stages["preop"].gap_analysis in (
+        GapAnalysisState.PENDING,
+        GapAnalysisState.RUNNING,
+    ):
+        raise HTTPException(
+            status_code=409,
+            detail="interview questions are still being prepared — review them when they arrive",
+        )
 
     unreviewed = [q.question for q in body.questions if q.review is None]
     if unreviewed:
@@ -268,6 +303,24 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
                     detail=f"question {q.question!r} cites unresolvable provenance {ref}",
                 ) from None
 
+    # attribute human rewordings and additions to the acting provider —
+    # stamped after the validation above because these refs resolve against
+    # chunks record_human_edit is registering right now
+    prior = {q.question: q for q in case.open_questions}
+    for q in body.questions:
+        before = prior.get(q.question)
+        if before is None:
+            asserted, verb = q.effective_text, "added"
+        elif q.edited_text and q.edited_text != before.edited_text:
+            asserted, verb = q.edited_text, "edited"
+        else:
+            continue
+        ref = case.record_human_edit(
+            provider, asserted, f"pre-op question {verb} by {provider.name}"
+        )
+        if ref not in q.provenance:
+            q.provenance.append(ref)
+
     case.open_questions = body.questions
     case.workflow.stages["preop"].questions_approved_at = _now()
     case.workflow.stages["preop"].performed_by = body.provider_id
@@ -275,13 +328,44 @@ def review_questions(request: Request, case_id: str, body: ReviewedQuestions) ->
     return case
 
 
+@router.post("/cases/{case_id}/questions/analyze", status_code=202)
+def analyze_questions(request: Request, case_id: str) -> Case:
+    """Explicitly (re)launch intake question prep (v2-speed §3.2).
+
+    The implicit path — adding the next record after a failure — still works;
+    this spares a provider whose last upload's analysis failed from uploading
+    a dummy document. Regenerating approved questions is a reopen-shaped
+    decision and deliberately not offered.
+    """
+    case = load_case(request, case_id)
+    require_writable(case)
+    state = case.workflow.stages["preop"]
+    if state.questions_approved_at is not None:
+        raise HTTPException(
+            status_code=409,
+            detail="the questions are already reviewed and approved — regenerating them is not offered",
+        )
+    if state.gap_analysis in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+        raise HTTPException(
+            status_code=409, detail="interview questions are already being prepared"
+        )
+    if not _preop_inputs_present(case):
+        raise HTTPException(
+            status_code=409,
+            detail="add the operative plan and at least one record before preparing questions",
+        )
+    return launch_gap_analysis(request.app.state, case_id)
+
+
 @router.post("/cases/{case_id}/sources/audio", status_code=201)
 async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Case:
     """Capture/upload audio for a stage, normalized to wav (v2 §5.2).
 
     Intra-op memos append to one growing wav; interview kinds replace only
-    with explicit confirmation. Segments arrive later, from ASR at generate
-    time — this endpoint records the input, not the transcript.
+    with explicit confirmation. The upload returns once the wav is durable;
+    transcription launches in the background (``transcription`` on the stage:
+    pending → running → complete | failed) so the transcript appears on the
+    case moments later instead of at generate time.
     """
     case = load_case(request, case_id)
     require_writable(case)
@@ -301,25 +385,32 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
     if len(data) > MAX_AUDIO_BYTES:
         raise HTTPException(status_code=413, detail="audio exceeds the 50 MB upload cap")
 
-    stage = case.workflow.stages[AUDIO_KIND_TO_STAGE[kind]]
+    stage_key = AUDIO_KIND_TO_STAGE[kind]
+    stage = case.workflow.stages[stage_key]
     if stage.status is StageStatus.SIGNED_OFF:
         raise HTTPException(
             status_code=409,
             detail="this stage is signed off — reopen it before changing its inputs",
         )
+    if stage.transcription in (GapAnalysisState.PENDING, GapAnalysisState.RUNNING):
+        raise HTTPException(
+            status_code=409,
+            detail="the previous recording is still being transcribed — try again in a moment",
+        )
 
     audio_dir = request.app.state.case_dir / case_id / "audio"
     dest = audio_dir / f"{kind}.wav"
     filename = upload.filename or "recording.wav"
+    transcribe_path, transcribe_offset, memo = dest, 0.0, None
     try:
         if kind == "intraop-notes" and dest.exists():
-            # memos accumulate (v2 §4.2 step 2)
-            memo = audio_dir / ".memo.tmp.wav"
+            # memos accumulate (v2 §4.2 step 2); keep the normalized memo
+            # around so the background ASR transcribes just the new dictation
+            memo = audio_dir / f".memo-{uuid4().hex}.wav"
             audio_tools.normalize_to_wav(data, filename, memo)
-            try:
-                audio_tools.append_wav(dest, memo)
-            finally:
-                memo.unlink(missing_ok=True)
+            transcribe_offset = audio_tools.wav_duration_s(dest)
+            audio_tools.append_wav(dest, memo)
+            transcribe_path = memo
         else:
             if dest.exists() and kind != "intraop-notes" and not confirm:
                 raise HTTPException(
@@ -331,21 +422,46 @@ async def add_audio(request: Request, case_id: str, confirm: bool = False) -> Ca
                 )
             audio_tools.normalize_to_wav(data, filename, dest)
     except audio_tools.AudioNormalizationError as e:
+        if memo is not None:
+            memo.unlink(missing_ok=True)
         raise HTTPException(
             status_code=503 if e.needs_ffmpeg else 422, detail=str(e)
         ) from None
 
-    stage.inputs_recorded_at = _now()
-    if provider_id:
-        stage.performed_by = str(provider_id)
-    if stage.status is StageStatus.AWAITING_INPUTS:
-        stage.status = StageStatus.READY_TO_GENERATE
-    _store(request).save(case)
-    return case
+    def apply(fresh: Case) -> None:
+        s = fresh.workflow.stages[stage_key]
+        s.inputs_recorded_at = _now()
+        if provider_id:
+            s.performed_by = str(provider_id)
+        if s.status is StageStatus.AWAITING_INPUTS:
+            s.status = StageStatus.READY_TO_GENERATE
+
+    # merged like documents: intake question prep may be writing concurrently
+    _store(request).mutate(case_id, apply)
+
+    # the wav is durable; land the transcript in the background so the capture
+    # screen can show it moments after the upload returns
+    return launch_transcription(
+        request.app.state,
+        case_id,
+        stage_key,
+        kind,
+        transcribe_path,
+        offset=transcribe_offset,
+        provider_id=str(provider_id) if provider_id else None,
+        cleanup=memo,
+    )
 
 
 class ProviderAction(BaseModel):
     provider_id: str
+
+
+class SignoffAction(ProviderAction):
+    """Sign-off body; ``equipment`` is pre-op only — the suggested items the
+    provider ticked, reserved for the case as part of completing the stage."""
+
+    equipment: list[str] = Field(default_factory=list)
 
 
 def _require_stage(case: Case, stage: str):
@@ -355,11 +471,16 @@ def _require_stage(case: Case, stage: str):
 
 
 @router.post("/cases/{case_id}/stages/{stage}/signoff")
-def signoff_stage(request: Request, case_id: str, stage: str, body: ProviderAction) -> Case:
+def signoff_stage(request: Request, case_id: str, stage: str, body: SignoffAction) -> Case:
     """Assert 'I have reviewed this stage's output' (v2 §4.5).
 
     Allowed with outstanding conflicts — the ledger keeps them visible; the
     sign-off screen is responsible for surfacing them, not hiding them.
+
+    On pre-op, ``equipment`` carries the suggested items the provider ticked:
+    each is reserved for the case (qty 1, attributed to the signer) before
+    the stage flips. A shortage rolls this request's reservations back and
+    409s so the provider can untick the item and sign off again.
     """
     case = load_case(request, case_id)
     require_writable(case)
@@ -373,6 +494,32 @@ def signoff_stage(request: Request, case_id: str, stage: str, body: ProviderActi
             status_code=409,
             detail=f"nothing to sign off — generate the {stage} output first",
         )
+
+    if body.equipment:
+        if stage != "preop":
+            raise HTTPException(
+                status_code=422,
+                detail="equipment reservations only ride the pre-op sign-off",
+            )
+        unknown = [i for i in body.equipment if i not in CATALOG_BY_ID]
+        if unknown:
+            raise HTTPException(
+                status_code=422,
+                detail=f"no such equipment item(s): {', '.join(unknown)}",
+            )
+        ledger = request.app.state.equipment_store
+        already_held = {r.item_id for r in ledger.case_reservations(case_id)}
+        reserved: list[str] = []
+        try:
+            for item_id in dict.fromkeys(body.equipment):
+                if item_id in already_held:
+                    continue  # e.g. ordered through the chatbot earlier
+                ledger.reserve(item_id, case_id, 1, body.provider_id)
+                reserved.append(item_id)
+        except ValueError as exc:
+            for item_id in reserved:
+                ledger.release(item_id, case_id, 1)
+            raise HTTPException(status_code=409, detail=str(exc)) from None
 
     state.status = StageStatus.SIGNED_OFF
     state.signed_off_by = body.provider_id

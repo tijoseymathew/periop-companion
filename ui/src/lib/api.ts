@@ -4,14 +4,18 @@ import { z } from "zod";
 import {
   CaseSchema,
   CaseSummarySchema,
+  ChatMessageSchema,
   ClaimReviewsSchema,
   ProviderSchema,
+  StockLevelSchema,
   type Case,
   type CaseSummary,
+  type ChatMessage,
   type ClaimReviews,
   type ClaimReviewState,
   type OpenQuestion,
   type Provider,
+  type StockLevel,
 } from "./schema";
 
 export async function fetchCases(): Promise<CaseSummary[]> {
@@ -70,6 +74,13 @@ export async function uploadDocumentFile(
   return CaseSchema.parse(data);
 }
 
+export async function analyzeQuestions(caseId: string): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/questions/analyze`,
+  );
+  return CaseSchema.parse(data);
+}
+
 export async function reviewQuestions(
   caseId: string,
   questions: OpenQuestion[],
@@ -101,14 +112,17 @@ export async function uploadAudio(
   return CaseSchema.parse(data);
 }
 
+/** Sign a stage off; on pre-op, `equipment` carries the ticked suggested
+ * items — the server reserves each for the case as the stage completes. */
 export async function signoffStage(
   caseId: string,
   stage: string,
   providerId: string,
+  equipment: string[] = [],
 ): Promise<Case> {
   const { data } = await axios.post(
     `/api/cases/${encodeURIComponent(caseId)}/stages/${encodeURIComponent(stage)}/signoff`,
-    { provider_id: providerId },
+    { provider_id: providerId, equipment },
   );
   return CaseSchema.parse(data);
 }
@@ -121,6 +135,36 @@ export async function reopenStage(
   const { data } = await axios.post(
     `/api/cases/${encodeURIComponent(caseId)}/stages/${encodeURIComponent(stage)}/reopen`,
     { provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}
+
+/** Add a provider-asserted fact to a stage artifact; the new claim cites
+ * the provider's own `edit:<provider_id>` source. */
+export async function addArtifactClaim(
+  caseId: string,
+  artifactId: string,
+  text: string,
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.post(
+    `/api/cases/${encodeURIComponent(caseId)}/artifacts/${encodeURIComponent(artifactId)}/claims`,
+    { text, provider_id: providerId },
+  );
+  return CaseSchema.parse(data);
+}
+
+/** Rewrite one claim's text as a provider-attested correction. */
+export async function editArtifactClaim(
+  caseId: string,
+  artifactId: string,
+  claimId: string,
+  text: string,
+  providerId: string,
+): Promise<Case> {
+  const { data } = await axios.put(
+    `/api/cases/${encodeURIComponent(caseId)}/artifacts/${encodeURIComponent(artifactId)}/claims/${encodeURIComponent(claimId)}`,
+    { text, provider_id: providerId },
   );
   return CaseSchema.parse(data);
 }
@@ -151,4 +195,16 @@ export async function acknowledgeHandoff(caseId: string, providerId: string): Pr
     { provider_id: providerId },
   );
   return CaseSchema.parse(data);
+}
+
+// ---- case chatbot + equipment store ------------------------------------------
+
+export async function fetchChatHistory(caseId: string): Promise<ChatMessage[]> {
+  const { data } = await axios.get(`/api/cases/${encodeURIComponent(caseId)}/chat`);
+  return z.array(ChatMessageSchema).parse(data);
+}
+
+export async function fetchEquipment(): Promise<StockLevel[]> {
+  const { data } = await axios.get("/api/equipment");
+  return z.array(StockLevelSchema).parse(data);
 }

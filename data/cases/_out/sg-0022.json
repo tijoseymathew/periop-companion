@@ -1,0 +1,986 @@
+{
+  "case_id": "sg-0022",
+  "label": null,
+  "patient_profile_ref": null,
+  "sources": [
+    {
+      "source_id": "doc:gp-summary",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "72-year-old male, Unemployed, resident of Ang Mo Kio, Singapore.",
+          "section": "Patient"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Metformin 500 mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20 mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Lisinopril 10 mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Insulin Glargine 20 units Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c006",
+          "text": "Paracetamol 500 mg As needed.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c007",
+          "text": "Penicillin",
+          "section": "Allergies"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Hypertension",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c009",
+          "text": "Type 2 Diabetes Mellitus",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c010",
+          "text": "Osteoarthritis (bilateral hips)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c011",
+          "text": "Hyperlipidemia",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c012",
+          "text": "Pneumonia (2010)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c013",
+          "text": "Fractured right wrist (2005)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c014",
+          "text": "Completed course of Ciprofloxacin for UTI (2018)",
+          "section": "Past History"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:med-list",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Metformin 500 mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "Atorvastatin 20 mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Lisinopril 10 mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c004",
+          "text": "Insulin Glargine 20 units Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c005",
+          "text": "Paracetamol 500 mg As needed.",
+          "section": "Current Medications"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "doc:op-plan",
+      "type": "document",
+      "chunks": [
+        {
+          "chunk_id": "c001",
+          "text": "Elective Left Hip Replacement (elective).",
+          "section": "Procedure"
+        },
+        {
+          "chunk_id": "c002",
+          "text": "General Anesthesia with Epidural Anesthesia for Post-Operative Pain Management",
+          "section": "Anesthesia"
+        }
+      ],
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:preop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 17.2,
+          "speaker": "PROVIDER",
+          "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your hip replacement surgery. I'd like to go through some questions to ensure your safety and comfort during the procedure. Is that alright with you?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 17.6,
+          "t1": 23.6,
+          "speaker": "PATIENT",
+          "text": "Yes, doctor. I'm ready. I want to make sure everything goes smoothly for my hip."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 24.0,
+          "t1": 38.4,
+          "speaker": "PROVIDER",
+          "text": "Great. Let's start with your medical history. You've been diagnosed with hypertension, type 2 diabetes, osteoarthritis in both hips, and high cholesterol. Can you tell me a bit about how these conditions have been managed lately?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 38.8,
+          "t1": 57.6,
+          "speaker": "PATIENT",
+          "text": "Sure, doctor. My blood pressure is okay with the Lisinopril, but sometimes it fluctuates a bit. My sugar levels have been under control with Metformin and Insulin Glargine. The hips have been really painful, that's why I'm having the surgery. And my cholesterol is managed with Atorvastatin."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 58.0,
+          "t1": 74.8,
+          "speaker": "PROVIDER",
+          "text": "Thank you for that. Now, regarding your medications, I see you're on Metformin, Atorvastatin, Lisinopril, Insulin Glargine, and Paracetamol as needed. Can you confirm if you are currently taking any blood-thinning medications, including those you may have stopped in the past year?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 75.2,
+          "t1": 92.0,
+          "speaker": "PATIENT",
+          "text": "Oh, yes. I was on Clopidogrel for a while, but I stopped it about six months ago. I had a minor cardiac event, and after completing the prescribed course, my doctor said I could stop. I'm not on any antiplatelet therapy now."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 92.4,
+          "t1": 105.2,
+          "speaker": "PROVIDER",
+          "text": "Thank you for sharing that. It's important we know about all medications, even those you've stopped. You mentioned Paracetamol as needed; how often have you been taking it for your hip pain?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 105.6,
+          "t1": 115.2,
+          "speaker": "PATIENT",
+          "text": "Not too often, doctor. Maybe once or twice a week when the pain gets really bad. I try not to take it too much."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 115.6,
+          "t1": 122.4,
+          "speaker": "PROVIDER",
+          "text": "Understood. Now, about allergies. You've listed penicillin as an allergy. Can you describe the reaction you had?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 122.8,
+          "t1": 130.8,
+          "speaker": "PATIENT",
+          "text": "Yes, I had a rash and some swelling the last time I took penicillin. So I've been avoiding it since."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 131.2,
+          "t1": 148.4,
+          "speaker": "PROVIDER",
+          "text": "Thank you for that information. It's crucial for us to know. Now, regarding your surgery and anesthesia, we're planning for general anesthesia with an epidural for post-operative pain management. Have you had any previous anesthetics or surgeries that you'd like to share about?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 148.8,
+          "t1": 160.0,
+          "speaker": "PATIENT",
+          "text": "I had a cataract surgery a few years back, and that was under local anesthesia. No other major surgeries, so this will be my first under general anesthesia."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 160.4,
+          "t1": 168.4,
+          "speaker": "PROVIDER",
+          "text": "Alright, that's helpful. Lastly, can you confirm your NPO status? Have you had anything to eat or drink since midnight?"
+        },
+        {
+          "seg_id": "s014",
+          "t0": 168.8,
+          "t1": 173.2,
+          "speaker": "PATIENT",
+          "text": "No, doctor. I've been fasting as instructed. Nothing since last night."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 173.6,
+          "t1": 186.8,
+          "speaker": "PROVIDER",
+          "text": "Excellent. Thank you for going through all these questions with me. It's important we cover everything to ensure your safety. If you have any more questions or concerns, please don't hesitate to ask."
+        },
+        {
+          "seg_id": "s016",
+          "t0": 187.2,
+          "t1": 192.8,
+          "speaker": "PATIENT",
+          "text": "Thank you, doctor. I feel more at ease now. I'm ready for the surgery."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:intraop-notes",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 2.8,
+          "speaker": "PROVIDER",
+          "text": "[08:00] induction propofol one hundred twenty milligrams"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 3.2,
+          "t1": 5.6,
+          "speaker": "PROVIDER",
+          "text": "[08:02] tube in, grade one view"
+        },
+        {
+          "seg_id": "s003",
+          "t0": 6.0,
+          "t1": 9.2,
+          "speaker": "PROVIDER",
+          "text": "[08:05] epidural needle in, ten milliliters of bupivacaine"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 9.6,
+          "t1": 15.6,
+          "speaker": "PROVIDER",
+          "text": "[08:10] hypotension, mean arterial pressure down to fifty five, gave one hundred milliliters fluid bolus"
+        },
+        {
+          "seg_id": "s005",
+          "t0": 16.0,
+          "t1": 18.8,
+          "speaker": "PROVIDER",
+          "text": "[08:15] fentanyl twenty micrograms for breakthrough pain"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 19.2,
+          "t1": 24.4,
+          "speaker": "PROVIDER",
+          "text": "[08:30] normotension maintained, started iv fluids at one hundred twenty milliliters per hour"
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    },
+    {
+      "source_id": "audio:postop-interview",
+      "type": "audio",
+      "chunks": [],
+      "segments": [
+        {
+          "seg_id": "s001",
+          "t0": 0.0,
+          "t1": 3.6,
+          "speaker": "PROVIDER",
+          "text": "Hi there, how are you feeling after the surgery?"
+        },
+        {
+          "seg_id": "s002",
+          "t0": 4.0,
+          "t1": 10.8,
+          "speaker": "PATIENT",
+          "text": "I'm feeling a bit groggy, but okay lah. My left hip is sore, but not too bad."
+        },
+        {
+          "seg_id": "s003",
+          "t0": 11.2,
+          "t1": 21.2,
+          "speaker": "PROVIDER",
+          "text": "Can you rate your pain for me on a scale from 0 to 10, where 0 is no pain and 10 is the worst pain?"
+        },
+        {
+          "seg_id": "s004",
+          "t0": 21.6,
+          "t1": 27.2,
+          "speaker": "PATIENT",
+          "text": "I'd say around 4 or 5. The epidural seems to be helping a lot."
+        },
+        {
+          "seg_id": "s005",
+          "t0": 27.6,
+          "t1": 32.8,
+          "speaker": "PROVIDER",
+          "text": "Good to hear. Have you experienced any nausea or vomiting since the surgery?"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 33.2,
+          "t1": 38.4,
+          "speaker": "PATIENT",
+          "text": "No nausea, thank goodness. I was worried about that, but I feel fine."
+        },
+        {
+          "seg_id": "s007",
+          "t0": 38.8,
+          "t1": 45.2,
+          "speaker": "PROVIDER",
+          "text": "Excellent. How about your breathing? Are you comfortable, or do you feel any shortness of breath?"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 45.6,
+          "t1": 51.6,
+          "speaker": "PATIENT",
+          "text": "Breathing is fine. A bit of discomfort when I move, but I can breathe normally."
+        },
+        {
+          "seg_id": "s009",
+          "t0": 52.0,
+          "t1": 56.8,
+          "speaker": "PROVIDER",
+          "text": "Do you remember anything from the operating room or immediately after surgery?"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 57.2,
+          "t1": 65.6,
+          "speaker": "PATIENT",
+          "text": "Not really. I knew I was going in, and then I woke up here. So I guess the anesthesia worked well."
+        },
+        {
+          "seg_id": "s011",
+          "t0": 66.0,
+          "t1": 76.0,
+          "speaker": "PROVIDER",
+          "text": "That's expected with general anesthesia. Given your history of hypertension and diabetes, are you experiencing any unusual symptoms like dizziness, blurred vision, or chest discomfort?"
+        },
+        {
+          "seg_id": "s012",
+          "t0": 76.4,
+          "t1": 80.8,
+          "speaker": "PATIENT",
+          "text": "No, nothing like that. Just the usual aches from the surgery."
+        }
+      ],
+      "captured_at": null,
+      "provided_by": null
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "note:pre-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "72-year-old male",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Resident of Ang Mo Kio, Singapore",
+          "provenance": [
+            "doc:gp-summary#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Hypertension, managed with Lisinopril 10 mg Once daily, with occasional blood pressure fluctuations",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Type 2 Diabetes Mellitus, controlled with Metformin 500 mg Once daily and Insulin Glargine 20 units Once daily",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Osteoarthritis (bilateral hips), causing significant pain and necessitating surgery",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Hyperlipidemia, managed with Atorvastatin 20 mg Once daily",
+          "provenance": [
+            "doc:gp-summary#c011",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Current Medications: Metformin 500 mg Once daily",
+          "provenance": [
+            "doc:med-list#c001",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Current Medications: Atorvastatin 20 mg Once daily",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Current Medications: Lisinopril 10 mg Once daily",
+          "provenance": [
+            "doc:med-list#c003",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Current Medications: Insulin Glargine 20 units Once daily",
+          "provenance": [
+            "doc:med-list#c004",
+            "audio:preop-interview#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Current Medications: Paracetamol 500 mg As needed, taken approximately once or twice a week for hip pain",
+          "provenance": [
+            "doc:med-list#c005",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Stopped Medications: Clopidogrel, discontinued approximately six months ago after a minor cardiac event",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "Allergy to Penicillin, with reaction described as rash and swelling",
+          "provenance": [
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s009",
+            "audio:preop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "No known allergies to drugs, latex, adhesives, foods, or other substances not listed in records",
+          "provenance": [
+            "audio:preop-interview#s009"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-015",
+          "text": "NPO status confirmed: Nothing by mouth since midnight as instructed",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-016",
+          "text": "ASA-PS Class III (Patient has severe systemic disease, e.g., poorly controlled hypertension and diabetes)",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-017",
+          "text": "Procedure: Elective Left Hip Replacement",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Anesthesia Plan: General Anesthesia with Epidural Anesthesia for Post-Operative Pain Management",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Propofol 120 milligrams administered at 08:00",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Endotracheal tube placed with grade one view at 08:02",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Bupivacaine 10 milliliters administered at 08:05",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hypotension occurred with mean arterial pressure down to 55 mmHg at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "100 milliliters fluid bolus administered at 08:10",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Fentanyl 20 micrograms administered at 08:15",
+          "provenance": [
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Normotension maintained at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "IV fluids started at 120 milliliters per hour at 08:30",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Hypertension Management - Risk of fluctuating blood pressure levels post-operatively due to underlying hypertension.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c009"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Glycemic Control - Risk of impaired glucose regulation post-operatively due to Type 2 Diabetes Mellitus.",
+          "provenance": [
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Pain Management - Anticipation of significant post-operative pain requiring careful analgesia management due to pre-existing osteoarthritis pain.",
+          "provenance": [
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s008"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Hypotension Watch - Risk of low blood pressure post-operatively following intra-op hypotension event.",
+          "provenance": [
+            "audio:intraop-notes#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "PONV (Post-Operative Nausea and Vomiting) Risk - Increased risk due to general anesthesia and opioid use (Fentanyl).",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Airway Watch - Monitoring for potential airway complications post-extubation, given intra-op intubation.",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Renal Function Monitoring - Important due to patient's age, hypertension, and diabetes, which can impact renal function.",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c009"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Neurological Monitoring - For potential neurological effects from epidural anesthesia.",
+          "provenance": [
+            "audio:intraop-notes#s003",
+            "doc:op-plan#c002"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "72-year-old male undergoing elective left hip replacement, with a history of hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis. Patient is NPO since midnight and has a penicillin allergy.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c007",
+            "audio:preop-interview#s009",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient's medications include Lisinopril, Metformin, Insulin Glargine, Atorvastatin, and occasional Paracetamol. Previous cardiac event led to Clopidogrel discontinuation six months ago.",
+          "provenance": [
+            "doc:med-list#c003",
+            "audio:preop-interview#s005",
+            "doc:med-list#c001",
+            "doc:med-list#c004",
+            "doc:med-list#c002",
+            "doc:med-list#c005",
+            "audio:preop-interview#s007",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Intra-op complications included hypotension (MAP 55 mmHg) managed with fluid bolus, and normotension restored. Anesthesia included general with epidural for post-op pain management. Anticipated issues include hypertension management, glycemic control, pain management, hypotension watch, PONV risk, airway watch, renal function monitoring, and neurological monitoring for epidural effects.",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s006",
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c009",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s008",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Monitor for post-op hypotension, maintain glycemic control, manage pain with caution considering pre-existing osteoarthritis pain, watch for PONV, ensure airway patency post-extubation, monitor renal function, and assess for neurological effects from epidural. Adjust medications as needed, considering the patient's current regimen and allergies.",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "doc:gp-summary#c009",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s008",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s005",
+            "audio:intraop-notes#s002",
+            "doc:gp-summary#c008",
+            "audio:intraop-notes#s003",
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient reports feeling a bit groggy but okay after surgery.",
+          "provenance": [
+            "audio:postop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient's left hip is sore but not too bad, with pain rated around 4 or 5 on a scale from 0 to 10.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Epidural seems to be helping with pain management.",
+          "provenance": [
+            "audio:postop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Patient reports no nausea or vomiting since the surgery.",
+          "provenance": [
+            "audio:postop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient's breathing is fine with a bit of discomfort when moving, but able to breathe normally.",
+          "provenance": [
+            "audio:postop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient does not remember anything from the operating room or immediately after surgery, which is expected with general anesthesia.",
+          "provenance": [
+            "audio:postop-interview#s010"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Patient denies experiencing any unusual symptoms such as dizziness, blurred vision, or chest discomfort, despite history of hypertension and diabetes.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "General anesthesia with epidural for post-operative pain management was planned and executed as per the operative plan.",
+          "provenance": [
+            "doc:op-plan#c002"
+          ],
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Please confirm if you have stopped, changed, or replaced any of the following medications since they were last recorded: Metformin 500 mg Once daily, Atorvastatin 20 mg Once daily, Lisinopril 10 mg Once daily, Insulin Glargine 20 units Once daily, Paracetamol 500 mg As needed.",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003",
+        "doc:med-list#c004",
+        "doc:med-list#c005"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any allergies or reactions to drugs, latex, adhesives, foods, or other substances not listed in your records?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c007"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you provide more details about your history of hypertension, including any recent blood pressure readings or changes in medication?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Please describe your current control of Type 2 Diabetes Mellitus, including any recent HbA1c levels or changes in insulin dosage.",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c009"
+      ],
+      "review": null,
+      "edited_text": null
+    }
+  ],
+  "intraop_events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol 120",
+      "units": "milligrams",
+      "provenance": [
+        "audio:intraop-notes#s001"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s002"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine 10",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s003"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "hypotension, mean arterial pressure down to 55",
+      "units": "mmHg",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "100",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s004"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "fentanyl 20",
+      "units": "micrograms",
+      "provenance": [
+        "audio:intraop-notes#s005"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "normotension maintained",
+      "units": null,
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "fluid",
+      "value": "120",
+      "units": "milliliters per hour",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    }
+  ],
+  "anticipated_issues": [
+    "Hypertension Management - Risk of fluctuating blood pressure levels post-operatively due to underlying hypertension.",
+    "Glycemic Control - Risk of impaired glucose regulation post-operatively due to Type 2 Diabetes Mellitus.",
+    "Pain Management - Anticipation of significant post-operative pain requiring careful analgesia management due to pre-existing osteoarthritis pain.",
+    "Hypotension Watch - Risk of low blood pressure post-operatively following intra-op hypotension event.",
+    "PONV (Post-Operative Nausea and Vomiting) Risk - Increased risk due to general anesthesia and opioid use (Fentanyl).",
+    "Airway Watch - Monitoring for potential airway complications post-extubation, given intra-op intubation.",
+    "Renal Function Monitoring - Important due to patient's age, hypertension, and diabetes, which can impact renal function.",
+    "Neurological Monitoring - For potential neurological effects from epidural anesthesia."
+  ],
+  "workflow": null
+}

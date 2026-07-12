@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, doctor. A bit sleepy, but not in too much pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Can you tell me your pain level on a scale from 0 to 10, where 0 is no pain and 10 is the worst?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'd say about a 3. The nerve block seems to be helping a lot."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Are you feeling nauseous or have been sick at all since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, no nausea. I feel fine in that way."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. How about your breathing? Any discomfort or difficulty breathing?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. Chest feels okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Do you remember anything about the surgery itself? Any awareness during the procedure?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't remember anything. I was out the whole time."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected with general anesthesia. Given your diabetes and kidney condition, we'll keep a close eye on your fluids and blood sugar levels. Any other concerns from your side?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you for checking on me."
+    }
+  ]
+}

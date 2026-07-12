@@ -16,7 +16,17 @@ from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 
-from periop.api.routers import audio, cases, claim_reviews, stage_runs, stream_asr, workflow
+from periop.api.routers import (
+    audio,
+    cases,
+    chat,
+    claim_reviews,
+    edits,
+    equipment,
+    stage_runs,
+    stream_asr,
+    workflow,
+)
 
 DEFAULT_CASE_DIR = Path("data/cases")
 DEFAULT_PROVIDERS = Path("data/providers.json")
@@ -37,6 +47,16 @@ async def _lifespan(app: FastAPI):
     """
     from nat.runtime.loader import load_workflow
 
+    from periop.api.gap_analysis import fail_interrupted_analyses
+    from periop.api.routers.stage_runs import fail_interrupted_stage_runs
+    from periop.api.transcription import fail_interrupted_transcriptions
+
+    # a crash mid-question-prep, mid-transcription or mid-generation leaves a
+    # stage stuck at pending/running/generating; sweep those back so the
+    # retry paths open up
+    fail_interrupted_analyses(app.state.out_dir)
+    fail_interrupted_transcriptions(app.state.out_dir)
+    fail_interrupted_stage_runs(app.state.out_dir)
     async with load_workflow(NAT_CONFIG) as nat_sessions:
         app.state.nat_sessions = nat_sessions
         yield
@@ -49,6 +69,7 @@ def create_app(
     providers_path: Path | str | None = None,
     runner=None,
     streaming_asr_factory=None,
+    chat_runtime=None,
 ) -> FastAPI:
     # uvicorn/`python -m periop.api` bypass the CLI wrappers that call
     # load_dotenv themselves; resolve from the working directory like the
@@ -93,6 +114,22 @@ def create_app(
 
     app.state.streaming_asr_factory = streaming_asr_factory
 
+    from periop.equipment import EquipmentStore
+
+    app.state.equipment_store = EquipmentStore(out_dir)
+    if chat_runtime is None:
+        if stub:
+            from periop.api.runner import StubChatRuntime
+
+            chat_runtime = StubChatRuntime(out_dir)
+        else:
+            # lazy: the runtime builds its agent + fast-tier client on the
+            # first turn, so creating the app needs no network or keys
+            from periop.agents.case_chat import CaseChatRuntime
+
+            chat_runtime = CaseChatRuntime(out_dir)
+    app.state.chat_runtime = chat_runtime
+
     @app.get("/api/health")
     def health() -> dict[str, str]:
         return {"status": "ok"}
@@ -102,7 +139,10 @@ def create_app(
     app.include_router(workflow.router, prefix="/api")
     app.include_router(stage_runs.router, prefix="/api")
     app.include_router(claim_reviews.router, prefix="/api")
+    app.include_router(edits.router, prefix="/api")
     app.include_router(stream_asr.router, prefix="/api")
+    app.include_router(chat.router, prefix="/api")
+    app.include_router(equipment.router, prefix="/api")
 
     ui_dist = Path(ui_dist) if ui_dist is not None else UI_DIST
     if ui_dist.is_dir():

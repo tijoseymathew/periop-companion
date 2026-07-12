@@ -1,0 +1,174 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "LMA size four in place, good seal, capnograph waveform confirmed"
+    },
+    {
+      "t": "08:10",
+      "text": "18 gauge intravenous access, one liter normal saline running"
+    },
+    {
+      "t": "08:20",
+      "text": "mean arterial pressure dropped to fifty five, atropine point five milligrams given"
+    },
+    {
+      "t": "08:35",
+      "text": "rocuronium twenty milligrams for muscle relaxation"
+    },
+    {
+      "t": "08:50",
+      "text": "desaturation to eighty nine percent, increased FiO2 to one point zero"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "LMA",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "4",
+      "units": "size",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "intravenous access",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "18",
+      "units": "gauge",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure drop",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "0.5",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "20",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "desaturation",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "agent",
+      "value": "FiO2",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "dose",
+      "value": "1.0",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    }
+  ]
+}

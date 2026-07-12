@@ -1,0 +1,159 @@
+{
+  "questions": [
+    "Can you confirm the current dose of Escitalopram you are taking, and any recent changes to your medications?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two point five",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one",
+      "units": "liter",
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atenotar",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "one",
+      "units": "microgram bolus",
+      "provenance": []
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "desflurane",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "one point two",
+      "units": "percent",
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "dose",
+      "value": "two hundred",
+      "units": "milliliters bolus",
+      "provenance": []
+    }
+  ],
+  "preop_note_claims": [
+    "Patient has a history of mild asthma, which is infrequent and exercise-induced.",
+    "Current medications include Montelukast Sodium 10 mg once daily and Escitalopram 10 mg once daily (with a note that the Escitalopram dose was reduced to 5 mg once daily 3 months ago).",
+    "Patient has a known allergy to Penicillin, manifesting as a rash.",
+    "Levothyroxine 50 mcg once daily was stopped prior to surgery.",
+    "Patient is classified as ASA-PS 2 due to obesity (BMI 28 kg/m^2) and mild asthma.",
+    "Airway assessment indicates no anticipated difficulties, and the anesthetic plan includes general anesthesia with spinal anesthesia (combined technique)."
+  ],
+  "handoff_claims": [
+    "Patient underwent elective laparoscopic appendectomy under general anesthesia with spinal anesthesia (combined technique).",
+    "Anticipated postoperative issues include monitoring for respiratory complications due to history of mild asthma and obesity.",
+    "Medications of note: Montelukast Sodium and Escitalopram (with recent dose reduction) should be resumed postoperatively as ordered; Levothyroxine was stopped preoperatively and may require resumption based on postoperative assessment.",
+    "Patient has a Penicillin allergy (rash), which should be communicated to postoperative care teams."
+  ],
+  "distractors": [
+    "History of left wrist fracture (age 12, fully healed)",
+    "Pneumonia (age 15, fully resolved)",
+    "Previous pre-op ECG for elective cholecystectomy (age 16, normal results)"
+  ]
+}

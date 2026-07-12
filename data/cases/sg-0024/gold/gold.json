@@ -1,0 +1,168 @@
+{
+  "questions": [
+    "Can you confirm your current medications, particularly any changes to antiplatelet or blood-thinning agents in the past year?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "central line placed",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "event",
+      "value": "no complications",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "one",
+      "units": "liter",
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure dropped",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "fifty",
+      "units": "mmHg",
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "heart rate increased",
+      "units": null,
+      "provenance": [
+        "voice_note#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "one twenty",
+      "units": "bpm",
+      "provenance": [
+        "voice_note#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "esmolol",
+      "units": null,
+      "provenance": [
+        "voice_note#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:25"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient's medical history includes hypertension, type 2 diabetes mellitus, and hyperlipidemia.",
+    "Current medications are Atorvastatin 20mg once daily, Metformin 500mg twice daily, and Lisinopril 10mg once daily; Aspirin 75mg once daily was stopped 6 months ago due to gastrointestinal discomfort and has not been resumed.",
+    "Patient has a known allergy to penicillin, manifested as a rash.",
+    "ASA-PS is 3 due to the presence of controlled but significant comorbidities (hypertension, diabetes, hyperlipidemia).",
+    "Airway assessment indicates no anticipated difficulties with endotracheal intubation; plan for general anesthesia with endotracheal intubation is appropriate."
+  ],
+  "handoff_claims": [
+    "Patient has a history of hypertension, type 2 diabetes, and hyperlipidemia, all currently managed with medications except Aspirin which was discontinued.",
+    "Intraoperative course expected to be uncomplicated for laparoscopic cholecystectomy; anticipate standard emergence and extubation.",
+    "Anticipated issue includes potential for delayed gastric emptying or ileus post-op due to laparoscopic insufflation; monitor for signs of respiratory compromise or abdominal distension."
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of right arm fracture (20 years ago), fully healed",
+    "Previous diagnosis of mild iron-deficiency anemia, resolved with dietary changes"
+  ]
+}

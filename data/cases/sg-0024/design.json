@@ -1,0 +1,102 @@
+{
+  "case_id": "sg-0024",
+  "persona_uuid": "3b943ad7bfbb4d18b3afffe3e91b4f68",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Endotracheal Intubation",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75mg",
+      "frequency": "once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Records indicate the patient is still taking Aspirin 75mg once daily for cardiovascular prophylaxis.",
+    "truth": "The patient stopped taking Aspirin 6 months ago due to gastrointestinal discomfort and has not resumed. He is currently not on any antiplatelet therapy.",
+    "gold_question": "Can you confirm your current medications, particularly any changes to antiplatelet or blood-thinning agents in the past year?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved years ago, no current impact on anesthesia or surgery"
+    },
+    {
+      "description": "Remote history of right arm fracture (20 years ago), fully healed",
+      "why_irrelevant": "Old injury, fully healed, no functional impairment"
+    },
+    {
+      "description": "Previous diagnosis of mild iron-deficiency anemia, resolved with dietary changes",
+      "why_irrelevant": "Resolved nutritional deficiency, no current anemia"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75mg",
+        "frequency": "once daily",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin (rash)"
+    ],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "Pneumonia (resolved 5 years ago)",
+      "Right arm fracture (healed, 20 years ago)",
+      "Mild iron-deficiency anemia (resolved with diet)"
+    ],
+    "prior_anesthesia": null
+  }
+}

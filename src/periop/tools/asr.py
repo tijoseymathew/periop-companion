@@ -125,6 +125,8 @@ class ParakeetAsr:
     ) -> Source:
         import wave
 
+        from periop.nat.telemetry import traced_tool_call
+
         content = Path(wav_path).read_bytes()
         try:
             with wave.open(str(wav_path), "rb") as w:
@@ -133,23 +135,25 @@ class ParakeetAsr:
             sample_rate_hz = 22050
         config = self._build_config(diarize, sample_rate_hz)
         recognize = self._recognize or self._riva_recognize
-        response = recognize(content, config)
+        with traced_tool_call("parakeet-asr", input_text=str(wav_path)) as record:
+            response = recognize(content, config)
 
-        words: list[dict] = []
-        for result in response.results:
-            if not result.alternatives:
-                continue
-            for w in result.alternatives[0].words:
-                words.append(
-                    {
-                        "word": w.word,
-                        "t0": max(w.start_time / 1000.0, 0.0),
-                        "t1": max(w.end_time / 1000.0, 0.0),
-                        "speaker": getattr(w, "speaker_tag", 0) if diarize else 0,
-                    }
-                )
-        segments = words_to_segments(words)
-        assign_roles(segments)
+            words: list[dict] = []
+            for result in response.results:
+                if not result.alternatives:
+                    continue
+                for w in result.alternatives[0].words:
+                    words.append(
+                        {
+                            "word": w.word,
+                            "t0": max(w.start_time / 1000.0, 0.0),
+                            "t1": max(w.end_time / 1000.0, 0.0),
+                            "speaker": getattr(w, "speaker_tag", 0) if diarize else 0,
+                        }
+                    )
+            segments = words_to_segments(words)
+            assign_roles(segments)
+            record.output = f"{source_id}: {len(segments)} segments"
         return Source(source_id=source_id, type=SourceType.AUDIO, segments=segments)
 
 

@@ -1,0 +1,103 @@
+{
+  "case_id": "sg-0011",
+  "persona_uuid": "e0d2df24b24f4d49a6b7032cc06fef59",
+  "surgery": "Elective inguinal hernia repair",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Benign Prostatic Hyperplasia (BPH)",
+    "Osteoarthritis (knees)"
+  ],
+  "medications": [
+    {
+      "name": "Losartan",
+      "dose": "100 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Tamsulosin",
+      "dose": "0.4 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Diclofenac",
+      "dose": "50 mg",
+      "frequency": "As needed for pain",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75 mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "None known"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Losartan 100mg daily, Metformin 500mg twice daily, Tamsulosin 0.4mg daily, Aspirin 75mg daily. No allergies.",
+    "truth": "Patient has stopped Aspirin 2 years ago due to gastrointestinal discomfort. Current medications: Losartan, Metformin, Tamsulosin, and Diclofenac as needed.",
+    "gold_question": "Can you confirm if you are still taking Aspirin, and if not, when did you stop and why?"
+  },
+  "distractors": [
+    {
+      "description": "Pneumonia (resolved 5 years ago)",
+      "why_irrelevant": "Resolved long ago, no impact on current perioperative risk"
+    },
+    {
+      "description": "Fractured right wrist (healed, 15 years ago)",
+      "why_irrelevant": "Remote history, full recovery, no relevant implications"
+    },
+    {
+      "description": "Discontinued Simvastatin (due to muscle pain) 3 years ago",
+      "why_irrelevant": "Medication changed, but already reflected in current medication list"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Losartan",
+        "dose": "100 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Tamsulosin",
+        "dose": "0.4 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75 mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia (resolved 5 years ago)",
+      "Fractured right wrist (healed, 15 years ago)"
+    ],
+    "prior_anesthesia": null
+  }
+}

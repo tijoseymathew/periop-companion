@@ -4,13 +4,19 @@ Each question is tagged with why it matters (missing / stale / conflicting)
 and cites the chunk that triggered it. Questions whose citations don't resolve
 against the case are dropped — a hallucinated citation is worse than a missing
 question here.
+
+The prompt, output schema, and apply step live here; execution is the ADK
+generate→validate step built in ``periop.adk.stages``. The ``GapAnalyst``
+class is a facade over a single-step ADK run for standalone callers (intake
+gap analysis, eval scripts).
 """
 
 from enum import StrEnum
+from typing import Any, Mapping
 
 from pydantic import BaseModel, Field, field_validator
 
-from periop.agents.context import normalize_refs, render_sources
+from periop.agents.context import normalize_refs, preview_texts, render_sources
 from periop.schemas import Case, OpenQuestion, SourceType
 
 
@@ -56,32 +62,66 @@ ask the patient before surgery. For each question:
   least one real chunk id from the list.
 Prioritize items that affect anesthetic safety (allergies, anticoagulants,
 airway history, prior anesthetic complications, cardiorespiratory disease).
+
+Two questions are mandatory in every list, because records are routinely
+stale on exactly these points:
+- a full medication-reconciliation question that names every medication on
+  record and asks whether any have been stopped, changed, or replaced since
+  the list was written (cite the med-list chunk);
+- an allergy question that asks about any reaction — drug or non-drug (e.g.
+  latex, plasters, foods) — beyond those documented (cite the chunk that
+  records allergies or states none).
 """
 
 
+def prompt(case: Case, state: Mapping[str, Any] | None = None) -> str:
+    return PROMPT.format(sources=render_sources(case, types=(SourceType.DOCUMENT,)))
+
+
+def apply(
+    case: Case, result: GapQuestions, state: Mapping[str, Any] | None = None
+) -> tuple[str, dict[str, Any]]:
+    """Keep only questions whose citations resolve; store them on the case."""
+    from periop.adk.runtime import case_delta
+
+    valid = [q for q in result.questions if _citations_resolve(case, q)]
+    case.open_questions = [
+        OpenQuestion(question=q.question, reason=q.reason, provenance=q.provenance)
+        for q in valid
+    ]
+    delta = case_delta(case)
+    delta["__preview__"] = preview_texts([q.question for q in valid])
+    return f"{len(valid)} questions", delta
+
+
+def _citations_resolve(case: Case, q: ClarificationQuestion) -> bool:
+    if not q.provenance:
+        return False
+    try:
+        for ref in q.provenance:
+            case.resolve(ref)
+    except (KeyError, ValueError):
+        return False
+    return True
+
+
 class GapAnalyst:
+    """Facade: run the ADK gap-analysis step standalone over one case."""
+
     def __init__(self, chat) -> None:
         self.chat = chat
 
     def analyze(self, case: Case) -> list[ClarificationQuestion]:
-        sources = render_sources(case, types=(SourceType.DOCUMENT,))
-        result = self.chat.complete_structured(
-            PROMPT.format(sources=sources), schema=GapQuestions, system=SYSTEM
-        )
-        valid = [q for q in result.questions if self._citations_resolve(case, q)]
-        case.open_questions = [
-            OpenQuestion(question=q.question, reason=q.reason, provenance=q.provenance)
-            for q in valid
-        ]
-        return valid
+        from periop.adk.runtime import run_agent, sync_case
+        from periop.adk.stages import gap_analyst_step
 
-    @staticmethod
-    def _citations_resolve(case: Case, q: ClarificationQuestion) -> bool:
-        if not q.provenance:
-            return False
-        try:
-            for ref in q.provenance:
-                case.resolve(ref)
-        except (KeyError, ValueError):
-            return False
-        return True
+        result, _ = run_agent(gap_analyst_step(self.chat, skip_when_present=False), case)
+        sync_case(case, result)
+        return [
+            ClarificationQuestion(
+                question=q.question,
+                reason=QuestionReason(q.reason),
+                provenance=[str(r) for r in q.provenance],
+            )
+            for q in case.open_questions
+        ]

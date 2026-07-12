@@ -1,0 +1,190 @@
+--- sample 1/30: miss (5 questions, 39s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy under general anesthesia?
+          Can you confirm if you have developed any cardiorespiratory conditions since the last records, given your age and current medications?
+          Is there any recent change in your GERD symptoms since discontinuing omeprazole in 2020?
+--- sample 2/30: miss (5 questions, 41s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult airway, intubation issues, or airway complications during the 2005 appendectomy or any other procedure?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, especially considering your current medications for blood pressure and cholesterol?
+          Is there any history of GERD symptoms returning since discontinuing omeprazole in 2020, which might affect airway management?
+--- sample 3/30: miss (6 questions, 49s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult airway, intubation issues, or airway complications during the 2005 appendectomy or any other procedure?
+          Have you been diagnosed with any cardiorespiratory conditions since the last update, especially given your current medications for hypertension and hyperlipidemia?
+          Is there any history of postoperative nausea, vomiting, or other complications during the 2005 appendectomy or any other anesthesia exposure?
+          Can you confirm the reason for discontinuing omeprazole in 2020 and whether you have had any GERD symptoms since then?
+--- sample 4/30: CATCH (5 questions, 40s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult airway, intubation issues, or airway complications during the 2005 appendectomy under general anesthesia?
+          Have you been diagnosed with or showing symptoms of any cardiorespiratory conditions (e.g., COPD, asthma, heart disease) since the last update?
+    MATCH Can you confirm if you are still on the same medication regimen as listed, especially regarding omeprazole discontinuation in 2020?
+--- sample 5/30: miss (4 questions, 39s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, given your current medications for hypertension and diabetes?
+--- sample 6/30: miss (5 questions, 39s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy under general anesthesia?
+          Can you confirm if you have any history of cardiorespiratory disease, especially since you are on multiple antihypertensive medications?
+          Is there any history of GERD symptoms recurring after discontinuing omeprazole in 2020?
+--- sample 7/30: CATCH (6 questions, 59s)
+          Can you confirm if you have any current or new allergies, especially to medications or latex, that are not documented in your records?
+    MATCH Can you provide details about your GERD (Gastroesophageal Reflux Disease) and why omeprazole was discontinued in 2020? Are you currently experiencing any symptoms of GERD?
+          You are on multiple medications for blood pressure (Perindopril, Indapamide, Amlodipine). Can you confirm if you have had any recent blood pressure readings or issues with hypertension that might impact anesthesia?
+          Your prior anesthetic record from 2005 indicates no complications. Have you had any surgeries or procedures since then that required anesthesia, and if so, were there any issues?
+          You are scheduled for general anesthesia with LMA. Do you have any concerns or history of difficult airway, or have you experienced any issues with previous general anesthesia?
+          Can you confirm if you have diabetes and if so, how is it being managed currently (e.g., diet, exercise, medications like Metformin)?
+--- sample 8/30: CATCH (6 questions, 59s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may affect electrolytes and kidney function?
+          Do you have any history of sleep apnea or airway issues that could impact the use of a laryngeal mask airway (LMA) during general anesthesia?
+          Have you had any issues with anesthesia or any complications since your appendectomy in 2005?
+    MATCH Can you confirm if you are still on all the listed medications (Metformin, Perindopril, Indapamide, Atorvastatin, Amlodipine) and if there have been any changes in dosage or frequency?
+          Do you have any history of GERD symptoms since discontinuing omeprazole in 2020, which could be relevant under general anesthesia?
+--- sample 9/30: miss (5 questions, 43s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult airway, intubation issues, or airway complications during the 2005 appendectomy or any other procedure?
+          Can you confirm if you have developed any cardiorespiratory symptoms or conditions since the last records, especially given your current medications for hypertension and diabetes?
+          Is there any history of GERD symptoms reoccurring after discontinuing omeprazole in 2020?
+--- sample 10/30: CATCH (6 questions, 45s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may affect electrolytes and kidney function?
+          Do you have any history of sleep apnea or airway issues that could affect general anesthesia with LMA?
+          Can you confirm if you have had any recent respiratory issues or infections, given your history of pneumonia in 2015?
+    MATCH Are you still taking omeprazole or any other medication for GERD, as it may impact anesthesia management?
+          Have you had any issues with previous general anesthesia, such as difficult intubation or postoperative nausea, during your appendectomy in 2005?
+--- sample 11/30: miss (5 questions, 40s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, considering you are on multiple antihypertensive medications?
+          Is there any history of postoperative nausea, vomiting, or other complications during the 2005 surgery that wasn't recorded?
+--- sample 12/30: miss (6 questions, 51s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may affect electrolytes and kidney function?
+          Do you have any history of sleep apnea or airway issues that could impact the use of a laryngeal mask airway (LMA) during general anesthesia?
+          Have you had any issues with anesthesia since your appendectomy in 2005, such as difficult intubation, awareness during surgery, or postoperative nausea and vomiting?
+          Can you confirm if you have any history of heart disease, especially since you are on multiple antihypertensive medications (amlodipine, perindopril, indapamide)?
+          Are you currently experiencing any respiratory symptoms or have a history of chronic lung disease, given your past pneumonia in 2015?
+--- sample 13/30: miss (5 questions, 40s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, considering you are on multiple antihypertensive medications?
+          Is there any history of GERD symptoms recurrence since discontinuing omeprazole in 2020, which could be relevant for general anesthesia?
+--- sample 14/30: miss (7 questions, 65s)
+          Can you confirm if you have any current or new allergies, especially to medications or latex, that are not documented in your records?
+          Can you provide details about your current smoking and alcohol consumption status, as this information is not present in the provided records?
+          Is there any history of sleep apnea or other respiratory conditions that might impact anesthesia, as this information is not documented?
+          Please confirm if you have experienced any issues with previous anesthesia, such as difficult intubation, awareness during surgery, or postoperative nausea, that are not mentioned in your prior anesthetic record from 2005?
+          Can you confirm if you are currently taking any blood thinners or have a history of bleeding disorders, as this information is not present in your current medication lists?
+          Please confirm if you have any history of cardiovascular disease, such as heart attack, heart failure, or arrhythmias, that is not documented in your past history?
+          Can you provide more details about your current physical activity level and any limitations you might have, as this information is not present in the records?
+--- sample 15/30: miss (5 questions, 42s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult airway, intubation issues, or airway complications during the 2005 appendectomy under general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, especially considering your current medications for blood pressure and cholesterol?
+          Is there any history of GERD symptoms returning since discontinuing omeprazole in 2020, which might affect airway management during general anesthesia?
+--- sample 16/30: CATCH (5 questions, 41s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the previous general anesthesia in 2005?
+          Have you been diagnosed with any cardiorespiratory conditions since the last update, considering your age and current medications (e.g., amlodipine, perindopril)?
+    MATCH Is there any update on your GERD condition since discontinuing omeprazole in 2020, as it may impact anesthesia management?
+--- sample 17/30: miss (5 questions, 42s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult airway, intubation issues, or airway complications during the 2005 appendectomy or since then?
+          Have you been diagnosed with any new cardiorespiratory conditions since the last records, especially given your current medications for hypertension and diabetes?
+          Is there any update on your GERD status since discontinuing omeprazole in 2020, as it may impact anesthesia management?
+--- sample 18/30: miss (5 questions, 37s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy under general anesthesia?
+          Can you confirm if you have any history of GERD symptoms since discontinuing omeprazole in 2020?
+          Are you currently experiencing any respiratory issues, given the history of pneumonia in 2015?
+--- sample 19/30: CATCH (5 questions, 57s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril can affect electrolytes and kidney function?
+          Do you have any history of difficult intubation, airway issues, or reactions to general anesthesia since your appendectomy in 2005?
+    MATCH Are you still on the same medications as listed (Metformin, Perindopril, Indapamide, Atorvastatin, Amlodipine), and have there been any changes or additions?
+          Did you have any postoperative nausea, vomiting, or other complications after your previous general anesthesia for appendectomy?
+--- sample 20/30: miss (5 questions, 42s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, especially considering your current medications for hypertension and diabetes?
+          Is there any update on your GERD status since discontinuing omeprazole in 2020, and are you experiencing any reflux symptoms?
+--- sample 21/30: miss (5 questions, 40s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, considering your current medications for hypertension and the planned general anesthesia?
+          Is there any history of postoperative nausea and vomiting (PONV) or other complications during the 2005 surgery under general anesthesia?
+--- sample 22/30: miss (5 questions, 40s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, considering you are on multiple antihypertensive medications?
+          Is there any history of postoperative nausea, vomiting, or other complications during the 2005 surgery that wasn't recorded?
+--- sample 23/30: CATCH (6 questions, 58s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril can affect electrolytes and kidney function?
+          Do you have any history of difficult intubation, airway issues, or reactions to general anesthesia since your appendectomy in 2005?
+          Have you been diagnosed with any cardiorespiratory conditions (e.g., COPD, asthma, heart disease) that may impact anesthesia?
+    MATCH Can you confirm the current use of all listed medications (Metformin, Perindopril, Indapamide, Atorvastatin, Amlodipine) and any recent changes?
+          Is there any history of GERD symptoms since discontinuing omeprazole in 2020, which could be relevant for general anesthesia?
+--- sample 24/30: miss (5 questions, 41s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy under general anesthesia?
+          Can you confirm if you have developed any cardiorespiratory symptoms or conditions since the last records, especially given your current medications for hypertension and diabetes?
+          Is there any history of GERD symptoms returning after discontinuing omeprazole in 2020, which could impact anesthesia?
+--- sample 25/30: miss (6 questions, 48s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may affect electrolytes and kidney function?
+          Do you have any history of sleep apnea or airway issues that could impact the use of a laryngeal mask airway (LMA) during general anesthesia?
+          Can you confirm if you have had any recent respiratory issues or chronic lung conditions, given the history of pneumonia in 2015?
+          Are you currently experiencing any gastrointestinal symptoms or issues that might relate to the discontinued omeprazole for GERD in 2020?
+          Can you confirm the details of your last anesthetic experience, as it was over 15 years ago and may not reflect current standards or your current health status?
+--- sample 26/30: miss (5 questions, 43s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult airway, intubation issues, or airway complications during the 2005 appendectomy or since then?
+          Have you been diagnosed with any new cardiorespiratory conditions since the last records, especially given your current medications for hypertension and diabetes?
+          Is there any history of postoperative nausea, vomiting, or other complications after the 2005 appendectomy or any other procedures?
+--- sample 27/30: miss (5 questions, 40s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy general anesthesia?
+          Have you been diagnosed with any cardiorespiratory conditions since the last records, considering you are on multiple antihypertensive medications?
+          Is there any history of postoperative nausea, vomiting, or other complications during the 2005 surgery that wasn't documented?
+--- sample 28/30: miss (5 questions, 54s)
+          Can you confirm if you have any current or new drug allergies since the last record?
+          Have you had any issues with your airway or breathing during previous surgeries or otherwise?
+          Are you currently taking any blood-thinning medications or anticoagulants, including aspirin or fish oil?
+          Do you have any history of heart disease, high blood pressure that is not well controlled, or any breathing problems like asthma or COPD?
+          Have you experienced any complications or issues with general anesthesia in the past, especially since your appendectomy in 2005?
+--- sample 29/30: miss (5 questions, 41s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril may have interactions?
+          Do you have any history of difficult intubation or airway issues during the 2005 appendectomy under general anesthesia?
+          Can you confirm if you have developed any cardiorespiratory conditions since the last records, given your current medications for hypertension and diabetes?
+          Is there any history of GERD symptoms since discontinuing omeprazole in 2020, which might affect airway management?
+--- sample 30/30: CATCH (5 questions, 39s)
+          Can you confirm if you have any current or new allergies since the last record?
+          Are you currently taking any blood thinners or anticoagulants, especially since indapamide and perindopril can affect electrolytes and kidney function?
+          Do you have any history of difficult intubation, airway issues, or reactions to general anesthesia since your appendectomy in 2005?
+          Have you been diagnosed with any cardiorespiratory conditions (e.g., COPD, asthma, heart disease) that may impact anesthesia?
+    MATCH Is there any update on your GERD condition since discontinuing omeprazole in 2020, and are you currently experiencing any reflux symptoms?
+
+sg-0002: catch rate 8/30

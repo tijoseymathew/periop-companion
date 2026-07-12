@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning! I'm going to be your anesthesiologist for your upcoming cholecystectomy. Can you please start by telling me a bit about your medical history and why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doc. Yeah, I've been having a lot of tummy pains, especially after eating. The scans showed gallstones, so the doctor said it's best to take out the gallbladder. Hope that fixes the problem, lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. Now, let's go over your medications. I see you're on Atorvastatin, Metformin, Lisinopril, and Aspirin. Can you confirm if you're still taking all of these, and if not, what changes have been made?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, the Aspirin... I stopped that about six months ago because it was giving me bad stomach issues, like acid or something. My heart doctor then put me on Clopidogrel 75 mg daily instead for protection."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that. It's important we have the most current medication list. Just to confirm, are you still taking Atorvastatin 20 mg daily, Metformin 500 mg twice daily, and Lisinopril 10 mg daily without any issues?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doc, all those are still the same. No problems with them, touch wood."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Now, about allergies, we have you down as allergic to Penicillin with a rash. Has there been any other allergic reactions to foods, medications, or latex that we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, just the Penicillin. That's the only one."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, how did you tolerate them?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Once, for my appendix, about ten years back. I was under general, and I woke up with a sore throat, but that was about it. No other issues, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "A sore throat can be a common side effect. We'll note that. Now, regarding your diabetes, how have you been managing it? Are your blood sugars under good control with Metformin?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yeah, I check regularly. Sometimes it fluctuates, but generally, it's okay. My HbA1c was 7.2% at the last check, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Finally, for this surgery, we're planning for general anesthesia with a Laryngeal Mask Airway (LMA). Have you had any issues with breathing or airway problems in the past that we should be aware of?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doc, I don't think so. Breathing's always been fine for me."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "And just to confirm, when's the last time you had anything to eat or drink? We need to ensure you're NPO (nil per os) status is appropriate for surgery."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I had dinner around 8 pm last night and just water this morning, but nothing after midnight, as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect, thank you. I think that covers everything. Do you have any questions for me about the anesthesia or the procedure?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doc, I think you've covered it all. Just ready to get this done."
+    }
+  ]
+}

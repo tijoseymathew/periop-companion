@@ -1,0 +1,102 @@
+{
+  "case_id": "sg-0008",
+  "persona_uuid": "316a3ff7d7034ad099e48a67898d9100",
+  "surgery": "Cholecystectomy for symptomatic gallstones",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Hyperlipidemia"
+  ],
+  "medications": [
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75 mg",
+      "frequency": "Daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "stale_med_list",
+    "record_states": "Medications: Atorvastatin 20 mg Daily, Metformin 500 mg Twice daily, Lisinopril 10 mg Daily, Aspirin 75 mg Daily (active)",
+    "truth": "Aspirin 75 mg Daily has been discontinued 6 months ago due to gastrointestinal side effects; now on Clopidogrel 75 mg Daily for cardiovascular protection.",
+    "gold_question": "Can you confirm if you are still taking Aspirin, and if not, what alternative antiplatelet medication are you currently on?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia 10 years ago, fully resolved",
+      "why_irrelevant": "Remote history, fully resolved, not relevant to current surgical or anesthetic risk"
+    },
+    {
+      "description": "Fractured wrist 20 years ago, treated with casting, full recovery",
+      "why_irrelevant": "Remote orthopedic injury with full recovery, no ongoing implications"
+    },
+    {
+      "description": "Previous diagnosis of irritable bowel syndrome, no active symptoms for 5 years",
+      "why_irrelevant": "Resolved gastrointestinal condition, not impacting current surgical plan"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75 mg",
+        "frequency": "Daily",
+        "active": true
+      }
+    ],
+    "allergies": [
+      "Penicillin (rash)"
+    ],
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "Pneumonia (10 years ago, resolved)",
+      "Fractured wrist (20 years ago, full recovery)",
+      "Irritable bowel syndrome (no active symptoms for 5 years)"
+    ],
+    "prior_anesthesia": null
+  }
+}

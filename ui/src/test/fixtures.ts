@@ -68,6 +68,17 @@ export function makeCase(): Case {
         ],
       },
       {
+        artifact_id: "note:post-anesthesia-eval",
+        claims: [
+          {
+            claim_id: "c-040",
+            text: "Recovered without airway complications.",
+            provenance: ["audio:preop-interview#s016"],
+            status: "supported",
+          },
+        ],
+      },
+      {
         artifact_id: "note:pacu-handoff",
         claims: [
           {

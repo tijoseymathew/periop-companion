@@ -67,7 +67,7 @@ const SIGNOFF_LABELS: Record<StageKey, string> = {
   postop: "Sign off post-op",
 };
 
-const PRIMARY_ARTIFACT: Record<StageKey, string> = {
+export const PRIMARY_ARTIFACT: Record<StageKey, string> = {
   preop: "note:pre-anesthesia-eval",
   intraop: "record:intra-op",
   postop: "note:pacu-handoff",

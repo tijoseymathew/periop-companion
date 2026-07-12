@@ -44,8 +44,9 @@ v2 §7's.
 - [x] `periop create <label> --provider` — prints the new case id (slug
       uniqueness is the API's); `--provider` defaults from `PERIOP_PROVIDER`
 - [x] `periop add-document <case> <doc-type> [file]` — file upload, `--text`,
-      or stdin paste; GapAnalyst auto-runs server-side once op plan + ≥1 record
-      exist, and the CLI names the next step (`periop questions <case>`)
+      or stdin paste; GapAnalyst runs as a background generation once op plan +
+      ≥1 record exist (v2-speed §3.2), and the CLI names the next step
+      (`periop questions <case>`, which reports progress until the questions land)
 - [x] `periop questions <case>` — indexed question list with review state
 - [x] `periop approve-questions <case> --provider [--dismiss N]` — approves the
       generated questions, passing the pre-op gate; dismissals kept, never

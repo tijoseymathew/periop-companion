@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, I guess. A bit tired and my tummy is sore, but I'm awake at least."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. On a scale from 0 to 10, how would you rate your pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe a 4 or 5? It's manageable, but I can feel it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thanks. Are you feeling any nausea or like you might be sick?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A little bit, but not too bad. I didn't eat anything before, so maybe that helps."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. How's your breathing? Any difficulty or tightness in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. Just a bit stuffy from the tube, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. Do you remember anything from the operation itself?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't think so. I was out completely."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected. Lastly, with your diabetes and blood pressure, are you feeling any dizziness or unusual symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I feel stable. Just a bit thirsty, but I know I can't drink yet."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, Mr./Ms./Mr. [Last Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your laparoscopic cholecystectomy tomorrow. How are you feeling today?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, Doctor. I'm a bit nervous, but okay, lah. Just want to get this done."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely understandable. Can you please tell me a bit about your medical history and the reason for this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've had gallstone issues for a while now. Had pain, nausea, especially after eating. Doctor said it's best to remove the gallbladder laparoscopically."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for sharing that. Now, let's go through your medications. I see you're on Atorvastatin, Metformin, Lisinopril, and... it says here Aspirin 75mg for cardiovascular prophylaxis. Can you confirm your current medications, particularly any changes to antiplatelet or blood-thinning agents in the past year?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Ah, about the Aspirin... I actually stopped taking it about 6 months ago because I was getting a lot of stomach discomfort. Never started again. So, no antiplatelet therapy now, Doctor."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for clarifying that, Mr./Ms./Mr. [Last Name]. It's important we have the most up-to-date information. How about your other medications? Are you still taking Atorvastatin 20mg once daily, Metformin 500mg twice daily, and Lisinopril 10mg once daily as listed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, Doctor. All still the same. No changes there."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Now, regarding allergies, we have Penicillin listed with a rash. Have you had any other allergic reactions to medications or other substances that we should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, Doctor. Just that one reaction to Penicillin. Nothing else."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. Have you had any previous surgeries or anesthesia? If so, how did you tolerate it?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Just a minor procedure years ago, and it was fine. No issues with the anesthesia that I remember."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Are you NPO after midnight as instructed for your surgery tomorrow?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, Doctor. I'll make sure not to eat or drink after midnight."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Finally, how would you describe your overall physical activity level and any limitations you might have?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'd say I'm fairly active, but I do have some trouble with stairs due to my knee. Otherwise, I manage okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr./Ms./Mr. [Last Name], for going through all this with me. It's very helpful. I'll make sure our team is well-prepared for your care tomorrow. If you have any questions or concerns before then, please don't hesitate to reach out."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, Doctor. I feel a bit more at ease now. I'll see you tomorrow."
+    }
+  ]
+}

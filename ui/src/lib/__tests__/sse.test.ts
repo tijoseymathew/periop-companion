@@ -4,7 +4,7 @@
  * error event rejects with its message.
  */
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { streamStageRun, type RunEvent } from "../sse";
+import { agentResults, describeRunEvent, streamStageRun, type RunEvent } from "../sse";
 
 function sseResponse(blocks: string[], ok = true, status = 200): Response {
   const stream = new ReadableStream<Uint8Array>({
@@ -63,5 +63,50 @@ describe("streamStageRun", () => {
     await expect(streamStageRun("x", "preop", "p-lim", () => {})).rejects.toThrow(
       "gate closed",
     );
+  });
+});
+
+describe("describeRunEvent", () => {
+  it("renders one line per known event kind", () => {
+    expect(describeRunEvent({ event: "agent_start", data: { agent: "GapAnalyst" } })).toBe(
+      "GapAnalyst working…",
+    );
+    expect(
+      describeRunEvent({ event: "agent_end", data: { agent: "GapAnalyst", summary: "3 questions" } }),
+    ).toBe("GapAnalyst — 3 questions");
+    expect(
+      describeRunEvent({ event: "artifact_complete", data: { artifact_id: "record:intra-op", claims: 2 } }),
+    ).toBe("Theatre record drafted — 2 claims");
+  });
+
+  it("humanizes unknown artifact ids and pluralizes claims", () => {
+    expect(
+      describeRunEvent({
+        event: "artifact_complete",
+        data: { artifact_id: "note:discharge-summary", claims: 1 },
+      }),
+    ).toBe("Discharge summary drafted — 1 claim");
+  });
+
+  it("returns null for a status event with no message", () => {
+    expect(describeRunEvent({ event: "status", data: {} })).toBeNull();
+  });
+});
+
+describe("agentResults", () => {
+  it("collects each completed step's preview, ignoring other event kinds", () => {
+    const events: RunEvent[] = [
+      { event: "agent_start", data: { agent: "EventExtractor" } },
+      {
+        event: "agent_end",
+        data: { agent: "EventExtractor", summary: "2 events", preview: ["08:00 propofol 120"] },
+      },
+      { event: "agent_start", data: { agent: "IntraOpRecordWriter" } },
+      { event: "agent_end", data: { agent: "IntraOpRecordWriter", summary: "1 claims" } },
+    ];
+    expect(agentResults(events)).toEqual([
+      { agent: "EventExtractor", summary: "2 events", preview: ["08:00 propofol 120"] },
+      { agent: "IntraOpRecordWriter", summary: "1 claims", preview: [] },
+    ]);
   });
 });

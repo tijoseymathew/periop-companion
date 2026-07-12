@@ -1,0 +1,91 @@
+{
+  "case_id": "sg-0009",
+  "persona_uuid": "0de1f8d12a944692b54ddec210e5fe57",
+  "surgery": "Laparoscopic Cholecystectomy",
+  "urgency": "elective",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Citalopram",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "defect": {
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Patient is allergic to Latex (confirmed during pre-op interview)",
+    "gold_question": "Can you please confirm if you have any allergies, particularly to Latex, which might not be documented?"
+  },
+  "distractors": [
+    {
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved and not relevant to current surgery or anesthesia"
+    },
+    {
+      "description": "Fractured wrist at age 12, fully healed",
+      "why_irrelevant": "Remote, healed fracture with no ongoing issues"
+    },
+    {
+      "description": "Discontinued use of Omeprazole 2 years ago for GERD",
+      "why_irrelevant": "Medication discontinued, condition not active"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      }
+    ],
+    "allergies": [],
+    "past_history": [
+      "Pneumonia (resolved)",
+      "Fractured wrist (healed)",
+      "GERD (discontinued Omeprazole)"
+    ],
+    "prior_anesthesia": null
+  }
+}

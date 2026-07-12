@@ -59,7 +59,9 @@ class TestAddDocument:
         assert code == 0
         assert "doc:op-plan" in out
 
-    def test_gap_analyst_runs_once_op_plan_and_a_record_exist(self, api, capsys):
+    def test_gap_analysis_launches_in_background_once_op_plan_and_record_exist(
+        self, api, capsys
+    ):
         case_id = create_case(api, capsys)
         run_cli(api, "add-document", case_id, "gp-summary", "--text", GP_SUMMARY,
                 "--provider", "p-lim", capsys=capsys)
@@ -68,9 +70,10 @@ class TestAddDocument:
             "--provider", "p-lim", capsys=capsys,
         )
         assert code == 0
-        # the stub GapAnalyst raised the aspirin question; the CLI points at
-        # the next step (v2 §6.2: the screen explains itself — so does the CLI)
-        assert "1 question" in out
+        # v2-speed §3.2: prep left the request path, so add-document points at
+        # the read command rather than blocking for the questions
+        # (v2 §6.2: the screen explains itself — so does the CLI)
+        assert "Preparing interview questions in the background" in out
         assert f"periop questions {case_id}" in out
 
     def test_demo_cases_refuse_writes_with_the_api_detail(self, api, capsys):

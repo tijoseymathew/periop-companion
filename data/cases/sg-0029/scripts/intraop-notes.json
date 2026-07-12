@@ -1,0 +1,179 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "fentanyl twenty micrograms"
+    },
+    {
+      "t": "08:05",
+      "text": "rocuronium fifty milligrams"
+    },
+    {
+      "t": "08:07",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "spinal needle inserted, bupivacaine two point five milligrams"
+    },
+    {
+      "t": "08:15",
+      "text": "lactated ringers one liter given"
+    },
+    {
+      "t": "08:30",
+      "text": "mean arterial pressure dropped to fifty five, atenotar one microgram bolus"
+    },
+    {
+      "t": "08:40",
+      "text": "desflurane at one point two percent"
+    },
+    {
+      "t": "08:50",
+      "text": "surgical incision"
+    },
+    {
+      "t": "09:10",
+      "text": "normal saline two hundred milliliters bolus"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two point five",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one",
+      "units": "liter",
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atenotar",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "one",
+      "units": "microgram bolus",
+      "provenance": []
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "desflurane",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "one point two",
+      "units": "percent",
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "dose",
+      "value": "two hundred",
+      "units": "milliliters bolus",
+      "provenance": []
+    }
+  ]
+}

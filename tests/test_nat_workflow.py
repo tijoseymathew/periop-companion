@@ -86,6 +86,26 @@ workflow:
         assert captured["case_dir"] == tmp_path / "cases" / "sg-0001"
         assert "sg-0001" in result
 
+    async def test_batch_run_adopts_case_id_as_trace_session(
+        self, config_file, monkeypatch
+    ):
+        """Langfuse groups traces by a `session.id` span attribute, which
+        NAT's span exporter copies from `conversation_id` — the function body
+        sets it to the case id so every case's runs share one session."""
+        import periop.agents.pipeline as agents_pipeline
+
+        from nat.builder.context import Context
+
+        seen = {}
+
+        async def fake_run_case(case, pipeline=None):
+            seen["conversation_id"] = Context.get().conversation_id
+            return case
+
+        monkeypatch.setattr(agents_pipeline, "run_case", fake_run_case)
+        await run_workflow(config_file, "sg-0777")
+        assert seen["conversation_id"] == "sg-0777"
+
 
 # ---------------------------------------------------------- periop_stage_run
 
@@ -145,12 +165,57 @@ class TestPeriopStageRun:
                 stage_config_file, '{"case_id": "sg-does-not-exist", "stage": "preop"}'
             )
 
-    async def test_stage_runs_on_the_event_loop_thread(self, tmp_path):
-        """The runner must execute on the NAT loop thread, like the batch
-        pipeline does. Pushing intermediate steps from a foreign thread makes
-        the OTel exporter drop every LLM span ("Cannot create export task:
-        no running event loop") — found live in W8d: the smoke's Langfuse
-        trace held only the workflow bracket, zero LLM observations."""
+    async def test_live_stage_run_adopts_case_id_as_trace_session(self, tmp_path):
+        """The API bridge enters the NAT session with the case id as its
+        conversation id (→ `session.id` on every span, including the
+        WORKFLOW_START root span opened before the function body runs), so
+        Langfuse shows one session per case with a trace per stage run."""
+        import asyncio
+
+        from nat.builder.context import Context
+        from nat.runtime.loader import load_workflow
+
+        from periop.api.nat_bridge import run_stage_in_nat
+
+        config = tmp_path / "api.yml"
+        config.write_text(
+            f"""\
+workflow:
+  _type: periop_stage_run
+  case_dir: {tmp_path / "cases"}
+"""
+        )
+        store = CaseStore(tmp_path / "cases" / "_out")
+        seed_case_with_document(store, "sg-0500")
+        seen: dict = {}
+
+        class CapturingRunner:
+            def run_stage(self, case, stage, case_dir, emit):
+                seen["conversation_id"] = Context.get().conversation_id
+                return case
+
+        async with load_workflow(config) as sessions:
+            # off-loop, like the stage-run worker thread that calls it live
+            await asyncio.to_thread(
+                run_stage_in_nat,
+                sessions,
+                CapturingRunner(),
+                "sg-0500",
+                "preop",
+                tmp_path / "cases" / "_out",
+                tmp_path / "cases",
+                lambda e, d: None,
+            )
+
+        assert seen["conversation_id"] == "sg-0500"
+
+    async def test_stage_run_keeps_the_session_loop_free_for_export(self, tmp_path):
+        """The runner is blocking, so it must run *off* the NAT loop thread:
+        a blocked session loop cannot deliver marshaled steps until the
+        workflow has already closed its event stream, and the OTel exporter
+        drops every LLM span ("Cannot create export task: no running event
+        loop") — found live in W8d: the smoke's Langfuse trace held only the
+        workflow bracket, zero LLM observations."""
         import asyncio
 
         from nat.builder.runtime_event_subscriber import pull_intermediate
@@ -197,9 +262,82 @@ workflow:
                 await asyncio.create_task(runner.result(to_type=str))
                 steps = await steps_task
 
-        assert seen["loop"] is not None, (
-            "run_stage executed off the event loop — exporters cannot "
-            "schedule export tasks for the steps it pushes"
+        assert seen["loop"] is None, (
+            "run_stage executed on the session loop — while it blocks, "
+            "steps pushed by the pipeline cannot be delivered for export"
         )
         types = [s["payload"]["event_type"] for s in steps]
         assert "LLM_START" in types and "LLM_END" in types
+
+    async def test_steps_pushed_off_loop_marshal_back_to_the_session_loop(self, tmp_path):
+        """The layer below the last test: the ADK pipeline runs every NimChat
+        completion in ``asyncio.to_thread``, so its steps are pushed from
+        loop-less worker threads — exporters react to a step by calling
+        ``asyncio.create_task`` in the *delivering* thread, and off-loop
+        delivery drops the span ("Cannot create export task … no running
+        event loop", one warning per LLM call, workflow-only Langfuse traces).
+        ``bind_export_loop`` in the NAT function must bring those steps home."""
+        import asyncio
+        import contextvars
+        import threading
+
+        from nat.builder.context import ContextState
+        from nat.builder.runtime_event_subscriber import pull_intermediate
+        from nat.runtime.loader import load_workflow
+
+        from periop.nat.register import _LIVE_BRIDGE, StageRunBridge, StageRunInput
+        from periop.nat.telemetry import traced_llm_call
+
+        config = tmp_path / "api.yml"
+        config.write_text(
+            f"""\
+workflow:
+  _type: periop_stage_run
+  case_dir: {tmp_path / "cases"}
+"""
+        )
+        store = CaseStore(tmp_path / "cases" / "_out")
+        seed_case_with_document(store, "sg-0301")
+        delivery_threads: list[int] = []
+
+        class OffLoopRunner:
+            def run_stage(self, case, stage, case_dir, emit):
+                # run_agent's exact shape: the pipeline on a worker thread
+                # with the caller's context copied, no event loop anywhere
+                def pipeline():
+                    with traced_llm_call("fake", [{"role": "user", "content": "x"}]) as rec:
+                        rec.response = None
+
+                ctx = contextvars.copy_context()
+                worker = threading.Thread(target=ctx.run, args=(pipeline,))
+                worker.start()
+                worker.join()
+                return case
+
+        async with load_workflow(config) as sessions:
+            _LIVE_BRIDGE.set(
+                StageRunBridge(
+                    runner=OffLoopRunner(),
+                    emit=lambda e, d: None,
+                    out_dir=tmp_path / "cases" / "_out",
+                    case_dir=tmp_path / "cases",
+                )
+            )
+            async with sessions.run(
+                StageRunInput(case_id="sg-0301", stage="preop")
+            ) as runner:
+                subscription = (
+                    ContextState.get().event_stream.get()
+                    .subscribe(lambda _: delivery_threads.append(threading.get_ident()))
+                )
+                steps_task = asyncio.ensure_future(pull_intermediate())
+                await asyncio.create_task(runner.result(to_type=str))
+                steps = await steps_task
+                subscription.unsubscribe()
+
+        types = [s["payload"]["event_type"] for s in steps]
+        assert "LLM_START" in types and "LLM_END" in types
+        assert delivery_threads and set(delivery_threads) == {threading.get_ident()}, (
+            "steps were delivered on a foreign thread — the OTel exporter "
+            "cannot schedule export tasks there and drops the spans"
+        )

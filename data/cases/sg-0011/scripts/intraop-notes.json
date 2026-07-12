@@ -1,0 +1,165 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "LMA 40 size inserted, no difficulty"
+    },
+    {
+      "t": "08:05",
+      "text": "IV line established, two liters of normal saline running"
+    },
+    {
+      "t": "08:10",
+      "text": "increase sevoflurane to two percent due to increased blood pressure"
+    },
+    {
+      "t": "08:20",
+      "text": " administer one thousand milligrams of paracetamol IV for pain management"
+    },
+    {
+      "t": "08:40",
+      "text": "decrease sevoflurane to one point five percent as blood pressure stabilized"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "120",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#chunk_1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "LMA",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_2"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "40",
+      "units": "size",
+      "provenance": [
+        "voice_notes#chunk_2"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "line",
+      "value": "IV",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_3"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": "two liters",
+      "provenance": [
+        "voice_notes#chunk_3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "2",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#chunk_4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "increased blood pressure",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_4"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "paracetamol",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1000",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#chunk_5"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "pain management",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_5"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "1.5",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "blood pressure stabilized",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    }
+  ]
+}

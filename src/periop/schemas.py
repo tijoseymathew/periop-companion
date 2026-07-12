@@ -7,7 +7,7 @@ Conflicts are first-class claim states, never silently resolved.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import StrEnum
 from typing import Annotated, Any
 
@@ -157,6 +157,19 @@ class ArtifactRecord(BaseModel):
     claims: list[Claim] = Field(default_factory=list)
 
 
+class EquipmentSuggestion(BaseModel):
+    """One item the pre-op run recommends reserving (1-3 per case).
+
+    A recommendation, not a hold: nothing is taken off the shelf until the
+    provider ticks the item at pre-op sign-off. ``name`` is denormalized from
+    the catalog so the UI never joins against ``periop.equipment``.
+    """
+
+    item_id: str
+    name: str
+    reason: str
+
+
 class QuestionReviewState(StrEnum):
     APPROVED = "approved"
     DISMISSED = "dismissed"
@@ -237,6 +250,15 @@ class StageStatus(StrEnum):
     SIGNED_OFF = "signed_off"
 
 
+class GapAnalysisState(StrEnum):
+    """Background intake question prep (spec v2-speed §3.2)."""
+
+    PENDING = "pending"
+    RUNNING = "running"
+    COMPLETE = "complete"
+    FAILED = "failed"
+
+
 class ReopenRecord(BaseModel):
     reopened_by: str
     reopened_at: datetime
@@ -252,8 +274,17 @@ class StageState(BaseModel):
     signed_off_at: datetime | None = None
     # pre-op only: the question gate (v2 §4.1 step 4)
     questions_approved_at: datetime | None = None
+    # pre-op only: background question-prep lifecycle (v2-speed §3.2); None
+    # until the first analysis launches, so pre-W9 case JSONs load unchanged
+    gap_analysis: GapAnalysisState | None = None
+    gap_analysis_error: str | None = None
     # stamped when this stage's audio inputs land
     inputs_recorded_at: datetime | None = None
+    # background upload-time transcription lifecycle (same state vocabulary as
+    # gap_analysis); None until a recording is uploaded, so older case JSONs
+    # load unchanged. On "failed" the stage run transcribes at generate time.
+    transcription: GapAnalysisState | None = None
+    transcription_error: str | None = None
     # post-op only: handoff acknowledge (v2 §4.4)
     handoff_acknowledged_by: str | None = None
     handoff_acknowledged_at: datetime | None = None
@@ -283,6 +314,9 @@ class Case(BaseModel):
     open_questions: list[OpenQuestionField] = Field(default_factory=list)
     intraop_events: list[Event] = Field(default_factory=list)
     anticipated_issues: list[str] = Field(default_factory=list)
+    # pre-op equipment recommendations (suggest-only; reserving happens at
+    # sign-off through the equipment ledger, never here)
+    equipment_suggestions: list[EquipmentSuggestion] = Field(default_factory=list)
     # v2 §5.1: absent on synthetic bundles — such cases are reviewable
     # everywhere, writable nowhere
     workflow: Workflow | None = None
@@ -295,6 +329,30 @@ class Case(BaseModel):
         if self.get_source(source.source_id) is not None:
             raise ValueError(f"source {source.source_id!r} already registered (registry is append-only)")
         self.sources.append(source)
+
+    def record_human_edit(self, provider: Provider, text: str, context: str) -> str:
+        """Register a human-attested statement; return its provenance ref.
+
+        Human edits and additions live in a per-provider document source
+        (``edit:<provider_id>``) in the same append-only registry as every
+        other source, so an edited claim or question cites the provider who
+        asserted it exactly like it cites a GP summary. Each edit appends one
+        chunk: its text is the asserted statement, its section names what was
+        edited and by whom.
+        """
+        source_id = f"edit:{provider.provider_id}"
+        source = self.get_source(source_id)
+        if source is None:
+            source = Source(
+                source_id=source_id,
+                type=SourceType.DOCUMENT,
+                captured_at=datetime.now(timezone.utc),
+                provided_by=provider.provider_id,
+            )
+            self.sources.append(source)
+        chunk_id = f"e{len(source.chunks) + 1:03d}"
+        source.chunks.append(Chunk(chunk_id=chunk_id, text=text, section=context))
+        return f"{source_id}#{chunk_id}"
 
     def get_source(self, source_id: str) -> Source | None:
         return next((s for s in self.sources if s.source_id == source_id), None)

@@ -117,7 +117,20 @@ export const StageStateSchema = z.object({
   signed_off_by: z.string().nullable().default(null),
   signed_off_at: z.string().nullable().default(null),
   questions_approved_at: z.string().nullable().default(null),
+  // pre-op only: background question-prep lifecycle (v2-speed §3.2)
+  gap_analysis: z
+    .enum(["pending", "running", "complete", "failed"])
+    .nullable()
+    .default(null),
+  gap_analysis_error: z.string().nullable().default(null),
   inputs_recorded_at: z.string().nullable().default(null),
+  // background upload-time transcription (same lifecycle vocabulary as
+  // gap_analysis); the transcript lands on the case moments after an upload
+  transcription: z
+    .enum(["pending", "running", "complete", "failed"])
+    .nullable()
+    .default(null),
+  transcription_error: z.string().nullable().default(null),
   handoff_acknowledged_by: z.string().nullable().default(null),
   handoff_acknowledged_at: z.string().nullable().default(null),
   reopens: z
@@ -136,6 +149,15 @@ export const WorkflowSchema = z.object({
   }),
 });
 export type Workflow = z.infer<typeof WorkflowSchema>;
+
+/** A pre-op equipment recommendation (suggest-only; reserving happens at
+ * sign-off). `name` arrives denormalized from the server-side catalog. */
+export const EquipmentSuggestionSchema = z.object({
+  item_id: z.string(),
+  name: z.string(),
+  reason: z.string(),
+});
+export type EquipmentSuggestion = z.infer<typeof EquipmentSuggestionSchema>;
 
 export const CaseSchema = z.object({
   case_id: z.string(),
@@ -165,6 +187,7 @@ export const CaseSchema = z.object({
     .default([]),
   intraop_events: z.array(EventSchema).default([]),
   anticipated_issues: z.array(z.string()).default([]),
+  equipment_suggestions: z.array(EquipmentSuggestionSchema).default([]),
 });
 export type Case = z.infer<typeof CaseSchema>;
 
@@ -178,3 +201,33 @@ export const CaseSummarySchema = z.object({
   workflow: WorkflowSchema.nullable().default(null),
 });
 export type CaseSummary = z.infer<typeof CaseSummarySchema>;
+
+// ---- case chatbot (mirror of periop.api.routers.chat) -----------------------
+
+export const ChatMessageSchema = z.object({
+  role: z.enum(["user", "assistant"]),
+  text: z.string(),
+});
+export type ChatMessage = z.infer<typeof ChatMessageSchema>;
+
+// ---- equipment store (mirror of periop.equipment) ---------------------------
+
+export const ReservationSchema = z.object({
+  item_id: z.string(),
+  case_id: z.string(),
+  qty: z.number(),
+  by: z.string(),
+  at: z.string(),
+});
+export type Reservation = z.infer<typeof ReservationSchema>;
+
+export const StockLevelSchema = z.object({
+  item_id: z.string(),
+  name: z.string(),
+  category: z.string(),
+  total: z.number(),
+  reserved: z.number(),
+  available: z.number(),
+  reservations: z.array(ReservationSchema).default([]),
+});
+export type StockLevel = z.infer<typeof StockLevelSchema>;

@@ -5,10 +5,12 @@ evaluation. This module is the seam — deliberately narrow so ADK could also
 run natively if the plugin integration ever fights us (spec §10).
 """
 
+import asyncio
 import contextvars
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
@@ -38,13 +40,16 @@ class PeriopPipelineConfig(FunctionBaseConfig, name="periop_pipeline"):
 @register_function(config_type=PeriopPipelineConfig)
 async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
     from periop.agents.pipeline import build_case_pipeline, run_case
+    from periop.nat.telemetry import bind_export_loop, set_trace_session
     from periop.nim import fast_chat, reasoning_chat
 
     # bundles live in <case_dir>/<case_id>/; processed cases in <case_dir>/_out
     store = CaseStore(Path(config.case_dir) / "_out")
 
     async def _run(case_id: str) -> str:
+        bind_export_loop()  # steps pushed from worker threads marshal here
         case_id = case_id.strip()
+        set_trace_session(case_id)  # Langfuse: one session per case
         try:
             case = store.load(case_id)
         except KeyError:
@@ -70,10 +75,14 @@ async def periop_pipeline(config: PeriopPipelineConfig, _builder: Builder):
 
 
 class StageRunInput(BaseModel):
-    """Input for one live stage run — the granularity the write API calls at."""
+    """Input for one live generation — the granularity the write API calls at."""
 
     case_id: str
     stage: str
+    # "gap_analysis" runs intake question prep instead of the stage's writers
+    # (spec v2-speed §3.2) — a sibling entry so the intake call, formerly the
+    # one un-traced LLM call on the live path, executes inside the NAT session
+    mode: Literal["stage", "gap_analysis"] = "stage"
 
 
 @dataclass
@@ -114,8 +123,11 @@ class PeriopStageRunConfig(FunctionBaseConfig, name="periop_stage_run"):
 @register_function(config_type=PeriopStageRunConfig)
 async def periop_stage_run(config: PeriopStageRunConfig, _builder: Builder):
     from periop.api.runner import LivePipelineRunner, StubPipelineRunner
+    from periop.nat.telemetry import bind_export_loop, set_trace_session
 
     async def _run(input: StageRunInput) -> str:
+        bind_export_loop()  # steps pushed from worker threads marshal here
+        set_trace_session(input.case_id)  # Langfuse: one session per case
         bridge = _LIVE_BRIDGE.get()
         if bridge is None:  # standalone `nat run` — everything from config
             bridge = StageRunBridge(
@@ -129,11 +141,28 @@ async def periop_stage_run(config: PeriopStageRunConfig, _builder: Builder):
         # id is an error here (unlike periop_pipeline's synthetic-bundle seed)
         case = store.load(input.case_id)
         case_dir = bridge.case_dir / input.case_id
-        # deliberately blocking, exactly like the batch pipeline: steps pushed
-        # off the loop thread can't be exported (the OTel exporter drops them
-        # with "no running event loop"), and the loop this blocks is private —
-        # the API runs each stage on a worker thread's own loop (nat_bridge)
-        case = bridge.runner.run_stage(case, input.stage, case_dir, bridge.emit)
+        # off the loop thread: the runner is blocking (sync agents, sync chat
+        # clients), and a blocked session loop starves the export path — steps
+        # pushed from the pipeline's worker threads marshal back here via the
+        # bound export loop, which must be free to deliver them before the
+        # workflow closes its event stream
+        if input.mode == "gap_analysis":
+            # the long LLM call, on a snapshot
+            await asyncio.to_thread(bridge.runner.analyze_gaps, case)
+
+            def merge(fresh: Case) -> None:
+                # documents uploaded while the model ran live on the fresh
+                # copy; only the questions belong to this generation
+                fresh.open_questions = case.open_questions
+
+            case = store.mutate(input.case_id, merge)
+            return (
+                f"case {case.case_id} gap analysis: "
+                f"{len(case.open_questions)} open questions"
+            )
+        case = await asyncio.to_thread(
+            bridge.runner.run_stage, case, input.stage, case_dir, bridge.emit
+        )
         store.save(case)
         return (
             f"case {case.case_id} stage {input.stage}: "

@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm feeling okay, a bit tired but not in too much pain."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Can you tell me your pain level on a scale from 0 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 3 or 4, it's manageable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Any nausea or feeling like you might vomit?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I feel fine, no sickness at all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great. How's your breathing? Any discomfort or tightness in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine, no problem there."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Did you experience any awareness or discomfort during the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't remember anything, slept through it all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Excellent. Given your diabetes and high blood pressure, are you having any dizziness or vision changes?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, everything looks and feels normal to me."
+    }
+  ]
+}

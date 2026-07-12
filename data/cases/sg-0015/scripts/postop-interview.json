@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Mmm... I'm feeling a bit groggy, but okay lah. Still sleepy one."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected. Can you tell me your pain level on a scale from 1 to 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Eh, maybe around 4? Got some pain here, near my tummy, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we can manage that with medication. Are you feeling nauseous or did you vomit at all?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, no vomiting. But my stomach feels a bit funny, like I might be sick."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Okay, we’ll give you something for that. How’s your breathing? Any shortness of breath or discomfort?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is okay, but my throat is a bit sore from the tube, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That can happen. Do you remember anything about the surgery or waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really, I just remember going to sleep and then waking up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That’s normal with general anesthesia. Given your diabetes and high blood pressure, are you feeling any dizziness or unusual symptoms?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No dizziness, but I feel a bit weak. Maybe because I didn’t eat before surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. We’ll monitor your blood sugar and blood pressure closely. Let the nurse know if your pain or nausea gets worse."
+    }
+  ]
+}

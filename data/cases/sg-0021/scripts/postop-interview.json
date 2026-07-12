@@ -1,0 +1,60 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, I guess. Still a bit groggy, but I can talk."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Can you tell me your pain level out of 10? Any discomfort from the incisions or inside your abdomen?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "It's about a 4, maybe 5. There's some tightness and soreness, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we can manage that with pain relief. Are you feeling nauseous or did you feel sick at all during or after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, no nausea. Just a bit thirsty, but I know I can't drink yet, right?"
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's correct for now. How's your breathing? Any tightness or difficulty breathing?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine. I'm a bit more conscious of my tummy, but I can breathe okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Since you had general anesthesia with a spinal, do you remember anything from the operating room?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really. I remember going to sleep, then waking up here. Nothing in between."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected. You have a BMI of 28.5 and are diabetic — are you feeling any signs of low sugar, like shakiness or dizziness?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I don't feel shaky. I'm just tired, but that's probably normal after surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. We'll keep an eye on your blood sugar and get you moving soon. Any other concerns?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thanks for checking on me."
+    }
+  ]
+}

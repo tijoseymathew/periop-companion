@@ -1,0 +1,56 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, how are you feeling after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm okay, but I have some pain in my tummy and my back is aching a bit."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "On a scale from 0 to 10, how would you rate the pain?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe around 4 or 5. It's not too bad, but I can feel it."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Have you felt nauseous or had any vomiting since the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I haven't thrown up, but I feel a little bit sick in my stomach."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Are you comfortable with your breathing? Any shortness of breath or throat discomfort from the LMA?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Breathing is fine, but my throat feels a bit sore. Like I have a slight cough."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Do you remember anything from the operating room or waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Not really, I was out cold. But I do remember waking up here in the recovery area."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You have a history of diabetes and high blood pressure. Have you noticed any dizziness, sweating, or other symptoms that might suggest low blood sugar or high blood pressure?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No dizziness or anything like that. I feel a bit tired, but that's probably normal after surgery."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we'll keep an eye on your vitals and blood sugar levels. Let the nurse know if the pain or nausea gets worse."
+    }
+  ]
+}

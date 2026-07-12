@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi there, how are you feeling now after the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I'm feeling a bit groggy, but okay. My tummy is sore, but I think it's manageable."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected after a laparoscopic cholecystectomy. Can you tell me your pain level out of 10?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe a 4 or 5? It's there, but not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, we'll keep an eye on that. Have you felt any nausea or vomiting since waking up?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing like that. Just a bit of a dry mouth, but that's all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. How's your breathing? Any discomfort or tightness in your chest?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I'm breathing fine. Just a bit tired from the anesthesia, I think."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You were under general anesthesia with a balanced technique, including fentanyl, propofol, and sevoflurane. Do you remember anything from the operation?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing at all. Just waking up here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's normal. Given your BMI and diabetes, we'll monitor your sugar levels and blood pressure closely. Any other concerns for me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Just want to go home and rest."
+    }
+  ]
+}

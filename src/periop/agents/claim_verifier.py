@@ -3,6 +3,11 @@
 An NLI-style pass on the fast model: does the cited text entail the claim,
 contradict it, or fail to support it → supported / unsupported / conflicting.
 Unsupported/conflicting claims are flagged in place, never dropped.
+
+Execution is ``periop.adk.verifier.ClaimVerifierAgent``: an ADK agent that
+fans one generate→validate verdict step out over the artifact's claims, one
+independent verdict per claim. The ``ClaimVerifier`` class is a facade over
+that agent for standalone callers.
 """
 
 from pydantic import BaseModel, Field
@@ -52,32 +57,33 @@ Judge the claim's evidence, not the prediction itself:
 """
 
 
+def render_spans(case: Case, claim) -> str:
+    lines = []
+    for ref in claim.provenance:
+        try:
+            anchor = case.resolve(ref)
+        except (KeyError, ValueError):
+            lines.append(f"[{ref}] (missing)")
+            continue
+        lines.append(f"[{ref}] {anchor.text}")
+    return "\n".join(lines) or "(no citations)"
+
+
 class ClaimVerifier:
+    """Facade: run the ADK claim-verifier agent standalone over one artifact."""
+
     def __init__(self, chat) -> None:
         self.chat = chat
 
     def verify(self, case: Case, artifact_id: str, forward_looking: bool = False) -> None:
-        artifact = case.get_artifact(artifact_id)
-        if artifact is None:
-            raise KeyError(f"no such artifact: {artifact_id}")
-        prompt = FORWARD_LOOKING_PROMPT if forward_looking else PROMPT
-        for claim in artifact.claims:
-            spans = self._render_spans(case, claim)
-            verdict = self.chat.complete_structured(
-                prompt.format(claim=claim.text, spans=spans),
-                schema=VerifierVerdict,
-                system=SYSTEM,
-            )
-            claim.status = verdict.status
+        from periop.adk.runtime import run_agent, sync_case
+        from periop.adk.verifier import ClaimVerifierAgent
 
-    @staticmethod
-    def _render_spans(case: Case, claim) -> str:
-        lines = []
-        for ref in claim.provenance:
-            try:
-                anchor = case.resolve(ref)
-            except (KeyError, ValueError):
-                lines.append(f"[{ref}] (missing)")
-                continue
-            lines.append(f"[{ref}] {anchor.text}")
-        return "\n".join(lines) or "(no citations)"
+        agent = ClaimVerifierAgent.build(
+            name="claim_verifier",
+            chat=self.chat,
+            artifact_id=artifact_id,
+            forward_looking=forward_looking,
+        )
+        result, _ = run_agent(agent, case)
+        sync_case(case, result)

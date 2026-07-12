@@ -1,0 +1,182 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:05",
+      "text": "fentanyl fifty micrograms"
+    },
+    {
+      "t": "08:07",
+      "text": "rocuronium sixty milligrams for intubation"
+    },
+    {
+      "t": "08:10",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:15",
+      "text": "sevoflurane at one point five percent"
+    },
+    {
+      "t": "08:20",
+      "text": "two liters of lactated ringers administered"
+    },
+    {
+      "t": "08:35",
+      "text": "mean arterial pressure dropped to fifty five, gave phenylephrine point two milligrams"
+    },
+    {
+      "t": "09:00",
+      "text": "surgery completed, reversed with sugammadex fifteen milligrams"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "fifty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "sixty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one point five",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": "liters",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "two",
+      "units": "liters",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "point two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "fifteen",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "notes": [
+    {
+      "t": "08:00",
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "fentanyl twenty micrograms"
+    },
+    {
+      "t": "08:04",
+      "text": "vecuronium eight milligrams"
+    },
+    {
+      "t": "08:06",
+      "text": "tube in, grade one view"
+    },
+    {
+      "t": "08:10",
+      "text": "sevoflurane at one point five percent"
+    },
+    {
+      "t": "08:20",
+      "text": "mean arterial pressure seventy five, gave phenylephrine ten micrograms"
+    },
+    {
+      "t": "08:40",
+      "text": "fluids two thousand milliliters crystalloid administered"
+    },
+    {
+      "t": "08:50",
+      "text": "heart rate eighty five, mean arterial pressure ninety"
+    }
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "eight",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:04"
+      ]
+    },
+    {
+      "t": "08:06",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:06"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "one point five",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure seventy five",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "ten",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "fluid",
+      "value": "two thousand milliliters crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "heart rate eighty five, mean arterial pressure ninety",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    }
+  ]
+}

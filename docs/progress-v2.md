@@ -173,6 +173,74 @@ thread; the stage function now does the same (safe: the API gives each stage
 run a private per-thread loop), pinned by
 `test_stage_runs_on_the_event_loop_thread`.
 
+## W9 — Speed ([specs/v2-speed.md](../specs/v2-speed.md))
+
+Remove the latency the application controls: a live e2e benchmark put one
+case at ~68 min, 96.6% of it inside seven Super-49B calls decoding at
+7.7 tok/s, most of those tokens `<think>` reasoning the pipeline strips.
+Serving-side throughput is the dev-rel-expt repo's spec; this workstream
+only cuts tokens and adds concurrency. Each milestone's exit includes a
+timed live boot (the W7 lesson) — numbers land in these entries as they
+are measured.
+
+- [x] W9a: `/no_think` default on the reasoning tier
+      (`periop.nim.reasoning_chat`), mirroring the fast tier's mechanism;
+      `PERIOP_REASONING_THINKING=1` restores thinking for A/B runs, and an
+      agent that needs thinking back can pass `system_prefix=None` at its
+      own callsite. Validated live before the change: the identical
+      PreOpNoteWriter call ran 129.6 s vs 349.0 s (2.7×) with a comparable
+      claim-structured note. The eval A/B gate (spec §3.1 — gold-set run
+      thinking-on vs thinking-off, both rows into `evals/report.json`) is a
+      live-endpoint step, still to run; if any metric regresses past noise
+      the default flips back by inverting the env check, a deploy-time
+      toggle.
+- [x] W9b: intake gap analysis off the request path — document uploads
+      return when the document is durable (the 488 s op-plan upload becomes
+      instant); the GapAnalyst runs as a background generation *inside the
+      shared NAT session* (`mode: "gap_analysis"` on `periop_stage_run`,
+      closing §1.2's observability hole — a bracket test pins it like
+      W8b's), stamped on the case as
+      `workflow.stages.preop.gap_analysis: pending → running → complete |
+      failed` (+ `gap_analysis_error`), serialized with stage runs by the
+      same `RUN_LOCK`. Explicit `POST …/questions/analyze` retry (409 once
+      questions are approved); the implicit next-upload retry preserved;
+      approving questions 409s while a re-analysis is in flight; a boot-time
+      sweep fails analyses stranded by a crash. The intake screen polls the
+      case and narrates the wait; failures name the error and offer "Try
+      again". Found while building: concurrent whole-object saves (the gap
+      worker vs the next upload) collide on the store's temp file and eat
+      each other's updates — `CaseStore.mutate` (read-modify-write under a
+      process-wide lock, thread-unique temp names) now carries every write
+      that can race, pinned by a two-writer store test and the conformance
+      walk.
+- [x] W9c: ClaimVerifier bounded fan-out (`PERIOP_VERIFIER_CONCURRENCY`,
+      default 4; `0`/`1` = sequential for rate-limited hosted endpoints).
+      Verdicts land on distinct `Claim` objects mutated in place, so the
+      ledger is byte-identical to the sequential loop (conformance test
+      green untouched). Context propagation was the real trap:
+      `traced_llm_call` reaches NAT's step stream through contextvars, which
+      a bare `ThreadPoolExecutor` drops — `contextvars.copy_context().run`
+      per task keeps all 62 calls traced, pinned by a steps-per-claim test.
+      One deviation from the spec's sketch: the copy is per *task*, not one
+      shared copy — a single `Context` object raises when two workers enter
+      it concurrently. Expected effect at defaults: 28 s → ~8 s (pre-op),
+      49 s → ~13 s (post-op); measured on the next live boot.
+- [x] W9d: post-op's independent Super calls (HandoffComposer ∥
+      PostAnesthesiaEvaluator) overlap — independence established, not
+      assumed: the composer reads existing signed-off claims, the evaluator
+      only `render_sources(case)`. The agents now *return* their artifacts
+      and the stage appends in fixed order (handoff first), so the ledger
+      never depends on completion order (pinned by a forced-completion-order
+      test + the conformance walk). Both `agent_start` events fire up front;
+      `agent_end`/`artifact_complete` arrive in completion order — same SSE
+      vocabulary, and the stub runner stays sequential so Playwright
+      fixtures are untouched. A failed writer fails the whole stage with no
+      partial appends. Intra-op stays sequential — IssueAnticipator renders
+      the intra-op record's claims into its prompt, a real dependency;
+      loosening it is an eval experiment, not a default. Expected effect:
+      post-op ~1,538 s → ~950–1,100 s at current decode rates (GPU-shared,
+      sub-additive); measured on the next live boot.
+
 ## UX review against spec §6 (W4 exit criterion)
 
 1. **One primary action per case state** — `primaryAction()` in

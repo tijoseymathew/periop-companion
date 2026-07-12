@@ -1,0 +1,159 @@
+{
+  "questions": [
+    "Can you confirm if you are still taking Paracetamol, and if not, when was the last time you took it?"
+  ],
+  "events": [
+    {
+      "t": "08:00",
+      "category": "agent",
+      "value": "propofol",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note:1#1"
+      ]
+    },
+    {
+      "t": "08:00",
+      "category": "dose",
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note:1#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note:2#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note:2#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_note:3#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note:3#2"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note:4#1"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note:4#1"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "line",
+      "value": "18 gauge IV",
+      "units": null,
+      "provenance": [
+        "voice_note:5#1"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "fluid",
+      "value": "500 mL Ringer's Lactate bolus",
+      "units": null,
+      "provenance": [
+        "voice_note:5#2"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty",
+      "units": null,
+      "provenance": [
+        "voice_note:6#1"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note:6#2"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "one",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note:6#2"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": "percent",
+      "provenance": [
+        "voice_note:7#1"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
+      "provenance": [
+        "voice_note:7#2"
+      ]
+    }
+  ],
+  "preop_note_claims": [
+    "Patient's medical history includes hypertension, hyperlipidemia, and being overweight (BMI 27.6).",
+    "Current medications include Atorvastatin 20mg daily, Lisinopril 10mg daily, and Omeprazole 20mg daily; Paracetamol 500mg as needed was discontinued 6 months ago due to resolution of symptoms.",
+    "Patient has a known allergy to penicillin, manifesting as a rash.",
+    "ASA-PS classification is 2, indicating a patient with mild systemic disease.",
+    "Airway assessment reveals no anticipated difficulties; plan for general anesthesia with endotracheal intubation."
+  ],
+  "handoff_claims": [
+    "Patient underwent elective laparoscopic cholecystectomy under general anesthesia with endotracheal intubation.",
+    "Anticipate routine postoperative course with potential for mild pain; monitor for signs of complications such as bleeding or pneumoperitoneum.",
+    "Patient's comorbidities include hypertension and hyperlipidemia, which are stable on current medications; no intraoperative issues related to these conditions were noted."
+  ],
+  "distractors": [
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of wrist fracture (healed) from 10 years ago",
+    "Previous diagnosis of mild iron deficiency anemia, resolved with dietary changes"
+  ]
+}

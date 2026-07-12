@@ -1,0 +1,72 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning, sir. I'm Dr. Tan, the anesthesiologist who'll be taking care of you during your surgery tomorrow. How are you feeling today?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Morning, doctor. I'm okay lah, just a bit nervous about the operation, but I know it's necessary."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's completely normal. Let's go through a few things to make sure we're all set for tomorrow. Can you tell me a bit about your medical history and why you're having this surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Sure. I've had trouble with my prostate for a while now — frequent urination, especially at night, and sometimes I can't go at all. The doctor said it's BPH, and now they're doing a TURP to remove some of the enlarged tissue."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. I see from your records that you have hypertension, type 2 diabetes, and stage 3 chronic kidney disease. Are these well-controlled with your current medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor. My blood pressure is usually around 130/80, and my sugar levels are okay with Metformin. I also take Lisinopril and Amlodipine for blood pressure, and Dutasteride for the prostate."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. Now, regarding your medications — I see you're on Aspirin and Omeprazole. Can you confirm if there have been any changes to your medication list since your last hospital visit, particularly regarding any acid-reducing medications?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Oh, yes, doctor. I stopped Omeprazole about six months ago because my gastritis got better. Now I take Pantoprazole 30mg once daily when I feel some stomach discomfort, but not every day."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for letting me know. That's important. Are you allergic to anything, and have you had any reactions to medications or anesthesia in the past?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, I'm allergic to penicillin. I had a rash the one time I took it. But I've had surgeries before — hernia repair and cataract — and I didn't have any problems with the anesthesia then."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Great, that's helpful. For this surgery, we're planning to use a combination of general and spinal anesthesia — a spinal-epidural technique. This will help with pain control during and after the surgery. Does that sound okay to you?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, doctor, whatever is best for the surgery and my condition. I trust your team."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Now, just to confirm — have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I had my last meal around 7pm last night and only sipped some water this morning, but that was before 6am."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. We'll make sure you're well-hydrated and that your blood sugar is stable before surgery. Is there anything else you'd like to ask or tell me?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I think that's all. Thank you for explaining everything so clearly."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You're very welcome. We'll see you in the morning, and I'll be there to make sure everything goes smoothly. Take care, and get some rest."
+    }
+  ]
+}
