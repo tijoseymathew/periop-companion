@@ -327,11 +327,13 @@ export default function App() {
   }
 
   /** Sign off a stage from the patient view, then drop back to the worklist —
-   * the case reappears with its next stage's status. */
-  async function handleSignoff(stage: StageKey) {
+   * the case reappears with its next stage's status. On pre-op, `equipment`
+   * carries the recommended items the provider ticked; the server reserves
+   * them for the case as the stage completes. */
+  async function handleSignoff(stage: StageKey, equipment: string[] = []) {
     if (!kase || !me) return;
     try {
-      await signoffStage(kase.case_id, stage, me);
+      await signoffStage(kase.case_id, stage, me, equipment);
       goWorklist();
     } catch (e) {
       setError(readDetail(e));
@@ -351,11 +353,11 @@ export default function App() {
 
   /** Dispatch the brief's single adaptive action (workflow.primaryAction).
    * Capture steps route into the flow's screen; terminal actions run here. */
-  function handleAction(action: PrimaryAction) {
+  function handleAction(action: PrimaryAction, opts?: { equipment?: string[] }) {
     setStageView(null); // acting always happens on the live stage
     switch (action.kind) {
       case "sign-off":
-        void handleSignoff(action.stage);
+        void handleSignoff(action.stage, opts?.equipment ?? []);
         return;
       case "acknowledge-handoff":
         void handleAcknowledge();

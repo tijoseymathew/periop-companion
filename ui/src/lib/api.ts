@@ -112,14 +112,17 @@ export async function uploadAudio(
   return CaseSchema.parse(data);
 }
 
+/** Sign a stage off; on pre-op, `equipment` carries the ticked suggested
+ * items — the server reserves each for the case as the stage completes. */
 export async function signoffStage(
   caseId: string,
   stage: string,
   providerId: string,
+  equipment: string[] = [],
 ): Promise<Case> {
   const { data } = await axios.post(
     `/api/cases/${encodeURIComponent(caseId)}/stages/${encodeURIComponent(stage)}/signoff`,
-    { provider_id: providerId },
+    { provider_id: providerId, equipment },
   );
   return CaseSchema.parse(data);
 }

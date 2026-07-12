@@ -202,7 +202,7 @@ describe("Catch-Up app", () => {
 
     const signOff = await screen.findByRole("button", { name: "Sign off pre-op" });
     await userEvent.click(signOff);
-    expect(api.signoffStage).toHaveBeenCalledWith("sg-live", "preop", "p-lim");
+    expect(api.signoffStage).toHaveBeenCalledWith("sg-live", "preop", "p-lim", []);
   });
 
   it("keeps the interview screen mounted during generation, live status folded into the chrome", async () => {

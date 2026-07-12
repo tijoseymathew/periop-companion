@@ -150,6 +150,15 @@ export const WorkflowSchema = z.object({
 });
 export type Workflow = z.infer<typeof WorkflowSchema>;
 
+/** A pre-op equipment recommendation (suggest-only; reserving happens at
+ * sign-off). `name` arrives denormalized from the server-side catalog. */
+export const EquipmentSuggestionSchema = z.object({
+  item_id: z.string(),
+  name: z.string(),
+  reason: z.string(),
+});
+export type EquipmentSuggestion = z.infer<typeof EquipmentSuggestionSchema>;
+
 export const CaseSchema = z.object({
   case_id: z.string(),
   label: z.string().nullable().default(null),
@@ -178,6 +187,7 @@ export const CaseSchema = z.object({
     .default([]),
   intraop_events: z.array(EventSchema).default([]),
   anticipated_issues: z.array(z.string()).default([]),
+  equipment_suggestions: z.array(EquipmentSuggestionSchema).default([]),
 });
 export type Case = z.infer<typeof CaseSchema>;
 

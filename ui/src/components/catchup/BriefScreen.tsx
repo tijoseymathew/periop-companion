@@ -40,7 +40,9 @@ export function BriefScreen({
   canReview: boolean;
   onBack: () => void;
   onOpenSource: (req: SourceRequest) => void;
-  onAction: (action: PrimaryAction) => void;
+  /** the pre-op sign-off also carries `opts.equipment`: the recommended
+   * items the provider ticked, reserved as the stage completes */
+  onAction: (action: PrimaryAction, opts?: { equipment?: string[] }) => void;
   /** which stages' output can be visited via the stepper bubbles —
    * any stage whose primary artifact exists */
   canViewStage?: (stage: BriefModel["stage"]) => boolean;
@@ -56,6 +58,31 @@ export function BriefScreen({
   onAddClaim?: (artifactId: string, text: string) => void;
 }) {
   const first = model.title.split(" ")[0] || "this patient";
+
+  // the pre-op equipment recommendations: unticked by default — ticking is
+  // the provider's explicit choice to reserve at sign-off
+  const [tickedEquipment, setTickedEquipment] = useState<Set<string>>(new Set());
+  const showEquipment =
+    model.stage === "preop" && !model.viewingPast && model.equipmentSuggestions.length > 0;
+
+  function toggleEquipment(itemId: string) {
+    setTickedEquipment((prev) => {
+      const next = new Set(prev);
+      if (next.has(itemId)) next.delete(itemId);
+      else next.add(itemId);
+      return next;
+    });
+  }
+
+  /** Forward an action; a pre-op sign-off rides the ticked equipment along. */
+  function act(action: PrimaryAction) {
+    onAction(
+      action,
+      action.kind === "sign-off" && showEquipment
+        ? { equipment: [...tickedEquipment] }
+        : undefined,
+    );
+  }
 
   // where provider edits land while the shown stage is still live: the
   // story so far edits the pre-op note; the issues column edits the
@@ -75,7 +102,7 @@ export function BriefScreen({
           canReview={canReview}
           generating={generating}
           first={first}
-          onAction={onAction}
+          onAction={act}
         />
       </div>
     </div>
@@ -200,13 +227,21 @@ export function BriefScreen({
               )}
             </div>
             <div className="flex-none border-t border-surface-overlay bg-surface-sunken px-6 pb-5 pt-4">
+              {showEquipment && (
+                <EquipmentChecklist
+                  suggestions={model.equipmentSuggestions}
+                  ticked={tickedEquipment}
+                  onToggle={toggleEquipment}
+                  disabled={!canReview}
+                />
+              )}
               <div className="rounded-[15px] border border-surface-overlay bg-surface-base p-4">
                 <ActionPanel
                   model={model}
                   canReview={canReview}
                   generating={generating}
                   first={first}
-                  onAction={onAction}
+                  onAction={act}
                 />
               </div>
             </div>
@@ -526,6 +561,53 @@ function AddLine({
       >
         + Add
       </button>
+    </div>
+  );
+}
+
+/** The pre-op run's recommended equipment as tickboxes over the sign-off
+ * action: ticked items are reserved for the case when pre-op completes.
+ * Unticked by default — reserving is the provider's call, not the model's. */
+function EquipmentChecklist({
+  suggestions,
+  ticked,
+  onToggle,
+  disabled,
+}: {
+  suggestions: BriefModel["equipmentSuggestions"];
+  ticked: Set<string>;
+  onToggle: (itemId: string) => void;
+  disabled: boolean;
+}) {
+  return (
+    <div className="mb-3 rounded-[15px] border border-surface-overlay bg-surface-base p-4">
+      <Eyebrow>Recommended equipment</Eyebrow>
+      <div className="mt-0.5 text-[12.5px] text-ink-faint">
+        Ticked items are reserved for this case when you complete pre-op
+      </div>
+      <ul className="mt-2.5 space-y-2">
+        {suggestions.map((s) => (
+          <li key={s.item_id}>
+            <label className="flex cursor-pointer items-start gap-2.5">
+              <input
+                type="checkbox"
+                checked={ticked.has(s.item_id)}
+                onChange={() => onToggle(s.item_id)}
+                disabled={disabled}
+                className="mt-1 h-4 w-4 flex-none accent-brand"
+              />
+              <span className="min-w-0">
+                <span className="block text-[14px] font-semibold text-ink-primary">
+                  {s.name}
+                </span>
+                <span className="block text-[12.5px] leading-relaxed text-ink-muted">
+                  {s.reason}
+                </span>
+              </span>
+            </label>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

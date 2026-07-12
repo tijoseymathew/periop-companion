@@ -172,6 +172,97 @@ describe("BriefScreen", () => {
     expect(screen.queryByText("Anticipated issues")).not.toBeInTheDocument();
   });
 
+  /** livePreopCase walked to the sign-off gate: records in, questions
+   * approved, interview recorded — primaryAction resolves to sign-off. */
+  function signablePreopCase() {
+    const kase = livePreopCase();
+    kase.sources = [
+      { source_id: "doc:op-plan", type: "document", chunks: [], segments: [] },
+      {
+        source_id: "doc:gp-summary",
+        type: "document",
+        chunks: [{ chunk_id: "c1", text: "Aspirin 100mg OD.", section: null }],
+        segments: [],
+      },
+    ];
+    kase.workflow!.stages.preop.questions_approved_at = "2026-04-02T07:00:00Z";
+    kase.workflow!.stages.preop.inputs_recorded_at = "2026-04-02T08:00:00Z";
+    return kase;
+  }
+
+  it("shows the recommended equipment as unticked boxes on the pre-op rail", () => {
+    const kase = livePreopCase();
+    kase.equipment_suggestions = [
+      {
+        item_id: "video-laryngoscope",
+        name: "Video laryngoscope",
+        reason: "Mallampati III airway.",
+      },
+      { item_id: "ett-7.0", name: "Endotracheal tube 7.0 mm", reason: "GA planned." },
+    ];
+    renderBrief(buildBrief(kase, PROVIDERS));
+
+    expect(screen.getByText("Recommended equipment")).toBeInTheDocument();
+    expect(screen.getByText("Mallampati III airway.")).toBeInTheDocument();
+    const boxes = screen.getAllByRole("checkbox");
+    expect(boxes).toHaveLength(2);
+    for (const box of boxes) expect(box).not.toBeChecked();
+  });
+
+  it("sends only the ticked equipment with the pre-op sign-off", async () => {
+    const kase = signablePreopCase();
+    kase.equipment_suggestions = [
+      {
+        item_id: "video-laryngoscope",
+        name: "Video laryngoscope",
+        reason: "Mallampati III airway.",
+      },
+      { item_id: "ett-7.0", name: "Endotracheal tube 7.0 mm", reason: "GA planned." },
+    ];
+    const model = buildBrief(kase, PROVIDERS);
+    const onAction = vi.fn();
+    render(
+      <BriefScreen
+        model={model}
+        queue={null}
+        canReview
+        onBack={vi.fn()}
+        onOpenSource={vi.fn()}
+        onAction={onAction}
+      />,
+    );
+
+    await userEvent.click(screen.getByRole("checkbox", { name: /Video laryngoscope/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Sign off pre-op" }));
+
+    expect(onAction).toHaveBeenCalledWith(
+      expect.objectContaining({ kind: "sign-off", stage: "preop" }),
+      { equipment: ["video-laryngoscope"] },
+    );
+  });
+
+  it("a case without suggestions signs off exactly as before", async () => {
+    const model = buildBrief(signablePreopCase(), PROVIDERS);
+    const onAction = vi.fn();
+    render(
+      <BriefScreen
+        model={model}
+        queue={null}
+        canReview
+        onBack={vi.fn()}
+        onOpenSource={vi.fn()}
+        onAction={onAction}
+      />,
+    );
+
+    expect(screen.queryByText("Recommended equipment")).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Sign off pre-op" }));
+    expect(onAction).toHaveBeenCalledWith(
+      expect.objectContaining({ kind: "sign-off", stage: "preop" }),
+      undefined,
+    );
+  });
+
   it("lets the provider edit a fact-backed story item before pre-op sign-off", async () => {
     const props = renderEditableBrief(buildBrief(livePreopCase(), PROVIDERS));
 

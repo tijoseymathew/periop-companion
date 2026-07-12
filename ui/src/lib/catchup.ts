@@ -25,6 +25,7 @@ import type {
   CaseSummary,
   Claim,
   ClaimStatus,
+  EquipmentSuggestion,
   Provider,
   StageKey,
   Workflow,
@@ -370,6 +371,9 @@ export interface BriefModel {
    * provider edits/additions to the issues list */
   issuesArtifact: string | null;
   needs: NeedItem[];
+  /** pre-op equipment recommendations — the sign-off rail renders them as
+   * tickboxes; ticked items are reserved when the provider completes pre-op */
+  equipmentSuggestions: EquipmentSuggestion[];
   pendingReview: number;
   chain: ChainNode[];
   writable: boolean;
@@ -540,6 +544,7 @@ export function buildBrief(
     issues,
     issuesArtifact: issuesArtifactRecord?.artifact_id ?? null,
     needs,
+    equipmentSuggestions: kase.equipment_suggestions,
     pendingReview,
     chain,
     writable: !!wf,
