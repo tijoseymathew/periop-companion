@@ -238,7 +238,8 @@ writes a `state_delta`, and the next agent reads the result. The diagram reads
 bottom-up: **③ the model tiers**, **② the agents & ASR grouped by the tier they
 call** (each in its own colour), and **① the same components** — same colours,
 minimal text — arranged as three stacked left-to-right rows: pre-op, intra-op,
-post-op.
+post-op, each fed by its **file/audio inputs** (yellow) and gated by its
+**provider interactions** (dashed) — [workflow.py](../src/periop/api/routers/workflow.py).
 
 ```mermaid
 %%{init: {'flowchart': {'rankSpacing': 60, 'nodeSpacing': 35}}}%%
@@ -256,17 +257,36 @@ flowchart TB
     classDef cPae fill:#bc80bd,stroke:#639,color:#111
     classDef cVer fill:#ccebc5,stroke:#484,color:#111
     classDef cChat fill:#ffffb3,stroke:#883,color:#111
+    classDef input fill:#fff9db,stroke:#a68b00,color:#111
+    classDef user fill:#ffffff,stroke:#333,color:#111,stroke-dasharray: 3 3
 
-    subgraph FLOW["① Orchestration flow — stages run top→bottom; each stage flows left→right; Case in ADK session state is the handoff medium"]
+    subgraph FLOW["① Orchestration flow — stages run top→bottom; each stage flows left→right; Case in ADK session state is the handoff medium; yellow = file/audio input, dashed = provider interaction"]
         direction TB
+
+        hist[("Case history<br/>docs")]:::input
+        audPre[("Pre-op interview<br/>audio")]:::input
+        qGate(["Provider reviews &amp;<br/>approves questions"]):::user
         subgraph FPRE["Pre-op"]
             direction LR
             p0["ingest"]:::det --> p1["Gap"]:::cGap --> p2["ASR"]:::cAsr --> p3["Note"]:::cNote --> p4["Equip"]:::cEquip --> p5["Verify"]:::cVer
         end
+        hist -.-> p0
+        p1 -.-> qGate -.-> p2
+        audPre -.-> p2
+        signPre(["Provider signs off<br/>(+ reserves equipment)"]):::user
+        p5 -.-> signPre
+
+        audIntra[("Intra-op memo<br/>audio")]:::input
         subgraph FINT["Intra-op"]
             direction LR
             i0["ASR"]:::cAsr --> i1["Extract"]:::cExt --> i2["Record"]:::cRec --> i3["Issues"]:::cIss --> i4["Verify"]:::cVer
         end
+        audIntra -.-> i0
+        signPre -.->|gates| i0
+        signIntra(["Provider<br/>signs off"]):::user
+        i4 -.-> signIntra
+
+        audPost[("Post-op interview<br/>audio")]:::input
         subgraph FPOST["Post-op"]
             direction LR
             o0["ASR"]:::cAsr --> o1["Handoff"]:::cHand
@@ -275,6 +295,12 @@ flowchart TB
             o2 --> o3
             o3 --> o4["Verify"]:::cVer
         end
+        audPost -.-> o0
+        signIntra -.->|gates| o0
+        signPost(["Provider<br/>signs off"]):::user
+        ack(["Provider acks<br/>handoff"]):::user
+        o4 -.-> signPost -.-> ack
+
         p3 -.->|reads| i3
         i3 -.->|reads| o1
         p3 -.->|reads| o1
@@ -344,6 +370,20 @@ PostOp-eval → append) and dashed **cross-stage reads**. Grey = deterministic s
 (ingest / append). *Magpie TTS appears only in the synthetic-data path (§1) and is
 omitted here.*
 
+**Inputs and the provider in the loop.** The yellow nodes are what a provider
+actually feeds in — the prior-records pack and, per stage, the
+`preop-interview` / `intraop-notes` / `postop-interview` audio
+([`AUDIO_KIND_TO_STAGE`](../src/periop/api/routers/workflow.py)) — and the
+dashed nodes are where the provider has to act before the pipeline can move
+on: **review & approve** the GapAnalyst's questions (gates the ASR/Note leg —
+`questions_approved_at` must be set, [stage_runs.py:85](../src/periop/api/routers/stage_runs.py)),
+**sign off** each stage (which gates the *next* stage's run —
+`PRIOR_STAGE`, same file — and on pre-op also reserves the ticked equipment
+suggestions), and finally **acknowledge the handoff**. In the live workflow
+Gap analysis and ASR mostly happen ahead of the stage run, in the background
+Gap/ASR workers (§1); the pipeline's `Gap`/`ASR` nodes re-run the same
+idempotent steps and no-op when their output is already on the `Case`.
+
 ### Agent reference
 
 | Agent | Tier | Reads (from Case) | Writes | file |
@@ -368,11 +408,12 @@ omitted here.*
 
 **CaseChat** ([case_chat.py:374](../src/periop/agents/case_chat.py), 7 tools) — read: `list_sources`, `search_case` (fuzzy over chunks/segments/claims), `read_source`, `list_equipment`, `case_equipment`; write (pre-op only, blocked on demo/signed-off cases): `reserve_equipment`, `release_equipment`. Emits `tool_call`/`tool_result` SSE; capped at 12 LLM calls/turn.
 
-### Three things the diagram encodes
+### Four things the diagram encodes
 
 1. **Cross-stage provenance** — IssueAnticipator (intra-op) reads pre-op *and* intra-op artifacts; a claim-ref citation inherits the referenced claim's source provenance.
 2. **Composition, not generation, for the handoff** — HandoffComposer may only select/order/rephrase existing signed-off claims and *inherits* their provenance; an item citing no real claim is dropped. Hallucination is bounded in the highest-stakes artifact by construction.
 3. **Concurrency decoupled from ledger order** — the two post-op writers run in a `ParallelAgent` and *park* their artifacts; `AppendArtifacts` commits them in a fixed order so the ledger never depends on which finished first. ClaimVerifier likewise fans out per-claim in parallel batches (`PERIOP_VERIFIER_CONCURRENCY`) but writes verdicts back in original order.
+4. **The provider is the gate, not a bystander** — a stage cannot generate until the prior one is signed off, and pre-op cannot generate until its questions are reviewed; sign-off is also where pre-op equipment suggestions become real reservations.
 
 ---
 
