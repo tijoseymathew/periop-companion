@@ -1,0 +1,30 @@
+{
+  "name": "PeriOp Companion",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+  },
+  // one-time setup: ffmpeg + uv + python deps + build the SPA
+  "onCreateCommand": "bash .devcontainer/setup.sh",
+  // start the app whenever you attach; forwarded port 8000 opens the browser
+  "postAttachCommand": "bash .devcontainer/start.sh",
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "PeriOp Companion",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "remoteEnv": {
+    "PERIOP_API_HOST": "0.0.0.0"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  }
+}
