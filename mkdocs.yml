@@ -1,0 +1,79 @@
+site_name: PeriOp Companion
+site_description: >-
+  Agentic peri-operative documentation assistant with claim-level provenance.
+site_url: https://tijoseymathew.github.io/periop-companion/
+repo_url: https://github.com/tijoseymathew/periop-companion
+repo_name: tijoseymathew/periop-companion
+# docs/ is served under the project subpath (…​.github.io/periop-companion/).
+edit_uri: edit/main/docs/
+copyright: >-
+  Reference/demonstration project — synthetic data, no PHI. Not a medical device.
+
+# The branch that source-file links (../src/…, ../ui/…) are rewritten against
+# by docs_hooks.py. Override with DOCS_SOURCE_REF in CI when building a branch
+# other than main.
+extra:
+  source_ref: !ENV [DOCS_SOURCE_REF, main]
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+# Rewrites relative links that point outside docs/ (source files, specs) to
+# GitHub blob URLs so they resolve on the published site as well as in the repo.
+hooks:
+  - docs_hooks.py
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - ADK orchestration: adk-orchestration.md
+  - Provenance & explainability: provenance.md
+  - Front-end (React SPA): frontend.md
+  - Self-hosted NIMs: selfhosted.md
+  - Attribution: attribution.md

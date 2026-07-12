@@ -1,0 +1,54 @@
+name: Docs
+
+# Build the mkdocs site and publish it to GitHub Pages.
+# Pages source must be set to "GitHub Actions" (Settings → Pages).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/**
+      - mkdocs.yml
+      - docs_hooks.py
+      - .github/workflows/docs.yml
+  # Allow manual runs from the Actions tab.
+  workflow_dispatch:
+
+# Least-privilege token for the Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One in-flight deployment at a time; don't cancel a running publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Build site
+        run: uv run --group docs mkdocs build --strict
+        env:
+          # Rewrite ../src links against the branch being published.
+          DOCS_SOURCE_REF: main
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

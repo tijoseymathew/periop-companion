@@ -29,6 +29,11 @@ dev = [
     "pytest>=8.0",
     "pytest-asyncio>=0.24",
 ]
+# Documentation site (mkdocs build / serve / gh-deploy). Not needed for runtime
+# or tests: install with `uv sync --group docs`.
+docs = [
+    "mkdocs-material>=9.5",
+]
 
 [project.scripts]
 periop = "periop.cli.main:main"

@@ -12,6 +12,9 @@ evals/profile/all_requests_profiler_traces.json
 evals/profile/workflow_output.json
 .claude/
 skills-lock.json
+# mkdocs build output
+site/
+
 # UI build outputs
 node_modules/
 ui/node_modules/
