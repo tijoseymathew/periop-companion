@@ -14,6 +14,7 @@ fast tier.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Any
 
@@ -106,6 +107,18 @@ def extractor_steps(fast_chat: Any, reasoning_chat: Any, *, verify: bool = True)
             )
         )
     return steps
+
+
+def _extract_verify_enabled() -> bool:
+    """Whether the intra-op extractor runs its Super-49B verify pass.
+
+    Off by default: the 30-case A/B (evals/README.md, 2026-07-12) measured the
+    second pass at +0.028 extraction_f1 — inside the metric's noise band and
+    all recall — against ~60 s of the reasoning tier, the run's most expensive
+    call. PERIOP_EXTRACT_VERIFY=1 restores it (A/B runs, or a deployment that
+    accepts the latency for the un-merging recall).
+    """
+    return bool(os.environ.get("PERIOP_EXTRACT_VERIFY"))
 
 
 def intraop_record_step(chat: Any) -> LoopAgent:
@@ -257,7 +270,7 @@ def build_intraop_stage(case_dir: Path | str, chat: Any, fast_chat: Any = None) 
                 stage="intraop",
                 label="VoiceNoteTranscriber",
             ),
-            *extractor_steps(fast_chat, chat, verify=True),
+            *extractor_steps(fast_chat, chat, verify=_extract_verify_enabled()),
             intraop_record_step(chat),
             issue_anticipator_step(chat),
             _verifier_block(

@@ -58,11 +58,18 @@ pass buys a noise-band F1 delta (+0.028, all recall) at the price of the single
 most expensive call tier, and it demonstrably corrupts categories on some cases
 (sg-0004). Its one real benefit — un-merging Nano's collapsed multi-drug events
 — is a *first-pass prompt fix* ("emit one event per drug/dose"), not something
-worth a 60 s reasoning call. Recommended: **default `verify=False`** and, if the
-un-merging recall proves to matter, recover it in the Nano prompt; keep the
-second pass only if the narrativizing regression is fixed in the verify prompt
-*and* a larger-n run shows the recall gain clearing noise. The `verify` flag and
-`extraction_ab` harness stay either way, so this is a low-regret flip.
+worth a 60 s reasoning call.
+
+**Acted on:** the pipeline now defaults to first-pass-only — `build_intraop_stage`
+reads `_extract_verify_enabled()` (`PERIOP_EXTRACT_VERIFY`, off by default),
+mirroring the `PERIOP_REASONING_THINKING` escape hatch. Setting
+`PERIOP_EXTRACT_VERIFY=1` restores the two-tier pass for A/B runs or a
+deployment that accepts the latency for the un-merging recall. The `verify` flag
+on `extractor_steps`/`EventExtractor` and the `extraction_ab` harness are
+unchanged, so re-measuring stays trivial. If the un-merging recall proves to
+matter, the cheaper fix is a Nano first-pass prompt nudge ("one event per
+drug/dose"); the second pass would only be worth restoring if its narrativizing
+regression is fixed *and* a larger-n run shows the recall clearing noise.
 
 Caveat carried from the extractor's own limits: extraction_f1 is scored against
 a gold that splits `agent`/`dose` into separate rows while both models emit
