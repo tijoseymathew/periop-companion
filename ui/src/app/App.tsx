@@ -515,6 +515,7 @@ export default function App() {
             genFailed={genFailed}
             onUploadAudio={handleUploadAudio}
             onGenerate={() => void handleGenerate()}
+            onOpenSource={setSource}
             liveEvents={running ? genEvents : []}
           />
         )}

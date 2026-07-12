@@ -11,10 +11,12 @@
  * generate time) or a failed run.
  */
 import { useState } from "react";
-import { categorizeReason } from "../../lib/catchup";
+import { categorizeReason, sourceLabel } from "../../lib/catchup";
 import { audioSource, transcriptionBusy, transcriptionState } from "../../lib/flow";
 import type { Case, OpenQuestion } from "../../lib/schema";
 import type { RunEvent } from "../../lib/sse";
+import type { SourceRequest } from "../catchup/SourceModal";
+import { SourceLink } from "../SourceLink";
 import { LiveResults } from "./LiveResults";
 import { RecordingPanel } from "./RecordingPanel";
 import { StageContainer } from "./StageContainer";
@@ -27,6 +29,7 @@ export function InterviewScreen({
   genFailed = false,
   onUploadAudio,
   onGenerate,
+  onOpenSource,
   liveEvents = [],
 }: {
   kase: Case;
@@ -39,6 +42,10 @@ export function InterviewScreen({
    * null once the gate has already been passed */
   onUploadAudio: (file: File, reviewed: OpenQuestion[] | null) => void;
   onGenerate: () => void;
+  /** open the source modal on a question's citations — the GapAnalyst's
+   * questions are model output, so they carry the same provenance jump as
+   * every other generated line */
+  onOpenSource?: (req: SourceRequest) => void;
   /** this session's own stage-run SSE events, while one is in flight */
   liveEvents?: RunEvent[];
 }) {
@@ -136,7 +143,7 @@ export function InterviewScreen({
           ) : approved ? (
             <>
               {askList.map((q, i) => (
-                <QuestionCard key={i} q={q} />
+                <QuestionCard key={i} q={q} onOpenSource={onOpenSource} />
               ))}
               {askList.length === 0 && (
                 <p className="rounded-[12px] border border-dashed border-[#cdbfa4] px-4 py-3.5 text-[13.5px] text-ink-dim">
@@ -148,6 +155,7 @@ export function InterviewScreen({
             <QuestionReview
               questions={kase.open_questions}
               added={added}
+              onOpenSource={onOpenSource}
               decisionFor={decisionFor}
               onDecide={(i, d) => setDecisions((prev) => ({ ...prev, [i]: d }))}
               onAdd={(text) =>
@@ -190,7 +198,13 @@ export function InterviewScreen({
   );
 }
 
-function QuestionCard({ q }: { q: OpenQuestion }) {
+function QuestionCard({
+  q,
+  onOpenSource,
+}: {
+  q: OpenQuestion;
+  onOpenSource?: (req: SourceRequest) => void;
+}) {
   const meta = categorizeReason(q.reason);
   return (
     <div
@@ -207,7 +221,30 @@ function QuestionCard({ q }: { q: OpenQuestion }) {
       <div className="text-[15.5px] leading-normal text-ink-primary">
         {q.edited_text ?? q.question}
       </div>
+      <QuestionSource q={q} onOpenSource={onOpenSource} />
     </div>
+  );
+}
+
+/** The provenance jump under a gap-analysis question — what in the records
+ * raised it. Absent on questions the provider wrote themselves. */
+function QuestionSource({
+  q,
+  onOpenSource,
+}: {
+  q: OpenQuestion;
+  onOpenSource?: (req: SourceRequest) => void;
+}) {
+  if (!onOpenSource || q.provenance.length === 0) return null;
+  return (
+    <SourceLink
+      className="mt-2"
+      onClick={() =>
+        onOpenSource({ title: q.edited_text ?? q.question, refs: q.provenance })
+      }
+    >
+      {sourceLabel(q.provenance)}
+    </SourceLink>
   );
 }
 
@@ -220,6 +257,7 @@ function QuestionCard({ q }: { q: OpenQuestion }) {
 function QuestionReview({
   questions,
   added,
+  onOpenSource,
   decisionFor,
   onDecide,
   onAdd,
@@ -227,6 +265,7 @@ function QuestionReview({
 }: {
   questions: OpenQuestion[];
   added: OpenQuestion[];
+  onOpenSource?: (req: SourceRequest) => void;
   decisionFor: (i: number) => "approved" | "dismissed";
   onDecide: (i: number, d: "approved" | "dismissed") => void;
   onAdd: (text: string) => void;
@@ -292,6 +331,7 @@ function QuestionReview({
             <div className="mt-2 text-[15.5px] font-semibold leading-snug text-ink-primary">
               {q.edited_text ?? q.question}
             </div>
+            <QuestionSource q={q} onOpenSource={onOpenSource} />
           </div>
         );
       })}

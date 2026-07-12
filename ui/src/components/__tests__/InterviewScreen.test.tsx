@@ -48,6 +48,7 @@ function renderScreen(kase: Case, extra: { genFailed?: boolean } = {}) {
   const props = {
     onUploadAudio: vi.fn(),
     onGenerate: vi.fn(),
+    onOpenSource: vi.fn(),
   };
   render(
     <InterviewScreen kase={kase} busy={false} notice={null} canWrite {...extra} {...props} />,
@@ -132,6 +133,40 @@ describe("InterviewScreen", () => {
     );
     await uploadRecording();
     expect(props.onUploadAudio.mock.calls[0][1]).toBeNull();
+  });
+
+  it("cites each gap-analysis question's source, but never a provider's own", async () => {
+    const props = renderScreen(
+      interviewCase((c) => {
+        c.open_questions[0].provenance = ["doc:gp-summary#c2", "doc:op-plan#c1"];
+      }),
+    );
+    await userEvent.type(
+      screen.getByPlaceholderText("Add your own question…"),
+      "Any loose teeth or dental work?{Enter}",
+    );
+    // one cited question → one link; the second (no provenance) and the
+    // provider's own question carry none
+    const links = screen.getAllByTestId("source-link");
+    expect(links).toHaveLength(1);
+    expect(links[0]).toHaveTextContent("See sources (2)");
+    await userEvent.click(links[0]);
+    expect(props.onOpenSource).toHaveBeenCalledWith({
+      title: "Is the patient still taking aspirin?",
+      refs: ["doc:gp-summary#c2", "doc:op-plan#c1"],
+    });
+  });
+
+  it("keeps the source link on the ask-list once the questions are approved", () => {
+    renderScreen(
+      interviewCase((c) => {
+        c.workflow!.stages.preop.questions_approved_at = "2026-07-01T07:00:00Z";
+        c.open_questions[0].review = "approved";
+        c.open_questions[0].provenance = ["doc:gp-summary#c2"];
+        c.open_questions[1].review = "dismissed";
+      }),
+    );
+    expect(screen.getByTestId("source-link")).toHaveTextContent("See the source");
   });
 
   it("shows approved questions as the ask-list and hides dismissed ones", () => {

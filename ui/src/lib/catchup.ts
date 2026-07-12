@@ -390,6 +390,11 @@ export interface BriefModel {
   acknowledgedMeta: string | null;
 }
 
+/** The one wording for a provenance jump, singular or plural. */
+export function sourceLabel(refs: string[]): string {
+  return refs.length > 1 ? `See sources (${refs.length})` : "See the source";
+}
+
 function mapKeyFact(claim: Claim, alwaysShowStatus: boolean): KeyFact {
   const has = claim.provenance.length > 0;
   return {
@@ -400,7 +405,7 @@ function mapKeyFact(claim: Claim, alwaysShowStatus: boolean): KeyFact {
     showStatus: alwaysShowStatus || claim.status !== "supported",
     refs: claim.provenance,
     hasProv: has,
-    provLabel: claim.provenance.length > 1 ? `See sources (${claim.provenance.length})` : "See the source",
+    provLabel: sourceLabel(claim.provenance),
     flagged: claimFlagged(claim),
   };
 }

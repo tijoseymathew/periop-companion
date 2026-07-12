@@ -14,6 +14,7 @@ import { useState } from "react";
 import { CaseSheet } from "../CaseSheet";
 import type { BriefModel, ChainNode } from "../../lib/catchup";
 import type { PrimaryAction } from "../../lib/workflow";
+import { SourceLink } from "../SourceLink";
 import type { SourceRequest } from "./SourceModal";
 
 interface QueueNav {
@@ -832,27 +833,6 @@ function ActionPanel({
         {cta}
       </button>
     </>
-  );
-}
-
-function SourceLink({
-  children,
-  onClick,
-  className = "",
-}: {
-  children: React.ReactNode;
-  onClick: () => void;
-  className?: string;
-}) {
-  return (
-    <button
-      type="button"
-      data-testid="source-link"
-      onClick={onClick}
-      className={`text-[12.5px] font-semibold text-brand-ink underline decoration-dotted underline-offset-[3px] ${className}`}
-    >
-      {children}
-    </button>
   );
 }
 
