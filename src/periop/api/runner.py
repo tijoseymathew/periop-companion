@@ -16,6 +16,9 @@ from periop.schemas import (
     Case,
     Claim,
     ClaimStatus,
+    EquipmentSuggestion,
+    Event,
+    EventCategory,
     OpenQuestion,
     Source,
     SourceType,
@@ -181,19 +184,30 @@ class StubPipelineRunner:
             ],
         )
 
+    def _intraop_source(self, source_id: str) -> Source:
+        return Source(
+            source_id=source_id,
+            type=SourceType.AUDIO,
+            segments=[
+                AudioSegment(
+                    seg_id="s001", t0=0.0, t1=2.0, speaker="PROVIDER",
+                    text="[08:02] Propofol one twenty milligrams.",
+                ),
+                AudioSegment(
+                    seg_id="s002", t0=2.0, t1=4.0, speaker="PROVIDER",
+                    text="[08:04] Tube in, size seven, sevo running.",
+                ),
+                AudioSegment(
+                    seg_id="s003", t0=4.0, t1=6.0, speaker="PROVIDER",
+                    text="[08:41] Gallbladder out, hemostasis looks good.",
+                ),
+            ],
+        )
+
     def transcribe(self, wav_path, kind: str, source_id: str) -> Source:
         """Instant canned transcript, matching what run_stage would register."""
         if kind == "intraop-notes":
-            return Source(
-                source_id=source_id,
-                type=SourceType.AUDIO,
-                segments=[
-                    AudioSegment(
-                        seg_id="s001", t0=0.0, t1=2.0, speaker="PROVIDER",
-                        text="[08:02] Propofol one twenty milligrams.",
-                    )
-                ],
-            )
+            return self._intraop_source(source_id)
         return self._interview_source(source_id)
 
     def run_stage(self, case: Case, stage: str, case_dir, emit) -> Case:
@@ -220,13 +234,43 @@ class StubPipelineRunner:
                             provenance=[doc_ref],
                             status=ClaimStatus.CONFLICTING,
                         ),
+                        Claim(
+                            claim_id="c-003",
+                            text="Hypertension, controlled on amlodipine.",
+                            provenance=[doc_ref],
+                            status=ClaimStatus.SUPPORTED,
+                        ),
+                        Claim(
+                            claim_id="c-004",
+                            text="Aspirin was started after a TIA in 2019.",
+                            provenance=[doc_ref],
+                            status=ClaimStatus.SUPPORTED,
+                        ),
+                        Claim(
+                            claim_id="c-005",
+                            text="No known drug allergies.",
+                            provenance=[doc_ref],
+                            status=ClaimStatus.SUPPORTED,
+                        ),
                     ],
                 )
             )
+            case.equipment_suggestions = [
+                EquipmentSuggestion(
+                    item_id="ett-7.0",
+                    name="Endotracheal tube 7.0 mm",
+                    reason="GA with intubation planned",
+                ),
+                EquipmentSuggestion(
+                    item_id="bougie",
+                    name="Tracheal tube introducer (bougie)",
+                    reason="Backup for first-pass intubation",
+                ),
+            ]
             self._emit(
                 emit, "agent_end",
                 {
-                    "stage": stage, "agent": "PreOpNoteWriter", "summary": "2 claims",
+                    "stage": stage, "agent": "PreOpNoteWriter", "summary": "5 claims",
                     "preview": [
                         "Aspirin was stopped six days before surgery.",
                         "Records still list aspirin as current.",
@@ -235,25 +279,30 @@ class StubPipelineRunner:
             )
             self._emit(
                 emit, "artifact_complete",
-                {"artifact_id": "note:pre-anesthesia-eval", "claims": 2},
+                {"artifact_id": "note:pre-anesthesia-eval", "claims": 5},
             )
             return case
 
         if stage == "intraop":
             if case.get_source("audio:intraop-notes") is None:
-                case.add_source(
-                    Source(
-                        source_id="audio:intraop-notes",
-                        type=SourceType.AUDIO,
-                        segments=[
-                            AudioSegment(
-                                seg_id="s001", t0=0.0, t1=2.0, speaker="PROVIDER",
-                                text="[08:02] Propofol one twenty milligrams.",
-                            )
-                        ],
-                    )
-                )
+                case.add_source(self._intraop_source("audio:intraop-notes"))
             self._emit(emit, "agent_start", {"stage": stage, "agent": "EventExtractor"})
+            case.intraop_events = [
+                Event(
+                    t="08:02", category=EventCategory.DOSE, value="Propofol 120",
+                    units="mg", provenance=["audio:intraop-notes#s001"],
+                ),
+                Event(
+                    t="08:04", category=EventCategory.AIRWAY,
+                    value="Intubated, ETT 7.0; sevoflurane maintenance",
+                    provenance=["audio:intraop-notes#s002"],
+                ),
+                Event(
+                    t="08:41", category=EventCategory.EVENT,
+                    value="Gallbladder out; hemostasis confirmed",
+                    provenance=["audio:intraop-notes#s003"],
+                ),
+            ]
             case.add_artifact(
                 ArtifactRecord(
                     artifact_id="record:intra-op",
@@ -263,23 +312,48 @@ class StubPipelineRunner:
                             text="Propofol 120 mg given at 08:02.",
                             provenance=["audio:intraop-notes#s001"],
                             status=ClaimStatus.SUPPORTED,
-                        )
+                        ),
+                        Claim(
+                            claim_id="c-002",
+                            text="Intubated with a 7.0 ETT; maintained on sevoflurane.",
+                            provenance=["audio:intraop-notes#s002"],
+                            status=ClaimStatus.SUPPORTED,
+                        ),
+                        Claim(
+                            claim_id="c-003",
+                            text="Gallbladder removed at 08:41 with good hemostasis.",
+                            provenance=["audio:intraop-notes#s003"],
+                            status=ClaimStatus.SUPPORTED,
+                        ),
                     ],
                 )
             )
+            case.anticipated_issues = [
+                "Restarting aspirin — confirm the plan with the surgical team.",
+                "Day-case discharge: needs a responsible adult escort tonight.",
+            ]
             self._emit(
                 emit, "agent_end",
                 {
-                    "stage": stage, "agent": "EventExtractor", "summary": "1 event",
-                    "preview": ["08:02 [agent] Propofol 120 mg"],
+                    "stage": stage, "agent": "EventExtractor", "summary": "3 events",
+                    "preview": [
+                        "08:02 [dose] Propofol 120 mg",
+                        "08:04 [airway] Intubated, ETT 7.0",
+                        "08:41 [event] Gallbladder out",
+                    ],
                 },
             )
-            self._emit(emit, "artifact_complete", {"artifact_id": "record:intra-op", "claims": 1})
+            self._emit(emit, "artifact_complete", {"artifact_id": "record:intra-op", "claims": 3})
             return case
 
-        # postop: handoff inherits pre-op provenance (no-new-claims constraint)
+        # postop: handoff inherits pre-op/intra-op provenance (no-new-claims
+        # constraint), so both cited sources must exist even on a lone run
         if case.get_source("audio:postop-interview") is None:
             case.add_source(self._interview_source("audio:postop-interview"))
+        if case.get_source("audio:intraop-notes") is None:
+            case.add_source(self._intraop_source("audio:intraop-notes"))
+        if case.get_source("audio:preop-interview") is None:
+            case.add_source(self._interview_source("audio:preop-interview"))
         self._emit(emit, "agent_start", {"stage": stage, "agent": "HandoffComposer"})
         case.add_artifact(
             ArtifactRecord(
@@ -290,11 +364,23 @@ class StubPipelineRunner:
                         text="Aspirin held pre-op; restart per surgical team.",
                         provenance=["audio:preop-interview#s002"],
                         status=ClaimStatus.SUPPORTED,
-                    )
+                    ),
+                    Claim(
+                        claim_id="c-002",
+                        text="Uncomplicated laparoscopic cholecystectomy under GA.",
+                        provenance=["audio:intraop-notes#s003"],
+                        status=ClaimStatus.SUPPORTED,
+                    ),
+                    Claim(
+                        claim_id="c-003",
+                        text="No known drug allergies.",
+                        provenance=[doc_ref],
+                        status=ClaimStatus.SUPPORTED,
+                    ),
                 ],
             )
         )
-        self._emit(emit, "artifact_complete", {"artifact_id": "note:pacu-handoff", "claims": 1})
+        self._emit(emit, "artifact_complete", {"artifact_id": "note:pacu-handoff", "claims": 3})
         case.add_artifact(
             ArtifactRecord(
                 artifact_id="note:post-anesthesia-eval",
@@ -304,7 +390,13 @@ class StubPipelineRunner:
                         text="No pain or nausea reported in recovery.",
                         provenance=["audio:postop-interview#s002"],
                         status=ClaimStatus.SUPPORTED,
-                    )
+                    ),
+                    Claim(
+                        claim_id="c-002",
+                        text="Airway was uncomplicated; extubated awake.",
+                        provenance=["audio:intraop-notes#s002"],
+                        status=ClaimStatus.SUPPORTED,
+                    ),
                 ],
             )
         )
@@ -320,6 +412,6 @@ class StubPipelineRunner:
         )
         self._emit(
             emit, "artifact_complete",
-            {"artifact_id": "note:post-anesthesia-eval", "claims": 1},
+            {"artifact_id": "note:post-anesthesia-eval", "claims": 2},
         )
         return case
