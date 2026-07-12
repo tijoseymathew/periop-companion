@@ -136,3 +136,39 @@ def traced_llm_call(model: str, messages: list[dict[str, str]]) -> Iterator[LlmC
                 UUID=start.UUID,
             )
         )
+
+
+class ToolCallRecord:
+    """Filled in by the caller before the block exits."""
+
+    output: str = ""
+
+
+@contextmanager
+def traced_tool_call(name: str, input_text: str = "") -> Iterator[ToolCallRecord]:
+    """Emit paired TOOL_START/TOOL_END steps around one tool invocation.
+
+    Gives the minutes-long non-LLM legs (Parakeet ASR) their own bar on the
+    trace waterfall; same no-op-outside-NAT contract as the LLM tracer.
+    """
+    step_manager = Context.get().intermediate_step_manager
+    start = IntermediateStepPayload(
+        event_type=IntermediateStepType.TOOL_START,
+        name=name,
+        data=StreamEventData(input=input_text),
+    )
+    _push(step_manager, start)
+    record = ToolCallRecord()
+    try:
+        yield record
+    finally:
+        _push(
+            step_manager,
+            IntermediateStepPayload(
+                event_type=IntermediateStepType.TOOL_END,
+                span_event_timestamp=start.event_timestamp,
+                name=name,
+                data=StreamEventData(input=input_text, output=record.output),
+                UUID=start.UUID,
+            )
+        )

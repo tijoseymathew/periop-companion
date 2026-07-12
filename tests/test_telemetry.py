@@ -18,7 +18,7 @@ import pytest
 from nat.builder.context import ContextState
 from nat.data_models.intermediate_step import IntermediateStepType
 
-from periop.nat.telemetry import bind_export_loop
+from periop.nat.telemetry import bind_export_loop, traced_tool_call
 from periop.nim import FAST_MODEL, NimChat
 
 
@@ -157,3 +157,24 @@ class TestLoopSafeEmission:
         finally:
             _EXPORT_LOOP.reset(token)
         assert steps == []
+
+
+class TestToolStepEmission:
+    def test_tool_call_emits_paired_steps_with_output(self, steps):
+        with traced_tool_call("parakeet-asr", input_text="a.wav") as record:
+            record.output = "audio:preop-interview: 12 segments"
+        events = [s.payload.event_type for s in steps]
+        assert events == [IntermediateStepType.TOOL_START, IntermediateStepType.TOOL_END]
+        start, end = (s.payload for s in steps)
+        assert start.UUID == end.UUID
+        assert start.name == "parakeet-asr"
+        assert end.data.input == "a.wav"
+        assert end.data.output == "audio:preop-interview: 12 segments"
+        assert end.span_event_timestamp == start.event_timestamp
+
+    def test_tool_error_still_closes_the_step(self, steps):
+        with pytest.raises(RuntimeError):
+            with traced_tool_call("parakeet-asr"):
+                raise RuntimeError("NIM unreachable")
+        events = [s.payload.event_type for s in steps]
+        assert events == [IntermediateStepType.TOOL_START, IntermediateStepType.TOOL_END]
