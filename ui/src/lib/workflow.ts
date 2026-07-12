@@ -192,7 +192,8 @@ function newestStageWithArtifacts(kase: Case): StageKey | null {
 
 /**
  * Where a freshly-opened case lands: the screen of its one live primary action
- * (brief §4.9). Complete or demo (read-only) cases land on their most advanced
+ * (the one-primary-action invariant, docs/frontend.md). Complete or demo
+ * (read-only) cases land on their most advanced
  * note. Stepper pills override this afterward.
  */
 export function defaultSubScreen(kase: Case): { stage: StageKey; screen: SubScreen } {
