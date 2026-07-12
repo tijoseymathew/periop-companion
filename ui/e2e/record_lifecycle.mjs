@@ -59,6 +59,7 @@
  * the e2e suite already installs.
  */
 import { spawn } from "node:child_process";
+import { createHash } from "node:crypto";
 import { createServer } from "node:net";
 import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync, cpSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -286,11 +287,21 @@ async function chapter(title) {
 // actually sees), never full-page, so every frame is comparable.
 const shotsDir = join(outDir, "shots");
 let shotIndex = 0;
+let lastShotDigest = null;
 async function shot(page, name) {
   if (!SHOTS) return;
+  const buf = await page.screenshot();
+  // a still identical to the previous one adds nothing to the review (the
+  // stub's briefs are short, so a "scrolled" frame can equal the top frame)
+  const digest = createHash("md5").update(buf).digest("hex");
+  if (digest === lastShotDigest) {
+    console.log(`     📸 (skipped ${name} — identical to the previous still)`);
+    return;
+  }
+  lastShotDigest = digest;
   shotIndex += 1;
   const file = join(shotsDir, `${String(shotIndex).padStart(2, "0")}-${name}.png`);
-  await page.screenshot({ path: file });
+  writeFileSync(file, buf);
   console.log(`     📸 ${file.slice(file.lastIndexOf("/") + 1)}`);
 }
 
@@ -411,8 +422,8 @@ async function walk(page, inputs) {
   await waitTranscribed(caseId, "preop");
   await chapter("The transcript lands moments after the upload");
   await page.getByText("✓ transcribed").waitFor({ timeout: XCRIBE_TIMEOUT });
-  await beat(1400);
   await shot(page, "preop-transcript-landed");
+  await beat(1400);
 
   // --- pre-op: auto-generate → review → sign off ---------------------------
   await chapter("The pre-op brief generates itself (live SSE)");
