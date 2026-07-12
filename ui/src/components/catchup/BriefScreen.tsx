@@ -179,9 +179,7 @@ export function BriefScreen({
           <div className="min-w-0 flex-1 overflow-y-auto px-8 pb-12 pt-6">
             <div className="flex items-baseline justify-between gap-4">
               <Eyebrow>Key facts</Eyebrow>
-              <div className="text-[12.5px] text-ink-faint">
-                Open a source to see the original, highlighted
-              </div>
+              <div className="text-[12.5px] text-ink-faint">Open a source for the original</div>
             </div>
             <div className="mb-9 mt-1.5">
               <KeyFactsList facts={model.keyFacts} onOpenSource={onOpenSource} />
