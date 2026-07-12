@@ -853,6 +853,7 @@ function SourceLink({
   return (
     <button
       type="button"
+      data-testid="source-link"
       onClick={onClick}
       className={`text-[12.5px] font-semibold text-brand-ink underline decoration-dotted underline-offset-[3px] ${className}`}
     >

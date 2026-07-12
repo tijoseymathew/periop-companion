@@ -41,6 +41,10 @@
  *   # watch it happen (non-headless) and force a fresh production build:
  *   node ui/e2e/record_lifecycle.mjs --headed --build
  *
+ *   # additionally save still screenshots at every critical screen (numbered
+ *   # PNGs under e2e/.recordings/shots/) for design review:
+ *   node ui/e2e/record_lifecycle.mjs --shots
+ *
  *   # live: real NIMs for note/record generation too (not just transcription
  *   # and gap analysis, which always run for real regardless of the stub
  *   # flag), and real recorded audio instead of the synthetic tone — much
@@ -84,6 +88,7 @@ function opt(name, fallback) {
 const PACE = Number(opt("pace", "1")); // 1.0 = default; higher = slower
 const HEADED = flag("headed");
 const FORCE_BUILD = flag("build");
+const SHOTS = flag("shots"); // still screenshots at critical screens
 const PROVIDER = opt("provider", "p-lim"); // "Dr A. Lim (consultant)"
 
 // --live: real NIMs for stage generation, real recorded audio in place of the
@@ -276,6 +281,19 @@ async function chapter(title) {
   await beat(600);
 }
 
+// --shots: still frames at critical screens, numbered in walk order so the
+// review reads like the film. Screenshots are full-viewport (what a provider
+// actually sees), never full-page, so every frame is comparable.
+const shotsDir = join(outDir, "shots");
+let shotIndex = 0;
+async function shot(page, name) {
+  if (!SHOTS) return;
+  shotIndex += 1;
+  const file = join(shotsDir, `${String(shotIndex).padStart(2, "0")}-${name}.png`);
+  await page.screenshot({ path: file });
+  console.log(`     📸 ${file.slice(file.lastIndexOf("/") + 1)}`);
+}
+
 /** Move to, hover, then click — a human-legible click, not an instant one. */
 async function slowClick(page, locator, { after = 700 } = {}) {
   const el = typeof locator === "string" ? page.locator(locator) : locator;
@@ -337,9 +355,11 @@ async function walk(page, inputs) {
   await page.getByRole("heading", { name: "Cases" }).waitFor();
   await chapter("Worklist — the department's cases");
   await beat(1000);
+  await shot(page, "worklist");
   await chapter(`Picking a provider (${PROVIDER})`);
   await page.locator('select[aria-label="Working as"]').selectOption(PROVIDER);
   await beat(900);
+  await shot(page, "worklist-as-provider");
 
   // --- new case intake: describe the case, stage the records ---------------
   const before = new Set((await apiGet("/api/cases")).map((c) => c.case_id));
@@ -360,11 +380,13 @@ async function walk(page, inputs) {
   await docInput.setInputFiles(inputs.gp);
   await page.getByText("gp-summary.md").waitFor();
   await beat(1200);
+  await shot(page, "intake-form-filled");
 
   // --- create intake: records land, question prep runs on the build ring ---
   await chapter("Creating the intake — records save, question prep begins");
   await slowClick(page, page.getByRole("button", { name: /Create intake/ }), { after: 600 });
   await page.getByText("Building the intake").first().waitFor({ timeout: 15000 });
+  await shot(page, "intake-building");
   const caseId = await newCaseId(before);
   console.log(`     case_id = ${caseId}`);
 
@@ -374,11 +396,13 @@ async function walk(page, inputs) {
   await review.waitFor({ timeout: LIVE ? GEN_TIMEOUT : 30000 }); // the flow flips when prep lands
   await chapter("Reviewing the clarifying questions");
   await beat(1400); // read the questions
+  await shot(page, "question-review");
   await chapter("Adding a question of our own");
   await slowType(page, 'input[placeholder="Add your own question…"]', "Any loose teeth or dental work?", {
     after: 300,
   });
   await slowClick(page, page.getByRole("button", { name: "+ Add question" }), { after: 900 });
+  await shot(page, "question-added");
 
   // --- interview: upload the recording — the reviewed list travels with it -
   const audioInput = page.locator('input[type="file"][accept*="audio"]');
@@ -388,20 +412,32 @@ async function walk(page, inputs) {
   await chapter("The transcript lands moments after the upload");
   await page.getByText("✓ transcribed").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1400);
+  await shot(page, "preop-transcript-landed");
 
   // --- pre-op: auto-generate → review → sign off ---------------------------
   await chapter("The pre-op brief generates itself (live SSE)");
   await waitForBrief(page);
+  await shot(page, "preop-brief-top");
+  const sourceLink = page.getByTestId("source-link").first();
+  if (await sourceLink.count()) {
+    await chapter("Opening a source citation");
+    await slowClick(page, sourceLink, { after: 900 });
+    await shot(page, "preop-source-modal");
+    await slowClick(page, page.getByRole("button", { name: "Close" }), { after: 600 });
+  }
   await chapter("Reading the pre-op brief");
   await smoothScroll(page, 420);
+  await shot(page, "preop-brief-scrolled");
   await smoothScroll(page, -420);
   const markReviewed = page.getByRole("button", { name: "Mark reviewed" }).first();
   if (await markReviewed.count()) {
     await chapter('Marking the "needs you now" item reviewed');
     await slowClick(page, markReviewed, { after: 1000 });
   }
+  await shot(page, "preop-signoff-rail");
   await chapter("Signing off the pre-op note");
   await slowClick(page, page.getByRole("button", { name: "Sign off pre-op" }), { after: 1200 });
+  await shot(page, "preop-signed-off");
 
   // --- intra-op: record memo → generate → sign off ------------------------
   await runCaptureStage(page, {
@@ -420,6 +456,7 @@ async function walk(page, inputs) {
   await chapter("Opening the case for recovery");
   await slowClick(page, page.getByRole("button", { name: /Amara Okafor/ }), { after: 900 });
   await waitForBrief(page);
+  await shot(page, "intraop-brief-signed");
   await chapter("To recovery — the post-op interview");
   await slowClick(page, page.getByRole("button", { name: /Record post-op interview/ }), {
     after: 800,
@@ -428,21 +465,27 @@ async function walk(page, inputs) {
   await waitTranscribed(caseId, "postop");
   await page.getByTestId("transcript").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1200);
+  await shot(page, "postop-capture");
   await chapter("The PACU handoff & post-op note generate themselves (live SSE)");
   await waitForBrief(page);
+  await shot(page, "handoff-brief-top");
   await chapter("Reading the final handoff brief");
   await smoothScroll(page, 520);
+  await shot(page, "handoff-brief-mid");
   await smoothScroll(page, 520);
+  await shot(page, "handoff-brief-deep");
   await smoothScroll(page, -1040, { steps: 40 });
   await chapter("Acknowledging the handoff — taking over the patient");
   await slowClick(page, page.getByRole("button", { name: "Acknowledge handoff" }), { after: 1600 });
   await page.getByText("You now hold this patient.").waitFor();
   await beat(1500);
+  await shot(page, "handoff-acknowledged");
 
   await chapter("Back to the worklist — the case is complete");
   await slowClick(page, page.getByRole("button", { name: /Worklist/ }), { after: 900 });
   await page.getByRole("heading", { name: "Cases" }).waitFor();
   await slowClick(page, 'button:has-text("All cases")', { after: 1400 });
+  await shot(page, "worklist-complete");
   await chapter("Done");
   await beat(1200);
 }
@@ -453,6 +496,7 @@ async function runCaptureStage(page, c) {
   await chapter(c.open);
   await slowClick(page, page.getByRole("button", { name: /Amara Okafor/ }), { after: 900 });
   await waitForBrief(page);
+  await shot(page, `${c.stage}-brief-reopened`);
   await chapter(c.capture);
   await slowClick(page, page.getByRole("button", { name: c.actionButton }), { after: 800 });
   const audioInput = page.locator('input[type="file"][accept*="audio"]');
@@ -460,10 +504,13 @@ async function runCaptureStage(page, c) {
   await waitTranscribed(c.caseId, c.stage);
   await page.getByTestId("transcript").waitFor({ timeout: XCRIBE_TIMEOUT });
   await beat(1200);
+  await shot(page, `${c.stage}-capture`);
   await chapter(c.generate);
   await slowClick(page, page.getByRole("button", { name: c.generateButton }), { after: 500 });
   await waitForBrief(page);
+  await shot(page, `${c.stage}-brief-top`);
   await smoothScroll(page, 460);
+  await shot(page, `${c.stage}-brief-scrolled`);
   await smoothScroll(page, -460);
   await chapter(`Signing off (${c.signOff})`);
   await slowClick(page, page.getByRole("button", { name: c.signOff }), { after: 1200 });
@@ -476,6 +523,7 @@ async function runCaptureStage(page, c) {
 async function main() {
   rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
+  if (SHOTS) mkdirSync(shotsDir, { recursive: true });
   const inputs = writeInputs();
 
   await ensureBuild();
