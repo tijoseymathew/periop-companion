@@ -75,6 +75,24 @@ reused from the blueprint versus built.
 
 ## Quickstart
 
+### Run it in your browser (no local setup)
+
+One click gets the full app — API + review UI — running in the browser. No GPU;
+the default path uses hosted NIMs, and with **no API key** it runs a keyless
+demo over committed synthetic cases. See [docs/deploy.md](docs/deploy.md).
+
+- **GitHub Codespaces / Dev Container** — *Code → Codespaces → Create*; it
+  builds, starts, and forwards the port automatically ([`.devcontainer/`](.devcontainer/)).
+- **Docker** — `docker build -t periop-companion . && docker run --rm -p 7860:7860 periop-companion` → <http://localhost:7860>.
+- **Hugging Face Docker Space** — a public live URL; duplicate it and add your
+  own `NGC_API_KEY` secret to go live ([deploy/hf-space/](deploy/hf-space/)).
+
+Add your own NVIDIA NIM key (`NGC_API_KEY`, get one at
+[build.nvidia.com](https://build.nvidia.com)) in any of these to switch from the
+demo to live generation.
+
+### Local (uv)
+
 ```bash
 uv sync                 # Python 3.12 environment
 uv run pytest           # run the test suite (no network)
