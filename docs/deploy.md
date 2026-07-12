@@ -35,28 +35,28 @@ You can force either mode with `PERIOP_STUB_RUNNER=1` (demo) or `0` (live).
 >
 > The **speech-to-text** pipeline can also run hosted, GPU-free, against
 > NVIDIA's hosted Parakeet ASR over NVCF using the same `NGC_API_KEY` —
-> including **speaker diarization** for the pre-op interview. Point ASR at the
-> hosted **sortformer** function:
+> including **speaker diarization** for the pre-op interview:
 >
 > ```bash
 > PERIOP_ASR_GRPC_URL=grpc.nvcf.nvidia.com:443
 > PERIOP_ASR_USE_SSL=1
-> PERIOP_ASR_FUNCTION_ID=<sortformer function id — see below>
+> PERIOP_ASR_FUNCTION_ID=<function id — see below>
 > ```
 >
 > **Finding the function id.** It's per-model and can rotate, so look it up
 > rather than hardcoding one:
 >
-> 1. Go to [build.nvidia.com](https://build.nvidia.com) and find the
->    diarization-capable Parakeet model — the one whose name ends in
->    **`-sortformer`** (currently
->    `parakeet-1.1b-en-US-asr-streaming-silero-vad-sortformer`). *Sortformer* is
->    the speaker-diarization component; a plain Parakeet model transcribes but
->    tags every word as one speaker.
-> 2. Open it and switch to the **Try API / API Reference** tab, gRPC/Python
->    example.
-> 3. Copy the UUID passed as `--metadata function-id "…"` (or `function-id=`) —
->    that's your `PERIOP_ASR_FUNCTION_ID`.
+> 1. Go to the Parakeet CTC 1.1B model page:
+>    [build.nvidia.com/nvidia/parakeet-ctc-1_1b-asr/api](https://build.nvidia.com/nvidia/parakeet-ctc-1_1b-asr/api).
+> 2. Find the `curl` example under **Try API**. It calls
+>    `https://<FUNCTION_ID>.invocation.api.nvcf.nvidia.com/v1/audio/transcriptions`
+>    — the UUID between `https://` and `.invocation.api.nvcf.nvidia.com` is the
+>    function id. Copy that into `PERIOP_ASR_FUNCTION_ID`.
+>
+> That curl example itself hits the OpenAI-style HTTP transcription route,
+> which returns plain text with no speaker info. The *same* function id, used
+> over the gRPC streaming path (what this app does), does return diarization —
+> verified end to end against a real interview recording.
 >
 > Two things to know about the hosted endpoint:
 >
@@ -65,11 +65,10 @@ You can force either mode with `PERIOP_STUB_RUNNER=1` (demo) or `0` (live).
 >   batch uploads (pre-op interview, intra-op notes) are fed through the
 >   streaming API internally, so `transcribe()` behaves the same as against a
 >   local NIM. Diarized segments and word timings come back unchanged.
-> - **Diarization needs the `…-sortformer` function specifically** — and only
->   over this gRPC path. A plain Parakeet function (e.g. CTC 0.6B) transcribes
->   but returns every word as speaker 0, and the OpenAI-style HTTP
->   `/v1/audio/transcriptions` route drops speaker info even on the sortformer
->   model.
+> - **Diarization only comes back over gRPC streaming.** The OpenAI-style HTTP
+>   `/v1/audio/transcriptions` route (the curl example above) never returns
+>   speaker info, even for a diarization-capable function — you have to use the
+>   gRPC path to see speaker tags at all.
 >
 > **Text-to-speech (Magpie TTS)** has no hosted equivalent and still needs a
 > **self-hosted** NIM — see [selfhosted.md](selfhosted.md). It's only used to
