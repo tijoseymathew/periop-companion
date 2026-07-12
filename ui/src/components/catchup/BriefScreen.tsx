@@ -96,7 +96,7 @@ export function BriefScreen({
 
   // the one forward action — a bar under the columns (intra-op and post-op)
   const actionBar = (
-    <div className="flex-none border-t border-surface-chromeline bg-surface-sunken px-8 py-4">
+    <div className="flex-none border-t border-surface-chromeline bg-surface-sunken px-10 py-4">
       <div className="ml-auto w-[400px] max-w-full rounded-[15px] border border-surface-overlay bg-surface-base p-4">
         <ActionPanel
           model={model}
@@ -111,8 +111,10 @@ export function BriefScreen({
 
   return (
     <CaseSheet onBack={onBack}>
-      {/* header — going back to the worklist is the gutter, not a button */}
-      <div className="flex-none border-b border-surface-chromeline bg-surface-chrome px-8 pb-4 pt-5">
+      {/* header — going back to the worklist is the gutter, not a button.
+          px-10/pt-6 keeps the title band on the flow chrome's left edge and
+          rhythm (design review: the insets drifted screen-to-screen) */}
+      <div className="flex-none border-b border-surface-chromeline bg-surface-chrome px-10 pb-4 pt-6">
         <div className="flex items-start justify-between gap-6">
           <div className="min-w-0">
             {queue && queue.total > 1 && (
@@ -168,7 +170,7 @@ export function BriefScreen({
       {model.stage === "preop" ? (
         <div className="flex min-h-0 flex-1">
           {/* main column */}
-          <div className="min-w-0 flex-1 overflow-y-auto px-8 pb-12 pt-6">
+          <div className="min-w-0 flex-1 overflow-y-auto pb-12 pl-10 pr-8 pt-6">
             <div className="flex items-baseline justify-between gap-4">
               <Eyebrow>Key facts</Eyebrow>
               <div className="text-[12.5px] text-ink-faint">Open a source for the original</div>
@@ -241,7 +243,7 @@ export function BriefScreen({
         <>
           {/* recovery: the post-op run's own two writers, side by side */}
           <div className="flex min-h-0 flex-1">
-            <div className="min-w-0 flex-1 overflow-y-auto px-6 pb-10 pt-6">
+            <div className="min-w-0 flex-1 overflow-y-auto pb-10 pl-10 pr-6 pt-6">
               <div className="flex items-baseline justify-between gap-4">
                 <Eyebrow>
                   {model.keyFactsSource === "note:pacu-handoff" ? "PACU handoff" : "Key facts"}
@@ -272,7 +274,7 @@ export function BriefScreen({
       ) : (
         <>
           <div className="flex min-h-0 flex-1">
-            <div className="min-w-0 flex-1 overflow-y-auto px-6 pb-10 pt-6">
+            <div className="min-w-0 flex-1 overflow-y-auto pb-10 pl-10 pr-6 pt-6">
               <div className="flex items-baseline justify-between gap-4">
                 <Eyebrow>Key facts</Eyebrow>
                 <div className="text-[12.5px] text-ink-faint">Open a source for the original</div>
@@ -466,8 +468,10 @@ function EditableLine({
   const [draft, setDraft] = useState(text);
 
   if (!editing) {
+    // the pencil hugs the text (design review: pushed to the column edge it
+    // read as a stray glyph, not an action on this line)
     return (
-      <span className="flex min-w-0 flex-1 items-start justify-between gap-2">
+      <span className="flex min-w-0 flex-1 items-start gap-2">
         <span className={className}>{text}</span>
         <button
           type="button"

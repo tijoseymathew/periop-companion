@@ -96,7 +96,9 @@ export function CaseChatPanel({ caseId, me }: { caseId: string; me: string | nul
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 left-6 z-40 flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-[14px] font-semibold text-ink-onBrand shadow-[0_6px_20px_rgba(35,27,15,.25)] hover:bg-brand-soft"
+        // left inset tracks the CaseSheet's 1160px column so the pill sits
+        // inside the sheet, never over the click-to-go-back gutter
+        className="fixed bottom-6 left-[max(1.5rem,calc(50%-556px))] z-40 flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-[14px] font-semibold text-ink-onBrand shadow-[0_6px_20px_rgba(35,27,15,.25)] hover:bg-brand-soft"
       >
         <span aria-hidden>✳</span> Ask about this case
       </button>
@@ -106,7 +108,7 @@ export function CaseChatPanel({ caseId, me }: { caseId: string; me: string | nul
   return (
     <div
       data-testid="case-chat-panel"
-      className="fixed bottom-6 left-6 z-40 flex h-[560px] max-h-[80vh] w-[400px] flex-col overflow-hidden rounded-2xl border border-surface-overlay bg-surface-base shadow-[0_12px_40px_rgba(35,27,15,.3)]"
+      className="fixed bottom-6 left-[max(1.5rem,calc(50%-556px))] z-40 flex h-[560px] max-h-[80vh] w-[400px] flex-col overflow-hidden rounded-2xl border border-surface-overlay bg-surface-base shadow-[0_12px_40px_rgba(35,27,15,.3)]"
     >
       <div className="flex flex-none items-start justify-between gap-3 border-b border-surface-chromeline bg-surface-chrome px-4 py-3">
         <div>

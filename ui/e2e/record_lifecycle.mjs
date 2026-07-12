@@ -492,8 +492,10 @@ async function walk(page, inputs) {
   await beat(1500);
   await shot(page, "handoff-acknowledged");
 
-  await chapter("Back to the worklist — the case is complete");
-  await slowClick(page, page.getByRole("button", { name: /Worklist/ }), { after: 900 });
+  await chapter("Back to the worklist — clicking beside the case sheet");
+  // the ‹ Worklist button is gone: the gutters either side of the centered
+  // sheet are the way back (both carry the same accessible name)
+  await slowClick(page, page.getByRole("button", { name: "Back to Worklist" }), { after: 900 });
   await page.getByRole("heading", { name: "Cases" }).waitFor();
   await slowClick(page, 'button:has-text("All cases")', { after: 1400 });
   await shot(page, "worklist-complete");

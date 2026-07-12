@@ -14,13 +14,19 @@ export function CaseSheet({ onBack, children }: { onBack: () => void; children: 
       aria-label="Back to Worklist"
       title="Back to the worklist"
       onClick={onBack}
-      className="min-w-0 flex-1 cursor-pointer bg-surface-sunken hover:bg-surface-panel"
-    />
+      className="group min-w-0 flex-1 cursor-pointer overflow-hidden bg-surface-sunken hover:bg-surface-panel"
+    >
+      {/* a resting hint that the gutter is the way back (design review:
+          without it the margins read as inert and the sheet feels trapping) */}
+      <span className="whitespace-nowrap text-[12.5px] font-semibold text-ink-subtle opacity-45 transition-opacity group-hover:opacity-100">
+        ‹ Worklist
+      </span>
+    </button>
   );
   return (
     <div className="flex h-full min-h-0 flex-1">
       {gutter}
-      <div className="flex h-full w-[1160px] max-w-full flex-none flex-col overflow-hidden border-x border-surface-chromeline bg-surface-base shadow-[0_0_28px_rgba(35,27,15,.06)]">
+      <div className="flex h-full w-[1160px] max-w-full flex-none flex-col overflow-hidden border-x border-surface-overlay bg-surface-base shadow-[0_1px_40px_rgba(60,45,20,0.05)]">
         {children}
       </div>
       {gutter}

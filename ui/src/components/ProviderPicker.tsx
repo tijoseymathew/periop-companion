@@ -31,21 +31,31 @@ export function ProviderPicker({
       >
         {me ? providerInitials(me.name).toUpperCase() : "?"}
       </span>
-      <select
-        aria-label="Working as"
-        value={selected ?? ""}
-        onChange={(e) => onSelect(e.target.value)}
-        className="min-h-[32px] rounded-lg border border-surface-line bg-surface-sunken px-2 py-1 text-xs text-ink-secondary"
-      >
-        <option value="" disabled>
-          Choose your name
-        </option>
-        {providers.map((p) => (
-          <option key={p.provider_id} value={p.provider_id}>
-            {p.name} ({p.role})
+      {/* appearance-none + own chevron: the raw browser select was the one
+          off-palette element in the chrome (design review) */}
+      <span className="relative flex items-center">
+        <select
+          aria-label="Working as"
+          value={selected ?? ""}
+          onChange={(e) => onSelect(e.target.value)}
+          className="min-h-[32px] appearance-none rounded-lg border border-surface-overlay bg-surface-sunken py-1 pl-2.5 pr-7 text-xs font-medium text-ink-secondary outline-none focus:border-brand"
+        >
+          <option value="" disabled>
+            Choose your name
           </option>
-        ))}
-      </select>
+          {providers.map((p) => (
+            <option key={p.provider_id} value={p.provider_id}>
+              {p.name} ({p.role})
+            </option>
+          ))}
+        </select>
+        <span
+          aria-hidden
+          className="pointer-events-none absolute right-2.5 text-[9px] text-ink-dim"
+        >
+          ▾
+        </span>
+      </span>
     </label>
   );
 }
