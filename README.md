@@ -15,7 +15,7 @@ cannot show their work.
 > decision-making system.
 
 See [specs/v1.md](specs/v1.md) for the full specification and
-[docs/progress.md](docs/progress.md) for build status.
+[specs/progress.md](specs/progress.md) for build status.
 
 ## The problem in one sentence
 
@@ -43,35 +43,23 @@ stage-appropriate documentation where each statement is traceable:
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Review UI — React SPA (ui/) + FastAPI layer (periop.api)   │
-├─────────────────────────────────────────────────────────────┤
-│  NeMo Agent Toolkit — observability & evaluation            │
-│  • nat run / serve / eval   • OTel traces   • token/latency │
-│  • custom provenance evaluators (evals/)                    │
-├─────────────────────────────────────────────────────────────┤
-│  Google ADK — agent orchestration                           │
-│  • stages as SequentialAgent    • session state = the Case  │
-├─────────────────────────────────────────────────────────────┤
-│  NVIDIA NIMs (hosted via build.nvidia.com by default)       │
-│  • ASR: Parakeet 1.1B + Silero VAD + Sortformer diarization │
-│  • Reasoning: llama-3.3-nemotron-super-49b-v1.5             │
-│  • Fast: nemotron-nano-9b-v2   • TTS: Magpie (synth only)   │
-├─────────────────────────────────────────────────────────────┤
-│  Storage: local JSON case store + audio artifacts           │
-└─────────────────────────────────────────────────────────────┘
-```
+**Design rule:** ADK owns orchestration, NAT owns observability and evaluation,
+the `Case` is the single source of truth. Three ways in (React SPA, terminal
+CLI, agent skill) converge on one FastAPI process, which drives the
+ADK stage pipeline — pre-op → intra-op → post-op, each stage a `SequentialAgent`
+of generate→validate steps — plus two tool-calling agents outside the
+pipeline proper ([specs/v2-agents.md](specs/v2-agents.md): an
+**EquipmentAdvisor** that suggests kit during pre-op note writing, and a
+**CaseChat** assistant providers can query over the record), against
+env-selected NVIDIA NIMs (hosted on build.nvidia.com by default, or
+self-hosted with no code change).
 
-**Design rule:** ADK owns orchestration, NAT owns observability and evaluation.
-Stages are `SequentialAgent` compositions of `LlmAgent` generate→validate
-steps (`LoopAgent` retries with validation-error feedback), the independent
-post-op writers run under a `ParallelAgent`, claim verification fans out in
-bounded parallel batches, and the Case travels in ADK session state — see
-[docs/adk-orchestration.md](docs/adk-orchestration.md).
-See [docs/provenance-design.md](docs/provenance-design.md) for how provenance is
-made structural, and [docs/attribution.md](docs/attribution.md) for what was
-reused from the blueprint versus built.
+**[docs/architecture.md](docs/architecture.md)** is the full map — system
+diagram, agent-handoff diagram, and component tables. Companion docs:
+[docs/adk-orchestration.md](docs/adk-orchestration.md) (the ADK composition),
+[docs/provenance-design.md](docs/provenance-design.md) (how provenance is
+structural, not annotated), and [docs/attribution.md](docs/attribution.md)
+(what was reused from the blueprint versus built).
 
 ## Quickstart
 
@@ -254,7 +242,7 @@ message verbatim. A second conformance test
 ([tests/test_cli_conformance.py](tests/test_cli_conformance.py)) walks a
 synthetic bundle end-to-end through `periop` commands and asserts the ledger
 is identical to the batch pipeline's: CLI == API == batch, one seam. Build
-status: [docs/progress-cli.md](docs/progress-cli.md).
+status: [specs/progress-cli.md](specs/progress-cli.md).
 
 An agent skill —
 [.agents/skills/periop-provider-workflow/SKILL.md](.agents/skills/periop-provider-workflow/SKILL.md),
@@ -287,7 +275,7 @@ The v2 stretch list shipped too:
   the intra-op capture screen is one big column (asserted at iPad viewport
   in e2e).
 
-Build status: [docs/progress-v2.md](docs/progress-v2.md).
+Build status: [specs/progress-v2.md](specs/progress-v2.md).
 
 ## Synthetic data & sovereign-AI grounding
 
@@ -357,10 +345,10 @@ live path.
 M0–M6 implemented (schemas, three-stage ADK/NAT pipeline, synthetic-data
 pipeline, all agents, eval harness, NAT-profiled live run, self-hosted NIM
 path with TTS+ASR). The review UI ([specs/ui.md](specs/ui.md), U0–U2+U4 —
-see [docs/progress-ui.md](docs/progress-ui.md)) ships the claim ledger with
+see [specs/progress-ui.md](specs/progress-ui.md)) ships the claim ledger with
 click-to-play audio provenance. The v2 provider workflow
-([specs/v2.md](specs/v2.md), W0–W8 — see
-[docs/progress-v2.md](docs/progress-v2.md)) adds the write path: case
+([specs/v2.md](specs/v2.md), W0–W9 — see
+[specs/progress-v2.md](specs/progress-v2.md)) adds the write path: case
 creation, staged intake with question review, audio capture, SSE-streamed
 stage runs (promoting ui.md's U3 from stretch to shipped), sign-off/reopen,
 and handoff acknowledge, pinned to the batch pipeline by a lifecycle
@@ -369,8 +357,18 @@ the Parakeet streaming profile, per-claim review actions, the department
 dashboard with a "my cases" filter, and the tablet layout. W8
 ([specs/v2-nat.md](specs/v2-nat.md)) closes the observability gap: live
 stage runs execute inside a NAT `Runner` and export to Langfuse when the
-environment provides credentials. Remaining:
-broader eval dataset (30 cases). Live NIM paths (LLM tiers,
-full case runs, traced profiling) are exercised with an NGC key; the ASR/TTS
-speech NIMs use documented hosted NVCF endpoints (see
-[docs/attribution.md](docs/attribution.md)).
+environment provides credentials. W9 ([specs/v2-speed.md](specs/v2-speed.md))
+cuts the application-controlled latency out of a live run: reasoning-tier
+thinking off by default, gap analysis off the request path, a bounded
+ClaimVerifier fan-out, and concurrent post-op writers. The pipeline is now
+the ADK-native composition described in
+[docs/architecture.md](docs/architecture.md) — see also
+[docs/adk-orchestration.md](docs/adk-orchestration.md) — and has grown two
+tool-calling agents beyond the three-stage pipeline
+([specs/v2-agents.md](specs/v2-agents.md)): an **EquipmentAdvisor** that
+suggests equipment during pre-op note writing (reserved at sign-off) and a
+**CaseChat** assistant providers can ask questions of over the record. The
+eval dataset scale-up to 30 cases (`evals/README.md`'s 2026-07-11 entry) is
+also done. Live NIM paths (LLM tiers, full case runs, traced profiling) are
+exercised with an NGC key; the ASR/TTS speech NIMs use documented hosted NVCF
+endpoints (see [docs/attribution.md](docs/attribution.md)).

@@ -1,7 +1,7 @@
 # Build progress — workflow CLI
 
 Resumable checklist for the provider-workflow CLI on the `cli` branch: a
-terminal companion to the v2 write API ([specs/v2.md](../specs/v2.md)) that
+terminal companion to the v2 write API ([specs/v2.md](v2.md)) that
 drives the **same** FastAPI app over HTTP — against a running server
 (`--api-url` / `PERIOP_API_URL`) or auto-hosted on an ephemeral localhost
 port for the life of the command. Same conventions as

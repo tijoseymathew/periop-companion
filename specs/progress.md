@@ -1,6 +1,6 @@
 # Build progress
 
-Resumable checklist for building [specs/v1.md](../specs/v1.md). Each item lands as
+Resumable checklist for building [specs/v1.md](v1.md). Each item lands as
 one or more commits with passing tests. If a session is interrupted (rate limits),
 resume from the first unchecked item. Conventions:
 
@@ -81,7 +81,7 @@ resume from the first unchecked item. Conventions:
       cited spans, links into a source registry. Blueprint React frontend
       with audio-clip playback deferred until the TTS→ASR path lands.
       → landed 2026-07-06 as the full review workspace (specs/ui.md,
-      docs/progress-ui.md): React SPA + FastAPI, claim→clip playback.
+      progress-ui.md): React SPA + FastAPI, claim→clip playback.
 - [x] Profiler report in README from a NAT-traced live run (sg-0001 via
       `nat eval` + configs/profile_config.yml; reports in evals/profile/).
       Run surfaced the IssueAnticipator claim-ref bug — fixed same session.

@@ -1,6 +1,6 @@
 # Build progress — v2 provider workflow
 
-Resumable checklist for building [specs/v2.md](../specs/v2.md) (case lifecycle,
+Resumable checklist for building [specs/v2.md](v2.md) (case lifecycle,
 write API, capture UI) on the `v2` branch. Same conventions as
 [progress.md](progress.md): every item lands as one or more commits with tests
 written first (red) then implementation (green); if a session is interrupted,
@@ -117,7 +117,7 @@ with a live-mode boot + one real submission, not just the stub walk.
       interview questions can take a minute") instead of a silently dimmed
       button; vite dev proxy honors `PERIOP_API_PORT`
 
-## W8 — NAT-traced live runs ([specs/v2-nat.md](../specs/v2-nat.md))
+## W8 — NAT-traced live runs ([specs/v2-nat.md](v2-nat.md))
 
 Close the observability gap: live stage runs from the browser execute inside a
 real NAT `Runner` (traced/profiled/exported like a batch `nat eval` row), with
@@ -173,7 +173,7 @@ thread; the stage function now does the same (safe: the API gives each stage
 run a private per-thread loop), pinned by
 `test_stage_runs_on_the_event_loop_thread`.
 
-## W9 — Speed ([specs/v2-speed.md](../specs/v2-speed.md))
+## W9 — Speed ([specs/v2-speed.md](v2-speed.md))
 
 Remove the latency the application controls: a live e2e benchmark put one
 case at ~68 min, 96.6% of it inside seven Super-49B calls decoding at

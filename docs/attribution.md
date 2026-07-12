@@ -48,7 +48,7 @@ claim-level provenance. This document records what was reused versus built.
 
 - Personas: [nvidia/Nemotron-Personas-Singapore](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Singapore)
   (CC-BY-4.0). Note: the published schema has no `healthcare_persona`/ethnicity
-  fields; we stratify on age band × sex (see `docs/progress.md`).
+  fields; we stratify on age band × sex (see `specs/progress.md`).
 - Models (build.nvidia.com): `nvidia/llama-3.3-nemotron-super-49b-v1.5`
   (reasoning), `nvidia/nvidia-nemotron-nano-9b-v2` (fast), Parakeet CTC 1.1B
   (ASR), Magpie TTS multilingual (synthetic audio). NVCF function IDs rotate;

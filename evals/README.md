@@ -160,7 +160,7 @@ right fix, not a prompt change.
 
 Two things changed at once relative to every table below, deliberately: the
 pipeline is the ADK-native composition (`src/periop/adk/`, this branch) and
-the dataset is the full ~30-case scale-up that `docs/progress.md` and finding
+the dataset is the full ~30-case scale-up that `specs/progress.md` and finding
 3 had been calling for. sg-0001..0005 are the original committed bundles;
 sg-0006..0030 were generated fresh for this run (the old sg-0006+ directories
 held only gitignored TTS wavs — their scripts/records/gold had never been
@@ -453,7 +453,7 @@ isolated measurement of anything.
    combined `propofol 120`. `extraction_f1` needs a shared convention or a
    looser drug-name+time match. (This finding previously also blamed
    "question granularity" for gap_f1 = 0 — that attribution was wrong; see
-   finding 4.) Tracked in `docs/progress.md`.
+   finding 4.) Tracked in `specs/progress.md`.
 3. **Single-case noise (partially addressed, still blocks a real quality
    gate)** — at n=1 the judge-dependent, small-denominator metrics (claim
    recall, provenance precision, distractor leakage) vary run-to-run by more

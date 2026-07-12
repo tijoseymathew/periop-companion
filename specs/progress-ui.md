@@ -1,6 +1,6 @@
 # Review UI build progress
 
-Resumable checklist for building [specs/ui.md](../specs/ui.md). Same discipline as
+Resumable checklist for building [specs/ui.md](ui.md). Same discipline as
 [progress.md](progress.md): every item lands as a commit with tests written first
 (red) then implementation (green); every commit leaves the tree green. If a session
 is interrupted (rate limits), resume from the first unchecked item.

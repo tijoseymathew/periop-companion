@@ -155,7 +155,7 @@ Same discipline as the rest of the repo — tests first, hermetic, no network in
 
 ## 6. Milestones
 
-Numbered to continue `docs/progress-v2.md`'s sequence (v2-nat finished at W8d).
+Numbered to continue `progress-v2.md`'s sequence (v2-nat finished at W8d).
 
 | # | Milestone | Exit criterion |
 |---|---|---|
@@ -178,4 +178,4 @@ Numbered to continue `docs/progress-v2.md`'s sequence (v2-nat finished at W8d).
 | Parallel Super calls overrun the reasoning NIM's KV budget (6 GiB cap on the reference box) | Two streams at periop prompt sizes fit the current cap; the dev-rel-expt spec raises it with measured headroom. Degradation mode is queuing at the NIM (slower, correct), not failure |
 | Interleaved SSE events confuse the UI or e2e | UI is an append-only log keyed by agent name (renders interleavings today); stub runner stays sequential so Playwright fixtures don't change; a vitest covers interleaved order parsing |
 | Conformance drift from concurrent artifact appends | Agents return artifacts; the stage appends in fixed order (§3.4); the conformance test is the backstop and runs in CI |
-| Speedups asserted but never re-measured (no committed benchmark) | Each milestone's exit criterion includes one live boot with a timed run, per the W7 "boot live once per milestone" lesson — the numbers land in `docs/progress-v2.md` entries rather than a committed script |
+| Speedups asserted but never re-measured (no committed benchmark) | Each milestone's exit criterion includes one live boot with a timed run, per the W7 "boot live once per milestone" lesson — the numbers land in `progress-v2.md` entries rather than a committed script |

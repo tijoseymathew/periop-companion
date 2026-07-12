@@ -97,7 +97,7 @@ workflow:
 
 ### 3.3 Bridging the worker thread
 
-`stage_runs.py` runs the stage on a background `threading.Thread` today because the agent calls are synchronous (blocking HTTP to the NIMs) and must not freeze the FastAPI event loop (this is exactly the bug W7b fixed for gap analysis — see `docs/progress-v2.md` W7b). The NAT `Runner` is async, so the worker thread now needs its own event loop around the NAT call:
+`stage_runs.py` runs the stage on a background `threading.Thread` today because the agent calls are synchronous (blocking HTTP to the NIMs) and must not freeze the FastAPI event loop (this is exactly the bug W7b fixed for gap analysis — see `progress-v2.md` W7b). The NAT `Runner` is async, so the worker thread now needs its own event loop around the NAT call:
 
 ```python
 def work():
@@ -200,7 +200,7 @@ Same discipline as the rest of the repo — tests first, no network in CI:
 
 ## 6. Milestones
 
-Numbered to continue `docs/progress-v2.md`'s sequence (v2 build finished at W7c).
+Numbered to continue `progress-v2.md`'s sequence (v2 build finished at W7c).
 
 | # | Milestone | Exit criterion |
 |---|---|---|
@@ -221,4 +221,4 @@ Numbered to continue `docs/progress-v2.md`'s sequence (v2 build finished at W7c)
 | Missing/partial Langfuse env vars silently degrade observability and nobody notices | `apply_optional_telemetry` always logs a `WARNING` naming exactly which var(s) are missing (§3.5, tested in §5) — it never fails silently and never fails loud (no exception), matching this project's existing "errors say what to do" posture applied to ops rather than the UI |
 | Langfuse credentials committed by accident | They only ever come from environment variables, never from a config file (§3.2/§3.5 deliberately keep `configs/api.yml` telemetry-free) — same posture as `NGC_API_KEY` already in `.env` |
 | This spec's stage-level NAT function drifts from `periop_pipeline`'s batch semantics (e.g. case-loading edge cases) | Both call the same `run_case`/`run_*_stage` functions from `periop.pipeline`/`periop.agents.stages` — no logic fork, same guarantee v2 §3 already leans on for the write API vs. CLI |
-| Langfuse export is noisy or slow on every provider click | Exporters subscribe asynchronously to the intermediate-step stream (NAT's own design); worst case is added log/network volume, not added request latency — verify with one live boot per W8's convention (`docs/progress-v2.md` W7 lesson: always boot live once per milestone, not just the stub walk) |
+| Langfuse export is noisy or slow on every provider click | Exporters subscribe asynchronously to the intermediate-step stream (NAT's own design); worst case is added log/network volume, not added request latency — verify with one live boot per W8's convention (`progress-v2.md` W7 lesson: always boot live once per milestone, not just the stub walk) |
