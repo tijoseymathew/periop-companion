@@ -467,7 +467,9 @@ async function walk(page, inputs) {
   await chapter("Opening the case for recovery");
   await slowClick(page, page.getByRole("button", { name: /Amara Okafor/ }), { after: 900 });
   await waitForBrief(page);
-  await shot(page, "intraop-brief-signed");
+  // intra-op was signed off above, so the case has moved on — this reopen
+  // lands on the recovery brief, and the still is named for what it shows
+  await shot(page, "postop-brief-opened");
   await chapter("To recovery — the post-op interview");
   await slowClick(page, page.getByRole("button", { name: /Record post-op interview/ }), {
     after: 800,
