@@ -76,7 +76,16 @@ describe("describeRunEvent", () => {
     ).toBe("GapAnalyst — 3 questions");
     expect(
       describeRunEvent({ event: "artifact_complete", data: { artifact_id: "record:intra-op", claims: 2 } }),
-    ).toBe("record:intra-op (2 claims)");
+    ).toBe("Theatre record drafted — 2 claims");
+  });
+
+  it("humanizes unknown artifact ids and pluralizes claims", () => {
+    expect(
+      describeRunEvent({
+        event: "artifact_complete",
+        data: { artifact_id: "note:discharge-summary", claims: 1 },
+      }),
+    ).toBe("Discharge summary drafted — 1 claim");
   });
 
   it("returns null for a status event with no message", () => {

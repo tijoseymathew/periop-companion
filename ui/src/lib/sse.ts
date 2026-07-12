@@ -31,6 +31,23 @@ export function agentResults(events: RunEvent[]): AgentResult[] {
     }));
 }
 
+/** Display titles for the pipeline's artifact ids — the raw ids
+ * (note:pacu-handoff) are internal and never shown to a provider. */
+const ARTIFACT_TITLES: Record<string, string> = {
+  "note:pre-anesthesia-eval": "Pre-anaesthesia evaluation",
+  "note:post-anesthesia-eval": "Post-anaesthesia evaluation",
+  "note:pacu-handoff": "PACU handoff",
+  "note:anticipated-issues": "Anticipated issues",
+  "record:intra-op": "Theatre record",
+};
+
+function artifactTitle(id: string): string {
+  const known = ARTIFACT_TITLES[id];
+  if (known) return known;
+  const bare = id.slice(id.indexOf(":") + 1).replace(/-/g, " ");
+  return bare.charAt(0).toUpperCase() + bare.slice(1);
+}
+
 /** One human line for a stage-run event, or null for events with nothing
  * to show (e.g. the terminal "complete"/"error" the caller handles itself). */
 export function describeRunEvent(event: RunEvent): string | null {
@@ -43,8 +60,10 @@ export function describeRunEvent(event: RunEvent): string | null {
       return `${event.data.agent} working…`;
     case "agent_end":
       return `${event.data.agent} — ${event.data.summary ?? "done"}`;
-    case "artifact_complete":
-      return `${event.data.artifact_id} (${event.data.claims} claims)`;
+    case "artifact_complete": {
+      const n = Number(event.data.claims ?? 0);
+      return `${artifactTitle(String(event.data.artifact_id ?? ""))} drafted — ${n} claim${n === 1 ? "" : "s"}`;
+    }
     case "complete":
       return "Complete — opening the brief…";
     case "error":
