@@ -11,6 +11,7 @@
  * case's stage (sign off / acknowledge / continue).
  */
 import { useState } from "react";
+import { CaseSheet } from "../CaseSheet";
 import type { BriefModel, ChainNode } from "../../lib/catchup";
 import type { PrimaryAction } from "../../lib/workflow";
 import type { SourceRequest } from "./SourceModal";
@@ -109,44 +110,35 @@ export function BriefScreen({
   );
 
   return (
-    <div className="flex h-full flex-col overflow-hidden">
-      {/* header */}
+    <CaseSheet onBack={onBack}>
+      {/* header — going back to the worklist is the gutter, not a button */}
       <div className="flex-none border-b border-surface-chromeline bg-surface-chrome px-8 pb-4 pt-5">
         <div className="flex items-start justify-between gap-6">
           <div className="min-w-0">
-            <div className="flex items-center gap-3.5">
-              <button
-                type="button"
-                onClick={onBack}
-                className="text-[13px] font-semibold text-ink-dim hover:text-ink-primary"
-              >
-                ‹ Worklist
-              </button>
-              {queue && queue.total > 1 && (
-                <div className="flex items-center gap-0.5">
-                  <button
-                    type="button"
-                    aria-label="Previous case"
-                    onClick={queue.onPrev}
-                    className="flex h-[30px] w-[30px] items-center justify-center rounded-lg border border-surface-overlay bg-surface-sunken text-[15px] text-ink-secondary"
-                  >
-                    ‹
-                  </button>
-                  <span className="whitespace-nowrap px-2.5 text-[12px] text-ink-subtle">
-                    Waiting for you · {queue.pos} of {queue.total}
-                  </span>
-                  <button
-                    type="button"
-                    aria-label="Next case"
-                    onClick={queue.onNext}
-                    className="flex h-[30px] w-[30px] items-center justify-center rounded-lg border border-surface-overlay bg-surface-sunken text-[15px] text-ink-secondary"
-                  >
-                    ›
-                  </button>
-                </div>
-              )}
-            </div>
-            <div className="mt-2 flex flex-wrap items-center gap-3.5">
+            {queue && queue.total > 1 && (
+              <div className="mb-2 flex items-center gap-0.5">
+                <button
+                  type="button"
+                  aria-label="Previous case"
+                  onClick={queue.onPrev}
+                  className="flex h-[30px] w-[30px] items-center justify-center rounded-lg border border-surface-overlay bg-surface-sunken text-[15px] text-ink-secondary"
+                >
+                  ‹
+                </button>
+                <span className="whitespace-nowrap px-2.5 text-[12px] text-ink-subtle">
+                  Waiting for you · {queue.pos} of {queue.total}
+                </span>
+                <button
+                  type="button"
+                  aria-label="Next case"
+                  onClick={queue.onNext}
+                  className="flex h-[30px] w-[30px] items-center justify-center rounded-lg border border-surface-overlay bg-surface-sunken text-[15px] text-ink-secondary"
+                >
+                  ›
+                </button>
+              </div>
+            )}
+            <div className="flex flex-wrap items-center gap-3.5">
               <span className="font-serif text-[32px] font-medium leading-none text-ink-primary">
                 {model.title}
               </span>
@@ -310,7 +302,7 @@ export function BriefScreen({
           {actionBar}
         </>
       )}
-    </div>
+    </CaseSheet>
   );
 }
 

@@ -6,6 +6,7 @@
  * this chrome belongs to the flow that feeds it.
  */
 import type { ReactNode } from "react";
+import { CaseSheet } from "../CaseSheet";
 import { providerChain, STAGE_DISPLAY, type ChainNode } from "../../lib/catchup";
 import { subLabel, subPills, type FlowScreen } from "../../lib/flow";
 import { stageNodeState, STAGE_TITLES } from "../../lib/workflow";
@@ -53,46 +54,36 @@ export function FlowChrome({
   const reachable = (key: FlowScreen) => key !== screen && canReach(key);
 
   return (
-    <div className="flex h-full flex-col overflow-hidden">
-      {/* top bar: back · patient · status chip · provider chain — held to the
-          same centered 1080px column the body renders in (StageContainer), so
-          the chrome and the screen content share one left edge */}
+    <CaseSheet onBack={onBack}>
+      {/* top bar: patient · status chip · provider chain — the sheet holds
+          the chrome to the same centered column the body renders in, so the
+          chrome and the screen content share one left edge. Going back is
+          the gutter, not a button. */}
       <div className="flex-none bg-surface-chrome px-10 pt-4">
-        <div className="mx-auto w-full max-w-[1080px]">
-          <div className="flex items-start justify-between gap-4">
-            <button
-              type="button"
-              onClick={onBack}
-              className="text-[13px] font-semibold text-ink-dim hover:text-ink-primary"
-            >
-              ‹ Worklist
-            </button>
-            {providerControl}
-          </div>
-          <div className="mt-1 flex items-end justify-between gap-6 pb-3.5">
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-3.5">
-                <span className="font-serif text-[32px] font-medium leading-none text-ink-primary">
-                  {kase ? (kase.label ?? kase.case_id) : fallbackTitle}
-                </span>
-                <span
-                  className={`rounded-full border border-brand/28 px-3 py-1.5 text-[13px] font-semibold ${chip.className}`}
-                >
-                  {chip.long}
-                </span>
-              </div>
-              {kase && (
-                <div className="mt-1.5 text-[14.5px] text-ink-muted">Case {kase.case_id}</div>
-              )}
+        <div className="flex items-start justify-end gap-4">{providerControl}</div>
+        <div className="mt-1 flex items-end justify-between gap-6 pb-3.5">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-3.5">
+              <span className="font-serif text-[32px] font-medium leading-none text-ink-primary">
+                {kase ? (kase.label ?? kase.case_id) : fallbackTitle}
+              </span>
+              <span
+                className={`rounded-full border border-brand/28 px-3 py-1.5 text-[13px] font-semibold ${chip.className}`}
+              >
+                {chip.long}
+              </span>
             </div>
-            <Chain chain={chain} />
+            {kase && (
+              <div className="mt-1.5 text-[14.5px] text-ink-muted">Case {kase.case_id}</div>
+            )}
           </div>
+          <Chain chain={chain} />
         </div>
       </div>
 
       {/* stage › sub-stage pills */}
       <div className="flex-none border-b border-surface-chromeline bg-surface-chrome px-10 pb-3.5">
-        <div className="mx-auto flex w-full max-w-[1080px] flex-wrap items-center gap-5">
+        <div className="flex w-full flex-wrap items-center gap-5">
           <div className="inline-flex flex-none items-center gap-2 rounded-full bg-brand px-4 py-2 text-ink-onBrand shadow-[0_1px_0_rgba(255,255,255,.16)_inset]">
             <span className="text-[10px] font-bold uppercase tracking-[.13em] opacity-70">
               Stage
@@ -206,7 +197,7 @@ export function FlowChrome({
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto">{children}</div>
-    </div>
+    </CaseSheet>
   );
 }
 
