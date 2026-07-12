@@ -6,47 +6,51 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "Eh, still a bit tired one lah, but okay. Got some pain here, you know."
+      "text": "I'm okay, I guess. Still a bit groggy, but the pain isn't too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Can you tell me more about the pain? Where is it, and how bad is it on a scale of 1 to 10?"
+      "text": "Good to hear. Can you tell me your pain level out of 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Mostly around the tummy area, like where they cut. Maybe 4 or 5? Not too bad, but there."
+      "text": "Maybe a 3 or 4? It's more like discomfort than sharp pain."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any nausea or vomiting since waking up? You mentioned before you have GERD, so we’re keeping an eye on that."
+      "text": "That's expected with the TAP block still working. Are you feeling nauseous at all?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yeah, a bit of nausea earlier, but not throwing up. My throat also sore, like something stuck there."
+      "text": "No, not really. A bit thirsty, but no nausea."
     },
     {
       "speaker": "PROVIDER",
-      "text": "The sore throat is probably from the tube we used during surgery. It should get better in a day or two. Breathing okay otherwise?"
+      "text": "Great. How's your breathing? Any tightness or difficulty breathing?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Breathing fine, just the throat pain. But I don’t remember anything about the surgery, very foggy one."
+      "text": "No, I'm breathing fine. Just a bit tired from the anesthesia, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That’s normal because of the anesthesia. We’ll monitor your blood pressure and sugars given your hypertension and hyperlipidemia. Any dizziness or shortness of breath?"
+      "text": "Good. Do you remember anything from the operating room?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No dizziness, but moving around a bit uncomfortable because of the belly. BMI 32 also, so maybe harder to move?"
+      "text": "Not really. I went to sleep and woke up here, so I think I was out completely."
     },
     {
       "speaker": "PROVIDER",
-      "text": "We’ll get physio to help with mobility. For your GERD, avoid lying flat and take your meds as prescribed. Any other concerns?"
+      "text": "That's normal under general anesthesia. Given your diabetes and high blood pressure, we'll keep a close eye on your vitals and sugar levels. Any concerns from your side?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, think that’s all. Thanks for checking on me."
+      "text": "No, everything seems fine. Just want to go home and rest."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll get you ready for that soon. Let the nurse know if the pain increases or if you feel unwell in any way."
     }
   ]
 }

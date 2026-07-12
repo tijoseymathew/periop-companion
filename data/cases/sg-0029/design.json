@@ -1,80 +1,77 @@
 {
   "case_id": "sg-0029",
   "persona_uuid": "5b2bfe8299ce4c1ab15877e7b0344cb2",
-  "surgery": "Elective knee arthroscopy for traumatic medial meniscus tear",
+  "surgery": "Laparoscopic Appendectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with sevoflurane and rocuronium, supplemented with a femoral nerve block for post-operative analgesia",
+  "anesthesia_plan": "General Anesthesia with Spinal Anesthesia (Combined Technique)",
   "asa_ps": 2,
   "comorbidities": [
-    "Allergic Rhinitis"
+    "Obesity (BMI 28 kg/m^2)",
+    "Mild Asthma (infrequent, exercise-induced)"
   ],
   "medications": [
     {
-      "name": "Fluticasone",
-      "dose": "1 spray each nostril daily",
-      "frequency": "daily",
+      "name": "Montelukast Sodium",
+      "dose": "10 mg",
+      "frequency": "once daily",
       "active": true
     },
     {
-      "name": "Loratadine",
-      "dose": "10mg",
-      "frequency": "daily",
+      "name": "Escitalopram",
+      "dose": "10 mg",
+      "frequency": "once daily",
       "active": true
     },
     {
-      "name": "Montelukast",
-      "dose": "10mg",
-      "frequency": "daily",
+      "name": "Levothyroxine",
+      "dose": "50 mcg",
+      "frequency": "once daily",
       "active": false
     }
   ],
-  "allergies": [],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
   "defect": {
     "kind": "stale_med_list",
-    "record_states": "Montelukast 10mg daily (active), Fluticasone nasal spray (active), Loratadine 10mg daily (active)",
-    "truth": "Patient discontinued Montelukast in 2023 and now takes only Fluticasone and Loratadine",
-    "gold_question": "Have you made any changes to your medication regimen since your last medical review?"
+    "record_states": "Montelukast Sodium 10 mg once daily, Escitalopram 10 mg once daily",
+    "truth": "Montelukast Sodium 10 mg once daily, Escitalopram 5 mg once daily (dose reduced 3 months ago)",
+    "gold_question": "Can you confirm the current dose of Escitalopram you are taking, and any recent changes to your medications?"
   },
   "distractors": [
     {
-      "description": "History of left wrist fracture at age 10, treated with cast, fully healed",
-      "why_irrelevant": "Remote injury with no residual issues"
+      "description": "History of left wrist fracture (age 12, fully healed)",
+      "why_irrelevant": "Remote, fully healed, no impact on current anesthesia or surgery"
     },
     {
-      "description": "Pneumonia in 2015, treated with antibiotics, fully resolved",
-      "why_irrelevant": "Resolved years ago"
+      "description": "Pneumonia (age 15, fully resolved)",
+      "why_irrelevant": "Resolved infection, no residual lung disease"
     },
     {
-      "description": "Completed a course of amoxicillin for acne in 2022, no ongoing skin issues",
-      "why_irrelevant": "Acne resolved, no current treatment needed"
+      "description": "Previous pre-op ECG for elective cholecystectomy (age 16, normal results)",
+      "why_irrelevant": "Remote, normal findings, not relevant to current surgery"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Montelukast",
-        "dose": "10mg",
-        "frequency": "daily",
+        "name": "Montelukast Sodium",
+        "dose": "10 mg",
+        "frequency": "once daily",
         "active": true
       },
       {
-        "name": "Fluticasone",
-        "dose": "1 spray each nostril daily",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Loratadine",
-        "dose": "10mg",
-        "frequency": "daily",
+        "name": "Escitalopram",
+        "dose": "10 mg",
+        "frequency": "once daily",
         "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "Left wrist fracture at age 10, treated with cast, fully healed",
-      "Pneumonia in 2015, treated with antibiotics, fully resolved",
-      "Completed a course of amoxicillin for acne in 2022, no ongoing skin issues"
+      "Left wrist fracture (age 12, fully healed)",
+      "Pneumonia (age 15, fully resolved)",
+      "Previous pre-op ECG for elective cholecystectomy (age 16, normal results)"
     ],
     "prior_anesthesia": null
   }

@@ -2,6 +2,8 @@
 
 ## Current Medications
 
-ethinyl estradiol and norethindrone as directed daily.
+Metformin 500 mg Twice daily.
 
-amoxicillin 500mg twice daily.
+Lisinopril 10 mg Once daily.
+
+Atorvastatin 20 mg Once daily.

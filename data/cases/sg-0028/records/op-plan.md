@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Arthroscopic partial meniscectomy of the left knee (elective).
+Appendectomy (Laparoscopic) (elective).
 
 ## Anesthesia
 
-General anesthesia with sevoflurane, vecuronium, and ultrasound-guided femoral nerve block for post-operative analgesia
+General Anesthesia with Laryngeal Mask Airway (LMA)

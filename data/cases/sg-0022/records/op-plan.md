@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Elective open inguinal hernia repair (elective).
+Elective Left Hip Replacement (elective).
 
 ## Anesthesia
 
-Spinal anesthesia with bupivacaine and fentanyl, IV paracetamol 1g for perioperative analgesia, and ondansetron 4mg for PONV prophylaxis
+General Anesthesia with Epidural Anesthesia for Post-Operative Pain Management

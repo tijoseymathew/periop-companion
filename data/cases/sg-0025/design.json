@@ -1,165 +1,127 @@
 {
   "case_id": "sg-0025",
   "persona_uuid": "dbffb937b433432698ffa7ca3c67ee5b",
-  "surgery": "Elective total hip replacement",
+  "surgery": "Prostatectomy (Transurethral Resection of the Prostate, TURP)",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with spinal anesthesia as adjunct for intraoperative pain control",
+  "anesthesia_plan": "General Anesthesia with Spinal Anesthesia (Combined Spinal-Epidural Anesthesia)",
   "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
     "Type 2 Diabetes Mellitus",
-    "Chronic Kidney Disease Stage 2",
-    "Osteoarthritis (right hip)",
-    "Benign Prostatic Hyperplasia"
+    "Benign Prostatic Hyperplasia (BPH)",
+    "Chronic Kidney Disease (Stage 3)"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5 mg",
-      "frequency": "Daily",
-      "active": true
-    },
-    {
       "name": "Metformin",
-      "dose": "500 mg",
+      "dose": "500mg",
       "frequency": "Twice daily",
       "active": true
     },
     {
-      "name": "Insulin glargine",
-      "dose": "20 units",
+      "name": "Lisinopril",
+      "dose": "10mg",
       "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Furosemide",
-      "dose": "20 mg",
-      "frequency": "As needed",
+      "name": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Tamsulosin",
-      "dose": "0.4 mg",
-      "frequency": "Daily",
+      "name": "Dutasteride",
+      "dose": "0.5mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Aspirin",
-      "dose": "75 mg",
-      "frequency": "Daily",
+      "dose": "75mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Omeprazole",
-      "dose": "20 mg",
-      "frequency": "Daily",
-      "active": true
-    },
-    {
-      "name": "Atorvastatin",
-      "dose": "20 mg",
-      "frequency": "Daily",
-      "active": true
-    },
-    {
-      "name": "Ranitidine",
-      "dose": "150 mg",
-      "frequency": "Twice daily",
+      "dose": "20mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
   "allergies": [
-    "Penicillin (rash)"
+    "Penicillin"
   ],
   "defect": {
     "kind": "stale_med_list",
-    "record_states": "Medications listed as: Amlodipine 5mg daily, Metformin 500mg twice daily, Insulin glargine 20 units daily, Furosemide 20mg as needed, Tamsulosin 0.4mg daily, Aspirin 75mg daily, Omeprazole 20mg daily, Atorvastatin 20mg daily, Ranitidine 150mg twice daily (active).",
-    "truth": "Patient stopped Ranitidine 6 months ago due to recall and switched to Pantoprazole 40mg daily. Current medications: Amlodipine 5mg daily, Metformin 500mg twice daily, Insulin glargine 20 units daily, Furosemide 20mg as needed, Tamsulosin 0.4mg daily, Aspirin 75mg daily, Pantoprazole 40mg daily, Atorvastatin 20mg daily.",
-    "gold_question": "Have there been any changes to your medications in the last year, particularly regarding acid suppression medications?"
+    "record_states": "Medications listed as: Metformin, Lisinopril, Amlodipine, Dutasteride, Aspirin, Omeprazole (active)",
+    "truth": "Omeprazole was discontinued 6 months ago due to resolution of gastritis; patient now uses Pantoprazole 30mg once daily as needed",
+    "gold_question": "Can you confirm if there have been any changes to your medication list since your last hospital visit, particularly regarding any acid-reducing medications?"
   },
   "distractors": [
     {
-      "description": "History of pneumonia in 2018, fully resolved with antibiotics",
-      "why_irrelevant": "Resolved years ago, no current respiratory issues"
+      "description": "History of pneumonia resolved 2 years ago",
+      "why_irrelevant": "Resolved and not impacting current perioperative risk"
     },
     {
-      "description": "Fractured left radius 20 years ago, healed without complications",
-      "why_irrelevant": "Remote, healed fracture with no functional impairment"
+      "description": "Remote history of left femur fracture (30 years ago), fully healed",
+      "why_irrelevant": "Old injury with no ongoing implications for anesthesia or surgery"
     },
     {
-      "description": "Discontinued medication: Enalapril for hypertension, stopped 2 years ago due to cough",
-      "why_irrelevant": "Medication discontinued for resolved side effect, current hypertension controlled with Amlodipine"
+      "description": "Previous use of Warfarin for atrial fibrillation, discontinued 4 years ago",
+      "why_irrelevant": "Discontinued and not relevant to current anticoagulation status"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5 mg",
-        "frequency": "Daily",
-        "active": true
-      },
-      {
         "name": "Metformin",
-        "dose": "500 mg",
+        "dose": "500mg",
         "frequency": "Twice daily",
         "active": true
       },
       {
-        "name": "Insulin glargine",
-        "dose": "20 units",
+        "name": "Lisinopril",
+        "dose": "10mg",
         "frequency": "Once daily",
         "active": true
       },
       {
-        "name": "Furosemide",
-        "dose": "20 mg",
-        "frequency": "As needed",
+        "name": "Amlodipine",
+        "dose": "5mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
-        "name": "Tamsulosin",
-        "dose": "0.4 mg",
-        "frequency": "Daily",
+        "name": "Dutasteride",
+        "dose": "0.5mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Aspirin",
-        "dose": "75 mg",
-        "frequency": "Daily",
+        "dose": "75mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Omeprazole",
-        "dose": "20 mg",
-        "frequency": "Daily",
-        "active": true
-      },
-      {
-        "name": "Atorvastatin",
-        "dose": "20 mg",
-        "frequency": "Daily",
-        "active": true
-      },
-      {
-        "name": "Ranitidine",
-        "dose": "150 mg",
-        "frequency": "Twice daily",
+        "dose": "20mg",
+        "frequency": "Once daily",
         "active": true
       }
     ],
     "allergies": [
-      "Penicillin (rash)"
+      "Penicillin"
     ],
     "past_history": [
       "Hypertension",
       "Type 2 Diabetes Mellitus",
-      "Chronic Kidney Disease Stage 2",
-      "Osteoarthritis (right hip)",
-      "Benign Prostatic Hyperplasia",
-      "Pneumonia (2018, resolved)",
-      "Fractured left radius (20 years ago, healed)",
-      "Discontinued Enalapril due to cough (2 years ago)"
+      "Benign Prostatic Hyperplasia (BPH)",
+      "Chronic Kidney Disease (Stage 3)",
+      "History of pneumonia resolved 2 years ago",
+      "Remote history of left femur fracture (30 years ago), fully healed",
+      "Previous use of Warfarin for atrial fibrillation, discontinued 4 years ago"
     ],
     "prior_anesthesia": null
   }

@@ -2,79 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be looking after you during your surgery. Can you confirm your full name and today's date for me?"
+      "text": "Good morning! I'm going to be your anesthesiologist for your upcoming cholecystectomy. Can you please start by telling me a bit about your medical history and why you're having this surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, doctor. I'm Tan Kiah Choon, and today's 15th March. Surgery's for my gallbladder, right? They said something about stones causing pain."
+      "text": "Morning, doc. Yeah, I've been having a lot of tummy pains, especially after eating. The scans showed gallstones, so the doctor said it's best to take out the gallbladder. Hope that fixes the problem, lah."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Yes, you're scheduled for a laparoscopic cholecystectomy. Can you tell me more about your gallbladder issues? How long have you been having symptoms?"
+      "text": "Thank you for sharing that. Now, let's go over your medications. I see you're on Atorvastatin, Metformin, Lisinopril, and Aspirin. Can you confirm if you're still taking all of these, and if not, what changes have been made?"
     },
     {
       "speaker": "PATIENT",
-      "text": "About half a year already. Had bad pain after eating, especially oily food. Doctor said stones are blocking, so need to remove it lah."
+      "text": "Ah, the Aspirin... I stopped that about six months ago because it was giving me bad stomach issues, like acid or something. My heart doctor then put me on Clopidogrel 75 mg daily instead for protection."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let's go through your medications. Can you confirm your current list, especially any changes to your blood pressure medications?"
+      "text": "Thank you for clarifying that. It's important we have the most current medication list. Just to confirm, are you still taking Atorvastatin 20 mg daily, Metformin 500 mg twice daily, and Lisinopril 10 mg daily without any issues?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I take Amlodipine 10mg every morning for BP. Used to be on Enalapril, but stopped six months back because of the cough side effect. Now only Amlodipine, plus Metformin for diabetes, Atorvastatin for cholesterol, Levothyroxine for thyroid, and Omeprazole but stopped that already."
+      "text": "Yes, doc, all those are still the same. No problems with them, touch wood."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for clarifying that. So no Enalapril currently, only Amlodipine for hypertension. Any allergies we should know about?"
+      "text": "Great. Now, about allergies, we have you down as allergic to Penicillin with a rash. Has there been any other allergic reactions to foods, medications, or latex that we should know about?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No allergies, doctor. Never had reactions to any medicines or foods."
+      "text": "No, just the Penicillin. That's the only one."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. You mentioned diabetes and high cholesterol – are these well-controlled with your current medications?"
+      "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, how did you tolerate them?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, doctor. Blood sugar and cholesterol levels are okay with the meds. BP also stable with Amlodipine."
+      "text": "Once, for my appendix, about ten years back. I was under general, and I woke up with a sore throat, but that was about it. No other issues, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Have you had anything to eat or drink since midnight? We need to confirm you're NPO for surgery."
+      "text": "A sore throat can be a common side effect. We'll note that. Now, regarding your diabetes, how have you been managing it? Are your blood sugars under good control with Metformin?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No food or water since last night, like the nurse instructed. Just a bit of water with my morning pills, but that was hours ago lah."
+      "text": "Yeah, I check regularly. Sometimes it fluctuates, but generally, it's okay. My HbA1c was 7.2% at the last check, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any previous anesthesia experiences we should know about?"
+      "text": "Good to hear. Finally, for this surgery, we're planning for general anesthesia with a Laryngeal Mask Airway (LMA). Have you had any issues with breathing or airway problems in the past that we should be aware of?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, this is my first surgery. Never had general anesthesia before."
+      "text": "No, doc, I don't think so. Breathing's always been fine for me."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Alright. How are you managing with daily activities? Any shortness of breath or chest pain on exertion?"
+      "text": "And just to confirm, when's the last time you had anything to eat or drink? We need to ensure you're NPO (nil per os) status is appropriate for surgery."
     },
     {
       "speaker": "PATIENT",
-      "text": "No issues, doctor. Can climb stairs slowly and walk to the market without problems."
+      "text": "I had dinner around 8 pm last night and just water this morning, but nothing after midnight, as instructed."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. We'll be using general anesthesia with a short-acting agent, and you'll have pain relief through a PCA pump after surgery. Any questions for me?"
+      "text": "Perfect, thank you. I think that covers everything. Do you have any questions for me about the anesthesia or the procedure?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No questions, doctor. Just want to get this over with and feel better."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Of course. We'll take good care of you. I'll see you in the holding area before the operation."
+      "text": "No, doc, I think you've covered it all. Just ready to get this done."
     }
   ]
 }

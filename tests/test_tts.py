@@ -105,10 +105,10 @@ class TestMagpieTts:
             )
 
         client = SimpleNamespace(post=fake_post)
-        tts = MagpieTts(base_url="http://gpu-host:9001", client=client)
+        tts = MagpieTts(base_url="http://spark:9001", client=client)
         out = tts.synthesize("Hello.", voice="Magpie-Multilingual.EN-US.Aria")
         assert out == b"RIFFwav"
-        assert posted["url"] == "http://gpu-host:9001/v1/audio/synthesize"
+        assert posted["url"] == "http://spark:9001/v1/audio/synthesize"
         assert posted["data"]["text"] == "Hello."
         assert posted["data"]["language"] == "en-US"
         assert posted["data"]["voice"] == "Magpie-Multilingual.EN-US.Aria"
@@ -116,8 +116,8 @@ class TestMagpieTts:
 
 class TestBaseUrlEnv:
     def test_env_override(self, monkeypatch):
-        monkeypatch.setenv("PERIOP_TTS_BASE_URL", "http://gpu-host:9001/")
-        assert tts_base_url_from_env() == "http://gpu-host:9001"  # trailing slash stripped
+        monkeypatch.setenv("PERIOP_TTS_BASE_URL", "http://spark:9001/")
+        assert tts_base_url_from_env() == "http://spark:9001"  # trailing slash stripped
 
     def test_default(self, monkeypatch):
         monkeypatch.delenv("PERIOP_TTS_BASE_URL", raising=False)

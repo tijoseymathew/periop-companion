@@ -1,51 +1,45 @@
 {
   "case_id": "sg-0020",
   "persona_uuid": "dd74bc4c595843ae95f226d5479836e7",
-  "surgery": "Transurethral resection of the prostate (TURP)",
+  "surgery": "Elective total hip replacement (THR) due to osteoarthritis",
   "urgency": "elective",
-  "anesthesia_plan": "Spinal anesthesia with local infiltration",
+  "anesthesia_plan": "General anesthesia with spinal anesthesia as co-anesthesia, with ultrasound-guided peripheral nerve block for postoperative pain management",
   "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
     "Type 2 Diabetes Mellitus",
-    "Hyperlipidemia",
-    "Chronic Kidney Disease Stage 3"
+    "Chronic Kidney Disease (Stage 3)",
+    "Osteoarthritis (bilateral hip, worse on left)"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "10mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Lisinopril",
-      "dose": "10mg",
-      "frequency": "daily",
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "once daily",
       "active": true
     },
     {
       "name": "Metformin",
-      "dose": "500mg",
+      "dose": "500 mg",
       "frequency": "twice daily",
       "active": true
     },
     {
-      "name": "Atorvastatin",
-      "dose": "20mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "daily",
+      "name": "Losartan",
+      "dose": "100 mg",
+      "frequency": "once daily",
       "active": true
     },
     {
       "name": "Aspirin",
-      "dose": "75mg",
-      "frequency": "daily",
+      "dose": "75 mg",
+      "frequency": "once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150 mg",
+      "frequency": "twice daily",
       "active": false
     }
   ],
@@ -53,70 +47,69 @@
     "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No known allergies",
-    "truth": "Penicillin allergy (rash)",
-    "gold_question": "Have you ever had any reactions to antibiotics, especially penicillin?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Atorvastatin 20 mg daily, Metformin 500 mg twice daily, Losartan 100 mg daily, Aspirin 75 mg daily, Ranitidine 150 mg twice daily (active)",
+    "truth": "Ranitidine discontinued 6 months ago due to concern over NDMA contamination; patient now on Omeprazole 20 mg daily for gastroprotection",
+    "gold_question": "Have there been any changes to your medication list in the last 12 months, particularly regarding medications for stomach acid or ulcer prevention?"
   },
   "distractors": [
     {
-      "description": "Pneumonia resolved in 2018",
-      "why_irrelevant": "Resolved years ago, no current impact"
+      "description": "History of pneumonia in 2018, fully resolved",
+      "why_irrelevant": "Remote infection, fully resolved, no impact on current perioperative risk"
     },
     {
-      "description": "Left femur fracture healed in 2010",
-      "why_irrelevant": "Remote, fully healed"
+      "description": "Fractured right wrist in 2005, treated with casting, full recovery",
+      "why_irrelevant": "Remote trauma, no residual impairment or impact on current surgical plan"
     },
     {
-      "description": "Discontinued simvastatin due to muscle pain in 2015",
-      "why_irrelevant": "Medication discontinued for resolved side effect"
+      "description": "Discontinued medication: Amlodipine (stopped 2 years ago due to side effects)",
+      "why_irrelevant": "Medication discontinued for resolved condition, not relevant to current management"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "10mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Lisinopril",
-        "dose": "10mg",
-        "frequency": "daily",
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "once daily",
         "active": true
       },
       {
         "name": "Metformin",
-        "dose": "500mg",
+        "dose": "500 mg",
         "frequency": "twice daily",
         "active": true
       },
       {
-        "name": "Atorvastatin",
-        "dose": "20mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "daily",
+        "name": "Losartan",
+        "dose": "100 mg",
+        "frequency": "once daily",
         "active": true
       },
       {
         "name": "Aspirin",
-        "dose": "75mg",
-        "frequency": "daily",
-        "active": false
+        "dose": "75 mg",
+        "frequency": "once daily",
+        "active": true
+      },
+      {
+        "name": "Ranitidine",
+        "dose": "150 mg",
+        "frequency": "twice daily",
+        "active": true
       }
     ],
-    "allergies": [],
-    "past_history": [
-      "Pneumonia resolved in 2018",
-      "Left femur fracture healed in 2010",
-      "Discontinued simvastatin due to muscle pain in 2015"
+    "allergies": [
+      "Penicillin (rash)"
     ],
-    "prior_anesthesia": "Previous spinal anesthesia for cataract surgery in 2015, uneventful"
+    "past_history": [
+      "Pneumonia (2018)",
+      "Fractured right wrist (2005)",
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Chronic Kidney Disease (Stage 3)",
+      "Osteoarthritis (bilateral hip, worse on left)"
+    ],
+    "prior_anesthesia": null
   }
 }

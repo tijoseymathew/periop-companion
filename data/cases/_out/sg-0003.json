@@ -1,5 +1,6 @@
 {
   "case_id": "sg-0003",
+  "label": null,
   "patient_profile_ref": null,
   "sources": [
     {
@@ -92,7 +93,9 @@
           "section": "Past History"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "doc:med-list",
@@ -139,7 +142,9 @@
           "section": "Current Medications"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "doc:op-plan",
@@ -156,7 +161,9 @@
           "section": "Anesthesia"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "doc:prior-anesthetic-record",
@@ -168,7 +175,9 @@
           "section": "Summary"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:preop-interview",
@@ -287,7 +296,9 @@
           "speaker": "PATIENT",
           "text": "No questions, doc. Just want to get this done and recover smoothly. Thanks for explaining everything so clearly."
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:intraop-notes",
@@ -357,7 +368,9 @@
           "speaker": "PROVIDER",
           "text": "[08:40] patient breathing spontaneously, oxygen saturation ninety-eight percent on nasal cannula"
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:postop-interview",
@@ -448,7 +461,9 @@
           "speaker": "PATIENT",
           "text": "Blood pressure was a bit high before surgery, but nurses said it's stable now. Sugar was 12 this morning, but I took my medicine. No dizziness or fast heart beats."
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     }
   ],
   "artifacts": [
@@ -457,129 +472,131 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "66-year-old male with history of hypertension, type 2 diabetes mellitus, hyperlipidemia, atrial fibrillation, and prior cholecystectomy under general anesthesia 15 years ago without complications. No new medical conditions, airway issues, or anesthesia difficulties since last general anesthesia.",
+          "text": "66-year-old male",
           "provenance": [
-            "doc:gp-summary#c011",
-            "doc:gp-summary#c012",
-            "doc:gp-summary#c013",
-            "doc:gp-summary#c014",
-            "doc:prior-anesthetic-record#c001",
-            "audio:preop-interview#s012"
+            "doc:gp-summary#c001"
           ],
-          "status": "conflicting"
+          "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Amlodipine 10mg daily.",
+          "text": "Occupation: Senior Official or Manager, Resident of Tampines, Singapore",
           "provenance": [
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Metoprolol 50mg twice daily.",
+          "text": "Relevant because it may influence blood pressure management during anesthesia",
           "provenance": [
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c011"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-004",
-          "text": "Metformin 500mg thrice daily.",
+          "text": "Relevant because it may affect perioperative glucose control",
           "provenance": [
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c012"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-005",
-          "text": "Glimepiride 4mg daily.",
+          "text": "Relevant because it is a cardiovascular risk factor",
           "provenance": [
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c013"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-006",
-          "text": "Atorvastatin 20mg daily.",
+          "text": "Relevant because it may impact cardiac management during anesthesia",
           "provenance": [
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c014",
+            "audio:preop-interview#s014"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-007",
-          "text": "Digoxin 0.125mg daily.",
+          "text": "No recent episodes or changes in cardiac status",
           "provenance": [
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s014"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
           "claim_id": "c-008",
-          "text": "Warfarin 5mg daily.",
+          "text": "Penicillin allergy with rash",
           "provenance": [
-            "audio:preop-interview#s004"
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-009",
-          "text": "Enalapril discontinued 6 months ago due to persistent dry cough.",
+          "text": "No other known allergies to medications, latex, adhesives, foods, or other substances",
+          "provenance": [
+            "audio:preop-interview#s007"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "Current Medications: Amlodipine 10mg daily, Metoprolol 50mg twice daily, Metformin 500mg thrice daily, Glimepiride 4mg daily, Atorvastatin 20mg daily, Digoxin 0.125mg daily, Warfarin 5mg daily",
+          "provenance": [
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "doc:med-list#c005",
+            "doc:med-list#c006",
+            "doc:med-list#c007",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "Enalapril discontinued 6 months ago due to dry cough",
           "provenance": [
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "Last dose of Warfarin and current INR level not documented.",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Atrial fibrillation present; rate control status and current Digoxin levels not documented.",
-          "provenance": [
-            "doc:gp-summary#c014",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
           "claim_id": "c-012",
-          "text": "Penicillin allergy with rash.",
-          "provenance": [
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Patient confirms fasting since midnight, last sip of water at 6am.",
+          "text": "NPO after midnight, last sip of water at 6am",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "ASA-PS class II: Patient has mild systemic disease (hypertension, diabetes, hyperlipidemia, atrial fibrillation) without functional limitation. Justification: chronic conditions controlled with medications, able to perform light activities, no acute issues.",
+          "claim_id": "c-013",
+          "text": "ASA-PS II (Relevant because of well-controlled but present comorbidities: Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, Atrial Fibrillation)",
           "provenance": [
             "doc:gp-summary#c011",
             "doc:gp-summary#c012",
             "doc:gp-summary#c013",
-            "doc:gp-summary#c014",
-            "audio:preop-interview#s014"
+            "doc:gp-summary#c014"
           ],
-          "status": "conflicting"
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "Elective inguinal hernia repair",
+          "provenance": [
+            "doc:op-plan#c001"
+          ],
+          "status": "supported"
         },
         {
           "claim_id": "c-015",
-          "text": "Proceed with spinal anesthesia using bupivacaine and fentanyl, supplemented with propofol sedation as planned.",
+          "text": "Spinal anesthesia with bupivacaine and fentanyl, supplemented with propofol sedation",
           "provenance": [
             "doc:op-plan#c002"
           ],
@@ -587,19 +604,29 @@
         },
         {
           "claim_id": "c-016",
-          "text": "Enalapril was discontinued by the patient 6 months ago; no need to hold on day of surgery.",
+          "text": "No concerns or prior negative experiences with spinal anesthesia or sedation",
           "provenance": [
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-017",
-          "text": "Warfarin management reviewed with surgical team.",
+          "text": "Warfarin management reviewed with surgical team, no recent INR checks or dose adjustments mentioned",
           "provenance": [
             "audio:preop-interview#s015"
           ],
-          "status": "supported"
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-018",
+          "text": "Relevant because it may influence drug choice (e.g., NSAIDs) and postoperative care",
+          "provenance": [
+            "doc:gp-summary#c017",
+            "audio:preop-interview#s015"
+          ],
+          "status": "unsupported"
         }
       ]
     },
@@ -608,7 +635,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "At 08:00, propofol 120 mg administered",
+          "text": "08:00 Propofol 120 milligrams administered for induction",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -616,7 +643,7 @@
         },
         {
           "claim_id": "c-002",
-          "text": "At 08:05, bupivacaine 2.5 mg administered",
+          "text": "08:05 Bupivacaine 2.5 milligrams administered for spinal anesthesia",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -624,7 +651,7 @@
         },
         {
           "claim_id": "c-003",
-          "text": "At 08:05, fentanyl 20 mcg administered",
+          "text": "08:05 Fentanyl 20 micrograms administered for spinal anesthesia",
           "provenance": [
             "audio:intraop-notes#s002"
           ],
@@ -632,7 +659,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "At 08:10, 18 gauge IV catheter placed",
+          "text": "08:10 Eighteen gauge IV catheter placed in left antecubital fossa",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
@@ -640,7 +667,7 @@
         },
         {
           "claim_id": "c-005",
-          "text": "At 08:15, blood pressure 80/50 mmHg recorded",
+          "text": "08:15 Blood pressure recorded as 80/50 mmHg",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -648,7 +675,7 @@
         },
         {
           "claim_id": "c-006",
-          "text": "At 08:15, ephedrine 10 mg administered",
+          "text": "08:15 Ephedrine 10 milligrams administered IV",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
@@ -656,7 +683,7 @@
         },
         {
           "claim_id": "c-007",
-          "text": "At 08:20, normal saline 1000 ml bolus administered",
+          "text": "08:20 Normal saline 1000 milliliters bolus administered",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
@@ -664,7 +691,7 @@
         },
         {
           "claim_id": "c-008",
-          "text": "At 08:25, propofol infusion started at 50 mcg/kg/min",
+          "text": "08:25 Propofol infusion started at 50 micrograms per kilogram per minute",
           "provenance": [
             "audio:intraop-notes#s006"
           ],
@@ -672,7 +699,7 @@
         },
         {
           "claim_id": "c-009",
-          "text": "At 08:30, blood pressure 150/90 mmHg recorded",
+          "text": "08:30 Blood pressure recorded as 150/90 mmHg",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -680,7 +707,7 @@
         },
         {
           "claim_id": "c-010",
-          "text": "At 08:30, labetalol 10 mg administered",
+          "text": "08:30 Labetalol 10 milligrams administered IV",
           "provenance": [
             "audio:intraop-notes#s007"
           ],
@@ -688,7 +715,7 @@
         },
         {
           "claim_id": "c-011",
-          "text": "At 08:35, maintenance fluids started at 100 ml/hour",
+          "text": "08:35 Maintenance fluids started at 100 milliliters per hour",
           "provenance": [
             "audio:intraop-notes#s008"
           ],
@@ -696,7 +723,7 @@
         },
         {
           "claim_id": "c-012",
-          "text": "At 08:40, SpO2 98% recorded",
+          "text": "08:40 Patient breathing spontaneously, oxygen saturation 98% on nasal cannula",
           "provenance": [
             "audio:intraop-notes#s009"
           ],
@@ -709,71 +736,59 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Hemodynamic instability (hypotension/hypertension) due to intraoperative blood pressure fluctuations and preoperative antihypertensive medications",
+          "text": "Hypotension or hypertension requiring management due to history of hypertension, atrial fibrillation, and intra-op blood pressure fluctuations",
           "provenance": [
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c014",
             "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s007",
-            "audio:preop-interview#s004"
+            "audio:intraop-notes#s007"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Post-operative nausea and vomiting (PONV) risk from intraoperative opioid and propofol administration, compounded by preoperative diabetes",
+          "text": "Risk of postoperative nausea and vomiting (PONV) due to propofol use and history of spinal anesthesia with sedation",
           "provenance": [
             "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:preop-interview#s008"
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s016"
           ],
-          "status": "unsupported"
+          "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Glycemic control challenges due to preoperative diabetes and intraoperative fasting",
+          "text": "Glycemic control concerns due to Type 2 Diabetes Mellitus and use of metformin and glimepiride",
           "provenance": [
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s010"
+            "doc:gp-summary#c012",
+            "doc:med-list#c003",
+            "doc:med-list#c004"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Airway compromise risk from propofol-induced respiratory depression",
+          "text": "Airway watch due to spontaneous breathing with nasal cannula and potential for respiratory depression from fentanyl",
           "provenance": [
-            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
             "audio:intraop-notes#s009"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-005",
-          "text": "Bleeding risk from preoperative warfarin use and surgical site trauma",
+          "text": "Analgesia management due to spinal anesthesia with bupivacaine and fentanyl, requiring monitoring for adequate pain control",
           "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Arrhythmias from atrial fibrillation, digoxin use, and intraoperative beta-blocker administration",
-          "provenance": [
-            "doc:gp-summary#c011",
-            "doc:gp-summary#c012",
-            "doc:gp-summary#c013",
-            "doc:gp-summary#c014",
-            "audio:preop-interview#s014",
-            "audio:preop-interview#s004",
-            "audio:intraop-notes#s007"
+            "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
-          "claim_id": "c-007",
-          "text": "Neurological deficits from spinal anesthesia components (bupivacaine and fentanyl)",
+          "claim_id": "c-006",
+          "text": "Bleeding risk due to Warfarin use and need for monitoring in postoperative period",
           "provenance": [
-            "audio:intraop-notes#s002",
-            "doc:op-plan#c002"
+            "doc:med-list#c007",
+            "audio:preop-interview#s015"
           ],
           "status": "inference"
         }
@@ -784,66 +799,95 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "66-year-old male undergoing surgery with history of hypertension, type 2 diabetes mellitus, hyperlipidemia, atrial fibrillation, and prior cholecystectomy under general anesthesia 15 years ago without complications. ASA-PS class II: mild systemic disease without functional limitation.",
+          "text": "66-year-old male recovering from elective inguinal hernia repair under spinal anesthesia with bupivacaine and fentanyl, supplemented with propofol sedation.",
           "provenance": [
-            "doc:gp-summary#c011",
-            "doc:gp-summary#c012",
-            "doc:gp-summary#c013",
-            "doc:gp-summary#c014",
-            "doc:prior-anesthetic-record#c001",
-            "audio:preop-interview#s012",
-            "audio:preop-interview#s014"
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001",
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "Medications include amlodipine 10mg daily, metoprolol 50mg twice daily, metformin 500mg thrice daily, glimepiride 4mg daily, atorvastatin 20mg daily, digoxin 0.125mg daily, and warfarin 5mg daily. Enalapril was discontinued 6 months ago due to cough. Penicillin allergy with rash. Patient fasted since midnight, last water at 6am. Spinal anesthesia with bupivacaine/fentanyl and propofol sedation planned. Warfarin management reviewed with surgical team.",
+          "text": "Patient has a history of hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, and Atrial Fibrillation, all of which are well-controlled but relevant to perioperative care. Current medications include Amlodipine, Metoprolol, Metformin, Glimepiride, Atorvastatin, Digoxin, and Warfarin. Penicillin allergy with rash is noted.",
           "provenance": [
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s006",
-            "audio:preop-interview#s008",
-            "audio:preop-interview#s010",
-            "doc:op-plan#c002",
-            "audio:preop-interview#s015"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Intraoperative course: Hypotension (80/50 mmHg) treated with ephedrine 10mg and 1000ml saline bolus; subsequent hypertension (150/90 mmHg) treated with labetalol 10mg. Propofol infusion at 50 mcg/kg/min. SpO2 98% maintained. Missing documentation: last warfarin dose/INR, current digoxin levels, and rate control status for atrial fibrillation.",
-          "provenance": [
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s007",
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s009",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c014"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Monitor for hemodynamic instability (history of BP fluctuations, antihypertensives). Assess glycemic control (diabetes, fasting). Watch for PONV (opioid/propofol use, diabetes). Prevent airway compromise (propofol sedation). Manage bleeding risk (warfarin use). Monitor for arrhythmias (AFib, digoxin, beta-blocker). Evaluate for neurological deficits post-spinal anesthesia.",
-          "provenance": [
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005",
-            "audio:intraop-notes#s007",
-            "audio:preop-interview#s004",
-            "audio:preop-interview#s010",
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:preop-interview#s008",
-            "audio:intraop-notes#s009",
             "doc:gp-summary#c011",
             "doc:gp-summary#c012",
             "doc:gp-summary#c013",
             "doc:gp-summary#c014",
-            "audio:preop-interview#s014",
-            "doc:op-plan#c002"
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "doc:med-list#c005",
+            "doc:med-list#c006",
+            "doc:med-list#c007",
+            "audio:preop-interview#s004",
+            "doc:gp-summary#c010",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Warfarin management was reviewed with the surgical team, but no recent INR checks or dose adjustments were mentioned. This may influence drug choices and postoperative care, particularly regarding bleeding risk.",
+          "provenance": [
+            "audio:preop-interview#s015",
+            "doc:med-list#c007"
           ],
           "status": "unsupported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Intraoperative blood pressure fluctuations were noted, with a low of 80/50 mmHg requiring ephedrine and a high of 150/90 mmHg requiring labetalol. The patient is currently breathing spontaneously with oxygen saturation at 98% on a nasal cannula.",
+          "provenance": [
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Anticipated issues include hypotension or hypertension requiring management, risk of postoperative nausea and vomiting (PONV), glycemic control concerns, need for airway monitoring due to spontaneous breathing with nasal cannula and potential respiratory depression from fentanyl, and analgesia management.",
+          "provenance": [
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c014",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s016",
+            "doc:gp-summary#c012",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Monitor blood pressure closely and be prepared to manage hypertension or hypotension. Watch for signs of PONV and manage accordingly. Maintain glycemic control with attention to the patient's diabetes management. Ensure airway protection and monitor for respiratory depression. Assess pain control and adjust analgesia as needed. Monitor for bleeding due to Warfarin use.",
+          "provenance": [
+            "doc:gp-summary#c011",
+            "doc:gp-summary#c014",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s006",
+            "audio:preop-interview#s012",
+            "audio:preop-interview#s016",
+            "doc:gp-summary#c012",
+            "doc:med-list#c003",
+            "doc:med-list#c004",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s009",
+            "doc:med-list#c007",
+            "audio:preop-interview#s015"
+          ],
+          "status": "supported"
         }
       ]
     },
@@ -852,7 +896,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Patient reports pain at the operation site rated 3-4 on a scale of 0-10.",
+          "text": "Patient reports pain at the operation site, rating it 3 or 4 on a scale of 0 to 10, and describes it as manageable.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
@@ -860,15 +904,15 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Patient denies nausea or vomiting postoperatively.",
+          "text": "Patient denies nausea or vomiting since waking up, but mentions a slightly upset stomach.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
-          "status": "unsupported"
+          "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Patient reports no chest tightness or shortness of breath; breathing comfortably.",
+          "text": "Patient reports breathing comfortably with no chest tightness or shortness of breath.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
@@ -876,7 +920,7 @@
         },
         {
           "claim_id": "c-004",
-          "text": "Patient experienced no intraoperative awareness or discomfort.",
+          "text": "Patient recalls no awareness or discomfort during the surgery, describing it as sleeping 'like a baby'.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
@@ -884,97 +928,17 @@
         },
         {
           "claim_id": "c-005",
-          "text": "Intraoperative hypotension (80/50 mmHg) treated with ephedrine 10mg IV, followed by hypertension (150/90 mmHg) managed with labetalol 10mg IV.",
+          "text": "Patient mentions blood pressure was high before surgery but is now stable, with no dizziness or heart palpitations reported postoperatively.",
           "provenance": [
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s007"
+            "audio:postop-interview#s012"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Postoperative blood glucose level of 12 mmol/L; patient reports taking diabetes medications as scheduled.",
+          "text": "Patient's blood sugar level was 12 mmol/L on the morning of surgery, and they took their diabetes medication as scheduled.",
           "provenance": [
             "audio:postop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "No complications from spinal anesthesia; patient reports smooth recovery consistent with prior uneventful hernia repair.",
-          "provenance": [
-            "doc:prior-anesthetic-record#c001",
-            "audio:postop-interview#s012"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Patient discontinued enalapril due to persistent dry cough, switched to amlodipine.",
-          "provenance": [
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Current medications include amlodipine 10mg daily, metoprolol 50mg twice daily, metformin 500mg thrice daily, glimepiride 4mg daily, atorvastatin 20mg daily, digoxin 0.125mg daily, and warfarin 5mg daily.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:gp-summary#c003",
-            "doc:gp-summary#c004",
-            "doc:gp-summary#c005",
-            "doc:gp-summary#c006",
-            "doc:gp-summary#c007",
-            "doc:gp-summary#c009",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "doc:med-list#c004",
-            "doc:med-list#c005",
-            "doc:med-list#c006",
-            "doc:med-list#c007",
-            "doc:med-list#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient reports penicillin allergy with rash.",
-          "provenance": [
-            "doc:gp-summary#c010",
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Past medical history includes hypertension, type 2 diabetes mellitus, hyperlipidemia, atrial fibrillation, resolved pneumonia, healed right ulna fracture, and resolved peptic ulcer disease.",
-          "provenance": [
-            "doc:gp-summary#c011",
-            "doc:gp-summary#c012",
-            "doc:gp-summary#c013",
-            "doc:gp-summary#c014",
-            "doc:gp-summary#c015",
-            "doc:gp-summary#c016",
-            "doc:gp-summary#c017"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Elective inguinal hernia repair performed under spinal anesthesia with bupivacaine and fentanyl, supplemented with propofol sedation.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Intraoperative spontaneous breathing with oxygen saturation of 98% on nasal cannula.",
-          "provenance": [
-            "audio:intraop-notes#s009"
           ],
           "status": "supported"
         }
@@ -982,38 +946,101 @@
     }
   ],
   "open_questions": [
-    "When was the last dose of Warfarin, and what is the current INR level?",
-    "Is the atrial fibrillation rate-controlled, and what are the current Digoxin levels?",
-    "What type of reaction did the patient have to penicillin (e.g., rash, anaphylaxis)?",
-    "Have there been any new medical conditions, airway issues, or difficulties with anesthesia since the last general anesthesia 15 years ago?",
-    "What is the current HbA1c level, and have there been any recent episodes of hypoglycemia or hyperglycemia?",
-    "What are the patient's current blood pressure readings, and are they well-controlled?",
-    "Is the patient still taking Enalapril, and are there plans to hold it on the day of surgery?"
+    {
+      "question": "Can you confirm if there have been any changes to your medication list since it was last recorded? Specifically, have any of the following been stopped, changed, or replaced: Amlodipine, Metoprolol, Metformin, Glimepiride, Atorvastatin, Digoxin, Warfarin, Enalapril?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003",
+        "doc:med-list#c004",
+        "doc:med-list#c005",
+        "doc:med-list#c006",
+        "doc:med-list#c007",
+        "doc:med-list#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a documented allergy to Penicillin. Have you experienced any other reactions to drugs, latex, adhesives (like plasters), foods, or any other substances that we should be aware of?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c010"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of Atrial Fibrillation. Is this currently well-controlled, and have you had any recent episodes or changes in your cardiac status that might impact anesthesia?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c014"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You are taking Warfarin for anticoagulation. Have you had any recent INR checks, and has the dose been adjusted recently? Are you aware of the plan regarding Warfarin management around the time of surgery?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of Peptic Ulcer Disease. Has this been recently active, or have you had any gastrointestinal bleeding or symptoms that could be relevant to anesthesia or postoperative care?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c017"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You are scheduled for spinal anesthesia with supplemental propofol sedation. Do you have any concerns or prior experiences with spinal anesthesia or sedation that we should be aware of?",
+      "reason": "missing",
+      "provenance": [
+        "doc:op-plan#c002"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You had a prior anesthetic for cholecystectomy 15 years ago without complications. Have you had any other surgeries or anesthetics since then that we should be aware of?",
+      "reason": "stale",
+      "provenance": [
+        "doc:prior-anesthetic-record#c001"
+      ],
+      "review": null,
+      "edited_text": null
+    }
   ],
   "intraop_events": [
     {
       "t": "08:00",
       "category": "agent",
-      "value": "propofol 120 mg",
-      "units": "mg",
+      "value": "propofol",
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s001"
       ]
     },
     {
       "t": "08:05",
-      "category": "agent",
-      "value": "bupivacaine 2.5 mg",
-      "units": "mg",
+      "category": "dose",
+      "value": "bupivacaine 2.5",
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s002"
       ]
     },
     {
       "t": "08:05",
-      "category": "agent",
-      "value": "fentanyl 20 mcg",
-      "units": "mcg",
+      "category": "dose",
+      "value": "fentanyl 20",
+      "units": "micrograms",
       "provenance": [
         "audio:intraop-notes#s002"
       ]
@@ -1021,7 +1048,7 @@
     {
       "t": "08:10",
       "category": "line",
-      "value": "18 gauge",
+      "value": "eighteen gauge IV catheter",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s003"
@@ -1030,7 +1057,7 @@
     {
       "t": "08:15",
       "category": "event",
-      "value": "80/50 mmHg",
+      "value": "blood pressure 80/50",
       "units": "mmHg",
       "provenance": [
         "audio:intraop-notes#s004"
@@ -1039,8 +1066,8 @@
     {
       "t": "08:15",
       "category": "agent",
-      "value": "ephedrine 10 mg",
-      "units": "mg",
+      "value": "ephedrine",
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s004"
       ]
@@ -1048,17 +1075,17 @@
     {
       "t": "08:20",
       "category": "fluid",
-      "value": "normal saline 1000 ml",
-      "units": "ml",
+      "value": "normal saline 1000",
+      "units": "milliliters",
       "provenance": [
         "audio:intraop-notes#s005"
       ]
     },
     {
       "t": "08:25",
-      "category": "dose",
-      "value": "propofol 50 mcg/kg/min",
-      "units": "mcg/kg/min",
+      "category": "agent",
+      "value": "propofol",
+      "units": "micrograms per kilogram per minute",
       "provenance": [
         "audio:intraop-notes#s006"
       ]
@@ -1066,7 +1093,7 @@
     {
       "t": "08:30",
       "category": "event",
-      "value": "150/90 mmHg",
+      "value": "blood pressure 150/90",
       "units": "mmHg",
       "provenance": [
         "audio:intraop-notes#s007"
@@ -1075,8 +1102,8 @@
     {
       "t": "08:30",
       "category": "agent",
-      "value": "labetalol 10 mg",
-      "units": "mg",
+      "value": "labetalol",
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s007"
       ]
@@ -1084,8 +1111,8 @@
     {
       "t": "08:35",
       "category": "fluid",
-      "value": "100 ml/hour",
-      "units": "ml/hour",
+      "value": "maintenance fluids 100",
+      "units": "milliliters per hour",
       "provenance": [
         "audio:intraop-notes#s008"
       ]
@@ -1093,20 +1120,32 @@
     {
       "t": "08:40",
       "category": "event",
-      "value": "SpO2 98%",
-      "units": "%",
+      "value": "patient breathing spontaneously, oxygen saturation 98%",
+      "units": null,
       "provenance": [
         "audio:intraop-notes#s009"
       ]
     }
   ],
   "anticipated_issues": [
-    "Hemodynamic instability (hypotension/hypertension) due to intraoperative blood pressure fluctuations and preoperative antihypertensive medications",
-    "Post-operative nausea and vomiting (PONV) risk from intraoperative opioid and propofol administration, compounded by preoperative diabetes",
-    "Glycemic control challenges due to preoperative diabetes and intraoperative fasting",
-    "Airway compromise risk from propofol-induced respiratory depression",
-    "Bleeding risk from preoperative warfarin use and surgical site trauma",
-    "Arrhythmias from atrial fibrillation, digoxin use, and intraoperative beta-blocker administration",
-    "Neurological deficits from spinal anesthesia components (bupivacaine and fentanyl)"
-  ]
+    "Hypotension or hypertension requiring management due to history of hypertension, atrial fibrillation, and intra-op blood pressure fluctuations",
+    "Risk of postoperative nausea and vomiting (PONV) due to propofol use and history of spinal anesthesia with sedation",
+    "Glycemic control concerns due to Type 2 Diabetes Mellitus and use of metformin and glimepiride",
+    "Airway watch due to spontaneous breathing with nasal cannula and potential for respiratory depression from fentanyl",
+    "Analgesia management due to spinal anesthesia with bupivacaine and fentanyl, requiring monitoring for adequate pain control",
+    "Bleeding risk due to Warfarin use and need for monitoring in postoperative period"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA-4 suitable for spinal anesthesia with potential airway sensitivity due to age and comorbidities."
+    },
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope recommended for difficult airway anticipation in elderly patient with comorbidities."
+    }
+  ],
+  "workflow": null
 }

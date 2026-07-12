@@ -2,67 +2,67 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I’m Dr. Liew, the anesthesiologist who’ll be looking after you today. I’d like to go through some questions to make sure we’re all set for your hernia surgery. Is that okay with you?"
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your hip replacement surgery. I'd like to go through some questions to ensure your safety and comfort during the procedure. Is that alright with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, doctor. I’m ready. Let’s get started lah."
+      "text": "Yes, doctor. I'm ready. I want to make sure everything goes smoothly for my hip."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and have you noticed any changes recently?"
+      "text": "Great. Let's start with your medical history. You've been diagnosed with hypertension, type 2 diabetes, osteoarthritis in both hips, and high cholesterol. Can you tell me a bit about how these conditions have been managed lately?"
     },
     {
       "speaker": "PATIENT",
-      "text": "It’s been there for about a year, but it’s gotten bigger and sometimes aches, especially when I lift things. That’s why I’m getting it fixed now."
+      "text": "Sure, doctor. My blood pressure is okay with the Lisinopril, but sometimes it fluctuates a bit. My sugar levels have been under control with Metformin and Insulin Glargine. The hips have been really painful, that's why I'm having the surgery. And my cholesterol is managed with Atorvastatin."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let’s go through your medications. You’re on amlodipine, lisinopril, atorvastatin, metformin, and paracetamol as needed. Aspirin was stopped recently, right?"
+      "text": "Thank you for that. Now, regarding your medications, I see you're on Metformin, Atorvastatin, Lisinopril, Insulin Glargine, and Paracetamol as needed. Can you confirm if you are currently taking any blood-thinning medications, including those you may have stopped in the past year?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, I stopped the aspirin a week ago like the surgeon advised. The rest I take daily—amlodipine and lisinopril for blood pressure, atorvastatin for cholesterol, metformin for diabetes, and paracetamol if I have pain."
+      "text": "Oh, yes. I was on Clopidogrel for a while, but I stopped it about six months ago. I had a minor cardiac event, and after completing the prescribed course, my doctor said I could stop. I'm not on any antiplatelet therapy now."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you. Now, about allergies—your records say ‘no allergies documented,’ but I always like to double-check. Do you have any history of allergic reactions to antibiotics, especially penicillin?"
+      "text": "Thank you for sharing that. It's important we know about all medications, even those you've stopped. You mentioned Paracetamol as needed; how often have you been taking it for your hip pain?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, yes! I had a bad reaction to penicillin years ago. I got a rash all over and hives, so I’ve avoided it since. I think I mentioned it before, but maybe it wasn’t written down properly."
+      "text": "Not too often, doctor. Maybe once or twice a week when the pain gets really bad. I try not to take it too much."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for clarifying that. We’ll make sure to note that clearly. Have you eaten or drunk anything since midnight?"
+      "text": "Understood. Now, about allergies. You've listed penicillin as an allergy. Can you describe the reaction you had?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, I’ve been fasting since 12am. Just a sip of water for my morning meds, but that was hours ago."
+      "text": "Yes, I had a rash and some swelling the last time I took penicillin. So I've been avoiding it since."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Have you had anesthesia before? Any issues with it?"
+      "text": "Thank you for that information. It's crucial for us to know. Now, regarding your surgery and anesthesia, we're planning for general anesthesia with an epidural for post-operative pain management. Have you had any previous anesthetics or surgeries that you'd like to share about?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Once, for a cataract surgery. I had a spinal then too, and it was fine. No problems at all."
+      "text": "I had a cataract surgery a few years back, and that was under local anesthesia. No other major surgeries, so this will be my first under general anesthesia."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good to know. Lastly, how’s your overall health? Any shortness of breath, chest pain, or difficulty with daily activities?"
+      "text": "Alright, that's helpful. Lastly, can you confirm your NPO status? Have you had anything to eat or drink since midnight?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I can walk and do most things, but my knees hurt sometimes from osteoarthritis. No breathing issues or dizziness, though."
+      "text": "No, doctor. I've been fasting as instructed. Nothing since last night."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thanks for sharing all that, Mr. Tan. We’ll proceed with spinal anesthesia using bupivacaine and fentanyl, plus IV paracetamol and ondansetron as planned. Any questions for me?"
+      "text": "Excellent. Thank you for going through all these questions with me. It's important we cover everything to ensure your safety. If you have any more questions or concerns, please don't hesitate to ask."
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. I think that’s all covered. Thank you for explaining everything so clearly."
+      "text": "Thank you, doctor. I feel more at ease now. I'm ready for the surgery."
     }
   ]
 }

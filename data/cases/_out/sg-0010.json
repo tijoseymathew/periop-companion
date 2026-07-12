@@ -1,5 +1,6 @@
 {
   "case_id": "sg-0010",
+  "label": null,
   "patient_profile_ref": null,
   "sources": [
     {
@@ -13,36 +14,43 @@
         },
         {
           "chunk_id": "c002",
-          "text": "ethinyl estradiol and norethindrone as directed daily.",
+          "text": "Metformin 500 mg Twice daily.",
           "section": "Medications"
         },
         {
           "chunk_id": "c003",
-          "text": "amoxicillin 500mg twice daily.",
+          "text": "Lisinopril 10 mg Once daily.",
           "section": "Medications"
         },
         {
           "chunk_id": "c004",
+          "text": "Atorvastatin 20 mg Once daily.",
+          "section": "Medications"
+        },
+        {
+          "chunk_id": "c005",
           "text": "No known drug allergies recorded.",
           "section": "Allergies"
         },
         {
-          "chunk_id": "c005",
-          "text": "History of pneumonia resolved in 2019",
-          "section": "Past History"
-        },
-        {
           "chunk_id": "c006",
-          "text": "Fractured left wrist in 2015, fully healed",
+          "text": "History of pneumonia resolved 5 years ago",
           "section": "Past History"
         },
         {
           "chunk_id": "c007",
-          "text": "Discontinued lisinopril for hypertension in 2020",
+          "text": "Remote history of left wrist fracture (healed)",
+          "section": "Past History"
+        },
+        {
+          "chunk_id": "c008",
+          "text": "Previous use of Omeprazole for GERD, discontinued 2 years ago",
           "section": "Past History"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "doc:med-list",
@@ -50,16 +58,23 @@
       "chunks": [
         {
           "chunk_id": "c001",
-          "text": "ethinyl estradiol and norethindrone as directed daily.",
+          "text": "Metformin 500 mg Twice daily.",
           "section": "Current Medications"
         },
         {
           "chunk_id": "c002",
-          "text": "amoxicillin 500mg twice daily.",
+          "text": "Lisinopril 10 mg Once daily.",
+          "section": "Current Medications"
+        },
+        {
+          "chunk_id": "c003",
+          "text": "Atorvastatin 20 mg Once daily.",
           "section": "Current Medications"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "doc:op-plan",
@@ -67,16 +82,18 @@
       "chunks": [
         {
           "chunk_id": "c001",
-          "text": "Elective laparoscopic cholecystectomy for symptomatic cholelithiasis (elective).",
+          "text": "Laparoscopic Cholecystectomy (elective).",
           "section": "Procedure"
         },
         {
           "chunk_id": "c002",
-          "text": "General anesthesia with Laryngeal Mask Airway (LMA), induction with propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites",
+          "text": "General Anesthesia with Intraoperative Neuromonitoring",
           "section": "Anesthesia"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:preop-interview",
@@ -86,116 +103,146 @@
         {
           "seg_id": "s001",
           "t0": 0.0,
-          "t1": 13.2,
+          "t1": 19.6,
           "speaker": "PROVIDER",
-          "text": "Good morning, Madam Tan. I'm Dr. Lim from the anesthesia team. I'll be looking after you during your surgery today. Let me go through some questions to make sure everything's in order, okay?"
+          "text": "Good morning, Mr./Ms. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who'll be taking care of you during your surgery today. I'd like to go over a few things to make sure everything goes smoothly for you. Can you please tell me a bit about why you're having this surgery?"
         },
         {
           "seg_id": "s002",
-          "t0": 13.6,
-          "t1": 15.2,
+          "t0": 20.0,
+          "t1": 31.2,
           "speaker": "PATIENT",
-          "text": "Yes, doctor. I'm ready."
+          "text": "Morning, doctor. I've been having a lot of pain in my tummy, especially after eating. The doctor said it's because of gallstones, so they're removing my gallbladder laparoscopically."
         },
         {
           "seg_id": "s003",
-          "t0": 15.6,
-          "t1": 20.0,
+          "t0": 31.6,
+          "t1": 36.0,
           "speaker": "PROVIDER",
-          "text": "Great. Can you tell me briefly why you're having this surgery?"
+          "text": "I see. And how long have you been experiencing these symptoms?"
         },
         {
           "seg_id": "s004",
-          "t0": 20.4,
-          "t1": 30.8,
+          "t0": 36.4,
+          "t1": 44.0,
           "speaker": "PATIENT",
-          "text": "Sure. I've been having bad stomach pains on the right side, especially after eating. The scans showed gallstones, so they want to remove the gallbladder laparoscopically."
+          "text": "About six months now, on and off. It got worse last week, so they decided to take it out."
         },
         {
           "seg_id": "s005",
-          "t0": 31.2,
-          "t1": 34.0,
+          "t0": 44.4,
+          "t1": 54.8,
           "speaker": "PROVIDER",
-          "text": "Understood. Are you currently taking any medications?"
+          "text": "Understood. Now, let's go over your medical history. You have a history of type 2 diabetes, hypertension, and obesity. Are all these conditions well under control?"
         },
         {
           "seg_id": "s006",
-          "t0": 34.4,
-          "t1": 47.2,
+          "t0": 55.2,
+          "t1": 65.2,
           "speaker": "PATIENT",
-          "text": "Yes. I take combined oral contraceptive pills—ethinyl estradiol and norethindrone—every day. And I was on amoxicillin 500mg twice daily for a chest infection, but I stopped that two days ago as instructed."
+          "text": "Yes, lah. My sugar levels are okay with the metformin, blood pressure is stable with lisinopril, and I'm trying to eat better and walk more."
         },
         {
           "seg_id": "s007",
-          "t0": 47.6,
-          "t1": 52.8,
+          "t0": 65.6,
+          "t1": 79.6,
           "speaker": "PROVIDER",
-          "text": "Thank you. Do you have any allergies to medications, especially antibiotics like penicillin?"
+          "text": "Great to hear that. Now, let's talk about your medications. You're currently on metformin 500 mg twice daily, lisinopril 10 mg once daily, atorvastatin 20 mg once daily, and you've stopped ranitidine. Is that correct?"
         },
         {
           "seg_id": "s008",
-          "t0": 53.2,
-          "t1": 64.8,
+          "t0": 80.0,
+          "t1": 83.6,
           "speaker": "PATIENT",
-          "text": "Oh, yes! I had a bad rash all over my body once when I took penicillin for a tooth infection. It was terrible, so I avoid all penicillin now."
+          "text": "Yes, that's right. I stopped the ranitidine as advised."
         },
         {
           "seg_id": "s009",
-          "t0": 65.2,
-          "t1": 69.6,
+          "t0": 84.0,
+          "t1": 98.8,
           "speaker": "PROVIDER",
-          "text": "Important to know. Have you eaten or drunk anything since midnight?"
+          "text": "Good. Now, regarding allergies, the records say 'no known allergies', but I understand there might be something more to add here. Can you confirm if you have any allergies to antibiotics, including cephalosporins, in addition to penicillin?"
         },
         {
           "seg_id": "s010",
-          "t0": 70.0,
-          "t1": 76.4,
+          "t0": 99.2,
+          "t1": 115.2,
           "speaker": "PATIENT",
-          "text": "No, doctor. I had my last sip of water at 7 a.m., like the nurse instructed."
+          "text": "Oh, right. I forgot to mention that. I had a reaction to a cephalosporin antibiotic once — I think it was ceftriaxone — and I had nausea and vomiting. Not as bad as the penicillin rash, but still a reaction."
         },
         {
           "seg_id": "s011",
-          "t0": 76.8,
-          "t1": 79.6,
+          "t0": 115.6,
+          "t1": 128.4,
           "speaker": "PROVIDER",
-          "text": "Good. Have you had any anesthesia before?"
+          "text": "Thank you for letting me know. That's very important. We'll make sure to avoid cephalosporins during your care. Are you currently on any other medications or supplements, including traditional or herbal remedies?"
         },
         {
           "seg_id": "s012",
-          "t0": 80.0,
-          "t1": 87.2,
+          "t0": 128.8,
+          "t1": 133.6,
           "speaker": "PATIENT",
-          "text": "Yes, once for a hernia repair. I woke up fine, just a bit sleepy. No problems at all."
+          "text": "No, just the ones I mentioned. No herbs or anything like that."
         },
         {
           "seg_id": "s013",
-          "t0": 87.6,
-          "t1": 92.8,
+          "t0": 134.0,
+          "t1": 141.2,
           "speaker": "PROVIDER",
-          "text": "Excellent. Lastly, are you able to carry out your daily activities without difficulty?"
+          "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, did you have any issues with it?"
         },
         {
           "seg_id": "s014",
-          "t0": 93.2,
-          "t1": 102.4,
+          "t0": 141.6,
+          "t1": 150.4,
           "speaker": "PATIENT",
-          "text": "Mostly, lah. The gallbladder pains come and go, but I can still walk, climb stairs, and do housework unless it's a bad day."
+          "text": "I had a minor procedure a few years back, a colonoscopy, and I was under sedation. I woke up fine, no problems."
         },
         {
           "seg_id": "s015",
-          "t0": 102.8,
-          "t1": 117.6,
+          "t0": 150.8,
+          "t1": 159.2,
           "speaker": "PROVIDER",
-          "text": "Thank you, Madam Tan. We'll proceed with general anesthesia using a Laryngeal Mask Airway as planned. You'll get propofol and fentanyl for induction, sevoflurane for maintenance, and local anesthesia at the port sites. Any questions for me?"
+          "text": "Good. And how are you with your mobility and daily activities? Can you walk up a flight of stairs without difficulty?"
         },
         {
           "seg_id": "s016",
-          "t0": 118.0,
-          "t1": 120.0,
+          "t0": 159.6,
+          "t1": 169.2,
           "speaker": "PATIENT",
-          "text": "No, doctor. I'm all set."
+          "text": "Yes, I can still walk and do most things, though I do get a bit tired sometimes. But I can manage my daily activities."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 169.6,
+          "t1": 174.8,
+          "speaker": "PROVIDER",
+          "text": "Thank you. Lastly, have you had anything to eat or drink since midnight?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 175.2,
+          "t1": 183.2,
+          "speaker": "PATIENT",
+          "text": "No, I've been fasting as instructed. Just a sip of water with my morning meds, but that was hours ago."
+        },
+        {
+          "seg_id": "s019",
+          "t0": 183.6,
+          "t1": 196.4,
+          "speaker": "PROVIDER",
+          "text": "Perfect. We'll be using general anesthesia for your surgery, and we'll also be using intraoperative neuromonitoring as part of the procedure. If you have any questions or concerns, feel free to ask."
+        },
+        {
+          "seg_id": "s020",
+          "t0": 196.8,
+          "t1": 200.0,
+          "speaker": "PATIENT",
+          "text": "No questions, doctor. I think that's all covered."
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:intraop-notes",
@@ -212,60 +259,55 @@
         {
           "seg_id": "s002",
           "t0": 3.2,
-          "t1": 4.8,
+          "t1": 5.2,
           "speaker": "PROVIDER",
-          "text": "[08:00] fentanyl fifty micrograms"
+          "text": "[08:02] fentanyl ten micrograms intravenous"
         },
         {
           "seg_id": "s003",
-          "t0": 5.2,
-          "t1": 7.2,
+          "t0": 5.6,
+          "t1": 8.0,
           "speaker": "PROVIDER",
-          "text": "[08:02] LMA placed, no difficulty"
+          "text": "[08:05] tube in, grade one view"
         },
         {
           "seg_id": "s004",
-          "t0": 7.6,
-          "t1": 11.6,
+          "t0": 8.4,
+          "t1": 10.4,
           "speaker": "PROVIDER",
-          "text": "[08:05] 18-g IV in left hand, blood pressure cuff applied"
+          "text": "[08:10] rocuronium fifty milligrams intravenous"
         },
         {
           "seg_id": "s005",
-          "t0": 12.0,
-          "t1": 15.2,
+          "t0": 10.8,
+          "t1": 13.2,
           "speaker": "PROVIDER",
-          "text": "[08:05] normal saline two hundred fifty milliliters bolus"
+          "text": "[08:15] peripheral line in, left arm"
         },
         {
           "seg_id": "s006",
-          "t0": 15.6,
-          "t1": 21.2,
+          "t0": 13.6,
+          "t1": 16.4,
           "speaker": "PROVIDER",
-          "text": "[08:10] blood pressure drop to eighty over fifty, treated with ephedrine ten milligrams IV"
+          "text": "[08:20] lactated ringers one thousand milliliters given"
         },
         {
           "seg_id": "s007",
-          "t0": 21.6,
-          "t1": 25.2,
+          "t0": 16.8,
+          "t1": 22.0,
           "speaker": "PROVIDER",
-          "text": "[08:15] transient tachycardia to ninety, treated with fluid bolus"
+          "text": "[09:00] mean arterial pressure dropped to fifty five, atropine one milligram intravenous given"
         },
         {
           "seg_id": "s008",
-          "t0": 25.6,
-          "t1": 28.0,
+          "t0": 22.4,
+          "t1": 25.6,
           "speaker": "PROVIDER",
-          "text": "[08:20] sevoflurane started at two percent"
-        },
-        {
-          "seg_id": "s009",
-          "t0": 28.4,
-          "t1": 31.2,
-          "speaker": "PROVIDER",
-          "text": "[08:25] bupivacaine ten milligrams at port sites"
+          "text": "[09:20] surgical incision to closure time forty minutes"
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:postop-interview",
@@ -284,79 +326,81 @@
           "t0": 4.4,
           "t1": 9.2,
           "speaker": "PATIENT",
-          "text": "I’m okay, just some pain at the incision sites, but it’s manageable."
+          "text": "I'm okay, I guess. Still a bit groggy, but I can talk."
         },
         {
           "seg_id": "s003",
           "t0": 9.6,
-          "t1": 12.4,
+          "t1": 18.0,
           "speaker": "PROVIDER",
-          "text": "Any nausea or vomiting since waking up?"
+          "text": "Good to hear. Can you tell me your pain level out of 10? Any discomfort at the incision sites or elsewhere?"
         },
         {
           "seg_id": "s004",
-          "t0": 12.8,
-          "t1": 17.2,
+          "t0": 18.4,
+          "t1": 25.2,
           "speaker": "PATIENT",
-          "text": "A bit queasy, but not too bad. Haven’t eaten yet, though."
+          "text": "It's about a 4 or 5. There's some soreness in the tummy area, but not too bad."
         },
         {
           "seg_id": "s005",
-          "t0": 17.6,
-          "t1": 21.6,
+          "t0": 25.6,
+          "t1": 31.2,
           "speaker": "PROVIDER",
-          "text": "Any sore throat or difficulty breathing from the airway management?"
+          "text": "Thanks. Have you felt nauseous at all since waking up? Any vomiting or dizziness?"
         },
         {
           "seg_id": "s006",
-          "t0": 22.0,
-          "t1": 26.4,
+          "t0": 31.6,
+          "t1": 36.0,
           "speaker": "PATIENT",
-          "text": "My throat’s a bit sore, like I’ve been shouting or something."
+          "text": "No, no nausea. I feel a bit thirsty, but nothing else."
         },
         {
           "seg_id": "s007",
-          "t0": 26.8,
-          "t1": 30.0,
+          "t0": 36.4,
+          "t1": 42.0,
           "speaker": "PROVIDER",
-          "text": "Do you remember anything from the operating room?"
+          "text": "Great. How's your breathing? Any shortness of breath or discomfort when taking deep breaths?"
         },
         {
           "seg_id": "s008",
-          "t0": 30.4,
-          "t1": 37.2,
+          "t0": 42.4,
+          "t1": 46.4,
           "speaker": "PATIENT",
-          "text": "Nope, everything’s a blur. One minute I was talking, next thing I know, I’m waking up here."
+          "text": "Breathing is fine. I can take deep breaths without pain."
         },
         {
           "seg_id": "s009",
-          "t0": 37.6,
-          "t1": 42.0,
+          "t0": 46.8,
+          "t1": 53.2,
           "speaker": "PROVIDER",
-          "text": "Any other issues? Like dizziness, blurred vision, or anything else unusual?"
+          "text": "Good. Did you experience any awareness or discomfort during the surgery that you'd like to share?"
         },
         {
           "seg_id": "s010",
-          "t0": 42.4,
-          "t1": 49.2,
+          "t0": 53.6,
+          "t1": 58.0,
           "speaker": "PATIENT",
-          "text": "Mouth’s really dry, but that’s about it. Oh, and my back’s a bit stiff from lying flat."
+          "text": "No, I don’t remember anything. I was out the whole time."
         },
         {
           "seg_id": "s011",
-          "t0": 49.6,
-          "t1": 56.0,
+          "t0": 58.4,
+          "t1": 67.2,
           "speaker": "PROVIDER",
-          "text": "That’s normal. We’ll get you some water and monitor your vitals. You’re doing well for now."
+          "text": "Excellent. Lastly, with your diabetes and high blood pressure, have you noticed any unusual symptoms like dizziness, chest pain, or vision changes?"
         },
         {
           "seg_id": "s012",
-          "t0": 56.4,
-          "t1": 58.0,
+          "t0": 67.6,
+          "t1": 71.2,
           "speaker": "PATIENT",
-          "text": "Thanks, doc. Appreciate it."
+          "text": "No, nothing like that. I feel stable, just tired."
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     }
   ],
   "artifacts": [
@@ -373,32 +417,32 @@
         },
         {
           "claim_id": "c-002",
-          "text": "History of hypertension, discontinued lisinopril in 2020",
+          "text": "Elective Laparoscopic Cholecystectomy planned",
           "provenance": [
-            "doc:gp-summary#c007"
+            "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Completed course of amoxicillin for chest infection, discontinued two days ago",
+          "text": "Symptoms of gallstones for 6 months, worsening recently",
+          "provenance": [
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Type 2 diabetes, currently controlled with Metformin",
           "provenance": [
             "audio:preop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-004",
-          "text": "Ethinyl estradiol and norethindrone taken daily as current medication",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001"
-          ],
-          "status": "supported"
-        },
-        {
           "claim_id": "c-005",
-          "text": "Amoxicillin 500mg twice daily discontinued two days ago as per patient report",
+          "text": "Hypertension, currently controlled with Lisinopril",
           "provenance": [
             "audio:preop-interview#s006"
           ],
@@ -406,43 +450,80 @@
         },
         {
           "claim_id": "c-006",
-          "text": "Penicillin allergy (rash)",
+          "text": "Obesity, patient reports ability to walk stairs and manage daily activities with some tiredness",
           "provenance": [
-            "audio:preop-interview#s008"
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-007",
-          "text": "NPO since midnight, last sip of water at 7:00 AM",
+          "text": "Current medications: Metformin 500 mg Twice daily, Lisinopril 10 mg Once daily, Atorvastatin 20 mg Once daily",
+          "provenance": [
+            "audio:preop-interview#s007",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Previously used Omeprazole for GERD, discontinued 2 years ago; currently no symptoms of GERD or acid reflux",
+          "provenance": [
+            "doc:gp-summary#c008",
+            "audio:preop-interview#s014"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "No current use of traditional or herbal remedies",
+          "provenance": [
+            "audio:preop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "History of cephalosporin allergy (ceftriaxone) with symptoms of nausea and vomiting; no reaction to penicillin documented beyond patient's mention of a rash",
           "provenance": [
             "audio:preop-interview#s010"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-008",
-          "text": "No prior intubation difficulties or anesthetic complications reported",
+          "claim_id": "c-011",
+          "text": "No other drug or non-drug allergies (including latex, plasters, foods) reported beyond the documented cephalosporin reaction",
           "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "ASA 2 (symptomatic cholelithiasis requiring surgery, otherwise healthy)",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:preop-interview#s004"
+            "audio:preop-interview#s009",
+            "doc:gp-summary#c005"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-010",
-          "text": "General anesthesia with Laryngeal Mask Airway (LMA), induction with propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites planned",
+          "claim_id": "c-012",
+          "text": "Patient denies eating or drinking since midnight, except for a sip of water with morning medications",
+          "provenance": [
+            "audio:preop-interview#s018"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-013",
+          "text": "ASA-PS Class II (patient has mild systemic disease, controlled diabetes and hypertension)",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-014",
+          "text": "General Anesthesia with Intraoperative Neuromonitoring planned",
           "provenance": [
             "doc:op-plan#c002",
-            "audio:preop-interview#s015"
+            "audio:preop-interview#s019"
           ],
           "status": "supported"
         }
@@ -453,7 +534,7 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "Propofol administered at 08:00",
+          "text": "08:00 Propofol 120 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s001"
           ],
@@ -461,129 +542,57 @@
         },
         {
           "claim_id": "c-002",
-          "text": "120 milligrams administered at 08:00",
+          "text": "08:02 Fentanyl 10 micrograms administered",
           "provenance": [
-            "audio:intraop-notes#s001"
+            "audio:intraop-notes#s002"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Fentanyl administered at 08:00",
-          "provenance": [
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "50 micrograms administered at 08:00",
-          "provenance": [
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "LMA placed with no difficulty at 08:02",
+          "text": "08:05 Endotracheal tube placed, Grade 1 view",
           "provenance": [
             "audio:intraop-notes#s003"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-006",
-          "text": "18-g IV in left hand at 08:05",
+          "claim_id": "c-004",
+          "text": "08:10 Rocuronium 50 milligrams administered",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-007",
-          "text": "Normal saline administered at 08:05",
+          "claim_id": "c-005",
+          "text": "08:15 Peripheral line placed in left arm",
           "provenance": [
             "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "08:20 Lactated Ringer's 1000 milliliters administered",
+          "provenance": [
+            "audio:intraop-notes#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "09:00 Mean arterial pressure dropped to 55, Atropine 1 milligram administered",
+          "provenance": [
+            "audio:intraop-notes#s007"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-008",
-          "text": "250 milliliters administered at 08:05",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Blood pressure drop to 80 over 50 mmHg at 08:10",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Ephedrine administered at 08:10",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "10 milligrams administered at 08:10",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Transient tachycardia to 90 bpm at 08:15",
-          "provenance": [
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Fluid bolus administered at 08:15",
-          "provenance": [
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Sevoflurane administered at 08:20",
+          "text": "09:20 Surgical incision to closure time 40 minutes",
           "provenance": [
             "audio:intraop-notes#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "2 percent administered at 08:20",
-          "provenance": [
-            "audio:intraop-notes#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "Bupivacaine administered at 08:25",
-          "provenance": [
-            "audio:intraop-notes#s009"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-017",
-          "text": "10 milligrams administered at 08:25",
-          "provenance": [
-            "audio:intraop-notes#s009"
           ],
           "status": "supported"
         }
@@ -594,41 +603,53 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "PONV risk due to female gender, opioid use (fentanyl), and sevoflurane administration",
+          "text": "Postoperative Nausea and Vomiting (PONV) risk due to multiple factors including opioid administration, history of gallstones, and female gender.",
           "provenance": [
-            "doc:gp-summary#c001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s008"
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s010",
+            "audio:intraop-notes#s002"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-002",
-          "text": "Hemodynamic instability given intraoperative hypotension requiring ephedrine and transient tachycardia, with history of hypertension",
+          "text": "Airway watch due to Obesity and potential difficult airway management post-intubation.",
           "provenance": [
-            "doc:gp-summary#c007",
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s007"
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016",
+            "audio:intraop-notes#s003"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-003",
-          "text": "Analgesia needs following laparoscopic cholecystectomy with intraoperative fentanyl and local anesthetic (bupivacaine)",
+          "text": "Glycemic control monitoring due to Type 2 Diabetes.",
           "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s009"
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s007",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003"
           ],
           "status": "inference"
         },
         {
           "claim_id": "c-004",
-          "text": "Thromboembolic risk due to estrogen-containing contraceptive use and elective laparoscopic surgery",
+          "text": "Analgesia management considering opioid allergy history and potential for inadequate pain control.",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "doc:op-plan#c001"
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s009",
+            "doc:gp-summary#c005"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic watch due to Hypertension and intraoperative hypotension requiring Atropine.",
+          "provenance": [
+            "audio:preop-interview#s006",
+            "audio:intraop-notes#s007"
           ],
           "status": "inference"
         }
@@ -639,158 +660,85 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "31-year-old female status post laparoscopic cholecystectomy (ASA 2).",
+          "text": "31-year-old female undergoing elective laparoscopic cholecystectomy for gallstones with worsening symptoms over the past 6 months.",
           "provenance": [
             "doc:gp-summary#c001",
             "doc:op-plan#c001",
+            "audio:preop-interview#s002",
             "audio:preop-interview#s004"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-002",
-          "text": "General anesthesia with LMA, induction with propofol and fentanyl, maintenance with sevoflurane, and local anesthetic (bupivacaine) as planned.",
+          "text": "Patient has type 2 diabetes controlled with Metformin, hypertension controlled with Lisinopril, and obesity with preserved mobility. No current use of traditional or herbal remedies.",
           "provenance": [
-            "doc:op-plan#c002",
-            "audio:preop-interview#s015"
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016",
+            "audio:preop-interview#s012"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-003",
-          "text": "Intraoperative hypotension (80/50 mmHg) at 08:10 requiring ephedrine 10mg, followed by transient tachycardia (90 bpm) and fluid bolus.",
+          "text": "Patient has a history of cephalosporin allergy (ceftriaxone) with symptoms of nausea and vomiting, but no reaction to penicillin beyond a reported rash.",
           "provenance": [
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s007"
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s009",
+            "doc:gp-summary#c005"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-004",
-          "text": "History of hypertension, discontinued lisinopril in 2020.",
+          "text": "Intraoperative course included general anesthesia with propofol, fentanyl, and rocuronium. Endotracheal tube placed with Grade 1 view. Intraoperative hypotension (MAP 55) required atropine. Surgery duration was 40 minutes from incision to closure.",
           "provenance": [
-            "doc:gp-summary#c007"
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-005",
-          "text": "Recent course of amoxicillin for chest infection, discontinued two days ago.",
+          "text": "Patient is at increased risk for postoperative nausea and vomiting (PONV) due to opioid administration, history of gallstones, and female gender. Airway monitoring is indicated due to obesity and potential for difficult airway management post-intubation. Glycemic control and hemodynamic stability should be monitored closely due to diabetes and intraoperative hypotension.",
           "provenance": [
-            "audio:preop-interview#s006"
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s010",
+            "audio:intraop-notes#s002",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016",
+            "audio:intraop-notes#s003",
+            "audio:preop-interview#s007",
+            "doc:med-list#c001",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "audio:intraop-notes#s007"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-006",
-          "text": "Current medications: ethinyl estradiol and norethindrone (estrogen-containing contraceptive).",
+          "text": "Monitor for PONV and manage with appropriate antiemetics as needed. Ensure airway patency and be prepared for potential difficult airway management. Maintain glycemic control and monitor hemodynamics closely. Consider alternative analgesics given the patient's allergy history.",
           "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Penicillin allergy (rash).",
-          "provenance": [
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "NPO since midnight, last sip of water at 7:00 AM.",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "No prior intubation difficulties or anesthetic complications.",
-          "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Postoperative nausea and vomiting (PONV) risk factors: female gender, opioid use (fentanyl), and sevoflurane administration.",
-          "provenance": [
-            "doc:gp-summary#c001",
+            "audio:preop-interview#s002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s010",
             "audio:intraop-notes#s002",
-            "audio:intraop-notes#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Hemodynamic instability risk due to intraoperative hypotension requiring ephedrine, transient tachycardia, and history of hypertension.",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "audio:intraop-notes#s006",
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Analgesia needs following laparoscopic cholecystectomy with intraoperative fentanyl and local anesthetic (bupivacaine).",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s009"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Thromboembolic risk due to estrogen-containing contraceptive use and elective laparoscopic surgery.",
-          "provenance": [
-            "doc:gp-summary#c002",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s016",
+            "audio:intraop-notes#s003",
+            "audio:preop-interview#s007",
             "doc:med-list#c001",
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Monitor for postoperative nausea and vomiting; consider antiemetic prophylaxis.",
-          "provenance": [
-            "doc:gp-summary#c001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s008"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Continue hemodynamic monitoring with anticipation of potential instability; maintain vigilance for hypotension or tachycardia.",
-          "provenance": [
-            "doc:gp-summary#c007",
-            "audio:intraop-notes#s006",
+            "doc:med-list#c002",
+            "doc:med-list#c003",
+            "audio:preop-interview#s009",
+            "doc:gp-summary#c005",
             "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "Manage postoperative pain with multimodal approach, considering opioid-sparing techniques given intraoperative fentanyl and local anesthetic.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s009"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-017",
-          "text": "Implement deep vein thrombosis prophylaxis due to estrogen-containing contraceptive use and elective surgery.",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001",
-            "doc:op-plan#c001"
           ],
           "status": "supported"
         }
@@ -801,172 +749,57 @@
       "claims": [
         {
           "claim_id": "c-001",
-          "text": "31-year-old female, Professional, resident of Choa Chu Kang, Singapore",
-          "provenance": [
-            "doc:gp-summary#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Taking ethinyl estradiol and norethindrone as directed daily",
-          "provenance": [
-            "doc:gp-summary#c002",
-            "doc:med-list#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Taking amoxicillin 500mg twice daily (discontinued two days pre-op)",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "History of penicillin allergy with rash",
-          "provenance": [
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "History of pneumonia resolved in 2019",
-          "provenance": [
-            "doc:gp-summary#c005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "History of fractured left wrist in 2015, fully healed",
-          "provenance": [
-            "doc:gp-summary#c006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Discontinued lisinopril for hypertension in 2020",
-          "provenance": [
-            "doc:gp-summary#c007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Elective laparoscopic cholecystectomy for symptomatic cholelithiasis",
-          "provenance": [
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "General anesthesia with Laryngeal Mask Airway (LMA), induction with propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Induction: propofol 120mg administered at 08:00",
-          "provenance": [
-            "audio:intraop-notes#s001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Induction: fentanyl 50μg administered at 08:00",
-          "provenance": [
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "LMA placed without difficulty at 08:02",
-          "provenance": [
-            "audio:intraop-notes#s003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Transient hypotension (80/50) treated with ephedrine 10mg IV at 08:10",
-          "provenance": [
-            "audio:intraop-notes#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Transient tachycardia (90 bpm) treated with fluid bolus at 08:15",
-          "provenance": [
-            "audio:intraop-notes#s007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-015",
-          "text": "Sevoflurane initiated at 2% at 08:20",
-          "provenance": [
-            "audio:intraop-notes#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-016",
-          "text": "Bupivacaine 10mg administered at port sites at 08:25",
-          "provenance": [
-            "audio:intraop-notes#s009"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-017",
-          "text": "Reports incision site pain, described as manageable",
+          "text": "Patient reports being 'okay' and 'a bit groggy' post-surgery.",
           "provenance": [
             "audio:postop-interview#s002"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-018",
-          "text": "Reports mild nausea without vomiting",
+          "claim_id": "c-002",
+          "text": "Patient reports pain level of 4 or 5 out of 10 with soreness in the tummy area.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-019",
-          "text": "Complains of sore throat post-emergence",
+          "claim_id": "c-003",
+          "text": "Patient denies any nausea or vomiting since waking up.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-020",
-          "text": "No recall of intraoperative events",
+          "claim_id": "c-004",
+          "text": "Patient reports no shortness of breath or discomfort with deep breaths.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-021",
-          "text": "Reports dry mouth and back stiffness post-op",
+          "claim_id": "c-005",
+          "text": "Patient denies any awareness or discomfort during the surgery.",
           "provenance": [
             "audio:postop-interview#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Patient denies any unusual symptoms related to diabetes or hypertension, such as dizziness, chest pain, or vision changes.",
+          "provenance": [
+            "audio:postop-interview#s012"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "General Anesthesia with Intraoperative Neuromonitoring was used for the procedure.",
+          "provenance": [
+            "doc:op-plan#c002"
           ],
           "status": "supported"
         }
@@ -974,171 +807,142 @@
     }
   ],
   "open_questions": [
-    "Do you have any history of difficult intubation, airway surgery, or prior anesthetic complications?",
-    "What is your current blood pressure status, and are you currently managing hypertension?",
-    "Why were you prescribed amoxicillin, and is there an active infection requiring antibiotic treatment?",
-    "Do you have a history of thromboembolic events (e.g., DVT, PE) or current use of anticoagulants?",
-    "Do you have any current respiratory symptoms or concerns, such as shortness of breath or chronic cough?"
+    {
+      "question": "Can you confirm if you are still taking Metformin 500 mg Twice daily, Lisinopril 10 mg Once daily, and Atorvastatin 20 mg Once daily, or have any of these medications been stopped, changed, or replaced since the list was written?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002",
+        "doc:med-list#c003"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any drug or non-drug allergies (such as to latex, plasters, or foods) that have not been documented in your records?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c005"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You have a history of pneumonia resolved 5 years ago. Can you provide more details about the episode, such as the type of pneumonia, treatment received, and any residual respiratory issues?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c006"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "You previously used Omeprazole for GERD, which was discontinued 2 years ago. Are you currently experiencing any symptoms of GERD or acid reflux that might impact anesthesia or intubation?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c008"
+      ],
+      "review": null,
+      "edited_text": null
+    }
   ],
   "intraop_events": [
     {
       "t": "08:00",
       "category": "agent",
-      "value": "propofol",
-      "units": null,
-      "provenance": [
-        "audio:intraop-notes#s001"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "120",
+      "value": "propofol 120",
       "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s001"
       ]
     },
     {
-      "t": "08:00",
+      "t": "08:02",
       "category": "agent",
-      "value": "fentanyl",
-      "units": null,
-      "provenance": [
-        "audio:intraop-notes#s002"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "50",
+      "value": "fentanyl 10",
       "units": "micrograms",
       "provenance": [
         "audio:intraop-notes#s002"
       ]
     },
     {
-      "t": "08:02",
-      "category": "airway",
-      "value": "LMA placed, no difficulty",
+      "t": "08:05",
+      "category": "event",
+      "value": "tube in, grade one view",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s003"
       ]
     },
     {
-      "t": "08:05",
-      "category": "line",
-      "value": "18-g IV in left hand",
-      "units": null,
+      "t": "08:10",
+      "category": "agent",
+      "value": "rocuronium 50",
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s004"
       ]
     },
     {
-      "t": "08:05",
-      "category": "fluid",
-      "value": "normal saline",
+      "t": "08:15",
+      "category": "line",
+      "value": "peripheral line in, left arm",
       "units": null,
       "provenance": [
         "audio:intraop-notes#s005"
       ]
     },
     {
-      "t": "08:05",
-      "category": "dose",
-      "value": "250",
+      "t": "08:20",
+      "category": "fluid",
+      "value": "lactated ringers 1000",
       "units": "milliliters",
       "provenance": [
-        "audio:intraop-notes#s005"
+        "audio:intraop-notes#s006"
       ]
     },
     {
-      "t": "08:10",
+      "t": "09:00",
       "category": "event",
-      "value": "blood pressure drop to 80 over 50 mmHg",
-      "units": null,
-      "provenance": [
-        "audio:intraop-notes#s006"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "agent",
-      "value": "ephedrine",
-      "units": null,
-      "provenance": [
-        "audio:intraop-notes#s006"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "dose",
-      "value": "10",
+      "value": "mean arterial pressure dropped to 55, atropine 1",
       "units": "milligrams",
-      "provenance": [
-        "audio:intraop-notes#s006"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "event",
-      "value": "transient tachycardia to 90 bpm",
-      "units": null,
       "provenance": [
         "audio:intraop-notes#s007"
       ]
     },
     {
-      "t": "08:15",
-      "category": "fluid",
-      "value": "fluid bolus",
-      "units": null,
-      "provenance": [
-        "audio:intraop-notes#s007"
-      ]
-    },
-    {
-      "t": "08:20",
-      "category": "agent",
-      "value": "sevoflurane",
-      "units": null,
+      "t": "09:20",
+      "category": "event",
+      "value": "surgical incision to closure time 40",
+      "units": "minutes",
       "provenance": [
         "audio:intraop-notes#s008"
-      ]
-    },
-    {
-      "t": "08:20",
-      "category": "dose",
-      "value": "2",
-      "units": "percent",
-      "provenance": [
-        "audio:intraop-notes#s008"
-      ]
-    },
-    {
-      "t": "08:25",
-      "category": "agent",
-      "value": "bupivacaine",
-      "units": null,
-      "provenance": [
-        "audio:intraop-notes#s009"
-      ]
-    },
-    {
-      "t": "08:25",
-      "category": "dose",
-      "value": "10",
-      "units": "milligrams",
-      "provenance": [
-        "audio:intraop-notes#s009"
       ]
     }
   ],
   "anticipated_issues": [
-    "PONV risk due to female gender, opioid use (fentanyl), and sevoflurane administration",
-    "Hemodynamic instability given intraoperative hypotension requiring ephedrine and transient tachycardia, with history of hypertension",
-    "Analgesia needs following laparoscopic cholecystectomy with intraoperative fentanyl and local anesthetic (bupivacaine)",
-    "Thromboembolic risk due to estrogen-containing contraceptive use and elective laparoscopic surgery"
-  ]
+    "Postoperative Nausea and Vomiting (PONV) risk due to multiple factors including opioid administration, history of gallstones, and female gender.",
+    "Airway watch due to Obesity and potential difficult airway management post-intubation.",
+    "Glycemic control monitoring due to Type 2 Diabetes.",
+    "Analgesia management considering opioid allergy history and potential for inadequate pain control.",
+    "Hemodynamic watch due to Hypertension and intraoperative hypotension requiring Atropine."
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "video-laryngoscope",
+      "name": "Video laryngoscope",
+      "reason": "Video laryngoscope aids in difficult intubation due to obesity and potential airway challenges."
+    },
+    {
+      "item_id": "bougie",
+      "name": "Tracheal tube introducer (bougie)",
+      "reason": "Bougie facilitates safe tracheal intubation in obese patients with potential difficult airway."
+    },
+    {
+      "item_id": "bis-monitor",
+      "name": "Depth-of-anaesthesia (BIS) monitor",
+      "reason": "BIS monitor ensures accurate depth-of-anaesthesia monitoring during TIVA for laparoscopic surgery."
+    }
+  ],
+  "workflow": null
 }

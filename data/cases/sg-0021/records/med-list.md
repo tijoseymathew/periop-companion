@@ -2,6 +2,8 @@
 
 ## Current Medications
 
-Fluticasone nasal spray 1 spray each nostril daily daily.
+Metformin 500 mg Twice daily.
 
-Doxycycline 100mg once daily.
+Sitagliptin 100 mg Once daily.
+
+Loratadine 10 mg Once daily.

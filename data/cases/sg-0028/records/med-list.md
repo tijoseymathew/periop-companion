@@ -2,6 +2,8 @@
 
 ## Current Medications
 
-Montasone nasal spray 1 spray each nostril daily.
+Atorvastatin 10 mg Daily.
 
-Omeprazole 20mg once daily.
+Omeprazole 20 mg Daily.
+
+Paracetamol 500 mg As needed.

@@ -6,13 +6,11 @@
 
 ## Medications
 
-Atorvastatin 20mg daily.
+Metformin 500mg Twice daily.
 
-Metformin 500mg BID.
+Lisinopril 10mg Once daily.
 
-Omeprazole 20mg daily.
-
-Simvastatin 10mg nightly.
+Atorvastatin 20mg Once daily.
 
 ## Allergies
 
@@ -20,8 +18,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-Community-acquired pneumonia (resolved 2019)
+Pneumonia (resolved)
 
-Left wrist fracture (healed 2014)
+Fractured wrist (healed)
 
-Hyperlipidemia (discontinued simvastatin 2018)
+GERD (discontinued Omeprazole)

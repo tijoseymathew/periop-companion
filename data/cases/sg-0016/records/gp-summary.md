@@ -6,22 +6,22 @@
 
 ## Medications
 
-Amlodipine 5 mg once daily.
+Metformin 500mg Twice daily.
 
-Metoprolol 25 mg once daily.
+Lisinopril 10mg Once daily.
 
-Metformin 500 mg twice daily.
+Atorvastatin 20mg Once daily.
 
-Atorvastatin 20 mg once daily.
+Ranitidine 150mg Once daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin (rash)
 
 ## Past History
 
-Pneumonia (2018)
+Pneumonia (resolved 5 years ago)
 
-Left wrist fracture (2015)
+Wrist fracture (healed, no sequelae)
 
-GERD (on omeprazole until 2022)
+Previous use of Alprazolam for anxiety (discontinued)

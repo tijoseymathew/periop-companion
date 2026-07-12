@@ -6,9 +6,11 @@
 
 ## Medications
 
-Montasone nasal spray 1 spray each nostril daily.
+Atorvastatin 10 mg Daily.
 
-Omeprazole 20mg once daily.
+Omeprazole 20 mg Daily.
+
+Paracetamol 500 mg As needed.
 
 ## Allergies
 
@@ -16,8 +18,14 @@ No known drug allergies recorded.
 
 ## Past History
 
-Pneumonia in 2019, resolved
+Appendicitis (current presentation)
 
-Fractured right wrist in 2017, healed
+Obesity
 
-GERD diagnosed in 2021, resolved
+Hyperlipidemia
+
+Pneumonia (resolved 5 years ago)
+
+Fractured left wrist (age 10, fully healed)
+
+Smoking cessation program completed 2 years ago

@@ -6,26 +6,30 @@
 
 ## Medications
 
-Amlodipine 10mg daily.
+Atorvastatin 20 mg once daily.
 
-Lisinopril 10mg daily.
+Metformin 500 mg twice daily.
 
-Metformin 500mg twice daily.
+Losartan 100 mg once daily.
 
-Atorvastatin 20mg daily.
+Aspirin 75 mg once daily.
 
-Omeprazole 20mg daily.
-
-Aspirin 75mg daily.
+Ranitidine 150 mg twice daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin (rash)
 
 ## Past History
 
-Pneumonia resolved in 2018
+Pneumonia (2018)
 
-Left femur fracture healed in 2010
+Fractured right wrist (2005)
 
-Discontinued simvastatin due to muscle pain in 2015
+Hypertension
+
+Type 2 Diabetes Mellitus
+
+Chronic Kidney Disease (Stage 3)
+
+Osteoarthritis (bilateral hip, worse on left)

@@ -6,9 +6,11 @@
 
 ## Medications
 
-Fluticasone nasal spray 1 spray each nostril daily daily.
+Metformin 500 mg Twice daily.
 
-Doxycycline 100mg once daily.
+Sitagliptin 100 mg Once daily.
+
+Loratadine 10 mg Once daily.
 
 ## Allergies
 
@@ -16,8 +18,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-History of pneumonia resolved 5 years ago
+Pneumonia (resolved 3 years ago)
 
-Fractured wrist (healed) 10 years ago
+Left distal radius fracture (age 16, fully healed)
 
-History of acne treated with doxycycline (discontinued)
+GERD (resolved, Omeprazole discontinued)

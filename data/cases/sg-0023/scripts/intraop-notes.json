@@ -5,36 +5,24 @@
       "text": "induction propofol one hundred twenty milligrams"
     },
     {
-      "t": "08:00",
-      "text": "fentanyl fifty micrograms"
-    },
-    {
-      "t": "08:00",
-      "text": "rocuronium forty milligrams"
-    },
-    {
-      "t": "08:00",
-      "text": "tube in, grade one view"
-    },
-    {
-      "t": "08:10",
-      "text": "remifentanil infusion started at zero point two mcg per kg per minute"
-    },
-    {
-      "t": "08:10",
-      "text": "sixteen gauge peripheral IV placed"
-    },
-    {
-      "t": "08:10",
-      "text": "five hundred milliliters of lactated ringer's administered"
+      "t": "08:02",
+      "text": "LMA size four inserted, good seal, capnograph waveform confirmed"
     },
     {
       "t": "08:05",
-      "text": "mean arterial pressure dropped to fifty, phenylephrine one hundred micrograms bolus"
+      "text": "ultrasound-guided right subcostal transversus abdominis plane block, local anesthetic twenty milligrams of bupivacaine"
     },
     {
-      "t": "08:20",
-      "text": "heart rate increased to ninety, esmolol ten milligrams bolus"
+      "t": "08:10",
+      "text": "hypotension noted, blood pressure sixty-five over forty, one liter of Ringer's lactate administered"
+    },
+    {
+      "t": "08:15",
+      "text": "tube in, grade one view, surgery commencing"
+    },
+    {
+      "t": "09:00",
+      "text": "normotension maintained, blood pressure one twenty over seventy-five"
     }
   ],
   "events": [
@@ -44,115 +32,79 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes#0"
+        "voice_note#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#0"
+        "voice_note#08:00"
       ]
     },
     {
-      "t": "08:00",
-      "category": "agent",
-      "value": "fentanyl",
-      "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "agent",
-      "value": "rocuronium",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "40",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:00",
+      "t": "08:02",
       "category": "airway",
-      "value": "LMA grade 1",
+      "value": "LMA size four",
       "units": null,
       "provenance": [
-        "voice_notes#3"
+        "voice_note#08:02"
       ]
     },
     {
-      "t": "08:10",
+      "t": "08:05",
       "category": "agent",
-      "value": "remifentanil",
+      "value": "bupivacaine",
       "units": null,
       "provenance": [
-        "voice_notes#4"
+        "voice_note#08:05"
       ]
     },
     {
-      "t": "08:10",
+      "t": "08:05",
       "category": "dose",
-      "value": "0.2",
-      "units": "mcg/kg/min",
+      "value": "twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#4"
+        "voice_note#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "16G peripheral IV",
+      "category": "event",
+      "value": "hypotension",
       "units": null,
       "provenance": [
-        "voice_notes#5"
+        "voice_note#08:10"
       ]
     },
     {
       "t": "08:10",
       "category": "fluid",
-      "value": "500 mL lactated Ringer's",
-      "units": null,
+      "value": "one liter",
+      "units": "Ringer's lactate",
       "provenance": [
-        "voice_notes#6"
+        "voice_note#08:10"
       ]
     },
     {
-      "t": "08:05",
-      "category": "event",
-      "value": "MAP 50 treated with phenylephrine 100 mcg bolus",
+      "t": "08:15",
+      "category": "airway",
+      "value": "grade one view",
       "units": null,
       "provenance": [
-        "voice_notes#7"
+        "voice_note#08:15"
       ]
     },
     {
-      "t": "08:20",
+      "t": "09:00",
       "category": "event",
-      "value": "HR 90 treated with esmolol 10 mg bolus",
+      "value": "normotension maintained",
       "units": null,
       "provenance": [
-        "voice_notes#8"
+        "voice_note#09:00"
       ]
     }
   ]

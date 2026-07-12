@@ -6,59 +6,47 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit sore, but I think it's manageable. The pain is there, but not too bad."
+      "text": "I'm a bit tired, but okay. My tummy is sore, and I feel a little nauseous."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Okay, on a scale of 1 to 10, what would you say your pain is right now?"
+      "text": "I understand. On a scale from 0 to 10, how would you rate your pain right now?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe around 3 or 4. It's more like a dull ache, not sharp."
+      "text": "Maybe around 4 or 5. It's manageable, but I can feel it."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any nausea or feeling like you might be sick? Sometimes the anesthesia can cause that."
+      "text": "Thanks for letting me know. Have you felt any sickness or vomited at all since coming out of anesthesia?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A little queasy, but I haven't vomited. I'm hoping it stays that way."
+      "text": "No, not yet. Just a bit of a queasy feeling, but I haven't thrown up."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. How's your breathing? Any discomfort in your throat or chest from the airway tube?"
+      "text": "Good. How about your breathing? Any shortness of breath or discomfort in your chest?"
     },
     {
       "speaker": "PATIENT",
-      "text": "My throat is a bit sore, but I can breathe fine. No wheezing or anything."
+      "text": "No, I'm breathing fine. Just a bit of a sore throat from the tube, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything about the surgery itself? Sometimes patients have fuzzy memories after anesthesia."
+      "text": "That's common after intubation. Do you remember anything from the surgery itself?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not really. I remember waking up here, but the rest is a blur. Is that normal?"
+      "text": "No, I don't remember anything. I was out completely."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Yes, that's typical. Since you have GERD, have you had any heartburn or acid reflux since waking up?"
+      "text": "That's expected. Since you have hypertension and diabetes, we'll keep a close eye on your vitals and blood sugar levels. Any other concerns for me?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Actually, yes. There's a bit of burning in my chest. Not too bad, but it's there."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "We'll keep an eye on that. For your diabetes, have you checked your blood sugar since the surgery?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "Not yet, but I feel okay. No shaking or sweating, so I think it's stable."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "We'll get you set up with some anti-nausea meds and monitor your blood sugar closely. Rest for now, and we'll transition you to oral painkillers soon."
+      "text": "No, I think that's all for now. Thank you, doctor."
     }
   ]
 }

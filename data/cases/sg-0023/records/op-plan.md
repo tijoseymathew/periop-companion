@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Laparoscopic cholecystectomy (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with Laryngeal Mask Airway (LMA), balanced technique with intravenous anesthetic agents and neuromuscular blockade
+General Anesthesia with Laryngeal Mask Airway (LMA) and Ultrasound-Guided Regional Anesthesia (USRA) for postoperative pain management

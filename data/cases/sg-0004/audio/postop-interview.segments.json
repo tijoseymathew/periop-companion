@@ -5,20 +5,20 @@
       "speaker": "PROVIDER",
       "text": "Mr Tan, how are you feeling now after the surgery?",
       "t0": 0.0,
-      "t1": 3.019
+      "t1": 2.833
     },
     {
       "seg_id": "s001",
       "speaker": "PATIENT",
       "text": "I have some pain at the knee, but it's manageable. Not too bad, doc.",
-      "t0": 3.369,
-      "t1": 7.409
+      "t0": 3.183,
+      "t1": 7.641
     },
     {
       "seg_id": "s002",
       "speaker": "PROVIDER",
       "text": "On a scale of 1 to 10, how would you rate the pain?",
-      "t0": 7.759,
+      "t0": 7.991,
       "t1": 11.01
     },
     {
@@ -26,63 +26,63 @@
       "speaker": "PATIENT",
       "text": "Maybe 4? The numbness from the block is still there, so it's not too painful.",
       "t0": 11.36,
-      "t1": 15.679
+      "t1": 15.446
     },
     {
       "seg_id": "s004",
       "speaker": "PROVIDER",
       "text": "Any nausea or vomiting since waking up?",
-      "t0": 16.028,
-      "t1": 18.35
+      "t0": 15.796,
+      "t1": 18.118
     },
     {
       "seg_id": "s005",
       "speaker": "PATIENT",
       "text": "A bit queasy earlier, but better now. Didn't throw up, though.",
-      "t0": 18.7,
-      "t1": 22.462
+      "t0": 18.468,
+      "t1": 22.091
     },
     {
       "seg_id": "s006",
       "speaker": "PROVIDER",
       "text": "How's your breathing? Any discomfort in your chest or throat?",
-      "t0": 22.812,
-      "t1": 25.924
+      "t0": 22.441,
+      "t1": 25.598
     },
     {
       "seg_id": "s007",
       "speaker": "PATIENT",
       "text": "Slight sore throat from the tube, but I can breathe fine.",
-      "t0": 26.274,
-      "t1": 29.431
+      "t0": 25.948,
+      "t1": 29.292
     },
     {
       "seg_id": "s008",
       "speaker": "PROVIDER",
       "text": "Do you remember anything from the operation?",
-      "t0": 29.781,
-      "t1": 31.964
+      "t0": 29.642,
+      "t1": 31.732
     },
     {
       "seg_id": "s009",
       "speaker": "PATIENT",
       "text": "No, everything's a blank. Woke up here, so that's good.",
-      "t0": 32.314,
-      "t1": 36.215
+      "t0": 32.082,
+      "t1": 35.843
     },
     {
       "seg_id": "s010",
       "speaker": "PROVIDER",
       "text": "Any issues with your blood pressure or sugar levels that you're aware of?",
-      "t0": 36.565,
-      "t1": 40.002
+      "t0": 36.193,
+      "t1": 39.584
     },
     {
       "seg_id": "s011",
       "speaker": "PATIENT",
       "text": "My sugar was a bit high before surgery, but the nurses said they're monitoring it. BP seems okay now.",
-      "t0": 40.352,
-      "t1": 46.807
+      "t0": 39.934,
+      "t1": 46.11
     }
   ]
 }

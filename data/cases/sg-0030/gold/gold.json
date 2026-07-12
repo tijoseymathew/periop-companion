@@ -1,125 +1,159 @@
 {
   "questions": [
-    "Have you ever had a reaction to any antibiotics, particularly sulfa-based medications?"
+    "Can you please confirm if there have been any changes to your medication list since your last review, and have you experienced any new allergic reactions to medications recently?"
   ],
   "events": [
     {
       "t": "08:00",
       "category": "agent",
       "value": "propofol",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "note:1#1"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "note:1#1"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
       "category": "airway",
-      "value": "endotracheal tube placed, grade one view",
+      "value": "tube in",
       "units": null,
       "provenance": [
-        "note:2#2"
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "16-gauge IV line placed in right antecubital vein",
-      "units": null,
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": "milligrams",
       "provenance": [
-        "note:3#3"
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty-five",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:10",
       "category": "fluid",
-      "value": "crystalloid",
-      "units": "2000 ml",
+      "value": "lactated ringers",
+      "units": "liters",
       "provenance": [
-        "note:4#4"
+        "voice_notes#08:10"
       ]
     },
     {
-      "t": "08:30",
-      "category": "event",
-      "value": "hypotension (85/50 mmHg)",
-      "units": null,
-      "provenance": [
-        "note:5#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "agent",
-      "value": "ephedrine",
-      "units": null,
-      "provenance": [
-        "note:5#5"
-      ]
-    },
-    {
-      "t": "08:30",
+      "t": "08:10",
       "category": "dose",
-      "value": "10",
-      "units": "mg",
+      "value": "two",
+      "units": "liters",
       "provenance": [
-        "note:5#5"
+        "voice_notes#08:10"
       ]
     },
     {
-      "t": "09:15",
+      "t": "08:20",
       "category": "event",
-      "value": "hypertension (160/90 mmHg)",
+      "value": "mean arterial pressure dropped to fifty-five",
       "units": null,
       "provenance": [
-        "note:6#6"
+        "voice_notes#08:20"
       ]
     },
     {
-      "t": "09:15",
+      "t": "08:20",
       "category": "agent",
-      "value": "labetalol",
-      "units": null,
+      "value": "atropine",
+      "units": "milligrams",
       "provenance": [
-        "note:6#6"
+        "voice_notes#08:20"
       ]
     },
     {
-      "t": "09:15",
+      "t": "08:20",
       "category": "dose",
-      "value": "20",
-      "units": "mg",
+      "value": "one",
+      "units": "milligrams",
       "provenance": [
-        "note:6#6"
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "sixteen",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
       ]
     }
   ],
   "preop_note_claims": [
-    "History of hypertension",
-    "Current medication: Amlodipine 5 mg once daily",
-    "Current medication: Levonorgestrel/Ethinyl Estradiol standard dose once daily",
-    "Discontinued medication: Doxycycline 100 mg once daily (stopped)",
-    "Allergy to sulfa drugs with rash",
-    "ASA 2 classification due to hypertension",
-    "Plan for general anesthesia with endotracheal intubation"
+    "Documentation of comprehensive history including obesity (BMI 32) and type 2 diabetes mellitus (well-controlled with oral medications).",
+    "Medication list includes Metformin 500mg twice daily (continued), Atorvastatin 20mg once daily (continued), Ranitidine 150mg once daily (stopped), and updated change from Gliclazide to Sitagliptin 100mg once daily due to hypoglycemic episodes.",
+    "Allergy documentation includes Penicillin (rash) and new allergy to Ceftriaxone (urticaria).",
+    "ASA-PS classification of 2 with rationale including well-controlled type 2 diabetes and obesity.",
+    "Airway assessment and anesthetic plan documented, including general anesthesia with single-shot ultrasound-guided transversus abdominis plane (TAP) block for postoperative pain management."
   ],
   "handoff_claims": [
-    "History of hypertension and sulfa drug allergy (rash)",
-    "Intraoperative course: Uncomplicated laparoscopic ovarian cystectomy under general anesthesia with endotracheal intubation",
-    "Anticipated postoperative issues: Pain management, blood pressure monitoring, and avoidance of sulfa-containing medications"
+    "Key history shared includes type 2 diabetes, obesity, and updated medication changes (discontinuation of Gliclazide, initiation of Sitagliptin).",
+    "Intra-operative course expectations shared, including successful completion of laparoscopic cholecystectomy and administration of TAP block for postoperative pain management.",
+    "Anticipated issues communicated, including potential for hypoglycemia given diabetes history and recent medication change, and monitoring for signs of urticaria or allergic reaction given new Ceftriaxone allergy."
   ],
   "distractors": [
-    "Fracture of left wrist (2018, healed)",
-    "Pneumonia (2019, resolved)",
-    "Discontinued medication: Omeprazole for GERD (2019)"
+    "History of pneumonia resolved 5 years ago",
+    "Fractured wrist at age 12, fully healed",
+    "Previous diagnosis of mild depression, not on any medications"
   ]
 }

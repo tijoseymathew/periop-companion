@@ -1,102 +1,98 @@
 {
   "case_id": "sg-0019",
   "persona_uuid": "d79f23d3c0494e1c98368a4ed463fade",
-  "surgery": "Laparoscopic cholecystectomy for symptomatic gallstones",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "anesthesia_plan": "General Anesthesia with Endotracheal Intubation",
   "asa_ps": 2,
   "comorbidities": [
+    "Overweight (BMI 27.6)",
     "Hypertension",
-    "Hyperlipidemia",
-    "Gastroesophageal reflux disease (GERD)"
+    "Hyperlipidemia"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "10 mg",
-      "frequency": "Daily",
-      "active": true
-    },
-    {
       "name": "Atorvastatin",
-      "dose": "20 mg",
-      "frequency": "Daily",
-      "active": true
-    },
-    {
-      "name": "Omeprazole",
-      "dose": "20 mg",
+      "dose": "20mg",
       "frequency": "Daily",
       "active": true
     },
     {
       "name": "Lisinopril",
-      "dose": "10 mg",
+      "dose": "10mg",
       "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Paracetamol",
+      "dose": "500mg",
+      "frequency": "As needed",
       "active": false
     }
   ],
   "allergies": [
-    "Penicillin",
-    "Sulfa drugs"
+    "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "Allergies: Penicillin",
-    "truth": "Allergies: Penicillin, Sulfa drugs",
-    "gold_question": "Do you have any other allergies, particularly to sulfa-containing medications?"
+    "kind": "stale_med_list",
+    "record_states": "Medications: Atorvastatin 20mg Daily, Lisinopril 10mg Daily, Omeprazole 20mg Daily, Paracetamol 500mg As needed (active)",
+    "truth": "Medications: Atorvastatin 20mg Daily, Lisinopril 10mg Daily, Omeprazole 20mg Daily (Paracetamol discontinued 6 months ago due to resolution of symptoms)",
+    "gold_question": "Can you confirm if you are still taking Paracetamol, and if not, when was the last time you took it?"
   },
   "distractors": [
     {
-      "description": "Pneumonia (resolved in 2018)",
-      "why_irrelevant": "Resolved years ago, no current impact"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved years ago, no impact on current anesthesia plan"
     },
     {
-      "description": "Fractured right wrist (2005)",
-      "why_irrelevant": "Remote injury, fully healed"
+      "description": "Remote history of wrist fracture (healed) from 10 years ago",
+      "why_irrelevant": "Old injury, fully healed, no ongoing issues"
     },
     {
-      "description": "Irritable Bowel Syndrome (resolved 2012)",
-      "why_irrelevant": "Symptoms resolved, no current management needed"
+      "description": "Previous diagnosis of mild iron deficiency anemia, resolved with dietary changes",
+      "why_irrelevant": "Resolved nutritional deficiency, no current anemia"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "10 mg",
-        "frequency": "Daily",
-        "active": true
-      },
-      {
         "name": "Atorvastatin",
-        "dose": "20 mg",
-        "frequency": "Daily",
-        "active": true
-      },
-      {
-        "name": "Omeprazole",
-        "dose": "20 mg",
+        "dose": "20mg",
         "frequency": "Daily",
         "active": true
       },
       {
         "name": "Lisinopril",
-        "dose": "10 mg",
+        "dose": "10mg",
         "frequency": "Daily",
-        "active": false
+        "active": true
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Paracetamol",
+        "dose": "500mg",
+        "frequency": "As needed",
+        "active": true
       }
     ],
     "allergies": [
-      "Penicillin"
+      "Penicillin (rash)"
     ],
     "past_history": [
-      "Hypertension",
-      "Hyperlipidemia",
-      "Gastroesophageal reflux disease (GERD)",
-      "Pneumonia (resolved 2018)",
-      "Fractured right wrist (2005)",
-      "Irritable Bowel Syndrome (resolved 2012)"
+      "History of pneumonia resolved 5 years ago",
+      "Remote history of wrist fracture (healed) from 10 years ago",
+      "Previous diagnosis of mild iron deficiency anemia, resolved with dietary changes"
     ],
     "prior_anesthesia": null
   }

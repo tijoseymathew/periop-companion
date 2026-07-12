@@ -1,6 +1,7 @@
 """Intra-op + post-op stage orchestration and full-case runner (spec §3.4-3.5, M3 exit)."""
 
 import json
+import threading
 
 import pytest
 
@@ -132,6 +133,78 @@ class TestFullStages:
         ids = {a.artifact_id for a in case.artifacts}
         assert {PREOP_NOTE_ID, INTRAOP_RECORD_ID, ANTICIPATED_ISSUES_ID,
                 HANDOFF_ID, POSTOP_NOTE_ID} <= ids
+
+    def test_postop_writers_overlap_with_deterministic_ledger_order(self, case_dir):
+        """Post-op's two Super calls are independent (v2-speed §3.4): they run
+        concurrently, but the ledger order is fixed — handoff first — no
+        matter which finishes first. Here the handoff is *forced to finish
+        last*: it blocks until the post-op note's call has returned, which a
+        strictly sequential stage (handoff first) can never satisfy."""
+        scripted = ScriptedChat()
+        case = Case(case_id="sg-0001")
+        from periop.agents.preop_stage import run_preop_stage
+        run_preop_stage(case, case_dir, chat=scripted)
+        run_intraop_stage(case, case_dir, chat=scripted, fast_chat=scripted)
+
+        # the handoff call blocks until the post-op note's agent_end has been
+        # *emitted* (not merely returned), so the completion order the stage
+        # reports is fully deterministic here: note first, handoff second
+        postop_note_done = threading.Event()
+
+        class OrderedChat:
+            def complete_structured(self, user, schema, system=None, **kwargs):
+                if schema.__name__ == "HandoffPlan":
+                    assert postop_note_done.wait(timeout=10), (
+                        "handoff ran strictly before the post-op note — "
+                        "the two writers are not overlapping"
+                    )
+                return scripted.complete_structured(user, schema, system=system, **kwargs)
+
+        events = []
+
+        def emit(event, data):
+            events.append((event, data))
+            if event == "agent_end" and data.get("agent") == "PostAnesthesiaEvaluator":
+                postop_note_done.set()
+
+        run_postop_stage(case, case_dir, chat=OrderedChat(), fast_chat=scripted, emit=emit)
+
+        # both artifacts exist, handoff first in the ledger regardless of
+        # completion order (conformance-stable, v2-speed §3.4)
+        ids = [a.artifact_id for a in case.artifacts]
+        assert ids.index(HANDOFF_ID) < ids.index(POSTOP_NOTE_ID)
+        assert case.get_artifact(HANDOFF_ID).claims
+        assert case.get_artifact(POSTOP_NOTE_ID).claims
+
+        # SSE: both writers announced up front; ends arrive in completion
+        # order (the note finished first here); both artifacts completed
+        writer = ("HandoffComposer", "PostAnesthesiaEvaluator")
+        flow = [(e, d.get("agent")) for e, d in events
+                if d.get("agent") in writer and e in ("agent_start", "agent_end")]
+        assert flow[0][0] == flow[1][0] == "agent_start"
+        assert flow[2] == ("agent_end", "PostAnesthesiaEvaluator")
+        assert flow[3] == ("agent_end", "HandoffComposer")
+        completed = [d["artifact_id"] for e, d in events if e == "artifact_complete"]
+        assert HANDOFF_ID in completed and POSTOP_NOTE_ID in completed
+
+    def test_postop_writer_failure_raises_and_appends_nothing(self, case_dir):
+        scripted = ScriptedChat()
+        case = Case(case_id="sg-0001")
+        from periop.agents.preop_stage import run_preop_stage
+        run_preop_stage(case, case_dir, chat=scripted)
+        run_intraop_stage(case, case_dir, chat=scripted, fast_chat=scripted)
+
+        class FailingHandoffChat:
+            def complete_structured(self, user, schema, system=None, **kwargs):
+                if schema.__name__ == "HandoffPlan":
+                    raise RuntimeError("reasoning NIM unreachable")
+                return scripted.complete_structured(user, schema, system=system, **kwargs)
+
+        with pytest.raises(RuntimeError, match="unreachable"):
+            run_postop_stage(case, case_dir, chat=FailingHandoffChat(), fast_chat=scripted)
+        # all-or-nothing: a half-generated stage leaves no partial artifacts
+        assert case.get_artifact(HANDOFF_ID) is None
+        assert case.get_artifact(POSTOP_NOTE_ID) is None
 
     async def test_adk_case_pipeline_drives_real_stages(self, case_dir):
         # the real agents run inside ADK StageAgents (observability seam intact)

@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Elective knee arthroscopy for lateral meniscus tear repair (elective).
+Arthroscopic Knee Meniscectomy (Left) (elective).
 
 ## Anesthesia
 
-General Anesthesia with endotracheal intubation and mechanical ventilation
+General Anesthesia with Ultrasound-Guided Femoral Nerve Block

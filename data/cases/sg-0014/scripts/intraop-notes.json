@@ -1,223 +1,135 @@
 {
   "notes": [
     {
-      "t": "08:00",
-      "text": "induction propofol one hundred twenty milligrams, fentanyl fifty micrograms, rocuronium fifty milligrams"
+      "t": "07:30",
+      "text": "induction propofol one hundred twenty milligrams"
     },
     {
-      "t": "08:02",
-      "text": "LMA inserted, grade one view, capnography confirmed"
+      "t": "07:32",
+      "text": "tube in, grade one view"
     },
     {
-      "t": "08:03",
-      "text": "mean arterial pressure dropped to sixty, atropine zero point five milligrams given intravenously"
+      "t": "07:35",
+      "text": "iv access established, two large bore lines"
     },
     {
-      "t": "08:05",
-      "text": "sixteen gauge peripheral line placed, blood pressure one hundred seventy over ninety"
-    },
-    {
-      "t": "08:10",
-      "text": "five hundred milliliters lactated Ringer's administered"
+      "t": "07:40",
+      "text": "fluid bolus one thousand milliliters normal saline"
     },
     {
       "t": "08:15",
-      "text": "ultrasound-guided transversus abdominis plane block performed with forty milliliters bupivacaine zero point five percent"
+      "text": "notable hypotension, treat with fifty micrograms phenylephrine"
     },
     {
-      "t": "08:20",
-      "text": "heart rate increased to one hundred twenty, esmolol one milligram bolus administered"
+      "t": "08:45",
+      "text": "notable tachycardia, treat with ten milligrams IV metoprolol"
     }
   ],
   "events": [
     {
-      "t": "08:00",
+      "t": "07:30",
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:00",
+      "t": "07:30",
       "category": "dose",
       "value": "120",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#1"
-      ]
+      "units": "milligrams",
+      "provenance": []
     },
     {
-      "t": "08:00",
-      "category": "agent",
-      "value": "fentanyl",
-      "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "agent",
-      "value": "rocuronium",
-      "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "50",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:02",
+      "t": "07:32",
       "category": "airway",
-      "value": "inserted",
+      "value": "tube in",
       "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:02",
+      "t": "07:32",
       "category": "airway",
       "value": "grade one view",
       "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:02",
-      "category": "event",
-      "value": "capnography confirmed",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:03",
-      "category": "event",
-      "value": "60",
-      "units": "mmHg",
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:03",
-      "category": "agent",
-      "value": "atropine",
-      "units": null,
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:03",
-      "category": "dose",
-      "value": "0.5",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:05",
+      "t": "07:35",
       "category": "line",
-      "value": "sixteen gauge peripheral",
+      "value": "iv access established",
       "units": null,
-      "provenance": [
-        "voice_notes#4"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:05",
-      "category": "event",
-      "value": "170/90",
-      "units": "mmHg",
-      "provenance": [
-        "voice_notes#4"
-      ]
+      "t": "07:35",
+      "category": "line",
+      "value": "two large bore lines",
+      "units": null,
+      "provenance": []
     },
     {
-      "t": "08:10",
+      "t": "07:40",
       "category": "fluid",
-      "value": "lactated Ringer's",
+      "value": "bolus",
       "units": null,
-      "provenance": [
-        "voice_notes#5"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:10",
+      "t": "07:40",
       "category": "dose",
-      "value": "500",
-      "units": "mL",
-      "provenance": [
-        "voice_notes#5"
-      ]
+      "value": "1000",
+      "units": "milliliters",
+      "provenance": []
     },
     {
-      "t": "08:15",
+      "t": "07:40",
       "category": "agent",
-      "value": "bupivacaine",
+      "value": "normal saline",
       "units": null,
-      "provenance": [
-        "voice_notes#6"
-      ]
+      "provenance": []
     },
     {
       "t": "08:15",
-      "category": "dose",
-      "value": "40",
-      "units": "mL",
-      "provenance": [
-        "voice_notes#6"
-      ]
-    },
-    {
-      "t": "08:20",
       "category": "event",
-      "value": "120",
-      "units": "bpm",
-      "provenance": [
-        "voice_notes#7"
-      ]
-    },
-    {
-      "t": "08:20",
-      "category": "agent",
-      "value": "esmolol",
+      "value": "notable hypotension",
       "units": null,
-      "provenance": [
-        "voice_notes#7"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:20",
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:15",
       "category": "dose",
-      "value": "1",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#7"
-      ]
+      "value": "50",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "notable tachycardia",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "metoprolol",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "10",
+      "units": "milligrams",
+      "provenance": []
     }
   ]
 }

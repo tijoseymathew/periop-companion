@@ -6,26 +6,32 @@
 
 ## Medications
 
-Amlodipine 5mg Daily.
+Metformin 500 mg Once daily.
 
-Lisinopril 10mg Daily.
+Atorvastatin 20 mg Once daily.
 
-Atorvastatin 20mg Nightly.
+Lisinopril 10 mg Once daily.
 
-Metformin 500mg Twice daily.
+Insulin Glargine 20 units Once daily.
 
-Paracetamol 500mg As needed.
-
-Aspirin 75mg Daily.
+Paracetamol 500 mg As needed.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin
 
 ## Past History
 
-Pneumonia resolved in 2014
+Hypertension
 
-Left wrist fracture in 2005
+Type 2 Diabetes Mellitus
 
-Hyperthyroidism treated in 2010
+Osteoarthritis (bilateral hips)
+
+Hyperlipidemia
+
+Pneumonia (2010)
+
+Fractured right wrist (2005)
+
+Completed course of Ciprofloxacin for UTI (2018)

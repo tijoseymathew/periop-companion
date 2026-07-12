@@ -1,6 +1,6 @@
 {
   "questions": [
-    "Are you still taking all the medications listed in your current medical records?"
+    "Have there been any changes to your medication list in the past year, particularly regarding your gastrointestinal symptoms?"
   ],
   "events": [
     {
@@ -9,142 +9,143 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes#0#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120 mg",
-      "units": null,
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#0#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
       "category": "airway",
-      "value": "LMA 6.5 placed, grade one view",
+      "value": "tube in",
       "units": null,
       "provenance": [
-        "voice_notes#1#1"
+        "voice_notes#08:02"
       ]
     },
     {
-      "t": "08:03",
-      "category": "event",
-      "value": "MAP 55 mmHg",
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
       "units": null,
       "provenance": [
-        "voice_notes#2#2"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
-      "provenance": [
-        "voice_notes#3#3"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "dose",
-      "value": "100 mcg",
-      "units": null,
-      "provenance": [
-        "voice_notes#3#3"
+        "voice_notes#08:02"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "peripheral IV 20G placed in right hand",
+      "category": "fluid",
+      "value": "normal saline",
       "units": null,
       "provenance": [
-        "voice_notes#4#4"
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "one",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "one hundred fifty",
+      "units": "ml per hour",
+      "provenance": [
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "arterial line placed in right radial artery",
+      "category": "agent",
+      "value": "sevoflurane",
       "units": null,
       "provenance": [
-        "voice_notes#5#5"
+        "voice_notes#08:10"
       ]
     },
     {
-      "t": "08:15",
-      "category": "fluid",
-      "value": "LR 500 mL bolus administered",
+      "t": "08:10",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "morphine",
       "units": null,
       "provenance": [
-        "voice_notes#6#6"
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#08:20"
       ]
     },
     {
       "t": "08:25",
       "category": "event",
-      "value": "HR 110 bpm",
+      "value": "heart rate increased to one hundred ten",
       "units": null,
       "provenance": [
-        "voice_notes#7#7"
+        "voice_notes#08:25"
       ]
     },
     {
-      "t": "08:27",
+      "t": "08:25",
       "category": "agent",
-      "value": "atropine",
+      "value": "esmolol",
       "units": null,
       "provenance": [
-        "voice_notes#8#8"
+        "voice_notes#08:25"
       ]
     },
     {
-      "t": "08:27",
+      "t": "08:25",
       "category": "dose",
-      "value": "0.5 mg",
-      "units": null,
+      "value": "five",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#8#8"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "agent",
-      "value": "sevoflurane",
-      "units": null,
-      "provenance": [
-        "voice_notes#9#9"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "dose",
-      "value": "1.5%",
-      "units": null,
-      "provenance": [
-        "voice_notes#9#9"
+        "voice_notes#08:25"
       ]
     }
   ],
   "preop_note_claims": [
-    "History includes essential hypertension, hyperlipidemia, and anxiety disorder",
-    "Current medications: Amlodipine 10 mg daily, Atorvastatin 20 mg nightly, Sertraline 50 mg daily; Omeprazole 20 mg daily discontinued 3 months ago after resolution of GERD symptoms",
-    "No known allergies",
-    "ASA-PS classification is 2 due to well-controlled comorbidities (hypertension, hyperlipidemia, anxiety)",
-    "Airway management plan: Laryngeal Mask Airway (LMA) with general anesthesia maintained with sevoflurane"
+    "Patient's medical history includes obesity (BMI 32), type 2 diabetes mellitus, and hypertension.",
+    "Current medications include metformin 500mg twice daily, lisinopril 20mg once daily, and atorvastatin 40mg once daily.",
+    "Patient has a true allergy to penicillin.",
+    "Ranitidine 150mg twice daily was discontinued 6 months ago due to resolution of GERD symptoms.",
+    "ASA-PS classification is 2, due to mild systemic disease (hypertension and type 2 diabetes mellitus).",
+    "Airway assessment and plan for general anesthesia with laryngeal mask airway (LMA) should be documented."
   ],
   "handoff_claims": [
-    "Patient has a history of essential hypertension, hyperlipidemia, and anxiety disorder",
-    "Intraoperative course: elective laparoscopic cholecystectomy performed under general anesthesia with LMA, maintained with sevoflurane; no complications noted",
-    "Anticipated postoperative issues: pain at incision sites, possible nausea/vomiting, and need for monitoring of vital signs and respiratory status"
+    "Patient has a history of type 2 diabetes mellitus, hypertension, and obesity (BMI 32).",
+    "Intraoperative course: Elective laparoscopic cholecystectomy under general anesthesia with LMA, without complications.",
+    "Anticipated postoperative issues include potential delayed recovery due to obesity and diabetes, and need for glycemic control monitoring."
   ],
   "distractors": [
-    "History of community-acquired pneumonia resolved in 2019",
-    "Remote left wrist fracture (2015) treated with cast, fully healed",
-    "Discontinued prednisone burst therapy for childhood asthma (last use age 12)"
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of left arm fracture (healed) from 10 years ago",
+    "Previous use of Omeprazole for GERD, discontinued 2 years ago"
   ]
 }

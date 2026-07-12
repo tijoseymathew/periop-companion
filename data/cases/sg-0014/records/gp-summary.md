@@ -6,26 +6,28 @@
 
 ## Medications
 
-Amlodipine 10mg Daily.
+Losartan 50 mg Once Daily.
 
-Metoprolol 50mg Twice daily.
+Metformin 500 mg Twice Daily.
 
-Atorvastatin 20mg Nightly.
+Atorvastatin 20 mg Once Daily.
 
-Metformin 500mg Twice daily.
-
-Omeprazole 20mg Daily.
-
-Aspirin 75mg Daily.
+Ranitidine 150 mg Once Daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin
 
 ## Past History
 
-Pneumonia resolved in 2018
+Hypertension
 
-Fractured left humerus in 2010, fully healed
+Type 2 Diabetes Mellitus
 
-Completed course of amoxicillin for UTI in 2015
+Hyperlipidemia
+
+Pneumonia (2018)
+
+Left Femur Fracture (age 25)
+
+Discontinued Amlodipine (stopped 2 years ago)

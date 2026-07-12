@@ -6,28 +6,28 @@
 
 ## Medications
 
-Amlodipine 10 mg Once daily.
+Metformin 500mg Twice daily.
 
-Atorvastatin 20 mg Once daily at night.
+Lisinopril 20mg Once daily.
 
-Sertraline 50 mg Once daily.
+Atorvastatin 40mg Once daily.
 
-Omeprazole 20 mg Once daily.
+Ranitidine 150mg Twice daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin
 
 ## Past History
 
-Essential hypertension
+Obesity
 
-Hyperlipidemia
+Type 2 Diabetes Mellitus
 
-Anxiety disorder
+Hypertension
 
-Community-acquired pneumonia (2019)
+History of pneumonia (resolved)
 
-Left wrist fracture (2015)
+Remote left arm fracture (healed)
 
-Childhood asthma with prednisone use
+Previous GERD treated with Omeprazole (discontinued)

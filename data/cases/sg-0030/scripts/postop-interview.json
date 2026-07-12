@@ -6,47 +6,47 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "Eh, still a bit tired, but okay lah. Got some pain here, like a deep ache, but not too bad."
+      "text": "I'm okay, I guess. Still a bit groggy, but I can talk."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understandable. Can you rate your pain for me, out of 10?"
+      "text": "That's expected. On a scale from 0 to 10, how would you rate your pain right now?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe 3 or 4? The nurse already gave me some meds, so it's better now."
+      "text": "Maybe a 3 or 4. There's some discomfort, but it's manageable."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any nausea or vomiting since waking up? Sometimes the anesthesia can cause that."
+      "text": "Good. Have you felt nauseous at all since waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit dizzy earlier, but no vomiting. Felt like my stomach was churning, but it's gone now."
+      "text": "No, not really. My stomach feels fine so far."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Okay. How's your breathing? Any tightness or discomfort in your throat from the tube?"
+      "text": "Excellent. How's your breathing? Any tightness or difficulty catching your breath?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Throat is a bit sore, like I swallowed something big, but I can breathe fine. No wheezing or anything."
+      "text": "No, I'm breathing fine. Just a bit tired from the anesthesia, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good to hear. Do you remember anything about the surgery itself?"
+      "text": "Understood. Do you remember anything from the operating room today?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, everything's a blank. Just woke up here, so I guess the anesthesia worked well."
+      "text": "Not really. I remember going in and then waking up here. So I guess I was out completely."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Since you have hypertension, we've been monitoring your BP. It's been stable, but we'll keep an eye on it."
+      "text": "That's normal with general anesthesia. Given your diabetes and weight, we'll keep a close eye on your sugar levels and mobility post-op. Any concerns or questions from your side?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Okay, thanks. I was worried it might spike, but I feel okay now."
+      "text": "No, I think that's all. I just want to go home soon and rest."
     }
   ]
 }

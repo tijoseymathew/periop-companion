@@ -3,7 +3,43 @@
 @tailwind utilities;
 
 @layer base {
+  html,
   body {
-    @apply bg-surface-base text-ink-primary antialiased;
+    height: 100%;
+  }
+  body {
+    @apply bg-surface-base font-sans text-ink-primary antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    @apply text-brand-ink no-underline;
+  }
+  a:hover {
+    @apply text-brand-soft underline;
+  }
+
+  /* Warm, on-palette scrollbars to match the imported design. */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d9cfbd;
+    border-radius: 7px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ccc0aa;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer utilities {
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 }

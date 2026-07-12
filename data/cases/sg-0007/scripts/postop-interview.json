@@ -6,47 +6,47 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit sore, but okay lah. My tummy is achy, but not too bad."
+      "text": "I'm feeling a bit groggy, but okay. My tummy is sore, but I expected that."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Can you rate your pain on a scale from 0 to 10 for me?"
+      "text": "That's understandable. Can you tell me your pain level on a scale from 1 to 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe a 4? It’s manageable, but I can feel it when I move."
+      "text": "Maybe around 4 or 5. It's manageable, but I can feel it when I move."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any nausea or vomiting since waking up? Sometimes anesthesia can cause that."
+      "text": "Alright, we'll make sure to manage your pain. Are you feeling any nausea or dizziness?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, no vomiting. Just a bit of dizziness when I sat up earlier, but it went off."
+      "text": "A little bit nauseous, but not too bad. I haven't eaten anything yet, though."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. How’s your breathing? Any tightness or discomfort in your chest or throat?"
+      "text": "Okay, we'll keep an eye on that. How's your breathing? Any discomfort or shortness of breath?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Throat’s a bit sore from the tube, but I can breathe fine. No wheezing or anything."
+      "text": "Breathing is fine. I'm a bit stuffy from the tube, but I can breathe okay."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything about the surgery itself? Sometimes patients have fuzzy memories."
+      "text": "Good. Do you remember anything from the surgery or when you were waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, everything’s blank from when I went to sleep. Woke up here, so all good."
+      "text": "Not really. I remember going to sleep and then waking up here. No strange dreams or anything."
     },
     {
       "speaker": "PROVIDER",
-      "text": "You have a history of hypertension and allergies. Any issues with those today?"
+      "text": "Perfect. Since you have a higher BMI and diabetes, we'll monitor you closely for any complications, but so far everything looks good."
     },
     {
       "speaker": "PATIENT",
-      "text": "Blood pressure’s been fine, no headaches. Allergies? Nose is clear, no sneezing."
+      "text": "Thanks, doctor. I appreciate it. I'm just ready to go home and rest."
     }
   ]
 }

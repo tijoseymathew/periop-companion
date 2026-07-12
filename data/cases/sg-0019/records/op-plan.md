@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Laparoscopic cholecystectomy for symptomatic gallstones (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with endotracheal intubation
+General Anesthesia with Endotracheal Intubation

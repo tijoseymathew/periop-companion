@@ -6,34 +6,28 @@
 
 ## Medications
 
-Amlodipine 5mg daily.
-
-Lisinopril 10mg daily.
-
-Atorvastatin 40mg nightly.
+Atorvastatin 20mg once daily.
 
 Metformin 500mg twice daily.
 
-Omeprazole 20mg daily.
+Lisinopril 10mg once daily.
 
-Aspirin 100mg daily.
+Aspirin 75mg once daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin (rash)
 
 ## Past History
 
 Hypertension
 
-Hyperlipidemia
-
 Type 2 Diabetes Mellitus
 
-Gastroesophageal Reflux Disease (GERD)
+Hyperlipidemia
 
-Pneumonia (resolved 2018)
+Pneumonia (resolved 5 years ago)
 
-Distal radius fracture (right wrist, 2015)
+Right arm fracture (healed, 20 years ago)
 
-Appendectomy (1985)
+Mild iron-deficiency anemia (resolved with diet)

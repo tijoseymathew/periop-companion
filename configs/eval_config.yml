@@ -11,6 +11,14 @@
 # runner is the reference implementation of that scoring so the two stay in
 # sync.
 
+# Tracing is opt-in by environment (spec v2-nat §3.5): exports to Langfuse
+# iff the three LANGFUSE_* env vars are set, warning + no-op otherwise.
+general:
+  telemetry:
+    tracing:
+      langfuse:
+        _type: periop_langfuse
+
 workflow:
   _type: periop_pipeline
   case_dir: data/cases

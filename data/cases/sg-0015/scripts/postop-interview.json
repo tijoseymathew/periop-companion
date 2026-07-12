@@ -2,59 +2,55 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Hi there, how are you feeling now after the surgery?"
+      "text": "Good morning, how are you feeling now after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit sore, ah, but manageable. My tummy hurts a little where they made the cuts."
+      "text": "Mmm... I'm feeling a bit groggy, but okay lah. Still sleepy one."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understandable. On a scale of 1 to 10, what would you say your pain is right now?"
+      "text": "That's expected. Can you tell me your pain level on a scale from 1 to 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe around 4 or 5? Not too bad, but I can feel it when I move."
+      "text": "Eh, maybe around 4? Got some pain here, near my tummy, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Okay, we’ll keep an eye on that. Any nausea or vomiting since waking up?"
+      "text": "Alright, we can manage that with medication. Are you feeling nauseous or did you vomit at all?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit of nausea, yes. Felt like I might throw up earlier, but it’s better now."
+      "text": "No, no vomiting. But my stomach feels a bit funny, like I might be sick."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Got it. We’ll give you something for that. How’s your breathing? Any discomfort in your throat or chest?"
+      "text": "Okay, we’ll give you something for that. How’s your breathing? Any shortness of breath or discomfort?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Throat’s a bit sore from the tube, I think. But I’m breathing fine, no trouble."
+      "text": "Breathing is okay, but my throat is a bit sore from the tube, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Do you remember anything from the operation itself?"
+      "text": "That can happen. Do you remember anything about the surgery or waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, everything’s blank. Woke up here, so that’s good, right?"
+      "text": "Not really, I just remember going to sleep and then waking up here."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Since you have hypertension and GERD, any chest burning or high BP symptoms?"
+      "text": "That’s normal with general anesthesia. Given your diabetes and high blood pressure, are you feeling any dizziness or unusual symptoms?"
     },
     {
       "speaker": "PATIENT",
-      "text": "BP’s been okay, but my throat feels a bit acidic, like usual. Not worse than before."
+      "text": "No dizziness, but I feel a bit weak. Maybe because I didn’t eat before surgery."
     },
     {
       "speaker": "PROVIDER",
-      "text": "We’ll monitor your BP and give meds for the acid. You’re doing well overall."
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "Thanks, doctor. Hope to go home soon."
+      "text": "Understood. We’ll monitor your blood sugar and blood pressure closely. Let the nurse know if your pain or nausea gets worse."
     }
   ]
 }

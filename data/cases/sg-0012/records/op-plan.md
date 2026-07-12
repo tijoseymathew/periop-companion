@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Laparoscopic cholecystectomy (elective).
+Cholecystectomy (Laparoscopic) (elective).
 
 ## Anesthesia
 
-General anesthesia with endotracheal intubation
+General Anesthesia with Balanced Technique, including Fentanyl, Propofol, and Sevoflurane; Muscle Relaxant (Rocuronium) for intubation and surgery

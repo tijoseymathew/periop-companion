@@ -2,71 +2,83 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Miss Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your surgery today. I just need to go through a few questions to make sure everything goes smoothly for your laparoscopic ovarian cystectomy. Is that okay with you?"
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through a few important questions to ensure your safety and comfort during the procedure. Is that okay with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, doctor. I'm ready. Been waiting for this for weeks already lah."
+      "text": "Yes, of course. I'm ready."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. Let's start with your medical history. Can you tell me a bit about the ovarian cyst? When did you first notice symptoms?"
+      "text": "Thank you. Let's start with your medical history. Can you briefly tell me about the reason for your surgery today?"
     },
     {
       "speaker": "PATIENT",
-      "text": "About three months ago, I had really bad lower tummy pain, like cramps but worse. My gynae did an ultrasound and found the cyst. They said it's about 6cm, so they want to remove it before it gets bigger or causes more trouble."
+      "text": "Sure. I've been having a lot of pain in my abdomen, especially after eating. The doctor found stones in my gallbladder, so they're removing it laparoscopically."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let's go through your medications. You're on amlodipine for your blood pressure, right? What dose are you taking?"
+      "text": "Understood. Now, regarding your medications, I see from your records that you're on Metformin, Gliclazide, Atorvastatin, and you've stopped Ranitidine. Can you please confirm if there have been any changes to your medication list since your last review?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, amlodipine 5mg once daily in the morning. And my birth control pills, levonorgestrel and ethinyl estradiol, same time every day. Oh, and I stopped doxycycline two weeks ago because of the surgery."
+      "text": "Actually, yes. I stopped taking Gliclazide a few months ago because I was having too many low sugar episodes. My doctor switched me to Sitagliptin 100mg once daily instead."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you. Now, about allergies – your records say 'no known allergies,' but I always like to double-check. Have you ever had a reaction to any antibiotics, particularly sulfa-based medications like co-trimoxazole or sulfadiazine?"
+      "text": "Thank you for letting me know. It's important we have the most up-to-date information. Have you experienced any new allergic reactions to medications recently?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh! Actually, yes. When I was a teenager, I took some sulfa pills for a skin infection and broke out in a terrible rash all over my body. It was really scary. I've avoided all sulfa drugs since then."
+      "text": "Oh, yes. I had an allergic reaction to Ceftriaxone last year. I got hives all over my body, so I shouldn't have that antibiotic again."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for sharing that. I'll make sure to note your sulfa allergy clearly in your chart. Now, have you eaten or drunk anything since midnight? We need to confirm your NPO status for general anesthesia."
+      "text": "Thank you for sharing that. We'll make sure to note that in your chart. Your allergies were previously listed as only Penicillin with a rash. This is an important update."
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. I had my last sip of water at 7am. Just like the instructions said."
+      "text": "Yes, I should have mentioned it earlier, but it slipped my mind."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Any previous surgeries or anesthesia? Even minor procedures like stitching or dental work?"
+      "text": "No worries at all. That's why we do this interview — to catch any updates. Now, regarding your diabetes, how well-controlled is it on your current medications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, this is my first time. I'm a bit nervous about the general anesthesia, to be honest."
+      "text": "It's been pretty good since I switched to Sitagliptin. My fasting sugar is usually around 120-140, and I don't have as many spikes as before."
     },
     {
       "speaker": "PROVIDER",
-      "text": "It's normal to feel that way. Finally, can you tell me about your daily activities? For example, can you walk up stairs or carry groceries without getting short of breath?"
+      "text": "Excellent. And how about your weight and mobility? You're listed as having a BMI of 32. How do you feel about your overall fitness level?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, I walk to work every day and climb five flights of stairs. No problems at all. I'm quite active, lah."
+      "text": "I know I'm overweight, but I can still walk and do daily activities without too much trouble. I just get tired faster than before."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That's reassuring. We'll make sure your blood pressure is well-controlled during surgery since you're on amlodipine. Any other concerns before we proceed?"
+      "text": "That's helpful to know. Have you had any previous surgeries or anesthesia before?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, I think that's all. Thank you for explaining everything so clearly, doctor."
+      "text": "No, this is my first time. I'm a bit nervous, but I trust the team."
     },
     {
       "speaker": "PROVIDER",
-      "text": "My pleasure, Miss Tan. We'll take good care of you. The nursing team will come for you shortly. See you in the operating theater."
+      "text": "That's completely normal. We're here to make sure everything goes smoothly. Finally, have you had anything to eat or drink since midnight?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I've been fasting as instructed. Just a sip of water with my morning meds, but that was hours ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Thank you so much for going through all that with me. I'll be using general anesthesia for your surgery, and we'll also be doing a Transversus Abdominis Plane block under ultrasound guidance to help with your pain after surgery. Any questions for me before we proceed?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, I think that's all. Thank you for explaining everything so clearly."
     }
   ]
 }

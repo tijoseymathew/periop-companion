@@ -1,5 +1,6 @@
 {
   "case_id": "sg-0029",
+  "label": null,
   "patient_profile_ref": null,
   "sources": [
     {
@@ -13,41 +14,38 @@
         },
         {
           "chunk_id": "c002",
-          "text": "Montelukast 10mg daily.",
+          "text": "Montelukast Sodium 10 mg once daily.",
           "section": "Medications"
         },
         {
           "chunk_id": "c003",
-          "text": "Fluticasone 1 spray each nostril daily daily.",
+          "text": "Escitalopram 10 mg once daily.",
           "section": "Medications"
         },
         {
           "chunk_id": "c004",
-          "text": "Loratadine 10mg daily.",
-          "section": "Medications"
-        },
-        {
-          "chunk_id": "c005",
           "text": "No known drug allergies recorded.",
           "section": "Allergies"
         },
         {
+          "chunk_id": "c005",
+          "text": "Left wrist fracture (age 12, fully healed)",
+          "section": "Past History"
+        },
+        {
           "chunk_id": "c006",
-          "text": "Left wrist fracture at age 10, treated with cast, fully healed",
+          "text": "Pneumonia (age 15, fully resolved)",
           "section": "Past History"
         },
         {
           "chunk_id": "c007",
-          "text": "Pneumonia in 2015, treated with antibiotics, fully resolved",
-          "section": "Past History"
-        },
-        {
-          "chunk_id": "c008",
-          "text": "Completed a course of amoxicillin for acne in 2022, no ongoing skin issues",
+          "text": "Previous pre-op ECG for elective cholecystectomy (age 16, normal results)",
           "section": "Past History"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "doc:med-list",
@@ -55,21 +53,18 @@
       "chunks": [
         {
           "chunk_id": "c001",
-          "text": "Montelukast 10mg daily.",
+          "text": "Montelukast Sodium 10 mg once daily.",
           "section": "Current Medications"
         },
         {
           "chunk_id": "c002",
-          "text": "Fluticasone 1 spray each nostril daily daily.",
-          "section": "Current Medications"
-        },
-        {
-          "chunk_id": "c003",
-          "text": "Loratadine 10mg daily.",
+          "text": "Escitalopram 10 mg once daily.",
           "section": "Current Medications"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "doc:op-plan",
@@ -77,16 +72,18 @@
       "chunks": [
         {
           "chunk_id": "c001",
-          "text": "Elective knee arthroscopy for traumatic medial meniscus tear (elective).",
+          "text": "Laparoscopic Appendectomy (elective).",
           "section": "Procedure"
         },
         {
           "chunk_id": "c002",
-          "text": "General anesthesia with sevoflurane and rocuronium, supplemented with a femoral nerve block for post-operative analgesia",
+          "text": "General Anesthesia with Spinal Anesthesia (Combined Technique)",
           "section": "Anesthesia"
         }
       ],
-      "segments": []
+      "segments": [],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:preop-interview",
@@ -96,102 +93,132 @@
         {
           "seg_id": "s001",
           "t0": 0.0,
-          "t1": 14.0,
+          "t1": 19.2,
           "speaker": "PROVIDER",
-          "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today we'll be discussing your upcoming knee arthroscopy. Let me start by understanding your medical history. Can you tell me about your knee injury?"
+          "text": "Good morning! I'm going to be your anesthesiologist for your laparoscopic appendectomy today. I'd like to go through a few questions to make sure we're all set for your surgery. Can you start by telling me a bit about your current condition and why you're having this surgery?"
         },
         {
           "seg_id": "s002",
-          "t0": 14.4,
-          "t1": 26.4,
+          "t0": 19.6,
+          "t1": 38.0,
           "speaker": "PATIENT",
-          "text": "Ah, yes. I twisted my knee during a football game last month. The doctor said I have a torn meniscus that needs fixing. Been having pain and swelling since then."
+          "text": "Morning, doc. I've been having this sharp pain on the right side of my belly for a few days. It started after I ate some street food, I think. The doctor said my appendix is inflamed and needs to come out. So here I am, lah."
         },
         {
           "seg_id": "s003",
-          "t0": 26.8,
-          "t1": 38.8,
+          "t0": 38.4,
+          "t1": 54.0,
           "speaker": "PROVIDER",
-          "text": "Thank you. Now, let's go through your medications. I see you're on Fluticasone nasal spray, Loratadine, and Montelukast. Have you made any changes to these since your last medical review?"
+          "text": "Thank you for that. Let's move on to your medications. I see here that you're on Montelukast Sodium and Escitalopram. Can you confirm the current doses for me, and let me know if there have been any changes recently?"
         },
         {
           "seg_id": "s004",
-          "t0": 39.2,
-          "t1": 48.4,
+          "t0": 54.4,
+          "t1": 72.4,
           "speaker": "PATIENT",
-          "text": "Oh, I stopped the Montelukast already. Think it was mid-2023. Still using the Fluticasone spray every day and taking Loratadine for my allergies."
+          "text": "Yes, I'm still on Montelukast Sodium 10 mg every night for my asthma. But for the Escitalopram, I had it reduced to 5 mg once daily about three months ago. My psychiatrist said it was enough for me, so I've been on that dose since."
         },
         {
           "seg_id": "s005",
-          "t0": 48.8,
-          "t1": 56.8,
+          "t0": 72.8,
+          "t1": 82.4,
           "speaker": "PROVIDER",
-          "text": "Thanks for clarifying that. So Montelukast was discontinued in 2023, and you're continuing Fluticasone and Loratadine. Any known drug allergies?"
+          "text": "Thank you for clarifying that. It's important we have the most up-to-date information. Do you have any allergies that we should be aware of?"
         },
         {
           "seg_id": "s006",
-          "t0": 57.2,
-          "t1": 61.2,
+          "t0": 82.8,
+          "t1": 91.6,
           "speaker": "PATIENT",
-          "text": "No, no allergies. I can take all medications without problems."
+          "text": "Yes, I'm allergic to penicillin. I got a rash the last time I took it, so they told me to avoid it."
         },
         {
           "seg_id": "s007",
-          "t0": 61.6,
-          "t1": 68.8,
+          "t0": 92.0,
+          "t1": 101.2,
           "speaker": "PROVIDER",
-          "text": "Great. Have you eaten or drunk anything since midnight? We need to ensure you're NPO for general anesthesia."
+          "text": "Understood. We'll make sure to note that. Now, about your health history — you mentioned asthma. Can you tell me more about that?"
         },
         {
           "seg_id": "s008",
-          "t0": 69.2,
-          "t1": 76.0,
+          "t0": 101.6,
+          "t1": 115.2,
           "speaker": "PATIENT",
-          "text": "Nope, nothing since last night dinner. Just water this morning, but I stopped at 6am as instructed."
+          "text": "It's pretty mild, doc. I only get it when I exercise really hard or when the weather changes. I use my inhaler maybe once a week, sometimes less. I haven't had any attacks recently."
         },
         {
           "seg_id": "s009",
-          "t0": 76.4,
-          "t1": 80.0,
+          "t0": 115.6,
+          "t1": 127.2,
           "speaker": "PROVIDER",
-          "text": "Excellent. Any previous anesthesia experiences we should know about?"
+          "text": "Good to know. And I see you have a BMI of 28, which puts you in the overweight category. Has your weight been stable, or has it been increasing?"
         },
         {
           "seg_id": "s010",
-          "t0": 80.4,
-          "t1": 90.4,
+          "t0": 127.6,
+          "t1": 139.2,
           "speaker": "PATIENT",
-          "text": "Once, for a minor hand surgery years ago. I woke up with a dry throat but no other issues. They used general anesthesia then too."
+          "text": "It's been going up a bit, slowly. I try to exercise, but it's hard with my schedule. I know I should lose some weight, but it's tough, you know?"
         },
         {
           "seg_id": "s011",
-          "t0": 90.8,
-          "t1": 97.6,
+          "t0": 139.6,
+          "t1": 150.4,
           "speaker": "PROVIDER",
-          "text": "Noted. Finally, how's your overall fitness? Can you walk upstairs or do you get short of breath?"
+          "text": "It can be challenging, but we'll take that into account during anesthesia. Have you had any previous surgeries or anesthesia? If so, how did you tolerate them?"
         },
         {
           "seg_id": "s012",
-          "t0": 98.0,
-          "t1": 104.4,
+          "t0": 150.8,
+          "t1": 158.8,
           "speaker": "PATIENT",
-          "text": "I can climb stairs slowly, but long walks make my knee hurt. No breathing problems though."
+          "text": "No, this is my first time. I've never been under general anesthesia before, so I'm a bit nervous about that."
         },
         {
           "seg_id": "s013",
-          "t0": 104.8,
-          "t1": 117.2,
+          "t0": 159.2,
+          "t1": 171.2,
           "speaker": "PROVIDER",
-          "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia using sevoflurane and rocuronium, plus a femoral nerve block for pain control. Your allergies and medications are updated in our system now."
+          "text": "That's completely normal. We'll make sure you're comfortable and explain everything as we go. Are you NPO — that is, have you had anything to eat or drink since midnight?"
         },
         {
           "seg_id": "s014",
-          "t0": 117.6,
-          "t1": 121.2,
+          "t0": 171.6,
+          "t1": 179.6,
           "speaker": "PATIENT",
-          "text": "Sounds good, doctor. I'm ready to get this sorted."
+          "text": "Yes, I stopped eating and drinking after midnight, like the nurse told me. Just a bit thirsty, but I'm okay."
+        },
+        {
+          "seg_id": "s015",
+          "t0": 180.0,
+          "t1": 188.0,
+          "speaker": "PROVIDER",
+          "text": "Great, thank you. Finally, how are you functioning day-to-day? Can you walk up stairs, carry groceries, that sort of thing?"
+        },
+        {
+          "seg_id": "s016",
+          "t0": 188.4,
+          "t1": 200.8,
+          "speaker": "PATIENT",
+          "text": "I can walk and do normal things, but sometimes I get a bit short of breath if I walk too fast or climb too many stairs. But I'm still independent, lah."
+        },
+        {
+          "seg_id": "s017",
+          "t0": 201.2,
+          "t1": 219.6,
+          "speaker": "PROVIDER",
+          "text": "Thank you for all that information. We'll be using a combined technique — general anesthesia with spinal anesthesia — to make sure you're comfortable during and after the surgery. We'll also monitor you closely given your asthma and weight. Any questions for me before we proceed?"
+        },
+        {
+          "seg_id": "s018",
+          "t0": 220.0,
+          "t1": 224.0,
+          "speaker": "PATIENT",
+          "text": "No, I think that's all. Thanks for explaining everything, doc."
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:intraop-notes",
@@ -208,32 +235,69 @@
         {
           "seg_id": "s002",
           "t0": 3.2,
-          "t1": 5.6,
+          "t1": 4.8,
           "speaker": "PROVIDER",
-          "text": "[08:05] tube in, grade one view"
+          "text": "[08:02] fentanyl twenty micrograms"
         },
         {
           "seg_id": "s003",
-          "t0": 6.0,
-          "t1": 9.6,
+          "t0": 5.2,
+          "t1": 6.8,
           "speaker": "PROVIDER",
-          "text": "[08:10] 20G IV in left hand, 500ml LR running"
+          "text": "[08:05] rocuronium fifty milligrams"
         },
         {
           "seg_id": "s004",
-          "t0": 10.0,
-          "t1": 13.2,
+          "t0": 7.2,
+          "t1": 9.6,
           "speaker": "PROVIDER",
-          "text": "[08:30] BP dropped to 80/50, ephedrine 10mg bolus"
+          "text": "[08:07] tube in, grade one view"
         },
         {
           "seg_id": "s005",
-          "t0": 13.6,
-          "t1": 16.8,
+          "t0": 10.0,
+          "t1": 13.6,
           "speaker": "PROVIDER",
-          "text": "[08:45] HR up to 110, labetalol 5mg IV"
+          "text": "[08:10] spinal needle inserted, bupivacaine two point five milligrams"
+        },
+        {
+          "seg_id": "s006",
+          "t0": 14.0,
+          "t1": 16.4,
+          "speaker": "PROVIDER",
+          "text": "[08:15] lactated ringers one liter given"
+        },
+        {
+          "seg_id": "s007",
+          "t0": 16.8,
+          "t1": 21.6,
+          "speaker": "PROVIDER",
+          "text": "[08:30] mean arterial pressure dropped to fifty five, atenotar one microgram bolus"
+        },
+        {
+          "seg_id": "s008",
+          "t0": 22.0,
+          "t1": 24.8,
+          "speaker": "PROVIDER",
+          "text": "[08:40] desflurane at one point two percent"
+        },
+        {
+          "seg_id": "s009",
+          "t0": 25.2,
+          "t1": 26.4,
+          "speaker": "PROVIDER",
+          "text": "[08:50] surgical incision"
+        },
+        {
+          "seg_id": "s010",
+          "t0": 26.8,
+          "t1": 29.6,
+          "speaker": "PROVIDER",
+          "text": "[09:10] normal saline two hundred milliliters bolus"
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     },
     {
       "source_id": "audio:postop-interview",
@@ -243,422 +307,102 @@
         {
           "seg_id": "s001",
           "t0": 0.0,
-          "t1": 3.6,
+          "t1": 4.0,
           "speaker": "PROVIDER",
-          "text": "Hi there, how are you feeling after the surgery?"
+          "text": "Hi there, how are you feeling now after the surgery?"
         },
         {
           "seg_id": "s002",
-          "t0": 4.0,
-          "t1": 12.4,
+          "t0": 4.4,
+          "t1": 9.2,
           "speaker": "PATIENT",
-          "text": "Aiya, my knee still got some pain one, but not too bad lah. The block they give me help a lot."
+          "text": "I'm okay, I think. A bit sleepy still, but not too bad."
         },
         {
           "seg_id": "s003",
-          "t0": 12.8,
-          "t1": 17.2,
+          "t0": 9.6,
+          "t1": 20.8,
           "speaker": "PROVIDER",
-          "text": "Good to hear. Any nausea or vomiting feeling after waking up?"
+          "text": "Good to hear. Can you tell me your pain level on a scale from 0 to 10, where 0 is no pain and 10 is the worst pain?"
         },
         {
           "seg_id": "s004",
-          "t0": 17.6,
-          "t1": 23.6,
+          "t0": 21.2,
+          "t1": 26.4,
           "speaker": "PATIENT",
-          "text": "Slightly dizzy one, but stomach okay. Not like I want to throw up or anything."
+          "text": "Maybe around 3 or 4? It's more like a dull ache, not sharp."
         },
         {
           "seg_id": "s005",
-          "t0": 24.0,
-          "t1": 27.6,
+          "t0": 26.8,
+          "t1": 35.2,
           "speaker": "PROVIDER",
-          "text": "Any trouble breathing or feeling uncomfortable with your airway?"
+          "text": "Alright, we can manage that with medication. Are you feeling any nausea or did you have any vomiting after waking up?"
         },
         {
           "seg_id": "s006",
-          "t0": 28.0,
-          "t1": 34.0,
+          "t0": 35.6,
+          "t1": 41.6,
           "speaker": "PATIENT",
-          "text": "Throat a bit sore from the tube, but breathing is fine. Can talk normally also."
+          "text": "No, I haven't vomited, but I feel a bit queasy. Like my stomach is upset."
         },
         {
           "seg_id": "s007",
-          "t0": 34.4,
-          "t1": 37.6,
+          "t0": 42.0,
+          "t1": 51.6,
           "speaker": "PROVIDER",
-          "text": "Do you remember anything about the surgery itself?"
+          "text": "Understood. We'll keep an eye on that and give you something to help if needed. How's your breathing? Any shortness of breath or wheezing?"
         },
         {
           "seg_id": "s008",
-          "t0": 38.0,
-          "t1": 42.0,
+          "t0": 52.0,
+          "t1": 57.2,
           "speaker": "PATIENT",
-          "text": "Nope, all black out. Wake up already in recovery room."
+          "text": "No, I'm breathing fine. Just a bit tired from the anesthesia, I guess."
         },
         {
           "seg_id": "s009",
-          "t0": 42.4,
-          "t1": 47.2,
+          "t0": 57.6,
+          "t1": 67.6,
           "speaker": "PROVIDER",
-          "text": "You mentioned allergic rhinitis before. Any nasal congestion or allergy symptoms now?"
+          "text": "Good. Since you have mild asthma, we want to make sure there's no reaction. Do you remember anything from the operating room or waking up?"
         },
         {
           "seg_id": "s010",
-          "t0": 47.6,
-          "t1": 53.2,
+          "t0": 68.0,
+          "t1": 74.8,
           "speaker": "PATIENT",
-          "text": "Nose a bit blocked, but not sneezing or watery eyes. Same as usual lah."
+          "text": "Not really. I remember going to sleep and then waking up here. It's all a bit fuzzy."
         },
         {
           "seg_id": "s011",
-          "t0": 53.6,
-          "t1": 58.0,
+          "t0": 75.2,
+          "t1": 86.0,
           "speaker": "PROVIDER",
-          "text": "We'll keep an eye on that. Overall, how are you coping?"
+          "text": "That's normal with general anesthesia. We also gave you a spinal, so your lower body might feel a bit heavy still. Any concerns or questions for me?"
         },
         {
           "seg_id": "s012",
-          "t0": 58.4,
-          "t1": 64.8,
+          "t0": 86.4,
+          "t1": 90.8,
           "speaker": "PATIENT",
-          "text": "Quite okay, doctor. Just want to go home and rest. Thank you for checking on me."
+          "text": "No, I think that's all. Just want to go home soon."
+        },
+        {
+          "seg_id": "s013",
+          "t0": 91.2,
+          "t1": 98.4,
+          "speaker": "PROVIDER",
+          "text": "We'll get you ready for that soon. Rest well and let the nurses know if you need anything."
         }
-      ]
+      ],
+      "captured_at": null,
+      "provided_by": null
     }
   ],
   "artifacts": [
     {
       "artifact_id": "note:pre-anesthesia-eval",
-      "claims": [
-        {
-          "claim_id": "c-001",
-          "text": "Mr. Tan is an 18-year-old male, student, resident of Jurong West, Singapore.",
-          "provenance": [
-            "audio:preop-interview#s001"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Elective knee arthroscopy for traumatic medial meniscus tear (elective).",
-          "provenance": [
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Previous general anesthesia for minor hand surgery with no complications except dry throat.",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "No history of asthma, chronic cough, or respiratory conditions affecting breathing — relevant because respiratory conditions could impact airway management and ventilation during anesthesia.",
-          "provenance": [
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Current medication: Fluticasone nasal spray 1 spray each nostril daily.",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Current medication: Loratadine 10mg daily.",
-          "provenance": [
-            "doc:gp-summary#c004",
-            "doc:med-list#c003",
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Montelukast 10mg daily was discontinued in mid-2023 — relevant because leukotriene modifiers may interact with anesthetic agents.",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "No anticoagulant medications or blood thinners are currently being taken — relevant because anticoagulants increase bleeding risk during surgery.",
-          "provenance": [
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "audio:preop-interview#s004"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "No known drug allergies.",
-          "provenance": [
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Patient reports NPO since midnight, clear fluids until 6am — relevant for general anesthesia safety.",
-          "provenance": [
-            "audio:preop-interview#s008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "ASA-PS 1: Healthy patient with no systemic disease — relevant because the patient has a traumatic meniscus tear but no other active medical conditions.",
-          "provenance": [
-            "doc:op-plan#c001",
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "General anesthesia with sevoflurane and rocuronium, supplemented with femoral nerve block for post-operative analgesia.",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        }
-      ]
-    },
-    {
-      "artifact_id": "record:intra-op",
-      "claims": [
-        {
-          "claim_id": "c-001",
-          "text": "08:00 Propofol 120 mg administered",
-          "provenance": [
-            "audio:intraop-notes#s001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "08:05 Intubation performed with Cormack-Lehane grade 1 view",
-          "provenance": [
-            "audio:intraop-notes#s002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "08:10 20G IV placed in left hand",
-          "provenance": [
-            "audio:intraop-notes#s003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "08:30 500ml Lactated Ringer's solution initiated",
-          "provenance": [
-            "audio:intraop-notes#s004"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "08:45 Blood pressure dropped to 80/50 mmHg, ephedrine 10mg bolus administered",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "unsupported"
-        }
-      ]
-    },
-    {
-      "artifact_id": "note:anticipated-issues",
-      "claims": [
-        {
-          "claim_id": "c-001",
-          "text": "Hypotension requiring intra-operative vasopressor support, indicating potential for post-operative hypotension due to residual anesthetic effects or hypovolemia.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Tachycardia intra-operatively requiring beta-blockade, suggesting possible post-operative tachycardia due to residual sympathetic response or anesthetic emergence.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Need for post-operative analgesia monitoring as femoral nerve block may wear off, necessitating assessment for adequate pain control and potential opioid requirements.",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "inference"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "Risk of post-operative nausea and vomiting (PONV) due to use of sevoflurane and propofol, both associated with increased PONV risk.",
-          "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s001"
-          ],
-          "status": "inference"
-        }
-      ]
-    },
-    {
-      "artifact_id": "note:pacu-handoff",
-      "claims": [
-        {
-          "claim_id": "c-001",
-          "text": "Mr. Tan is an 18-year-old male undergoing elective knee arthroscopy for a traumatic medial meniscus tear.",
-          "provenance": [
-            "audio:preop-interview#s001",
-            "doc:op-plan#c001"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-002",
-          "text": "Previous general anesthesia for minor hand surgery with no complications except dry throat.",
-          "provenance": [
-            "audio:preop-interview#s010"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Current medications include fluticasone nasal spray, loratadine 10mg daily, and montelukast (discontinued mid-2023).",
-          "provenance": [
-            "doc:gp-summary#c003",
-            "doc:med-list#c002",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c004",
-            "doc:med-list#c003"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "No history of asthma, chronic cough, or respiratory conditions; no anticoagulants or drug allergies.",
-          "provenance": [
-            "audio:preop-interview#s012",
-            "doc:med-list#c001",
-            "doc:med-list#c002",
-            "doc:med-list#c003",
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c005",
-            "audio:preop-interview#s006"
-          ],
-          "status": "conflicting"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Patient is NPO since midnight with clear fluids until 6am; ASA-PS 1 indicating a healthy patient with no systemic disease.",
-          "provenance": [
-            "audio:preop-interview#s008",
-            "doc:op-plan#c001",
-            "audio:preop-interview#s012"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Intra-operative course included propofol induction, intubation with Cormack-Lehane grade 1 view, 20G IV in left hand, lactated Ringer's infusion, and ephedrine for hypotension.",
-          "provenance": [
-            "audio:intraop-notes#s001",
-            "audio:intraop-notes#s002",
-            "audio:intraop-notes#s003",
-            "audio:intraop-notes#s004",
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Anesthesia maintained with sevoflurane and rocuronium, supplemented with femoral nerve block for post-operative analgesia.",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Intra-operative hypotension requiring ephedrine suggests potential for post-operative hypotension due to residual anesthetic effects or hypovolemia.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-009",
-          "text": "Intra-operative tachycardia requiring beta-blockade suggests possible post-operative tachycardia from residual sympathetic response or anesthetic emergence.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-010",
-          "text": "Femoral nerve block may wear off, necessitating assessment for adequate pain control and potential opioid requirements.",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-011",
-          "text": "Use of sevoflurane and propofol increases risk of post-operative nausea and vomiting.",
-          "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s001"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-012",
-          "text": "Monitor blood pressure and heart rate closely post-operatively.",
-          "provenance": [
-            "audio:intraop-notes#s005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-013",
-          "text": "Assess pain regularly and be prepared for opioid requirements as the femoral nerve block wears off.",
-          "provenance": [
-            "doc:op-plan#c002"
-          ],
-          "status": "unsupported"
-        },
-        {
-          "claim_id": "c-014",
-          "text": "Implement antiemetic prophylaxis and monitor for nausea and vomiting.",
-          "provenance": [
-            "doc:op-plan#c002",
-            "audio:intraop-notes#s001"
-          ],
-          "status": "unsupported"
-        }
-      ]
-    },
-    {
-      "artifact_id": "note:post-anesthesia-eval",
       "claims": [
         {
           "claim_id": "c-001",
@@ -670,148 +414,427 @@
         },
         {
           "claim_id": "c-002",
-          "text": "Montelukast discontinued in 2023.",
-          "provenance": [
-            "audio:preop-interview#s004"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-003",
-          "text": "Current medications include Fluticasone nasal spray and Loratadine.",
-          "provenance": [
-            "audio:preop-interview#s004",
-            "doc:gp-summary#c002",
-            "doc:med-list#c002"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-004",
-          "text": "No known drug allergies.",
-          "provenance": [
-            "audio:preop-interview#s006",
-            "doc:gp-summary#c005"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-005",
-          "text": "Left wrist fracture at age 10, treated with cast, fully healed.",
-          "provenance": [
-            "doc:gp-summary#c006"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-006",
-          "text": "Pneumonia in 2015, treated with antibiotics, fully resolved.",
-          "provenance": [
-            "doc:gp-summary#c007"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-007",
-          "text": "Completed a course of amoxicillin for acne in 2022, no ongoing skin issues.",
-          "provenance": [
-            "doc:gp-summary#c008"
-          ],
-          "status": "supported"
-        },
-        {
-          "claim_id": "c-008",
-          "text": "Elective knee arthroscopy for traumatic medial meniscus tear (elective).",
+          "text": "Presenting for elective Laparoscopic Appendectomy.",
           "provenance": [
             "doc:op-plan#c001"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-009",
-          "text": "General anesthesia with sevoflurane and rocuronium, supplemented with a femoral nerve block for post-operative analgesia.",
+          "claim_id": "c-003",
+          "text": "Reports sharp right-sided abdominal pain following eating street food, leading to diagnosis of appendicitis.",
           "provenance": [
-            "doc:op-plan#c002"
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Currently taking Montelukast Sodium 10 mg once daily for mild asthma (exerts effort-induced symptoms, uses inhaler ~once a week).",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Currently taking Escitalopram 5 mg once daily (dose reduced from 10 mg ~3 months ago per psychiatrist's advice).",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Allergic to penicillin (manifests as rash).",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "No other drug or non-drug allergies (e.g., latex, plasters, foods) reported.",
+          "provenance": [
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s006"
+          ],
+          "status": "conflicting"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "NPO since midnight as instructed.",
+          "provenance": [
+            "audio:preop-interview#s014"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Overweight (BMI 28), with gradual weight gain; able to walk and perform daily activities, though may experience shortness of breath with strenuous activity.",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s016"
           ],
           "status": "supported"
         },
         {
           "claim_id": "c-010",
-          "text": "Intraoperative hypotension (BP 80/50) treated with ephedrine 10mg bolus.",
+          "text": "ASA-PS Class II (overweight and mild asthma, but no significant systemic disease).",
+          "provenance": [
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-011",
+          "text": "General Anesthesia with Spinal Anesthesia (Combined Technique) planned for Laparoscopic Appendectomy.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-012",
+          "text": "Close monitoring during anesthesia due to asthma and overweight status.",
+          "provenance": [
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "record:intra-op",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "08:00 Propofol 120 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s001"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "08:02 Fentanyl 20 micrograms administered",
+          "provenance": [
+            "audio:intraop-notes#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "08:05 Rocuronium 50 milligrams administered",
+          "provenance": [
+            "audio:intraop-notes#s003"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "08:07 Endotracheal tube placed, Grade 1 view",
           "provenance": [
             "audio:intraop-notes#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-011",
-          "text": "Intraoperative tachycardia (HR 110) treated with labetalol 5mg IV.",
+          "claim_id": "c-005",
+          "text": "08:10 Bupivacaine 2.5 milligrams administered via spinal needle",
           "provenance": [
             "audio:intraop-notes#s005"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-012",
-          "text": "Post-operative knee pain present but controlled with femoral nerve block.",
+          "claim_id": "c-006",
+          "text": "08:15 Lactated Ringer's 1 liter administered",
           "provenance": [
-            "audio:postop-interview#s002"
+            "audio:intraop-notes#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-013",
-          "text": "Mild dizziness reported post-operatively, no nausea or vomiting.",
+          "claim_id": "c-007",
+          "text": "08:30 Mean Arterial Pressure dropped to 55 mmHg",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "08:40 Desflurane 1.2 percent administered",
+          "provenance": [
+            "audio:intraop-notes#s008"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "08:50 Surgical incision",
+          "provenance": [
+            "audio:intraop-notes#s009"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-010",
+          "text": "09:10 Normal Saline 200 milliliters bolus administered",
+          "provenance": [
+            "audio:intraop-notes#s010"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:anticipated-issues",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Risk of Postoperative Nausea and Vomiting (PONV) due to Opioid Administration and Laparoscopic Surgery",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s002"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Potential Airway Compromise due to Overweight Status and Spinal Anesthesia",
+          "provenance": [
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s016",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Glycemic Excursions due to Stress Response and Escitalopram Use",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s004"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "Pain Management Challenges due to Combined Anesthesia Technique",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Hemodynamic Instability due to Intraoperative Hypotension",
+          "provenance": [
+            "audio:intraop-notes#s007"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Risk of Respiratory Complications due to Asthma and General Anesthesia",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s017"
+          ],
+          "status": "inference"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Potential for Antibiotic Prophylaxis Adjustment due to Penicillin Allergy",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "inference"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:pacu-handoff",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "18-year-old female undergoing elective laparoscopic appendectomy following diagnosis of appendicitis after presenting with sharp right-sided abdominal pain post-eating street food.",
+          "provenance": [
+            "doc:gp-summary#c001",
+            "doc:op-plan#c001",
+            "audio:preop-interview#s002"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-002",
+          "text": "Patient is overweight with a BMI of 28, has mild asthma managed with Montelukast and occasional inhaler use, and is on a reduced dose of Escitalopram for psychiatric care. Patient is allergic to penicillin (rash) but has no other known allergies.",
+          "provenance": [
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s008",
+            "doc:med-list#c002",
+            "audio:preop-interview#s006",
+            "audio:preop-interview#s005",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-003",
+          "text": "Patient has been NPO since midnight as instructed, and is classified as ASA-PS Class II due to overweight status and mild asthma without significant systemic disease.",
+          "provenance": [
+            "audio:preop-interview#s014",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s016"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-004",
+          "text": "General anesthesia with spinal anesthesia (combined technique) was administered. Intraoperative events included hypotension (MAP 55 mmHg), managed with normal saline bolus, and desflurane administration for maintenance.",
+          "provenance": [
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s007",
+            "audio:intraop-notes#s008",
+            "audio:intraop-notes#s010"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-005",
+          "text": "Patient received Propofol, Fentanyl, Rocuronium, and Bupivacaine as part of the anesthetic regimen. Endotracheal tube placement was successful with a Grade 1 view.",
+          "provenance": [
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s002",
+            "audio:intraop-notes#s003",
+            "audio:intraop-notes#s004",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-006",
+          "text": "Monitor closely for postoperative nausea and vomiting (PONV) due to opioid use and laparoscopic surgery, and watch for potential airway compromise given the patient's overweight status and spinal anesthesia.",
+          "provenance": [
+            "doc:op-plan#c001",
+            "audio:intraop-notes#s002",
+            "audio:preop-interview#s010",
+            "audio:preop-interview#s016",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-007",
+          "text": "Be vigilant for glycemic excursions due to stress response and Escitalopram use, and anticipate challenges in pain management due to the combined anesthesia technique.",
+          "provenance": [
+            "doc:med-list#c002",
+            "audio:preop-interview#s004",
+            "doc:op-plan#c002",
+            "audio:preop-interview#s017",
+            "audio:intraop-notes#s005"
+          ],
+          "status": "unsupported"
+        },
+        {
+          "claim_id": "c-008",
+          "text": "Continue monitoring for hemodynamic instability and respiratory complications, considering the patient's asthma and the effects of general anesthesia.",
+          "provenance": [
+            "audio:intraop-notes#s007",
+            "doc:gp-summary#c002",
+            "audio:preop-interview#s004",
+            "audio:preop-interview#s008",
+            "audio:preop-interview#s017"
+          ],
+          "status": "supported"
+        },
+        {
+          "claim_id": "c-009",
+          "text": "Adjust antibiotic prophylaxis as necessary, taking into account the patient's penicillin allergy.",
+          "provenance": [
+            "audio:preop-interview#s006"
+          ],
+          "status": "supported"
+        }
+      ]
+    },
+    {
+      "artifact_id": "note:post-anesthesia-eval",
+      "claims": [
+        {
+          "claim_id": "c-001",
+          "text": "Patient reports pain level of 3-4 on a scale of 0-10, described as a dull ache.",
           "provenance": [
             "audio:postop-interview#s004"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-014",
-          "text": "Throat soreness from endotracheal tube, no respiratory distress.",
+          "claim_id": "c-002",
+          "text": "Patient experiences nausea, described as a queasy stomach, but no vomiting.",
           "provenance": [
             "audio:postop-interview#s006"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-015",
-          "text": "No recall of intraoperative events, awake in recovery room.",
+          "claim_id": "c-003",
+          "text": "Patient reports no shortness of breath or wheezing postoperatively.",
           "provenance": [
             "audio:postop-interview#s008"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-016",
-          "text": "Mild nasal congestion reported, consistent with baseline allergic rhinitis.",
+          "claim_id": "c-004",
+          "text": "Patient has no recall of events in the operating room or immediate waking up period, which is normal for general anesthesia.",
           "provenance": [
             "audio:postop-interview#s010"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
-          "claim_id": "c-017",
-          "text": "Previous general anesthesia for minor hand surgery with dry throat as only complication.",
+          "claim_id": "c-005",
+          "text": "Patient's lower body feels heavy, a expected side effect of spinal anesthesia.",
           "provenance": [
-            "audio:preop-interview#s010"
+            "audio:postop-interview#s011"
           ],
           "status": "supported"
         },
         {
-          "claim_id": "c-018",
-          "text": "NPO compliance confirmed: nothing since midnight, water until 6am.",
+          "claim_id": "c-006",
+          "text": "Patient is alert and oriented, able to communicate effectively postoperatively.",
           "provenance": [
-            "audio:preop-interview#s008"
+            "audio:postop-interview#s002",
+            "audio:postop-interview#s012"
           ],
-          "status": "supported"
+          "status": "unsupported"
         },
         {
-          "claim_id": "c-019",
-          "text": "Patient reports ability to climb stairs slowly, no shortness of breath.",
+          "claim_id": "c-007",
+          "text": "Combined general and spinal anesthesia technique was used as planned, with no immediate complications reported during the surgery.",
           "provenance": [
-            "audio:preop-interview#s012"
+            "audio:intraop-notes#s001",
+            "audio:intraop-notes#s005",
+            "audio:preop-interview#s017"
           ],
           "status": "supported"
         }
@@ -819,61 +842,138 @@
     }
   ],
   "open_questions": [
-    "Have you had any previous anesthesia, and if so, were there any complications such as difficult intubation, adverse reactions, or breathing problems during or after the procedure?",
-    "Are you currently taking any anticoagulant medications, blood thinners, or other drugs that affect bleeding or clotting?",
-    "Do you have a history of asthma, chronic cough, or any respiratory condition that might affect breathing during anesthesia?"
+    {
+      "question": "Can you confirm whether you are still taking Montelukast Sodium 10 mg once daily and Escitalopram 10 mg once daily, or have any of these medications been stopped, changed, or replaced since the list was written?",
+      "reason": "stale",
+      "provenance": [
+        "doc:med-list#c001",
+        "doc:med-list#c002"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Are you aware of any drug or non-drug allergies (such as to latex, plasters, foods, etc.) that have not been documented in your records?",
+      "reason": "stale",
+      "provenance": [
+        "doc:gp-summary#c004"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Can you provide more details about your previous pre-op ECG for elective cholecystectomy at age 16, including the reason for the ECG and whether any cardiac issues were identified?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c007"
+      ],
+      "review": null,
+      "edited_text": null
+    },
+    {
+      "question": "Have you experienced any complications or reactions during previous anesthesia or sedation, such as difficulty breathing, nausea, or waking up during the procedure?",
+      "reason": "missing",
+      "provenance": [
+        "doc:gp-summary#c007"
+      ],
+      "review": null,
+      "edited_text": null
+    }
   ],
   "intraop_events": [
     {
       "t": "08:00",
       "category": "agent",
       "value": "propofol 120",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s001"
       ]
     },
     {
-      "t": "08:05",
-      "category": "airway",
-      "value": "CL grade 1, intubated",
-      "units": null,
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl 20",
+      "units": "micrograms",
       "provenance": [
         "audio:intraop-notes#s002"
       ]
     },
     {
-      "t": "08:10",
-      "category": "line",
-      "value": "20G IV in left hand",
-      "units": null,
+      "t": "08:05",
+      "category": "agent",
+      "value": "rocuronium 50",
+      "units": "milligrams",
       "provenance": [
         "audio:intraop-notes#s003"
       ]
     },
     {
-      "t": "08:30",
-      "category": "fluid",
-      "value": "500ml LR running",
-      "units": null,
+      "t": "08:10",
+      "category": "dose",
+      "value": "bupivacaine 2.5",
+      "units": "milligrams",
       "provenance": [
-        "audio:intraop-notes#s004"
+        "audio:intraop-notes#s005"
       ]
     },
     {
-      "t": "08:45",
+      "t": "08:15",
+      "category": "fluid",
+      "value": "lactated ringers 1",
+      "units": "liter",
+      "provenance": [
+        "audio:intraop-notes#s006"
+      ]
+    },
+    {
+      "t": "08:30",
       "category": "event",
-      "value": "BP dropped to 80/50, ephedrine 10mg bolus",
+      "value": "mean arterial pressure dropped to 55",
       "units": null,
       "provenance": [
-        "audio:intraop-notes#s005"
+        "audio:intraop-notes#s007"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "desflurane 1.2",
+      "units": "percent",
+      "provenance": [
+        "audio:intraop-notes#s008"
+      ]
+    },
+    {
+      "t": "09:10",
+      "category": "fluid",
+      "value": "normal saline 200",
+      "units": "milliliters",
+      "provenance": [
+        "audio:intraop-notes#s010"
       ]
     }
   ],
   "anticipated_issues": [
-    "Hypotension requiring intra-operative vasopressor support, indicating potential for post-operative hypotension due to residual anesthetic effects or hypovolemia.",
-    "Tachycardia intra-operatively requiring beta-blockade, suggesting possible post-operative tachycardia due to residual sympathetic response or anesthetic emergence.",
-    "Need for post-operative analgesia monitoring as femoral nerve block may wear off, necessitating assessment for adequate pain control and potential opioid requirements.",
-    "Risk of post-operative nausea and vomiting (PONV) due to use of sevoflurane and propofol, both associated with increased PONV risk."
-  ]
+    "Risk of Postoperative Nausea and Vomiting (PONV) due to Opioid Administration and Laparoscopic Surgery",
+    "Potential Airway Compromise due to Overweight Status and Spinal Anesthesia",
+    "Glycemic Excursions due to Stress Response and Escitalopram Use",
+    "Pain Management Challenges due to Combined Anesthesia Technique",
+    "Hemodynamic Instability due to Intraoperative Hypotension",
+    "Risk of Respiratory Complications due to Asthma and General Anesthesia",
+    "Potential for Antibiotic Prophylaxis Adjustment due to Penicillin Allergy"
+  ],
+  "equipment_suggestions": [
+    {
+      "item_id": "lma-4",
+      "name": "Laryngeal mask airway size 4",
+      "reason": "LMA-4 suitable for obese patient with mild asthma needing controlled airway access"
+    },
+    {
+      "item_id": "spinal-25g",
+      "name": "Spinal needle 25G pencil-point",
+      "reason": "Spinal needle 25G required for combined spinal and general anesthesia technique"
+    }
+  ],
+  "workflow": null
 }

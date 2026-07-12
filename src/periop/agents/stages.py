@@ -1,63 +1,46 @@
-"""Stage orchestration for intra-op and post-op, plus a full-case runner.
+"""Stage seams for intra-op and post-op, plus a full-case runner.
 
-Each stage is a Case → Case transform that registers its sources and appends
-its artifacts. `chat` is the reasoning tier; `fast_chat` is the fast tier used
-for the event-extraction first pass and claim verification. Both are injected
-(live NimChat, or stubs in tests).
+Each function keeps the historical Case → Case signature but executes the
+corresponding ADK stage agent (``periop.adk.stages``). `chat` is the
+reasoning tier; `fast_chat` is the fast tier used for the event-extraction
+first pass and claim verification. Both are injected (live NimChat, or stubs
+in tests). `emit` is an optional progress callback ``emit(event, data)``
+feeding the SSE stream (ui.md §7).
+
+Post-op's two reasoning calls overlap (spec v2-speed §3.4) under an ADK
+``ParallelAgent``: the HandoffComposer composes from existing signed-off
+claims and the PostAnesthesiaEvaluator reads only the case sources — neither
+reads the other's output, and a fixed-order ledger commit keeps the artifact
+order deterministic. Intra-op stays sequential: the IssueAnticipator renders
+the intra-op record's claims into its prompt, a real data dependency.
 """
 
 from pathlib import Path
 
-from periop.agents.claim_verifier import ClaimVerifier
-from periop.agents.event_extractor import EventExtractor
-from periop.agents.handoff import HANDOFF_ID, HandoffComposer
-from periop.agents.intraop_record import INTRAOP_RECORD_ID, IntraOpRecordWriter
-from periop.agents.issue_anticipator import ANTICIPATED_ISSUES_ID, IssueAnticipator
-from periop.agents.postop_eval import POSTOP_NOTE_ID, PostAnesthesiaEvaluator
-from periop.agents.preop_stage import run_preop_stage
+from periop.adk.runtime import run_agent, sync_case
+from periop.adk.stages import (
+    build_case_pipeline,
+    build_intraop_stage,
+    build_postop_stage,
+)
+from periop.agents.preop_stage import run_preop_stage  # noqa: F401  — stage seam set
 from periop.schemas import Case
-from periop.tools.ingest import transcript_source
 
 
-def run_intraop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) -> Case:
-    case_dir = Path(case_dir)
-    fast_chat = fast_chat or chat
-
-    notes = case_dir / "scripts" / "intraop-notes.json"
-    if notes.exists() and case.get_source("audio:intraop-notes") is None:
-        case.add_source(transcript_source(case_dir, "intraop-notes", "audio:intraop-notes"))
-
-    events = EventExtractor(fast_chat=fast_chat, reasoning_chat=chat).extract(
-        case, "audio:intraop-notes"
-    )
-    IntraOpRecordWriter(chat=chat).write(case, events)
-    IssueAnticipator(chat=chat).anticipate(case)
-    verifier = ClaimVerifier(chat=fast_chat)
-    verifier.verify(case, INTRAOP_RECORD_ID)
-    verifier.verify(case, ANTICIPATED_ISSUES_ID, forward_looking=True)
-    return case
+def run_intraop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None, emit=None) -> Case:
+    stage = build_intraop_stage(Path(case_dir), chat, fast_chat=fast_chat)
+    result, _ = run_agent(stage, case, emit_fn=emit)
+    return sync_case(case, result)
 
 
-def run_postop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None) -> Case:
-    case_dir = Path(case_dir)
-    fast_chat = fast_chat or chat
-
-    postop = case_dir / "scripts" / "postop-interview.json"
-    if postop.exists() and case.get_source("audio:postop-interview") is None:
-        case.add_source(transcript_source(case_dir, "postop-interview", "audio:postop-interview"))
-
-    HandoffComposer(chat=chat).compose(case)
-    PostAnesthesiaEvaluator(chat=chat).write(case)
-    verifier = ClaimVerifier(chat=fast_chat)
-    verifier.verify(case, HANDOFF_ID)
-    verifier.verify(case, POSTOP_NOTE_ID)
-    return case
+def run_postop_stage(case: Case, case_dir: Path | str, chat, fast_chat=None, emit=None) -> Case:
+    stage = build_postop_stage(Path(case_dir), chat, fast_chat=fast_chat)
+    result, _ = run_agent(stage, case, emit_fn=emit)
+    return sync_case(case, result)
 
 
 def run_case_stages(case: Case, case_dir: Path | str, chat, fast_chat=None) -> Case:
-    """Run all three stages end-to-end on one case."""
-    fast_chat = fast_chat or chat
-    run_preop_stage(case, case_dir, chat=chat, verifier_chat=fast_chat)
-    run_intraop_stage(case, case_dir, chat=chat, fast_chat=fast_chat)
-    run_postop_stage(case, case_dir, chat=chat, fast_chat=fast_chat)
-    return case
+    """Run all three stages end-to-end on one case, in one ADK session."""
+    pipeline = build_case_pipeline(Path(case_dir), chat, fast_chat=fast_chat)
+    result, _ = run_agent(pipeline, case)
+    return sync_case(case, result)

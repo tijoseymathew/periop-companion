@@ -6,27 +6,31 @@
     },
     {
       "t": "08:05",
-      "text": "tube in, grade one view"
+      "text": "fentanyl fifty micrograms"
+    },
+    {
+      "t": "08:07",
+      "text": "rocuronium sixty milligrams for intubation"
     },
     {
       "t": "08:10",
-      "text": "peripheral IV placed, 20 gauge"
-    },
-    {
-      "t": "08:12",
-      "text": "arterial line placed, 22 gauge"
+      "text": "tube in, grade one view"
     },
     {
       "t": "08:15",
-      "text": "administered 500 milliliters normal saline"
+      "text": "sevoflurane at one point five percent"
     },
     {
-      "t": "08:30",
-      "text": "mean arterial pressure dropped to fifty-five, gave one milliliter of phenylephrine"
+      "t": "08:20",
+      "text": "two liters of lactated ringers administered"
     },
     {
-      "t": "08:40",
-      "text": "heart rate increased to one hundred twenty, gave two milligrams of labetalol"
+      "t": "08:35",
+      "text": "mean arterial pressure dropped to fifty five, gave phenylephrine point two milligrams"
+    },
+    {
+      "t": "09:00",
+      "text": "surgery completed, reversed with sugammadex fifteen milligrams"
     }
   ],
   "events": [
@@ -34,144 +38,144 @@
       "t": "08:00",
       "category": "agent",
       "value": "propofol",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:05",
-      "category": "airway",
-      "value": "endotracheal tube placed",
-      "units": null,
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes#1"
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:05",
+      "category": "dose",
+      "value": "fifty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "sixty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:07"
+      ]
+    },
+    {
+      "t": "08:10",
       "category": "airway",
-      "value": "grade one view",
+      "value": "tube in, grade one view",
       "units": null,
       "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "line",
-      "value": "peripheral IV",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "line",
-      "value": "20 gauge",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:12",
-      "category": "line",
-      "value": "arterial line",
-      "units": null,
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:12",
-      "category": "line",
-      "value": "22 gauge",
-      "units": null,
-      "provenance": [
-        "voice_notes#3"
+        "voice_notes#08:10"
       ]
     },
     {
       "t": "08:15",
-      "category": "fluid",
-      "value": "normal saline",
-      "units": null,
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": "percent",
       "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:15"
       ]
     },
     {
       "t": "08:15",
       "category": "dose",
-      "value": "500",
-      "units": "mL",
+      "value": "one point five",
+      "units": "percent",
       "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:15"
       ]
     },
     {
-      "t": "08:30",
+      "t": "08:20",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": "liters",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "two",
+      "units": "liters",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:35",
       "category": "event",
-      "value": "hypotension (MAP 55 mmHg)",
+      "value": "mean arterial pressure dropped to fifty five",
       "units": null,
       "provenance": [
-        "voice_notes#5"
+        "voice_notes#08:35"
       ]
     },
     {
-      "t": "08:30",
+      "t": "08:35",
       "category": "agent",
       "value": "phenylephrine",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#5"
+        "voice_notes#08:35"
       ]
     },
     {
-      "t": "08:30",
+      "t": "08:35",
       "category": "dose",
-      "value": "1",
-      "units": "mL",
+      "value": "point two",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#5"
+        "voice_notes#08:35"
       ]
     },
     {
-      "t": "08:40",
-      "category": "event",
-      "value": "tachycardia (HR 120 bpm)",
-      "units": null,
-      "provenance": [
-        "voice_notes#6"
-      ]
-    },
-    {
-      "t": "08:40",
+      "t": "09:00",
       "category": "agent",
-      "value": "labetalol",
-      "units": null,
+      "value": "sugammadex",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#6"
+        "voice_notes#09:00"
       ]
     },
     {
-      "t": "08:40",
+      "t": "09:00",
       "category": "dose",
-      "value": "2",
-      "units": "mg",
+      "value": "fifteen",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#6"
+        "voice_notes#09:00"
       ]
     }
   ]

@@ -2,8 +2,8 @@
 
 ## Current Medications
 
-Amlodipine 5mg daily.
+Metformin 500 mg Once daily.
 
-Fluticasone nasal spray twice daily.
+Lisinopril 10 mg Once daily.
 
-Lisinopril 10mg daily.
+Aspirin 75 mg Once daily.

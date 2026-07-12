@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 
-from periop.schemas import Case, ClaimStatus, SourceType
+from periop.schemas import Case, ClaimStatus, SourceType, Workflow
 from periop.store import CaseStore
 
 router = APIRouter()
@@ -17,6 +17,10 @@ class CaseSummary(BaseModel):
     claim_count: int
     status_counts: dict[ClaimStatus, int]
     has_audio: bool
+    # worklist fields (v2 §6.8): live cases carry their workflow block so the
+    # UI derives stage + status in words; demo cases have neither
+    label: str | None = None
+    workflow: Workflow | None = None
 
 
 def _store(request: Request) -> CaseStore:
@@ -42,6 +46,8 @@ def _summarize(request: Request, case: Case) -> CaseSummary:
             status: sum(1 for c in claims if c.status is status) for status in ClaimStatus
         },
         has_audio=_has_audio(request, case),
+        label=case.label,
+        workflow=case.workflow,
     )
 
 

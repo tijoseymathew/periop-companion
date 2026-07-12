@@ -5,32 +5,24 @@
       "text": "induction propofol one hundred twenty milligrams"
     },
     {
-      "t": "08:02",
-      "text": "fentanyl fifty micrograms"
-    },
-    {
       "t": "08:05",
-      "text": "tube in, grade one view"
+      "text": "LMA size four in place, good seal, capnograph waveform confirmed"
     },
     {
       "t": "08:10",
-      "text": "peripheral IV 20 gauge placed in left hand"
+      "text": "18 gauge intravenous access, one liter normal saline running"
     },
     {
-      "t": "08:15",
-      "text": "lactated ringers one liter bolus"
+      "t": "08:20",
+      "text": "mean arterial pressure dropped to fifty five, atropine point five milligrams given"
     },
     {
-      "t": "09:00",
-      "text": "blood pressure dropped to 85/50, gave 500 ml fluid bolus"
+      "t": "08:35",
+      "text": "rocuronium twenty milligrams for muscle relaxation"
     },
     {
-      "t": "09:05",
-      "text": "phenylephrine 100 micrograms bolus"
-    },
-    {
-      "t": "09:10",
-      "text": "heart rate increased to 110, atropine 0.5 milligrams given"
+      "t": "08:50",
+      "text": "desaturation to eighty nine percent, increased FiO2 to one point zero"
     }
   ],
   "events": [
@@ -39,105 +31,144 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:00"
+      ]
     },
     {
       "t": "08:00",
       "category": "dose",
       "value": "120",
-      "units": "mg",
-      "provenance": []
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
     },
     {
-      "t": "08:02",
-      "category": "agent",
-      "value": "fentanyl",
+      "t": "08:05",
+      "category": "airway",
+      "value": "LMA",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:05"
+      ]
     },
     {
-      "t": "08:02",
+      "t": "08:05",
       "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": []
-    },
-    {
-      "t": "08:05",
-      "category": "airway",
-      "value": "tube in",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:05",
-      "category": "airway",
-      "value": "grade one view",
-      "units": null,
-      "provenance": []
+      "value": "4",
+      "units": "size",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
     },
     {
       "t": "08:10",
       "category": "line",
-      "value": "peripheral IV 20 gauge placed in left hand",
+      "value": "intravenous access",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:10"
+      ]
     },
     {
-      "t": "08:15",
-      "category": "fluid",
-      "value": "lactated ringers one liter bolus",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:00",
-      "category": "event",
-      "value": "blood pressure dropped to 85/50",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:00",
-      "category": "fluid",
-      "value": "500 ml fluid bolus given",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:05",
-      "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:05",
+      "t": "08:10",
       "category": "dose",
-      "value": "100",
-      "units": "mcg",
-      "provenance": []
+      "value": "18",
+      "units": "gauge",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
     },
     {
-      "t": "09:10",
-      "category": "event",
-      "value": "heart rate increased to 110",
+      "t": "08:10",
+      "category": "fluid",
+      "value": "normal saline",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:10"
+      ]
     },
     {
-      "t": "09:10",
+      "t": "08:10",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure drop",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
       "category": "agent",
       "value": "atropine",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:20"
+      ]
     },
     {
-      "t": "09:10",
+      "t": "08:20",
       "category": "dose",
       "value": "0.5",
-      "units": "mg",
-      "provenance": []
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "20",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "desaturation",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "agent",
+      "value": "FiO2",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "dose",
+      "value": "1.0",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
     }
   ]
 }

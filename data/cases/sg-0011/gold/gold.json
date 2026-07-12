@@ -1,144 +1,158 @@
 {
   "questions": [
-    "Have you ever had any reactions to antibiotics, especially penicillin?"
+    "Can you confirm if you are still taking Aspirin, and if not, when did you stop and why?"
   ],
   "events": [
     {
       "t": "08:00",
       "category": "agent",
-      "value": "bupivacaine",
-      "units": "mg",
+      "value": "propofol",
+      "units": null,
       "provenance": [
-        "voice:intraop#chunk_1"
+        "voice_notes#chunk_1"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "25",
-      "units": "mg",
+      "value": "120",
+      "units": "milligrams",
       "provenance": [
-        "voice:intraop#chunk_1"
+        "voice_notes#chunk_1"
       ]
     },
     {
       "t": "08:02",
-      "category": "agent",
-      "value": "lidocaine",
-      "units": "mg",
+      "category": "airway",
+      "value": "LMA",
+      "units": null,
       "provenance": [
-        "voice:intraop#chunk_2"
+        "voice_notes#chunk_2"
       ]
     },
     {
       "t": "08:02",
       "category": "dose",
-      "value": "20",
-      "units": "mg",
+      "value": "40",
+      "units": "size",
       "provenance": [
-        "voice:intraop#chunk_2"
+        "voice_notes#chunk_2"
       ]
     },
     {
       "t": "08:05",
-      "category": "agent",
-      "value": "midazolam",
-      "units": "mg",
+      "category": "line",
+      "value": "IV",
+      "units": null,
       "provenance": [
-        "voice:intraop#chunk_3"
+        "voice_notes#chunk_3"
       ]
     },
     {
       "t": "08:05",
-      "category": "dose",
-      "value": "2",
-      "units": "mg",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": "two liters",
       "provenance": [
-        "voice:intraop#chunk_3"
-      ]
-    },
-    {
-      "t": "08:07",
-      "category": "agent",
-      "value": "fentanyl",
-      "units": "mcg",
-      "provenance": [
-        "voice:intraop#chunk_4"
-      ]
-    },
-    {
-      "t": "08:07",
-      "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": [
-        "voice:intraop#chunk_4"
+        "voice_notes#chunk_3"
       ]
     },
     {
       "t": "08:10",
-      "category": "airway",
-      "value": "maintained spontaneously",
+      "category": "agent",
+      "value": "sevoflurane",
       "units": null,
       "provenance": [
-        "voice:intraop#chunk_5"
+        "voice_notes#chunk_4"
       ]
     },
     {
-      "t": "08:15",
-      "category": "line",
-      "value": "peripheral IV in left antecubital vein",
+      "t": "08:10",
+      "category": "dose",
+      "value": "2",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#chunk_4"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "increased blood pressure",
       "units": null,
       "provenance": [
-        "voice:intraop#chunk_6"
+        "voice_notes#chunk_4"
       ]
     },
     {
       "t": "08:20",
-      "category": "fluid",
-      "value": "crystalloid 500",
-      "units": "ml",
+      "category": "agent",
+      "value": "paracetamol",
+      "units": null,
       "provenance": [
-        "voice:intraop#chunk_7"
+        "voice_notes#chunk_5"
       ]
     },
     {
-      "t": "08:25",
-      "category": "event",
-      "value": "Blood pressure drop to 70/40 treated with phenylephrine 10 mcg",
-      "units": null,
+      "t": "08:20",
+      "category": "dose",
+      "value": "1000",
+      "units": "milligrams",
       "provenance": [
-        "voice:intraop#chunk_8"
+        "voice_notes#chunk_5"
       ]
     },
     {
-      "t": "08:30",
+      "t": "08:20",
       "category": "event",
-      "value": "Heart rate increased to 120 treated with atropine 0.5 mg",
+      "value": "pain management",
       "units": null,
       "provenance": [
-        "voice:intraop#chunk_9"
+        "voice_notes#chunk_5"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "1.5",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#chunk_6"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "blood pressure stabilized",
+      "units": null,
+      "provenance": [
+        "voice_notes#chunk_6"
       ]
     }
   ],
   "preop_note_claims": [
-    "History includes hypertension, type 2 diabetes mellitus, hyperlipidemia, and chronic kidney disease stage 2.",
-    "Current medications include amlodipine 10mg daily, lisinopril 20mg daily, metformin 500mg twice daily, atorvastatin 20mg nightly, aspirin 75mg daily, and omeprazole 20mg daily (stopped).",
-    "Allergy to penicillin with rash documented.",
-    "ASA Physical Status III assigned due to multiple comorbidities (hypertension, diabetes, hyperlipidemia, CKD).",
-    "Airway assessment includes Mallampati score and thyromental distance documented.",
-    "Anesthetic plan includes spinal anesthesia with local infiltration for transurethral resection of the prostate."
+    "Documented patient history includes hypertension, type 2 diabetes mellitus, benign prostatic hyperplasia (BPH), and osteoarthritis of the knees.",
+    "Medications listed with current status: Losartan 100 mg once daily (active), Metformin 500 mg twice daily (active), Tamsulosin 0.4 mg once daily (active), Diclofenac 50 mg as needed for pain (active), and Aspirin 75 mg once daily (stopped 2 years ago due to gastrointestinal discomfort).",
+    "ASA-PS classification of 3 with rationale: patient has controlled but stable comorbidities including hypertension, type 2 diabetes mellitus, and benign prostatic hyperplasia.",
+    "Airway assessment and anesthetic plan documented: General Anesthesia with Laryngeal Mask Airway (LMA) planned for elective inguinal hernia repair."
   ],
   "handoff_claims": [
-    "Key history includes penicillin allergy with rash, hypertension, type 2 diabetes mellitus, hyperlipidemia, and chronic kidney disease stage 2.",
-    "Intraoperative course: spinal anesthesia with local infiltration administered without complications.",
-    "Anticipated postoperative issues include monitoring for fluid overload and renal function due to chronic kidney disease stage 2.",
-    "Home medications to be resumed postoperatively except omeprazole which was discontinued preoperatively.",
-    "Communication of penicillin allergy to PACU team for safe medication administration."
+    "Key history communicated: patient has hypertension, type 2 diabetes mellitus, BPH, and osteoarthritis, with no known allergies.",
+    "Intraoperative course expectation: Uneventful elective inguinal hernia repair under general anesthesia with LMA, no major blood loss anticipated.",
+    "Anticipated issue: Potential for postoperative pain requiring Diclofenac as needed, and monitoring for hypotension or bradycardia due to tamsulosin and anesthetic effects."
   ],
   "distractors": [
-    "Pneumonia, resolved in 2018",
-    "Left wrist fracture, healed without issues in 2010",
-    "Completed course of antibiotics for UTI in 2015"
+    "Pneumonia (resolved 5 years ago)",
+    "Fractured right wrist (healed, 15 years ago)",
+    "Discontinued Simvastatin (due to muscle pain) 3 years ago"
   ]
 }

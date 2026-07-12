@@ -2,83 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your knee surgery today. Let's go through some questions to make sure everything's in order, okay?"
+      "text": "Good morning, Mr. Tan. I'm Dr. Kumar, the anesthesiologist who'll be taking care of you during your surgery today. I just want to go over a few things to make sure we're all set for your laparoscopic cholecystectomy under general anesthesia with an LMA."
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, doctor. Yes, sure thing. I'm ready when you are."
+      "text": "Good morning, doctor. I'm ready, just want to get this done and feel better."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. First, can you tell me a bit about your knee problem? How long have you been having issues with it?"
+      "text": "Great. Can you tell me a bit about your medical history and how you've been feeling lately?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, about five years already. The pain got worse last year, can't even walk properly now. That's why I'm doing this surgery, right?"
+      "text": "Sure. I've had gallstones for a while now, and the doctor said surgery is the best way to go. I also have high blood pressure, diabetes, and my BMI is a bit high. Oh, and my kidney function is a little off, but it's stable."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let's go through your medications. You're on amlodipine for blood pressure, metformin and glipizide for diabetes, atorvastatin for cholesterol, omeprazole for stomach, and aspirin which was stopped recently?"
+      "text": "Thank you. Let's go through your medications. I see here that you're on Metformin, Lisinopril, Atorvastatin, Insulin Glargine, and Ranitidine. Can you confirm if you're still taking all of these, or have any been changed or stopped?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, that's all correct. I take them every day except the aspirin, which I stopped a week ago like the doctor told me."
+      "text": "Most of them are still the same, doctor. I take Metformin 500mg twice a day, Lisinopril 10mg once a day, Atorvastatin 20mg once a day, and Insulin Glargine 30 units once at night. But I stopped the Ranitidine about six months ago because the doctor said my peptic ulcer had healed and I didn't need it anymore."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any allergies to medications or other things?"
+      "text": "Thanks for clarifying that. It's important we have the most up-to-date medication list. Do you have any allergies? I see penicillin listed with a rash."
     },
     {
       "speaker": "PATIENT",
-      "text": "Hmm, I don't think so. The records say no allergies, right?"
+      "text": "Yes, I had a rash when I took penicillin before, so I avoid that. No other drug allergies that I know of."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Actually, I noticed the records say 'no known allergies,' but sometimes people might not mention things they think aren't important. Have you ever had a reaction to any medications, especially sulfa antibiotics?"
+      "text": "Good. Have you had any previous surgeries or anesthesia? Any issues like waking up during surgery, difficult intubation, or nausea afterward?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh! Wait a minute... I had a rash once from some antibiotic. Was it sulfa? I think so. The doctor said it was an allergy, so I stopped taking that type since."
+      "text": "No, this is my first surgery. I've never had anesthesia before, so I'm a bit nervous about that."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for mentioning that. So, a rash reaction to sulfa antibiotics. We'll make sure to note that properly. Any other reactions?"
+      "text": "That's completely normal. We'll make sure you're comfortable and safe throughout. Are you NPO since midnight? Nothing by mouth after 8 PM?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, that's the only one. I don't react to anything else."
+      "text": "Yes, I haven't had anything to eat or drink since last night. Just a sip of water with my morning insulin, but that was hours ago."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Have you eaten or drunk anything since midnight? We need to confirm you're NPO for surgery."
+      "text": "Perfect. And how would you describe your overall energy level and ability to perform daily activities?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, nothing since last night dinner. Just water for meds this morning, but that was hours ago."
+      "text": "I can still walk and do my daily tasks, but I do get a bit tired, especially after meals. But I manage okay lah."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Any previous anesthesia or surgeries?"
+      "text": "Thanks for that information. We'll make sure to tailor your anesthesia plan to your needs. You'll be asleep during the surgery, and we'll use a laryngeal mask airway to help you breathe. You'll have a tube in your throat only if needed, but we'll try to avoid that if possible."
     },
     {
       "speaker": "PATIENT",
-      "text": "Only once, a cataract surgery years ago. They gave me local anesthesia, I think. No problems then."
+      "text": "Alright, that sounds good. I trust you, doctor."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good to know. Lastly, how's your mobility before surgery? Can you walk with assistance?"
+      "text": "Thank you, Mr. Tan. We'll be with you every step of the way. I'll see you in the operating room shortly. Any last questions?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, with a walking stick. But the pain makes it hard, so I don't go out much now."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia as planned, with general as backup. I'll see you in the operating room shortly."
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "Alright, doctor. Thank you for explaining everything."
+      "text": "No, I think that's all. Thank you for explaining everything so clearly."
     }
   ]
 }

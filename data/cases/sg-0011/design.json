@@ -1,125 +1,102 @@
 {
   "case_id": "sg-0011",
   "persona_uuid": "e0d2df24b24f4d49a6b7032cc06fef59",
-  "surgery": "Transurethral resection of the prostate (TURP)",
+  "surgery": "Elective inguinal hernia repair",
   "urgency": "elective",
-  "anesthesia_plan": "Spinal anesthesia with local infiltration",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
   "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
     "Type 2 Diabetes Mellitus",
-    "Hyperlipidemia",
-    "Chronic Kidney Disease (Stage 2)"
+    "Benign Prostatic Hyperplasia (BPH)",
+    "Osteoarthritis (knees)"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "10mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Lisinopril",
-      "dose": "20mg",
-      "frequency": "daily",
+      "name": "Losartan",
+      "dose": "100 mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Metformin",
-      "dose": "500mg",
-      "frequency": "twice daily",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
       "active": true
     },
     {
-      "name": "Atorvastatin",
-      "dose": "20mg",
-      "frequency": "nightly",
+      "name": "Tamsulosin",
+      "dose": "0.4 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Diclofenac",
+      "dose": "50 mg",
+      "frequency": "As needed for pain",
       "active": true
     },
     {
       "name": "Aspirin",
-      "dose": "75mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "daily",
+      "dose": "75 mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
   "allergies": [
-    "Penicillin (rash)"
+    "None known"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No known allergies",
-    "truth": "Allergic to penicillin (rash)",
-    "gold_question": "Have you ever had any reactions to antibiotics, especially penicillin?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Losartan 100mg daily, Metformin 500mg twice daily, Tamsulosin 0.4mg daily, Aspirin 75mg daily. No allergies.",
+    "truth": "Patient has stopped Aspirin 2 years ago due to gastrointestinal discomfort. Current medications: Losartan, Metformin, Tamsulosin, and Diclofenac as needed.",
+    "gold_question": "Can you confirm if you are still taking Aspirin, and if not, when did you stop and why?"
   },
   "distractors": [
     {
-      "description": "Pneumonia, resolved in 2018",
-      "why_irrelevant": "Resolved years ago, no current impact"
+      "description": "Pneumonia (resolved 5 years ago)",
+      "why_irrelevant": "Resolved long ago, no impact on current perioperative risk"
     },
     {
-      "description": "Left wrist fracture, healed without issues in 2010",
-      "why_irrelevant": "Remote, fully healed"
+      "description": "Fractured right wrist (healed, 15 years ago)",
+      "why_irrelevant": "Remote history, full recovery, no relevant implications"
     },
     {
-      "description": "Completed course of antibiotics for UTI in 2015",
-      "why_irrelevant": "Resolved infection, no ongoing issues"
+      "description": "Discontinued Simvastatin (due to muscle pain) 3 years ago",
+      "why_irrelevant": "Medication changed, but already reflected in current medication list"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "10mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Lisinopril",
-        "dose": "20mg",
-        "frequency": "daily",
+        "name": "Losartan",
+        "dose": "100 mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Metformin",
-        "dose": "500mg",
-        "frequency": "twice daily",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
         "active": true
       },
       {
-        "name": "Atorvastatin",
-        "dose": "20mg",
-        "frequency": "nightly",
+        "name": "Tamsulosin",
+        "dose": "0.4 mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Aspirin",
-        "dose": "75mg",
-        "frequency": "daily",
+        "dose": "75 mg",
+        "frequency": "Once daily",
         "active": true
-      },
-      {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "daily",
-        "active": false
       }
     ],
     "allergies": [],
     "past_history": [
-      "Hypertension",
-      "Type 2 Diabetes Mellitus",
-      "Hyperlipidemia",
-      "Chronic Kidney Disease (Stage 2)",
-      "Pneumonia, resolved in 2018",
-      "Left wrist fracture, healed without issues in 2010",
-      "Completed course of antibiotics for UTI in 2015"
+      "Pneumonia (resolved 5 years ago)",
+      "Fractured right wrist (healed, 15 years ago)"
     ],
     "prior_anesthesia": null
   }

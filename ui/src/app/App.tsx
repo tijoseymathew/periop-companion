@@ -1,256 +1,655 @@
 /**
- * The review workspace (ui.md §5): one screen, three columns, all state here
- * with useState/useMemo and props down — no router, no store (ui.md §3).
+ * App shell: the worklist, the capture flow (imported PeriOp Workflow.dc.html
+ * — add records → intake build → interview → theatre memo → post-op
+ * interview), the live generation stream, and the brief (imported PeriOp
+ * Catch-Up.dc.html patient view). All state here via useState/useMemo and
+ * props down (ui.md §3: no router, no store). The flow view-model
+ * (`lib/flow`) decides which capture screen a case is on; explicit
+ * navigation (sub-stage pills, the brief's primary action) overrides it.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Stethoscope } from "lucide-react";
-import { ArtifactView } from "../components/ArtifactView";
-import { AudioPlayer, type AudioPlayerHandle } from "../components/AudioPlayer";
-import { CaseList } from "../components/CaseList";
-import { claimDomId } from "../components/ClaimRow";
-import { SourcePanel } from "../components/SourcePanel";
-import { StageTabs } from "../components/StageTabs";
-import { audioUrl, fetchCase, fetchCases } from "../lib/api";
-import { defaultFilters, type StatusFilters } from "../lib/filters";
-import { buildReverseIndex, resolveRef, type CitingClaim } from "../lib/provenance";
-import { groupArtifactsByStage, type Stage } from "../lib/stages";
-import type { Case, CaseSummary, ClaimStatus } from "../lib/schema";
+import { BriefScreen } from "../components/catchup/BriefScreen";
+import { SourceModal, type SourceRequest } from "../components/catchup/SourceModal";
+import { Worklist } from "../components/catchup/Worklist";
+import { CaseChatPanel } from "../components/chat/CaseChatPanel";
+import { StockScreen } from "../components/equipment/StockScreen";
+import { CaptureScreen } from "../components/flow/CaptureScreen";
+import { FlowChrome } from "../components/flow/FlowChrome";
+import { InterviewScreen } from "../components/flow/InterviewScreen";
+import { RecordsScreen, type StagedDoc } from "../components/flow/RecordsScreen";
+import { ProviderPicker } from "../components/ProviderPicker";
+import {
+  acknowledgeHandoff,
+  addArtifactClaim,
+  addDocumentText,
+  analyzeQuestions,
+  createCase,
+  editArtifactClaim,
+  fetchCase,
+  fetchCases,
+  fetchProviders,
+  reviewQuestions,
+  signoffStage,
+  uploadAudio,
+  uploadDocumentFile,
+} from "../lib/api";
+import { buildBrief, worklistRow } from "../lib/catchup";
+import {
+  AUDIO_KIND,
+  autoGenerateReady,
+  flowScreen,
+  hasPreopRecords,
+  transcriptionBusy,
+  type FlowScreen,
+} from "../lib/flow";
+import type { Case, CaseSummary, OpenQuestion, Provider, StageKey } from "../lib/schema";
+import { STAGE_KEYS } from "../lib/schema";
+import { describeRunEvent, streamStageRun, type RunEvent } from "../lib/sse";
+import { headlineStage, PRIMARY_ARTIFACT, type PrimaryAction } from "../lib/workflow";
+
+const PROVIDER_STORAGE_KEY = "periop-provider";
+
+type View = "worklist" | "case" | "stock";
+
+interface UploadProgress {
+  done: number;
+  total: number;
+}
 
 export default function App() {
   const [cases, setCases] = useState<CaseSummary[]>([]);
+  const [providers, setProviders] = useState<Provider[]>([]);
+  const [me, setMe] = useState<string | null>(
+    () => localStorage.getItem(PROVIDER_STORAGE_KEY) ?? null,
+  );
+
+  const [view, setView] = useState<View>("worklist");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [kase, setKase] = useState<Case | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [filters, setFilters] = useState<StatusFilters>(defaultFilters());
-  const [activeStage, setActiveStage] = useState<Stage>("Pre-op");
-  const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
-  const [highlightedAnchor, setHighlightedAnchor] = useState<string | null>(null);
-  // claim ids repeat across artifacts (each artifact numbers its own claims),
-  // so the active claim must be tracked per artifact
-  const [activeClaim, setActiveClaim] = useState<{
-    artifactId: string;
-    claimId: string;
-  } | null>(null);
+  // explicit navigation (pills / brief actions); null = follow the flow
+  const [screenOverride, setScreenOverride] = useState<FlowScreen | null>(null);
+  // stage-bubble navigation: pin the brief to a completed stage's output;
+  // null = the case's live stage
+  const [stageView, setStageView] = useState<StageKey | null>(null);
+  const [uploads, setUploads] = useState<UploadProgress | null>(null);
 
-  // audio provenance (U2): which recording the player holds, playback
-  // position for transcript follow-along, and sources whose wav 404'd
-  // (degrade to timestamp-only, ui.md §2)
-  const playerRef = useRef<AudioPlayerHandle>(null);
-  const pendingSeekRef = useRef<{ t0: number; t1: number | null } | null>(null);
-  const [loadedAudio, setLoadedAudio] = useState<{ sourceId: string; src: string } | null>(null);
-  const [playerTime, setPlayerTime] = useState<number | null>(null);
-  const [missingAudio, setMissingAudio] = useState<Set<string>>(new Set());
+  const [source, setSource] = useState<SourceRequest | null>(null);
+  const [genEvents, setGenEvents] = useState<RunEvent[]>([]);
+  // a stage run in flight — folded into the stage chrome as a minimal live
+  // status instead of a full-screen takeover (v2-ui feedback)
+  const [running, setRunning] = useState(false);
+  // the last stage run (auto or manual) ended in an error — the capture
+  // screens surface a manual generate again so the provider can retry
+  const [genFailed, setGenFailed] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchCases()
-      .then((list) => {
-        setCases(list);
-        if (list.length > 0) setSelectedId((cur) => cur ?? list[0].case_id);
-      })
+      .then(setCases)
       .catch((e) => setError(String(e)));
+    fetchProviders()
+      .then(setProviders)
+      .catch(() => setProviders([]));
   }, []);
 
+  // Question prep and upload-time transcription both run server-side
+  // (v2-speed §3.2); while either is in flight on an open case, poll until it
+  // settles so questions and transcripts appear the moment they land.
+  const gap = kase?.workflow?.stages.preop.gap_analysis ?? null;
+  // A stage can also be generating without this session streaming it — the
+  // page was reloaded mid-run, or another session started it. The run
+  // survives server-side; its durable status on the case is the truth, so
+  // poll that until it settles and the output lands on its own.
+  const generatingUnwatched =
+    !running &&
+    kase !== null &&
+    STAGE_KEYS.some((s) => kase.workflow?.stages[s].status === "generating");
+  const jobsBusy =
+    gap === "pending" ||
+    gap === "running" ||
+    generatingUnwatched ||
+    (kase !== null && STAGE_KEYS.some((s) => transcriptionBusy(kase, s)));
   useEffect(() => {
-    if (!selectedId) return;
-    let stale = false;
-    fetchCase(selectedId)
-      .then((c) => {
-        if (stale) return;
-        setKase(c);
-        setActiveStage("Pre-op");
-        setActiveSourceId(c.sources[0]?.source_id ?? null);
-        setHighlightedAnchor(null);
-        setActiveClaim(null);
-        setLoadedAudio(null);
-        setPlayerTime(null);
-        setMissingAudio(new Set());
-      })
-      .catch((e) => setError(String(e)));
-    return () => {
-      stale = true;
-    };
-  }, [selectedId]);
-
-  const groups = useMemo(() => (kase ? groupArtifactsByStage(kase.artifacts) : []), [kase]);
-  const reverseIndex = useMemo(
-    () => (kase ? buildReverseIndex(kase) : new Map<string, CitingClaim[]>()),
-    [kase],
-  );
-  const activeGroup = groups.find((g) => g.stage === activeStage) ?? groups[0] ?? null;
-
-  /** Load a source's wav (if needed) then seek/clip once the element exists. */
-  function driveAudio(sourceId: string, t0: number, t1: number | null) {
-    if (!kase || missingAudio.has(sourceId)) return; // timestamp-only mode
-    if (loadedAudio?.sourceId === sourceId) {
-      if (t1 === null) playerRef.current?.seekToTime(t0);
-      else playerRef.current?.playClip(t0, t1);
-    } else {
-      pendingSeekRef.current = { t0, t1 };
-      setLoadedAudio({ sourceId, src: audioUrl(kase.case_id, sourceId) });
-    }
-  }
-
-  // apply a seek/clip that was waiting for the player to (re)load
-  useEffect(() => {
-    const pending = pendingSeekRef.current;
-    if (!loadedAudio || !pending) return;
-    pendingSeekRef.current = null;
-    if (pending.t1 === null) playerRef.current?.seekToTime(pending.t0);
-    else playerRef.current?.playClip(pending.t0, pending.t1);
-  }, [loadedAudio]);
-
-  /**
-   * Claim/chip click (ui.md §5.3): resolve the ref; chunks highlight in the
-   * source panel, segments additionally play the exact clip (v1 §11 step 3).
-   */
-  function activateRef(ref: string) {
-    if (!kase) return;
-    const hit = resolveRef(kase, ref);
-    if (!hit) return; // UNRESOLVED — the chip badge is the finding
-    setActiveSourceId(hit.source.source_id);
-    setHighlightedAnchor(hit.kind === "chunk" ? hit.chunk.chunk_id : hit.segment.seg_id);
-    if (hit.kind === "segment") {
-      driveAudio(hit.source.source_id, hit.segment.t0, hit.segment.t1);
-    }
-  }
-
-  // keyboard navigation (ui.md §11 U4): ↑/↓ walk the visible claims of the
-  // active stage, Enter activates the focused claim's first ref
-  useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (!kase || !activeGroup) return;
-      const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag && ["INPUT", "SELECT", "TEXTAREA"].includes(tag)) return;
-      const rows = activeGroup.artifacts.flatMap((a) =>
-        a.claims
-          .filter((c) => filters[c.status])
-          .map((c) => ({ artifactId: a.artifact_id, claimId: c.claim_id, claim: c })),
-      );
-      if (rows.length === 0) return;
-      const idx = rows.findIndex(
-        (r) => r.artifactId === activeClaim?.artifactId && r.claimId === activeClaim?.claimId,
-      );
-      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-        e.preventDefault();
-        const next =
-          idx === -1
-            ? 0
-            : Math.min(Math.max(idx + (e.key === "ArrowDown" ? 1 : -1), 0), rows.length - 1);
-        const row = rows[next];
-        setActiveClaim({ artifactId: row.artifactId, claimId: row.claimId });
-        document
-          .getElementById(claimDomId(row.artifactId, row.claimId))
-          ?.scrollIntoView?.({ block: "nearest" });
-      } else if (e.key === "Enter" && idx >= 0) {
-        const ref = rows[idx].claim.provenance[0];
-        if (ref) activateRef(ref);
+    if (view !== "case" || !kase || !jobsBusy) return;
+    const caseId = kase.case_id;
+    let cancelled = false;
+    const id = setInterval(async () => {
+      try {
+        const fresh = await fetchCase(caseId);
+        if (!cancelled) setKase(fresh);
+      } catch {
+        /* transient — keep polling */
       }
-    }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  });
+    }, 1200);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
+  }, [view, kase?.case_id, jobsBusy]);
 
-  /** Reverse-index click: bring the citing claim into view in the ledger. */
-  function jumpToClaim(artifactId: string, claimId: string) {
-    const group = groups.find((g) => g.artifacts.some((a) => a.artifact_id === artifactId));
-    if (group) setActiveStage(group.stage);
-    setActiveClaim({ artifactId, claimId });
-    requestAnimationFrame(() => {
-      document
-        .getElementById(claimDomId(artifactId, claimId))
-        ?.scrollIntoView?.({ block: "center" });
-    });
+  function pickProvider(providerId: string) {
+    setMe(providerId);
+    localStorage.setItem(PROVIDER_STORAGE_KEY, providerId);
+  }
+
+  const rows = useMemo(
+    () => cases.map((c) => worklistRow(c, providers)),
+    [cases, providers],
+  );
+
+  async function refreshCases() {
+    try {
+      setCases(await fetchCases());
+    } catch {
+      /* keep the current list */
+    }
+  }
+
+  /** Load a case; land on its brief when it has output, else on its flow step. */
+  async function openCase(caseId: string) {
+    setSelectedId(caseId);
+    setNotice(null);
+    try {
+      const c = await fetchCase(caseId);
+      setKase(c);
+      setScreenOverride(c.artifacts.length > 0 ? "brief" : null);
+      setStageView(null);
+      setUploads(null);
+      setView("case");
+    } catch (e) {
+      setError(String(e));
+    }
+  }
+
+  function goWorklist() {
+    setView("worklist");
+    setSelectedId(null);
+    setKase(null);
+    setScreenOverride(null);
+    setStageView(null);
+    setUploads(null);
+    setNotice(null);
+    refreshCases();
+  }
+
+  function newCase() {
+    setSelectedId(null);
+    setKase(null);
+    setScreenOverride(null);
+    setStageView(null);
+    setUploads(null);
+    setNotice(null);
+    setView("case");
+  }
+
+  /** One "Create intake" action: create the case, save the description as
+   * the operative plan, land every staged record. Question prep launches
+   * server-side as soon as the intake gate is met (v2-speed §3.2). */
+  async function handleCreateIntake(name: string, description: string, docs: StagedDoc[]) {
+    if (!me) return;
+    setBusy(true);
+    setNotice(null);
+    const total = docs.length + 1; // description → doc:op-plan
+    setUploads({ done: 0, total });
+    try {
+      let c = kase;
+      if (!c) {
+        c = await createCase(name, me);
+        setSelectedId(c.case_id);
+        setKase(c);
+      }
+      c = await addDocumentText(c.case_id, "op-plan", description, me);
+      setKase(c);
+      setUploads({ done: 1, total });
+      for (let i = 0; i < docs.length; i++) {
+        c = await uploadDocumentFile(c.case_id, docs[i].tag, docs[i].file, me);
+        setKase(c);
+        setUploads({ done: i + 2, total });
+      }
+      setUploads(null);
+      await refreshCases();
+    } catch (e) {
+      setUploads(null);
+      setScreenOverride("records");
+      setNotice(readDetail(e));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleUploadDocument(docType: string, file: File) {
+    if (!kase || !me) return;
+    setBusy(true);
+    setNotice(null);
+    try {
+      setKase(await uploadDocumentFile(kase.case_id, docType, file, me));
+    } catch (e) {
+      setNotice(readDetail(e));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  /** Save a stage recording. On pre-op, `reviewed` carries the question
+   * list as the provider left it (keeps, dismissals, additions) — there is
+   * no approve button, so the upload passes the question gate (v2 §4.1)
+   * right before the audio lands. */
+  async function handleUploadAudio(file: File, reviewed: OpenQuestion[] | null = null) {
+    if (!kase || !me) return;
+    const stage = headlineStage(kase.workflow) ?? "preop";
+    setBusy(true);
+    setNotice(null);
+    try {
+      if (reviewed) {
+        setKase(await reviewQuestions(kase.case_id, reviewed, me));
+      }
+      setKase(await uploadAudio(kase.case_id, AUDIO_KIND[stage], file, me, true));
+    } catch (e) {
+      setNotice(readDetail(e));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  /** Relaunch a failed intake question prep (v2-speed §3.2). */
+  async function handleRetryQuestions() {
+    if (!kase) return;
+    setNotice(null);
+    try {
+      setKase(await analyzeQuestions(kase.case_id));
+    } catch (e) {
+      setNotice(readDetail(e));
+      setScreenOverride("records");
+    }
+  }
+
+  // watchRunSettled must not keep touching state for a case the provider
+  // has left — reopening the case resumes the watch via the jobs poll
+  const selectedIdRef = useRef<string | null>(null);
+  selectedIdRef.current = selectedId;
+
+  /** The SSE stream is only a progress feed — the run itself survives a
+   * dropped connection, and the durable stage status on the case says how
+   * it ended (generating → awaiting_review | ready_to_generate). Poll that
+   * until it settles; null when the provider moved to another case. */
+  async function watchRunSettled(caseId: string, stage: StageKey): Promise<Case | null> {
+    let announced = false;
+    for (;;) {
+      if (selectedIdRef.current !== caseId) return null;
+      try {
+        const fresh = await fetchCase(caseId);
+        if (fresh.workflow?.stages[stage].status !== "generating") return fresh;
+        if (selectedIdRef.current !== caseId) return null;
+        setKase(fresh);
+        if (!announced) {
+          announced = true;
+          setGenEvents((prev) => [
+            ...prev,
+            {
+              event: "status",
+              data: { message: "Connection interrupted — the run is still going; waiting for it to finish…" },
+            },
+          ]);
+        }
+      } catch {
+        /* transient — the run outlives a brief API blip */
+      }
+      await sleep(1500);
+    }
+  }
+
+  async function handleGenerate() {
+    if (!kase || !me) return;
+    const caseId = kase.case_id;
+    const stage = headlineStage(kase.workflow) ?? "preop";
+    setGenEvents([]);
+    setNotice(null);
+    setGenFailed(false);
+    setRunning(true);
+    // `complete`/`error` is the server's verdict on the run; a stream that
+    // ends without one just lost its connection mid-run
+    let verdict = false;
+    try {
+      let streamError: unknown = null;
+      try {
+        await streamStageRun(caseId, stage, me, (ev) => {
+          if (ev.event === "complete" || ev.event === "error") verdict = true;
+          setGenEvents((prev) => [...prev, ev]);
+        });
+      } catch (e) {
+        streamError = e;
+      }
+      if (streamError && verdict) throw streamError; // the run failed — the server said so
+
+      let fresh: Case;
+      if (verdict) {
+        fresh = await fetchCase(caseId);
+      } else {
+        // no verdict (dropped stream, or a gate rejection — the first poll
+        // settles which): follow the durable status instead of guessing
+        const settled = await watchRunSettled(caseId, stage);
+        if (!settled) return; // moved to another case; reopening resumes the watch
+        fresh = settled;
+      }
+      if (!fresh.artifacts.some((a) => a.artifact_id === PRIMARY_ARTIFACT[stage])) {
+        throw (
+          streamError ??
+          new Error("the run was interrupted before it finished — generate again when ready")
+        );
+      }
+      setKase(fresh);
+      await refreshCases();
+      setStageView(null); // land on the freshly generated stage's brief
+      setScreenOverride("brief");
+    } catch (e) {
+      // gate (409) or run error — back to the flow with the plain reason
+      setNotice(readDetail(e));
+      setGenFailed(true);
+      setScreenOverride(null);
+    } finally {
+      setRunning(false);
+    }
+  }
+
+  // Pre-op and post-op generate themselves the moment the transcript lands
+  // (no "Generate" click after the recording). One attempt per recording:
+  // a failed run leaves its notice plus a manual generate, never a loop.
+  const autoGenAttempted = useRef<string | null>(null);
+  useEffect(() => {
+    if (view !== "case" || !kase || !me || running || busy) return;
+    const stage = headlineStage(kase.workflow) ?? "preop";
+    if (!autoGenerateReady(kase, stage)) return;
+    const key = `${kase.case_id}:${stage}:${kase.workflow?.stages[stage].inputs_recorded_at}`;
+    if (autoGenAttempted.current === key) return;
+    autoGenAttempted.current = key;
+    void handleGenerate();
+  }, [view, kase, me, running, busy]);
+
+  /** Provider corrections on the brief before sign-off (v2-ui feedback):
+   * both land as human-attested edits citing the provider's own source. */
+  async function handleEditClaim(artifactId: string, claimId: string, text: string) {
+    if (!kase || !me) return;
+    try {
+      setKase(await editArtifactClaim(kase.case_id, artifactId, claimId, text, me));
+    } catch (e) {
+      setError(readDetail(e));
+    }
+  }
+
+  async function handleAddClaim(artifactId: string, text: string) {
+    if (!kase || !me) return;
+    try {
+      setKase(await addArtifactClaim(kase.case_id, artifactId, text, me));
+    } catch (e) {
+      setError(readDetail(e));
+    }
+  }
+
+  async function handleAcknowledge() {
+    if (!kase || !me) return;
+    try {
+      setKase(await acknowledgeHandoff(kase.case_id, me));
+      await refreshCases();
+    } catch (e) {
+      setError(readDetail(e));
+    }
+  }
+
+  /** Sign off a stage from the patient view, then drop back to the worklist —
+   * the case reappears with its next stage's status. On pre-op, `equipment`
+   * carries the recommended items the provider ticked; the server reserves
+   * them for the case as the stage completes. */
+  async function handleSignoff(stage: StageKey, equipment: string[] = []) {
+    if (!kase || !me) return;
+    try {
+      await signoffStage(kase.case_id, stage, me, equipment);
+      goWorklist();
+    } catch (e) {
+      setError(readDetail(e));
+    }
+  }
+
+  /** Stage-bubble navigation: pin the brief to a completed stage's output. */
+  function handleSelectStage(stage: StageKey) {
+    setNotice(null);
+    setStageView(stage);
+    setScreenOverride("brief");
+  }
+
+  /** Any stage whose primary artifact exists has output worth revisiting. */
+  const canViewStage = (stage: StageKey): boolean =>
+    !!kase && kase.artifacts.some((a) => a.artifact_id === PRIMARY_ARTIFACT[stage]);
+
+  /** Dispatch the brief's single adaptive action (workflow.primaryAction).
+   * Capture steps route into the flow's screen; terminal actions run here. */
+  function handleAction(action: PrimaryAction, opts?: { equipment?: string[] }) {
+    setStageView(null); // acting always happens on the live stage
+    switch (action.kind) {
+      case "sign-off":
+        void handleSignoff(action.stage, opts?.equipment ?? []);
+        return;
+      case "acknowledge-handoff":
+        void handleAcknowledge();
+        return;
+      case "generate":
+        void handleGenerate();
+        return;
+      case "generating":
+        return;
+      case "add-records":
+        setNotice(null);
+        setScreenOverride("records");
+        return;
+      case "review-questions":
+        setNotice(null);
+        setScreenOverride(null); // the flow lands on the intake build / interview
+        return;
+      default:
+        // record-interview / record-memo
+        setNotice(null);
+        setScreenOverride(action.stage === "preop" ? "interview" : "capture");
+    }
+  }
+
+  const providerControl = (
+    <ProviderPicker providers={providers} selected={me} onSelect={pickProvider} />
+  );
+
+  // brief queue: step through the cases still waiting for you
+  const forYouIds = rows.filter((r) => r.forYou).map((r) => r.caseId);
+
+  // this session's own stage run, as one live status line — null when
+  // nothing is running (folded into the chrome, ui.md §7 / v2-ui feedback)
+  const generatingLabel = running
+    ? ([...genEvents].reverse().map(describeRunEvent).find((s): s is string => !!s) ?? "")
+    : null;
+
+  function renderBrief() {
+    if (!kase) return null;
+    const model = buildBrief(kase, providers, stageView ? { stage: stageView } : {});
+    const pos = selectedId ? forYouIds.indexOf(selectedId) : -1;
+    const queue =
+      pos >= 0 && forYouIds.length > 1
+        ? {
+            pos: pos + 1,
+            total: forYouIds.length,
+            onPrev: () => openCase(forYouIds[(pos - 1 + forYouIds.length) % forYouIds.length]),
+            onNext: () => openCase(forYouIds[(pos + 1) % forYouIds.length]),
+          }
+        : null;
+    return (
+      <BriefScreen
+        model={model}
+        queue={queue}
+        canReview={model.writable && !!me}
+        onBack={goWorklist}
+        onOpenSource={setSource}
+        onAction={handleAction}
+        canViewStage={canViewStage}
+        onSelectStage={handleSelectStage}
+        generating={generatingLabel}
+        onEditClaim={(a, c, t) => void handleEditClaim(a, c, t)}
+        onAddClaim={(a, t) => void handleAddClaim(a, t)}
+      />
+    );
+  }
+
+  const stage: StageKey = kase ? (headlineStage(kase.workflow) ?? "preop") : "preop";
+  // uploads in flight render as the intake build; otherwise follow the flow
+  const screen: FlowScreen = screenOverride ?? (uploads ? "intake-generating" : flowScreen(kase));
+
+  // building the intake (uploads landing, then gap analysis) folds into the
+  // same minimal chrome strip as a stage run — no full-screen takeover, and
+  // the records screen it's built from stays visible underneath (v2-ui
+  // feedback). A failed run isn't "in flight" any more, so it drops out of
+  // the strip in favor of RecordsScreen's own retry banner below.
+  const buildingLabel: string | null =
+    screen !== "intake-generating" || gap === "failed"
+      ? null
+      : uploads && uploads.done < uploads.total
+        ? `Saving the records (${uploads.done} of ${uploads.total})`
+        : gap === "running"
+          ? "Preparing the interview questions"
+          : "Reading the records for gaps and conflicts";
+  // a run this session isn't streaming (reopened mid-run) still gets the
+  // chrome strip — the jobs poll lands its output the moment it settles
+  const watchingLabel = generatingUnwatched
+    ? "Generating — reconnected to a run in progress"
+    : null;
+  const chromeStatus = generatingLabel ?? buildingLabel ?? watchingLabel;
+
+  const canReach = (target: FlowScreen): boolean => {
+    if (!kase) return false;
+    switch (target) {
+      case "brief":
+        return kase.artifacts.length > 0;
+      case "records":
+        return stage === "preop";
+      case "interview":
+        // reachable even while question prep runs — the screen shows a
+        // preparing state and the questions land via the polling refresh
+        return stage === "preop" && hasPreopRecords(kase);
+      case "capture":
+        return stage !== "preop";
+      default:
+        return false;
+    }
+  };
+
+  function renderCase() {
+    if (screen === "brief") return renderBrief();
+    return (
+      <FlowChrome
+        kase={kase}
+        stage={stage}
+        screen={screen}
+        fallbackTitle="New case intake"
+        providers={providers}
+        providerControl={providerControl}
+        onBack={goWorklist}
+        onSelectScreen={(s) => {
+          setNotice(null);
+          setStageView(null);
+          setScreenOverride(s);
+        }}
+        canReach={canReach}
+        canViewStage={canViewStage}
+        onSelectStage={handleSelectStage}
+        generating={chromeStatus}
+      >
+        {(screen === "records" || screen === "intake-generating") && (
+          <RecordsScreen
+            kase={kase}
+            busy={busy}
+            notice={notice}
+            canWrite={!!me}
+            onCreateIntake={handleCreateIntake}
+            onUploadDocument={handleUploadDocument}
+            // explicit — while question prep still runs, following the flow
+            // (null) would resolve right back to this screen and go nowhere
+            onContinue={() => setScreenOverride("interview")}
+            gapFailure={
+              gap === "failed"
+                ? {
+                    message:
+                      kase?.workflow?.stages.preop.gap_analysis_error ??
+                      "the analysis could not finish",
+                    onRetry: () => void handleRetryQuestions(),
+                  }
+                : null
+            }
+          />
+        )}
+        {screen === "interview" && kase && (
+          <InterviewScreen
+            kase={kase}
+            busy={busy || running || generatingUnwatched}
+            notice={notice}
+            canWrite={!!me}
+            genFailed={genFailed}
+            onUploadAudio={handleUploadAudio}
+            onGenerate={() => void handleGenerate()}
+            onOpenSource={setSource}
+            liveEvents={running ? genEvents : []}
+          />
+        )}
+        {screen === "capture" && kase && stage !== "preop" && (
+          <CaptureScreen
+            stage={stage}
+            kase={kase}
+            busy={busy || running || generatingUnwatched}
+            notice={notice}
+            canWrite={!!me}
+            genFailed={genFailed}
+            liveEvents={running ? genEvents : []}
+            onUploadAudio={handleUploadAudio}
+            onGenerate={() => void handleGenerate()}
+          />
+        )}
+      </FlowChrome>
+    );
   }
 
   return (
-    <div className="flex h-screen flex-col">
-      <header className="flex items-center gap-2 border-b border-surface-overlay bg-surface-raised px-4 py-2">
-        <Stethoscope className="h-5 w-5 text-brand" aria-hidden />
-        <h1 className="text-sm font-semibold">
-          PeriOp Companion <span className="font-normal text-ink-subtle">· Review</span>
-        </h1>
-        {selectedId && (
-          <span className="ml-auto font-mono text-xs text-ink-secondary">{selectedId}</span>
-        )}
-      </header>
-      <div className="flex min-h-0 flex-1">
-        <CaseList
-          cases={cases}
-          selectedId={selectedId}
-          onSelect={setSelectedId}
-          filters={filters}
-          onToggleFilter={(status: ClaimStatus) =>
-            setFilters((f) => ({ ...f, [status]: !f[status] }))
-          }
-        />
-        <main className="flex min-w-0 flex-1 flex-col">
-          {error && (
-            <div className="m-4 rounded border border-status-conflicting/50 p-3 text-sm text-status-conflicting">
-              {error}
-            </div>
-          )}
-          {kase && activeGroup && (
-            <>
-              <StageTabs groups={groups} active={activeGroup.stage} onSelect={setActiveStage} />
-              <div className="min-h-0 flex-1 overflow-y-auto p-4">
-                {activeGroup.artifacts.map((artifact) => (
-                  <ArtifactView
-                    key={artifact.artifact_id}
-                    kase={kase}
-                    artifact={artifact}
-                    filters={filters}
-                    activeClaimId={
-                      activeClaim?.artifactId === artifact.artifact_id
-                        ? activeClaim.claimId
-                        : null
-                    }
-                    onActivateRef={activateRef}
-                  />
-                ))}
-              </div>
-            </>
-          )}
-        </main>
-        <aside className="flex w-96 shrink-0 flex-col border-l border-surface-overlay bg-surface-sunken">
-          <AudioPlayer
-            ref={playerRef}
-            src={loadedAudio?.src ?? null}
-            label={loadedAudio?.sourceId ?? null}
-            onTimeUpdate={setPlayerTime}
-            onError={() => {
-              if (!loadedAudio) return;
-              // wav not rendered (gitignored) → timestamp-only mode
-              setMissingAudio((prev) => new Set(prev).add(loadedAudio.sourceId));
-              setLoadedAudio(null);
-              setPlayerTime(null);
-            }}
+    <div className="flex h-screen flex-col bg-surface-base">
+      {error && (
+        <div className="m-4 rounded-lg border border-status-conflicting/50 bg-status-conflicting/10 p-3 text-sm text-status-conflicting">
+          {error}
+          <button className="ml-3 underline" onClick={() => setError(null)}>
+            dismiss
+          </button>
+        </div>
+      )}
+      <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
+        {view === "worklist" && (
+          <Worklist
+            rows={rows}
+            providerControl={providerControl}
+            onOpen={openCase}
+            onNewCase={newCase}
+            onStock={() => setView("stock")}
           />
-          {missingAudio.size > 0 && (
-            <p className="border-b border-surface-overlay px-4 py-1.5 text-xs text-status-unsupported">
-              timestamp-only mode — no rendered wav for{" "}
-              <span className="font-mono">{[...missingAudio].join(", ")}</span>
-            </p>
-          )}
-          {kase && (
-            <SourcePanel
-              kase={kase}
-              reverseIndex={reverseIndex}
-              activeSourceId={activeSourceId}
-              highlightedAnchor={highlightedAnchor}
-              currentTime={playerTime}
-              playingSourceId={loadedAudio?.sourceId ?? null}
-              onSelectSource={(id) => {
-                setActiveSourceId(id);
-                setHighlightedAnchor(null);
-              }}
-              onSeekToTime={(seconds) => {
-                if (activeSourceId) driveAudio(activeSourceId, seconds, null);
-              }}
-              onJumpToClaim={jumpToClaim}
-            />
-          )}
-        </aside>
-      </div>
+        )}
+        {view === "stock" && <StockScreen onBack={goWorklist} />}
+        {view === "case" && renderCase()}
+      </main>
+      {view === "case" && kase && (
+        // remount per case so one conversation never bleeds into another
+        <CaseChatPanel key={kase.case_id} caseId={kase.case_id} me={me} />
+      )}
+      {source && kase && (
+        <SourceModal kase={kase} request={source} onClose={() => setSource(null)} />
+      )}
     </div>
   );
+}
+
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+/** Pull the FastAPI `detail` off an axios error, else the message. */
+function readDetail(e: unknown): string {
+  const anyE = e as { response?: { data?: { detail?: string } }; message?: string };
+  return anyE?.response?.data?.detail ?? anyE?.message ?? String(e);
 }

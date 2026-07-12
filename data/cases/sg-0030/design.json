@@ -1,82 +1,89 @@
 {
   "case_id": "sg-0030",
   "persona_uuid": "d91aab23240d4bb3ab0d8f72585a68d6",
-  "surgery": "Laparoscopic ovarian cystectomy",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "anesthesia_plan": "General Anesthesia with Single-shot Ultrasound-Guided Transversus Abdominis Plane (TAP) Block for Postoperative Pain Management",
   "asa_ps": 2,
   "comorbidities": [
-    "Hypertension"
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus (well-controlled with oral medications)"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5 mg",
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Gliclazide",
+      "dose": "60mg",
       "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Levonorgestrel/Ethinyl Estradiol",
-      "dose": "Standard dose",
+      "name": "Atorvastatin",
+      "dose": "20mg",
       "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Doxycycline",
-      "dose": "100 mg",
+      "name": "Ranitidine",
+      "dose": "150mg",
       "frequency": "Once daily",
       "active": false
     }
   ],
   "allergies": [
-    "Sulfa drugs"
+    "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No known allergies",
-    "truth": "Allergic to sulfa drugs (rash)",
-    "gold_question": "Have you ever had a reaction to any antibiotics, particularly sulfa-based medications?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 500mg BID, Gliclazide 60mg OD, Atorvastatin 20mg OD. No allergies listed.",
+    "truth": "Patient has since discontinued Gliclazide and switched to Sitagliptin 100mg OD due to hypoglycemic episodes. Also, patient has a new allergy to Ceftriaxone (urticaria) not present in records.",
+    "gold_question": "Can you please confirm if there have been any changes to your medication list since your last review, and have you experienced any new allergic reactions to medications recently?"
   },
   "distractors": [
     {
-      "description": "Fracture of left wrist (2018, healed)",
-      "why_irrelevant": "Remote, resolved injury"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved long ago, no impact on current anesthesia or surgery"
     },
     {
-      "description": "Pneumonia (2019, resolved)",
-      "why_irrelevant": "Resolved infection, no residual issues"
+      "description": "Fractured wrist at age 12, fully healed",
+      "why_irrelevant": "Remote history, no bearing on current condition or surgical/anesthesia plan"
     },
     {
-      "description": "Discontinued medication: Omeprazole for GERD (2019)",
-      "why_irrelevant": "GERD resolved, medication stopped"
+      "description": "Previous diagnosis of mild depression, not on any medications",
+      "why_irrelevant": "Not active, no current treatment, and not directly relevant to surgical procedure"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5 mg",
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Gliclazide",
+        "dose": "60mg",
         "frequency": "Once daily",
         "active": true
       },
       {
-        "name": "Levonorgestrel/Ethinyl Estradiol",
-        "dose": "Standard dose",
+        "name": "Atorvastatin",
+        "dose": "20mg",
         "frequency": "Once daily",
         "active": true
-      },
-      {
-        "name": "Doxycycline",
-        "dose": "100 mg",
-        "frequency": "Once daily",
-        "active": false
       }
     ],
     "allergies": [],
     "past_history": [
-      "Fracture of left wrist (2018, healed)",
-      "Pneumonia (2019, resolved)",
-      "Discontinued medication: Omeprazole for GERD (2019)"
+      "Pneumonia (resolved 5 years ago)",
+      "Fractured wrist at age 12 (fully healed)",
+      "Mild depression (not on medications)"
     ],
     "prior_anesthesia": null
   }

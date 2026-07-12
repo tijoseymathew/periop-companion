@@ -2,67 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming TURP surgery and the anesthesia plan. Can you please share how your prostate issues have been affecting you?"
+      "text": "Good morning, Mr./Ms./Mr. [Last Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your laparoscopic cholecystectomy tomorrow. How are you feeling today?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Ah, yes. Been having trouble for about a year now. Weak stream, waking up multiple times at night to pee... it's quite tiring, you know?"
+      "text": "Morning, Doctor. I'm a bit nervous, but okay, lah. Just want to get this done."
     },
     {
       "speaker": "PROVIDER",
-      "text": "I see. Let's go through your medications. You're on amlodipine, lisinopril, atorvastatin, metformin, omeprazole, and aspirin. Have you stopped or changed any medications in the past year, especially those related to cardiovascular or antiplatelet therapy?"
+      "text": "That's completely understandable. Can you please tell me a bit about your medical history and the reason for this surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, the aspirin one. I stopped that six months ago because it kept giving me stomach discomfort, like burning sensation. Doctor said okay to stop since my BP and sugar are controlled."
+      "text": "Sure. I've had gallstone issues for a while now. Had pain, nausea, especially after eating. Doctor said it's best to remove the gallbladder laparoscopically."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for clarifying that. So, your current medications are all still active? Amlodipine, lisinopril, atorvastatin, metformin, and omeprazole?"
+      "text": "Thank you for sharing that. Now, let's go through your medications. I see you're on Atorvastatin, Metformin, Lisinopril, and... it says here Aspirin 75mg for cardiovascular prophylaxis. Can you confirm your current medications, particularly any changes to antiplatelet or blood-thinning agents in the past year?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, all still taking them. No issues with those, just the aspirin was the problem."
+      "text": "Ah, about the Aspirin... I actually stopped taking it about 6 months ago because I was getting a lot of stomach discomfort. Never started again. So, no antiplatelet therapy now, Doctor."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Any known allergies to medications or other substances?"
+      "text": "Thank you for clarifying that, Mr./Ms./Mr. [Last Name]. It's important we have the most up-to-date information. How about your other medications? Are you still taking Atorvastatin 20mg once daily, Metformin 500mg twice daily, and Lisinopril 10mg once daily as listed?"
     },
     {
       "speaker": "PATIENT",
-      "text": "None that I know of, doctor."
+      "text": "Yes, Doctor. All still the same. No changes there."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. When was your last meal or drink? We need to ensure you're NPO for surgery."
+      "text": "Excellent. Now, regarding allergies, we have Penicillin listed with a rash. Have you had any other allergic reactions to medications or other substances that we should know about?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Had dinner at 8pm last night. Only water after that, stopped at 10pm."
+      "text": "No, Doctor. Just that one reaction to Penicillin. Nothing else."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Have you had any previous anesthesia or surgeries? Any problems like nausea, breathing issues, or reactions?"
+      "text": "Great. Have you had any previous surgeries or anesthesia? If so, how did you tolerate it?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No surgeries before this. Never been under GA, so no issues to report."
+      "text": "Just a minor procedure years ago, and it was fine. No issues with the anesthesia that I remember."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Lastly, how's your mobility? Can you walk, climb stairs, or do you need assistance?"
+      "text": "Good to hear. Are you NPO after midnight as instructed for your surgery tomorrow?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I can walk on my own, but sometimes need to rush to the toilet. Stairs are a bit slow, but manageable."
+      "text": "Yes, Doctor. I'll make sure not to eat or drink after midnight."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia and in-line stabilization as planned. You'll be monitored closely for blood pressure and sugar levels during surgery."
+      "text": "Perfect. Finally, how would you describe your overall physical activity level and any limitations you might have?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Alright, thank you, doctor. Hope everything goes smoothly."
+      "text": "I'd say I'm fairly active, but I do have some trouble with stairs due to my knee. Otherwise, I manage okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you, Mr./Ms./Mr. [Last Name], for going through all this with me. It's very helpful. I'll make sure our team is well-prepared for your care tomorrow. If you have any questions or concerns before then, please don't hesitate to reach out."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, Doctor. I feel a bit more at ease now. I'll see you tomorrow."
     }
   ]
 }

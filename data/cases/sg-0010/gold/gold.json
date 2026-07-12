@@ -1,6 +1,6 @@
 {
   "questions": [
-    "Do you have any allergies to medications, particularly antibiotics like penicillin?"
+    "Can you confirm if you have any allergies to antibiotics, including cephalosporins, in addition to penicillin?"
   ],
   "events": [
     {
@@ -9,142 +9,143 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes:08:00#segment.1"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes:08:00#segment.1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "agent",
-      "value": "fentanyl",
-      "units": null,
-      "provenance": [
-        "voice_notes:08:00#segment.2"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": [
-        "voice_notes:08:00#segment.2"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "LMA placed, no difficulty",
+      "category": "agent",
+      "value": "fentanyl",
       "units": null,
       "provenance": [
-        "voice_notes:08:02#segment.1"
+        "voice_notes#08:02"
       ]
     },
     {
-      "t": "08:05",
-      "category": "line",
-      "value": "18-g IV in left hand",
-      "units": null,
-      "provenance": [
-        "voice_notes:08:05#segment.1"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "fluid",
-      "value": "normal saline",
-      "units": null,
-      "provenance": [
-        "voice_notes:08:05#segment.2"
-      ]
-    },
-    {
-      "t": "08:05",
+      "t": "08:02",
       "category": "dose",
-      "value": "250",
-      "units": "mL",
+      "value": "ten",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes:08:05#segment.2"
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "event",
-      "value": "BP drop to 80/50, treated with ephedrine 10 mg IV",
+      "category": "agent",
+      "value": "rocuronium",
       "units": null,
       "provenance": [
-        "voice_notes:08:10#segment.1"
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
       ]
     },
     {
       "t": "08:15",
+      "category": "line",
+      "value": "peripheral line in, left arm",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one thousand",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "09:00",
       "category": "event",
-      "value": "transient tachycardia to 90, treated with fluid bolus",
+      "value": "mean arterial pressure dropped to fifty five",
       "units": null,
       "provenance": [
-        "voice_notes:08:15#segment.1"
+        "voice_notes#09:00"
       ]
     },
     {
-      "t": "08:20",
+      "t": "09:00",
       "category": "agent",
-      "value": "sevoflurane",
+      "value": "atropine",
       "units": null,
       "provenance": [
-        "voice_notes:08:20#segment.1"
+        "voice_notes#09:00"
       ]
     },
     {
-      "t": "08:20",
+      "t": "09:00",
       "category": "dose",
-      "value": "2",
-      "units": "%",
+      "value": "one",
+      "units": "milligram",
       "provenance": [
-        "voice_notes:08:20#segment.1"
+        "voice_notes#09:00"
       ]
     },
     {
-      "t": "08:25",
-      "category": "agent",
-      "value": "bupivacaine",
+      "t": "09:20",
+      "category": "event",
+      "value": "surgical incision to closure time forty minutes",
       "units": null,
       "provenance": [
-        "voice_notes:08:25#segment.1"
-      ]
-    },
-    {
-      "t": "08:25",
-      "category": "dose",
-      "value": "10",
-      "units": "mg",
-      "provenance": [
-        "voice_notes:08:25#segment.1"
+        "voice_notes#09:20"
       ]
     }
   ],
   "preop_note_claims": [
-    "History includes elective laparoscopic cholecystectomy for symptomatic cholelithiasis",
-    "Medications: ethinyl estradiol and norethindrone daily (current), amoxicillin 500mg twice daily (stopped)",
-    "Allergy to penicillin (rash)",
-    "ASA-PS 1 due to healthy patient with no active comorbidities",
-    "Airway plan: Laryngeal Mask Airway (LMA) with general anesthesia induction using propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites"
+    "History includes obesity (BMI 28.5), type 2 diabetes mellitus (well-controlled with metformin), and hypertension.",
+    "Medications: Metformin 500 mg twice daily (active), Lisinopril 10 mg once daily (active), Atorvastatin 20 mg once daily (active), Ranitidine 150 mg once daily (stopped).",
+    "Allergies: Penicillin (rash), cephalosporins (nausea and vomiting).",
+    "ASA-PS: 2 (reason: well-controlled type 2 diabetes mellitus and hypertension).",
+    "Airway assessment: Not specified in case details, but should be included in pre-anesthesia evaluation note.",
+    "Anesthesia plan: General anesthesia with intraoperative neuromonitoring for elective laparoscopic cholecystectomy."
   ],
   "handoff_claims": [
-    "Key history: Elective cholecystectomy, penicillin allergy (rash), current hormonal contraception and discontinued amoxicillin",
-    "Intra-op course: LMA placement, induction with propofol/fentanyl, maintenance with sevoflurane, local anesthetic for port sites",
-    "Anticipated issues: Monitor for allergic reaction (penicillin allergy), post-op pain management with residual local anesthetic effect"
+    "Key history: Obesity, type 2 diabetes mellitus, hypertension, and allergies to penicillin and cephalosporins.",
+    "Intra-op course expectations: Elective laparoscopic cholecystectomy under general anesthesia with intraoperative neuromonitoring.",
+    "Anticipated issues: Potential for delayed emergence due to obesity and diabetes-related comorbidities; monitor for signs of allergic reaction given allergy history."
   ],
   "distractors": [
-    "History of pneumonia resolved in 2019",
-    "Fractured left wrist in 2015, fully healed",
-    "Discontinued lisinopril for hypertension in 2020"
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of left wrist fracture (healed)",
+    "Previous use of Omeprazole for GERD, discontinued 2 years ago"
   ]
 }

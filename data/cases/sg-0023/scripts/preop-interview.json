@@ -2,71 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming laparoscopic cholecystectomy. Let's start with your medical history. Can you tell me why you're having this surgery?"
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through a few important questions to ensure your safety and comfort during the procedure. Is that okay with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, doctor. Yeah, I've been having belly pains on the right side, especially after eating. The scans showed gallstones, so they said to remove the gallbladder."
+      "text": "Yes, sure, Doctor. I'm ready to answer your questions."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let's go through your medications. You're on amlodipine, atorvastatin, omeprazole, and metformin, correct? And I see metformin was stopped recently?"
+      "text": "Thank you. Let's start with the reason for your surgery. Can you tell me a bit about your symptoms that led to the decision for a laparoscopic cholecystectomy?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, doctor. I take amlodipine for blood pressure, atorvastatin for cholesterol, omeprazole for the acid reflux, and metformin for diabetes. But they told me to stop metformin a few days before surgery, right?"
+      "text": "Well, Doctor, I've been having a lot of pain in my tummy, especially after eating. The scans showed gallstones, so the doctor said it's best to remove the gallbladder."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Correct. We'll monitor your blood sugar closely. Now, about allergies—your records say 'no known allergies,' but I always double-check. Have you ever had any reactions to medications, especially antibiotics like penicillin?"
+      "text": "I see. Now, let's move on to your medications. Can you confirm the current list of medications you're taking and any allergies that have been diagnosed since your last medical review?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, wait a minute... I think I had a rash once when I took penicillin for a infection. It was years ago, but my skin turned all red and itchy. I told the doctor then, but maybe it wasn't recorded properly?"
+      "text": "Okay, so I'm taking Metformin 1000 mg twice daily for my diabetes, Lisinopril 20 mg once daily for blood pressure, and Atorvastatin 40 mg once daily for cholesterol. Oh, and I also started Insulin Glargine 40 units once at night because my sugar levels were a bit high. Oh, and I have an allergy to Penicillin, which I think wasn't recorded before."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for mentioning that. We'll note the penicillin allergy clearly. Even if it was a rash, we'll avoid penicillin and related antibiotics. Any other reactions to foods, latex, or other drugs?"
+      "text": "Thank you for that information. It's important we have the most up-to-date details. So, just to confirm, you're on Metformin, Lisinopril, Atorvastatin, Insulin Glargine, and you have a Penicillin allergy. Is that correct?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, just that one time with penicillin. I don't think there's anything else."
+      "text": "Yes, that's right, Doctor. And the Ranitidine was stopped, as per the doctor's advice."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Let's confirm your NPO status—have you had anything to eat or drink since midnight?"
+      "text": "Excellent. Now, regarding your NPO status, have you had anything to eat or drink since midnight?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. My wife made sure I fasted properly. Just a bit of water with my morning meds, but that was hours ago."
+      "text": "No, Doctor. I've been fasting as instructed. Just a bit of water with my morning medications, but that was hours ago."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Have you had anesthesia before? Any issues with previous surgeries or procedures?"
+      "text": "Good. Have you had any anesthesia before? If so, were there any issues or reactions?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Once, for a hernia repair. I woke up with a sore throat, but otherwise it was fine. No vomiting or anything bad."
+      "text": "Yes, I had a surgery about 5 years ago. I think it was general anesthesia, and everything went smoothly. No problems at all."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Noted. Lastly, how's your overall fitness? Can you walk up stairs or do daily activities without excessive shortness of breath?"
+      "text": "Great to hear. Lastly, how would you describe your overall energy levels and ability to perform daily activities? Are you able to walk up a flight of stairs without getting too breathless?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yeah, I walk to the MRT station daily. Climbing stairs is okay, though I get a bit tired if I rush. No chest pains or anything."
+      "text": "I'd say I'm fairly active, Doctor. I can walk up stairs, but sometimes I get a bit tired, especially if I've eaten a heavy meal. But generally, I manage my daily tasks without too much trouble."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. We'll plan for general anesthesia with an LMA, as discussed. Your blood pressure and GERD will be managed carefully. Any questions for me?"
+      "text": "Thank you for sharing that with me. It helps me understand your fitness for surgery. We'll be using general anesthesia with a Laryngeal Mask Airway and Ultrasound-Guided Regional Anesthesia for your postoperative pain management. Do you have any questions about the anesthesia plan?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. You've explained everything clearly. I'm ready to proceed."
+      "text": "No, Doctor. You've explained it well. I'm just ready to get this done and feel better."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Wonderful. We'll see you in the operating theater. Take care, and we'll ensure your safety throughout."
+      "text": "Very well. If you have any more questions later, don't hesitate to ask. We're here to ensure your surgery and recovery go as smoothly as possible."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, Doctor. I appreciate your care."
     }
   ]
 }

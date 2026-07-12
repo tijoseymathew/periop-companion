@@ -2,71 +2,79 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today we'll be discussing your upcoming laparoscopic cholecystectomy. Let's start with why you're having this surgery?"
+      "text": "Good morning, Mr./Ms. [Last Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go over some questions to ensure we provide the best and safest care for you. Is that okay with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Ah, yes. Been having belly pains for months, especially after eating. Doctor said gallstones, so need to remove the gallbladder lah."
+      "text": "Yes, sure, doctor. I'm ready."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Let's go through your medications. You're on amlodipine, metoprolol, atorvastatin, omeprazole, and metformin?"
+      "text": "Great. Let's start with your medical history. You're having a laparoscopic cholecystectomy today. Can you tell me a bit about your symptoms that led to this surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Correct. But I stopped the metformin two days ago, like the nurse told me. Blood sugar's been okay, just a bit peckish sometimes."
+      "text": "Ah, yes. I've been having pain on the right side of my belly, especially after eating. Had some scans, and they found gallstones. So, doctor said it's best to remove the gallbladder."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any allergies documented here, but I always like to confirm. Have you ever had any allergic reactions to medications, especially antibiotics like sulfonamides?"
+      "text": "Thank you for sharing that. Now, regarding your medications: I see you're on Metformin, Lisinopril, Atorvastatin, and you've stopped Ranitidine. Are there any other medications or supplements you're taking that aren't listed here?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh! The records say no allergies, but actually... I had a bad rash once from a sulfa drug. Can't remember the name, but it was for an infection. Face and chest all red and itchy for days."
+      "text": "No, I think that's all. I stopped the Ranitidine as per the doctor's advice before the surgery."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for sharing that. We'll update your records to note sulfa allergy with rash. Any other reactions to medications or foods?"
+      "text": "Good. Now, about allergies. Your records say 'No known allergies,' but I like to double-check. Have you had any allergic reactions to foods, especially nuts, or any other substances not listed in your records?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No other allergies, but I do get heartburn easily. That's why I take omeprazole daily."
+      "text": "Oh, actually, yes. I forgot to mention it before. I'm allergic to nuts. Had a really bad reaction once, like my throat swelled up and everything. That's anaphylaxis, right?"
     },
     {
       "speaker": "PROVIDER",
-      "text": "Noted. Have you eaten or drunk anything since midnight?"
+      "text": "Yes, that does sound like anaphylaxis. Thank you so much for telling me. We'll make sure to note that in your records and avoid any potential triggers during your care. Are you allergic to anything else, like latex or any medications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, nothing since 8pm last night. Just a bit of water with meds this morning, but that was hours ago lah."
+      "text": "No, just the nuts. And I already mentioned the penicillin allergy, right? Got a rash from that once."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Any previous surgeries or anesthesia? Even minor procedures?"
+      "text": "Yes, we have that down. Moving on, have you had any previous surgeries or anesthesia? And if so, were there any issues?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Never had any operations before. This is my first time under general anesthesia."
+      "text": "I had my appendix out many years ago. No problems with the anesthesia that I remember."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Alright. How's your overall energy and mobility? Can you walk upstairs or do daily tasks without excessive fatigue?"
+      "text": "Excellent. Now, about your current health: you have type 2 diabetes, hypertension, and obesity. How have these been managed lately? Any recent changes or complications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Mostly okay, but the gallstone pain sometimes makes me tired. Still working full-time, though. Just avoid heavy lifting."
+      "text": "My blood sugar and blood pressure have been under control with the medications. I've been trying to lose some weight, but it's tough, lah."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thanks for all that. We'll use general anesthesia with a tube in your throat, and medications to keep you comfortable and relaxed. Any questions for me?"
+      "text": "I understand. Lastly, have you had anything to eat or drink since midnight? It's important to confirm your NPO status."
     },
     {
       "speaker": "PATIENT",
-      "text": "Will I be sleepy after? My wife is picking me up, but she's worried about driving with me drowsy."
+      "text": "No, I haven't had anything since last night. Followed the instructions given."
     },
     {
       "speaker": "PROVIDER",
-      "text": "You'll need a responsible adult to accompany you home, as the effects can last a few hours. We'll make sure she's briefed on aftercare."
+      "text": "Perfect. Thank you for going through all this with me. I think we have everything we need. If you have any questions or concerns, feel free to ask."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No questions, doctor. I'm in good hands, I hope."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "You are indeed. We'll take excellent care of you. I'll be speaking with you again before the surgery to confirm a few things and answer any last-minute questions. Take care, and we'll see you in the operating room."
     }
   ]
 }

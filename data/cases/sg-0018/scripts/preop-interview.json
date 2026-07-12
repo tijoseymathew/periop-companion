@@ -2,87 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, I'm Dr. Tan from the anesthesia team. I'll be taking care of you during your surgery today. Let me go through some questions to make sure we're all set for your laparoscopic cholecystectomy."
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I just need to go through a few questions to make sure we're all set for your laparoscopic cholecystectomy under general anesthesia with an LMA. Is that okay with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, Doctor. I'm ready when you are."
+      "text": "Yes, of course. I want to make sure everything goes smoothly."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. Can you tell me a bit about why you're having this surgery?"
+      "text": "Great. Can you tell me a bit about your medical history, especially anything that might affect your anesthesia today?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Sure. I've been having pain on my right side, especially after eating. The scans showed gallstones, and the doctor said it's best to remove the gallbladder laparoscopically."
+      "text": "Well, I have diabetes, high blood pressure, and I'm quite overweight. I take Metformin, Lisinopril, and Atorvastatin regularly. Oh, and I used to take Ranitidine for my stomach, but I stopped that a while back."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let's go through your medical history. You have high blood pressure, high cholesterol, and anxiety, right?"
+      "text": "Thank you for sharing that. I see in your records that Ranitidine is still listed as active. Can you tell me more about when and why you stopped taking it?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, lah. Been on meds for all of them for years now."
+      "text": "Oh right, I stopped taking it about six months ago. My acid reflux got better, so I didn't need it anymore. I guess I didn't update the records properly."
     },
     {
       "speaker": "PROVIDER",
-      "text": "What medications are you currently taking?"
+      "text": "That's very helpful to know. Thank you for clarifying. Do you have any allergies, and have you ever had any reactions to medications or anesthesia in the past?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Amlodipine once daily for BP, Atorvastatin at night for cholesterol, Sertraline for anxiety. Oh, and I used to take Omeprazole for acid reflux, but I stopped that three months ago when the symptoms went away."
+      "text": "Yes, I'm allergic to penicillin. I had a rash the one time I took it. But I've never had surgery before, so no anesthesia history."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thanks for mentioning that. Let me check your records... it says here you're still on Omeprazole. Can you confirm if you're still taking all the medications listed here?"
+      "text": "Got it. No previous anesthesia, and you're allergic to penicillin. That’s important. Now, regarding your current medications, are you taking all of them as prescribed, and have you taken them this morning?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, Doctor. Like I said, I stopped the Omeprazole three months back. My GERD got better, so I didn't need it anymore. The rest are still going strong, though."
+      "text": "Yes, I took my Metformin, Lisinopril, and Atorvastatin this morning with a sip of water. I didn’t eat anything else though, since I knew I had to fast."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Appreciate the clarification. Any allergies to medications or other substances?"
+      "text": "Perfect, thank you. And just to confirm, you’ve had nothing to eat or drink since midnight?"
     },
     {
       "speaker": "PATIENT",
-      "text": "None that I know of, Doctor."
+      "text": "Correct, nothing since last night. Just a bit of water with my meds this morning."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Have you had any previous surgeries or anesthesia?"
+      "text": "Excellent. Now, just a few more questions. How would you describe your overall energy level and ability to walk or climb stairs? This helps us understand your fitness for surgery."
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, this is my first time. Never been under general anesthesia before."
+      "text": "Hmm, I can walk around, but I do get a bit tired. I can’t run or anything, but I can manage daily activities. I’d say I’m moderately fit, lah."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Alright. How about your fasting status? When was your last meal or drink?"
+      "text": "Thanks for that. It gives me a good sense of your baseline. Lastly, do you have any concerns or questions about the anesthesia or the surgery itself?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I stopped eating from midnight last night, as instructed. Just had a sip of water with my morning meds around 6 AM."
+      "text": "No, I think I’m all set. I just want to get this done and feel better."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Finally, how's your overall energy and mobility? Can you walk or climb stairs without issues?"
+      "text": "Great, thank you so much for going through all that with me. We’ll take good care of you today. I’ll be with you the whole time and make sure you’re comfortable and safe."
     },
     {
       "speaker": "PATIENT",
-      "text": "Yeah, no problems there. I walk 20 minutes most days and can climb stairs without getting short of breath."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Excellent. We'll be using general anesthesia with an LMA and sevoflurane for your surgery. Any questions for me?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "No, Doctor. You've explained everything clearly. I'm ready to proceed."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Great. We'll get you set up shortly. Take a deep breath and relax – we've got you covered."
+      "text": "Thank you, doctor. I appreciate it."
     }
   ]
 }

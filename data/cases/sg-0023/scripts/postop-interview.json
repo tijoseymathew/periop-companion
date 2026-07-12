@@ -6,55 +6,47 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "Eh, still a bit groggy, but okay lah. Got some pain here at the tummy, you know?"
+      "text": "I'm feeling okay, a bit tired but not in too much pain."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understandable. Can you rate the pain for me, like on a scale of 1 to 10?"
+      "text": "Good to hear. Can you tell me your pain level on a scale from 0 to 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe around 4 or 5? Not too bad, but I can feel it when I move."
+      "text": "Maybe around 3 or 4, it's manageable."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Alright, we’ll manage that with some meds. Any nausea or feeling like you want to vomit?"
+      "text": "Any nausea or feeling like you might vomit?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No nausea, but my throat got a bit sore. Like something stuck there?"
+      "text": "No, I feel fine, no sickness at all."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That’s from the LMA tube during surgery. Should ease up soon. Breathing okay otherwise?"
+      "text": "Great. How's your breathing? Any discomfort or tightness in your chest?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, breathing’s fine. Just a little discomfort when I cough."
+      "text": "Breathing is fine, no problem there."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any memory of the operation itself? Sometimes people have bits they recall."
+      "text": "Did you experience any awareness or discomfort during the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, all black out. Woke up just now like that."
+      "text": "No, I don't remember anything, slept through it all."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Since you’ve got GERD, any acid reflux or chest discomfort post-op?"
+      "text": "Excellent. Given your diabetes and high blood pressure, are you having any dizziness or vision changes?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not really. Stomach feels okay, just the usual tummy ache from surgery."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Great. We’ll keep an eye on your BP and lipids as usual. Any other concerns?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "No, all good. Thanks for checking on me."
+      "text": "No, everything looks and feels normal to me."
     }
   ]
 }

@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Elective total hip replacement (elective).
+Prostatectomy (Transurethral Resection of the Prostate, TURP) (elective).
 
 ## Anesthesia
 
-General anesthesia with spinal anesthesia as adjunct for intraoperative pain control
+General Anesthesia with Spinal Anesthesia (Combined Spinal-Epidural Anesthesia)

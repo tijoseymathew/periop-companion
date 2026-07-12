@@ -6,20 +6,22 @@
 
 ## Medications
 
-Amlodipine 10 mg Daily.
+Metformin 500mg Twice daily.
 
-Metformin 500 mg Twice daily.
+Lisinopril 10mg Once daily.
 
-Atorvastatin 20 mg Nightly.
+Atorvastatin 20mg Once daily.
+
+Ranitidine 150mg Once daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin (rash)
 
 ## Past History
 
-Pneumonia (resolved 2018)
+History of pneumonia resolved 5 years ago
 
-Left wrist fracture (2015)
+Fractured right wrist 10 years ago, fully healed
 
-Discontinued metoprolol 6 months ago
+Completed a course of Amoxicillin for a dental infection 2 years ago without issues

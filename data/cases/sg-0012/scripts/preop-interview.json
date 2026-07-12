@@ -2,63 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Lim, the anesthesiologist who'll be taking care of you during your surgery today. Let me go through some questions to make sure we're all set for your laparoscopic cholecystectomy. First, can you tell me about your medical history?"
+      "text": "Good morning, Mr./Ms./Mrs. [Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go through some questions to ensure we have all the necessary information for your safety. Is that okay with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Sure, doctor. I have high blood pressure, diabetes, and high cholesterol. Also, my BMI is 32, so I'm quite heavy. But I can still walk and do my daily things, though I get tired faster lah."
+      "text": "Yes, sure, doctor. I'm ready."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you. Let's go through your medications. What are you currently taking?"
+      "text": "Thank you. Can you please tell me a bit about your medical history, especially related to your current condition that requires a laparoscopic cholecystectomy?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I take amlodipine 10mg every day for BP, metformin 500mg twice daily for sugar, and atorvastatin 20mg at night for cholesterol. Oh, and I stopped metoprolol 50mg daily two weeks ago, as per my doctor's advice."
+      "text": "Okay lah... I've been having stomach pains, especially after eating. The doctor said it's because of my gallbladder, so they decided to remove it. I think that's all, really."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Alright. Do you have any allergies to medications, especially antibiotics or anesthetics?"
+      "text": "I see. Thank you for sharing that. Now, let's move on to your medications. I have in my records that you're on Metformin, Lisinopril, Atorvastatin, and Ranitidine. Can you confirm if you are still taking all of these medications as listed?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Ah, yes! I had a bad rash from sulfa antibiotics before. My skin turned all red and itchy, so I avoid that now. But my records say 'no known allergies'? Must be a mistake lah."
+      "text": "Ah, about the Ranitidine, doctor... I actually stopped taking it about six months ago because it was causing me some side effects. I'm not on any H2 blocker now."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for clarifying that. We'll make sure to note the sulfa allergy. Have you had any previous surgeries or anesthesia?"
+      "text": "Thank you for clarifying that. It's important we have the most up-to-date information. Are you currently taking any other medications, supplements, or herbal remedies not listed here?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, this is my first surgery. But I did have a minor procedure for my diabetes check-up last year, just local anesthesia, no issues."
+      "text": "No, doctor. Just the Metformin, Lisinopril, and Atorvastatin. That's all."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Are you NPO? When was the last time you ate or drank anything?"
+      "text": "Great. Now, regarding allergies, we have penicillin listed with a rash reaction. Are there any other allergies or reactions to medications or foods we should be aware of?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, I stopped eating after 8pm last night. Only sipped some water for my morning meds, but that was hours ago."
+      "text": "No, just the penicillin. That's the only one."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Any other concerns or questions about the anesthesia or surgery?"
+      "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Just worried about the pain after surgery. Will I be able to manage it with the medications I'm on?"
+      "text": "No, this is my first time. I've never had surgery before."
     },
     {
       "speaker": "PROVIDER",
-      "text": "We'll ensure your pain is well-controlled. You'll have a multimodal approach with different medications, and we'll coordinate with your surgeon. Any other questions?"
+      "text": "Alright. Now, in terms of your current health, how would you rate your overall energy level and ability to perform daily activities? For example, can you climb stairs or walk for a certain distance without getting too tired?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, that's all. Thank you, doctor."
+      "text": "Hmm, I can walk around, but sometimes I get a bit tired faster than before, especially with the diabetes and all. But I manage lah."
     },
     {
       "speaker": "PROVIDER",
-      "text": "You're welcome, Mr. Tan. We'll take good care of you. I'll review your chart and see you in the holding area soon."
+      "text": "Thank you for sharing that. It helps us understand your functional status. Finally, have you eaten or drunk anything since midnight? It's important for your safety with the anesthesia."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, doctor. I've been fasting since last night as instructed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Perfect. Well, I think that covers everything. Thank you so much for your time and for providing all this information. It's crucial for us to provide the best care possible. If you have any questions or concerns, please don't hesitate to ask."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, doctor. I feel more at ease now."
     }
   ]
 }

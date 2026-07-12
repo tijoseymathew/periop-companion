@@ -6,7 +6,11 @@
 
 ## Medications
 
-Amoxicillin 500mg twice daily.
+Montelukast 10 mg daily.
+
+Salbutamol Inhaler 2 puffs as needed PRN.
+
+Atorvastatin 20 mg daily.
 
 ## Allergies
 
@@ -14,8 +18,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-Left wrist fracture in 2018 (healed, no hardware)
+Left ankle fracture (2018)
 
-Pneumonia in 2020 (treated with amoxicillin, resolved)
+Pneumonia (2020)
 
-Allergic contact dermatitis to nickel (diagnosed age 12, resolved)
+Prediabetes (2019, resolved)

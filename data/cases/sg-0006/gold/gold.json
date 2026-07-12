@@ -1,6 +1,6 @@
 {
   "questions": [
-    "Have you stopped or changed any medications since your last medical review?"
+    "Have you experienced any adverse reactions to antibiotics other than Penicillin?"
   ],
   "events": [
     {
@@ -8,123 +8,161 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:00"
+      ]
     },
     {
       "t": "08:00",
       "category": "dose",
       "value": "120",
-      "units": "mg",
-      "provenance": []
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:00"
+      ]
     },
     {
-      "t": "08:02",
-      "category": "agent",
-      "value": "fentanyl",
+      "t": "08:05",
+      "category": "airway",
+      "value": "LMA",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:05"
+      ]
     },
     {
-      "t": "08:02",
+      "t": "08:05",
       "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": []
-    },
-    {
-      "t": "08:05",
-      "category": "airway",
-      "value": "tube in",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:05",
-      "category": "airway",
-      "value": "grade one view",
-      "units": null,
-      "provenance": []
+      "value": "4",
+      "units": "size",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
     },
     {
       "t": "08:10",
       "category": "line",
-      "value": "peripheral IV 20 gauge placed in left hand",
+      "value": "intravenous access",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:10"
+      ]
     },
     {
-      "t": "08:15",
-      "category": "fluid",
-      "value": "lactated ringers one liter bolus",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:00",
-      "category": "event",
-      "value": "blood pressure dropped to 85/50",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:00",
-      "category": "fluid",
-      "value": "500 ml fluid bolus given",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:05",
-      "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "09:05",
+      "t": "08:10",
       "category": "dose",
-      "value": "100",
-      "units": "mcg",
-      "provenance": []
+      "value": "18",
+      "units": "gauge",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
     },
     {
-      "t": "09:10",
-      "category": "event",
-      "value": "heart rate increased to 110",
+      "t": "08:10",
+      "category": "fluid",
+      "value": "normal saline",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:10"
+      ]
     },
     {
-      "t": "09:10",
+      "t": "08:10",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "mean arterial pressure drop",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
       "category": "agent",
       "value": "atropine",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_notes#08:20"
+      ]
     },
     {
-      "t": "09:10",
+      "t": "08:20",
       "category": "dose",
       "value": "0.5",
-      "units": "mg",
-      "provenance": []
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:35",
+      "category": "dose",
+      "value": "20",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:35"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "desaturation",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "agent",
+      "value": "FiO2",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "dose",
+      "value": "1.0",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
+      ]
     }
   ],
   "preop_note_claims": [
-    "Patient has a history of hypertension, type 2 diabetes mellitus, and hyperlipidemia.",
-    "Current medications: Amlodipine 5mg daily, Metoprolol 50mg daily, Metformin 500mg twice daily, Atorvastatin 20mg nightly, Aspirin 75mg daily.",
-    "Levothyroxine 50mcg daily was discontinued 1 year ago due to normalized thyroid function.",
-    "No known allergies.",
-    "ASA Physical Status III assigned due to controlled but significant comorbidities (hypertension, diabetes, hyperlipidemia).",
-    "Airway assessment indicates plan for general anesthesia with endotracheal intubation."
+    "Documented patient history includes obesity (BMI 32), type 2 diabetes mellitus, and hypertension.",
+    "Medications listed with status: Metformin 500mg twice daily, Lisinopril 10mg once daily, Atorvastatin 20mg once daily, and Ranitidine 150mg once daily (stopped).",
+    "Allergies documented: Penicillin (rash) and Cephalosporins (nausea, vomiting).",
+    "ASA-PS classification of 3 with reason: patient has controlled but unstable comorbidities including diabetes, hypertension, and obesity.",
+    "Airway assessment and plan documented: Laryngeal Mask Airway (LMA) planned under general anesthesia."
   ],
   "handoff_claims": [
-    "Key history includes hypertension, type 2 diabetes mellitus, and hyperlipidemia.",
-    "Intraoperative course: Laparoscopic cholecystectomy performed under general anesthesia with endotracheal intubation; expected postoperative course is routine.",
-    "Anticipated issues: Monitor for blood pressure fluctuations, blood glucose levels, and manage postoperative pain and nausea."
+    "Key history shared: patient has type 2 diabetes, hypertension, obesity, and allergies to penicillin and cephalosporins.",
+    "Intraoperative course expectation: laparoscopic cholecystectomy completed without complications, with LMA used for airway management.",
+    "Anticipated issues: potential for delayed recovery due to obesity and metabolic syndrome, monitor for hypoglycemia or hyperglycemia post-op."
   ],
   "distractors": [
-    "History of pneumonia resolved in 2018",
-    "Left wrist fracture healed in 2010",
-    "Discontinued omeprazole in 2020 after resolution of peptic ulcer disease"
+    "Pneumonia (resolved, 2018)",
+    "Fractured right wrist (2015, fully healed)",
+    "Discontinued Simvastatin due to muscle pain (2019)"
   ]
 }

@@ -2,14 +2,12 @@
 
 ## Current Medications
 
-Amlodipine 5mg once daily.
+Metformin 500mg Twice daily.
 
-Metformin 500mg twice daily.
+Lisinopril 10mg Once daily.
 
-Glipizide 5mg once daily.
+Atorvastatin 20mg Once daily.
 
-Atorvastatin 20mg once daily.
+Insulin Glargine 30 units Once daily.
 
-Omeprazole 20mg once daily.
-
-Aspirin 75mg once daily.
+Ranitidine 150mg Twice daily.

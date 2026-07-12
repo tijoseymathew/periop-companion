@@ -1,119 +1,91 @@
 {
   "case_id": "sg-0006",
   "persona_uuid": "9a593cae0ecb40118bfcbd00a62ae99a",
-  "surgery": "Laparoscopic cholecystectomy",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
   "asa_ps": 3,
   "comorbidities": [
-    "Hypertension",
+    "Obesity (BMI 32)",
     "Type 2 Diabetes Mellitus",
-    "Hyperlipidemia"
+    "Hypertension"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Metoprolol",
-      "dose": "50mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
       "name": "Metformin",
       "dose": "500mg",
-      "frequency": "twice daily",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Atorvastatin",
       "dose": "20mg",
-      "frequency": "nightly",
+      "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Aspirin",
-      "dose": "75mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Levothyroxine",
-      "dose": "50mcg",
-      "frequency": "daily",
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
-  "allergies": [],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
   "defect": {
-    "kind": "stale_med_list",
-    "record_states": "Medications include Levothyroxine 50mcg daily (active)",
-    "truth": "Levothyroxine was discontinued 1 year ago due to normalized thyroid function",
-    "gold_question": "Have you stopped or changed any medications since your last medical review?"
+    "kind": "missing_allergy",
+    "record_states": "No known allergies",
+    "truth": "Allergic to Cephalosporins (nausea, vomiting)",
+    "gold_question": "Have you experienced any adverse reactions to antibiotics other than Penicillin?"
   },
   "distractors": [
     {
-      "description": "History of pneumonia resolved in 2018",
-      "why_irrelevant": "Resolved, no current respiratory issues"
+      "description": "Pneumonia (resolved, 2018)",
+      "why_irrelevant": "Resolved years ago, not impacting current respiratory status"
     },
     {
-      "description": "Left wrist fracture healed in 2010",
-      "why_irrelevant": "Old injury, no functional impairment"
+      "description": "Fractured right wrist (2015, fully healed)",
+      "why_irrelevant": "Remote, fully healed, no impact on current surgery or anesthesia"
     },
     {
-      "description": "Discontinued omeprazole in 2020 after resolution of peptic ulcer disease",
-      "why_irrelevant": "Medication no longer required"
+      "description": "Discontinued Simvastatin due to muscle pain (2019)",
+      "why_irrelevant": "Discontinued for a resolved condition, not relevant to current medications"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Metoprolol",
-        "dose": "50mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
         "name": "Metformin",
         "dose": "500mg",
-        "frequency": "twice daily",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Atorvastatin",
         "dose": "20mg",
-        "frequency": "nightly",
-        "active": true
-      },
-      {
-        "name": "Aspirin",
-        "dose": "75mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Levothyroxine",
-        "dose": "50mcg",
-        "frequency": "daily",
+        "frequency": "Once daily",
         "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "History of pneumonia resolved in 2018",
-      "Left wrist fracture healed in 2010",
-      "Discontinued omeprazole in 2020 after resolution of peptic ulcer disease"
+      "Pneumonia (2018)",
+      "Fractured right wrist (2015)",
+      "Discontinued Simvastatin due to muscle pain (2019)"
     ],
-    "prior_anesthesia": "Previous general anesthesia for appendectomy 20 years ago, no complications"
+    "prior_anesthesia": null
   }
 }

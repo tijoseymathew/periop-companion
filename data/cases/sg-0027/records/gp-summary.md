@@ -6,17 +6,15 @@
 
 ## Medications
 
-Amlodipine 5mg once daily.
+Metformin 500mg Twice daily.
 
-Metformin 500mg twice daily.
+Lisinopril 10mg Once daily.
 
-Glipizide 5mg once daily.
+Atorvastatin 20mg Once daily.
 
-Atorvastatin 20mg once daily.
+Insulin Glargine 30 units Once daily.
 
-Omeprazole 20mg once daily.
-
-Aspirin 75mg once daily.
+Ranitidine 150mg Twice daily.
 
 ## Allergies
 
@@ -28,12 +26,10 @@ Hypertension
 
 Type 2 Diabetes Mellitus
 
-Hyperlipidemia
+Obesity
 
-Osteoarthritis (knee)
+Chronic Kidney Disease
 
-Pneumonia resolved in 2018
+Pneumonia (resolved 2 years ago)
 
-Left wrist fracture in 2015, fully healed
-
-Aspirin discontinued in 2021 due to resolved indication
+Right ankle fracture (healed, 15 years ago)

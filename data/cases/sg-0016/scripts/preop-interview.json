@@ -2,79 +2,71 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. Today, we'll discuss your upcoming laparoscopic cholecystectomy. Let's start with your medical history. Can you tell me about your gallstone symptoms?"
+      "text": "Good morning, Mr./Ms./Mrs. [Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery today. I'd like to go over a few things to make sure everything goes smoothly. Can you please tell me a bit about your medical history and why you're having this surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, doc. Been having this sharp pain on the right side, especially after eating. Had a scan, and they found gallstones. Doctor said it's best to remove it before it gets worse, lah."
+      "text": "Morning, Doctor. I'm having my gallbladder removed because of the stones, right? I've had bad belly pain after eating, especially fatty food, and the scans showed stones in the gallbladder. So they decided on laparoscopic surgery."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let's go through your medications. You're on amlodipine, metoprolol, metformin, atorvastatin, and omeprazole. Are you still taking all of these?"
+      "text": "Thank you for that. Let's go through your medical history. You have hypertension, type 2 diabetes, and obesity, correct?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Amlodipine, metoprolol, metformin, and atorvastatin daily, yes. Omeprazole I stopped a month ago, as instructed. No other meds, doc."
+      "text": "Yes, that's right. I've had diabetes for about 8 years now, and high blood pressure for even longer. My weight has been a problem for a while too."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you. Your records mention no allergies, but I always double-check. Have you ever had any reactions to antibiotics, especially penicillin or similar drugs?"
+      "text": "And your current medications are Metformin, Lisinopril, Atorvastatin, and Ranitidine, as per the records. Has there been any change in your medication list since your last hospital visit?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, wait—there was something. Years ago, when I took penicillin for a throat infection, I got a bad rash all over. Itchy and red, had to stop the medicine. Never took it again since."
+      "text": "Actually, yes. The Ranitidine was stopped about six months ago because my acid problem got better. Now I'm taking Omeprazole 20mg once daily instead."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Important to note. That rash was likely an allergic reaction. We'll avoid penicillin and related antibiotics during your surgery. Any other reactions to medications or foods?"
+      "text": "Thank you for letting me know. That's an important update. Do you have any known allergies, especially to medications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, nothing else. Just that one time with penicillin."
+      "text": "Yes, I had a rash when I took Penicillin before, so I'm allergic to that."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Have you eaten or drunk anything since midnight? We need to ensure you're NPO (nothing by mouth) for general anesthesia."
+      "text": "Got it. Have you had any previous surgeries or anesthesia before? If so, how did you tolerate it?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doc. I had my last meal around 8pm last night. Just water this morning, but stopped that at 6am, as instructed."
+      "text": "No, this is my first time. I've never had general anesthesia before, so I'm a bit nervous about it."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Any previous surgeries or anesthesia? Even minor procedures?"
+      "text": "That's completely understandable. We'll make sure you're comfortable and safe throughout the process. Are you currently on any NPO orders? That is, when was your last meal or drink?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, this is my first time. Never been under general anesthesia before."
+      "text": "I had my last meal around 8pm last night and a sip of water until about 10pm. I think I'm all set for fasting."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Noted. Let's discuss your health conditions. You have hypertension, diabetes, and high cholesterol. How well are these controlled?"
+      "text": "Perfect, that sounds appropriate. Lastly, how would you describe your overall energy level and ability to perform daily activities?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Blood pressure is okay with the meds. Diabetes—my HbA1c was 7.2% last check, so manageable. Cholesterol under control with statin. Also, I have anxiety, but it's been better lately."
+      "text": "I manage okay, but I do get tired more easily, especially after walking long distances. I can still do most of my daily tasks, though."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you. We'll monitor your blood sugar closely during surgery. Lastly, are you able to perform daily activities without difficulty?"
+      "text": "Thank you for sharing that. It helps us understand your baseline. We'll be using general anesthesia with Propofol, Fentanyl, and Vecuronium to start, then maintain with Sevoflurane and Remifentanil. After surgery, we'll reverse the muscle relaxant with Neostigmine and Glycopyrrolate. Any questions so far?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, doc. I walk daily, do light chores. No shortness of breath or chest pain. Just the gallstone pain sometimes."
+      "text": "No, I think that's all clear. I'm ready to proceed."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. We'll proceed with general anesthesia using sevoflurane and rocuronium. For pain, we'll use paracetamol, ketorolac, and dexamethasone as planned. Any questions?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "No, doc. You all seem to have everything covered. Just want to get this done and feel better."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "We'll take good care of you. I'll review your file again before surgery. See you in the pre-op area, Mr. Tan."
+      "text": "Great. We'll take good care of you. You'll be seen by the surgical team shortly, and we'll be with you every step of the way."
     }
   ]
 }

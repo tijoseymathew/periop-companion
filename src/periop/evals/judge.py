@@ -3,7 +3,22 @@
 An entailment-style equivalence check on the fast model. Uses a plain yes/no
 completion rather than structured JSON: the small model reliably answers a
 direct yes/no but sometimes echoes a JSON schema back, so the simpler protocol
-is more robust on this hot path. Verdicts are cached per (pred, gold) pair.
+is more robust on this hot path. Verdicts are cached per (mode, pred, gold)
+pair and sampled at temperature 0 so a re-score of the same artifacts is
+deterministic.
+
+Two prompts, one per comparison mode. Claims are *statements*, so the fact
+prompt asks whether they assert the same fact. Gap-analysis questions are not
+statements — asked whether two equivalent questions "express the same fact",
+the model correctly answers NO, which pinned gap_f1 at 0 for every run. The
+question prompt instead asks directionally whether answering the generated
+question would surface what the gold probe seeks: that credits
+generic-vs-specific phrasing (gold's "stopped or changed any medications?" vs
+a generated question naming the five listed drugs) while rejecting a question
+that merely *mentions* a related detail (an "update on your GERD since
+omeprazole was discontinued?" question does not cover a med-change probe —
+that exact pair was the one false positive of a symmetric "same issue"
+prompt).
 """
 
 import re
@@ -22,22 +37,23 @@ B: {b}
 Answer YES if they assert the same fact, otherwise NO. Answer with one word.
 """
 
-QUESTION_SYSTEM = (
-    "You judge whether two clinical clarification questions probe the same "
-    "underlying information gap. Answer only YES or NO. Ignore phrasing, "
-    "scope and register; judge whether answering one would answer the other's "
-    "core concern."
+SYSTEM_QUESTIONS = (
+    "You judge whether one clinical interview question covers another. "
+    "Answer only YES or NO. Ignore phrasing, register, and level of detail; "
+    "judge what information each question would elicit from the patient."
 )
 
-QUESTION_PROMPT = """\
-Do these two pre-anesthesia clarification questions target the same information gap
-(e.g. both probe whether a specific medication is still being taken)?
+PROMPT_QUESTIONS = """\
+Would a patient's full answer to question A also give the interviewer the
+information question B asks for?
 
 A: {a}
 B: {b}
 
-Answer YES if a patient's answer to either would resolve the same clinical concern,
-otherwise NO. Answer with one word.
+A may be broader or more specific than B; answer YES only if answering A would
+surface what B seeks. A question that merely mentions a related detail (a
+drug, a date, a condition) while actually asking about something else does not
+cover B. Answer YES or NO, one word.
 """
 
 
@@ -55,20 +71,19 @@ class LlmJudge:
         self.chat = chat
         self._cache: dict[tuple[str, str, str], bool] = {}
 
-    def matches(self, pred: str, gold: str) -> bool:
-        return self._judged("fact", PROMPT, SYSTEM, pred, gold)
-
-    def question_matches(self, pred: str, gold: str) -> bool:
-        """Intent-equivalence for questions: facts entail, questions probe."""
-        return self._judged("question", QUESTION_PROMPT, QUESTION_SYSTEM, pred, gold)
-
-    def _judged(self, kind: str, prompt: str, system: str, pred: str, gold: str) -> bool:
-        key = (kind, pred, gold)
+    def _judge(self, mode: str, prompt: str, system: str, pred: str, gold: str) -> bool:
+        key = (mode, pred, gold)
         if key not in self._cache:
-            # Greedy decoding: a judge must be deterministic — at the default
-            # temperature borderline verdicts flip between runs.
             reply = self.chat.complete(
-                prompt.format(a=pred, b=gold), system=system, temperature=0
+                prompt.format(a=pred, b=gold), system=system, temperature=0.0
             )
             self._cache[key] = _parse_yes(reply)
         return self._cache[key]
+
+    def matches(self, pred: str, gold: str) -> bool:
+        """Statement equivalence: do the two claims assert the same fact?"""
+        return self._judge("fact", PROMPT, SYSTEM, pred, gold)
+
+    def matches_questions(self, pred: str, gold: str) -> bool:
+        """Question coverage: would answering ``pred`` surface what ``gold`` seeks?"""
+        return self._judge("question", PROMPT_QUESTIONS, SYSTEM_QUESTIONS, pred, gold)

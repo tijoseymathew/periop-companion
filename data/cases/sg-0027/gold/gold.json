@@ -1,6 +1,6 @@
 {
   "questions": [
-    "Have you ever had an allergic reaction to any medications, particularly sulfa antibiotics?"
+    "Can you confirm if you are still taking Ranitidine, or has it been discontinued?"
   ],
   "events": [
     {
@@ -8,161 +8,87 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": [
-        "notes#0"
-      ]
+      "provenance": []
     },
     {
       "t": "08:00",
       "category": "dose",
       "value": "120",
-      "units": "mg",
-      "provenance": [
-        "notes#0"
-      ]
+      "units": "milligrams",
+      "provenance": []
     },
     {
       "t": "08:02",
-      "category": "agent",
-      "value": "fentanyl",
+      "category": "airway",
+      "value": "LMA size four inserted",
       "units": null,
-      "provenance": [
-        "notes#1"
-      ]
+      "provenance": []
     },
     {
       "t": "08:02",
-      "category": "dose",
-      "value": "50",
-      "units": "µg",
-      "provenance": [
-        "notes#1"
-      ]
+      "category": "airway",
+      "value": "good seal, capnography confirmed",
+      "units": null,
+      "provenance": []
     },
     {
       "t": "08:05",
-      "category": "agent",
-      "value": "succinylcholine",
-      "units": null,
-      "provenance": [
-        "notes#2"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "dose",
-      "value": "100",
-      "units": "mg",
-      "provenance": [
-        "notes#2"
-      ]
-    },
-    {
-      "t": "08:07",
-      "category": "airway",
-      "value": "endotracheal tube placed",
-      "units": null,
-      "provenance": [
-        "notes#3"
-      ]
-    },
-    {
-      "t": "08:07",
-      "category": "airway",
-      "value": "grade one view",
-      "units": null,
-      "provenance": [
-        "notes#3"
-      ]
-    },
-    {
-      "t": "08:10",
       "category": "line",
-      "value": "arterial line placed",
+      "value": "18-gauge IV in right antecubital fossa",
       "units": null,
-      "provenance": [
-        "notes#4"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:15",
+      "t": "08:05",
       "category": "fluid",
-      "value": "lactated ringers",
-      "units": null,
-      "provenance": [
-        "notes#5"
-      ]
+      "value": "500",
+      "units": "mils of Ringer's lactate",
+      "provenance": []
     },
     {
       "t": "08:15",
-      "category": "dose",
-      "value": "1000",
-      "units": "mL",
-      "provenance": [
-        "notes#5"
-      ]
-    },
-    {
-      "t": "08:20",
       "category": "event",
-      "value": "mean arterial pressure thirty five",
+      "value": "mean arterial pressure dropped to fifty five",
       "units": null,
-      "provenance": [
-        "notes#6"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:20",
-      "category": "agent",
-      "value": "atropine",
-      "units": null,
-      "provenance": [
-        "notes#6"
-      ]
-    },
-    {
-      "t": "08:20",
-      "category": "dose",
-      "value": "1",
-      "units": "mg",
-      "provenance": [
-        "notes#6"
-      ]
-    },
-    {
-      "t": "08:25",
+      "t": "08:15",
       "category": "agent",
       "value": "phenylephrine",
       "units": null,
-      "provenance": [
-        "notes#7"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:25",
+      "t": "08:15",
       "category": "dose",
-      "value": "20",
-      "units": "µg",
-      "provenance": [
-        "notes#7"
-      ]
+      "value": "10",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "surgery completed, LMA removed, patient extubated smoothly",
+      "units": null,
+      "provenance": []
     }
   ],
   "preop_note_claims": [
-    "History includes hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis (knee)",
-    "Medications listed with status: Amlodipine 5mg once daily (continued), Metformin 500mg twice daily (continued), Glipizide 5mg once daily (continued), Atorvastatin 20mg once daily (continued), Omeprazole 20mg once daily (continued), Aspirin 75mg once daily (discontinued)",
-    "Allergy to sulfa drugs documented with reaction (rash)",
-    "ASA-PS classification is 3 due to multiple comorbidities (hypertension, diabetes mellitus, hyperlipidemia)",
-    "Anesthesia plan includes spinal anesthesia with general anesthesia as backup"
+    "Patient's medical history includes Hypertension, Type 2 Diabetes Mellitus, Obesity (BMI 32), and Chronic Kidney Disease (Stage 2).",
+    "Current medications are Metformin 500mg Twice daily, Lisinopril 10mg Once daily, Atorvastatin 20mg Once daily, and Insulin Glargine 30 units Once daily.",
+    "Patient has a known allergy to Penicillin, which results in a rash.",
+    "ASA-PS is 3 due to the presence of controlled but significant comorbidities (Hypertension, Type 2 Diabetes Mellitus, Obesity, and Chronic Kidney Disease).",
+    "Airway assessment is within normal limits; plan for General Anesthesia with Laryngeal Mask Airway (LMA) is appropriate for elective Laparoscopic Cholecystectomy."
   ],
   "handoff_claims": [
-    "Key history includes sulfa allergy (rash), hypertension, type 2 diabetes mellitus, hyperlipidemia, and osteoarthritis",
-    "Intraoperative course: Elective left total knee arthroplasty performed under spinal anesthesia with general anesthesia as backup",
-    "Anticipated postoperative issues include pain management, monitoring for infection or deep vein thrombosis, and management of glucose levels and blood pressure"
+    "Patient has multiple comorbidities including Hypertension, Type 2 Diabetes Mellitus, Obesity, and Chronic Kidney Disease, which may impact recovery and require close monitoring.",
+    "Intra-operative course expected to be uncomplicated for Laparoscopic Cholecystectomy under General Anesthesia with LMA; anticipate routine emergence and extubation.",
+    "Anticipated issue: Potential for delayed awakening or respiratory complications due to Obesity and Diabetes; monitor for hypoglycemia or hyperglycemia post-op."
   ],
   "distractors": [
-    "Pneumonia resolved in 2018",
-    "Left wrist fracture in 2015, fully healed",
-    "Aspirin discontinued in 2021 due to resolved indication"
+    "History of pneumonia resolved 2 years ago",
+    "Remote history of right ankle fracture (15 years ago), fully healed",
+    "Previous use of Omeprazole for GERD, discontinued 3 years ago"
   ]
 }

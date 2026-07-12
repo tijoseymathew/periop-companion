@@ -2,4 +2,8 @@
 
 ## Current Medications
 
-Amoxicillin 500mg twice daily.
+Montelukast 10 mg daily.
+
+Salbutamol Inhaler 2 puffs as needed PRN.
+
+Atorvastatin 20 mg daily.

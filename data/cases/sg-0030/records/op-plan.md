@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Laparoscopic ovarian cystectomy (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with endotracheal intubation
+General Anesthesia with Single-shot Ultrasound-Guided Transversus Abdominis Plane (TAP) Block for Postoperative Pain Management

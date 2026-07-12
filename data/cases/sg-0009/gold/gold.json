@@ -1,6 +1,6 @@
 {
   "questions": [
-    "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+    "Can you please confirm if you have any allergies, particularly to Latex, which might not be documented?"
   ],
   "events": [
     {
@@ -9,16 +9,16 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_note#0#08:00"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
       "value": "120",
-      "units": "mg",
+      "units": "milligrams",
       "provenance": [
-        "voice_note#0#08:00"
+        "voice_notes#08:00"
       ]
     },
     {
@@ -27,142 +27,151 @@
       "value": "LMA size four",
       "units": null,
       "provenance": [
-        "voice_note#1#08:02"
-      ]
-    },
-    {
-      "t": "08:03",
-      "category": "event",
-      "value": "hypotension (MAP 55)",
-      "units": null,
-      "provenance": [
-        "voice_note#2#08:03"
-      ]
-    },
-    {
-      "t": "08:03",
-      "category": "agent",
-      "value": "atropine",
-      "units": null,
-      "provenance": [
-        "voice_note#2#08:03"
-      ]
-    },
-    {
-      "t": "08:03",
-      "category": "dose",
-      "value": "1",
-      "units": "mg",
-      "provenance": [
-        "voice_note#2#08:03"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "agent",
-      "value": "remifentanil",
-      "units": null,
-      "provenance": [
-        "voice_note#3#08:04"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "dose",
-      "value": "0.5",
-      "units": "mcg/kg/min",
-      "provenance": [
-        "voice_note#3#08:04"
+        "voice_notes#08:02"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "18-gauge IV access",
+      "category": "agent",
+      "value": "fentanyl",
       "units": null,
       "provenance": [
-        "voice_note#4#08:05"
+        "voice_notes#08:05"
       ]
     },
     {
-      "t": "08:06",
+      "t": "08:05",
+      "category": "dose",
+      "value": "20",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
       "category": "agent",
       "value": "vecuronium",
       "units": null,
       "provenance": [
-        "voice_note#5#08:06"
-      ]
-    },
-    {
-      "t": "08:06",
-      "category": "dose",
-      "value": "30",
-      "units": "mg",
-      "provenance": [
-        "voice_note#5#08:06"
+        "voice_notes#08:10"
       ]
     },
     {
       "t": "08:10",
+      "category": "dose",
+      "value": "50",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
       "category": "fluid",
-      "value": "crystalloid bolus",
+      "value": "normal saline",
       "units": null,
       "provenance": [
-        "voice_note#6#08:10"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "dose",
-      "value": "1000",
-      "units": "mL",
-      "provenance": [
-        "voice_note#6#08:10"
+        "voice_notes#08:20"
       ]
     },
     {
       "t": "08:20",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "150",
+      "units": "mL per hour",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "09:00",
       "category": "event",
-      "value": "tachycardia (HR 120)",
+      "value": "hypotension",
       "units": null,
       "provenance": [
-        "voice_note#7#08:20"
+        "voice_notes#09:00"
       ]
     },
     {
-      "t": "08:20",
+      "t": "09:00",
       "category": "agent",
-      "value": "labetalol",
+      "value": "atropine",
       "units": null,
       "provenance": [
-        "voice_note#7#08:20"
+        "voice_notes#09:00"
       ]
     },
     {
-      "t": "08:20",
+      "t": "09:00",
       "category": "dose",
-      "value": "10",
-      "units": "mg",
+      "value": "1",
+      "units": "milligram",
       "provenance": [
-        "voice_note#7#08:20"
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "2",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:15"
+      ]
+    },
+    {
+      "t": "09:15",
+      "category": "dose",
+      "value": "160",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#09:15"
       ]
     }
   ],
   "preop_note_claims": [
-    "Patient has a history of obesity (BMI 28), hyperlipidemia, and well-controlled hypertension.",
-    "Current medications include Atorvastatin 20mg daily, Metformin 500mg BID, and Omeprazole 20mg daily; Simvastatin 10mg nightly was discontinued.",
-    "Patient reports a penicillin allergy (rash) not documented in medical records.",
-    "ASA-PS classification is 2 due to mild systemic disease (obesity, hyperlipidemia, hypertension).",
-    "Airway assessment indicates no anticipated difficulties; anesthetic plan includes general anesthesia with LMA, propofol induction, remifentanil infusion, vecuronium for muscle relaxation, and desflurane maintenance."
+    "History includes Type 2 Diabetes Mellitus, Hypertension, and Obesity (BMI 32)",
+    "Medications: Metformin 500mg Twice daily (continued), Lisinopril 10mg Once daily (continued), Atorvastatin 20mg Once daily (continued), Citalopram 20mg Once daily (stopped)",
+    "Allergies: Penicillin (rash), Latex (confirmed during pre-op interview)",
+    "ASA-PS: ASA 2 due to controlled comorbidities (Type 2 Diabetes Mellitus, Hypertension, Obesity)",
+    "Airway assessment and plan: General Anesthesia with Laryngeal Mask Airway (LMA) planned"
   ],
   "handoff_claims": [
-    "Key history includes obesity (BMI 28), hyperlipidemia, hypertension, and reported penicillin allergy (rash) not documented.",
-    "Intraoperative course: Elective laparoscopic cholecystectomy under general anesthesia with LMA; medications included propofol, remifentanil infusion, vecuronium, and desflurane maintenance.",
-    "Anticipated issues: Potential for postoperative respiratory depression due to remifentanil, need for monitoring of neuromuscular function post-vecuronium, and consideration of penicillin allergy in postoperative care."
+    "Patient has multiple comorbidities including Type 2 Diabetes Mellitus, Hypertension, and Obesity (BMI 32)",
+    "Anticipated intra-op course: Uncomplicated Laparoscopic Cholecystectomy under General Anesthesia with LMA",
+    "Key post-op considerations: Monitor for respiratory complications due to Obesity, manage blood glucose levels due to Diabetes, and be aware of Latex allergy"
   ],
   "distractors": [
-    "Resolved community-acquired pneumonia (2019)",
-    "Left wrist fracture (healed, 2014)",
-    "Discontinued simvastatin for hyperlipidemia (2018)"
+    "History of pneumonia resolved 5 years ago",
+    "Fractured wrist at age 12, fully healed",
+    "Discontinued use of Omeprazole 2 years ago for GERD"
   ]
 }

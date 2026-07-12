@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Transurethral resection of the prostate (TURP) (elective).
+Elective total hip replacement (THR) due to osteoarthritis (elective).
 
 ## Anesthesia
 
-Spinal anesthesia with local infiltration
+General anesthesia with spinal anesthesia as co-anesthesia, with ultrasound-guided peripheral nerve block for postoperative pain management

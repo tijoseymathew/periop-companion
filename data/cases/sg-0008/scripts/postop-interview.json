@@ -6,47 +6,47 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "Meh, still a bit tired lah, but okay. Got some pain here, but the nurse gave me medicine already."
+      "text": "Still a bit groggy, but okay. My tummy is sore, though."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Can you tell me your pain level on a scale of 1 to 10? And have you felt any nausea or vomiting?"
+      "text": "I understand. Can you rate your pain for me, from 1 to 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Pain maybe 4 or 5, not too bad. Stomach also got little bit upset, but not throwing up. Just feel like want to sleep more."
+      "text": "Hmm, maybe a 4 or 5. It's manageable, but I can feel it."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any trouble breathing or coughing? Your airway was managed with a tube during surgery."
+      "text": "Thank you. Have you been feeling nauseous or sick to your stomach at all?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Throat sore a bit, like something stuck there, but breathing okay lah. Not short of breath."
+      "text": "A little bit when I first woke up, but it's better now. Not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything from the operation? Any dreams or awareness during surgery?"
+      "text": "Good. How's your breathing? Any discomfort or feeling like you can't catch your breath?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, all black out. Woke up only when nurse called my name here."
+      "text": "No, I'm breathing fine. My throat is a bit sore, but that's all."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Your blood pressure and sugar levels were monitored. Any concerns about your diabetes or cholesterol?"
+      "text": "That can happen with the LMA. Do you remember anything from the surgery itself?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Blood pressure machine beeping whole time, but nurse say stable. Sugar also checked, not too high. Cholesterol... mmm, still taking pills right?"
+      "text": "No, nothing. I was out cold. Just woke up here."
     },
     {
       "speaker": "PROVIDER",
-      "text": "All your medications will continue as usual. Let the nurse know if pain or nausea gets worse, okay?"
+      "text": "That's expected. Since you have hypertension and diabetes, we'll keep a close eye on your vitals and blood sugar levels. Any concerns from your side?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, thank you. Just want to rest now and go home soon lah."
+      "text": "No, I think I'm okay. Just want to go home and rest."
     }
   ]
 }

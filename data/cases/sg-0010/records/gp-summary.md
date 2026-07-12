@@ -6,9 +6,11 @@
 
 ## Medications
 
-ethinyl estradiol and norethindrone as directed daily.
+Metformin 500 mg Twice daily.
 
-amoxicillin 500mg twice daily.
+Lisinopril 10 mg Once daily.
+
+Atorvastatin 20 mg Once daily.
 
 ## Allergies
 
@@ -16,8 +18,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-History of pneumonia resolved in 2019
+History of pneumonia resolved 5 years ago
 
-Fractured left wrist in 2015, fully healed
+Remote history of left wrist fracture (healed)
 
-Discontinued lisinopril for hypertension in 2020
+Previous use of Omeprazole for GERD, discontinued 2 years ago

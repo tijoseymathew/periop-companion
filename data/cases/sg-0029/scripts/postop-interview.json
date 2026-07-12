@@ -2,51 +2,55 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Hi there, how are you feeling after the surgery?"
+      "text": "Hi there, how are you feeling now after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Aiya, my knee still got some pain one, but not too bad lah. The block they give me help a lot."
+      "text": "I'm okay, I think. A bit sleepy still, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good to hear. Any nausea or vomiting feeling after waking up?"
+      "text": "Good to hear. Can you tell me your pain level on a scale from 0 to 10, where 0 is no pain and 10 is the worst pain?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Slightly dizzy one, but stomach okay. Not like I want to throw up or anything."
+      "text": "Maybe around 3 or 4? It's more like a dull ache, not sharp."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any trouble breathing or feeling uncomfortable with your airway?"
+      "text": "Alright, we can manage that with medication. Are you feeling any nausea or did you have any vomiting after waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Throat a bit sore from the tube, but breathing is fine. Can talk normally also."
+      "text": "No, I haven't vomited, but I feel a bit queasy. Like my stomach is upset."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything about the surgery itself?"
+      "text": "Understood. We'll keep an eye on that and give you something to help if needed. How's your breathing? Any shortness of breath or wheezing?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, all black out. Wake up already in recovery room."
+      "text": "No, I'm breathing fine. Just a bit tired from the anesthesia, I guess."
     },
     {
       "speaker": "PROVIDER",
-      "text": "You mentioned allergic rhinitis before. Any nasal congestion or allergy symptoms now?"
+      "text": "Good. Since you have mild asthma, we want to make sure there's no reaction. Do you remember anything from the operating room or waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nose a bit blocked, but not sneezing or watery eyes. Same as usual lah."
+      "text": "Not really. I remember going to sleep and then waking up here. It's all a bit fuzzy."
     },
     {
       "speaker": "PROVIDER",
-      "text": "We'll keep an eye on that. Overall, how are you coping?"
+      "text": "That's normal with general anesthesia. We also gave you a spinal, so your lower body might feel a bit heavy still. Any concerns or questions for me?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Quite okay, doctor. Just want to go home and rest. Thank you for checking on me."
+      "text": "No, I think that's all. Just want to go home soon."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll get you ready for that soon. Rest well and let the nurses know if you need anything."
     }
   ]
 }

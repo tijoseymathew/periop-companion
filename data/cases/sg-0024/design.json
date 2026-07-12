@@ -1,33 +1,20 @@
 {
   "case_id": "sg-0024",
   "persona_uuid": "3b943ad7bfbb4d18b3afffe3e91b4f68",
-  "surgery": "Transurethral Resection of the Prostate (TURP) for Benign Prostatic Hyperplasia",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General Anesthesia with In-Line Stabilization",
+  "anesthesia_plan": "General Anesthesia with Endotracheal Intubation",
   "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
-    "Hyperlipidemia",
     "Type 2 Diabetes Mellitus",
-    "Gastroesophageal Reflux Disease (GERD)"
+    "Hyperlipidemia"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Lisinopril",
-      "dose": "10mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
       "name": "Atorvastatin",
-      "dose": "40mg",
-      "frequency": "nightly",
+      "dose": "20mg",
+      "frequency": "once daily",
       "active": true
     },
     {
@@ -37,57 +24,47 @@
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "daily",
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "once daily",
       "active": true
     },
     {
       "name": "Aspirin",
-      "dose": "100mg",
-      "frequency": "daily",
+      "dose": "75mg",
+      "frequency": "once daily",
       "active": false
     }
   ],
-  "allergies": [],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
   "defect": {
     "kind": "stale_med_list",
-    "record_states": "Aspirin 100mg daily (active)",
-    "truth": "Discontinued 6 months ago due to gastrointestinal side effects",
-    "gold_question": "Have you stopped or changed any medications in the past year, especially those related to cardiovascular or antiplatelet therapy?"
+    "record_states": "Records indicate the patient is still taking Aspirin 75mg once daily for cardiovascular prophylaxis.",
+    "truth": "The patient stopped taking Aspirin 6 months ago due to gastrointestinal discomfort and has not resumed. He is currently not on any antiplatelet therapy.",
+    "gold_question": "Can you confirm your current medications, particularly any changes to antiplatelet or blood-thinning agents in the past year?"
   },
   "distractors": [
     {
-      "description": "Pneumonia (resolved 2018)",
-      "why_irrelevant": "Resolved community-acquired pneumonia with no residual sequelae"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved years ago, no current impact on anesthesia or surgery"
     },
     {
-      "description": "Distal radius fracture (right wrist, 2015)",
-      "why_irrelevant": "Healed fracture from minor fall, full functional recovery"
+      "description": "Remote history of right arm fracture (20 years ago), fully healed",
+      "why_irrelevant": "Old injury, fully healed, no functional impairment"
     },
     {
-      "description": "Appendectomy (1985)",
-      "why_irrelevant": "Remote surgical history with no current implications"
+      "description": "Previous diagnosis of mild iron-deficiency anemia, resolved with dietary changes",
+      "why_irrelevant": "Resolved nutritional deficiency, no current anemia"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Lisinopril",
-        "dose": "10mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
         "name": "Atorvastatin",
-        "dose": "40mg",
-        "frequency": "nightly",
+        "dose": "20mg",
+        "frequency": "once daily",
         "active": true
       },
       {
@@ -97,28 +74,29 @@
         "active": true
       },
       {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "daily",
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "once daily",
         "active": true
       },
       {
         "name": "Aspirin",
-        "dose": "100mg",
-        "frequency": "daily",
+        "dose": "75mg",
+        "frequency": "once daily",
         "active": true
       }
     ],
-    "allergies": [],
+    "allergies": [
+      "Penicillin (rash)"
+    ],
     "past_history": [
       "Hypertension",
-      "Hyperlipidemia",
       "Type 2 Diabetes Mellitus",
-      "Gastroesophageal Reflux Disease (GERD)",
-      "Pneumonia (resolved 2018)",
-      "Distal radius fracture (right wrist, 2015)",
-      "Appendectomy (1985)"
+      "Hyperlipidemia",
+      "Pneumonia (resolved 5 years ago)",
+      "Right arm fracture (healed, 20 years ago)",
+      "Mild iron-deficiency anemia (resolved with diet)"
     ],
-    "prior_anesthesia": "General anesthesia for appendectomy in 1985, no complications"
+    "prior_anesthesia": null
   }
 }

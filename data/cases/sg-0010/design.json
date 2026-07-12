@@ -1,68 +1,90 @@
 {
   "case_id": "sg-0010",
   "persona_uuid": "4ef7a27be9f1442a9097c67b3bbd707f",
-  "surgery": "Elective laparoscopic cholecystectomy for symptomatic cholelithiasis",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with Laryngeal Mask Airway (LMA), induction with propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites",
-  "asa_ps": 1,
-  "comorbidities": [],
+  "anesthesia_plan": "General Anesthesia with Intraoperative Neuromonitoring",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 28.5)",
+    "Type 2 Diabetes Mellitus (well-controlled with metformin)",
+    "Hypertension"
+  ],
   "medications": [
     {
-      "name": "ethinyl estradiol and norethindrone",
-      "dose": "as directed",
-      "frequency": "daily",
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
       "active": true
     },
     {
-      "name": "amoxicillin",
-      "dose": "500mg",
-      "frequency": "twice daily",
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Ranitidine",
+      "dose": "150 mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
   "allergies": [
-    "penicillin"
+    "Penicillin (rash)"
   ],
   "defect": {
     "kind": "missing_allergy",
-    "record_states": "No allergies recorded",
-    "truth": "Allergic to penicillin (rash)",
-    "gold_question": "Do you have any allergies to medications, particularly antibiotics like penicillin?"
+    "record_states": "No known allergies",
+    "truth": "Patient has a known allergy to cephalosporins (nausea and vomiting)",
+    "gold_question": "Can you confirm if you have any allergies to antibiotics, including cephalosporins, in addition to penicillin?"
   },
   "distractors": [
     {
-      "description": "History of pneumonia resolved in 2019",
-      "why_irrelevant": "Resolved infection, no ongoing issues"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved and not relevant to current surgical or anesthetic risk"
     },
     {
-      "description": "Fractured left wrist in 2015, fully healed",
-      "why_irrelevant": "Remote injury, no current impairment"
+      "description": "Remote history of left wrist fracture (healed)",
+      "why_irrelevant": "Old injury with no residual functional impairment or relevance to anesthesia"
     },
     {
-      "description": "Discontinued lisinopril for hypertension in 2020",
-      "why_irrelevant": "Hypertension resolved with lifestyle changes, no current medication"
+      "description": "Previous use of Omeprazole for GERD, discontinued 2 years ago",
+      "why_irrelevant": "Medication discontinued for resolved condition"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "ethinyl estradiol and norethindrone",
-        "dose": "as directed",
-        "frequency": "daily",
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
         "active": true
       },
       {
-        "name": "amoxicillin",
-        "dose": "500mg",
-        "frequency": "twice daily",
-        "active": false
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Once daily",
+        "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "History of pneumonia resolved in 2019",
-      "Fractured left wrist in 2015, fully healed",
-      "Discontinued lisinopril for hypertension in 2020"
+      "History of pneumonia resolved 5 years ago",
+      "Remote history of left wrist fracture (healed)",
+      "Previous use of Omeprazole for GERD, discontinued 2 years ago"
     ],
     "prior_anesthesia": null
   }

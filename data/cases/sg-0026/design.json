@@ -1,113 +1,99 @@
 {
   "case_id": "sg-0026",
   "persona_uuid": "676f155b1cb64a1e9bfc301a24404dc6",
-  "surgery": "Elective Inguinal Hernia Repair",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway",
-  "asa_ps": 2,
+  "anesthesia_plan": "General Anesthesia with endotracheal intubation",
+  "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
-    "Hyperlipidemia",
     "Type 2 Diabetes Mellitus",
-    "Gastroesophageal Reflux Disease (GERD)"
+    "Hyperlipidemia"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "10mg",
-      "frequency": "Once daily",
-      "active": true
-    },
-    {
       "name": "Atorvastatin",
       "dose": "20mg",
-      "frequency": "Once nightly",
+      "frequency": "once daily",
       "active": true
     },
     {
       "name": "Metformin",
       "dose": "500mg",
-      "frequency": "Twice daily",
+      "frequency": "twice daily",
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "Once daily",
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "once daily",
       "active": true
     },
     {
       "name": "Aspirin",
       "dose": "75mg",
-      "frequency": "Once daily",
+      "frequency": "once daily",
       "active": false
     }
   ],
   "allergies": [
-    "Penicillin"
+    "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No allergies recorded",
-    "truth": "Patient reports penicillin allergy with rash",
-    "gold_question": "Do you have any allergies to medications, particularly antibiotics like penicillin?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Atorvastatin 20mg once daily, Metformin 500mg twice daily, Lisinopril 10mg once daily, Aspirin 75mg once daily (active).",
+    "truth": "Aspirin was discontinued 6 months ago due to gastrointestinal side effects; patient is now on Clopidogrel 75mg once daily for secondary prevention of cardiovascular events.",
+    "gold_question": "Can you confirm the current antiplatelet medication and the reason for any changes from Aspirin?"
   },
   "distractors": [
     {
-      "description": "Resolved community-acquired pneumonia (2018)",
-      "why_irrelevant": "Resolved 5 years ago, no residual lung issues"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved infection, not impacting current surgical or anesthetic risk"
     },
     {
-      "description": "Remote left distal radius fracture (2005), healed without sequelae",
-      "why_irrelevant": "Old injury with full functional recovery"
+      "description": "Remote history of left femoral fracture (age 25), fully healed",
+      "why_irrelevant": "Old injury with no residual functional impairment or impact on current surgery"
     },
     {
-      "description": "Discontinued simvastatin (2019) due to resolution of hyperlipidemia (switched to atorvastatin)",
-      "why_irrelevant": "Medication changed; simvastatin no longer relevant"
+      "description": "Previous use of Omeprazole for GERD, discontinued 2 years ago",
+      "why_irrelevant": "Medication for resolved condition, not currently active"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "10mg",
-        "frequency": "Once daily",
-        "active": true
-      },
-      {
         "name": "Atorvastatin",
         "dose": "20mg",
-        "frequency": "Once nightly",
+        "frequency": "once daily",
         "active": true
       },
       {
         "name": "Metformin",
         "dose": "500mg",
-        "frequency": "Twice daily",
+        "frequency": "twice daily",
         "active": true
       },
       {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "Once daily",
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "once daily",
         "active": true
       },
       {
         "name": "Aspirin",
         "dose": "75mg",
-        "frequency": "Once daily",
-        "active": false
+        "frequency": "once daily",
+        "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "Resolved community-acquired pneumonia (2018)",
-      "Remote left distal radius fracture (2005), healed without sequelae",
-      "Discontinued simvastatin (2019) due to resolution of hyperlipidemia (switched to atorvastatin)",
       "Hypertension",
-      "Hyperlipidemia",
       "Type 2 Diabetes Mellitus",
-      "Gastroesophageal Reflux Disease (GERD)"
+      "Hyperlipidemia",
+      "History of pneumonia resolved 5 years ago",
+      "Remote history of left femoral fracture (age 25), fully healed",
+      "Previous use of Omeprazole for GERD, discontinued 2 years ago"
     ],
     "prior_anesthesia": null
   }

@@ -2,43 +2,55 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Hi there, how are you feeling after the surgery? Let's start with your pain. On a scale from 0 to 10, how would you rate the pain in your left knee right now?"
+      "text": "Hi there, how are you feeling after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Eh, maybe around 3 or 4? It's sore, but the numbness from the block is still there, so it's not too bad."
+      "text": "I'm feeling a bit groggy, but okay, I guess. Still waking up."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good to hear. Any nausea or vomiting since waking up? Sometimes the anesthesia can make people feel queasy."
+      "text": "That's normal. Can you tell me your pain level on a scale of 1 to 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No nausea, thank goodness. But my nose feels a bit stuffy, like it's blocked up. Is that normal?"
+      "text": "Maybe around 4? There's some discomfort in my tummy, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That could be from the allergic rhinitis. We'll keep an eye on it, but it's not uncommon after anesthesia. Breathing comfortable otherwise?"
+      "text": "Alright, we'll manage that with some medication. Are you feeling nauseous at all?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, breathing's fine. No tightness or anything. Just the nose thing."
+      "text": "A little, but not throwing up or anything. Just a bit of a queasy feeling."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any recollection of the operating room or waking up? Sometimes patients remember bits and pieces."
+      "text": "Okay, we'll keep an eye on that. How's your breathing? Any tightness or discomfort?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, nothing at all. One minute I was talking to the anesthetist, next thing I know, I'm here. Like a magic trick!"
+      "text": "No, breathing's fine. My throat's a bit sore, but I can breathe okay."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Glad to hear it was smooth. Any other concerns or questions before we get you mobilizing?"
+      "text": "That soreness is from the LMA tube. It should ease soon. Any memory of the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, I think that's all. Thanks for checking on me, doc."
+      "text": "No, I don't remember anything. I was out completely."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. Given your BMI and hyperlipidemia, we'll monitor your vitals closely. Any chest pain or shortness of breath?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing like that. Just tired and a bit sore."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Alright, rest well. We'll check on you regularly and get you mobilized soon."
     }
   ]
 }

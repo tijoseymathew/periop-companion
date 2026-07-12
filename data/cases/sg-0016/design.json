@@ -1,45 +1,38 @@
 {
   "case_id": "sg-0016",
   "persona_uuid": "b0a4afd0c5d94233a8b641c9301970ec",
-  "surgery": "Laparoscopic cholecystectomy for symptomatic gallstones",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with sevoflurane and rocuronium, multimodal analgesia (paracetamol, ketorolac, dexamethasone)",
+  "anesthesia_plan": "General Anesthesia with Propofol, Fentanyl, and Vecuronium; Maintenance with Sevoflurane and Remifentanil; Reversal with Neostigmine and Glycopyrrolate",
   "asa_ps": 2,
   "comorbidities": [
-    "Hypertension (controlled with medication)",
-    "Type 2 Diabetes Mellitus (HbA1c 7.2%)",
-    "Hyperlipidemia",
-    "Generalized anxiety disorder"
+    "Hypertension",
+    "Type 2 Diabetes Mellitus",
+    "Obesity (BMI 32)"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5 mg",
-      "frequency": "once daily",
-      "active": true
-    },
-    {
-      "name": "Metoprolol",
-      "dose": "25 mg",
-      "frequency": "once daily",
-      "active": true
-    },
-    {
       "name": "Metformin",
-      "dose": "500 mg",
-      "frequency": "twice daily",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Atorvastatin",
-      "dose": "20 mg",
-      "frequency": "once daily",
+      "dose": "20mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20 mg",
-      "frequency": "once daily",
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
@@ -47,58 +40,60 @@
     "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No allergies recorded",
-    "truth": "Patient has a history of rash to penicillin",
-    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin or related drugs?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed: Metformin, Lisinopril, Atorvastatin, Ranitidine (all active)",
+    "truth": "Ranitidine was discontinued 6 months ago due to resolution of GERD symptoms; currently on Omeprazole 20mg once daily",
+    "gold_question": "Has there been any change in your medication list since your last hospital visit?"
   },
   "distractors": [
     {
-      "description": "Pneumonia (resolved 2018, no residual issues)",
-      "why_irrelevant": "Remote resolved infection, no impact on current anesthesia management"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved and not relevant to current surgical or anesthetic risk"
     },
     {
-      "description": "Distal radius fracture (left wrist, 2015, fully healed)",
-      "why_irrelevant": "Old orthopedic injury with no functional deficit"
+      "description": "Remote history of wrist fracture (healed, no sequelae)",
+      "why_irrelevant": "Old injury with full recovery, no impact on current anesthesia or surgery"
     },
     {
-      "description": "GERD (discontinued omeprazole 2022, symptoms resolved)",
-      "why_irrelevant": "Medication discontinued as condition resolved"
+      "description": "Previous use of Alprazolam for anxiety (discontinued 2 years ago)",
+      "why_irrelevant": "Medication discontinued, and no current symptoms of anxiety requiring treatment"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5 mg",
-        "frequency": "once daily",
-        "active": true
-      },
-      {
-        "name": "Metoprolol",
-        "dose": "25 mg",
-        "frequency": "once daily",
-        "active": true
-      },
-      {
         "name": "Metformin",
-        "dose": "500 mg",
-        "frequency": "twice daily",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Atorvastatin",
-        "dose": "20 mg",
-        "frequency": "once daily",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Ranitidine",
+        "dose": "150mg",
+        "frequency": "Once daily",
         "active": true
       }
     ],
-    "allergies": [],
-    "past_history": [
-      "Pneumonia (2018)",
-      "Left wrist fracture (2015)",
-      "GERD (on omeprazole until 2022)"
+    "allergies": [
+      "Penicillin (rash)"
     ],
-    "prior_anesthesia": null
+    "past_history": [
+      "Pneumonia (resolved 5 years ago)",
+      "Wrist fracture (healed, no sequelae)",
+      "Previous use of Alprazolam for anxiety (discontinued)"
+    ],
+    "prior_anesthesia": "Previous general anesthesia for laparoscopic appendectomy 10 years ago; no complications reported"
   }
 }

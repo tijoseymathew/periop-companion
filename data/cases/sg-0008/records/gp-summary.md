@@ -6,24 +6,28 @@
 
 ## Medications
 
-Enalapril 10mg daily.
+Atorvastatin 20 mg Daily.
 
-Metformin 500mg twice daily.
+Metformin 500 mg Twice daily.
 
-Atorvastatin 20mg daily.
+Lisinopril 10 mg Daily.
 
-Levothyroxine 50mcg daily.
-
-Omeprazole 20mg daily.
+Aspirin 75 mg Daily.
 
 ## Allergies
 
-No known drug allergies recorded.
+Penicillin (rash)
 
 ## Past History
 
-Community-acquired pneumonia (2019)
+Hypertension
 
-Right wrist fracture (2015)
+Type 2 Diabetes Mellitus
 
-GERD resolved post-Omeprazole discontinuation (2022)
+Hyperlipidemia
+
+Pneumonia (10 years ago, resolved)
+
+Fractured wrist (20 years ago, full recovery)
+
+Irritable bowel syndrome (no active symptoms for 5 years)

@@ -7,6 +7,7 @@ Conflicts are first-class claim states, never silently resolved.
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from enum import StrEnum
 from typing import Annotated, Any
 
@@ -112,6 +113,9 @@ class Source(BaseModel):
     type: SourceType
     chunks: list[Chunk] = Field(default_factory=list)
     segments: list[AudioSegment] = Field(default_factory=list)
+    # capture metadata for live cases (v2 §5.1); absent on synthetic bundles
+    captured_at: datetime | None = None
+    provided_by: str | None = None
 
     @model_validator(mode="after")
     def _content_matches_type(self) -> Source:
@@ -153,21 +157,202 @@ class ArtifactRecord(BaseModel):
     claims: list[Claim] = Field(default_factory=list)
 
 
+class EquipmentSuggestion(BaseModel):
+    """One item the pre-op run recommends reserving (1-3 per case).
+
+    A recommendation, not a hold: nothing is taken off the shelf until the
+    provider ticks the item at pre-op sign-off. ``name`` is denormalized from
+    the catalog so the UI never joins against ``periop.equipment``.
+    """
+
+    item_id: str
+    name: str
+    reason: str
+
+
+class QuestionReviewState(StrEnum):
+    APPROVED = "approved"
+    DISMISSED = "dismissed"
+    EDITED = "edited"
+
+
+def _coerce_question(value: Any) -> Any:
+    if isinstance(value, str):  # legacy plain-string form (pre-v2 case JSONs)
+        return {"question": value}
+    return value
+
+
+class OpenQuestion(BaseModel):
+    """A GapAnalyst clarification question plus the provider's review of it.
+
+    Dismissals are kept, never deleted (v2 §4.1): a dismissed question that
+    later proves relevant is itself a finding.
+    """
+
+    question: str
+    reason: str | None = None
+    provenance: list[str] = Field(default_factory=list)
+    review: QuestionReviewState | None = None
+    edited_text: str | None = None
+
+    @property
+    def effective_text(self) -> str:
+        if self.review is QuestionReviewState.EDITED and self.edited_text:
+            return self.edited_text
+        return self.question
+
+    @property
+    def is_active(self) -> bool:
+        """Unreviewed questions stay active so the batch pipeline is unchanged."""
+        return self.review is not QuestionReviewState.DISMISSED
+
+
+OpenQuestionField = Annotated[OpenQuestion, BeforeValidator(_coerce_question)]
+
+
+class Provider(BaseModel):
+    """Attribution, not identity (v2 §5.1) — no auth behind this."""
+
+    provider_id: str
+    name: str
+    role: str
+
+
+class ClaimReviewState(StrEnum):
+    REVIEWED = "reviewed"
+    FLAGGED = "flagged"
+
+
+class ClaimReview(BaseModel):
+    """A provider's review action on one claim (v2 §2 stretch).
+
+    Keyed by ``artifact_id#claim_id`` in a sidecar file, never on the claim
+    itself: review actions annotate the review pass, they do not edit the
+    ledger.
+    """
+
+    state: ClaimReviewState
+    by: str
+    at: datetime
+
+
+class StageName(StrEnum):
+    PREOP = "preop"
+    INTRAOP = "intraop"
+    POSTOP = "postop"
+
+
+class StageStatus(StrEnum):
+    AWAITING_INPUTS = "awaiting_inputs"
+    READY_TO_GENERATE = "ready_to_generate"
+    GENERATING = "generating"
+    AWAITING_REVIEW = "awaiting_review"
+    SIGNED_OFF = "signed_off"
+
+
+class GapAnalysisState(StrEnum):
+    """Background intake question prep (spec v2-speed §3.2)."""
+
+    PENDING = "pending"
+    RUNNING = "running"
+    COMPLETE = "complete"
+    FAILED = "failed"
+
+
+class ReopenRecord(BaseModel):
+    reopened_by: str
+    reopened_at: datetime
+
+
+class StageState(BaseModel):
+    """Per-stage workflow state (v2 §4). Prior artifacts survive reopens —
+    the ledger is append-only in spirit."""
+
+    status: StageStatus = StageStatus.AWAITING_INPUTS
+    performed_by: str | None = None
+    signed_off_by: str | None = None
+    signed_off_at: datetime | None = None
+    # pre-op only: the question gate (v2 §4.1 step 4)
+    questions_approved_at: datetime | None = None
+    # pre-op only: background question-prep lifecycle (v2-speed §3.2); None
+    # until the first analysis launches, so pre-W9 case JSONs load unchanged
+    gap_analysis: GapAnalysisState | None = None
+    gap_analysis_error: str | None = None
+    # stamped when this stage's audio inputs land
+    inputs_recorded_at: datetime | None = None
+    # background upload-time transcription lifecycle (same state vocabulary as
+    # gap_analysis); None until a recording is uploaded, so older case JSONs
+    # load unchanged. On "failed" the stage run transcribes at generate time.
+    transcription: GapAnalysisState | None = None
+    transcription_error: str | None = None
+    # post-op only: handoff acknowledge (v2 §4.4)
+    handoff_acknowledged_by: str | None = None
+    handoff_acknowledged_at: datetime | None = None
+    reopens: list[ReopenRecord] = Field(default_factory=list)
+
+
+class Workflow(BaseModel):
+    """Lifecycle state for live cases; absent on seeded demo cases."""
+
+    created_by: Provider
+    created_at: datetime
+    stages: dict[StageName, StageState] = Field(
+        default_factory=lambda: {name: StageState() for name in StageName}
+    )
+
+
 class Case(BaseModel):
     """Longitudinal state for one patient journey across all three stages."""
 
     case_id: str
+    # provider-entered display label for live cases (v2 §4.1); synthetic
+    # cases have none and display their case_id
+    label: str | None = None
     patient_profile_ref: str | None = None
     sources: list[Source] = Field(default_factory=list)
     artifacts: list[ArtifactRecord] = Field(default_factory=list)
-    open_questions: list[str] = Field(default_factory=list)
+    open_questions: list[OpenQuestionField] = Field(default_factory=list)
     intraop_events: list[Event] = Field(default_factory=list)
     anticipated_issues: list[str] = Field(default_factory=list)
+    # pre-op equipment recommendations (suggest-only; reserving happens at
+    # sign-off through the equipment ledger, never here)
+    equipment_suggestions: list[EquipmentSuggestion] = Field(default_factory=list)
+    # v2 §5.1: absent on synthetic bundles — such cases are reviewable
+    # everywhere, writable nowhere
+    workflow: Workflow | None = None
+
+    @property
+    def is_demo(self) -> bool:
+        return self.workflow is None
 
     def add_source(self, source: Source) -> None:
         if self.get_source(source.source_id) is not None:
             raise ValueError(f"source {source.source_id!r} already registered (registry is append-only)")
         self.sources.append(source)
+
+    def record_human_edit(self, provider: Provider, text: str, context: str) -> str:
+        """Register a human-attested statement; return its provenance ref.
+
+        Human edits and additions live in a per-provider document source
+        (``edit:<provider_id>``) in the same append-only registry as every
+        other source, so an edited claim or question cites the provider who
+        asserted it exactly like it cites a GP summary. Each edit appends one
+        chunk: its text is the asserted statement, its section names what was
+        edited and by whom.
+        """
+        source_id = f"edit:{provider.provider_id}"
+        source = self.get_source(source_id)
+        if source is None:
+            source = Source(
+                source_id=source_id,
+                type=SourceType.DOCUMENT,
+                captured_at=datetime.now(timezone.utc),
+                provided_by=provider.provider_id,
+            )
+            self.sources.append(source)
+        chunk_id = f"e{len(source.chunks) + 1:03d}"
+        source.chunks.append(Chunk(chunk_id=chunk_id, text=text, section=context))
+        return f"{source_id}#{chunk_id}"
 
     def get_source(self, source_id: str) -> Source | None:
         return next((s for s in self.sources if s.source_id == source_id), None)

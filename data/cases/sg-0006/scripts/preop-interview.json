@@ -2,83 +2,83 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Lim from the anesthesia team. We'll be discussing your upcoming surgery and anesthesia plan. How are you feeling today?"
+      "text": "Good morning, Mr./Ms. [Patient's Name]. I'm going to be your anesthesiologist for your laparoscopic cholecystectomy today. I'd like to go through a few questions to make sure we're all set for your surgery."
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, Doctor. I'm okay lah, just a bit nervous about the operation. But ready to get this gallbladder issue sorted."
+      "text": "Morning, Doctor. I'm ready when you are."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understandable. Let's start with your medical history. Can you tell me about your gallbladder problem?"
+      "text": "Great. Can you tell me a bit about your medical history? We know you have hypertension, diabetes, and obesity, but are there any other conditions we should know about?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, I had bad pain on the right side last month, and the scan showed stones. Doctor said it's best to remove it laparoscopically."
+      "text": "No, I think that's all. My blood pressure and sugar have been under control, lah. I take my meds regularly."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you. Now, let's go through your medications. Can you list what you're currently taking?"
+      "text": "Excellent. Let's go through your medications. You're on Metformin, Lisinopril, Atorvastatin, and you were on Ranitidine but it's stopped now, correct?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Sure. I take Amlodipine 5mg every morning for blood pressure, Metoprolol 50mg daily for the same, Metformin 500mg twice a day for diabetes, Atorvastatin 20mg at night for cholesterol, and Aspirin 75mg daily. Oh, and I stopped Levothyroxine already."
+      "text": "Yes, that's right. I stopped the Ranitidine a few weeks ago as instructed."
     },
     {
       "speaker": "PROVIDER",
-      "text": "You mentioned stopping Levothyroxine—when was that, and why did you stop?"
+      "text": "Good. Now, regarding allergies. Your records say 'no known allergies', but I understand you mentioned a reaction to Penicillin before. Can you tell me more about that?"
     },
     {
       "speaker": "PATIENT",
-      "text": "About a year ago, Doctor. The thyroid tests came back normal, so my GP said I don't need it anymore. Records might still show it, but I haven't taken it since."
+      "text": "Oh yes, I had a rash when I took Penicillin once, so I avoid that now."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Important to update that. Any allergies to medications or other substances?"
+      "text": "Understood. Have you ever had any adverse reactions to other antibiotics, like Cephalosporins, for example?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No allergies, Doctor. Never had any reactions."
+      "text": "Actually, yes. I took a Cephalosporin once before, and I felt really nauseous and vomited. It was pretty bad, so I told my doctor not to give me that again."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. Have you had any previous surgeries or anesthesia? Any issues like nausea, breathing problems, or awareness during surgery?"
+      "text": "Thank you for sharing that. It's very important we know about all reactions. We'll make sure to note that allergy clearly in your chart."
     },
     {
       "speaker": "PATIENT",
-      "text": "I had a hernia repair 10 years back. Anesthesia was smooth, no problems at all. Recovered well."
+      "text": "Thanks, Doctor. I didn't think it was that important, but I guess it is."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. How's your diabetes control? Any recent episodes of low or high sugar?"
+      "text": "Absolutely. Allergic reactions, even if not life-threatening, help us choose safer alternatives. Now, have you had any previous surgeries or anesthesia?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Stable lah, Doctor. Fasting sugar usually around 6-7 mmol/L. No hypos recently."
+      "text": "No, this is my first time. I'm a bit nervous, to be honest."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Are you on a normal diet now? And when did you last eat or drink?"
+      "text": "That's completely normal. We'll be with you every step of the way. Just to confirm, you've had nothing to eat or drink since midnight, as instructed?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, normal food. I had dinner at 8pm last night, and water until 10pm. No solids after that."
+      "text": "Yes, I followed the fasting instructions. Nothing since last night."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Lastly, how's your general fitness? Can you climb stairs or walk without difficulty?"
+      "text": "Perfect. And how are you feeling today? Any chest pain, shortness of breath, or other symptoms we should know about?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No problem, Doctor. I walk 30 minutes most days and can take the stairs without stopping."
+      "text": "No, I'm feeling fine. Just a bit anxious about the surgery, but otherwise okay."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia and intubation as planned. I'll review your updated med list and ensure the team knows about the Levothyroxine change."
+      "text": "Thank you for going through all that with me. We'll be using general anesthesia with a Laryngeal Mask Airway for your surgery. I'll explain the plan in a moment, but first, do you have any questions for me?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Thank you, Doctor. Feel better knowing everything's in order."
+      "text": "No, I think you've covered everything. I'm ready."
     }
   ]
 }

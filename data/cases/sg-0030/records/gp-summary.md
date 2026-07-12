@@ -6,11 +6,11 @@
 
 ## Medications
 
-Amlodipine 5 mg Once daily.
+Metformin 500mg Twice daily.
 
-Levonorgestrel/Ethinyl Estradiol Standard dose Once daily.
+Gliclazide 60mg Once daily.
 
-Doxycycline 100 mg Once daily.
+Atorvastatin 20mg Once daily.
 
 ## Allergies
 
@@ -18,8 +18,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-Fracture of left wrist (2018, healed)
+Pneumonia (resolved 5 years ago)
 
-Pneumonia (2019, resolved)
+Fractured wrist at age 12 (fully healed)
 
-Discontinued medication: Omeprazole for GERD (2019)
+Mild depression (not on medications)

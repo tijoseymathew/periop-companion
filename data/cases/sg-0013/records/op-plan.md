@@ -6,4 +6,4 @@ Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with endotracheal intubation and rapid sequence induction
+General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) for Post-Operative Pain Management

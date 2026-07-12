@@ -1,0 +1,24 @@
+# NAT config for the API server process (spec v2-nat §3.2).
+#
+# The FastAPI lifespan builds one long-lived session from this file so every
+# live stage run a provider triggers executes inside a real NAT Runner:
+#
+#   uv run nat run --config_file configs/api.yml \
+#       --input '{"case_id": "sg-0001", "stage": "preop"}'
+#
+# The tracing block below is non-secret and inert without credentials:
+# _type: periop_langfuse (periop.nat.observability) reads
+# LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY / LANGFUSE_BASE_URL from the
+# environment — all set → traces export to Langfuse; any missing → one
+# startup warning and a no-op exporter. Whether tracing is on is an
+# environment decision, never a config-file one.
+
+general:
+  telemetry:
+    tracing:
+      langfuse:
+        _type: periop_langfuse
+
+workflow:
+  _type: periop_stage_run
+  case_dir: data/cases

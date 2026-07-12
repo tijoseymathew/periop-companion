@@ -10,31 +10,19 @@
     },
     {
       "t": "08:05",
-      "text": "peripheral IV line placed in left antecubital vein"
-    },
-    {
-      "t": "08:07",
-      "text": "arterial line placed in right radial artery"
+      "text": "central line placed, no complications"
     },
     {
       "t": "08:10",
-      "text": "one thousand milliliters of normal saline administered"
-    },
-    {
-      "t": "08:15",
-      "text": "mean arterial pressure dropped to fifty-five mmHg"
-    },
-    {
-      "t": "08:17",
-      "text": "phenylephrine twenty micrograms administered"
+      "text": "lactated ringers one liter given"
     },
     {
       "t": "08:20",
-      "text": "heart rate increased to eighty-five beats per minute"
+      "text": "mean arterial pressure dropped to fifty, atropine one milligram given"
     },
     {
-      "t": "08:22",
-      "text": "labetalol twenty milligrams intravenous bolus"
+      "t": "08:25",
+      "text": "heart rate increased to one twenty, esmolol two milligrams given"
     }
   ],
   "events": [
@@ -44,16 +32,16 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes#08:00"
+        "voice_note#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#08:00"
+        "voice_note#08:00"
       ]
     },
     {
@@ -62,7 +50,7 @@
       "value": "tube in",
       "units": null,
       "provenance": [
-        "voice_notes#08:02"
+        "voice_note#08:02"
       ]
     },
     {
@@ -71,88 +59,115 @@
       "value": "grade one view",
       "units": null,
       "provenance": [
-        "voice_notes#08:02"
+        "voice_note#08:02"
       ]
     },
     {
       "t": "08:05",
       "category": "line",
-      "value": "peripheral IV line placed in left antecubital vein",
+      "value": "central line placed",
       "units": null,
       "provenance": [
-        "voice_notes#08:05"
+        "voice_note#08:05"
       ]
     },
     {
-      "t": "08:07",
-      "category": "line",
-      "value": "arterial line placed in right radial artery",
+      "t": "08:05",
+      "category": "event",
+      "value": "no complications",
       "units": null,
       "provenance": [
-        "voice_notes#08:07"
+        "voice_note#08:05"
       ]
     },
     {
       "t": "08:10",
       "category": "fluid",
-      "value": "1000 mL",
+      "value": "lactated ringers",
       "units": null,
       "provenance": [
-        "voice_notes#08:10"
+        "voice_note#08:10"
       ]
     },
     {
-      "t": "08:15",
-      "category": "event",
-      "value": "mean arterial pressure dropped to 55 mmHg",
-      "units": null,
-      "provenance": [
-        "voice_notes#08:15"
-      ]
-    },
-    {
-      "t": "08:17",
-      "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
-      "provenance": [
-        "voice_notes#08:17"
-      ]
-    },
-    {
-      "t": "08:17",
+      "t": "08:10",
       "category": "dose",
-      "value": "20",
-      "units": "mcg",
+      "value": "one",
+      "units": "liter",
       "provenance": [
-        "voice_notes#08:17"
+        "voice_note#08:10"
       ]
     },
     {
       "t": "08:20",
       "category": "event",
-      "value": "heart rate increased to 85 beats per minute",
+      "value": "mean arterial pressure dropped",
       "units": null,
       "provenance": [
-        "voice_notes#08:20"
+        "voice_note#08:20"
       ]
     },
     {
-      "t": "08:22",
-      "category": "agent",
-      "value": "labetalol",
-      "units": null,
-      "provenance": [
-        "voice_notes#08:22"
-      ]
-    },
-    {
-      "t": "08:22",
+      "t": "08:20",
       "category": "dose",
-      "value": "20",
-      "units": "mg",
+      "value": "fifty",
+      "units": "mmHg",
       "provenance": [
-        "voice_notes#08:22"
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "heart rate increased",
+      "units": null,
+      "provenance": [
+        "voice_note#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "one twenty",
+      "units": "bpm",
+      "provenance": [
+        "voice_note#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "esmolol",
+      "units": null,
+      "provenance": [
+        "voice_note#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:25"
       ]
     }
   ]

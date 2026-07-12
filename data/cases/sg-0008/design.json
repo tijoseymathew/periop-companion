@@ -1,9 +1,9 @@
 {
   "case_id": "sg-0008",
   "persona_uuid": "316a3ff7d7034ad099e48a67898d9100",
-  "surgery": "Laparoscopic cholecystectomy",
+  "surgery": "Cholecystectomy for symptomatic gallstones",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with sevoflurane and rocuronium, maintained with desflurane in air/oxygen, post-operative analgesia with IV paracetamol and PCA morphine",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
   "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
@@ -12,96 +12,91 @@
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "10mg",
-      "frequency": "daily",
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Daily",
       "active": true
     },
     {
       "name": "Metformin",
-      "dose": "500mg",
-      "frequency": "twice daily",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
       "active": true
     },
     {
-      "name": "Atorvastatin",
-      "dose": "20mg",
-      "frequency": "daily",
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Daily",
       "active": true
     },
     {
-      "name": "Levothyroxine",
-      "dose": "50mcg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "daily",
+      "name": "Aspirin",
+      "dose": "75 mg",
+      "frequency": "Daily",
       "active": false
     }
   ],
-  "allergies": [],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
   "defect": {
     "kind": "stale_med_list",
-    "record_states": "Records indicate patient is taking Enalapril 10mg daily for hypertension.",
-    "truth": "Patient discontinued Enalapril 6 months ago due to cough side effect; now on Amlodipine 10mg daily.",
-    "gold_question": "Can you confirm your current medications, especially any changes to your blood pressure medications?"
+    "record_states": "Medications: Atorvastatin 20 mg Daily, Metformin 500 mg Twice daily, Lisinopril 10 mg Daily, Aspirin 75 mg Daily (active)",
+    "truth": "Aspirin 75 mg Daily has been discontinued 6 months ago due to gastrointestinal side effects; now on Clopidogrel 75 mg Daily for cardiovascular protection.",
+    "gold_question": "Can you confirm if you are still taking Aspirin, and if not, what alternative antiplatelet medication are you currently on?"
   },
   "distractors": [
     {
-      "description": "History of community-acquired pneumonia resolved in 2019",
-      "why_irrelevant": "Resolved years ago, no ongoing respiratory issues."
+      "description": "History of pneumonia 10 years ago, fully resolved",
+      "why_irrelevant": "Remote history, fully resolved, not relevant to current surgical or anesthetic risk"
     },
     {
-      "description": "Right wrist fracture in 2015, treated with cast, fully healed",
-      "why_irrelevant": "Remote fracture, no current functional impairment."
+      "description": "Fractured wrist 20 years ago, treated with casting, full recovery",
+      "why_irrelevant": "Remote orthopedic injury with full recovery, no ongoing implications"
     },
     {
-      "description": "Discontinued Omeprazole for GERD in 2022 as symptoms resolved",
-      "why_irrelevant": "Medication discontinued for resolved condition."
+      "description": "Previous diagnosis of irritable bowel syndrome, no active symptoms for 5 years",
+      "why_irrelevant": "Resolved gastrointestinal condition, not impacting current surgical plan"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Enalapril",
-        "dose": "10mg",
-        "frequency": "daily",
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "Daily",
         "active": true
       },
       {
         "name": "Metformin",
-        "dose": "500mg",
-        "frequency": "twice daily",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
         "active": true
       },
       {
-        "name": "Atorvastatin",
-        "dose": "20mg",
-        "frequency": "daily",
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Daily",
         "active": true
       },
       {
-        "name": "Levothyroxine",
-        "dose": "50mcg",
-        "frequency": "daily",
+        "name": "Aspirin",
+        "dose": "75 mg",
+        "frequency": "Daily",
         "active": true
-      },
-      {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "daily",
-        "active": false
       }
     ],
-    "allergies": [],
-    "past_history": [
-      "Community-acquired pneumonia (2019)",
-      "Right wrist fracture (2015)",
-      "GERD resolved post-Omeprazole discontinuation (2022)"
+    "allergies": [
+      "Penicillin (rash)"
     ],
-    "prior_anesthesia": "Previous general anesthesia for tonsillectomy in 1990; no complications."
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Hyperlipidemia",
+      "Pneumonia (10 years ago, resolved)",
+      "Fractured wrist (20 years ago, full recovery)",
+      "Irritable bowel syndrome (no active symptoms for 5 years)"
+    ],
+    "prior_anesthesia": null
   }
 }

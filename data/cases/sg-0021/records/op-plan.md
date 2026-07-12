@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Elective knee arthroscopy for medial meniscectomy (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with spinal for lower limb surgery
+General Anesthesia with Single-shot Spinal Anesthesia for Surgical Procedure

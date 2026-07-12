@@ -6,55 +6,47 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit sore, doc, but I think it's manageable. My tummy feels tight here and there."
+      "text": "I'm okay, I guess. A bit tired and my tummy is sore, but I'm awake at least."
     },
     {
       "speaker": "PROVIDER",
-      "text": "On a scale of 1 to 10, how would you rate your pain right now? And where exactly is it bothering you?"
+      "text": "Good to hear. On a scale from 0 to 10, how would you rate your pain right now?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe around 4 or 5? It's mostly in the upper part, near where they made the incisions."
+      "text": "Maybe a 4 or 5? It's manageable, but I can feel it."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Okay, we'll keep an eye on that. Have you felt nauseous or vomited at all since waking up?"
+      "text": "Thanks. Are you feeling any nausea or like you might be sick?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not really, just a bit queasy when I first opened my eyes, but it's gone now."
+      "text": "A little bit, but not too bad. I didn't eat anything before, so maybe that helps."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. How's your breathing? Any discomfort in your throat or chest?"
+      "text": "Good. How's your breathing? Any difficulty or tightness in your chest?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Breathing's fine, but my throat's a little sore. Must be from the tube they put in."
+      "text": "No, I'm breathing fine. Just a bit stuffy from the tube, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That's common after intubation. Do you remember anything about the surgery itself?"
+      "text": "Understood. Do you remember anything from the operation itself?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, nothing at all. Just woke up here, so I guess the anesthesia worked well!"
+      "text": "No, I don't think so. I was out completely."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Now, considering your blood pressure and diabetes, have you noticed any dizziness, headaches, or sweet/bitter tastes that might suggest low or high sugar?"
+      "text": "That's expected. Lastly, with your diabetes and blood pressure, are you feeling any dizziness or unusual symptoms?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No dizziness, doc. BP feels normal, and my mouth's okay. Just a bit anxious lying here, but that's usual for me."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Understood. We'll monitor your vitals and sugar levels closely. Let the nurse know if the anxiety gets overwhelming, okay?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "Will do, thanks. Appreciate the check-up, doc."
+      "text": "No, I feel stable. Just a bit thirsty, but I know I can't drink yet."
     }
   ]
 }

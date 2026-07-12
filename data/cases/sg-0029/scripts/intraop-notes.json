@@ -5,20 +5,40 @@
       "text": "induction propofol one hundred twenty milligrams"
     },
     {
+      "t": "08:02",
+      "text": "fentanyl twenty micrograms"
+    },
+    {
       "t": "08:05",
+      "text": "rocuronium fifty milligrams"
+    },
+    {
+      "t": "08:07",
       "text": "tube in, grade one view"
     },
     {
       "t": "08:10",
-      "text": "20G IV in left hand, 500ml LR running"
+      "text": "spinal needle inserted, bupivacaine two point five milligrams"
+    },
+    {
+      "t": "08:15",
+      "text": "lactated ringers one liter given"
     },
     {
       "t": "08:30",
-      "text": "BP dropped to 80/50, ephedrine 10mg bolus"
+      "text": "mean arterial pressure dropped to fifty five, atenotar one microgram bolus"
     },
     {
-      "t": "08:45",
-      "text": "HR up to 110, labetalol 5mg IV"
+      "t": "08:40",
+      "text": "desflurane at one point two percent"
+    },
+    {
+      "t": "08:50",
+      "text": "surgical incision"
+    },
+    {
+      "t": "09:10",
+      "text": "normal saline two hundred milliliters bolus"
     }
   ],
   "events": [
@@ -27,99 +47,133 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": [
-        "voice_notes#0"
-      ]
+      "provenance": []
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#0"
-      ]
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": []
     },
     {
       "t": "08:05",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:07",
       "category": "airway",
-      "value": "tube in, grade one view",
+      "value": "tube in",
       "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
+      "provenance": []
+    },
+    {
+      "t": "08:07",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "20G IV in left hand",
+      "category": "agent",
+      "value": "bupivacaine",
       "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
+      "provenance": []
     },
     {
       "t": "08:10",
+      "category": "dose",
+      "value": "two point five",
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:15",
       "category": "fluid",
-      "value": "500ml LR",
+      "value": "lactated ringers",
       "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
+      "provenance": []
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one",
+      "units": "liter",
+      "provenance": []
     },
     {
       "t": "08:30",
       "category": "event",
-      "value": "BP dropped to 80/50",
+      "value": "mean arterial pressure dropped to fifty five",
       "units": null,
-      "provenance": [
-        "voice_notes#3"
-      ]
+      "provenance": []
     },
     {
       "t": "08:30",
       "category": "agent",
-      "value": "ephedrine",
+      "value": "atenotar",
       "units": null,
-      "provenance": [
-        "voice_notes#3"
-      ]
+      "provenance": []
     },
     {
       "t": "08:30",
       "category": "dose",
-      "value": "10",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#3"
-      ]
+      "value": "one",
+      "units": "microgram bolus",
+      "provenance": []
     },
     {
-      "t": "08:45",
-      "category": "event",
-      "value": "HR up to 110",
-      "units": null,
-      "provenance": [
-        "voice_notes#4"
-      ]
-    },
-    {
-      "t": "08:45",
+      "t": "08:40",
       "category": "agent",
-      "value": "labetalol",
+      "value": "desflurane",
       "units": null,
-      "provenance": [
-        "voice_notes#4"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:45",
+      "t": "08:40",
       "category": "dose",
-      "value": "5",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#4"
-      ]
+      "value": "one point two",
+      "units": "percent",
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "fluid",
+      "value": "normal saline",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:10",
+      "category": "dose",
+      "value": "two hundred",
+      "units": "milliliters bolus",
+      "provenance": []
     }
   ]
 }

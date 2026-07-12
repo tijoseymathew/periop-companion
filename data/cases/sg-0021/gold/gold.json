@@ -1,6 +1,6 @@
 {
   "questions": [
-    "Do you have any allergies to medications or other substances?"
+    "Can you confirm your current medications, including any changes since your last medical review, and have you experienced any new allergic reactions to medications recently?"
   ],
   "events": [
     {
@@ -9,151 +9,187 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
-      "category": "agent",
-      "value": "fentanyl",
-      "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:02",
-      "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "agent",
-      "value": "rocuronium",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "dose",
-      "value": "60",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:05",
       "category": "airway",
       "value": "tube in",
       "units": null,
       "provenance": [
-        "voice_notes#3"
+        "voice_notes#08:02"
       ]
     },
     {
-      "t": "08:05",
+      "t": "08:02",
       "category": "airway",
       "value": "grade one view",
       "units": null,
       "provenance": [
-        "voice_notes#3"
+        "voice_notes#08:02"
       ]
     },
     {
-      "t": "08:10",
+      "t": "08:05",
       "category": "agent",
       "value": "bupivacaine",
       "units": null,
       "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "fifteen",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "dose",
-      "value": "10",
-      "units": "mg",
+      "category": "line",
+      "value": "two large bore peripheral lines",
+      "units": null,
       "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:10"
       ]
     },
     {
-      "t": "08:15",
+      "t": "08:10",
       "category": "line",
-      "value": "peripheral line eighteen gauge",
+      "value": "one in right antecubital fossa",
       "units": null,
       "provenance": [
-        "voice_notes#5"
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "one in left hand",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
       ]
     },
     {
       "t": "08:15",
       "category": "fluid",
-      "value": "crystalloid",
-      "units": null,
+      "value": "five hundred milliliters",
+      "units": "milliliters",
       "provenance": [
-        "voice_notes#6"
+        "voice_notes#08:15"
       ]
     },
     {
       "t": "08:15",
+      "category": "fluid",
+      "value": "balanced crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:15"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "event",
+      "value": "mean arterial pressure dropped to fifty five mmHg",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:25"
+      ]
+    },
+    {
+      "t": "08:25",
       "category": "dose",
-      "value": "500",
-      "units": "ml",
+      "value": "ten micrograms",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes#6"
+        "voice_notes#08:25"
       ]
     },
     {
-      "t": "08:20",
-      "category": "event",
-      "value": "blood pressure ninety over sixty, treated with fluid bolus and phenylephrine one hundred micrograms",
-      "units": null,
+      "t": "08:40",
+      "category": "fluid",
+      "value": "one hundred milliliters per hour",
+      "units": "milliliters per hour",
       "provenance": [
-        "voice_notes#7"
+        "voice_notes#08:40"
       ]
     },
     {
-      "t": "08:30",
-      "category": "event",
-      "value": "heart rate one hundred ten, treated with fluid and adjusted anesthesia depth",
+      "t": "08:40",
+      "category": "fluid",
+      "value": "normal saline",
       "units": null,
       "provenance": [
-        "voice_notes#8"
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:55",
+      "category": "event",
+      "value": "transient bradycardia to forty five bpm",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:55"
+      ]
+    },
+    {
+      "t": "08:55",
+      "category": "agent",
+      "value": "atropine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:55"
+      ]
+    },
+    {
+      "t": "08:55",
+      "category": "dose",
+      "value": "zero point six",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:55"
       ]
     }
   ],
   "preop_note_claims": [
-    "History includes allergic rhinitis",
-    "Medications: Fluticasone nasal spray (1 spray each nostril daily), Doxycycline (100mg once daily, stopped)",
-    "Allergy to Penicillin documented",
-    "ASA-PS 2 with reason (allergic rhinitis)",
-    "Airway assessment and anesthetic plan documented"
+    "History includes Type 2 Diabetes Mellitus, well-controlled with oral medications, and Obesity (BMI 28.5).",
+    "Medications: Metformin 500 mg Twice daily (ongoing), Sitagliptin 100 mg Once daily (ongoing), Loratadine 10 mg Once daily (discontinued due to financial constraints, replaced with Montelukast 10mg Once daily), Omeprazole 20 mg Once daily (discontinued, no longer needed).",
+    "Allergies: Penicillin (rash), Cefuroxime (new allergy developed after recent polyclinic visit for UTI).",
+    "ASA-PS: ASA 2, due to well-controlled Type 2 Diabetes Mellitus and Obesity.",
+    "Airway/Plan: General Anesthesia with Single-shot Spinal Anesthesia planned for Laparoscopic Cholecystectomy."
   ],
   "handoff_claims": [
-    "Key history includes Penicillin allergy and allergic rhinitis",
-    "Intra-op course: General anesthesia with spinal for elective knee arthroscopy",
-    "Anticipated issues: Monitor for allergic reactions due to Penicillin allergy"
+    "Key History: Type 2 Diabetes Mellitus, Obesity, and new allergy to Cefuroxime.",
+    "Intra-op Course Expectations: Stable under General Anesthesia with Single-shot Spinal Anesthesia, anticipate potential for delayed recovery due to Obesity and Diabetes.",
+    "Anticipated Issues: Monitor for signs of allergic reaction due to new Cefuroxime allergy, and manage post-op pain while considering patient's Diabetes and Obesity."
   ],
   "distractors": [
-    "History of pneumonia resolved 5 years ago",
-    "Fractured wrist (healed) 10 years ago",
-    "History of acne treated with doxycycline (discontinued)"
+    "History of pneumonia (fully resolved 3 years ago)",
+    "Remote history of left distal radius fracture (age 16, fully healed)",
+    "Previous use of Omeprazole for GERD (discontinued 6 months ago due to resolution of symptoms)"
   ]
 }

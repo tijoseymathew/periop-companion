@@ -6,23 +6,27 @@
     },
     {
       "t": "08:02",
-      "text": "tube in, grade one view"
+      "text": "fentanyl twenty micrograms"
     },
     {
       "t": "08:05",
-      "text": "eighteen-gauge peripheral IV placed in left arm"
+      "text": "tube in, grade one view"
     },
     {
-      "t": "08:10",
-      "text": "administered one liter normal saline bolus"
+      "t": "08:07",
+      "text": "rocuronium fifty milligrams"
     },
     {
       "t": "08:15",
-      "text": "mean arterial pressure dropped to fifty-five, treated with phenylephrine ten milligrams IV"
+      "text": "18 gauge IV line placed, 500 mL Ringer's Lactate bolus"
     },
     {
-      "t": "08:20",
-      "text": "heart rate increased to ninety, atropine one milligram IV administered"
+      "t": "08:30",
+      "text": "mean arterial pressure dropped to fifty, atropine one milligram given"
+    },
+    {
+      "t": "09:00",
+      "text": "surgical incision, increase sevoflurane to two percent"
     }
   ],
   "events": [
@@ -30,108 +34,135 @@
       "t": "08:00",
       "category": "agent",
       "value": "propofol",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "notes#0"
+        "voice_note:1#1"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "one hundred twenty milligrams",
-      "units": null,
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "notes#0"
+        "voice_note:1#1"
       ]
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "tube in",
-      "units": null,
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "micrograms",
       "provenance": [
-        "notes#1"
+        "voice_note:2#1"
       ]
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "grade one view",
-      "units": null,
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
       "provenance": [
-        "notes#1"
+        "voice_note:2#1"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "eighteen-gauge peripheral IV placed in left arm",
+      "category": "airway",
+      "value": "tube in",
       "units": null,
       "provenance": [
-        "notes#2"
+        "voice_note:3#1"
       ]
     },
     {
-      "t": "08:10",
-      "category": "fluid",
-      "value": "one liter normal saline bolus",
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
       "units": null,
       "provenance": [
-        "notes#3"
+        "voice_note:3#2"
       ]
     },
     {
-      "t": "08:15",
-      "category": "event",
-      "value": "mean arterial pressure dropped to fifty-five",
-      "units": null,
-      "provenance": [
-        "notes#4"
-      ]
-    },
-    {
-      "t": "08:15",
+      "t": "08:07",
       "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
+      "value": "rocuronium",
+      "units": "milligrams",
       "provenance": [
-        "notes#4"
+        "voice_note:4#1"
+      ]
+    },
+    {
+      "t": "08:07",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note:4#1"
       ]
     },
     {
       "t": "08:15",
-      "category": "dose",
-      "value": "ten milligrams",
+      "category": "line",
+      "value": "18 gauge IV",
       "units": null,
       "provenance": [
-        "notes#4"
+        "voice_note:5#1"
       ]
     },
     {
-      "t": "08:20",
+      "t": "08:15",
+      "category": "fluid",
+      "value": "500 mL Ringer's Lactate bolus",
+      "units": null,
+      "provenance": [
+        "voice_note:5#2"
+      ]
+    },
+    {
+      "t": "08:30",
       "category": "event",
-      "value": "heart rate increased to ninety",
+      "value": "mean arterial pressure dropped to fifty",
       "units": null,
       "provenance": [
-        "notes#5"
+        "voice_note:6#1"
       ]
     },
     {
-      "t": "08:20",
+      "t": "08:30",
       "category": "agent",
       "value": "atropine",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "notes#5"
+        "voice_note:6#2"
       ]
     },
     {
-      "t": "08:20",
+      "t": "08:30",
       "category": "dose",
-      "value": "one milligram",
-      "units": null,
+      "value": "one",
+      "units": "milligrams",
       "provenance": [
-        "notes#5"
+        "voice_note:6#2"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": "percent",
+      "provenance": [
+        "voice_note:7#1"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
+      "provenance": [
+        "voice_note:7#2"
       ]
     }
   ]

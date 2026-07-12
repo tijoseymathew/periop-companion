@@ -2,51 +2,47 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Hi there, how are you feeling after the surgery?"
+      "text": "Hi there, how are you feeling now after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Eh, still okay lah. Got some pain at the knee, but not too bad."
+      "text": "I'm feeling a bit tired, but okay. Got some pain in the tummy area."
     },
     {
       "speaker": "PROVIDER",
-      "text": "What would you say your pain level is on a scale of 1 to 10?"
+      "text": "Can you rate the pain for me, from 0 to 10? And have you felt nauseous at all?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe around 4 or 5? The nurse gave me some medicine earlier, so it’s better now."
+      "text": "Maybe a 4 or 5? And yeah, a little bit of nausea, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any nausea or vomiting since the surgery?"
+      "text": "Alright, we can manage that pain and nausea for you. How’s your breathing? Any discomfort or difficulty breathing?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No nausea, but my mouth is very dry. Can I have some water?"
+      "text": "Breathing is fine, no problem. Throat is a bit sore though."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Of course, we’ll get you some water. How’s your breathing? Any discomfort in your chest or throat?"
+      "text": "That sore throat can happen from the LMA tube. It should ease soon. Any moments where you felt awake during the surgery or remember anything?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Breathing is fine, but my throat is a bit sore. Must be from the tube during surgery."
+      "text": "No, I don’t remember anything. Went to sleep and woke up here."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That’s normal. Do you remember anything about the surgery itself?"
+      "text": "Good. Given your diabetes, kidney issues, and high blood pressure, we’ll keep a close eye on your vitals and fluid balance. Any other concerns?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, everything’s a blur. I think I slept through it all."
+      "text": "No, I think that’s all for now. Thanks for checking on me."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. For your health conditions—any issues with blood pressure or sugar levels today?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "BP was okay this morning, and my sugar’s been stable. Just worried about the knee, but it feels better already."
+      "text": "Of course. We’ll get you more comfortable and ready to move to the ward soon."
     }
   ]
 }

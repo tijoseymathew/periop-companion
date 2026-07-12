@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Transurethral resection of the prostate (TURP) (elective).
+Elective inguinal hernia repair (elective).
 
 ## Anesthesia
 
-Spinal anesthesia with local infiltration
+General Anesthesia with Laryngeal Mask Airway (LMA)

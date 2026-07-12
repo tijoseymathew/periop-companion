@@ -1,56 +1,83 @@
 {
   "case_id": "sg-0017",
   "persona_uuid": "b0a987dea0e4443cb79481f38db54c8f",
-  "surgery": "Elective knee arthroscopy for lateral meniscus tear repair",
+  "surgery": "Arthroscopic Knee Meniscectomy (Left)",
   "urgency": "elective",
-  "anesthesia_plan": "General Anesthesia with endotracheal intubation and mechanical ventilation",
-  "asa_ps": 1,
-  "comorbidities": [],
+  "anesthesia_plan": "General Anesthesia with Ultrasound-Guided Femoral Nerve Block",
+  "asa_ps": 2,
+  "comorbidities": [
+    "Obesity (BMI 28.5 kg/m²)",
+    "Mild Asthma (intermittent, exercise-triggered)"
+  ],
   "medications": [
     {
-      "name": "Amoxicillin",
-      "dose": "500mg",
-      "frequency": "twice daily",
+      "name": "Montelukast",
+      "dose": "10 mg",
+      "frequency": "daily",
+      "active": true
+    },
+    {
+      "name": "Salbutamol Inhaler",
+      "dose": "2 puffs as needed",
+      "frequency": "PRN",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "daily",
       "active": false
     }
   ],
   "allergies": [
-    "Penicillin"
+    "Penicillin (rash)"
   ],
   "defect": {
     "kind": "missing_allergy",
     "record_states": "No known allergies",
-    "truth": "Patient has a history of anaphylaxis to penicillin (rash, bronchospasm) at age 16",
-    "gold_question": "Have you ever had a severe reaction to any antibiotics, including penicillin or related drugs?"
+    "truth": "Latex allergy (confirmed during pre-op interview)",
+    "gold_question": "Have you experienced any reactions to latex products in the past?"
   },
   "distractors": [
     {
-      "description": "History of left wrist fracture in 2018 (healed, no hardware)",
-      "why_irrelevant": "Remote traumatic injury with full functional recovery, no bearing on current anesthesia"
+      "description": "History of left ankle fracture (healed, 2018)",
+      "why_irrelevant": "Remote, fully healed, no impact on current anesthesia or surgery"
     },
     {
-      "description": "Pneumonia in 2020 (treated with amoxicillin, resolved)",
-      "why_irrelevant": "Completed antibiotic course with full recovery, no residual pulmonary issues"
+      "description": "Pneumonia (resolved, 2020)",
+      "why_irrelevant": "Resolved infection, no residual lung disease"
     },
     {
-      "description": "Allergic contact dermatitis to nickel (diagnosed age 12, resolved)",
-      "why_irrelevant": "Skin reaction only, no systemic involvement, resolved in childhood"
+      "description": "Discontinued metformin (2019) for prediabetes",
+      "why_irrelevant": "Condition resolved with lifestyle changes, no current metabolic issues"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amoxicillin",
-        "dose": "500mg",
-        "frequency": "twice daily",
-        "active": false
+        "name": "Montelukast",
+        "dose": "10 mg",
+        "frequency": "daily",
+        "active": true
+      },
+      {
+        "name": "Salbutamol Inhaler",
+        "dose": "2 puffs as needed",
+        "frequency": "PRN",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20 mg",
+        "frequency": "daily",
+        "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "Left wrist fracture in 2018 (healed, no hardware)",
-      "Pneumonia in 2020 (treated with amoxicillin, resolved)",
-      "Allergic contact dermatitis to nickel (diagnosed age 12, resolved)"
+      "Left ankle fracture (2018)",
+      "Pneumonia (2020)",
+      "Prediabetes (2019, resolved)"
     ],
     "prior_anesthesia": null
   }

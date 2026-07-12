@@ -6,27 +6,21 @@
 
 ## Medications
 
-Amlodipine 5 mg Daily.
+Metformin 500mg Twice daily.
 
-Metformin 500 mg Twice daily.
+Lisinopril 10mg Once daily.
 
-Insulin glargine 20 units Once daily.
+Amlodipine 5mg Once daily.
 
-Furosemide 20 mg As needed.
+Dutasteride 0.5mg Once daily.
 
-Tamsulosin 0.4 mg Daily.
+Aspirin 75mg Once daily.
 
-Aspirin 75 mg Daily.
-
-Omeprazole 20 mg Daily.
-
-Atorvastatin 20 mg Daily.
-
-Ranitidine 150 mg Twice daily.
+Omeprazole 20mg Once daily.
 
 ## Allergies
 
-Penicillin (rash)
+Penicillin
 
 ## Past History
 
@@ -34,14 +28,12 @@ Hypertension
 
 Type 2 Diabetes Mellitus
 
-Chronic Kidney Disease Stage 2
+Benign Prostatic Hyperplasia (BPH)
 
-Osteoarthritis (right hip)
+Chronic Kidney Disease (Stage 3)
 
-Benign Prostatic Hyperplasia
+History of pneumonia resolved 2 years ago
 
-Pneumonia (2018, resolved)
+Remote history of left femur fracture (30 years ago), fully healed
 
-Fractured left radius (20 years ago, healed)
-
-Discontinued Enalapril due to cough (2 years ago)
+Previous use of Warfarin for atrial fibrillation, discontinued 4 years ago

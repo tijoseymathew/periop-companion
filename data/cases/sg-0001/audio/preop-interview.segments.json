@@ -5,76 +5,76 @@
       "speaker": "PROVIDER",
       "text": "Good morning, Mr. Tan. I'm Dr. Liew from the anesthesia team. Today, we'll go through some questions to prepare you for your hip replacement surgery. Let's start with why you're having this surgery. Can you tell me about your left hip problem?",
       "t0": 0.0,
-      "t1": 12.492
+      "t1": 12.957
     },
     {
       "seg_id": "s001",
       "speaker": "PATIENT",
       "text": "Morning, doctor. My left hip been hurting a lot for years, lah. Can't walk far, even with cane. X-ray show bad arthritis, so doctor say need to replace it.",
-      "t0": 12.842,
-      "t1": 23.57
+      "t0": 13.307,
+      "t1": 23.802
     },
     {
       "seg_id": "s002",
       "speaker": "PROVIDER",
       "text": "Thank you. Now, let's review your medications. Your records list amlodipine, metformin, and atorvastatin. Are you still taking all these?",
-      "t0": 23.92,
-      "t1": 32.465
+      "t0": 24.152,
+      "t1": 33.069
     },
     {
       "seg_id": "s003",
       "speaker": "PATIENT",
       "text": "Amlodipine and atorvastatin still taking every day, doctor. But metformin... stopped already one year plus.",
-      "t0": 32.815,
-      "t1": 40.245
+      "t0": 33.419,
+      "t1": 40.895
     },
     {
       "seg_id": "s004",
       "speaker": "PROVIDER",
       "text": "Metformin was stopped? Can you tell me why?",
-      "t0": 40.595,
-      "t1": 43.335
+      "t0": 41.245,
+      "t1": 43.939
     },
     {
       "seg_id": "s005",
       "speaker": "PATIENT",
       "text": "Yes, doctor. My sugar level very good on diet alone. HbA1c last check was 6.2%, so doctor say can stop metformin.",
-      "t0": 43.685,
-      "t1": 53.763
+      "t0": 44.289,
+      "t1": 54.506
     },
     {
       "seg_id": "s006",
       "speaker": "PROVIDER",
       "text": "I see. We'll update your records. Any allergies? Your file mentions penicillin causes a rash.",
-      "t0": 54.113,
-      "t1": 60.382
+      "t0": 54.856,
+      "t1": 61.218
     },
     {
       "seg_id": "s007",
       "speaker": "PATIENT",
       "text": "Yes, doctor. Once take penicillin, body get red spots. Never take again after that.",
-      "t0": 60.732,
-      "t1": 66.398
+      "t0": 61.568,
+      "t1": 67.651
     },
     {
       "seg_id": "s008",
       "speaker": "PROVIDER",
       "text": "Noted. Have you had anything to eat or drink since midnight?",
-      "t0": 66.748,
-      "t1": 70.974
+      "t0": 68.001,
+      "t1": 71.206
     },
     {
       "seg_id": "s009",
       "speaker": "PATIENT",
       "text": "No, doctor. Wife make sure I NPO from last night. Only sip water for meds.",
-      "t0": 71.324,
-      "t1": 76.571
+      "t0": 71.556,
+      "t1": 76.85
     },
     {
       "seg_id": "s010",
       "speaker": "PROVIDER",
       "text": "Good. Any previous surgeries or anesthesia? Any problems during those times?",
-      "t0": 76.921,
+      "t0": 77.2,
       "t1": 82.076
     },
     {
@@ -82,35 +82,35 @@
       "speaker": "PATIENT",
       "text": "Had gallbladder out ten years back. Anesthesia okay, wake up no problem. No dizziness or vomiting.",
       "t0": 82.426,
-      "t1": 89.392
+      "t1": 89.485
     },
     {
       "seg_id": "s012",
       "speaker": "PROVIDER",
       "text": "Excellent. Finally, how's your mobility now? Can you walk with assistance?",
-      "t0": 89.742,
-      "t1": 94.665
+      "t0": 89.835,
+      "t1": 94.618
     },
     {
       "seg_id": "s013",
       "speaker": "PATIENT",
       "text": "Can walk short distance with cane, but pain very bad. Need help for stairs or long walks.",
-      "t0": 95.015,
-      "t1": 100.773
+      "t0": 94.968,
+      "t1": 101.191
     },
     {
       "seg_id": "s014",
       "speaker": "PROVIDER",
       "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia and propofol sedation as planned. Any questions for me?",
-      "t0": 101.123,
-      "t1": 107.903
+      "t0": 101.541,
+      "t1": 108.275
     },
     {
       "seg_id": "s015",
       "speaker": "PATIENT",
       "text": "No, doctor. All clear. Thank you for explaining everything.",
-      "t0": 108.253,
-      "t1": 111.876
+      "t0": 108.625,
+      "t1": 112.247
     }
   ]
 }

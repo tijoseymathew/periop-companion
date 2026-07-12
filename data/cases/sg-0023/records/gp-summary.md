@@ -6,13 +6,11 @@
 
 ## Medications
 
-Amlodipine 10mg once daily.
+Metformin 1000 mg Twice daily.
 
-Atorvastatin 20mg once nightly.
+Lisinopril 20 mg Once daily.
 
-Omeprazole 20mg once daily.
-
-Metformin 500mg twice daily.
+Atorvastatin 40 mg Once daily.
 
 ## Allergies
 
@@ -20,8 +18,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-History of pneumonia resolved in 2018
+History of pneumonia resolved 5 years ago
 
-Right ankle fracture treated with casting in 2015
+Remote history of fractured right wrist (10 years ago)
 
-Prediabetes diagnosed in 2020, managed with metformin until 2022
+Previous use of Omeprazole for GERD, now discontinued

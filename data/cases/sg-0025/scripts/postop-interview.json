@@ -2,51 +2,51 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Hi there, how are you feeling now after the surgery?"
+      "text": "Mr. Tan, how are you feeling now after the surgery? Any pain or discomfort?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Got some pain at the hip, but the meds help. Feeling a bit dizzy and nauseous though."
+      "text": "I'm feeling okay, Doctor. Got a bit of discomfort here and there, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Okay, we can give you something for the nausea. Any trouble breathing or sore throat?"
+      "text": "On a scale from 0 to 10, how would you rate your pain right now?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Throat's a bit sore, but breathing's fine."
+      "text": "Maybe around 3 or 4, lah. It's manageable."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That's from the tube during anesthesia. Do you remember anything from the operation?"
+      "text": "Good. Have you been feeling nauseous or sick to your stomach at all?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not really, I was out cold."
+      "text": "No, no nausea. I'm a bit thirsty, but that's about it."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That's normal. Now, regarding your other conditions – how's your blood pressure, sugar levels, and kidneys?"
+      "text": "Are you breathing comfortably? Any tightness or difficulty breathing?"
     },
     {
       "speaker": "PATIENT",
-      "text": "All seem okay. No issues so far."
+      "text": "Breathing is fine, Doctor. No problem there."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any discomfort from BPH or need to urinate?"
+      "text": "Did you experience any awareness or discomfort during the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not really, but I'm a bit thirsty."
+      "text": "No, I don't remember anything. I was out cold."
     },
     {
       "speaker": "PROVIDER",
-      "text": "We'll monitor your fluids and check your blood sugar and BP regularly. Rest well."
+      "text": "Great. Given your hypertension and diabetes, we'll keep a close eye on your vitals and blood sugar levels. Any concerns or questions?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Thanks, doctor."
+      "text": "No, Doctor. I think that's all. Thank you."
     }
   ]
 }

@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Laparoscopic cholecystectomy (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with endotracheal intubation
+General Anesthesia with Laryngeal Mask Airway (LMA)

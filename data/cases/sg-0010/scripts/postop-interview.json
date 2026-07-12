@@ -6,47 +6,47 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "I’m okay, just some pain at the incision sites, but it’s manageable."
+      "text": "I'm okay, I guess. Still a bit groggy, but I can talk."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any nausea or vomiting since waking up?"
+      "text": "Good to hear. Can you tell me your pain level out of 10? Any discomfort at the incision sites or elsewhere?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit queasy, but not too bad. Haven’t eaten yet, though."
+      "text": "It's about a 4 or 5. There's some soreness in the tummy area, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any sore throat or difficulty breathing from the airway management?"
+      "text": "Thanks. Have you felt nauseous at all since waking up? Any vomiting or dizziness?"
     },
     {
       "speaker": "PATIENT",
-      "text": "My throat’s a bit sore, like I’ve been shouting or something."
+      "text": "No, no nausea. I feel a bit thirsty, but nothing else."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything from the operating room?"
+      "text": "Great. How's your breathing? Any shortness of breath or discomfort when taking deep breaths?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, everything’s a blur. One minute I was talking, next thing I know, I’m waking up here."
+      "text": "Breathing is fine. I can take deep breaths without pain."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any other issues? Like dizziness, blurred vision, or anything else unusual?"
+      "text": "Good. Did you experience any awareness or discomfort during the surgery that you'd like to share?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Mouth’s really dry, but that’s about it. Oh, and my back’s a bit stiff from lying flat."
+      "text": "No, I don’t remember anything. I was out the whole time."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That’s normal. We’ll get you some water and monitor your vitals. You’re doing well for now."
+      "text": "Excellent. Lastly, with your diabetes and high blood pressure, have you noticed any unusual symptoms like dizziness, chest pain, or vision changes?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Thanks, doc. Appreciate it."
+      "text": "No, nothing like that. I feel stable, just tired."
     }
   ]
 }

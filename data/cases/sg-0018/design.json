@@ -1,97 +1,101 @@
 {
   "case_id": "sg-0018",
   "persona_uuid": "b1f96f31082343b397fad71612c59204",
-  "surgery": "Laparoscopic cholecystectomy for symptomatic gallstones",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with Laryngeal Mask Airway (LMA) and sevoflurane maintenance",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
   "asa_ps": 2,
   "comorbidities": [
-    "Essential hypertension",
-    "Hyperlipidemia",
-    "Anxiety disorder"
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "10 mg",
+      "name": "Metformin",
+      "dose": "500mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "20mg",
       "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Atorvastatin",
-      "dose": "20 mg",
-      "frequency": "Once daily at night",
-      "active": true
-    },
-    {
-      "name": "Sertraline",
-      "dose": "50 mg",
+      "dose": "40mg",
       "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20 mg",
-      "frequency": "Once daily",
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Twice daily",
       "active": false
     }
   ],
-  "allergies": [],
+  "allergies": [
+    "Penicillin"
+  ],
   "defect": {
     "kind": "stale_med_list",
-    "record_states": "Records list Amlodipine, Atorvastatin, Sertraline, and Omeprazole as active medications",
-    "truth": "Patient discontinued Omeprazole 3 months ago after resolving GERD symptoms",
-    "gold_question": "Are you still taking all the medications listed in your current medical records?"
+    "record_states": "Medications: Metformin 500mg Twice daily, Lisinopril 20mg Once daily, Atorvastatin 40mg Once daily, Ranitidine 150mg Twice daily (active)",
+    "truth": "Medications: Metformin 500mg Twice daily, Lisinopril 20mg Once daily, Atorvastatin 40mg Once daily. Ranitidine discontinued 6 months ago due to resolution of GERD symptoms.",
+    "gold_question": "Have there been any changes to your medication list in the past year, particularly regarding your gastrointestinal symptoms?"
   },
   "distractors": [
     {
-      "description": "History of community-acquired pneumonia resolved in 2019",
-      "why_irrelevant": "Resolved infection with no residual pulmonary compromise"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved and not relevant to current surgical or anesthetic risk"
     },
     {
-      "description": "Remote left wrist fracture (2015) treated with cast, fully healed",
-      "why_irrelevant": "No functional impairment or hardware in place"
+      "description": "Remote history of left arm fracture (healed) from 10 years ago",
+      "why_irrelevant": "Healed fracture, not impacting current surgery or anesthesia"
     },
     {
-      "description": "Discontinued prednisone burst therapy for childhood asthma (last use age 12)",
-      "why_irrelevant": "Asthma resolved in adolescence, no current respiratory issues"
+      "description": "Previous use of Omeprazole for GERD, discontinued 2 years ago",
+      "why_irrelevant": "Discontinued and not current, but may confuse medication history"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "10 mg",
+        "name": "Metformin",
+        "dose": "500mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "20mg",
         "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Atorvastatin",
-        "dose": "20 mg",
-        "frequency": "Once daily at night",
-        "active": true
-      },
-      {
-        "name": "Sertraline",
-        "dose": "50 mg",
+        "dose": "40mg",
         "frequency": "Once daily",
         "active": true
       },
       {
-        "name": "Omeprazole",
-        "dose": "20 mg",
-        "frequency": "Once daily",
+        "name": "Ranitidine",
+        "dose": "150mg",
+        "frequency": "Twice daily",
         "active": true
       }
     ],
-    "allergies": [],
+    "allergies": [
+      "Penicillin"
+    ],
     "past_history": [
-      "Essential hypertension",
-      "Hyperlipidemia",
-      "Anxiety disorder",
-      "Community-acquired pneumonia (2019)",
-      "Left wrist fracture (2015)",
-      "Childhood asthma with prednisone use"
+      "Obesity",
+      "Type 2 Diabetes Mellitus",
+      "Hypertension",
+      "History of pneumonia (resolved)",
+      "Remote left arm fracture (healed)",
+      "Previous GERD treated with Omeprazole (discontinued)"
     ],
     "prior_anesthesia": null
   }

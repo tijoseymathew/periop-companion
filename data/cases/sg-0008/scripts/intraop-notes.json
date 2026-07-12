@@ -5,24 +5,40 @@
       "text": "induction propofol one hundred twenty milligrams"
     },
     {
-      "t": "08:05",
+      "t": "08:02",
       "text": "tube in, grade one view"
     },
     {
+      "t": "08:05",
+      "text": "fentanyl fifty micrograms"
+    },
+    {
       "t": "08:10",
-      "text": "18-gauge IV line placed in left antecubital fossa"
+      "text": "rocuronium thirty milligrams"
     },
     {
       "t": "08:15",
-      "text": "crystalloid infusion started at 100 mL/hour"
+      "text": "LMA sixteen in place"
+    },
+    {
+      "t": "08:20",
+      "text": "lactated ringers one liter bolus"
     },
     {
       "t": "08:30",
-      "text": "mean arterial pressure dropped to 55 mmHg, treated with 500 mL fluid bolus and 10 mg IV phenylephrine"
+      "text": "mean arterial pressure dropped to fifty five, atenolol ten milligrams IV"
     },
     {
-      "t": "08:45",
-      "text": "heart rate increased to 110 bpm, treated with 5 mL/kg fluid bolus"
+      "t": "08:40",
+      "text": "surgery started"
+    },
+    {
+      "t": "09:00",
+      "text": "desflurane at six percent"
+    },
+    {
+      "t": "09:20",
+      "text": "blood pressure stable after fluid bolus, heart rate seventy"
     }
   ],
   "events": [
@@ -31,108 +47,126 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": [
-        "voice_notes#0"
-      ]
+      "provenance": []
     },
     {
       "t": "08:00",
       "category": "dose",
       "value": "120",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#0"
-      ]
+      "units": "milligrams",
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": []
     },
     {
       "t": "08:05",
-      "category": "airway",
-      "value": "endotracheal tube placed",
+      "category": "agent",
+      "value": "fentanyl",
       "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
+      "provenance": []
     },
     {
       "t": "08:05",
-      "category": "airway",
-      "value": "grade 1 view",
-      "units": null,
-      "provenance": [
-        "voice_notes#1"
-      ]
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms",
+      "provenance": []
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "18-gauge IV line placed in left antecubital fossa",
+      "category": "agent",
+      "value": "rocuronium",
       "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
+      "provenance": []
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "30",
+      "units": "milligrams",
+      "provenance": []
     },
     {
       "t": "08:15",
-      "category": "fluid",
-      "value": "crystalloid infusion at 100 mL/hour",
+      "category": "airway",
+      "value": "LMA sixteen in place",
       "units": null,
-      "provenance": [
-        "voice_notes#3"
-      ]
+      "provenance": []
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
+      "provenance": []
     },
     {
       "t": "08:30",
       "category": "event",
-      "value": "mean arterial pressure dropped to 55 mmHg",
+      "value": "mean arterial pressure dropped to fifty five",
       "units": null,
-      "provenance": [
-        "voice_notes#4"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "fluid",
-      "value": "500",
-      "units": "mL bolus",
-      "provenance": [
-        "voice_notes#4"
-      ]
+      "provenance": []
     },
     {
       "t": "08:30",
       "category": "agent",
-      "value": "phenylephrine",
+      "value": "atenolol",
       "units": null,
-      "provenance": [
-        "voice_notes#4"
-      ]
+      "provenance": []
     },
     {
       "t": "08:30",
       "category": "dose",
       "value": "10",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#4"
-      ]
+      "units": "milligrams",
+      "provenance": []
     },
     {
-      "t": "08:45",
+      "t": "08:40",
       "category": "event",
-      "value": "heart rate increased to 110 bpm",
+      "value": "surgery started",
       "units": null,
-      "provenance": [
-        "voice_notes#5"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:45",
-      "category": "fluid",
-      "value": "5",
-      "units": "mL/kg bolus",
-      "provenance": [
-        "voice_notes#5"
-      ]
+      "t": "09:00",
+      "category": "agent",
+      "value": "desflurane",
+      "units": null,
+      "provenance": []
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "6",
+      "units": "percent",
+      "provenance": []
+    },
+    {
+      "t": "09:20",
+      "category": "event",
+      "value": "blood pressure stable after fluid bolus, heart rate seventy",
+      "units": null,
+      "provenance": []
     }
   ]
 }

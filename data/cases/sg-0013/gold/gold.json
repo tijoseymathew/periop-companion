@@ -1,13 +1,13 @@
 {
   "questions": [
-    "Do you have any allergies to medications, including antibiotics like penicillin?"
+    "Can you confirm your current list of medications, including any changes or discontinuations in the past year, and any new allergies or reactions since your last medical review?"
   ],
   "events": [
     {
       "t": "08:00",
       "category": "agent",
       "value": "propofol",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
         "voice_note#08:00"
       ]
@@ -15,118 +15,145 @@
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
         "voice_note#08:00"
       ]
     },
     {
-      "t": "08:00",
-      "category": "agent",
-      "value": "fentanyl",
+      "t": "08:05",
+      "category": "airway",
+      "value": "tube in",
       "units": null,
       "provenance": [
-        "voice_note#08:00"
+        "voice_note#08:05"
       ]
     },
     {
-      "t": "08:00",
-      "category": "dose",
-      "value": "50",
-      "units": "mcg",
-      "provenance": [
-        "voice_note#08:00"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "agent",
-      "value": "succinylcholine",
-      "units": null,
-      "provenance": [
-        "voice_note#08:00"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "100",
-      "units": "mg",
-      "provenance": [
-        "voice_note#08:00"
-      ]
-    },
-    {
-      "t": "08:02",
+      "t": "08:05",
       "category": "event",
-      "value": "hypotension treated with fluid bolus and phenylephrine 10 mcg",
-      "units": null,
-      "provenance": [
-        "voice_note#08:02"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "line",
-      "value": "20-gauge IV in right antecubital fossa",
-      "units": null,
-      "provenance": [
-        "voice_note#08:05"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "fluid",
-      "value": "500",
-      "units": "mL",
-      "provenance": [
-        "voice_note#08:05"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "airway",
-      "value": "ET tube size 7.5",
-      "units": null,
-      "provenance": [
-        "voice_note#08:10"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "airway",
       "value": "grade one view",
       "units": null,
       "provenance": [
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "line",
+      "value": "18 gauge peripheral line",
+      "units": null,
+      "provenance": [
         "voice_note#08:10"
       ]
     },
     {
-      "t": "08:20",
+      "t": "08:10",
+      "category": "fluid",
+      "value": "500 ml lactated ringers",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:15"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:15"
+      ]
+    },
+    {
+      "t": "08:30",
       "category": "event",
-      "value": "tachycardia treated with fentanyl 25 mcg",
+      "value": "blood pressure drop to eighty over fifty",
       "units": null,
       "provenance": [
-        "voice_note#08:20"
+        "voice_note#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "one",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:30"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "fifty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#09:00"
       ]
     }
   ],
   "preop_note_claims": [
-    "History of hypertension, hyperlipidemia, obesity (BMI 32), and GERD",
-    "Current medications include Amlodipine 5mg daily, Metoprolol 50mg daily, Atorvastatin 20mg daily, Omeprazole 20mg daily, and Aspirin 75mg daily (stopped)",
-    "Documented penicillin allergy with rash",
-    "ASA-PS classification of 3 due to controlled hypertension, hyperlipidemia, obesity (BMI 32), and GERD",
-    "Airway assessment and plan for general anesthesia with endotracheal intubation and rapid sequence induction"
+    "Patient's medical history includes Obesity (BMI 32), Type 2 Diabetes Mellitus, and Hypertension.",
+    "Current medications include Metformin 500 mg twice daily, Lisinopril 10 mg once daily, and Atorvastatin 20 mg once daily; Ranitidine 150 mg twice daily was stopped 6 months ago due to resolution of GERD symptoms, and the patient now uses Omeprazole 20mg once daily for acid reflux.",
+    "Patient has a documented allergy to Penicillin (manifested as a rash).",
+    "ASA-PS classification is 3 due to the presence of controlled but significant comorbidities (Obesity, Type 2 Diabetes Mellitus, Hypertension).",
+    "Airway assessment indicates no anticipated difficulties; plan for General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) for post-operative pain management."
   ],
   "handoff_claims": [
-    "Patient has a history of hypertension, hyperlipidemia, obesity (BMI 32), and GERD, with a documented penicillin allergy (rash)",
-    "Laparoscopic cholecystectomy performed under general anesthesia with endotracheal intubation and rapid sequence induction",
-    "Anticipated postoperative issues include monitoring for GERD-related complications and avoiding penicillin-based antibiotics due to allergy"
+    "Patient underwent elective Laparoscopic Cholecystectomy under General Anesthesia with Ultrasound-Guided TAP Block for post-operative pain management.",
+    "Anticipated issues include monitoring for pain control efficacy from the TAP block and managing potential side effects from anesthesia in the context of patient's comorbidities (Obesity, Type 2 Diabetes Mellitus, Hypertension).",
+    "Key history to convey includes Penicillin allergy (rash), current medications (Metformin, Lisinopril, Atorvastatin, Omeprazole), and the reason for stopping Ranitidine (resolution of GERD symptoms)."
   ],
   "distractors": [
-    "Resolved community-acquired pneumonia (5 years ago, fully recovered)",
-    "Remote left wrist fracture (10 years ago, fully healed)",
-    "Discontinued Aspirin for primary prevention (stopped 2 years ago due to GI side effects)"
+    "Pneumonia resolved 5 years ago",
+    "Fractured right wrist 15 years ago, fully healed",
+    "Hypothyroidism (resolved after radioactive iodine treatment 8 years ago)"
   ]
 }

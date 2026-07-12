@@ -2,35 +2,35 @@
   "notes": [
     {
       "t": "08:00",
-      "text": "induction propofol one hundred twenty milligrams"
+      "text": "induction propofol two hundred and fifty milligrams"
     },
     {
       "t": "08:02",
-      "text": "tube in, grade one view"
-    },
-    {
-      "t": "08:03",
-      "text": "sevoflurane started"
-    },
-    {
-      "t": "08:04",
-      "text": "vecuronium seven milligrams"
+      "text": "LMA sixteen in place, good seal, capnograph trace confirmed"
     },
     {
       "t": "08:05",
-      "text": "crystalloid infusion started at one hundred fifty mL per hour"
+      "text": "fentanyl twenty micrograms intravenous"
     },
     {
       "t": "08:10",
-      "text": "ultrasound-guided femoral nerve block performed"
+      "text": "rocuronium fifty milligrams intravenous"
     },
     {
       "t": "08:15",
-      "text": "mean arterial pressure dropped to fifty-five mmHg, treated with intravenous fluids and ephedrine ten milligrams"
+      "text": "normal saline one liter fluid bolus administered"
     },
     {
-      "t": "08:25",
-      "text": "heart rate increased to one hundred twenty beats per minute, treated with intravenous metoprolol five milligrams"
+      "t": "08:30",
+      "text": "mean arterial pressure dropped to fifty five mmHg, atropine one milligram intravenous given"
+    },
+    {
+      "t": "08:45",
+      "text": "desflurane at one point two percent for maintenance"
+    },
+    {
+      "t": "09:00",
+      "text": "surgery completed, LMA removed, patient extubated smoothly"
     }
   ],
   "events": [
@@ -40,124 +40,151 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "notes#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "250",
+      "units": "milligrams",
       "provenance": [
-        "notes#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
       "category": "airway",
-      "value": "endotracheal tube placed",
+      "value": "LMA",
       "units": null,
       "provenance": [
-        "notes#1"
+        "voice_notes#08:02"
       ]
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "grade 1",
-      "units": null,
-      "provenance": [
-        "notes#1"
-      ]
-    },
-    {
-      "t": "08:03",
-      "category": "agent",
-      "value": "sevoflurane",
-      "units": null,
-      "provenance": [
-        "notes#2"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "agent",
-      "value": "vecuronium",
-      "units": null,
-      "provenance": [
-        "notes#3"
-      ]
-    },
-    {
-      "t": "08:04",
       "category": "dose",
-      "value": "7",
-      "units": "mg",
+      "value": "16",
+      "units": "size",
       "provenance": [
-        "notes#3"
+        "voice_notes#08:02"
       ]
     },
     {
       "t": "08:05",
-      "category": "fluid",
-      "value": "crystalloid infusion started",
+      "category": "agent",
+      "value": "fentanyl",
       "units": null,
       "provenance": [
-        "notes#4"
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:05",
-      "category": "fluid",
-      "value": "150",
-      "units": "mL/hour",
+      "category": "dose",
+      "value": "20",
+      "units": "micrograms",
       "provenance": [
-        "notes#4"
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "femoral nerve block performed (ultrasound-guided)",
+      "category": "agent",
+      "value": "rocuronium",
       "units": null,
       "provenance": [
-        "notes#5"
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "50",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:10"
       ]
     },
     {
       "t": "08:15",
-      "category": "event",
-      "value": "mean arterial pressure dropped to 55 mmHg",
+      "category": "fluid",
+      "value": "normal saline",
       "units": null,
       "provenance": [
-        "notes#6"
+        "voice_notes#08:15"
       ]
     },
     {
       "t": "08:15",
-      "category": "event",
-      "value": "treated with intravenous fluids and ephedrine 10 mg",
-      "units": null,
+      "category": "dose",
+      "value": "1",
+      "units": "liter",
       "provenance": [
-        "notes#6"
+        "voice_notes#08:15"
       ]
     },
     {
-      "t": "08:25",
+      "t": "08:30",
       "category": "event",
-      "value": "heart rate increased to 120 beats per minute",
+      "value": "hypotension",
       "units": null,
       "provenance": [
-        "notes#7"
+        "voice_notes#08:30"
       ]
     },
     {
-      "t": "08:25",
-      "category": "event",
-      "value": "treated with intravenous metoprolol 5 mg",
+      "t": "08:30",
+      "category": "agent",
+      "value": "atropine",
       "units": null,
       "provenance": [
-        "notes#7"
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:30",
+      "category": "dose",
+      "value": "1",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#08:30"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "agent",
+      "value": "desflurane",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:45"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "dose",
+      "value": "1.2",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:45"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "surgery completed",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "airway",
+      "value": "LMA removed",
+      "units": null,
+      "provenance": [
+        "voice_notes#09:00"
       ]
     }
   ]

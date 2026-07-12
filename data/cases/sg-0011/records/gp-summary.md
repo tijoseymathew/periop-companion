@@ -6,17 +6,13 @@
 
 ## Medications
 
-Amlodipine 10mg daily.
+Losartan 100 mg Once daily.
 
-Lisinopril 20mg daily.
+Metformin 500 mg Twice daily.
 
-Metformin 500mg twice daily.
+Tamsulosin 0.4 mg Once daily.
 
-Atorvastatin 20mg nightly.
-
-Aspirin 75mg daily.
-
-Omeprazole 20mg daily.
+Aspirin 75 mg Once daily.
 
 ## Allergies
 
@@ -24,16 +20,6 @@ No known drug allergies recorded.
 
 ## Past History
 
-Hypertension
+Pneumonia (resolved 5 years ago)
 
-Type 2 Diabetes Mellitus
-
-Hyperlipidemia
-
-Chronic Kidney Disease (Stage 2)
-
-Pneumonia, resolved in 2018
-
-Left wrist fracture, healed without issues in 2010
-
-Completed course of antibiotics for UTI in 2015
+Fractured right wrist (healed, 15 years ago)

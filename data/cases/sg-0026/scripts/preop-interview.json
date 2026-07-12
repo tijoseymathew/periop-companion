@@ -2,75 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I’m Dr. Liew, the anesthesiologist who’ll be taking care of you during your hernia surgery today. Let me go through some questions to ensure everything goes smoothly for you, okay?"
+      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your surgery tomorrow. I'd like to go through some questions to make sure we're all set for your laparoscopic cholecystectomy under general anesthesia. Is that okay with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, doctor. Yes, please ask anything. I want to make sure I’m ready for this."
+      "text": "Yes, doctor. I'm ready. I want to make sure everything goes smoothly."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. First, can you tell me a bit about your hernia? How long have you had it, and has it been causing you any issues?"
+      "text": "Great. Let's start with your medical history. You've been diagnosed with hypertension, type 2 diabetes, and hyperlipidemia. Are you currently managing these conditions with your medications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Ah, about six months already. It’s on the left side, and sometimes it bulges when I lift heavy things. No pain yet, but the doctor said better to fix it before it gets worse, right?"
+      "text": "Yes, I take my medications regularly. I'm on Atorvastatin 20mg once daily for cholesterol, Metformin 500mg twice daily for diabetes, and Lisinopril 10mg once daily for blood pressure."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Absolutely. Now, let’s go through your medications. You’re on amlodipine for blood pressure, atorvastatin for cholesterol, metformin for diabetes, omeprazole for acid, and you stopped aspirin recently—is that correct?"
+      "text": "Thank you. I also see that you were on Aspirin 75mg once daily, but the records mention it's still active. Can you confirm the current antiplatelet medication and the reason for any changes from Aspirin?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, all correct. I take them every day except aspirin, which I stopped two weeks ago as the surgeon advised."
+      "text": "Oh, right. I actually stopped taking Aspirin about six months ago because it was giving me stomach discomfort. My cardiologist then put me on Clopidogrel 75mg once daily instead for secondary prevention of heart issues."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Now, allergies—your records say none, but I always double-check. Do you have any allergies to medications, especially antibiotics like penicillin?"
+      "text": "I see. That's important to know. Thank you for clarifying. Now, regarding allergies, you mentioned a rash with Penicillin. Any other allergies we should be aware of?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, wait… actually, I think I had a reaction once. When I was young, I took penicillin for a infection and got a rash all over. But I didn’t think it was serious, so I never mentioned it here."
+      "text": "No, just Penicillin. That's the only one."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for sharing that. A rash from penicillin is important to note. I’ll update your records to reflect that allergy to avoid any issues during surgery."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Have you had anything to eat or drink since midnight? We need to ensure your stomach is empty for the anesthesia."
+      "text": "Good. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. I had my last meal last night and only sipped water this morning. Nothing else, I promise."
+      "text": "Yes, I had a hernia repair about 10 years ago. The anesthesia was fine then, no problems at all."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Have you ever had anesthesia before? Any previous surgeries or complications?"
+      "text": "Excellent. Now, about your current condition—how has the gallbladder issue been affecting you? Any episodes of pain, especially after eating?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, this is my first time. I’ve been lucky so far, just check-ups and minor things."
+      "text": "Yes, I get this sharp pain on the right side, especially after fatty meals. It's been happening more often, so the doctor said it's best to remove it."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Lastly, how’s your overall energy and mobility? Can you manage daily activities like climbing stairs or walking without difficulty?"
+      "text": "Understood. And finally, have you fasted as instructed? Nothing by mouth after midnight?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, I’m still active. I walk every day and help my wife with the gardening. No problems there."
+      "text": "Yes, I had dinner early last night and only sipped water this morning. Nothing else since then."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. We’ll make sure you’re comfortable and safe throughout the procedure. Any questions or concerns before we proceed?"
+      "text": "Perfect. Just one more thing—do you have any concerns or questions about the anesthesia or the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. I’m ready. Thank you for explaining everything so clearly."
+      "text": "No, doctor. I think you've covered everything. I'm just ready to get this done and feel better."
     },
     {
       "speaker": "PROVIDER",
-      "text": "You’re welcome, Mr. Tan. We’ll take good care of you. I’ll see you in the operating room shortly."
+      "text": "Great, Mr. Tan. We'll take good care of you. I'll see you in the holding area before the surgery. Any issues, just give us a call."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Thank you, doctor. I appreciate it."
     }
   ]
 }

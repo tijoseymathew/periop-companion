@@ -2,208 +2,145 @@
   "notes": [
     {
       "t": "08:00",
-      "text": "Spinal anesthesia administered with bupivacaine twenty-five milligrams and fentanyl twenty-five micrograms"
+      "text": "induction propofol one hundred twenty milligrams"
+    },
+    {
+      "t": "08:02",
+      "text": "tube in, grade one view"
     },
     {
       "t": "08:05",
-      "text": "Eighteen-gauge IV line placed in left antecubital fossa"
+      "text": "epidural needle in, ten milliliters of bupivacaine"
     },
     {
       "t": "08:10",
-      "text": "Airway management: spontaneous breathing, SpO2 ninety-eight percent"
+      "text": "hypotension, mean arterial pressure down to fifty five, gave one hundred milliliters fluid bolus"
     },
     {
       "t": "08:15",
-      "text": "Administered IV paracetamol one gram and ondansetron four milligrams"
+      "text": "fentanyl twenty micrograms for breakthrough pain"
     },
     {
       "t": "08:30",
-      "text": "Hypotension noted, mean arterial pressure sixty-five mmHg, treated with five hundred ml fluid bolus and ten mg phenylephrine IV"
-    },
-    {
-      "t": "08:45",
-      "text": "Surgery completed, patient stable, no residual block"
+      "text": "normotension maintained, started iv fluids at one hundred twenty milliliters per hour"
     }
   ],
   "events": [
     {
       "t": "08:00",
       "category": "agent",
-      "value": "bupivacaine",
+      "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes#1"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "25",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#1"
+        "voice_notes#08:00"
       ]
     },
     {
-      "t": "08:00",
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "ten",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "mean arterial pressure down to fifty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one hundred",
+      "units": "milliliters bolus",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
       "category": "agent",
       "value": "fentanyl",
       "units": null,
       "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "25",
-      "units": "mcg",
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "line",
-      "value": "18-gauge IV cannula",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "line",
-      "value": "left antecubital fossa",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "airway",
-      "value": "spontaneous breathing",
-      "units": null,
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "airway",
-      "value": "98",
-      "units": "%",
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "agent",
-      "value": "paracetamol",
-      "units": null,
-      "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:15"
       ]
     },
     {
       "t": "08:15",
       "category": "dose",
-      "value": "1",
-      "units": "g",
+      "value": "twenty",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes#4"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "agent",
-      "value": "ondansetron",
-      "units": null,
-      "provenance": [
-        "voice_notes#4"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "dose",
-      "value": "4",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:15"
       ]
     },
     {
       "t": "08:30",
       "category": "event",
-      "value": "hypotension noted",
+      "value": "normotension maintained",
       "units": null,
       "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "event",
-      "value": "65",
-      "units": "mmHg",
-      "provenance": [
-        "voice_notes#5"
+        "voice_notes#08:30"
       ]
     },
     {
       "t": "08:30",
       "category": "fluid",
-      "value": "500",
-      "units": "ml",
+      "value": "one hundred twenty",
+      "units": "milliliters per hour",
       "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
-      "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "dose",
-      "value": "10",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:45",
-      "category": "event",
-      "value": "surgery completed",
-      "units": null,
-      "provenance": [
-        "voice_notes#6"
-      ]
-    },
-    {
-      "t": "08:45",
-      "category": "event",
-      "value": "patient stable",
-      "units": null,
-      "provenance": [
-        "voice_notes#6"
-      ]
-    },
-    {
-      "t": "08:45",
-      "category": "event",
-      "value": "no residual block",
-      "units": null,
-      "provenance": [
-        "voice_notes#6"
+        "voice_notes#08:30"
       ]
     }
   ]

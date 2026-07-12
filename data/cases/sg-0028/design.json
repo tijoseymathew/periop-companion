@@ -1,68 +1,86 @@
 {
   "case_id": "sg-0028",
   "persona_uuid": "39a743d6fff04f0982a38850c66ffe3c",
-  "surgery": "Arthroscopic partial meniscectomy of the left knee",
+  "surgery": "Appendectomy (Laparoscopic)",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with sevoflurane, vecuronium, and ultrasound-guided femoral nerve block for post-operative analgesia",
-  "asa_ps": 1,
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
+  "asa_ps": 2,
   "comorbidities": [
-    "Allergic rhinitis"
+    "Obesity (BMI 28.5 kg/m²)",
+    "Hyperlipidemia"
   ],
   "medications": [
     {
-      "name": "Montasone nasal spray",
-      "dose": "1 spray each nostril",
-      "frequency": "daily",
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "frequency": "Daily",
       "active": true
     },
     {
       "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "once daily",
+      "dose": "20 mg",
+      "frequency": "Daily",
+      "active": true
+    },
+    {
+      "name": "Paracetamol",
+      "dose": "500 mg",
+      "frequency": "As needed",
       "active": false
     }
   ],
-  "allergies": [],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
   "defect": {
     "kind": "stale_med_list",
-    "record_states": "Omeprazole 20mg once daily (active)",
-    "truth": "Omeprazole discontinued in 2022 after resolution of GERD symptoms",
-    "gold_question": "Can you confirm if you are still taking all the medications listed in your medical records?"
+    "record_states": "Atorvastatin 10 mg Daily, Omeprazole 20 mg Daily",
+    "truth": "Atorvastatin was increased to 20 mg Daily 3 months ago",
+    "gold_question": "Can you confirm the current dose of Atorvastatin you are taking?"
   },
   "distractors": [
     {
-      "description": "Pneumonia in 2019, resolved with antibiotics",
-      "why_irrelevant": "Remote infection, fully resolved, no current impact"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Remote infection, fully resolved, no impact on current anesthesia risk"
     },
     {
-      "description": "Fractured right wrist in 2017, healed without complications",
-      "why_irrelevant": "Old trauma, fully healed, no ongoing issues"
+      "description": "Fractured left wrist at age 10, fully healed",
+      "why_irrelevant": "Old trauma, no residual issues or implications for surgery/anesthesia"
     },
     {
-      "description": "GERD diagnosed in 2021, resolved with lifestyle changes",
-      "why_irrelevant": "Condition resolved, no current symptoms or treatment needed"
+      "description": "Completed a 6-week smoking cessation program 2 years ago",
+      "why_irrelevant": "Patient has been smoke-free for over a year, no current respiratory issues"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Montasone nasal spray",
-        "dose": "1 spray each nostril",
-        "frequency": "daily",
+        "name": "Atorvastatin",
+        "dose": "10 mg",
+        "frequency": "Daily",
         "active": true
       },
       {
         "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "once daily",
+        "dose": "20 mg",
+        "frequency": "Daily",
+        "active": true
+      },
+      {
+        "name": "Paracetamol",
+        "dose": "500 mg",
+        "frequency": "As needed",
         "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "Pneumonia in 2019, resolved",
-      "Fractured right wrist in 2017, healed",
-      "GERD diagnosed in 2021, resolved"
+      "Appendicitis (current presentation)",
+      "Obesity",
+      "Hyperlipidemia",
+      "Pneumonia (resolved 5 years ago)",
+      "Fractured left wrist (age 10, fully healed)",
+      "Smoking cessation program completed 2 years ago"
     ],
     "prior_anesthesia": null
   }

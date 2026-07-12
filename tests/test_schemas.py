@@ -5,6 +5,9 @@ as sets of claims, each claim cites source anchors, and conflicts are
 first-class.
 """
 
+import subprocess
+from pathlib import Path
+
 import pytest
 from pydantic import ValidationError
 
@@ -17,9 +20,14 @@ from periop.schemas import (
     ClaimStatus,
     Event,
     EventCategory,
+    OpenQuestion,
     ProvenanceRef,
+    Provider,
     Source,
     SourceType,
+    StageName,
+    StageStatus,
+    Workflow,
 )
 
 
@@ -220,3 +228,109 @@ class TestCase:
         restored = Case.model_validate_json(case.model_dump_json())
         assert restored == case
         assert restored.resolve("doc:gp-summary-2024#c001").text == "Aspirin 100mg OD."
+
+# --------------------------------------------------------------- Workflow block
+
+
+def _workflow() -> Workflow:
+    return Workflow(
+        created_by=Provider(provider_id="p-lim", name="Dr A. Lim", role="consultant"),
+        created_at="2026-07-06T09:12:00+08:00",
+    )
+
+
+class TestWorkflowBlock:
+    def test_new_workflow_starts_all_stages_awaiting_inputs(self):
+        wf = _workflow()
+        assert set(wf.stages) == {StageName.PREOP, StageName.INTRAOP, StageName.POSTOP}
+        assert all(s.status is StageStatus.AWAITING_INPUTS for s in wf.stages.values())
+
+    def test_case_without_workflow_is_immutable_demo_data(self):
+        case = Case(case_id="sg-0001")
+        assert case.workflow is None
+        assert case.is_demo
+
+    def test_case_with_workflow_is_live(self):
+        case = Case(case_id="live-1", workflow=_workflow())
+        assert not case.is_demo
+
+    def test_workflow_round_trips_through_json(self):
+        case = Case(case_id="live-1", workflow=_workflow())
+        stage = case.workflow.stages[StageName.PREOP]
+        stage.status = StageStatus.SIGNED_OFF
+        stage.performed_by = "p-lim"
+        stage.signed_off_by = "p-lim"
+        restored = Case.model_validate_json(case.model_dump_json())
+        assert restored == case
+        assert restored.workflow.stages[StageName.PREOP].status is StageStatus.SIGNED_OFF
+
+    def test_committed_case_jsons_load_unchanged(self):
+        # spec v2 §5.1: additive only — every *committed* synthetic case loads
+        # as demo data (no workflow block). Only git-tracked files count: the
+        # same directory also collects live cases created through the API,
+        # which rightly carry a workflow block.
+        tracked = subprocess.run(
+            ["git", "ls-files", "data/cases/_out/*.json"],
+            capture_output=True, text=True, check=True,
+        ).stdout.split()
+        assert tracked, "expected committed synthetic case JSONs"
+        for name in tracked:
+            case = Case.model_validate_json(Path(name).read_text())
+            assert case.workflow is None, name
+
+
+# ---------------------------------------------------------------- OpenQuestion
+
+
+class TestOpenQuestion:
+    def test_legacy_plain_string_coerces(self):
+        case = Case(case_id="x", open_questions=["Allergy status?"])
+        q = case.open_questions[0]
+        assert isinstance(q, OpenQuestion)
+        assert q.question == "Allergy status?"
+        assert q.review is None
+
+    def test_effective_text_prefers_edit(self):
+        q = OpenQuestion(question="orig", review="edited", edited_text="better")
+        assert q.effective_text == "better"
+        assert OpenQuestion(question="orig").effective_text == "orig"
+
+    def test_dismissed_questions_are_inactive(self):
+        assert not OpenQuestion(question="q", review="dismissed").is_active
+        assert OpenQuestion(question="q", review="approved").is_active
+        assert OpenQuestion(question="q").is_active  # unreviewed = active (batch path)
+
+    def test_review_state_is_constrained(self):
+        with pytest.raises(ValidationError):
+            OpenQuestion(question="q", review="banana")
+
+    def test_serializes_as_object_with_provenance_strings(self):
+        case = Case(
+            case_id="x",
+            open_questions=[
+                OpenQuestion(question="Q?", reason="missing", provenance=["doc:a#c1"])
+            ],
+        )
+        dumped = case.model_dump(mode="json")["open_questions"][0]
+        assert dumped["question"] == "Q?"
+        assert dumped["provenance"] == ["doc:a#c1"]
+
+
+# ------------------------------------------------------------- Source capture
+
+
+class TestSourceCaptureFields:
+    def test_captured_at_and_provided_by_default_none(self):
+        src = Source(source_id="doc:x", type=SourceType.DOCUMENT)
+        assert src.captured_at is None
+        assert src.provided_by is None
+
+    def test_capture_fields_round_trip(self):
+        src = Source(
+            source_id="audio:preop-interview",
+            type=SourceType.AUDIO,
+            captured_at="2026-07-06T10:00:00+08:00",
+            provided_by="p-lim",
+        )
+        restored = Source.model_validate_json(src.model_dump_json())
+        assert restored == src

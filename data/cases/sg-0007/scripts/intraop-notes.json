@@ -6,27 +6,31 @@
     },
     {
       "t": "08:02",
+      "text": "fentanyl twenty micrograms"
+    },
+    {
+      "t": "08:04",
+      "text": "vecuronium eight milligrams"
+    },
+    {
+      "t": "08:06",
       "text": "tube in, grade one view"
     },
     {
-      "t": "08:05",
-      "text": "peripheral IV placed, 20 gauge"
-    },
-    {
-      "t": "08:07",
-      "text": "arterial line placed, radial artery"
-    },
-    {
       "t": "08:10",
-      "text": "fluid bolus one hundred milliliters normal saline given"
-    },
-    {
-      "t": "08:15",
-      "text": "blood pressure dropped to 80 over 50, treated with phenylephrine ten micrograms"
+      "text": "sevoflurane at one point five percent"
     },
     {
       "t": "08:20",
-      "text": "heart rate increased to 110, treated with esmolol twenty milligrams"
+      "text": "mean arterial pressure seventy five, gave phenylephrine ten micrograms"
+    },
+    {
+      "t": "08:40",
+      "text": "fluids two thousand milliliters crystalloid administered"
+    },
+    {
+      "t": "08:50",
+      "text": "heart rate eighty five, mean arterial pressure ninety"
     }
   ],
   "events": [
@@ -42,64 +46,118 @@
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120 mg",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
         "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "endotracheal tube placed, grade one view",
+      "category": "agent",
+      "value": "fentanyl",
       "units": null,
       "provenance": [
         "voice_notes#08:02"
       ]
     },
     {
-      "t": "08:05",
-      "category": "line",
-      "value": "peripheral IV placed, 20 gauge",
-      "units": null,
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes#08:05"
+        "voice_notes#08:02"
       ]
     },
     {
-      "t": "08:07",
-      "category": "line",
-      "value": "arterial line placed, radial artery",
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium",
       "units": null,
       "provenance": [
-        "voice_notes#08:07"
+        "voice_notes#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "eight",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:04"
+      ]
+    },
+    {
+      "t": "08:06",
+      "category": "airway",
+      "value": "tube in, grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:06"
       ]
     },
     {
       "t": "08:10",
-      "category": "fluid",
-      "value": "normal saline 100 mL bolus given",
-      "units": "mL",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": null,
       "provenance": [
         "voice_notes#08:10"
       ]
     },
     {
-      "t": "08:15",
-      "category": "event",
-      "value": "blood pressure dropped to 80/50 mmHg, treated with phenylephrine 10 mcg",
-      "units": null,
+      "t": "08:10",
+      "category": "dose",
+      "value": "one point five",
+      "units": "percent",
       "provenance": [
-        "voice_notes#08:15"
+        "voice_notes#08:10"
       ]
     },
     {
       "t": "08:20",
       "category": "event",
-      "value": "heart rate increased to 110 bpm, treated with esmolol 20 mg",
+      "value": "mean arterial pressure seventy five",
       "units": null,
       "provenance": [
         "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "ten",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "fluid",
+      "value": "two thousand milliliters crystalloid",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:50",
+      "category": "event",
+      "value": "heart rate eighty five, mean arterial pressure ninety",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:50"
       ]
     }
   ]

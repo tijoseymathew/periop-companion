@@ -5,98 +5,98 @@
       "speaker": "PROVIDER",
       "text": "Hi there, how are you feeling now after the surgery?",
       "t0": 0.0,
-      "t1": 2.368
+      "t1": 2.508
     },
     {
       "seg_id": "s001",
       "speaker": "PATIENT",
       "text": "Eh, okay lah. Got some pain here, but manageable.",
-      "t0": 2.718,
-      "t1": 6.248
+      "t0": 2.858,
+      "t1": 6.526
     },
     {
       "seg_id": "s002",
       "speaker": "PROVIDER",
       "text": "Can you tell me your pain score out of 10? And where exactly is the discomfort?",
-      "t0": 6.598,
-      "t1": 11.288
+      "t0": 6.876,
+      "t1": 10.963
     },
     {
       "seg_id": "s003",
       "speaker": "PATIENT",
       "text": "Maybe 4 or 5? Around the incision site, like a dull ache.",
-      "t0": 11.638,
-      "t1": 15.911
+      "t0": 11.313,
+      "t1": 15.493
     },
     {
       "seg_id": "s004",
       "speaker": "PROVIDER",
       "text": "Any nausea or vomiting since waking up? Breathing comfortably?",
-      "t0": 16.261,
-      "t1": 20.347
+      "t0": 15.843,
+      "t1": 19.279
     },
     {
       "seg_id": "s005",
       "speaker": "PATIENT",
       "text": "No vomiting, but feel a bit queasy. Throat a bit sore, but breathing okay.",
-      "t0": 20.697,
-      "t1": 25.852
+      "t0": 19.629,
+      "t1": 25.063
     },
     {
       "seg_id": "s006",
       "speaker": "PROVIDER",
       "text": "Did you remember anything during the operation? Any awareness?",
-      "t0": 26.202,
-      "t1": 29.592
+      "t0": 25.413,
+      "t1": 28.756
     },
     {
       "seg_id": "s007",
       "speaker": "PATIENT",
       "text": "Nope, slept like a baby. No memory at all.",
-      "t0": 29.942,
-      "t1": 32.775
+      "t0": 29.106,
+      "t1": 32.311
     },
     {
       "seg_id": "s008",
       "speaker": "PROVIDER",
       "text": "For your diabetes, did the team check your sugar levels? Any episodes of low or high?",
-      "t0": 33.125,
-      "t1": 37.955
+      "t0": 32.661,
+      "t1": 37.398
     },
     {
       "seg_id": "s009",
       "speaker": "PATIENT",
       "text": "They checked before and after, all normal. No dizziness or anything.",
-      "t0": 38.305,
-      "t1": 42.902
+      "t0": 37.748,
+      "t1": 42.577
     },
     {
       "seg_id": "s010",
       "speaker": "PROVIDER",
       "text": "Your blood pressure and cholesterol meds\u2014taken as usual?",
-      "t0": 43.252,
-      "t1": 46.085
+      "t0": 42.927,
+      "t1": 45.992
     },
     {
       "seg_id": "s011",
       "speaker": "PATIENT",
       "text": "Yes, took them this morning before surgery. BP been stable, no issues.",
-      "t0": 46.435,
-      "t1": 51.358
+      "t0": 46.342,
+      "t1": 51.497
     },
     {
       "seg_id": "s012",
       "speaker": "PROVIDER",
       "text": "Alright, anything else bothering you? We can adjust pain relief if needed.",
-      "t0": 51.708,
-      "t1": 55.794
+      "t0": 51.847,
+      "t1": 56.12
     },
     {
       "seg_id": "s013",
       "speaker": "PATIENT",
       "text": "No, I think it's all good. Thanks for checking.",
-      "t0": 56.144,
-      "t1": 58.931
+      "t0": 56.47,
+      "t1": 59.163
     }
   ]
 }

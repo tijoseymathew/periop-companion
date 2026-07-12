@@ -2,59 +2,59 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Mr. Tan, how are you feeling now after the surgery?"
+      "text": "Good afternoon, Mr. Tan. How are you feeling after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I'm okay, Doctor. Got some pain here and there, but not too bad lah."
+      "text": "I'm okay, doctor. A bit tired, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Can you rate your pain on a scale from 0 to 10 for me?"
+      "text": "That's good to hear. Can you tell me your pain level out of 10? Any discomfort at the incision site or elsewhere?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe 4 or 5? It's manageable, but I feel some discomfort when moving."
+      "text": "Maybe a 4 or 5, mostly at the hernia site. It's manageable, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any nausea or feeling like you want to vomit? Sometimes spinal anesthesia can cause that."
+      "text": "Alright. Have you felt any nausea or dizziness since waking up? Any issues with vomiting?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit queasy earlier, but settled down after they gave me something. No vomiting, thank God."
+      "text": "No, no nausea. I feel fine that way. Just a bit thirsty, actually."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Breathing comfortable? Any shortness of breath or airway issues?"
+      "text": "Good. How about your breathing? Any shortness of breath or discomfort from the LMA during the procedure?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Breathing's fine. Throat a bit sore from the tube, but I can talk okay."
+      "text": "No, I don't remember much, but I didn't wake up choking or anything. My throat feels a bit sore, but it's mild."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything during the surgery? Sometimes patients recall bits."
+      "text": "That's expected sometimes with the LMA. We'll monitor that. Any recollection of the surgery itself?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not much, Doctor. Felt some pressure here and there, heard voices, then woke up here."
+      "text": "No, nothing at all. I was out completely, which is good."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Your blood pressure's stable, but we're watching your diabetes and kidney function. Any concerns?"
+      "text": "Excellent. Since you have a history of hypertension and diabetes, we'll keep an eye on your vitals and sugar levels. Any chest pain, dizziness, or urinary difficulty from BPH?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, worried about sugar levels, but nurse said it's under control. Urine output's a bit less, but no swelling."
+      "text": "No chest pain, and I went to the toilet before surgery, so I think I'm okay for now. My knees are aching a bit, but that's usual."
     },
     {
       "speaker": "PROVIDER",
-      "text": "We'll keep monitoring. Stay hydrated and follow your meds. Any other issues?"
+      "text": "Understood. We'll keep you comfortable and monitor everything. Let the nurse know if anything changes, okay?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, all good. Thank you, Doctor. I'll rest and drink more water."
+      "text": "Will do, doctor. Thanks for checking on me."
     }
   ]
 }

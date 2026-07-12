@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Total Knee Arthroplasty (Left) (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-Spinal anesthesia with general anesthesia as backup
+General Anesthesia with Laryngeal Mask Airway (LMA)

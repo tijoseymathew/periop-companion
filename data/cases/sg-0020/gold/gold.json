@@ -1,114 +1,168 @@
 {
   "questions": [
-    "Have you ever had any reactions to antibiotics, especially penicillin?"
+    "Have there been any changes to your medication list in the last 12 months, particularly regarding medications for stomach acid or ulcer prevention?"
   ],
   "events": [
     {
       "t": "08:00",
       "category": "agent",
-      "value": "bupivacaine",
+      "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes:entry#0"
+        "voice_note#0"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "12.5",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes:entry#0"
+        "voice_note#0"
       ]
     },
     {
-      "t": "08:01",
+      "t": "08:02",
       "category": "airway",
-      "value": "oxygen via nasal cannula",
-      "units": "2 L/min",
+      "value": "tube in",
+      "units": null,
       "provenance": [
-        "voice_notes:entry#1"
+        "voice_note#1"
       ]
     },
     {
       "t": "08:02",
-      "category": "line",
-      "value": "two large bore IVs",
+      "category": "airway",
+      "value": "grade one view",
       "units": null,
       "provenance": [
-        "voice_notes:entry#2"
-      ]
-    },
-    {
-      "t": "08:02",
-      "category": "fluid",
-      "value": "normal saline",
-      "units": "100 mL/hour",
-      "provenance": [
-        "voice_notes:entry#2"
+        "voice_note#1"
       ]
     },
     {
       "t": "08:05",
-      "category": "event",
-      "value": "hypotension (BP 70/40)",
-      "units": null,
-      "provenance": [
-        "voice_notes:entry#3"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "fluid",
-      "value": "normal saline",
-      "units": "1 L bolus",
-      "provenance": [
-        "voice_notes:entry#3"
-      ]
-    },
-    {
-      "t": "08:07",
-      "category": "event",
-      "value": "bradycardia (HR 40)",
-      "units": null,
-      "provenance": [
-        "voice_notes:entry#4"
-      ]
-    },
-    {
-      "t": "08:07",
       "category": "agent",
-      "value": "atropine",
+      "value": "bupivacaine",
       "units": null,
       "provenance": [
-        "voice_notes:entry#4"
+        "voice_note#2"
       ]
     },
     {
-      "t": "08:07",
+      "t": "08:05",
       "category": "dose",
-      "value": "1",
-      "units": "mg",
+      "value": "twenty five",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes:entry#4"
+        "voice_note#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "agent",
+      "value": "ropivacaine",
+      "units": null,
+      "provenance": [
+        "voice_note#3"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "ten",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#3"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_note#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_note#4"
+      ]
+    },
+    {
+      "t": "08:15",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_note#4"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "fluid",
+      "value": "lactated ringers",
+      "units": null,
+      "provenance": [
+        "voice_note#5"
+      ]
+    },
+    {
+      "t": "09:00",
+      "category": "dose",
+      "value": "two",
+      "units": "liters",
+      "provenance": [
+        "voice_note#5"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "event",
+      "value": "tachycardia",
+      "units": null,
+      "provenance": [
+        "voice_note#6"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_note#6"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "dose",
+      "value": "twenty five",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#6"
       ]
     }
   ],
   "preop_note_claims": [
-    "Documentation of comorbidities: hypertension, type 2 diabetes mellitus, hyperlipidemia, chronic kidney disease stage 3",
-    "Medications with status: amlodipine 10mg daily (continued), lisinopril 10mg daily (continued), metformin 500mg twice daily (continued), atorvastatin 20mg daily (continued), omeprazole 20mg daily (continued), aspirin 75mg daily (discontinued)",
-    "Allergy to penicillin with rash reaction documented",
-    "ASA Physical Status classification as 3 with rationale: controlled comorbidities (hypertension, diabetes, hyperlipidemia, CKD stage 3)",
-    "Airway assessment and anesthetic plan for spinal anesthesia with local infiltration documented"
+    "Documentation of comprehensive history including osteoarthritis (bilateral hip, worse on left), Hypertension, Type 2 Diabetes Mellitus, and Chronic Kidney Disease (Stage 3)",
+    "Medications listed with current status: Atorvastatin 20 mg once daily, Metformin 500 mg twice daily, Losartan 100 mg once daily, Aspirin 75 mg once daily, and Omeprazole 20 mg daily for gastroprotection (with note on Ranitidine discontinuation 6 months ago due to NDMA contamination concern)",
+    "Allergies documented: Penicillin (rash)",
+    "ASA-PS classification as 3 with rationale provided (e.g., severe systemic disease not incapacitating, controlled hypertension and diabetes)",
+    "Airway assessment and anesthesia plan documented, including General anesthesia with spinal anesthesia as co-anesthesia and ultrasound-guided peripheral nerve block for postoperative pain management"
   ],
   "handoff_claims": [
-    "Key history including comorbidities (hypertension, type 2 diabetes, hyperlipidemia, CKD stage 3) and penicillin allergy with rash reaction",
-    "Intraoperative course: transurethral resection of the prostate completed under spinal anesthesia with local infiltration, no complications noted",
-    "Anticipated postoperative issues: potential for bleeding, urinary retention, need for monitoring renal function and blood glucose control"
+    "Key history highlighted: Osteoarthritis (bilateral hip, worse on left), Hypertension, Type 2 Diabetes Mellitus, Chronic Kidney Disease (Stage 3), and recent medication change (Ranitidine to Omeprazole)",
+    "Intra-op course expectations: Uncomplicated elective total hip replacement, with potential for standard postoperative pain and mobility issues",
+    "Anticipated issues: Monitoring for postoperative pain management efficacy, renal function given CKD Stage 3, and blood glucose control due to Diabetes Mellitus"
   ],
   "distractors": [
-    "Pneumonia resolved in 2018",
-    "Left femur fracture healed in 2010",
-    "Discontinued simvastatin due to muscle pain in 2015"
+    "History of pneumonia in 2018, fully resolved",
+    "Fractured right wrist in 2005, treated with casting, full recovery",
+    "Discontinued medication: Amlodipine (stopped 2 years ago due to side effects)"
   ]
 }

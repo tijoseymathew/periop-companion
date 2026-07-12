@@ -2,8 +2,8 @@
 
 ## Current Medications
 
-Amlodipine 5 mg Once daily.
+Metformin 500mg Twice daily.
 
-Levonorgestrel/Ethinyl Estradiol Standard dose Once daily.
+Gliclazide 60mg Once daily.
 
-Doxycycline 100 mg Once daily.
+Atorvastatin 20mg Once daily.

@@ -7,6 +7,7 @@
  */
 import {
   forwardRef,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -25,6 +26,14 @@ interface AudioPlayerProps {
   src: string | null;
   /** Which of the case's recordings is loaded (source_id). */
   label: string | null;
+  /**
+   * Seek here once `src`'s metadata is ready — declarative, for "open
+   * already pointed at the cited moment" (e.g. SourceModal). Distinct from
+   * the imperative seekToTime handle below, which a user's own click (e.g.
+   * a transcript segment) drives and never races the mount, since the
+   * element already exists by the time that fires.
+   */
+  seekTo?: number | null;
   onTimeUpdate?: (seconds: number) => void;
   onError?: () => void;
 }
@@ -39,15 +48,33 @@ function fmt(seconds: number): string {
 }
 
 export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(function AudioPlayer(
-  { src, label, onTimeUpdate, onError },
+  { src, label, seekTo = null, onTimeUpdate, onError },
   ref,
 ) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const pendingClipRef = useRef<{ t0: number; t1: number } | null>(null);
+  const pendingSeekRef = useRef<number | null>(null);
   const [clip, setClip] = useState<{ t0: number; t1: number } | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(NaN);
   const [paused, setPaused] = useState(true);
+
+  // runs after the DOM has the current `src`'s <audio> element mounted
+  // (unlike an imperative ref call from the parent, which can fire before
+  // it exists), so the provenance jump on open is never silently dropped
+  useEffect(() => {
+    // clear any still-pending seek from a previous src/seekTo pair first, so
+    // a stale target can't land on loadedmetadata for a source it wasn't for
+    pendingSeekRef.current = null;
+    const el = audioRef.current;
+    if (!el || seekTo == null) return;
+    if (el.readyState >= 1) {
+      el.currentTime = seekTo;
+      setCurrentTime(seekTo);
+    } else {
+      pendingSeekRef.current = seekTo;
+    }
+  }, [src, seekTo]);
 
   function startClip(el: HTMLAudioElement, t0: number, t1: number) {
     el.currentTime = t0;
@@ -62,8 +89,16 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
       const el = audioRef.current;
       if (!el) return;
       setClip(null);
-      el.currentTime = seconds;
-      setCurrentTime(seconds);
+      // a fresh `src` hasn't loaded metadata yet (readyState 0) — setting
+      // currentTime now is silently reset to 0 once it does, so the
+      // provenance jump would land back at the start; queue it instead,
+      // same as playClip's pendingClipRef below
+      if (el.readyState >= 1) {
+        el.currentTime = seconds;
+        setCurrentTime(seconds);
+      } else {
+        pendingSeekRef.current = seconds;
+      }
     },
     playClip(t0: number, t1: number) {
       const el = audioRef.current;
@@ -88,10 +123,18 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
     const el = audioRef.current;
     if (!el) return;
     setDuration(el.duration);
-    const pending = pendingClipRef.current;
-    if (pending) {
+    const pendingClip = pendingClipRef.current;
+    if (pendingClip) {
       pendingClipRef.current = null;
-      startClip(el, pending.t0, pending.t1);
+      pendingSeekRef.current = null;
+      startClip(el, pendingClip.t0, pendingClip.t1);
+      return;
+    }
+    const pendingSeek = pendingSeekRef.current;
+    if (pendingSeek !== null) {
+      pendingSeekRef.current = null;
+      el.currentTime = pendingSeek;
+      setCurrentTime(pendingSeek);
     }
   }
 
@@ -152,7 +195,7 @@ export const AudioPlayer = forwardRef<AudioPlayerHandle, AudioPlayerProps>(funct
                 if (el.paused) Promise.resolve(el.play()).catch(() => undefined);
                 else el.pause();
               }}
-              className="rounded-full bg-brand p-1.5 text-surface-base hover:bg-brand-strong"
+              className="rounded-full bg-brand p-1.5 text-ink-onBrand hover:bg-brand-soft"
             >
               {paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
             </button>

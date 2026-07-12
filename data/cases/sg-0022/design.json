@@ -1,51 +1,51 @@
 {
   "case_id": "sg-0022",
   "persona_uuid": "bc4772be1a98408499aef35f96da7017",
-  "surgery": "Elective open inguinal hernia repair",
+  "surgery": "Elective Left Hip Replacement",
   "urgency": "elective",
-  "anesthesia_plan": "Spinal anesthesia with bupivacaine and fentanyl, IV paracetamol 1g for perioperative analgesia, and ondansetron 4mg for PONV prophylaxis",
-  "asa_ps": 2,
+  "anesthesia_plan": "General Anesthesia with Epidural Anesthesia for Post-Operative Pain Management",
+  "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
-    "Hyperlipidemia",
     "Type 2 Diabetes Mellitus",
-    "Osteoarthritis (knees)"
+    "Osteoarthritis (bilateral hips)",
+    "Hyperlipidemia"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5mg",
-      "frequency": "Daily",
-      "active": true
-    },
-    {
-      "name": "Lisinopril",
-      "dose": "10mg",
-      "frequency": "Daily",
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Atorvastatin",
-      "dose": "20mg",
-      "frequency": "Nightly",
+      "dose": "20 mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Metformin",
-      "dose": "500mg",
-      "frequency": "Twice daily",
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Insulin Glargine",
+      "dose": "20 units",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Paracetamol",
-      "dose": "500mg",
+      "dose": "500 mg",
       "frequency": "As needed",
       "active": true
     },
     {
-      "name": "Aspirin",
-      "dose": "75mg",
-      "frequency": "Daily",
+      "name": "Clopidogrel",
+      "dose": "75 mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
@@ -53,70 +53,70 @@
     "Penicillin"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No allergies documented",
-    "truth": "Penicillin allergy (rash and urticaria)",
-    "gold_question": "Do you have any history of allergic reactions to antibiotics, especially penicillin?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 500 mg daily, Atorvastatin 20 mg daily, Lisinopril 10 mg daily, Insulin Glargine 20 units daily, Paracetamol 500 mg as needed. No mention of Clopidogrel.",
+    "truth": "Patient stopped Clopidogrel 6 months ago due to completion of prescribed course for minor cardiac event; currently not on any antiplatelet therapy.",
+    "gold_question": "Can you confirm if you are currently taking any blood-thinning medications, including those you may have stopped in the past year?"
   },
   "distractors": [
     {
-      "description": "Pneumonia resolved in 2014",
-      "why_irrelevant": "Resolved 9 years ago, no residual respiratory issues"
+      "description": "History of pneumonia in 2010, fully resolved",
+      "why_irrelevant": "Resolved over a decade ago, no impact on current perioperative risk"
     },
     {
-      "description": "Left wrist fracture in 2005",
-      "why_irrelevant": "Healed without complications, full mobility maintained"
+      "description": "Fractured right wrist in 2005, treated with casting",
+      "why_irrelevant": "Remote, fully healed, no functional impairment"
     },
     {
-      "description": "Hyperthyroidism treated in 2010",
-      "why_irrelevant": "Resolved with radioiodine therapy, no recurrence"
+      "description": "Completed a course of Ciprofloxacin for UTI in 2018",
+      "why_irrelevant": "Single, short course for acute infection, no recurrence or related issues"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5mg",
-        "frequency": "Daily",
-        "active": true
-      },
-      {
-        "name": "Lisinopril",
-        "dose": "10mg",
-        "frequency": "Daily",
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Atorvastatin",
-        "dose": "20mg",
-        "frequency": "Nightly",
+        "dose": "20 mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
-        "name": "Metformin",
-        "dose": "500mg",
-        "frequency": "Twice daily",
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Insulin Glargine",
+        "dose": "20 units",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Paracetamol",
-        "dose": "500mg",
+        "dose": "500 mg",
         "frequency": "As needed",
-        "active": true
-      },
-      {
-        "name": "Aspirin",
-        "dose": "75mg",
-        "frequency": "Daily",
         "active": true
       }
     ],
-    "allergies": [],
-    "past_history": [
-      "Pneumonia resolved in 2014",
-      "Left wrist fracture in 2005",
-      "Hyperthyroidism treated in 2010"
+    "allergies": [
+      "Penicillin"
     ],
-    "prior_anesthesia": "Left cataract extraction under local anesthesia in 2019, uneventful"
+    "past_history": [
+      "Hypertension",
+      "Type 2 Diabetes Mellitus",
+      "Osteoarthritis (bilateral hips)",
+      "Hyperlipidemia",
+      "Pneumonia (2010)",
+      "Fractured right wrist (2005)",
+      "Completed course of Ciprofloxacin for UTI (2018)"
+    ],
+    "prior_anesthesia": null
   }
 }

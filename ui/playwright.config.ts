@@ -10,10 +10,20 @@ const fixtureDir = fileURLToPath(new URL("./e2e/.fixture", import.meta.url));
 
 export default defineConfig({
   testDir: "./e2e",
+  // one worker: the server holds a single-run lock (one generation at a time),
+  // so specs that trigger stage runs must not overlap
+  workers: 1,
   reporter: [["list"]],
   use: {
     baseURL: "http://127.0.0.1:8123",
     headless: true,
+    // PW_VIDEO=1 records each test (used to capture the README demo)
+    video: process.env.PW_VIDEO ? "on" : "off",
+    // live dictation e2e: a fake mic that never prompts (tone generator)
+    permissions: ["microphone"],
+    launchOptions: {
+      args: ["--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream"],
+    },
   },
   webServer: {
     // setup-fixture.mjs runs first so the fixture store always exists before
@@ -26,6 +36,13 @@ export default defineConfig({
     env: {
       PERIOP_OUT_DIR: `${fixtureDir}/_out`,
       PERIOP_CASE_DIR: fixtureDir,
+      // hermetic lifecycle e2e: the real server with instant stub artifacts
+      PERIOP_STUB_RUNNER: "1",
+      // never export traces from e2e, even when .env has real credentials —
+      // empty strings survive load_dotenv and read as "tracing off"
+      LANGFUSE_PUBLIC_KEY: "",
+      LANGFUSE_SECRET_KEY: "",
+      LANGFUSE_BASE_URL: "",
     },
   },
 });

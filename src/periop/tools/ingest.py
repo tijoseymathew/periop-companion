@@ -59,6 +59,14 @@ def transcript_from_voice_notes(notes_path: Path, source_id: str) -> Source:
     )
 
 
+def has_transcript_inputs(case_dir: Path, name: str) -> bool:
+    """True when a transcript can be produced: a gold script or a captured wav."""
+    case_dir = Path(case_dir)
+    return (case_dir / "scripts" / f"{name}.json").exists() or (
+        case_dir / "audio" / f"{name}.wav"
+    ).exists()
+
+
 def transcript_source(case_dir: Path, name: str, source_id: str) -> Source:
     """Pick the transcript path for one encounter script.
 
@@ -69,10 +77,14 @@ def transcript_source(case_dir: Path, name: str, source_id: str) -> Source:
     path has no dictation clock times (the gold voice-notes path embeds them),
     so extracted event times degrade to playback offsets — part of what the
     audio A/B measures.
+
+    Live-captured cases (v2) have a wav from the recorder but no gold script,
+    so ASR is the only option there regardless of the env switch.
     """
     case_dir = Path(case_dir)
     wav = case_dir / "audio" / f"{name}.wav"
-    if os.environ.get("PERIOP_TRANSCRIBE") == "asr" and wav.exists():
+    script = case_dir / "scripts" / f"{name}.json"
+    if wav.exists() and (os.environ.get("PERIOP_TRANSCRIBE") == "asr" or not script.exists()):
         import periop.tools.asr as asr_mod
         from periop.agents.lexicon import ANESTHESIA_LEXICON
 
@@ -80,7 +92,6 @@ def transcript_source(case_dir: Path, name: str, source_id: str) -> Source:
         asr = asr_mod.ParakeetAsr(boosted_words=ANESTHESIA_LEXICON if intraop else None)
         return asr.transcribe(wav, source_id, diarize=not intraop)
 
-    script = case_dir / "scripts" / f"{name}.json"
     if name == "intraop-notes":
         return transcript_from_voice_notes(script, source_id)
     return transcript_from_script(script, source_id)

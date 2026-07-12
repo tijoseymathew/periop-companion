@@ -1,113 +1,101 @@
 {
   "case_id": "sg-0027",
   "persona_uuid": "0f60bc0d513a4e2ab62b9af2402d892d",
-  "surgery": "Total Knee Arthroplasty (Left)",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "Spinal anesthesia with general anesthesia as backup",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
   "asa_ps": 3,
   "comorbidities": [
     "Hypertension",
     "Type 2 Diabetes Mellitus",
-    "Hyperlipidemia",
-    "Osteoarthritis (knee)"
+    "Obesity (BMI 32)",
+    "Chronic Kidney Disease (Stage 2)"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5mg",
-      "frequency": "once daily",
-      "active": true
-    },
-    {
       "name": "Metformin",
       "dose": "500mg",
-      "frequency": "twice daily",
+      "frequency": "Twice daily",
       "active": true
     },
     {
-      "name": "Glipizide",
-      "dose": "5mg",
-      "frequency": "once daily",
+      "name": "Lisinopril",
+      "dose": "10mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Atorvastatin",
       "dose": "20mg",
-      "frequency": "once daily",
+      "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "once daily",
+      "name": "Insulin Glargine",
+      "dose": "30 units",
+      "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Aspirin",
-      "dose": "75mg",
-      "frequency": "once daily",
+      "name": "Ranitidine",
+      "dose": "150mg",
+      "frequency": "Twice daily",
       "active": false
     }
   ],
   "allergies": [
-    "Sulfa drugs"
+    "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No known allergies",
-    "truth": "Allergic to sulfa drugs (rash)",
-    "gold_question": "Have you ever had an allergic reaction to any medications, particularly sulfa antibiotics?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 500mg BID, Lisinopril 10mg OD, Atorvastatin 20mg OD, Insulin Glargine 30 units OD, Ranitidine 150mg BID (active)",
+    "truth": "Patient has stopped Ranitidine due to resolution of peptic ulcer disease 6 months ago; current medications: Metformin 500mg BID, Lisinopril 10mg OD, Atorvastatin 20mg OD, Insulin Glargine 30 units OD",
+    "gold_question": "Can you confirm if you are still taking Ranitidine, or has it been discontinued?"
   },
   "distractors": [
     {
-      "description": "Pneumonia resolved in 2018",
-      "why_irrelevant": "Resolved 5 years ago, no residual lung issues"
+      "description": "History of pneumonia resolved 2 years ago",
+      "why_irrelevant": "Resolved infection more than 2 years ago, not impacting current perioperative risk"
     },
     {
-      "description": "Left wrist fracture in 2015, fully healed",
-      "why_irrelevant": "Remote trauma, no ongoing orthopedic issues"
+      "description": "Remote history of right ankle fracture (15 years ago), fully healed",
+      "why_irrelevant": "Old injury with no ongoing issues or impact on current surgery or anesthesia"
     },
     {
-      "description": "Aspirin discontinued in 2021 due to resolved indication",
-      "why_irrelevant": "Medication stopped 2 years ago, not relevant to current care"
+      "description": "Previous use of Omeprazole for GERD, discontinued 3 years ago",
+      "why_irrelevant": "Medication discontinued for a resolved condition, not relevant to current care"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5mg",
-        "frequency": "once daily",
-        "active": true
-      },
-      {
         "name": "Metformin",
         "dose": "500mg",
-        "frequency": "twice daily",
+        "frequency": "Twice daily",
         "active": true
       },
       {
-        "name": "Glipizide",
-        "dose": "5mg",
-        "frequency": "once daily",
+        "name": "Lisinopril",
+        "dose": "10mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Atorvastatin",
         "dose": "20mg",
-        "frequency": "once daily",
+        "frequency": "Once daily",
         "active": true
       },
       {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "once daily",
+        "name": "Insulin Glargine",
+        "dose": "30 units",
+        "frequency": "Once daily",
         "active": true
       },
       {
-        "name": "Aspirin",
-        "dose": "75mg",
-        "frequency": "once daily",
+        "name": "Ranitidine",
+        "dose": "150mg",
+        "frequency": "Twice daily",
         "active": true
       }
     ],
@@ -115,11 +103,10 @@
     "past_history": [
       "Hypertension",
       "Type 2 Diabetes Mellitus",
-      "Hyperlipidemia",
-      "Osteoarthritis (knee)",
-      "Pneumonia resolved in 2018",
-      "Left wrist fracture in 2015, fully healed",
-      "Aspirin discontinued in 2021 due to resolved indication"
+      "Obesity",
+      "Chronic Kidney Disease",
+      "Pneumonia (resolved 2 years ago)",
+      "Right ankle fracture (healed, 15 years ago)"
     ],
     "prior_anesthesia": null
   }

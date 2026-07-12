@@ -6,31 +6,19 @@
     },
     {
       "t": "08:02",
-      "text": "fentanyl fifty micrograms intravenous"
+      "text": "LMA size four inserted, good seal, capnography confirmed"
     },
     {
       "t": "08:05",
-      "text": "succinylcholine one hundred milligrams for intubation"
-    },
-    {
-      "t": "08:07",
-      "text": "endotracheal tube placed, grade one view"
-    },
-    {
-      "t": "08:10",
-      "text": "arterial line placed"
+      "text": "18-gauge IV in right antecubital fossa, 500 mils of Ringer's lactate bolused"
     },
     {
       "t": "08:15",
-      "text": "lactated ringers one thousand milliliters bolused for hypotension"
+      "text": "mean arterial pressure dropped to fifty five, gave phenylephrine ten micrograms"
     },
     {
-      "t": "08:20",
-      "text": "mean arterial pressure thirty five, atropine one milligram given intravenously"
-    },
-    {
-      "t": "08:25",
-      "text": "phenylephrine twenty micrograms intravenous bolus administered"
+      "t": "08:30",
+      "text": "surgery completed, LMA removed, patient extubated smoothly"
     }
   ],
   "events": [
@@ -39,144 +27,70 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": [
-        "notes#0"
-      ]
+      "provenance": []
     },
     {
       "t": "08:00",
       "category": "dose",
       "value": "120",
-      "units": "mg",
-      "provenance": [
-        "notes#0"
-      ]
+      "units": "milligrams",
+      "provenance": []
     },
     {
       "t": "08:02",
-      "category": "agent",
-      "value": "fentanyl",
+      "category": "airway",
+      "value": "LMA size four inserted",
       "units": null,
-      "provenance": [
-        "notes#1"
-      ]
+      "provenance": []
     },
     {
       "t": "08:02",
-      "category": "dose",
-      "value": "50",
-      "units": "µg",
-      "provenance": [
-        "notes#1"
-      ]
+      "category": "airway",
+      "value": "good seal, capnography confirmed",
+      "units": null,
+      "provenance": []
     },
     {
       "t": "08:05",
-      "category": "agent",
-      "value": "succinylcholine",
-      "units": null,
-      "provenance": [
-        "notes#2"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "dose",
-      "value": "100",
-      "units": "mg",
-      "provenance": [
-        "notes#2"
-      ]
-    },
-    {
-      "t": "08:07",
-      "category": "airway",
-      "value": "endotracheal tube placed",
-      "units": null,
-      "provenance": [
-        "notes#3"
-      ]
-    },
-    {
-      "t": "08:07",
-      "category": "airway",
-      "value": "grade one view",
-      "units": null,
-      "provenance": [
-        "notes#3"
-      ]
-    },
-    {
-      "t": "08:10",
       "category": "line",
-      "value": "arterial line placed",
+      "value": "18-gauge IV in right antecubital fossa",
       "units": null,
-      "provenance": [
-        "notes#4"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:15",
+      "t": "08:05",
       "category": "fluid",
-      "value": "lactated ringers",
-      "units": null,
-      "provenance": [
-        "notes#5"
-      ]
+      "value": "500",
+      "units": "mils of Ringer's lactate",
+      "provenance": []
     },
     {
       "t": "08:15",
-      "category": "dose",
-      "value": "1000",
-      "units": "mL",
-      "provenance": [
-        "notes#5"
-      ]
-    },
-    {
-      "t": "08:20",
       "category": "event",
-      "value": "mean arterial pressure thirty five",
+      "value": "mean arterial pressure dropped to fifty five",
       "units": null,
-      "provenance": [
-        "notes#6"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:20",
-      "category": "agent",
-      "value": "atropine",
-      "units": null,
-      "provenance": [
-        "notes#6"
-      ]
-    },
-    {
-      "t": "08:20",
-      "category": "dose",
-      "value": "1",
-      "units": "mg",
-      "provenance": [
-        "notes#6"
-      ]
-    },
-    {
-      "t": "08:25",
+      "t": "08:15",
       "category": "agent",
       "value": "phenylephrine",
       "units": null,
-      "provenance": [
-        "notes#7"
-      ]
+      "provenance": []
     },
     {
-      "t": "08:25",
+      "t": "08:15",
       "category": "dose",
-      "value": "20",
-      "units": "µg",
-      "provenance": [
-        "notes#7"
-      ]
+      "value": "10",
+      "units": "micrograms",
+      "provenance": []
+    },
+    {
+      "t": "08:30",
+      "category": "event",
+      "value": "surgery completed, LMA removed, patient extubated smoothly",
+      "units": null,
+      "provenance": []
     }
   ]
 }

@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Elective laparoscopic cholecystectomy for symptomatic cholelithiasis (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with Laryngeal Mask Airway (LMA), induction with propofol and fentanyl, maintenance with sevoflurane, and local anesthetic for port sites
+General Anesthesia with Intraoperative Neuromonitoring

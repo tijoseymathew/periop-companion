@@ -5,32 +5,32 @@
       "text": "induction propofol one hundred twenty milligrams"
     },
     {
-      "t": "08:01",
-      "text": "administered rocuronium sixty milligrams"
+      "t": "08:02",
+      "text": "fentanyl twenty five micrograms"
     },
     {
-      "t": "08:02",
-      "text": "tube in, grade one view"
+      "t": "08:04",
+      "text": "vecuronium ten milligrams"
     },
     {
       "t": "08:05",
-      "text": "peripheral line placed in left radial vein, eighteen gauge"
+      "text": "tube in, grade one view"
     },
     {
       "t": "08:10",
-      "text": "arterial line placed in right radial artery, twenty-two gauge"
+      "text": "sevoflurane at two percent, remifentanil infusion started"
     },
     {
-      "t": "08:15",
-      "text": "administered five hundred milliliters of normal saline bolus"
+      "t": "08:20",
+      "text": "blood pressure dropped to ninety over sixty, gave one hundred milliliters fluid bolus"
     },
     {
-      "t": "08:30",
-      "text": "mean arterial pressure dropped to fifty-five, gave one hundred milliliters of normal saline bolus"
+      "t": "08:40",
+      "text": "neostigmine two milligrams, glycopyrrolate four milligrams given for reversal"
     },
     {
       "t": "08:45",
-      "text": "heart rate increased to one hundred twenty, gave two milligrams of labetalol"
+      "text": "patient waking up, extubated smoothly"
     }
   ],
   "events": [
@@ -38,90 +38,180 @@
       "t": "08:00",
       "category": "agent",
       "value": "propofol",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#1"
+        "voice_note#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:01",
-      "category": "agent",
-      "value": "rocuronium",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:01",
-      "category": "dose",
-      "value": "60",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#2"
+        "voice_note#08:00"
       ]
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "endotracheal tube placed, grade 1 view",
-      "units": null,
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes#3"
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty five",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "ten",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:04"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "peripheral",
-      "units": "left radial vein, 18G",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
       "provenance": [
-        "voice_notes#4"
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "arterial",
-      "units": "right radial artery, 22G",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": "percent",
       "provenance": [
-        "voice_notes#5"
+        "voice_note#08:10"
       ]
     },
     {
-      "t": "08:15",
-      "category": "fluid",
-      "value": "500",
-      "units": "mL",
+      "t": "08:10",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
       "provenance": [
-        "voice_notes#6"
+        "voice_note#08:10"
       ]
     },
     {
-      "t": "08:30",
-      "category": "event",
-      "value": "hypotension (MAP 55 mmHg) treated with 100 mL NS bolus",
+      "t": "08:10",
+      "category": "agent",
+      "value": "remifentanil",
       "units": null,
       "provenance": [
-        "voice_notes#7"
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "infusion started",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "blood pressure dropped",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "one hundred",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "glycopyrrolate",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "four",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
       ]
     },
     {
       "t": "08:45",
       "category": "event",
-      "value": "tachycardia (HR 120 bpm) treated with 2 mg labetalol",
+      "value": "patient waking up",
       "units": null,
       "provenance": [
-        "voice_notes#8"
+        "voice_note#08:45"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "extubated smoothly",
+      "units": null,
+      "provenance": [
+        "voice_note#08:45"
       ]
     }
   ]

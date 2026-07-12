@@ -5,119 +5,119 @@
       "speaker": "PROVIDER",
       "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist who'll be taking care of you during your hernia surgery today. Let me go through some questions to make sure we're all set for your general anesthesia with the LMA. First, can you tell me a bit about your hernia and why you're having this surgery?",
       "t0": 0.0,
-      "t1": 16.486
+      "t1": 15.836
     },
     {
       "seg_id": "s001",
       "speaker": "PATIENT",
       "text": "Ah, yes. This hernia on my left side has been bulging for almost a year now. It doesn't hurt much, but it gets uncomfortable when I lift heavy things or bend over. My surgeon said it's better to fix it before it gets worse, so here I am.",
-      "t0": 16.836,
-      "t1": 31.325
+      "t0": 16.186,
+      "t1": 30.118
     },
     {
       "seg_id": "s002",
       "speaker": "PROVIDER",
       "text": "Thanks for sharing that. Let's talk about your medications. I see you're on Metformin, Perindopril, Indapamide, and Atorvastatin. Are you still taking all of these as prescribed?",
-      "t0": 31.675,
-      "t1": 42.914
+      "t0": 30.468,
+      "t1": 40.963
     },
     {
       "seg_id": "s003",
       "speaker": "PATIENT",
       "text": "Yes, all of them except Amlodipine. I stopped that one about six months ago because my ankles kept swelling up. My GP said it was due to the Amlodipine, so we switched me off it.",
-      "t0": 43.264,
-      "t1": 54.595
+      "t0": 41.313,
+      "t1": 52.645
     },
     {
       "seg_id": "s004",
       "speaker": "PROVIDER",
       "text": "I see. The records mentioned Amlodipine was still active, so I appreciate you correcting that. Did you have any other side effects from it besides the swelling?",
-      "t0": 54.945,
-      "t1": 64.372
+      "t0": 52.995,
+      "t1": 62.561
     },
     {
       "seg_id": "s005",
       "speaker": "PATIENT",
       "text": "Nope, just the swelling. Blood pressure's been fine since I stopped it, though. My BP readings at the clinic have been pretty stable lah.",
-      "t0": 64.722,
-      "t1": 72.989
+      "t0": 62.911,
+      "t1": 70.992
     },
     {
       "seg_id": "s006",
       "speaker": "PROVIDER",
       "text": "Good to know. Any allergies we should be aware of?",
-      "t0": 73.339,
-      "t1": 76.45
+      "t0": 71.342,
+      "t1": 74.36
     },
     {
       "seg_id": "s007",
       "speaker": "PATIENT",
       "text": "None at all. Never had any reactions to medications or anything.",
-      "t0": 76.8,
-      "t1": 81.073
+      "t0": 74.71,
+      "t1": 79.029
     },
     {
       "seg_id": "s008",
       "speaker": "PROVIDER",
       "text": "Excellent. Have you eaten or drunk anything this morning? Remember, it's important to be NPO for surgery.",
-      "t0": 81.423,
-      "t1": 88.017
+      "t0": 79.379,
+      "t1": 85.695
     },
     {
       "seg_id": "s009",
       "speaker": "PATIENT",
       "text": "No, nothing since midnight. Just a sip of water to take my morning pills, like the nurse instructed.",
-      "t0": 88.367,
-      "t1": 94.544
+      "t0": 86.045,
+      "t1": 91.989
     },
     {
       "seg_id": "s010",
       "speaker": "PROVIDER",
       "text": "Perfect. Any previous surgeries or anesthesia experiences we should know about?",
-      "t0": 94.894,
-      "t1": 99.77
+      "t0": 92.339,
+      "t1": 97.03
     },
     {
       "seg_id": "s011",
       "speaker": "PATIENT",
       "text": "I had my appendix out when I was a teenager, but that's it. No problems with the anesthesia then.",
-      "t0": 100.12,
-      "t1": 105.878
+      "t0": 97.38,
+      "t1": 103.185
     },
     {
       "seg_id": "s012",
       "speaker": "PROVIDER",
       "text": "Great. Lastly, how's your overall fitness? Can you walk up a flight of stairs without getting short of breath?",
-      "t0": 106.228,
-      "t1": 112.173
+      "t0": 103.535,
+      "t1": 109.386
     },
     {
       "seg_id": "s013",
       "speaker": "PATIENT",
       "text": "Yeah, no problem. I walk to the hawker center every day for lunch, and that's about 10 minutes. Only the hernia stops me from doing heavier stuff.",
-      "t0": 112.522,
-      "t1": 121.393
+      "t0": 109.736,
+      "t1": 118.188
     },
     {
       "seg_id": "s014",
       "speaker": "PROVIDER",
       "text": "Thanks for all the details, Mr. Tan. I'll update your records about the Amlodipine and make sure the team knows. Any questions or concerns before we proceed?",
-      "t0": 121.742,
-      "t1": 129.823
+      "t0": 118.538,
+      "t1": 127.269
     },
     {
       "seg_id": "s015",
       "speaker": "PATIENT",
       "text": "No, I think that's all. Just want to get this sorted and go back to my badminton games without pain lah.",
-      "t0": 130.173,
-      "t1": 136.303
+      "t0": 127.619,
+      "t1": 134.074
     },
     {
       "seg_id": "s016",
       "speaker": "PROVIDER",
       "text": "Haha, sounds like a plan. We'll take good care of you. You'll meet the surgical team shortly, and I'll see you in the operating room.",
-      "t0": 136.653,
-      "t1": 143.665
+      "t0": 134.424,
+      "t1": 141.251
     }
   ]
 }

@@ -10,19 +10,19 @@
     },
     {
       "t": "08:05",
-      "text": "16-gauge line placed in right antecubital vein"
+      "text": "initiating ultrasound-guided TAP block with bupivacaine twenty-five milligrams"
     },
     {
       "t": "08:10",
-      "text": "crystalloid two thousand milliliters administered"
+      "text": "two liters of lactated ringers administered"
     },
     {
-      "t": "08:30",
-      "text": "blood pressure dropped to 85 over 50, gave ephedrine ten milligrams IV"
+      "t": "08:20",
+      "text": "mean arterial pressure dropped to fifty-five, atropine one milligram given"
     },
     {
-      "t": "09:15",
-      "text": "blood pressure up to 160 over 90, gave labetalol twenty milligrams IV"
+      "t": "08:40",
+      "text": "surgery completion, reversal with neostigmine two milligrams and sugammadex sixteen milligrams"
     }
   ],
   "events": [
@@ -30,99 +30,135 @@
       "t": "08:00",
       "category": "agent",
       "value": "propofol",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "note:1#1"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "note:1#1"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
       "category": "airway",
-      "value": "endotracheal tube placed, grade one view",
+      "value": "tube in",
       "units": null,
       "provenance": [
-        "note:2#2"
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "16-gauge IV line placed in right antecubital vein",
-      "units": null,
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": "milligrams",
       "provenance": [
-        "note:3#3"
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty-five",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:10",
       "category": "fluid",
-      "value": "crystalloid",
-      "units": "2000 ml",
+      "value": "lactated ringers",
+      "units": "liters",
       "provenance": [
-        "note:4#4"
+        "voice_notes#08:10"
       ]
     },
     {
-      "t": "08:30",
-      "category": "event",
-      "value": "hypotension (85/50 mmHg)",
-      "units": null,
-      "provenance": [
-        "note:5#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "agent",
-      "value": "ephedrine",
-      "units": null,
-      "provenance": [
-        "note:5#5"
-      ]
-    },
-    {
-      "t": "08:30",
+      "t": "08:10",
       "category": "dose",
-      "value": "10",
-      "units": "mg",
+      "value": "two",
+      "units": "liters",
       "provenance": [
-        "note:5#5"
+        "voice_notes#08:10"
       ]
     },
     {
-      "t": "09:15",
+      "t": "08:20",
       "category": "event",
-      "value": "hypertension (160/90 mmHg)",
+      "value": "mean arterial pressure dropped to fifty-five",
       "units": null,
       "provenance": [
-        "note:6#6"
+        "voice_notes#08:20"
       ]
     },
     {
-      "t": "09:15",
+      "t": "08:20",
       "category": "agent",
-      "value": "labetalol",
-      "units": null,
+      "value": "atropine",
+      "units": "milligrams",
       "provenance": [
-        "note:6#6"
+        "voice_notes#08:20"
       ]
     },
     {
-      "t": "09:15",
+      "t": "08:20",
       "category": "dose",
-      "value": "20",
-      "units": "mg",
+      "value": "one",
+      "units": "milligrams",
       "provenance": [
-        "note:6#6"
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "sugammadex",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "sixteen",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#08:40"
       ]
     }
   ]

@@ -2,51 +2,51 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. How are you feeling now after the surgery?"
+      "text": "Good afternoon, how are you feeling now after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, Doctor. I'm feeling a bit tired, but otherwise okay lah."
+      "text": "I'm feeling a bit tired, but okay. My tummy is sore, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any pain or discomfort? Let's say on a scale of 1 to 10."
+      "text": "I see. On a scale from 0 to 10, how would you rate your pain right now?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Around 3 or 4. It's manageable, not too bad."
+      "text": "Maybe around 4? It's manageable, but I can feel it."
     },
     {
       "speaker": "PROVIDER",
-      "text": "And how about nausea or breathing issues?"
+      "text": "Alright, we can manage that with medication. Are you feeling any nausea or dizziness from the anesthesia?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit queasy, but not too bad. Breathing's okay, though my throat's a bit sore."
+      "text": "A little bit earlier, but it's better now. I didn't throw up or anything."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything from the operation?"
+      "text": "Good. How about your breathing? Any discomfort or tightness in your chest?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, everything's a blank. I was out cold."
+      "text": "No, I'm breathing fine. My throat is a bit sore from the tube, but it's not bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Given your medical history, any issues with BP, sugar, or reflux?"
+      "text": "That's expected after intubation. Do you remember anything from the operation itself?"
     },
     {
       "speaker": "PATIENT",
-      "text": "BP's stable, sugar checked, all good. No heartburn now."
+      "text": "No, I don't remember anything. I was out completely."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Alright, we'll keep monitoring. Any other concerns?"
+      "text": "That’s normal under general anesthesia. Given your diabetes and high blood pressure, we’ll keep a close eye on your vitals and sugar levels. Any other concerns for me?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, I think that's all. Thanks for checking on me."
+      "text": "No, I think that's all. Thank you, doctor."
     }
   ]
 }

@@ -1,0 +1,5 @@
+[
+  {"provider_id": "p-lim", "name": "Dr A. Lim", "role": "consultant"},
+  {"provider_id": "p-tan", "name": "Dr B. Tan", "role": "registrar"},
+  {"provider_id": "p-rahman", "name": "Dr C. Rahman", "role": "consultant"}
+]

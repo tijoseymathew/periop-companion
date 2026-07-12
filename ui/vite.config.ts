@@ -4,7 +4,15 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: { "/api": "http://localhost:8000" },
+    // ws: true so the live-dictation WebSocket proxies in dev too.
+    // PERIOP_API_PORT mirrors the server env var — needed when a local NIM
+    // already holds :8000 and the API runs elsewhere.
+    proxy: {
+      "/api": {
+        target: `http://localhost:${process.env.PERIOP_API_PORT ?? "8000"}`,
+        ws: true,
+      },
+    },
   },
   test: {
     environment: "jsdom",

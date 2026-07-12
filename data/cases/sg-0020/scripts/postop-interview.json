@@ -2,51 +2,51 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Mr Tan, how are you feeling now after the TURP procedure?"
+      "text": "Hi there, how are you feeling after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I’m a bit uncomfortable, Doctor, but not in severe pain. More like a dull ache."
+      "text": "I'm okay, doctor. A bit sleepy, but not in too much pain."
     },
     {
       "speaker": "PROVIDER",
-      "text": "On a scale of 0 to 10, how would you rate your pain right now?"
+      "text": "Good to hear. Can you tell me your pain level on a scale from 0 to 10, where 0 is no pain and 10 is the worst?"
     },
     {
       "speaker": "PATIENT",
-      "text": "About 4, I’d say. It’s there, but the medication seems to be helping."
+      "text": "I'd say about a 3. The nerve block seems to be helping a lot."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any nausea, dizziness, or breathing difficulties since waking up?"
+      "text": "Excellent. Are you feeling nauseous or have been sick at all since waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No nausea, but I felt a bit light-headed when I first opened my eyes. Breathing’s fine though."
+      "text": "No, no nausea. I feel fine in that way."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything about the procedure itself while under spinal anesthesia?"
+      "text": "Great. How about your breathing? Any discomfort or difficulty breathing?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I recall being awake and hearing voices, but it’s all hazy. Not much detail, really."
+      "text": "No, I'm breathing fine. Chest feels okay."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Given your hypertension, diabetes, and kidney condition, have you noticed any unusual symptoms like chest pain, blurred vision, or reduced urine output?"
+      "text": "Good. Do you remember anything about the surgery itself? Any awareness during the procedure?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No chest pain or vision issues. Urine came out normally when I voided earlier. Blood sugar was 7.8 this morning, which is usual for me."
+      "text": "No, I don't remember anything. I was out the whole time."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. We’ll continue monitoring your vitals, blood sugar, and kidney function. Any other concerns before we move you to the ward?"
+      "text": "That's expected with general anesthesia. Given your diabetes and kidney condition, we'll keep a close eye on your fluids and blood sugar levels. Any other concerns from your side?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, Doctor. I’m just glad the procedure’s done. Thank you for checking on me."
+      "text": "No, I think that's all. Thank you for checking on me."
     }
   ]
 }

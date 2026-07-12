@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Laparoscopic cholecystectomy (elective).
+Cholecystectomy for symptomatic gallstones (elective).
 
 ## Anesthesia
 
-General anesthesia with sevoflurane and rocuronium, maintained with desflurane in air/oxygen, post-operative analgesia with IV paracetamol and PCA morphine
+General Anesthesia with Laryngeal Mask Airway (LMA)

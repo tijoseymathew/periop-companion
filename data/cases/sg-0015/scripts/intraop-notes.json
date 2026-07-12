@@ -10,27 +10,19 @@
     },
     {
       "t": "08:05",
-      "text": "18-gauge IV placed in right antecubital fossa"
+      "text": "remifentanil bolus twenty micrograms"
     },
     {
       "t": "08:10",
-      "text": "administered 500 mL Ringer's lactate"
-    },
-    {
-      "t": "08:15",
-      "text": "blood pressure dropped to 90/60, gave 10 mL saline bolus"
+      "text": "sevoflurane at two percent, increased to two point five due to movement"
     },
     {
       "t": "08:20",
-      "text": "sevoflurane at 1.5% inhaled concentration"
+      "text": "hypotension treated with five hundred milliliters fluid bolus"
     },
     {
-      "t": "08:25",
-      "text": "fentanyl 50 micrograms IV"
-    },
-    {
-      "t": "08:30",
-      "text": "heart rate increased to 110, gave 0.5 mg metoprolol"
+      "t": "08:40",
+      "text": "additional remifentanil two micrograms for tachycardia"
     }
   ],
   "events": [
@@ -39,77 +31,135 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#1#1"
+      ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
-      "provenance": []
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#1#1"
+      ]
     },
     {
       "t": "08:02",
       "category": "airway",
-      "value": "tube in, grade one view",
+      "value": "tube in",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#2#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "event",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#2#2"
+      ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "18-gauge IV placed in right antecubital fossa",
+      "category": "agent",
+      "value": "remifentanil",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#3#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#3#2"
+      ]
     },
     {
       "t": "08:10",
-      "category": "fluid",
-      "value": "500 mL Ringer's lactate",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:15",
-      "category": "event",
-      "value": "blood pressure dropped to 90/60, gave 10 mL saline bolus",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:20",
       "category": "agent",
       "value": "sevoflurane",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#4#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two point five",
+      "units": "percent",
+      "provenance": [
+        "voice_note#4#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "movement",
+      "units": null,
+      "provenance": [
+        "voice_note#4#3"
+      ]
     },
     {
       "t": "08:20",
-      "category": "dose",
-      "value": "1.5",
-      "units": "%",
-      "provenance": []
-    },
-    {
-      "t": "08:25",
-      "category": "agent",
-      "value": "fentanyl",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:25",
-      "category": "dose",
-      "value": "50",
-      "units": "micrograms",
-      "provenance": []
-    },
-    {
-      "t": "08:30",
       "category": "event",
-      "value": "heart rate increased to 110, gave 0.5 mg metoprolol",
+      "value": "hypotension",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#5#1"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "five hundred",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#5#2"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "fluid bolus",
+      "units": null,
+      "provenance": [
+        "voice_note#5#3"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_note#6#1"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#6#2"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "tachycardia",
+      "units": null,
+      "provenance": [
+        "voice_note#6#3"
+      ]
     }
   ]
 }

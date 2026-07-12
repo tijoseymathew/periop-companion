@@ -1,114 +1,204 @@
 {
   "questions": [
-    "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin or related drugs?"
+    "Has there been any change in your medication list since your last hospital visit?"
   ],
   "events": [
     {
       "t": "08:00",
       "category": "agent",
       "value": "propofol",
-      "units": null,
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#1"
+        "voice_note#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:01",
-      "category": "agent",
-      "value": "rocuronium",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:01",
-      "category": "dose",
-      "value": "60",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#2"
+        "voice_note#08:00"
       ]
     },
     {
       "t": "08:02",
-      "category": "airway",
-      "value": "endotracheal tube placed, grade 1 view",
-      "units": null,
+      "category": "agent",
+      "value": "fentanyl",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes#3"
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "dose",
+      "value": "twenty five",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#08:02"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "agent",
+      "value": "vecuronium",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:04"
+      ]
+    },
+    {
+      "t": "08:04",
+      "category": "dose",
+      "value": "ten",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:04"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "peripheral",
-      "units": "left radial vein, 18G",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
       "provenance": [
-        "voice_notes#4"
+        "voice_note#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "arterial",
-      "units": "right radial artery, 22G",
+      "category": "agent",
+      "value": "sevoflurane",
+      "units": "percent",
       "provenance": [
-        "voice_notes#5"
+        "voice_note#08:10"
       ]
     },
     {
-      "t": "08:15",
-      "category": "fluid",
-      "value": "500",
-      "units": "mL",
+      "t": "08:10",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
       "provenance": [
-        "voice_notes#6"
+        "voice_note#08:10"
       ]
     },
     {
-      "t": "08:30",
-      "category": "event",
-      "value": "hypotension (MAP 55 mmHg) treated with 100 mL NS bolus",
+      "t": "08:10",
+      "category": "agent",
+      "value": "remifentanil",
       "units": null,
       "provenance": [
-        "voice_notes#7"
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "infusion started",
+      "units": null,
+      "provenance": [
+        "voice_note#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "blood pressure dropped",
+      "units": null,
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "one hundred",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#08:20"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "neostigmine",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "glycopyrrolate",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "four",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#08:40"
       ]
     },
     {
       "t": "08:45",
       "category": "event",
-      "value": "tachycardia (HR 120 bpm) treated with 2 mg labetalol",
+      "value": "patient waking up",
       "units": null,
       "provenance": [
-        "voice_notes#8"
+        "voice_note#08:45"
+      ]
+    },
+    {
+      "t": "08:45",
+      "category": "event",
+      "value": "extubated smoothly",
+      "units": null,
+      "provenance": [
+        "voice_note#08:45"
       ]
     }
   ],
   "preop_note_claims": [
-    "History includes hypertension, type 2 diabetes mellitus, hyperlipidemia, and generalized anxiety disorder",
-    "Medications: Amlodipine 5 mg once daily, Metoprolol 25 mg once daily, Metformin 500 mg twice daily, Atorvastatin 20 mg once daily, Omeprazole 20 mg once daily (discontinued)",
-    "Allergies: Penicillin (rash)",
-    "ASA Physical Status: ASA 2 due to controlled hypertension and type 2 diabetes mellitus",
-    "Airway assessment and anesthetic plan: Airway evaluation performed; plan for general anesthesia with sevoflurane and rocuronium"
+    "Patient has a history of Hypertension, Type 2 Diabetes Mellitus, and Obesity (BMI 32).",
+    "Current medications include Metformin 500mg Twice daily, Lisinopril 10mg Once daily, and Atorvastatin 20mg Once daily. Ranitidine 150mg Once daily was discontinued 6 months ago due to resolution of GERD symptoms; currently on Omeprazole 20mg once daily.",
+    "Patient has a known allergy to Penicillin (rash).",
+    "ASA-PS classification is 2, indicating a patient with mild systemic disease (Hypertension, Type 2 Diabetes Mellitus, Obesity).",
+    "Airway assessment and anesthetic plan documented, including General Anesthesia with Propofol, Fentanyl, and Vecuronium; Maintenance with Sevoflurane and Remifentanil; Reversal with Neostigmine and Glycopyrrolate."
   ],
   "handoff_claims": [
-    "Key history: Hypertension, type 2 diabetes mellitus, hyperlipidemia, generalized anxiety disorder, and penicillin allergy",
-    "Intraoperative course: Laparoscopic cholecystectomy performed under general anesthesia with sevoflurane and rocuronium; multimodal analgesia (paracetamol, ketorolac, dexamethasone) administered",
-    "Anticipated issues: Postoperative pain management, blood glucose monitoring, blood pressure control, and anxiety-related concerns"
+    "Patient underwent elective Laparoscopic Cholecystectomy under General Anesthesia with Propofol, Fentanyl, and Vecuronium; maintained with Sevoflurane and Remifentanil; reversed with Neostigmine and Glycopyrrolate.",
+    "Anticipated issues in PACU may include residual opioid effects, potential for nausea/vomiting, and monitoring for signs of GERD given history and current use of Omeprazole.",
+    "Key history to convey: Hypertension, Type 2 Diabetes Mellitus, Obesity, and Penicillin allergy (rash). Current medications include Metformin, Lisinopril, Atorvastatin, and Omeprazole."
   ],
   "distractors": [
-    "Pneumonia (resolved 2018, no residual issues)",
-    "Distal radius fracture (left wrist, 2015, fully healed)",
-    "GERD (discontinued omeprazole 2022, symptoms resolved)"
+    "History of pneumonia resolved 5 years ago",
+    "Remote history of wrist fracture (healed, no sequelae)",
+    "Previous use of Alprazolam for anxiety (discontinued 2 years ago)"
   ]
 }

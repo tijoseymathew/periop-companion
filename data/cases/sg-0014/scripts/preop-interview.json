@@ -2,75 +2,71 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Liew from the anesthesia team. Today, we'll discuss your upcoming surgery and ensure you're ready for anesthesia. Let's start with your gallstones. How have they been affecting you?"
+      "text": "Good morning, Mr./Ms./Mrs. [Patient's Name]. I'm [Provider's Name], the anesthesiologist who will be taking care of you during your surgery. I'd like to go over a few things with you before your laparoscopic cholecystectomy. Can you please start by telling me a bit about your medical history and why you're having this surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, doc. Been having this sharp pain on the right side, especially after eating fried food. Had to stop my chili crab lah. Also, felt nauseous a few times. Scans showed stones, so doctor said remove the gallbladder."
+      "text": "Morning, Doctor. I've been having a lot of tummy pain on the right side, especially after eating. The doctor said I have gallstones and the best way is to remove the gallbladder laparoscopically."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Now, let's go through your medications. You're on amlodipine, metoprolol, atorvastatin, metformin, omeprazole, and aspirin. But I noticed the records say aspirin is still active. Have you stopped or changed any medications in the past year?"
+      "text": "Thank you for sharing that. Now, let's go over your medications. I see here you're on Losartan, Metformin, Atorvastatin, and Ranitidine. Can you confirm if you're still taking all these medications as listed, and are there any changes?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, right! I stopped the aspirin about six months ago. Had some tummy bleeding, like black stools and all. Doctor said to stop it and switch to omeprazole for protection."
+      "text": "Yes, I'm still on Losartan for my blood pressure, Metformin for my diabetes, and Atorvastatin for cholesterol. But for the Ranitidine, ah, I've stopped that one. My doctor switched me to Omeprazole 20 mg daily for my acid reflux because Ranitidine was discontinued."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for clarifying that. So, aspirin was discontinued due to gastrointestinal bleeding. No other medication changes?"
+      "text": "Thank you for clarifying that. It's important we have the most up-to-date medication list. Regarding your acid reflux, has the Omeprazole been working well for you without any issues?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, all others are still the same. Blood pressure and sugar are controlled, lah. HbA1c was 7.2% last check."
+      "text": "Yes, it's been fine. No heartburn or anything like before."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Any allergies to medications or foods?"
+      "text": "Excellent. Now, about your allergies, we have you down as allergic to Penicillin. Can you please describe the reaction you had to Penicillin?"
     },
     {
       "speaker": "PATIENT",
-      "text": "None that I know of. Never had a reaction before."
+      "text": "Yes, I had a bad rash all over my body the last time I took it. So, I've avoided it ever since."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. You mentioned GERD earlier. Any recent acid reflux episodes or difficulty swallowing?"
+      "text": "Thank you for that information. It's crucial for us to know. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Sometimes at night if I eat late, but omeprazole helps. No problem swallowing food."
+      "text": "No, this is my first time. I've never been under general anesthesia before."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Noted. Have you eaten or drunk anything since midnight? We need to ensure your stomach is empty for anesthesia."
+      "text": "Alright, so you're NPO after midnight, correct? And you've had no food or drink since then?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doc. Had my last meal at 8pm last night. Just water this morning, but stopped at 6am."
+      "text": "Yes, Doctor. I stopped eating after dinner last night and haven't had anything since, not even water."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Perfect. Any previous surgeries or anesthesia? Reactions like difficulty waking up or nausea?"
+      "text": "Perfect. Lastly, how would you describe your overall physical activity level? Are you able to walk up a flight of stairs without getting overly short of breath?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Appendectomy when I was younger. Anesthesia was smooth, no issues. Recovered well."
+      "text": "I can walk up the stairs, but I do get a bit out of breath, especially if I go too fast. But generally, I'm fairly active."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. Finally, how are your daily activities? Can you climb stairs or walk without discomfort?"
+      "text": "Thank you for providing all this information, Mr./Ms./Mrs. [Patient's Name]. It's very helpful for us. If you have any questions about the anesthesia or the procedure, now is a good time to ask."
     },
     {
       "speaker": "PATIENT",
-      "text": "No problem, doc. Walk 30 minutes most days. Only the gallstone pain stops me sometimes."
+      "text": "No, I think you've covered everything. I'm ready."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you, Mr. Tan. We'll proceed with general anesthesia using an LMA and regional analgesia as planned. The team will ensure your blood pressure and sugar are monitored closely. Any questions?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "No questions, doc. Ready to get this done."
+      "text": "Very well. We'll take good care of you. You'll see me or one of my team members again before you go into the operating room. Have a rest, and we'll see you soon."
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "questions": [
-    "Have you ever had any allergic reactions to medications, especially antibiotics like sulfonamides?"
+    "Have you had any allergic reactions to foods, especially nuts, or any other substances not listed in your records?"
   ],
   "events": [
     {
@@ -8,96 +8,152 @@
       "category": "agent",
       "value": "propofol",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#1#1"
+      ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120",
-      "units": "mg",
-      "provenance": []
+      "value": "one hundred twenty",
+      "units": "milligrams",
+      "provenance": [
+        "voice_note#1#1"
+      ]
     },
     {
       "t": "08:02",
       "category": "airway",
-      "value": "tube in, grade one view",
+      "value": "tube in",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#2#1"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "event",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_note#2#2"
+      ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "18-gauge IV placed in right antecubital fossa",
+      "category": "agent",
+      "value": "remifentanil",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#3#1"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "twenty",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#3#2"
+      ]
     },
     {
       "t": "08:10",
-      "category": "fluid",
-      "value": "500 mL Ringer's lactate",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:15",
-      "category": "event",
-      "value": "blood pressure dropped to 90/60, gave 10 mL saline bolus",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:20",
       "category": "agent",
       "value": "sevoflurane",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#4#1"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "dose",
+      "value": "two point five",
+      "units": "percent",
+      "provenance": [
+        "voice_note#4#2"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "movement",
+      "units": null,
+      "provenance": [
+        "voice_note#4#3"
+      ]
     },
     {
       "t": "08:20",
-      "category": "dose",
-      "value": "1.5",
-      "units": "%",
-      "provenance": []
-    },
-    {
-      "t": "08:25",
-      "category": "agent",
-      "value": "fentanyl",
-      "units": null,
-      "provenance": []
-    },
-    {
-      "t": "08:25",
-      "category": "dose",
-      "value": "50",
-      "units": "micrograms",
-      "provenance": []
-    },
-    {
-      "t": "08:30",
       "category": "event",
-      "value": "heart rate increased to 110, gave 0.5 mg metoprolol",
+      "value": "hypotension",
       "units": null,
-      "provenance": []
+      "provenance": [
+        "voice_note#5#1"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "fluid",
+      "value": "five hundred",
+      "units": "milliliters",
+      "provenance": [
+        "voice_note#5#2"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "event",
+      "value": "fluid bolus",
+      "units": null,
+      "provenance": [
+        "voice_note#5#3"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "agent",
+      "value": "remifentanil",
+      "units": null,
+      "provenance": [
+        "voice_note#6#1"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "dose",
+      "value": "two",
+      "units": "micrograms",
+      "provenance": [
+        "voice_note#6#2"
+      ]
+    },
+    {
+      "t": "08:40",
+      "category": "event",
+      "value": "tachycardia",
+      "units": null,
+      "provenance": [
+        "voice_note#6#3"
+      ]
     }
   ],
   "preop_note_claims": [
-    "History includes hypertension, hyperlipidemia, and GERD",
-    "Current medications: amlodipine 5mg daily, metoprolol 50mg daily, atorvastatin 20mg nightly, omeprazole 20mg daily",
-    "Discontinued medication: metformin 500mg twice daily (stopped)",
-    "Allergy to sulfa drugs with rash",
-    "ASA Physical Status II due to controlled hypertension and hyperlipidemia",
-    "Airway assessment: normal airway with no anticipated difficulties",
-    "Anesthesia plan: general anesthesia with endotracheal intubation, balanced technique using sevoflurane, fentanyl, and rocuronium"
+    "Patient has a history of Type 2 Diabetes Mellitus, Hypertension, and Obesity (BMI 32).",
+    "Current medications include Metformin 500 mg twice daily, Lisinopril 10 mg once daily, Atorvastatin 20 mg once daily, and Ranitidine 150 mg twice daily (discontinued).",
+    "Patient is allergic to Penicillin (rash) and has a history of anaphylaxis to Nuts.",
+    "ASA-PS classification is 3 due to controlled but significant comorbidities including Diabetes, Hypertension, and Obesity.",
+    "Airway assessment indicates no anticipated difficulties; general anesthesia plan includes Propofol, Remifentanil, and Sevoflurane."
   ],
   "handoff_claims": [
-    "Patient has a sulfa allergy with rash and comorbidities of hypertension, hyperlipidemia, and GERD",
-    "Intraoperative course: laparoscopic cholecystectomy completed under general anesthesia with sevoflurane, fentanyl, and rocuronium",
-    "Anticipated postoperative issues: pain, nausea, and potential delayed extubation due to GERD"
+    "Patient underwent elective Laparoscopic Cholecystectomy under General Anesthesia with a Balanced Technique using Propofol, Remifentanil, and Sevoflurane.",
+    "Anticipated postoperative issues include potential for nausea and delayed awakening due to use of Remifentanil and Propofol.",
+    "Key history includes Penicillin allergy (rash), Nut allergy (anaphylaxis), and comorbidities of Diabetes, Hypertension, and Obesity."
   ],
   "distractors": [
-    "Resolved pneumonia (2018)",
-    "Left wrist fracture (2014)",
-    "Discontinued metformin (2022)"
+    "Pneumonia (resolved, 5 years ago)",
+    "Fractured wrist (healed, 10 years ago)",
+    "Discontinued Metformin (due to side effects, 2 years ago, then restarted)"
   ]
 }

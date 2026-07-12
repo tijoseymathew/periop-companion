@@ -1,96 +1,96 @@
 {
   "case_id": "sg-0023",
   "persona_uuid": "7150254a9680452abd4f1db992706156",
-  "surgery": "Laparoscopic cholecystectomy",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with Laryngeal Mask Airway (LMA), balanced technique with intravenous anesthetic agents and neuromuscular blockade",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA) and Ultrasound-Guided Regional Anesthesia (USRA) for postoperative pain management",
   "asa_ps": 2,
   "comorbidities": [
-    "Hypertension",
-    "Hyperlipidemia",
-    "Gastroesophageal Reflux Disease (GERD)"
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "10mg",
-      "frequency": "once daily",
+      "name": "Metformin",
+      "dose": "1000 mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Insulin Glargine",
+      "dose": "40 units",
+      "frequency": "Once daily at bedtime",
+      "active": true
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "20 mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Atorvastatin",
-      "dose": "20mg",
-      "frequency": "once nightly",
+      "dose": "40 mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "once daily",
-      "active": true
-    },
-    {
-      "name": "Metformin",
-      "dose": "500mg",
-      "frequency": "twice daily",
+      "name": "Ranitidine",
+      "dose": "150 mg",
+      "frequency": "Twice daily",
       "active": false
     }
   ],
   "allergies": [
-    "Penicillin (rash)"
+    "Penicillin"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No known allergies",
-    "truth": "Allergic to penicillin (rash)",
-    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 1000 mg twice daily, Lisinopril 20 mg once daily, Atorvastatin 40 mg once daily. No allergies listed.",
+    "truth": "Patient has since added Insulin Glargine 40 units once daily at bedtime for better glycemic control, and has a known allergy to Penicillin which was not recorded.",
+    "gold_question": "Can you confirm the current list of medications and any allergies that have been diagnosed since your last medical review?"
   },
   "distractors": [
     {
-      "description": "History of pneumonia resolved in 2018",
-      "why_irrelevant": "Resolved, no residual effects"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved infection with no residual effects, not relevant to current anesthesia planning"
     },
     {
-      "description": "Right ankle fracture treated with casting in 2015",
-      "why_irrelevant": "Healed, no functional impairment"
+      "description": "Remote history of fractured right wrist (10 years ago)",
+      "why_irrelevant": "Fully healed, no impact on current physical status or anesthesia"
     },
     {
-      "description": "Prediabetes diagnosed in 2020, managed with metformin until 2022",
-      "why_irrelevant": "Metformin discontinued as per resolved condition"
+      "description": "Previous use of Omeprazole for GERD, now discontinued",
+      "why_irrelevant": "Medication discontinued due to resolution of symptoms, not currently active"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "10mg",
-        "frequency": "once daily",
+        "name": "Metformin",
+        "dose": "1000 mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "20 mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Atorvastatin",
-        "dose": "20mg",
-        "frequency": "once nightly",
-        "active": true
-      },
-      {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "once daily",
-        "active": true
-      },
-      {
-        "name": "Metformin",
-        "dose": "500mg",
-        "frequency": "twice daily",
+        "dose": "40 mg",
+        "frequency": "Once daily",
         "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "History of pneumonia resolved in 2018",
-      "Right ankle fracture treated with casting in 2015",
-      "Prediabetes diagnosed in 2020, managed with metformin until 2022"
+      "History of pneumonia resolved 5 years ago",
+      "Remote history of fractured right wrist (10 years ago)",
+      "Previous use of Omeprazole for GERD, now discontinued"
     ],
     "prior_anesthesia": null
   }

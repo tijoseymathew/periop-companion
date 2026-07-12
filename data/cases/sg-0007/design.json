@@ -1,83 +1,86 @@
 {
   "case_id": "sg-0007",
   "persona_uuid": "8cf3816ff978463b926a84ae16c06f9c",
-  "surgery": "Laparoscopic cholecystectomy",
+  "surgery": "Laparoscopic Appendectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with endotracheal intubation",
+  "anesthesia_plan": "General Anesthesia with Propofol, Fentanyl, and Vecuronium, maintained with Sevoflurane and Spontaneous Breathing",
   "asa_ps": 2,
   "comorbidities": [
-    "Hypertension",
-    "Seasonal allergic rhinitis"
+    "Obesity (BMI 28.5)",
+    "Type 2 Diabetes Mellitus (well-controlled with lifestyle and Metformin)"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Fluticasone",
-      "dose": "nasal spray",
-      "frequency": "twice daily",
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Once daily",
       "active": true
     },
     {
       "name": "Lisinopril",
-      "dose": "10mg",
-      "frequency": "daily",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Aspirin",
+      "dose": "75 mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
   "allergies": [
-    "Sulfa drugs (rash)"
+    "Penicillin (rash)"
   ],
   "defect": {
     "kind": "missing_allergy",
-    "record_states": "Allergies: None recorded",
-    "truth": "Sulfa allergy (rash)",
-    "gold_question": "Do you have any allergies to sulfa-containing medications or other antibiotics?"
+    "record_states": "No known allergies",
+    "truth": "Allergic to Cephalosporins (nausea and vomiting)",
+    "gold_question": "Have you experienced any adverse reactions to antibiotics other than Penicillin?"
   },
   "distractors": [
     {
-      "description": "Resolved pneumonia (2019)",
-      "why_irrelevant": "Resolved years ago"
+      "description": "History of pneumonia (resolved 5 years ago)",
+      "why_irrelevant": "Resolved years ago, no current impact on anesthesia"
     },
     {
-      "description": "Remote left wrist fracture (2015), healed without issues",
-      "why_irrelevant": "Remote and resolved"
+      "description": "Fractured right wrist (aged 12, fully healed)",
+      "why_irrelevant": "Remote history, no bearing on current surgical or anesthetic plan"
     },
     {
-      "description": "Discontinued levothyroxine for resolved hypothyroidism (2020)",
-      "why_irrelevant": "Condition resolved"
+      "description": "Completed treatment for hypothyroidism (now off Levothyroxine)",
+      "why_irrelevant": "Condition resolved, no longer on medication"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Fluticasone",
-        "dose": "nasal spray",
-        "frequency": "twice daily",
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Once daily",
         "active": true
       },
       {
         "name": "Lisinopril",
-        "dose": "10mg",
-        "frequency": "daily",
-        "active": false
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Aspirin",
+        "dose": "75 mg",
+        "frequency": "Once daily",
+        "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "Resolved pneumonia (2019)",
-      "Remote left wrist fracture (2015)",
-      "Discontinued levothyroxine for resolved hypothyroidism (2020)"
+      "Appendicitis (current presentation)",
+      "Obesity",
+      "Type 2 Diabetes Mellitus",
+      "History of pneumonia (resolved)",
+      "Fractured right wrist (healed)",
+      "Completed treatment for hypothyroidism"
     ],
     "prior_anesthesia": null
   }

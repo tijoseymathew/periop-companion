@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Elective Inguinal Hernia Repair (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General Anesthesia with Laryngeal Mask Airway
+General Anesthesia with endotracheal intubation

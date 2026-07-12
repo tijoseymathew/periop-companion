@@ -6,47 +6,55 @@
     },
     {
       "speaker": "PATIENT",
-      "text": "Mmm, a bit sore here and there, but I think it's manageable. Maybe a 4 out of 10?"
+      "text": "I'm feeling a bit groggy, but okay. My tummy is sore, though."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Okay, we can adjust your pain meds if needed. Any nausea or vomiting since waking up?"
+      "text": "Understandable. Can you tell me your pain level out of 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A little queasy, but not too bad. I didn’t throw up or anything."
+      "text": "Eh, maybe around 4 or 5? It's manageable, I think."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. How’s your breathing? Any tightness or discomfort in your chest?"
+      "text": "Good. Are you feeling nauseous or have any vomiting since waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Breathing’s fine, but my throat feels a bit scratchy. Like I have a slight sore throat."
+      "text": "No nausea, thank goodness. I hate throwing up."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That’s common after the LMA; it should ease soon. Do you remember anything about the surgery itself?"
+      "text": "Excellent. How's your breathing? Any discomfort or tightness in your chest?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not really. I just recall waking up here. Everything’s a bit fuzzy."
+      "text": "Breathing is fine, no problem there."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Normal with general anesthesia. Any dizziness or anxiety spikes since coming around?"
+      "text": "Great. Do you remember anything from the time you went into the operating room?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I’m a bit nervous, but not panicking. My chest feels okay, no tightness."
+      "text": "Nope, everything's blank until now. I don't recall a thing."
     },
     {
       "speaker": "PROVIDER",
-      "text": "We’ll keep an eye on your BP and give you something for anxiety if it flares up. Rest for now?"
+      "text": "That's normal with general anesthesia. Given your diabetes and high blood pressure, are you having any dizziness or vision changes?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, thank you. I’ll just lie here and try to relax."
+      "text": "No dizziness, and vision seems okay. Just a bit tired, that's all."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to hear. We'll keep monitoring your vitals and sugar levels. Let the nurse know if you need anything."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Will do, thank you. Hope to go home soon."
     }
   ]
 }

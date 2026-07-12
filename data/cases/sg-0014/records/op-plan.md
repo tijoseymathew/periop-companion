@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Elective laparoscopic cholecystectomy for symptomatic gallstones (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with Laryngeal Mask Airway (LMA) and ultrasound-guided regional analgesia
+General Anesthesia with Single-shot Dose of Cefazolin for Prophylaxis

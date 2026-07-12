@@ -6,39 +6,23 @@
     },
     {
       "t": "08:02",
-      "text": "LMA 6.5 placed, grade one view"
-    },
-    {
-      "t": "08:03",
-      "text": "mean arterial pressure dropped to fifty five mmHg"
-    },
-    {
-      "t": "08:04",
-      "text": "phenylephrine one hundred micrograms bolus given"
+      "text": "tube in, grade one view"
     },
     {
       "t": "08:05",
-      "text": "peripheral IV 20G placed in right hand"
+      "text": "iv fluids normal saline one liter to run at one hundred fifty ml per hour"
     },
     {
       "t": "08:10",
-      "text": "arterial line placed in right radial artery"
+      "text": "increase sevoflurane to two percent due to increased blood pressure"
     },
     {
-      "t": "08:15",
-      "text": "500 mL LR bolus administered"
+      "t": "08:20",
+      "text": "administered morphine one milligram for pain management"
     },
     {
       "t": "08:25",
-      "text": "heart rate increased to one hundred ten bpm"
-    },
-    {
-      "t": "08:27",
-      "text": "atropine zero point five milligrams IV given"
-    },
-    {
-      "t": "08:30",
-      "text": "sevoflurane started at one point five percent"
+      "text": "patient's heart rate increased to one hundred ten, gave esmolol five milligrams"
     }
   ],
   "events": [
@@ -48,124 +32,124 @@
       "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes#0#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "120 mg",
-      "units": null,
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#0#0"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:02",
       "category": "airway",
-      "value": "LMA 6.5 placed, grade one view",
+      "value": "tube in",
       "units": null,
       "provenance": [
-        "voice_notes#1#1"
+        "voice_notes#08:02"
       ]
     },
     {
-      "t": "08:03",
-      "category": "event",
-      "value": "MAP 55 mmHg",
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
       "units": null,
       "provenance": [
-        "voice_notes#2#2"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
-      "provenance": [
-        "voice_notes#3#3"
-      ]
-    },
-    {
-      "t": "08:04",
-      "category": "dose",
-      "value": "100 mcg",
-      "units": null,
-      "provenance": [
-        "voice_notes#3#3"
+        "voice_notes#08:02"
       ]
     },
     {
       "t": "08:05",
-      "category": "line",
-      "value": "peripheral IV 20G placed in right hand",
+      "category": "fluid",
+      "value": "normal saline",
       "units": null,
       "provenance": [
-        "voice_notes#4#4"
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "one",
+      "units": "liter",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "one hundred fifty",
+      "units": "ml per hour",
+      "provenance": [
+        "voice_notes#08:05"
       ]
     },
     {
       "t": "08:10",
-      "category": "line",
-      "value": "arterial line placed in right radial artery",
+      "category": "agent",
+      "value": "sevoflurane",
       "units": null,
       "provenance": [
-        "voice_notes#5#5"
+        "voice_notes#08:10"
       ]
     },
     {
-      "t": "08:15",
-      "category": "fluid",
-      "value": "LR 500 mL bolus administered",
+      "t": "08:10",
+      "category": "dose",
+      "value": "two",
+      "units": "percent",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "agent",
+      "value": "morphine",
       "units": null,
       "provenance": [
-        "voice_notes#6#6"
+        "voice_notes#08:20"
+      ]
+    },
+    {
+      "t": "08:20",
+      "category": "dose",
+      "value": "one",
+      "units": "milligram",
+      "provenance": [
+        "voice_notes#08:20"
       ]
     },
     {
       "t": "08:25",
       "category": "event",
-      "value": "HR 110 bpm",
+      "value": "heart rate increased to one hundred ten",
       "units": null,
       "provenance": [
-        "voice_notes#7#7"
+        "voice_notes#08:25"
       ]
     },
     {
-      "t": "08:27",
+      "t": "08:25",
       "category": "agent",
-      "value": "atropine",
+      "value": "esmolol",
       "units": null,
       "provenance": [
-        "voice_notes#8#8"
+        "voice_notes#08:25"
       ]
     },
     {
-      "t": "08:27",
+      "t": "08:25",
       "category": "dose",
-      "value": "0.5 mg",
-      "units": null,
+      "value": "five",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#8#8"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "agent",
-      "value": "sevoflurane",
-      "units": null,
-      "provenance": [
-        "voice_notes#9#9"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "dose",
-      "value": "1.5%",
-      "units": null,
-      "provenance": [
-        "voice_notes#9#9"
+        "voice_notes#08:25"
       ]
     }
   ]

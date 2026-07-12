@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Laparoscopic cholecystectomy (elective).
+Laparoscopic Appendectomy (elective).
 
 ## Anesthesia
 
-General anesthesia with endotracheal intubation
+General Anesthesia with Propofol, Fentanyl, and Vecuronium, maintained with Sevoflurane and Spontaneous Breathing

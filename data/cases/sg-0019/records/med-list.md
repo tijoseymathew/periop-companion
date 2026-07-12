@@ -2,10 +2,10 @@
 
 ## Current Medications
 
-Amlodipine 10 mg Daily.
+Atorvastatin 20mg Daily.
 
-Atorvastatin 20 mg Daily.
+Lisinopril 10mg Daily.
 
-Omeprazole 20 mg Daily.
+Omeprazole 20mg Daily.
 
-Lisinopril 10 mg Daily.
+Paracetamol 500mg As needed.

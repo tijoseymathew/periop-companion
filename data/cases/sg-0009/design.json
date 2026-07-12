@@ -1,38 +1,38 @@
 {
   "case_id": "sg-0009",
   "persona_uuid": "0de1f8d12a944692b54ddec210e5fe57",
-  "surgery": "Laparoscopic cholecystectomy",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with LMA, propofol induction, remifentanil infusion, and vecuronium for muscle relaxation; desflurane maintenance",
+  "anesthesia_plan": "General Anesthesia with Laryngeal Mask Airway (LMA)",
   "asa_ps": 2,
   "comorbidities": [
-    "Obesity (BMI 28)",
-    "Hyperlipidemia",
-    "Hypertension (well-controlled)"
+    "Obesity (BMI 32)",
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
   ],
   "medications": [
     {
-      "name": "Atorvastatin",
-      "dose": "20mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
       "name": "Metformin",
       "dose": "500mg",
-      "frequency": "BID",
+      "frequency": "Twice daily",
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "daily",
-      "active": true
-    },
-    {
-      "name": "Simvastatin",
+      "name": "Lisinopril",
       "dose": "10mg",
-      "frequency": "nightly",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Citalopram",
+      "dose": "20mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
@@ -41,57 +41,51 @@
   ],
   "defect": {
     "kind": "missing_allergy",
-    "record_states": "No allergies recorded",
-    "truth": "Patient reports penicillin allergy (rash) not documented in records",
-    "gold_question": "Have you ever experienced any allergic reactions to antibiotics, particularly penicillin?"
+    "record_states": "No known allergies",
+    "truth": "Patient is allergic to Latex (confirmed during pre-op interview)",
+    "gold_question": "Can you please confirm if you have any allergies, particularly to Latex, which might not be documented?"
   },
   "distractors": [
     {
-      "description": "Resolved community-acquired pneumonia (2019)",
-      "why_irrelevant": "Remote infection with full recovery, no residual pulmonary issues"
+      "description": "History of pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved and not relevant to current surgery or anesthesia"
     },
     {
-      "description": "Left wrist fracture (healed, 2014)",
-      "why_irrelevant": "Old traumatic injury with no functional impairment"
+      "description": "Fractured wrist at age 12, fully healed",
+      "why_irrelevant": "Remote, healed fracture with no ongoing issues"
     },
     {
-      "description": "Discontinued simvastatin for hyperlipidemia (2018)",
-      "why_irrelevant": "Medication stopped due to lifestyle changes; condition now controlled with atorvastatin"
+      "description": "Discontinued use of Omeprazole 2 years ago for GERD",
+      "why_irrelevant": "Medication discontinued, condition not active"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Atorvastatin",
-        "dose": "20mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
         "name": "Metformin",
         "dose": "500mg",
-        "frequency": "BID",
+        "frequency": "Twice daily",
         "active": true
       },
       {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "daily",
-        "active": true
-      },
-      {
-        "name": "Simvastatin",
+        "name": "Lisinopril",
         "dose": "10mg",
-        "frequency": "nightly",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "20mg",
+        "frequency": "Once daily",
         "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "Community-acquired pneumonia (resolved 2019)",
-      "Left wrist fracture (healed 2014)",
-      "Hyperlipidemia (discontinued simvastatin 2018)"
+      "Pneumonia (resolved)",
+      "Fractured wrist (healed)",
+      "GERD (discontinued Omeprazole)"
     ],
-    "prior_anesthesia": "General anesthesia for laparoscopic appendectomy at age 24; no adverse events"
+    "prior_anesthesia": null
   }
 }

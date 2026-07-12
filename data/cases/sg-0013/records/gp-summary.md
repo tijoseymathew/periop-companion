@@ -6,15 +6,11 @@
 
 ## Medications
 
-Amlodipine 5mg Daily.
+Metformin 500 mg twice daily.
 
-Metoprolol 50mg Daily.
+Lisinopril 10 mg once daily.
 
-Atorvastatin 20mg Daily.
-
-Omeprazole 20mg Daily.
-
-Aspirin 75mg Daily.
+Atorvastatin 20 mg once daily.
 
 ## Allergies
 
@@ -22,8 +18,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-Resolved pneumonia
+Pneumonia (resolved 5 years ago)
 
-Remote wrist fracture
+Fractured right wrist (15 years ago, fully healed)
 
-Bell's palsy (left side, 2015, resolved)
+Hypothyroidism (resolved after treatment 8 years ago)

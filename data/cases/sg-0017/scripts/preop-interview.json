@@ -2,87 +2,71 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Lim, the anesthesiologist who'll be taking care of you during your knee surgery today. Let me go through some questions to make sure everything's in order for your anesthesia plan."
+      "text": "Good morning! I'm going to go over some questions to make sure we're all set for your surgery today. First, can you tell me a bit about why you're having this knee surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Morning, Doctor. I'm ready when you are."
+      "text": "Ah, yes. I've been having a lot of pain in my left knee, especially when I bend it. The doctor said there's a torn meniscus, so they need to go in and clean it up with the arthroscopy lah."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. First, can you tell me a bit about your knee problem? How long have you been having issues, and what led to the decision for surgery?"
+      "text": "Thanks for sharing that. How long have you been experiencing these symptoms, and has it been affecting your daily activities?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Sure. I tore my meniscus playing football last year. Tried physio, but the pain kept coming back, especially when I twist or squat. Ortho said repair is the way to go lah."
+      "text": "About six months now. It's been getting worse, especially when I walk or climb stairs. I can't exercise like I used to, which is frustrating because I try to stay active."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Any other medical conditions like diabetes, high blood pressure, or heart issues?"
+      "text": "I see. Now, let's go over your medications. You're currently taking Montelukast 10 mg daily and using a Salbutamol Inhaler as needed. And you've stopped Atorvastatin 20 mg daily?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, all clear there. Just the knee."
+      "text": "Yes, that's right. I take the Montelukast every evening for my asthma, and the inhaler when I need it. I stopped the Atorvastatin a few weeks ago as advised."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. What medications are you currently taking, and have you stopped any recently?"
+      "text": "Got it. Now, regarding allergies — your records say 'no known allergies', but I always like to confirm directly. Have you ever had any reactions to medications, foods, or other substances like latex?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I was on amoxicillin 500mg twice daily for a chest infection last month, but stopped it two weeks ago. That's all."
+      "text": "Oh, actually, I think I do have a latex allergy. I found out during a previous check-up. When I had a glove on my hand, my skin got really itchy and red. The doctor said it was a confirmed latex allergy."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thanks. Now, about allergies—have you ever had a severe reaction to any antibiotics, including penicillin or related drugs?"
+      "text": "Thank you for sharing that — it's very important for us to know. We'll make sure all the staff are aware and use latex-free equipment. Now, have you had any previous surgeries or anesthesia before?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Oh, yes! When I was 16, I had a really bad reaction to penicillin. Got a rash all over, then my throat swelled, and I couldn't breathe properly. Had to go to hospital lah. Never took penicillin again after that."
+      "text": "No, this is my first time. I've never been under general anesthesia before, so I'm a bit nervous about that part."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That sounds like anaphylaxis. Did you have hives, difficulty breathing, or low blood pressure at the time?"
+      "text": "That's completely normal. We'll make sure you're comfortable and explain everything beforehand. Now, are you NPO — that is, have you had anything to eat or drink since midnight?"
     },
     {
       "speaker": "PATIENT",
-      "text": "All of that, Doctor. Rash came first, then I felt dizzy and couldn't catch my breath. Scared me half to death."
+      "text": "Yes, I stopped eating and drinking after midnight, like the instructions said. Just a bit thirsty now, but I'm managing."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you for sharing that. I'll update your records to reflect this penicillin allergy clearly. Have you had any previous surgeries or anesthesia?"
+      "text": "Great, thank you. Lastly, how would you describe your overall fitness level? Are you able to walk up a flight of stairs or do light housework without getting overly short of breath?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, this is my first time under general anesthesia. Never even had a blood test before without fainting, haha."
+      "text": "I can walk up stairs, but I do get a bit breathless, especially if I go too fast. My asthma is mild, and I only use the inhaler when I'm exercising or if it's dusty."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Noted. How's your overall fitness? Can you walk up stairs or do daily activities without getting winded?"
+      "text": "Thanks for all that information. We'll make sure your asthma is well-controlled during the procedure. We're planning for general anesthesia with a femoral nerve block to help with pain after surgery. Any questions from your side?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I can walk, but bending or twisting the knee hurts. Climbing stairs is slow, but I manage. No heart issues or shortness of breath otherwise."
+      "text": "No, I think that covers it. I'm just ready to get this done and start recovering."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Last question: when did you last eat or drink anything?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "Had dinner at 8pm last night, water until midnight. Nothing since then, as instructed."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Perfect. We'll proceed with general anesthesia and intubation as planned. Your allergy will be flagged prominently, and we'll avoid all penicillin-related drugs. Any questions for me?"
-    },
-    {
-      "speaker": "PATIENT",
-      "text": "No, Doctor. Just want to get this sorted so I can play with my kids again without pain."
-    },
-    {
-      "speaker": "PROVIDER",
-      "text": "Absolutely. We'll take good care of you. I'll see you in the operating room shortly."
+      "text": "Excellent. We'll take good care of you. You'll meet the anesthesiologist shortly, and they'll go over the nerve block and anesthesia plan in more detail. Feel free to ask any questions then too."
     }
   ]
 }

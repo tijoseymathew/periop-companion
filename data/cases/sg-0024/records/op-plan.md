@@ -2,8 +2,8 @@
 
 ## Procedure
 
-Transurethral Resection of the Prostate (TURP) for Benign Prostatic Hyperplasia (elective).
+Laparoscopic Cholecystectomy (elective).
 
 ## Anesthesia
 
-General Anesthesia with In-Line Stabilization
+General Anesthesia with Endotracheal Intubation

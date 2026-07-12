@@ -2,75 +2,75 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, Mr. Tan. I'm Dr. Liew, the anesthesiologist. I'll be speaking with you today about your upcoming surgery. Can you tell me a bit about why you're having this TURP done?"
+      "text": "Good morning, Mr. Tan. I'm Dr. Lim, the anesthesiologist who will be taking care of you during your hernia repair surgery. I'd like to go through some questions to make sure we're all set for tomorrow's procedure. Is that okay with you?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Ah, yes doctor. My prostate been swollen for a while, causing trouble urinating. Sometimes I can't go at all, very uncomfortable. Urologist said TURP is the best option lah."
+      "text": "Yes, sure, Doctor. I'm ready."
     },
     {
       "speaker": "PROVIDER",
-      "text": "I see. Let's go over your medical history. Can you list all your current medications for me?"
+      "text": "Great. Let's start with your medical history. You've been diagnosed with hypertension, type 2 diabetes, benign prostatic hyperplasia, and osteoarthritis in your knees. Can you tell me a bit about how these are being managed?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Sure. I take amlodipine 10mg every day for blood pressure, lisinopril 20mg also daily. Metformin 500mg twice a day for diabetes, atorvastatin 20mg at night for cholesterol, and aspirin 75mg daily. Oh, and omeprazole 20mg, but I stopped that two weeks ago as instructed."
+      "text": "Sure. My blood pressure is under control with losartan. I take metformin for my diabetes, and tamsulosin for my prostate. For my knees, I take diclofenac when the pain gets bad, like after walking too much."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you. Do you have any known allergies, Mr. Tan? The records say 'no known allergies,' but I'd like to confirm directly."
+      "text": "Thank you. Now, regarding your medications, I see in your records that you were on aspirin 75 mg daily. Can you confirm if you're still taking that, and if not, when did you stop and why?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Allergies? Hmm... I think I had a reaction once to penicillin when I was younger. Got a rash all over, very itchy. But that's all, I think."
+      "text": "Oh, I stopped taking aspirin already. It's been about two years ago. I had some stomach discomfort, like heartburn, so I stopped. I didn't have any issues since then, so I just continued with the other medications."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Ah, that's important. Was it specifically penicillin, or other antibiotics too?"
+      "text": "I see. That's important to know. Are you currently taking all your regular medications as prescribed, except for the aspirin?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Only penicillin, doctor. My skin turned red and itchy like a heat rash. Never had issues with other antibiotics."
+      "text": "Yes, Doctor. I take losartan every morning, metformin twice a day, and tamsulosin once at night. Diclofenac only when needed."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Noted. Let's move to your health conditions. You have hypertension, diabetes, high cholesterol, and stage 2 kidney disease. Are these well-controlled?"
+      "text": "Good. Do you have any known allergies to medications or other substances?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, my BP usually around 130/80, sugars okay with metformin. Cholesterol under control with statin. Kidneys stable, no recent issues."
+      "text": "No, none that I know of."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. Have you eaten or drunk anything this morning? Remember, nothing after midnight except clear fluids up to 2 hours ago."
+      "text": "Excellent. Have you had any previous surgeries or anesthesia? If so, were there any complications?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. Only sipped some water this morning, stopped by 6am. Followed the instructions strictly."
+      "text": "I had a minor operation on my finger many years ago, and that was under general anesthesia. I don't remember any problems, just a bit of nausea after."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Excellent. Have you had anesthesia before? Any reactions or complications?"
+      "text": "Thanks for sharing that. How about your current physical condition? Are you able to walk independently, climb stairs, and perform daily activities without much difficulty?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Yes, once for cataract surgery. They gave spinal anesthesia then too, no problems at all. Woke up fine."
+      "text": "Yes, I can walk and climb stairs, but sometimes my knees give me trouble if I overdo it. Otherwise, I'm quite independent."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Great. Lastly, how's your overall energy and mobility? Can you walk comfortably, climb stairs?"
+      "text": "Understood. Finally, have you had anything to eat or drink since midnight?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Still walking daily, but slower now. Prostate issues make it hard sometimes, but I manage stairs with rest stops."
+      "text": "No, Doctor. I stopped eating after 8 PM last night, as instructed. Just a bit of water with my morning medications."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Thank you, Mr. Tan. We'll proceed with spinal anesthesia plus local infiltration as planned. No contraindications noted. Any questions for me?"
+      "text": "Perfect. Well, Mr. Tan, that covers most of what I needed to know. We'll be using general anesthesia with a laryngeal mask airway for your surgery. I'll make sure to note your medication changes and allergies in your chart. If you have any more questions, feel free to ask."
     },
     {
       "speaker": "PATIENT",
-      "text": "No, doctor. All clear. Thank you for explaining everything."
+      "text": "Thank you, Doctor. I think that's all from me for now."
     }
   ]
 }

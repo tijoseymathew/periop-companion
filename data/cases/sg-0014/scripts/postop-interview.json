@@ -2,51 +2,51 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Hi Mr. Tan, how are you feeling now after the surgery?"
+      "text": "Hi there, how are you feeling after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "I’m okay, got some pain here, but manageable."
+      "text": "I'm okay, I guess. A bit tired, but not in too much pain."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Can you give me a pain score out of 10?"
+      "text": "Good to hear. Can you tell me your pain level out of 10?"
     },
     {
       "speaker": "PATIENT",
-      "text": "About 4 or 5, not too bad."
+      "text": "Maybe a 3 or 4. It's more like discomfort than sharp pain."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any nausea or feeling like you might vomit?"
+      "text": "Alright, we can manage that with medication. Are you feeling nauseous or have vomited at all?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit queasy, but didn’t throw up."
+      "text": "No nausea, thank goodness. I was worried about that after reading online."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any sore throat, cough, or breathing difficulties?"
+      "text": "Great. How's your breathing? Any shortness of breath or discomfort in your chest?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Slight sore throat, but breathing’s fine."
+      "text": "Breathing is fine. I feel a bit stuffy from the tube, but it's getting better."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Do you remember anything from the operation?"
+      "text": "Understood. Do you remember anything from the operating room or waking up?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nope, everything’s blank."
+      "text": "Not really. I remember going to sleep and then waking up here. No scary moments, though."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Any issues with your blood pressure, blood sugar, or reflux since the surgery?"
+      "text": "Good. Since you have diabetes and high blood pressure, we’ll keep a close eye on your vitals and sugar levels."
     },
     {
       "speaker": "PATIENT",
-      "text": "No dizziness or anything, but sometimes I get heartburn at night."
+      "text": "Thanks, I appreciate that. I was a bit worried about how my conditions might affect recovery."
     }
   ]
 }

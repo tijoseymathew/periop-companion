@@ -2,8 +2,6 @@
 
 ## Current Medications
 
-Montelukast 10mg daily.
+Montelukast Sodium 10 mg once daily.
 
-Fluticasone 1 spray each nostril daily daily.
-
-Loratadine 10mg daily.
+Escitalopram 10 mg once daily.

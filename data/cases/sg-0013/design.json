@@ -3,43 +3,36 @@
   "persona_uuid": "d6e38fcfdc664775aed8c63f576019cc",
   "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with endotracheal intubation and rapid sequence induction",
+  "anesthesia_plan": "General Anesthesia with Ultrasound-Guided Regional Anesthesia (TAP Block) for Post-Operative Pain Management",
   "asa_ps": 3,
   "comorbidities": [
-    "Hypertension",
-    "Hyperlipidemia",
     "Obesity (BMI 32)",
-    "Gastroesophageal Reflux Disease (GERD)"
+    "Type 2 Diabetes Mellitus",
+    "Hypertension"
   ],
   "medications": [
     {
-      "name": "Amlodipine",
-      "dose": "5mg",
-      "frequency": "Daily",
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "twice daily",
       "active": true
     },
     {
-      "name": "Metoprolol",
-      "dose": "50mg",
-      "frequency": "Daily",
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "frequency": "once daily",
       "active": true
     },
     {
       "name": "Atorvastatin",
-      "dose": "20mg",
-      "frequency": "Daily",
+      "dose": "20 mg",
+      "frequency": "once daily",
       "active": true
     },
     {
-      "name": "Omeprazole",
-      "dose": "20mg",
-      "frequency": "Daily",
-      "active": true
-    },
-    {
-      "name": "Aspirin",
-      "dose": "75mg",
-      "frequency": "Daily",
+      "name": "Ranitidine",
+      "dose": "150 mg",
+      "frequency": "twice daily",
       "active": false
     }
   ],
@@ -47,63 +40,51 @@
     "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No known allergies",
-    "truth": "Penicillin allergy (rash)",
-    "gold_question": "Do you have any allergies to medications, including antibiotics like penicillin?"
+    "kind": "stale_med_list",
+    "record_states": "Medications: Metformin 500mg BID, Lisinopril 10mg OD, Atorvastatin 20mg OD. No allergies recorded.",
+    "truth": "Patient has stopped taking Ranitidine 6 months ago due to resolution of GERD symptoms and now uses Omeprazole 20mg OD for acid reflux. Allergies remain Penicillin (rash).",
+    "gold_question": "Can you confirm your current list of medications, including any changes or discontinuations in the past year, and any new allergies or reactions since your last medical review?"
   },
   "distractors": [
     {
-      "description": "Resolved community-acquired pneumonia (5 years ago, fully recovered)",
-      "why_irrelevant": "Remote, resolved infection not relevant to current surgery"
+      "description": "Pneumonia resolved 5 years ago",
+      "why_irrelevant": "Resolved infection with no lasting impact on current health or anesthesia risk"
     },
     {
-      "description": "Remote left wrist fracture (10 years ago, fully healed)",
-      "why_irrelevant": "Old injury with no ongoing issues"
+      "description": "Fractured right wrist 15 years ago, fully healed",
+      "why_irrelevant": "Remote, fully healed fracture with no ongoing issues or impact on current surgery or anesthesia"
     },
     {
-      "description": "Discontinued Aspirin for primary prevention (stopped 2 years ago due to GI side effects)",
-      "why_irrelevant": "Medication discontinued for resolved indication"
+      "description": "Hypothyroidism (resolved after radioactive iodine treatment 8 years ago)",
+      "why_irrelevant": "Condition resolved, no longer on medication or requiring monitoring"
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Amlodipine",
-        "dose": "5mg",
-        "frequency": "Daily",
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "twice daily",
         "active": true
       },
       {
-        "name": "Metoprolol",
-        "dose": "50mg",
-        "frequency": "Daily",
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "frequency": "once daily",
         "active": true
       },
       {
         "name": "Atorvastatin",
-        "dose": "20mg",
-        "frequency": "Daily",
+        "dose": "20 mg",
+        "frequency": "once daily",
         "active": true
-      },
-      {
-        "name": "Omeprazole",
-        "dose": "20mg",
-        "frequency": "Daily",
-        "active": true
-      },
-      {
-        "name": "Aspirin",
-        "dose": "75mg",
-        "frequency": "Daily",
-        "active": false
       }
     ],
     "allergies": [],
     "past_history": [
-      "Resolved pneumonia",
-      "Remote wrist fracture",
-      "Bell's palsy (left side, 2015, resolved)"
+      "Pneumonia (resolved 5 years ago)",
+      "Fractured right wrist (15 years ago, fully healed)",
+      "Hypothyroidism (resolved after treatment 8 years ago)"
     ],
     "prior_anesthesia": null
   }

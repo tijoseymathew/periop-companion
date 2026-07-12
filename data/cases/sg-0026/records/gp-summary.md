@@ -6,15 +6,13 @@
 
 ## Medications
 
-Amlodipine 10mg Once daily.
+Atorvastatin 20mg once daily.
 
-Atorvastatin 20mg Once nightly.
+Metformin 500mg twice daily.
 
-Metformin 500mg Twice daily.
+Lisinopril 10mg once daily.
 
-Omeprazole 20mg Once daily.
-
-Aspirin 75mg Once daily.
+Aspirin 75mg once daily.
 
 ## Allergies
 
@@ -22,16 +20,14 @@ No known drug allergies recorded.
 
 ## Past History
 
-Resolved community-acquired pneumonia (2018)
-
-Remote left distal radius fracture (2005), healed without sequelae
-
-Discontinued simvastatin (2019) due to resolution of hyperlipidemia (switched to atorvastatin)
-
 Hypertension
-
-Hyperlipidemia
 
 Type 2 Diabetes Mellitus
 
-Gastroesophageal Reflux Disease (GERD)
+Hyperlipidemia
+
+History of pneumonia resolved 5 years ago
+
+Remote history of left femoral fracture (age 25), fully healed
+
+Previous use of Omeprazole for GERD, discontinued 2 years ago

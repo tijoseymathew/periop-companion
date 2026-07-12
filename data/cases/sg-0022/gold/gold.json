@@ -1,206 +1,142 @@
 {
   "questions": [
-    "Do you have any history of allergic reactions to antibiotics, especially penicillin?"
+    "Can you confirm if you are currently taking any blood-thinning medications, including those you may have stopped in the past year?"
   ],
   "events": [
     {
       "t": "08:00",
       "category": "agent",
-      "value": "bupivacaine",
+      "value": "propofol",
       "units": null,
       "provenance": [
-        "voice_notes#1"
+        "voice_notes#08:00"
       ]
     },
     {
       "t": "08:00",
       "category": "dose",
-      "value": "25",
-      "units": "mg",
+      "value": "one hundred twenty",
+      "units": "milligrams",
       "provenance": [
-        "voice_notes#1"
+        "voice_notes#08:00"
       ]
     },
     {
-      "t": "08:00",
+      "t": "08:02",
+      "category": "airway",
+      "value": "tube in",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:02",
+      "category": "airway",
+      "value": "grade one view",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:02"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "agent",
+      "value": "bupivacaine",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:05",
+      "category": "dose",
+      "value": "ten",
+      "units": "milliliters",
+      "provenance": [
+        "voice_notes#08:05"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "hypotension",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "event",
+      "value": "mean arterial pressure down to fifty five",
+      "units": null,
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:10",
+      "category": "fluid",
+      "value": "one hundred",
+      "units": "milliliters bolus",
+      "provenance": [
+        "voice_notes#08:10"
+      ]
+    },
+    {
+      "t": "08:15",
       "category": "agent",
       "value": "fentanyl",
       "units": null,
       "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:00",
-      "category": "dose",
-      "value": "25",
-      "units": "mcg",
-      "provenance": [
-        "voice_notes#1"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "line",
-      "value": "18-gauge IV cannula",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:05",
-      "category": "line",
-      "value": "left antecubital fossa",
-      "units": null,
-      "provenance": [
-        "voice_notes#2"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "airway",
-      "value": "spontaneous breathing",
-      "units": null,
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:10",
-      "category": "airway",
-      "value": "98",
-      "units": "%",
-      "provenance": [
-        "voice_notes#3"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "agent",
-      "value": "paracetamol",
-      "units": null,
-      "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:15"
       ]
     },
     {
       "t": "08:15",
       "category": "dose",
-      "value": "1",
-      "units": "g",
+      "value": "twenty",
+      "units": "micrograms",
       "provenance": [
-        "voice_notes#4"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "agent",
-      "value": "ondansetron",
-      "units": null,
-      "provenance": [
-        "voice_notes#4"
-      ]
-    },
-    {
-      "t": "08:15",
-      "category": "dose",
-      "value": "4",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#4"
+        "voice_notes#08:15"
       ]
     },
     {
       "t": "08:30",
       "category": "event",
-      "value": "hypotension noted",
+      "value": "normotension maintained",
       "units": null,
       "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "event",
-      "value": "65",
-      "units": "mmHg",
-      "provenance": [
-        "voice_notes#5"
+        "voice_notes#08:30"
       ]
     },
     {
       "t": "08:30",
       "category": "fluid",
-      "value": "500",
-      "units": "ml",
+      "value": "one hundred twenty",
+      "units": "milliliters per hour",
       "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "agent",
-      "value": "phenylephrine",
-      "units": null,
-      "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:30",
-      "category": "dose",
-      "value": "10",
-      "units": "mg",
-      "provenance": [
-        "voice_notes#5"
-      ]
-    },
-    {
-      "t": "08:45",
-      "category": "event",
-      "value": "surgery completed",
-      "units": null,
-      "provenance": [
-        "voice_notes#6"
-      ]
-    },
-    {
-      "t": "08:45",
-      "category": "event",
-      "value": "patient stable",
-      "units": null,
-      "provenance": [
-        "voice_notes#6"
-      ]
-    },
-    {
-      "t": "08:45",
-      "category": "event",
-      "value": "no residual block",
-      "units": null,
-      "provenance": [
-        "voice_notes#6"
+        "voice_notes#08:30"
       ]
     }
   ],
   "preop_note_claims": [
-    "History includes hypertension, hyperlipidemia, type 2 diabetes mellitus, and osteoarthritis of the knees.",
-    "Current medications: Amlodipine 5mg daily, Lisinopril 10mg daily, Atorvastatin 20mg nightly, Metformin 500mg twice daily, Paracetamol 500mg as needed.",
-    "Discontinued medication: Aspirin 75mg daily (stopped preoperatively).",
-    "Allergy to penicillin with symptoms of rash and urticaria.",
-    "ASA Physical Status II due to controlled hypertension, hyperlipidemia, type 2 diabetes mellitus, and osteoarthritis.",
-    "Airway assessment: normal Mallampati score, adequate thyromental distance, no anticipated airway difficulties.",
-    "Anesthesia plan: spinal anesthesia with bupivacaine and fentanyl, with intraoperative IV paracetamol 1g for analgesia and ondansetron 4mg for PONV prophylaxis."
+    "Documented current medications including status: Metformin 500 mg Once daily (ongoing), Atorvastatin 20 mg Once daily (ongoing), Lisinopril 10 mg Once daily (ongoing), Insulin Glargine 20 units Once daily (ongoing), Paracetamol 500 mg As needed (as needed), Clopidogrel 75 mg Once daily (stopped)",
+    "Documented allergies including Penicillin",
+    "Documented ASA-PS classification as ASA 3 with supporting reason: patient has Hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, and Osteoarthritis (bilateral hips)",
+    "Documented airway assessment and anesthetic plan including General Anesthesia with Epidural Anesthesia for Post-Operative Pain Management",
+    "Documented comorbidities: Hypertension, Type 2 Diabetes Mellitus, Osteoarthritis (bilateral hips), Hyperlipidemia",
+    "Documented defect truth: Patient stopped Clopidogrel 6 months ago due to completion of prescribed course for minor cardiac event; currently not on any antiplatelet therapy"
   ],
   "handoff_claims": [
-    "Patient has a history of hypertension, hyperlipidemia, type 2 diabetes mellitus, osteoarthritis, and a penicillin allergy with rash and urticaria.",
-    "Intraoperative management included spinal anesthesia with bupivacaine and fentanyl, with intraoperative administration of IV paracetamol 1g and ondansetron 4mg.",
-    "Anticipated postoperative issues include potential hypotension from spinal anesthesia, need for continued postoperative pain management, and monitoring for postoperative nausea and vomiting despite prophylaxis."
+    "Key history includes: Hypertension, Type 2 Diabetes Mellitus, Osteoarthritis (bilateral hips), Hyperlipidemia, and Penicillin allergy",
+    "Intra-op course expectation: Elective Left Hip Replacement under General Anesthesia with Epidural Anesthesia for Post-Operative Pain Management",
+    "Anticipated issue: Management of post-operative pain with epidural anesthesia, and monitoring for potential interactions or side effects from current medications (Metformin, Atorvastatin, Lisinopril, Insulin Glargine)"
   ],
   "distractors": [
-    "Pneumonia resolved in 2014",
-    "Left wrist fracture in 2005",
-    "Hyperthyroidism treated in 2010"
+    "History of pneumonia in 2010, fully resolved",
+    "Fractured right wrist in 2005, treated with casting",
+    "Completed a course of Ciprofloxacin for UTI in 2018"
   ]
 }

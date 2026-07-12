@@ -6,11 +6,9 @@
 
 ## Medications
 
-Montelukast 10mg daily.
+Montelukast Sodium 10 mg once daily.
 
-Fluticasone 1 spray each nostril daily daily.
-
-Loratadine 10mg daily.
+Escitalopram 10 mg once daily.
 
 ## Allergies
 
@@ -18,8 +16,8 @@ No known drug allergies recorded.
 
 ## Past History
 
-Left wrist fracture at age 10, treated with cast, fully healed
+Left wrist fracture (age 12, fully healed)
 
-Pneumonia in 2015, treated with antibiotics, fully resolved
+Pneumonia (age 15, fully resolved)
 
-Completed a course of amoxicillin for acne in 2022, no ongoing skin issues
+Previous pre-op ECG for elective cholecystectomy (age 16, normal results)

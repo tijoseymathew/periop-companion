@@ -1,70 +1,89 @@
 {
   "case_id": "sg-0021",
   "persona_uuid": "ffd8f75c88be433d9241f974f7725962",
-  "surgery": "Elective knee arthroscopy for medial meniscectomy",
+  "surgery": "Laparoscopic Cholecystectomy",
   "urgency": "elective",
-  "anesthesia_plan": "General anesthesia with spinal for lower limb surgery",
+  "anesthesia_plan": "General Anesthesia with Single-shot Spinal Anesthesia for Surgical Procedure",
   "asa_ps": 2,
   "comorbidities": [
-    "Allergic rhinitis"
+    "Obesity (BMI 28.5)",
+    "Type 2 Diabetes Mellitus (well-controlled with oral medications)"
   ],
   "medications": [
     {
-      "name": "Fluticasone nasal spray",
-      "dose": "1 spray each nostril daily",
-      "frequency": "daily",
+      "name": "Metformin",
+      "dose": "500 mg",
+      "frequency": "Twice daily",
       "active": true
     },
     {
-      "name": "Doxycycline",
-      "dose": "100mg",
-      "frequency": "once daily",
+      "name": "Sitagliptin",
+      "dose": "100 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Loratadine",
+      "dose": "10 mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Omeprazole",
+      "dose": "20 mg",
+      "frequency": "Once daily",
       "active": false
     }
   ],
   "allergies": [
-    "Penicillin"
+    "Penicillin (rash)"
   ],
   "defect": {
-    "kind": "missing_allergy",
-    "record_states": "No allergies recorded",
-    "truth": "Penicillin allergy",
-    "gold_question": "Do you have any allergies to medications or other substances?"
+    "kind": "stale_med_list",
+    "record_states": "Medications listed as: Metformin 500mg BID, Sitagliptin 100mg OD, Loratadine 10mg OD. No allergies listed.",
+    "truth": "Patient has since discontinued Loratadine due to financial constraints and now uses Montelukast 10mg OD for allergic rhinitis. Also, patient has a new allergy to Cefuroxime (developed after recent polyclinic visit for UTI).",
+    "gold_question": "Can you confirm your current medications, including any changes since your last medical review, and have you experienced any new allergic reactions to medications recently?"
   },
   "distractors": [
     {
-      "description": "History of pneumonia resolved 5 years ago",
-      "why_irrelevant": "Remote infection with no current respiratory issues"
+      "description": "History of pneumonia (fully resolved 3 years ago)",
+      "why_irrelevant": "Resolved infection with no residual effects, not impacting current surgical or anesthetic plan."
     },
     {
-      "description": "Fractured wrist (healed) 10 years ago",
-      "why_irrelevant": "Old injury with full recovery, no ongoing issues"
+      "description": "Remote history of left distal radius fracture (age 16, fully healed)",
+      "why_irrelevant": "Old injury with no ongoing issues, does not affect current surgical procedure or anesthesia."
     },
     {
-      "description": "History of acne treated with doxycycline (discontinued)",
-      "why_irrelevant": "Resolved dermatological condition, medication discontinued"
+      "description": "Previous use of Omeprazole for GERD (discontinued 6 months ago due to resolution of symptoms)",
+      "why_irrelevant": "Medication discontinued as condition resolved; not relevant to current anesthetic management."
     }
   ],
   "records": {
     "medications": [
       {
-        "name": "Fluticasone nasal spray",
-        "dose": "1 spray each nostril daily",
-        "frequency": "daily",
+        "name": "Metformin",
+        "dose": "500 mg",
+        "frequency": "Twice daily",
         "active": true
       },
       {
-        "name": "Doxycycline",
-        "dose": "100mg",
-        "frequency": "once daily",
-        "active": false
+        "name": "Sitagliptin",
+        "dose": "100 mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Loratadine",
+        "dose": "10 mg",
+        "frequency": "Once daily",
+        "active": true
       }
     ],
     "allergies": [],
     "past_history": [
-      "History of pneumonia resolved 5 years ago",
-      "Fractured wrist (healed) 10 years ago",
-      "History of acne treated with doxycycline (discontinued)"
+      "Pneumonia (resolved 3 years ago)",
+      "Left distal radius fracture (age 16, fully healed)",
+      "GERD (resolved, Omeprazole discontinued)"
     ],
     "prior_anesthesia": null
   }

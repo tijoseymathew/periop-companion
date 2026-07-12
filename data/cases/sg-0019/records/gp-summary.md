@@ -6,28 +6,22 @@
 
 ## Medications
 
-Amlodipine 10 mg Daily.
+Atorvastatin 20mg Daily.
 
-Atorvastatin 20 mg Daily.
+Lisinopril 10mg Daily.
 
-Omeprazole 20 mg Daily.
+Omeprazole 20mg Daily.
 
-Lisinopril 10 mg Daily.
+Paracetamol 500mg As needed.
 
 ## Allergies
 
-Penicillin
+Penicillin (rash)
 
 ## Past History
 
-Hypertension
+History of pneumonia resolved 5 years ago
 
-Hyperlipidemia
+Remote history of wrist fracture (healed) from 10 years ago
 
-Gastroesophageal reflux disease (GERD)
-
-Pneumonia (resolved 2018)
-
-Fractured right wrist (2005)
-
-Irritable Bowel Syndrome (resolved 2012)
+Previous diagnosis of mild iron deficiency anemia, resolved with dietary changes

@@ -2,59 +2,59 @@
   "turns": [
     {
       "speaker": "PROVIDER",
-      "text": "Good morning, how are you feeling now after the surgery?"
+      "text": "Hi there, how are you feeling now after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "A bit sore, sir. My knee is painful, but I expected that."
+      "text": "I'm okay, I guess. Still a bit groggy, but I can talk."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Understood. Can you rate your pain for me? Out of 10, where 0 is no pain and 10 is the worst?"
+      "text": "Good. Can you tell me your pain level out of 10? Any discomfort from the incisions or inside your abdomen?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Maybe 3 or 4 lah. It’s manageable, but I can feel it throbbing."
+      "text": "It's about a 4, maybe 5. There's some tightness and soreness, but not too bad."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Okay, and are you feeling nauseous or have vomited at all?"
+      "text": "Alright, we can manage that with pain relief. Are you feeling nauseous or did you feel sick at all during or after the surgery?"
     },
     {
       "speaker": "PATIENT",
-      "text": "No nausea, thank goodness. My tummy’s fine."
+      "text": "No, no nausea. Just a bit thirsty, but I know I can't drink yet, right?"
     },
     {
       "speaker": "PROVIDER",
-      "text": "Good. How’s your breathing? Any shortness of breath or throat discomfort?"
+      "text": "That's correct for now. How's your breathing? Any tightness or difficulty breathing?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Breathing’s okay, but my throat’s a bit sore from the tube, I think."
+      "text": "Breathing is fine. I'm a bit more conscious of my tummy, but I can breathe okay."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That’s common after general anesthesia. Do you remember anything about the surgery itself?"
+      "text": "Good. Since you had general anesthesia with a spinal, do you remember anything from the operating room?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Not really. I went to sleep and woke up here. All a bit fuzzy."
+      "text": "Not really. I remember going to sleep, then waking up here. Nothing in between."
     },
     {
       "speaker": "PROVIDER",
-      "text": "That’s normal. Since you have allergic rhinitis, are you having any stuffiness or allergy symptoms now?"
+      "text": "That's expected. You have a BMI of 28.5 and are diabetic — are you feeling any signs of low sugar, like shakiness or dizziness?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Nasal’s a bit blocked, but not too bad. Like usual lah."
+      "text": "No, I don't feel shaky. I'm just tired, but that's probably normal after surgery."
     },
     {
       "speaker": "PROVIDER",
-      "text": "Alright, we’ll keep an eye on that. Let the nurse know if you need anything for pain or discomfort."
+      "text": "Good to hear. We'll keep an eye on your blood sugar and get you moving soon. Any other concerns?"
     },
     {
       "speaker": "PATIENT",
-      "text": "Will do, doctor. Thanks for checking on me."
+      "text": "No, I think that's all. Thanks for checking on me."
     }
   ]
 }
