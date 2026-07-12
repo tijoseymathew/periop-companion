@@ -1,0 +1,39 @@
+PeriOp Companion
+Copyright 2026 Josey Mathew
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project extends and reuses components from the following Apache-2.0
+licensed works. See docs/attribution.md for a detailed breakdown of what was
+reused versus newly built.
+
+  * ambient-provider
+    Copyright NVIDIA Corporation
+    Licensed under the Apache License, Version 2.0
+    https://github.com/NVIDIA-AI-Blueprints/ambient-provider
+
+  * NeMo Agent Toolkit (nvidia-nat)
+    Copyright NVIDIA Corporation
+    Licensed under the Apache License, Version 2.0
+    https://github.com/NVIDIA/NeMo-Agent-Toolkit
+
+  * Google Agent Development Kit (google-adk)
+    Copyright Google LLC
+    Licensed under the Apache License, Version 2.0
+    https://github.com/google/adk-python
+
+Synthetic data in data/cases/ is derived from persona records sampled from
+the Nemotron-Personas-Singapore dataset:
+
+  * Nemotron-Personas-Singapore
+    Copyright NVIDIA Corporation
+    Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)
+    https://huggingface.co/datasets/nvidia/Nemotron-Personas-Singapore
+
+Inference is served by NVIDIA NIM microservices (Parakeet ASR, Llama-3.3-
+Nemotron-Super-49B, Nemotron Nano, Magpie TTS), used here via the hosted
+build.nvidia.com API or self-hosted NIM containers under NVIDIA's API Terms
+of Service and the NVIDIA Open Model License / Llama 3.3 Community License
+Agreement (for Llama-3.3-derived models) respectively. Those terms govern use
+of the models and hosted service; they are not incorporated into, and do not
+alter, the Apache-2.0 license of this repository's own source code.
