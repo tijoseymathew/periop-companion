@@ -13,6 +13,7 @@ evals/profile/workflow_output.json
 .claude/
 skills-lock.json
 # UI build outputs
+node_modules/
 ui/node_modules/
 ui/dist/
 ui/e2e/.fixture/
