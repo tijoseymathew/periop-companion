@@ -29,10 +29,28 @@ The app boots in one of two modes, chosen automatically from the environment
 
 You can force either mode with `PERIOP_STUB_RUNNER=1` (demo) or `0` (live).
 
-> **A note on speech.** The hosted key covers the LLM tiers. The diarized-audio
-> pipeline (Parakeet ASR, Magpie TTS) runs against **self-hosted** speech NIMs —
-> see [selfhosted.md](selfhosted.md). The keyless demo already exercises the
-> whole UI including audio provenance, replayed from committed cases.
+> **A note on speech.** The hosted key covers the LLM tiers. The keyless demo
+> already exercises the whole UI including audio provenance, replayed from
+> committed cases.
+>
+> One speech leg *can* also run hosted, GPU-free: **intra-op live dictation**
+> transcribes against NVIDIA's hosted Parakeet ASR over NVCF using the same
+> `NGC_API_KEY`. Enable it by pointing ASR at the hosted endpoint:
+>
+> ```bash
+> PERIOP_ASR_GRPC_URL=grpc.nvcf.nvidia.com:443
+> PERIOP_ASR_USE_SSL=1
+> PERIOP_ASR_FUNCTION_ID=<model's function id from build.nvidia.com>  # ids rotate
+> ```
+>
+> **⚠️ Caution — hosted ASR is streaming-only.** The hosted Parakeet function
+> serves *streaming* recognition only; `offline_recognize` is rejected there
+> (`INVALID_ARGUMENT: Unavailable model … type=offline`). So the **batch upload
+> paths — the diarized pre-op interview and the intra-op notes memo — do not
+> work against the hosted endpoint**, and speaker diarization (Sortformer) is
+> streaming-only regardless. Those legs, and Magpie TTS, still need **self-hosted**
+> speech NIMs — see [selfhosted.md](selfhosted.md). Function ids are per-model
+> and rotate; copy the current one from the model's API tab on build.nvidia.com.
 
 ---
 

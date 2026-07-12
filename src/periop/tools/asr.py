@@ -32,6 +32,34 @@ def asr_grpc_url_from_env() -> str:
     return os.environ.get("PERIOP_ASR_GRPC_URL") or ASR_GRPC_DEFAULT
 
 
+def _riva_auth(server: str) -> Any:
+    """Build a Riva ``Auth`` for either a local NIM or the hosted NVCF endpoint.
+
+    Local NIMs (the default) don't authenticate: plain gRPC, no SSL. Setting
+    ``PERIOP_ASR_FUNCTION_ID`` (or ``PERIOP_ASR_USE_SSL=1``) switches to the
+    hosted Riva/NVCF shape — SSL, with the key and function id travelling as
+    gRPC metadata rather than an HTTP header. The nvapi- key is read from
+    ``NGC_API_KEY`` (``NVIDIA_API_KEY`` accepted as a synonym).
+
+    Caveat: the hosted Parakeet function is streaming-only — ``offline_recognize``
+    (the diarized pre-op path) is rejected there. See docs/deploy.md.
+    """
+    import riva.client
+
+    function_id = os.environ.get("PERIOP_ASR_FUNCTION_ID")
+    use_ssl = os.environ.get("PERIOP_ASR_USE_SSL", "").lower() in ("1", "true", "yes")
+    if not (function_id or use_ssl):
+        return riva.client.Auth(uri=server, use_ssl=False)
+
+    key = os.environ.get("NGC_API_KEY") or os.environ.get("NVIDIA_API_KEY") or ""
+    metadata: list[list[str]] = []
+    if function_id:
+        metadata.append(["function-id", function_id])
+    if key:
+        metadata.append(["authorization", f"Bearer {key}"])
+    return riva.client.Auth(uri=server, use_ssl=True, metadata_args=metadata or None)
+
+
 def words_to_segments(words: list[dict], max_pause_s: float = 2.0) -> list[AudioSegment]:
     """Group timestamped words into segments, breaking on speaker change or pause.
 
@@ -93,8 +121,9 @@ class ParakeetAsr:
     def _riva_recognize(self, content: bytes, config: Any) -> Any:
         import riva.client
 
-        auth = riva.client.Auth(uri=self.server, use_ssl=False)
-        return riva.client.ASRService(auth).offline_recognize(content, config)
+        return riva.client.ASRService(_riva_auth(self.server)).offline_recognize(
+            content, config
+        )
 
     def _build_config(self, diarize: bool, sample_rate_hz: int) -> Any:
         if self._recognize is not None:  # injected in tests — config unused
@@ -213,8 +242,7 @@ class ParakeetStreamingAsr:
     def _riva_stream(self, chunks: Iterator[bytes], config: Any) -> Any:
         import riva.client
 
-        auth = riva.client.Auth(uri=self.server, use_ssl=False)
-        return riva.client.ASRService(auth).streaming_response_generator(
+        return riva.client.ASRService(_riva_auth(self.server)).streaming_response_generator(
             audio_chunks=chunks, streaming_config=config
         )
 
