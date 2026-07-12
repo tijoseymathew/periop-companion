@@ -156,16 +156,28 @@ def _after_agent(callback_context) -> types.Content | None:
 
 
 def _before_model(callback_context, llm_request):
-    # with include_contents="none" the first model call of the loop can
-    # arrive with no contents at all; OpenAI-compatible endpoints want at
-    # least one user turn
-    if not llm_request.contents:
-        llm_request.contents = [
-            types.Content(
-                role="user",
-                parts=[types.Part(text="Suggest the equipment for this case now.")],
-            )
-        ]
+    # The pipeline session's own turns (the "run" kickoff, neighbouring
+    # agents' events) read as noise here — live NIMs answer "I need the case
+    # details" to them instead of acting. Keep only this loop's tool
+    # exchange and open with an explicit directive user turn.
+    tool_turns = [
+        c
+        for c in llm_request.contents or []
+        if any(p.function_call or p.function_response for p in c.parts or [])
+    ]
+    llm_request.contents = [
+        types.Content(
+            role="user",
+            parts=[
+                types.Part(
+                    text="Suggest the equipment for this case now: one "
+                    "suggest_equipment call per item (1-3 items), then a "
+                    "one-line summary."
+                )
+            ],
+        ),
+        *tool_turns,
+    ]
     return None
 
 
