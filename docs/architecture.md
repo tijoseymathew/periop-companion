@@ -8,8 +8,8 @@ seams, with two diagrams — the **system architecture** and the **agent
 handoffs** — backed by component tables. Deeper treatments are linked inline.
 
 Companion docs: [adk-orchestration.md](adk-orchestration.md) ·
-[provenance-design.md](provenance-design.md) · [attribution.md](attribution.md)
-· [selfhosted.md](selfhosted.md).
+[provenance.md](provenance.md) · [frontend.md](frontend.md)
+· [attribution.md](attribution.md) · [selfhosted.md](selfhosted.md).
 
 ## The one principle
 
@@ -448,7 +448,9 @@ polling: `gap_analysis` (intake question prep) and `transcription`
 ## 4. UI flow (React SPA)
 
 State lives in [`app/App.tsx`](../ui/src/app/App.tsx); a pure view-model layer in
-[`lib/`](../ui/src/lib/) maps the API's `Case` onto each screen.
+[`lib/`](../ui/src/lib/) maps the API's `Case` onto each screen. The deeper
+treatment — screen state machine, UI invariants, status vocabulary — is in
+[frontend.md](frontend.md).
 
 ```
 Worklist ─▶ Records intake ─▶ Interview (pre-op) ─▶ Capture (intra/post-op) ─▶ Brief / Handoff

@@ -57,9 +57,11 @@ self-hosted with no code change).
 **[docs/architecture.md](docs/architecture.md)** is the full map — system
 diagram, agent-handoff diagram, and component tables. Companion docs:
 [docs/adk-orchestration.md](docs/adk-orchestration.md) (the ADK composition),
-[docs/provenance-design.md](docs/provenance-design.md) (how provenance is
-structural, not annotated), and [docs/attribution.md](docs/attribution.md)
-(what was reused from the blueprint versus built).
+[docs/provenance.md](docs/provenance.md) (how provenance is
+structural, not annotated), [docs/frontend.md](docs/frontend.md)
+(the React SPA — screens, invariants, status vocabulary), and
+[docs/attribution.md](docs/attribution.md) (what was reused from the blueprint
+versus built).
 
 ## Quickstart
 
