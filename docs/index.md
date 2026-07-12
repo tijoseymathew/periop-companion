@@ -46,6 +46,8 @@ stage-appropriate documentation where each statement is traceable:
   provenance is structural, not annotated.
 - :material-react: **[Front-end](frontend.md)** — the React SPA: screens,
   invariants, status vocabulary.
+- :material-cloud-upload: **[Run in your browser](deploy.md)** — one-click
+  Codespaces, Docker, or a public Hugging Face Space, no GPU.
 - :material-server: **[Self-hosted NIMs](selfhosted.md)** — running against your
   own NIM deployment with no code change.
 - :material-source-branch: **[Attribution](attribution.md)** — what was reused
@@ -54,6 +56,13 @@ stage-appropriate documentation where each statement is traceable:
 </div>
 
 ## Quickstart
+
+**No local setup:** [run it in your browser](deploy.md) — GitHub Codespaces,
+`docker run`, or a Hugging Face Space all boot the full app (API + review UI)
+with **no API key** in a keyless demo mode; add your own `NGC_API_KEY` to
+switch to live generation.
+
+**Local (uv):**
 
 ```bash
 uv sync                 # Python 3.12 environment

@@ -26,7 +26,7 @@ from collections.abc import Iterator
 from contextlib import contextmanager
 from typing import Any
 
-from nat.builder.context import Context
+from nat.builder.context import Context, ContextState
 from nat.builder.intermediate_step_manager import IntermediateStepManager
 from nat.data_models.intermediate_step import (
     IntermediateStepPayload,
@@ -52,6 +52,23 @@ def bind_export_loop() -> None:
     before the exporter shuts down.
     """
     _EXPORT_LOOP.set(asyncio.get_running_loop())
+
+
+def set_trace_session(session_id: str) -> None:
+    """Group this run's Langfuse trace under ``session_id`` (one id per case).
+
+    NAT's span exporter copies ``conversation_id`` onto every span it emits as
+    a ``session.id`` attribute, and Langfuse adopts that attribute — found on
+    any span of a trace — as the trace's Session. Setting the case id here
+    makes all of a case's generations (gap analysis, pre/intra/post-op stage
+    runs, retries) one Langfuse session, each run one trace inside it.
+
+    Call at the top of a NAT function body. Spans opened before the function
+    body runs (the WORKFLOW_START root span) miss the attribute on this path;
+    the API bridge additionally passes the id through ``SessionManager.session``
+    so live runs carry it on the root span too.
+    """
+    ContextState.get().conversation_id.set(session_id)
 
 
 def _push(step_manager: IntermediateStepManager, payload: IntermediateStepPayload) -> None:

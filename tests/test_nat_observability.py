@@ -71,6 +71,29 @@ class TestLangfuseEndpointFromEnv:
             "http://localhost:3000/api/public/otel/v1/traces"
         )
 
+    @pytest.mark.parametrize("quote", ['"', "'"])
+    def test_quoted_base_url_from_env_file_is_dequoted(
+        self, no_langfuse_env, monkeypatch, quote
+    ):
+        """Docker --env-file keeps quotes literally; the endpoint must not."""
+        for var, value in ALL_VARS.items():
+            monkeypatch.setenv(var, value)
+        monkeypatch.setenv("LANGFUSE_BASE_URL", f"{quote}https://cloud.langfuse.com{quote}")
+        assert langfuse_endpoint_from_env() == (
+            "https://cloud.langfuse.com/api/public/otel/v1/traces"
+        )
+
+    def test_quoted_keys_are_dequoted_in_place(self, no_langfuse_env, monkeypatch):
+        """The stock exporter reads the keys from the environment, so they must
+        be cleaned there too — not just the URL we build."""
+        import os
+
+        for var, value in ALL_VARS.items():
+            monkeypatch.setenv(var, f'"{value}"')
+        langfuse_endpoint_from_env()
+        assert os.environ["LANGFUSE_PUBLIC_KEY"] == "pk-lf-test"
+        assert os.environ["LANGFUSE_SECRET_KEY"] == "sk-lf-test"
+
 
 class TestPeriopLangfuseExporterComponent:
     """The registered ``_type: periop_langfuse`` component — the single place

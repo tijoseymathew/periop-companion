@@ -35,9 +35,33 @@ logger = logging.getLogger(__name__)
 REQUIRED_VARS = ("LANGFUSE_PUBLIC_KEY", "LANGFUSE_SECRET_KEY", "LANGFUSE_BASE_URL")
 
 
+def _dequote(value: str) -> str:
+    """Strip surrounding whitespace and one matching pair of quotes.
+
+    Docker ``--env-file`` (and some secret stores) keep quote characters
+    literally — unlike a shell or python-dotenv — so a ``.env`` line like
+    ``LANGFUSE_BASE_URL="https://cloud.langfuse.com"`` otherwise yields the
+    invalid endpoint ``"https://cloud.langfuse.com"/api/public/otel/v1/traces``.
+    """
+    v = value.strip()
+    if len(v) >= 2 and v[0] == v[-1] and v[0] in ("'", '"'):
+        v = v[1:-1].strip()
+    return v
+
+
+def _normalize_langfuse_env() -> None:
+    """Dequote the LANGFUSE_* vars in place so both the endpoint we build and
+    the keys the stock exporter reads from the environment are clean."""
+    for var in REQUIRED_VARS:
+        raw = os.environ.get(var)
+        if raw is not None:
+            os.environ[var] = _dequote(raw)
+
+
 def langfuse_endpoint_from_env() -> str | None:
     """The Langfuse OTel traces endpoint, or None (with one warning) if the
     environment doesn't provide complete credentials."""
+    _normalize_langfuse_env()
     missing = [var for var in REQUIRED_VARS if not os.environ.get(var)]
     if missing:
         logger.warning(

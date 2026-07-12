@@ -1,0 +1,39 @@
+# Keep the build context small and reproducible. Deps are installed from
+# lockfiles inside the image; build artifacts are regenerated in the image.
+
+# python
+.venv/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.python-version.bak
+
+# node / UI (node_modules reinstalled via npm ci; dist rebuilt in the image)
+ui/node_modules/
+ui/dist/
+node_modules/
+
+# vcs & local tooling
+.git/
+.gitignore
+.claude/
+.agents/
+.warren.yaml
+
+# secrets & local env (never bake a key into the image)
+.env
+.env.*
+!.env.example
+
+# heavy / regenerable artifacts
+data/cases/*/audio/*.wav
+evals/profile/all_requests_profiler_traces.json
+evals/profile/workflow_output.json
+test-results/
+ui/test-results/
+ui/playwright-report/
+ui/e2e/.fixture/
+ui/e2e/.recordings/
+
+# docs images are not needed at runtime
+docs/images/

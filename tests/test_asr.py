@@ -129,6 +129,77 @@ class TestParakeetAsr:
         assert all(s.speaker == "PROVIDER" for s in source.segments)
 
 
+def fake_stream(*batches):
+    """A stream_fn double: yields one riva streaming response per batch of words.
+
+    Each batch is a list of ``word`` dicts and becomes one ``is_final`` result,
+    mirroring ``streaming_response_generator`` output (per-word ``speaker_tag``).
+    """
+
+    def stream_fn(chunks, config):
+        list(chunks)  # a real generator drains the audio; keep the seam honest
+        for words in batches:
+            riva_words = [
+                SimpleNamespace(
+                    word=w["word"],
+                    start_time=int(w["t0"] * 1000),
+                    end_time=int(w["t1"] * 1000),
+                    speaker_tag=w["speaker"],
+                )
+                for w in words
+            ]
+            alt = SimpleNamespace(
+                transcript=" ".join(w["word"] for w in words), words=riva_words
+            )
+            yield SimpleNamespace(results=[SimpleNamespace(is_final=True, alternatives=[alt])])
+
+    return stream_fn
+
+
+class TestParakeetAsrStreaming:
+    """Hosted path: batch is streamed, finals accumulate into diarized segments."""
+
+    def test_streaming_builds_diarized_source_across_finals(self, tmp_path):
+        wav = tmp_path / "i.wav"
+        wav.write_bytes(b"RIFFfakewav")
+        asr = ParakeetAsr(
+            stream_fn=fake_stream(
+                [word("good", 0.0, 0.3, speaker=0), word("morning", 0.4, 0.8, speaker=0)],
+                [word("hello", 9.0, 9.3, speaker=1), word("doctor", 9.4, 9.8, speaker=1)],
+            )
+        )
+        source = asr.transcribe(wav, source_id="audio:preop-interview")
+        assert [s.speaker for s in source.segments] == ["PROVIDER", "PATIENT"]
+        assert [s.text for s in source.segments] == ["good morning", "hello doctor"]
+
+    def test_streaming_single_speaker_ignores_tags(self, tmp_path):
+        wav = tmp_path / "n.wav"
+        wav.write_bytes(b"RIFF")
+        asr = ParakeetAsr(
+            stream_fn=fake_stream(
+                [word("propofol", 0.0, 0.5, speaker=1), word("given", 0.6, 0.9, speaker=2)]
+            )
+        )
+        source = asr.transcribe(wav, source_id="audio:intraop-notes", diarize=False)
+        assert all(s.speaker == "PROVIDER" for s in source.segments)
+        assert source.segments[0].text == "propofol given"
+
+
+class TestUseStreaming:
+    def test_offline_double_forces_offline(self):
+        assert ParakeetAsr(recognize=lambda c, cfg: None)._use_streaming() is False
+
+    def test_stream_double_forces_streaming(self):
+        assert ParakeetAsr(stream_fn=lambda c, cfg: iter(()))._use_streaming() is True
+
+    def test_live_follows_hosted_env(self, monkeypatch):
+        monkeypatch.delenv("PERIOP_ASR_FUNCTION_ID", raising=False)
+        monkeypatch.delenv("PERIOP_ASR_USE_SSL", raising=False)
+        assert ParakeetAsr()._use_streaming() is False
+        monkeypatch.setenv("PERIOP_ASR_FUNCTION_ID", "fid-123")
+        assert ParakeetAsr()._use_streaming() is True
+
+
 class TestEnv:
     def test_default(self, monkeypatch):
         monkeypatch.delenv("PERIOP_ASR_GRPC_URL", raising=False)

@@ -75,5 +75,6 @@ nav:
   - ADK orchestration: adk-orchestration.md
   - Provenance & explainability: provenance.md
   - Front-end (React SPA): frontend.md
+  - Run in your browser: deploy.md
   - Self-hosted NIMs: selfhosted.md
   - Attribution: attribution.md
