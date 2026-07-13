@@ -10,7 +10,14 @@ data/cases/*/audio/*.wav
 # reports in evals/profile/ instead
 evals/profile/all_requests_profiler_traces.json
 evals/profile/workflow_output.json
+# .claude/ is local session state (incl. the .claude/skills symlinks used for
+# in-clone discovery) — never committed.
 .claude/
+# .agents/skills/ holds committed agent skills. Re-include them past any
+# user-global ".agents/*" ignore; keep warren (machine-local Telegram wiring) out.
+!.agents/
+!.agents/**
+.agents/skills/warren/
 skills-lock.json
 # mkdocs build output
 site/
