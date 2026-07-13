@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "skill": "periop-modify-frontend",
+  "description": "Agent-runnable tasks with checkable success criteria. Run each task in a fresh session with only this skill installed.",
+  "tasks": [
+    {
+      "id": "frontend-dev-loop",
+      "prompt": "Set up a front-end development loop for PeriOp Companion and show me the worklist rendering seeded cases.",
+      "requires": { "api_key": false, "tools": ["uv", "node"] },
+      "success_criteria": [
+        "Starts the stub backend (PERIOP_STUB_RUNNER=1 uv run python -m periop.api)",
+        "Runs npm ci && npm run dev in ui/, not a production build, for the loop",
+        "Confirms seeded sg-* cases appear in the worklist"
+      ]
+    },
+    {
+      "id": "frontend-new-surface",
+      "prompt": "Add a small badge to the worklist row showing how many claims in the case are flagged.",
+      "requires": { "api_key": false, "tools": ["uv", "node"] },
+      "success_criteria": [
+        "Derives flagged state via the shared vocabulary in ui/src/lib/claims.ts, not a re-implementation",
+        "Styles with semantic tokens from tailwind.config.js (status palette), no hardcoded colors",
+        "Keeps the row's one primary action untouched (lib/workflow.ts primaryAction)",
+        "npm test and npm run build both pass"
+      ]
+    },
+    {
+      "id": "frontend-consume-endpoint",
+      "prompt": "The backend added GET /api/cases/{id}/flag-counts returning {stage: string, flagged: number}[]. Wire it into the SPA.",
+      "requires": { "api_key": false, "tools": ["node"] },
+      "success_criteria": [
+        "Adds a zod shape in ui/src/lib/schema.ts mirroring the response field-for-field",
+        "Adds the call in ui/src/lib/api.ts with .parse() at the boundary",
+        "Does not fetch directly from a component",
+        "npm run build (tsc gate) passes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "skill": "periop-modify-backend",
+  "description": "Agent-runnable tasks with checkable success criteria. Run each task in a fresh session with only this skill installed.",
+  "tasks": [
+    {
+      "id": "backend-edit-prompt",
+      "prompt": "Make the GapAnalyst phrase its clarification questions so each one names the source document it is questioning.",
+      "requires": { "api_key": false, "tools": ["uv"] },
+      "success_criteria": [
+        "Edits the inline prompt in src/periop/agents/gap_analyst.py, not the ADK plumbing in src/periop/adk/",
+        "Leaves the JSON-Schema instruction block mechanism intact",
+        "Runs uv run pytest and the conformance tests, all passing",
+        "Smokes the change against the stub server before proposing any live run"
+      ]
+    },
+    {
+      "id": "backend-add-endpoint",
+      "prompt": "Add a read-only API endpoint that returns the count of flagged claims per stage for a case.",
+      "requires": { "api_key": false, "tools": ["uv"] },
+      "success_criteria": [
+        "Adds a route in src/periop/api/routers/ on the read side (no run lock)",
+        "Derives flagged status from claim status/citations consistent with the existing vocabulary",
+        "Adds or updates a test under tests/ and uv run pytest passes",
+        "Mentions the zod mirror (ui/src/lib/schema.ts) if the UI is to consume it"
+      ]
+    },
+    {
+      "id": "backend-tune-verifier",
+      "prompt": "Our hosted endpoint is rate-limited; make claim verification run sequentially without code changes.",
+      "requires": { "api_key": false },
+      "success_criteria": [
+        "Answers with PERIOP_VERIFIER_CONCURRENCY=1 (or 0) as the env knob",
+        "Does not propose editing src/periop/adk/verifier.py",
+        "Explains the default (4) and where the batching happens"
+      ]
+    }
+  ]
+}
