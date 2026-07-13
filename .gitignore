@@ -3,39 +3,11 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-# TTS-rendered audio is large (~8.5 MB/case); regenerate with
-# scripts/render_audio.py — the *.segments.json gold manifests are committed
+# TTS-rendered audio is large (~8.5 MB/case) and regenerable with
+# scripts/render_audio.py. Timing manifests are meaningless without their
+# paired wav, which is never committed, so neither is tracked.
 data/cases/*/audio/*.wav
-# sg-0006..sg-0030 segments.json from the 2026-07-13 ASR eval re-render are
-# excluded too (unlike the sg-0001..0005 manifests above, which stay
-# committed) — evals/asr_report.json's aggregate is the artifact that
-# matters here; re-render via render_audio.py if these are needed again.
-# New case bundles should still commit their manifests per the rule above.
-data/cases/sg-0006/audio/*.segments.json
-data/cases/sg-0007/audio/*.segments.json
-data/cases/sg-0008/audio/*.segments.json
-data/cases/sg-0009/audio/*.segments.json
-data/cases/sg-0010/audio/*.segments.json
-data/cases/sg-0011/audio/*.segments.json
-data/cases/sg-0012/audio/*.segments.json
-data/cases/sg-0013/audio/*.segments.json
-data/cases/sg-0014/audio/*.segments.json
-data/cases/sg-0015/audio/*.segments.json
-data/cases/sg-0016/audio/*.segments.json
-data/cases/sg-0017/audio/*.segments.json
-data/cases/sg-0018/audio/*.segments.json
-data/cases/sg-0019/audio/*.segments.json
-data/cases/sg-0020/audio/*.segments.json
-data/cases/sg-0021/audio/*.segments.json
-data/cases/sg-0022/audio/*.segments.json
-data/cases/sg-0023/audio/*.segments.json
-data/cases/sg-0024/audio/*.segments.json
-data/cases/sg-0025/audio/*.segments.json
-data/cases/sg-0026/audio/*.segments.json
-data/cases/sg-0027/audio/*.segments.json
-data/cases/sg-0028/audio/*.segments.json
-data/cases/sg-0029/audio/*.segments.json
-data/cases/sg-0030/audio/*.segments.json
+data/cases/*/audio/*.segments.json
 # raw profiler traces carry full prompt/response text; commit the distilled
 # reports in evals/profile/ instead
 evals/profile/all_requests_profiler_traces.json
