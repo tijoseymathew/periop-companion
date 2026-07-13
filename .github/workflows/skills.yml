@@ -1,0 +1,115 @@
+# Trust pipeline for the agent skills in .agents/skills/ — the verified-skills
+# pattern from docs.nvidia.com/skills applied under this repo's own identity:
+# scan (SkillSpector) on every change, sign (OpenSSF model-signing, Sigstore
+# keyless) on main. Verification instructions live in each skill-card.md and
+# docs/skills.md.
+name: skills
+
+on:
+  pull_request:
+    paths:
+      - ".agents/skills/**"
+      - ".github/workflows/skills.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".agents/skills/**"
+      - ".github/workflows/skills.yml"
+
+concurrency:
+  group: skills-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    name: SkillSpector scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write # SARIF upload to code scanning
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install SkillSpector
+        run: uv tool install git+https://github.com/NVIDIA/skillspector.git
+
+      - name: Scan each skill
+        # Static checks only (--no-llm): deterministic, keyless CI. Exit 1 =
+        # risk_score > 50 (DO_NOT_INSTALL) fails the gate; markdown reports
+        # are kept as artifacts either way.
+        run: |
+          mkdir -p skillspector-reports/sarif
+          status=0
+          for dir in .agents/skills/*/; do
+            name=$(basename "$dir")
+            echo "::group::scan $name"
+            skillspector scan "$dir" --no-llm --format sarif \
+              --output "skillspector-reports/sarif/$name.sarif" || status=$?
+            skillspector scan "$dir" --no-llm --format markdown \
+              --output "skillspector-reports/$name.md" || true
+            echo "::endgroup::"
+          done
+          exit $status
+
+      - name: Upload SARIF to code scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: skillspector-reports/sarif
+          category: skillspector
+
+      - name: Upload scan reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skillspector-reports
+          path: skillspector-reports/
+
+  sign:
+    name: Sign skills (Sigstore keyless)
+    needs: scan
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit the .sig files back
+      id-token: write # Sigstore keyless: Fulcio cert from the workflow's OIDC token
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install model-signing
+        run: pip install model-signing
+
+      - name: Sign each skill directory
+        # Detached OMS bundle per skill; the sig file is excluded from its own
+        # payload. Consumers verify with:
+        #   model_signing verify sigstore <dir> --signature <dir>/skill.oms.sig \
+        #     --identity "https://github.com/${{ github.repository }}/.github/workflows/skills.yml@refs/heads/main" \
+        #     --identity_provider https://token.actions.githubusercontent.com
+        run: |
+          for dir in .agents/skills/*/; do
+            name=$(basename "$dir")
+            echo "::group::sign $name"
+            model_signing sign sigstore "$dir" \
+              --signature "${dir}skill.oms.sig" \
+              --ignore-paths "${dir}skill.oms.sig"
+            echo "::endgroup::"
+          done
+
+      - name: Commit signatures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .agents/skills/*/skill.oms.sig
+          if git diff --cached --quiet; then
+            echo "signatures unchanged"
+          else
+            git commit -m "chore(skills): refresh Sigstore signatures [skip ci]"
+            git push
+          fi
