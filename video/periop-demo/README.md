@@ -21,12 +21,35 @@ HTML-to-video framework. Thanks to the HyperFrames team.
 
 - `index.html` — the whole composition (one paused GSAP timeline, `data-*`
   timing, framework-owned `<video>` playback cropped per scene via `clip-path`).
-- `assets/` — the live-NIM `sg-0031` recordings (`preop`, `intraop`, `postop`)
-  and the GitHub Codespaces screenshot used in the closing CTA.
 - `demo-video-script.md` (one level up) — the shot-by-shot brief.
-- `renders/` — gitignored. Render output is a reproducible build artifact, not
-  tracked; run the command below to produce `renders/periop-demo.mp4` locally
-  (1920×1080 · 30 fps · 80 s).
+- `assets/` — gitignored. The source footage the composition reads (see below).
+- `renders/` — gitignored. Render output is a reproducible build artifact; run
+  the command below to produce `renders/periop-demo.mp4` locally (1920×1080 ·
+  30 fps · 80 s).
+
+## Getting the source footage
+
+`assets/` isn't committed — it's captured footage, not code, and the canonical
+recording session already lives in the `periop-companion` repo. Before
+`npm run render` or `npm run dev` will work, populate it:
+
+```bash
+COMPANION=../../periop-companion   # adjust to your checkout
+mkdir -p assets
+cp "$COMPANION/ui/e2e/.recordings/sg0031-demo-02-preop.mp4"   assets/preop.mp4
+cp "$COMPANION/ui/e2e/.recordings/sg0031-demo-03-intraop.mp4" assets/intraop.mp4
+cp "$COMPANION/ui/e2e/.recordings/sg0031-demo-04-postop.mp4"  assets/postop.mp4
+```
+
+If that directory is empty, re-record the sg-0031 case first — see
+`$COMPANION/ui/e2e/DEMO_RECORDING.md` and `record_sg0031_demo.mjs` (drives the
+live app through Playwright against real NIM inference; takes roughly 10
+minutes per part, not a quick rebuild).
+
+`assets/codespace.png` has no script — it's a manual screenshot of the GitHub
+Codespaces one-click-run flow on the repo's landing page. Retake it at
+1920×1080 (or close to it; the composition crops to a 940×529 inset) whenever
+the Codespaces UI changes materially.
 
 ## Rebuild
 

@@ -4,6 +4,10 @@ node_modules/
 # render output — reproducible via `npm run render`, not tracked
 renders/
 
+# source footage — captured, not committed; see README "Getting the source
+# footage" for how to (re)produce them
+assets/
+
 # build-phase snapshots
 snapshots/
 
