@@ -135,7 +135,11 @@ jobs:
 
       - name: Sign each skill directory
         # Detached OMS bundle per skill; the sig file is excluded from its own
-        # payload. Consumers verify with:
+        # payload. --use_ambient_credentials is required to pick up this job's
+        # id-token: write OIDC token as the Sigstore identity — without it,
+        # model_signing defaults to an interactive OIDC flow that has no
+        # browser/TTY to complete on a runner and just fails. Consumers verify
+        # with:
         #   model_signing verify sigstore <dir> --signature <dir>/skill.oms.sig \
         #     --identity "https://github.com/${{ github.repository }}/.github/workflows/skills.yml@refs/heads/main" \
         #     --identity_provider https://token.actions.githubusercontent.com
@@ -145,7 +149,8 @@ jobs:
             echo "::group::sign $name"
             model_signing sign sigstore "$dir" \
               --signature "${dir}skill.oms.sig" \
-              --ignore-paths "${dir}skill.oms.sig"
+              --ignore-paths "${dir}skill.oms.sig" \
+              --use_ambient_credentials
             echo "::endgroup::"
           done
 
