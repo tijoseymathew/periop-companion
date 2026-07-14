@@ -258,17 +258,26 @@ def walk(client: Client, case_dir: Path, label: str, providers: dict[str, str]) 
     # --- per-stage: upload audio, run (SSE), sign off ------------------- #
     for stem, (stage, prov_key) in AUDIO_KINDS.items():
         provider = providers[prov_key]
-        wav = case_dir / "audio" / f"{stem}.wav"
-        if not wav.is_file():
-            die(f"missing audio: {wav}")
-        with wav.open("rb") as fh:
-            client.request(stage, f"upload {stem}.wav", "POST",
-                           f"/api/cases/{case_id}/sources/audio",
-                           files={"file": (wav.name, fh, "audio/wav")},
-                           data={"kind": stem, "provider_id": provider})
-        # upload-time transcription runs in the background; the run gate
-        # 409s until it settles, so wait (and time the ASR leg) here
-        _time_transcription(client, case_id, stage)
+        # intraop memos accumulate (v2 §4.2 step 2): if the case bundle has
+        # several per-session wavs (intraop-notes-1.wav, -2.wav, ...) upload
+        # them one at a time, each waiting for its own transcription to
+        # settle, instead of one continuous dictation — this is how the
+        # anesthetist actually uses the recorder across a real case.
+        sessions = sorted((case_dir / "audio").glob(f"{stem}-*.wav")) if stem == "intraop-notes" else []
+        wavs = sessions if sessions else [case_dir / "audio" / f"{stem}.wav"]
+        if not wavs[0].is_file():
+            die(f"missing audio: {wavs[0]}")
+        for i, wav in enumerate(wavs, start=1):
+            label = f"upload {wav.name}" if len(wavs) > 1 else f"upload {stem}.wav"
+            with wav.open("rb") as fh:
+                client.request(stage, label, "POST",
+                               f"/api/cases/{case_id}/sources/audio",
+                               files={"file": (wav.name, fh, "audio/wav")},
+                               data={"kind": stem, "provider_id": provider})
+            # upload-time transcription runs in the background; the run gate
+            # 409s until it settles, so wait (and time the ASR leg) here
+            note = f"session {i}/{len(wavs)}" if len(wavs) > 1 else None
+            _time_transcription(client, case_id, stage, note=note)
         step = client.run_stage_sse(stage, case_id, stage, provider)
         if "completed" not in step.detail:
             die(f"{stage} run did not complete: {step.detail}")
@@ -284,7 +293,7 @@ def walk(client: Client, case_dir: Path, label: str, providers: dict[str, str]) 
 
 
 def _time_transcription(client: Client, case_id: str, stage: str,
-                        timeout_s: float = 1800.0) -> None:
+                        timeout_s: float = 1800.0, note: str | None = None) -> None:
     """Poll until the stage's upload-time transcription settles; time the wait.
 
     "failed" is not fatal — the stage run transcribes at generate time.
@@ -299,10 +308,12 @@ def _time_transcription(client: Client, case_id: str, stage: str,
         state = case["workflow"]["stages"][stage].get("transcription")
         if state in ("complete", "failed"):
             dt = time.perf_counter() - t0
-            note = f"{polls} polls" if state == "complete" else \
+            detail = f"{polls} polls" if state == "complete" else \
                 f"failed ({case['workflow']['stages'][stage].get('transcription_error')}) — " \
                 "the stage run transcribes instead"
-            rec.add(Step(stage, "upload-time transcription", dt, None, note))
+            if note:
+                detail = f"{note}, {detail}"
+            rec.add(Step(stage, "upload-time transcription", dt, None, detail))
             return
         time.sleep(1.0)
     die("transcription never settled within timeout")
