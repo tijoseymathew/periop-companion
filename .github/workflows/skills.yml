@@ -54,11 +54,58 @@ jobs:
           done
           exit $status
 
+      - name: Merge per-skill SARIF into a single run
+        # Code scanning no longer combines multiple SARIF runs uploaded
+        # under one category (github.blog/changelog/2025-07-21-code-scanning
+        # -will-stop-combining-multiple-sarif-runs...). skillspector emits
+        # one run per skill, each with artifactLocation.uri relative to the
+        # scanned skill dir (e.g. "SKILL.md") — those also collide across
+        # skills once merged, so rewrite them to repo-relative paths before
+        # combining into the single run the Action now requires.
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob
+          import json
+          import os
+
+          sarif_dir = "skillspector-reports/sarif"
+          merged = None
+          seen_rule_ids = set()
+
+          for path in sorted(glob.glob(f"{sarif_dir}/*.sarif")):
+              skill = os.path.splitext(os.path.basename(path))[0]
+              with open(path) as f:
+                  doc = json.load(f)
+              run = doc["runs"][0]
+
+              for result in run.get("results", []):
+                  for loc in result.get("locations", []):
+                      art = loc["physicalLocation"]["artifactLocation"]
+                      art["uri"] = f".agents/skills/{skill}/{art['uri']}"
+
+              if merged is None:
+                  merged = doc
+                  merged["runs"][0]["results"] = []
+                  merged["runs"][0]["tool"]["driver"]["rules"] = []
+
+              for rule in run["tool"]["driver"].get("rules", []):
+                  if rule["id"] not in seen_rule_ids:
+                      seen_rule_ids.add(rule["id"])
+                      merged["runs"][0]["tool"]["driver"]["rules"].append(rule)
+
+              merged["runs"][0]["results"].extend(run.get("results", []))
+
+          if merged is not None:
+              with open("skillspector-reports/skillspector.sarif", "w") as f:
+                  json.dump(merged, f)
+          PY
+
       - name: Upload SARIF to code scanning
         if: always()
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: skillspector-reports/sarif
+          sarif_file: skillspector-reports/skillspector.sarif
           category: skillspector
 
       - name: Upload scan reports
