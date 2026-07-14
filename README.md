@@ -19,6 +19,8 @@ evaluated with the **NVIDIA NeMo Agent Toolkit (NAT)**, powered by **NVIDIA NIMs
 
 📖 **[Full documentation →](https://tijoseymathew.github.io/periop-companion/)**
 
+[![Watch the demo video](https://img.youtube.com/vi/8sC0SnpUbCA/maxresdefault.jpg)](https://youtu.be/8sC0SnpUbCA)
+
 ## Try it in your browser
 
 One click runs the full app — API + review UI — in the browser. No GPU. With
