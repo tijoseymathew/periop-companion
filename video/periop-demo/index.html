@@ -1,0 +1,423 @@
+<!doctype html>
+<!--
+  PeriOp Companion — demo video composition.
+  Built with HyperFrames (HTML-to-video), https://hyperframes.heygen.com
+  See README.md for structure and rebuild steps.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; }
+      :root {
+        --bg: #fdfae7;
+        --primary: #1e2bfa;
+        --text: #111111;
+        --text-muted: #6b6b6b;
+        --text-light: #9a9a9a;
+        --accent-light: rgba(30, 43, 250, 0.08);
+        --accent-medium: rgba(30, 43, 250, 0.15);
+        --border: rgba(30, 43, 250, 0.2);
+        --card-bg: rgba(30, 43, 250, 0.04);
+        --positive: #059669;
+        --font-display: "Space Grotesk", sans-serif;
+        --font-body: "Inter", sans-serif;
+      }
+      body { font-family: var(--font-body); background: #fdfae7; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+
+      /* ---------- persistent ---------- */
+      #bg { position: absolute; inset: 0; background: var(--bg); z-index: 0; }
+      #bg .glow-a { position: absolute; top: -260px; right: -220px; width: 900px; height: 900px; border-radius: 50%; background: var(--primary); filter: blur(200px); opacity: 0.09; }
+      #bg .glow-b { position: absolute; bottom: -320px; left: -240px; width: 820px; height: 820px; border-radius: 50%; background: var(--primary); filter: blur(200px); opacity: 0.06; }
+      .tick { position: absolute; width: 26px; height: 26px; z-index: 7; }
+      .tick.tl { top: 44px; left: 44px; border-top: 1.5px solid var(--border); border-left: 1.5px solid var(--border); }
+      .tick.tr { top: 44px; right: 44px; border-top: 1.5px solid var(--border); border-right: 1.5px solid var(--border); }
+      .tick.bl { bottom: 44px; left: 44px; border-bottom: 1.5px solid var(--border); border-left: 1.5px solid var(--border); }
+      .tick.br { bottom: 44px; right: 44px; border-bottom: 1.5px solid var(--border); border-right: 1.5px solid var(--border); }
+      #eyebrow { position: absolute; top: 58px; left: 108px; z-index: 7; font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted); }
+      #progress { position: absolute; left: 0; bottom: 0; width: 100%; height: 4px; background: var(--accent-light); z-index: 8; }
+      #progress .fill { width: 100%; height: 100%; background: var(--primary); transform-origin: left center; transform: scaleX(0); }
+
+      /* ---------- generic scene ---------- */
+      .scene { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 110px 150px; gap: 44px; }
+      .headline { font-family: var(--font-display); font-weight: 600; font-size: 52px; line-height: 1.28; color: var(--text); text-align: center; max-width: 1380px; letter-spacing: -0.01em; }
+      .headline .hl { color: var(--primary); }
+      .eyebrow-in { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+
+      /* ---------- cold open A: journey ---------- */
+      .journey-row { display: flex; gap: 32px; }
+      .jcard { width: 360px; background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 18px; padding: 40px 40px 44px; display: flex; flex-direction: column; gap: 26px; }
+      .phase-head { display: flex; align-items: center; gap: 22px; }
+      .step-circle { width: 72px; height: 72px; border-radius: 50%; background: var(--primary); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 30px; flex-shrink: 0; }
+      .jcard .pname { font-family: var(--font-display); font-weight: 700; font-size: 34px; color: var(--text); }
+      .jcard .psub { font-family: var(--font-body); font-weight: 500; font-size: 22px; color: var(--text-muted); line-height: 1.4; }
+
+      /* ---------- cold open B: io chips ---------- */
+      .iochip { position: absolute; width: 372px; background: var(--accent-light); border: 1.5px solid var(--border); border-radius: 18px; padding: 24px 26px; display: flex; flex-direction: column; gap: 18px; z-index: 6; }
+      .iochip .clab { font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+      .iochip .clab::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+      .doc-frag { filter: blur(2.6px); opacity: 0.5; display: flex; flex-direction: column; gap: 9px; }
+      .doc-frag .l { height: 10px; border-radius: 3px; background: var(--text-muted); }
+      .wave { display: flex; align-items: flex-end; gap: 6px; height: 70px; padding: 4px 0; }
+      .wave span { flex: 1; background: var(--primary); border-radius: 3px; opacity: 0.85; }
+      .bubbles { display: flex; flex-direction: column; gap: 10px; }
+      .bubbles .bub { max-width: 82%; padding: 12px 16px; border-radius: 14px; font-size: 15px; color: var(--text-muted); filter: blur(0.4px); line-height: 1.3; }
+      .bubbles .bub.a { align-self: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+      .bubbles .bub.b { align-self: flex-end; background: var(--accent-medium); border-bottom-right-radius: 4px; color: var(--primary); }
+
+      /* ---------- cold open C: bars + counter ---------- */
+      .bars-wrap { width: 1180px; display: flex; flex-direction: column; gap: 20px; }
+      .c-row { display: flex; align-items: center; gap: 26px; }
+      .c-label { font-family: var(--font-body); font-weight: 500; font-size: 24px; color: var(--text); width: 360px; flex-shrink: 0; }
+      .c-track { flex: 1; height: 44px; background: var(--accent-light); border-radius: 10px; overflow: hidden; }
+      .c-fill { height: 100%; background: var(--primary); border-radius: 10px; transform-origin: left center; }
+      .c-min { font-family: var(--font-display); font-weight: 600; font-size: 26px; color: var(--primary); width: 120px; text-align: right; }
+      .counter-num { font-family: var(--font-display); font-weight: 700; font-size: 200px; line-height: 0.9; color: var(--primary); letter-spacing: -0.03em; }
+      .counter-lab { font-family: var(--font-display); font-weight: 600; font-size: 40px; color: var(--text); margin-top: 8px; }
+      .counter-sub { font-family: var(--font-body); font-weight: 500; font-size: 26px; color: var(--text-muted); margin-top: 10px; letter-spacing: 0.02em; }
+      .counter-note { font-family: var(--font-body); font-weight: 400; font-size: 17px; color: var(--text-muted); margin-top: 22px; opacity: 0.85; }
+
+      /* ---------- title / wordmark ---------- */
+      .wordmark { font-family: var(--font-display); font-weight: 700; font-size: 116px; line-height: 1; color: var(--text); letter-spacing: -0.02em; }
+      .wordmark .p { color: var(--primary); }
+      .accent-line { width: 96px; height: 6px; background: var(--primary); border-radius: 3px; transform-origin: left center; }
+      .subtitle { font-family: var(--font-display); font-weight: 500; font-size: 34px; color: var(--text-muted); letter-spacing: 0.01em; }
+
+      /* ---------- walkthrough browser inset (narrow, IPO) ---------- */
+      .wk-glow { position: absolute; left: 450px; top: 250px; width: 1020px; height: 640px; z-index: 1; background: var(--primary); filter: blur(90px); opacity: 0.15; border-radius: 40px; }
+      .frame-box { position: absolute; left: 490px; top: 280px; width: 940px; height: 569px; border: 1.5px solid var(--border); border-radius: 15px; background: transparent; overflow: hidden; z-index: 3; }
+      .chrome-bar { position: absolute; left: 0; top: 0; width: 100%; height: 40px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 9px; padding: 0 18px; }
+      .chrome-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-light); }
+
+      .overlay { position: absolute; inset: 0; z-index: 4; }
+      .addr-pill { position: absolute; top: 288px; left: 566px; z-index: 6; font-family: var(--font-display); font-weight: 500; font-size: 16px; color: #555555; background: var(--accent-light); border: 1px solid var(--border); border-radius: 100px; padding: 5px 16px; letter-spacing: 0.01em; }
+
+      /* stage label */
+      .stage-head { position: absolute; top: 156px; left: 0; width: 100%; display: flex; align-items: center; justify-content: center; gap: 18px; }
+      .stage-circle { width: 52px; height: 52px; border-radius: 50%; background: var(--primary); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 24px; flex-shrink: 0; }
+      .stage-name { font-family: var(--font-display); font-weight: 700; font-size: 40px; color: var(--text); letter-spacing: -0.01em; }
+      .stage-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-light); }
+      .stage-sub { font-family: var(--font-display); font-weight: 500; font-size: 24px; color: var(--text-muted); }
+
+      /* input / output panels */
+      .io-panel { position: absolute; top: 366px; width: 364px; display: flex; flex-direction: column; gap: 16px; }
+      .io-panel.left { left: 86px; }
+      .io-panel.right { right: 86px; }
+      .io-h { font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--primary); display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+      .io-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; display: flex; align-items: center; gap: 15px; }
+      .io-card .ic { width: 40px; height: 40px; border-radius: 11px; background: var(--accent-light); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+      .io-card .ic svg { width: 21px; height: 21px; }
+      .io-card .il { font-family: var(--font-body); font-weight: 500; font-size: 20px; color: var(--text); line-height: 1.25; }
+
+      .cap-center { position: absolute; top: 884px; left: 0; width: 100%; text-align: center; z-index: 4; }
+      .cap-chip { display: inline-block; background: var(--primary); color: var(--bg); font-family: var(--font-display); font-weight: 600; font-size: 30px; padding: 15px 38px; border-radius: 100px; white-space: nowrap; }
+
+      /* ---------- provenance ---------- */
+      .claim-card { position: absolute; left: 610px; top: 322px; width: 700px; background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 18px; padding: 40px 44px; display: flex; flex-direction: column; gap: 24px; }
+      #claim-good { border-color: var(--positive); background: rgba(5, 150, 105, 0.06); opacity: 0; }
+      .claim-txt { font-family: var(--font-body); font-weight: 500; font-size: 32px; color: var(--text); line-height: 1.35; }
+      .src { display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; font-family: var(--font-display); font-weight: 600; font-size: 20px; padding: 10px 20px; border-radius: 100px; }
+      .src-bad { border: 1.5px dashed var(--text-light); color: var(--text-muted); }
+      .aplayer { display: flex; align-items: center; gap: 16px; background: #ffffff; border: 1px solid var(--border); border-radius: 14px; padding: 14px 18px; }
+      .aplayer .pbtn { width: 44px; height: 44px; border-radius: 50%; background: var(--positive); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .aplayer .pbtn svg { width: 17px; height: 17px; }
+      .aplayer .wave2 { position: relative; flex: 1; display: flex; align-items: center; gap: 3px; height: 40px; }
+      .aplayer .wave2 span { flex: 1; border-radius: 2px; background: var(--border); }
+      .aplayer .phead { position: absolute; top: -3px; height: 46px; width: 2.5px; border-radius: 2px; background: var(--positive); left: 0; }
+      .aplayer .atime { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--positive); white-space: nowrap; }
+      .prov-cap { position: absolute; left: 0; top: 706px; width: 100%; text-align: center; font-family: var(--font-display); font-weight: 600; font-size: 46px; color: var(--text); letter-spacing: -0.01em; }
+      .ring-wrap { position: relative; width: 340px; height: 340px; display: flex; align-items: center; justify-content: center; }
+      .ring-num { position: absolute; font-family: var(--font-display); font-weight: 700; font-size: 92px; color: var(--primary); letter-spacing: -0.02em; }
+      #ring-prog { stroke-dashoffset: 817; }
+
+      /* ---------- close ---------- */
+      .close-glow { position: absolute; left: 450px; top: 250px; width: 1020px; height: 640px; z-index: 1; background: var(--primary); filter: blur(90px); opacity: 0.15; border-radius: 40px; }
+      #close-img { position: absolute; left: 490px; top: 320px; width: 940px; height: 529px; z-index: 2; object-fit: cover; object-position: center top; clip-path: inset(0 round 0 0 14px 14px); }
+      .e-url { display: flex; align-items: center; gap: 16px; font-family: var(--font-display); font-weight: 500; font-size: 30px; color: var(--text-muted); }
+      .e-url svg { width: 34px; height: 34px; color: var(--text); }
+      .e-fine { position: absolute; left: 0; bottom: 92px; width: 100%; text-align: center; font-family: var(--font-body); font-weight: 400; font-size: 22px; color: var(--text-muted); letter-spacing: 0.02em; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="80" data-width="1920" data-height="1080" data-fps="30">
+
+      <!-- persistent -->
+      <div id="bg" class="clip" data-start="0" data-duration="80" data-track-index="0"><div class="glow-a"></div><div class="glow-b"></div></div>
+      <div id="ticks" class="clip" data-start="0" data-duration="80" data-track-index="1"><div class="tick tl"></div><div class="tick tr"></div><div class="tick bl"></div><div class="tick br"></div></div>
+      <div id="progress" class="clip" data-start="0" data-duration="80" data-track-index="2"><div class="fill"></div></div>
+      <div id="eyebrow" class="clip" data-start="18.8" data-duration="50.5" data-track-index="3">PeriOp Companion · one case, end to end</div>
+
+      <!-- COLD OPEN A - journey (0-4.5) -->
+      <div id="co-a" class="scene clip" data-start="0" data-duration="4.5" data-track-index="4">
+        <div id="a-head" class="headline">One patient. <span class="hl">Three phases of care.</span></div>
+        <div class="journey-row">
+          <div id="a-c1" class="jcard"><div class="phase-head"><div class="step-circle">1</div><div class="pname">Pre-op</div></div><div class="psub">Assess, question, plan the case.</div></div>
+          <div id="a-c2" class="jcard"><div class="phase-head"><div class="step-circle">2</div><div class="pname">Intra-op</div></div><div class="psub">Capture what happens in theatre.</div></div>
+          <div id="a-c3" class="jcard"><div class="phase-head"><div class="step-circle">3</div><div class="pname">Post-op</div></div><div class="psub">Recover, then hand off cleanly.</div></div>
+        </div>
+      </div>
+
+      <!-- COLD OPEN B - io chips scatter (4.5-9.3) -->
+      <div id="co-b" class="scene clip" data-start="4.5" data-duration="4.8" data-track-index="5">
+        <div id="b-head" class="headline" style="position:absolute; top:150px; left:0; width:100%;">The truth lives in documents. In audio. In people.</div>
+        <div id="b-chip1" class="iochip" style="left:392px; top:430px; transform: rotate(-6deg);">
+          <div class="clab">Records</div>
+          <div class="doc-frag"><div class="l" style="width:92%"></div><div class="l" style="width:74%"></div><div class="l" style="width:85%"></div><div class="l" style="width:60%"></div><div class="l" style="width:80%"></div></div>
+        </div>
+        <div id="b-chip2" class="iochip" style="left:774px; top:560px; transform: rotate(4deg);">
+          <div class="clab">Dictation</div>
+          <div class="wave"><span style="height:30%"></span><span style="height:58%"></span><span style="height:88%"></span><span style="height:46%"></span><span style="height:72%"></span><span style="height:100%"></span><span style="height:54%"></span><span style="height:80%"></span><span style="height:38%"></span><span style="height:64%"></span><span style="height:92%"></span><span style="height:44%"></span><span style="height:70%"></span><span style="height:34%"></span></div>
+        </div>
+        <div id="b-chip3" class="iochip" style="left:1156px; top:430px; transform: rotate(-3deg);">
+          <div class="clab">Interviews</div>
+          <div class="bubbles"><div class="bub a">when was the last dose taken?</div><div class="bub b">yesterday morning - the daughter confirmed</div><div class="bub a">noted, thank you</div></div>
+        </div>
+      </div>
+
+      <!-- COLD OPEN C - bars (9.3-11.8) -->
+      <div id="co-c1" class="scene clip" data-start="9.3" data-duration="2.5" data-track-index="6">
+        <div id="c-head" class="eyebrow-in">Minutes per patient · every step</div>
+        <div class="bars-wrap">
+          <div class="c-row"><div class="c-label">Pre-op assessment</div><div class="c-track"><div class="c-fill" id="c-f1" style="width:75%"></div></div><div class="c-min">30 min</div></div>
+          <div class="c-row"><div class="c-label">Pre-op interview</div><div class="c-track"><div class="c-fill" id="c-f2" style="width:50%"></div></div><div class="c-min">20 min</div></div>
+          <div class="c-row"><div class="c-label">Post-op note</div><div class="c-track"><div class="c-fill" id="c-f3" style="width:50%"></div></div><div class="c-min">20 min</div></div>
+          <div class="c-row"><div class="c-label">Handoff &amp; notes</div><div class="c-track"><div class="c-fill" id="c-f4" style="width:25%"></div></div><div class="c-min">10 min</div></div>
+        </div>
+      </div>
+
+      <!-- COLD OPEN C - counter (11.8-14.3) -->
+      <div id="co-c2" class="scene clip" data-start="11.8" data-duration="2.5" data-track-index="7">
+        <div id="c2-num" class="counter-num">&#8776;0</div>
+        <div id="c2-sup" style="text-align:center;">
+          <div class="counter-lab">hours of clinician time</div>
+          <div class="counter-sub">every day · one hospital</div>
+          <div class="counter-note">* illustrative estimate, from anecdotal accounts</div>
+        </div>
+      </div>
+
+      <!-- TURN - title (14.3-18.8) -->
+      <div id="title" class="scene clip" data-start="14.3" data-duration="4.5" data-track-index="8">
+        <div id="t-word" class="wordmark"><span class="p">PeriOp</span> Companion</div>
+        <div id="t-line" class="accent-line"></div>
+        <div id="t-sub" class="subtitle">Every claim, sourced.</div>
+      </div>
+
+      <!-- WALKTHROUGH - glow + frame (18.8-56.8) -->
+      <div id="wk-glow" class="wk-glow clip" data-start="18.8" data-duration="38" data-track-index="9"></div>
+      <div id="wk-frame" class="clip" data-start="18.8" data-duration="38" data-track-index="10">
+        <div class="frame-box"><div class="chrome-bar"><div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div></div></div>
+      </div>
+
+      <!-- per stage: wide establish (whole screen) then HARD CUT to tight detail crop -->
+      <video id="vid-preop-wide" src="assets/preop.mp4" muted playsinline data-start="18.8" data-media-start="108" data-duration="2.2" data-track-index="11" style="position:absolute; left:490px; top:320px; width:940px; height:529px; object-fit:cover; z-index:2; clip-path: inset(0 round 0 0 14px 14px);"></video>
+      <video id="vid-preop" src="assets/preop.mp4" muted playsinline data-start="21" data-media-start="110.2" data-duration="10.8" data-track-index="12" style="position:absolute; width:1641px; height:923px; left:144px; top:-5px; z-index:2; clip-path: inset(325px 355px 69px 346px round 0 0 14px 14px);"></video>
+
+      <video id="vid-intraop-wide" src="assets/intraop.mp4" muted playsinline data-start="31.8" data-media-start="12" data-duration="2.2" data-track-index="13" style="position:absolute; left:490px; top:320px; width:940px; height:529px; object-fit:cover; z-index:2; clip-path: inset(0 round 0 0 14px 14px);"></video>
+      <video id="vid-intraop" src="assets/intraop.mp4" muted playsinline data-start="34" data-media-start="14.2" data-duration="10.3" data-track-index="14" style="position:absolute; width:2406px; height:1354px; left:-36px; top:-56px; z-index:2; clip-path: inset(376px 940px 449px 526px round 0 0 14px 14px);"></video>
+
+      <video id="vid-postop-wide" src="assets/postop.mp4" muted playsinline data-start="44.3" data-media-start="114" data-duration="2.2" data-track-index="15" style="position:absolute; left:490px; top:320px; width:940px; height:529px; object-fit:cover; z-index:2; clip-path: inset(0 round 0 0 14px 14px);"></video>
+      <video id="vid-postop" src="assets/postop.mp4" muted playsinline data-start="46.5" data-media-start="116.2" data-duration="10.3" data-track-index="16" style="position:absolute; width:1572px; height:884px; left:161px; top:151px; z-index:2; clip-path: inset(169px 303px 186px 329px round 0 0 14px 14px);"></video>
+
+      <!-- PRE-OP overlay (18.8-31.8) -->
+      <div id="ov-preop" class="overlay clip" data-start="18.8" data-duration="13" data-track-index="20">
+        <div class="stage-head"><div class="stage-circle">1</div><div class="stage-name">Pre-op</div><div class="stage-dot"></div><div class="stage-sub">assess &amp; question</div></div>
+        <div class="io-panel left">
+          <div class="io-h">Inputs</div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg></div><div class="il">Prior records</div></div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M8 7v10M16 7v10M4 10v4M20 10v4"/></svg></div><div class="il">Patient interview</div></div>
+        </div>
+        <div class="io-panel right">
+          <div class="io-h">Outputs</div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M11 8v3M11 14h.01"/></svg></div><div class="il">Clarifying questions</div></div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h9l5 5v13H5z"/><path d="M9 13h6M9 17h6"/></svg></div><div class="il">Sourced pre-op brief</div></div>
+        </div>
+        <div class="addr-pill">periop.dev / cases / sg-0031 / pre-op</div>
+        <div class="cap-center"><div class="cap-chip">Click a claim. Hear where it came from.</div></div>
+      </div>
+
+      <!-- INTRA-OP overlay (31.8-44.3) -->
+      <div id="ov-intraop" class="overlay clip" data-start="31.8" data-duration="12.5" data-track-index="21">
+        <div class="stage-head"><div class="stage-circle">2</div><div class="stage-name">Intra-op</div><div class="stage-dot"></div><div class="stage-sub">capture the theatre</div></div>
+        <div class="io-panel left">
+          <div class="io-h">Inputs</div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></div><div class="il">Theatre voice memos</div></div>
+        </div>
+        <div class="io-panel right">
+          <div class="io-h">Outputs</div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><div class="il">Timed theatre record</div></div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></div><div class="il">Anticipated issues</div></div>
+        </div>
+        <div class="addr-pill">periop.dev / cases / sg-0031 / theatre</div>
+        <div class="cap-center"><div class="cap-chip">Hands stay on the patient.</div></div>
+      </div>
+
+      <!-- POST-OP overlay (44.3-56.8) -->
+      <div id="ov-postop" class="overlay clip" data-start="44.3" data-duration="12.5" data-track-index="22">
+        <div class="stage-head"><div class="stage-circle">3</div><div class="stage-name">Post-op</div><div class="stage-dot"></div><div class="stage-sub">recover &amp; hand off</div></div>
+        <div class="io-panel left">
+          <div class="io-h">Inputs</div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></div><div class="il">Recovery interview</div></div>
+        </div>
+        <div class="io-panel right">
+          <div class="io-h">Outputs</div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg></div><div class="il">PACU handoff</div></div>
+          <div class="io-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h9l5 5v13H5z"/><path d="M9 13h6M9 17h6"/></svg></div><div class="il">Post-op note</div></div>
+        </div>
+        <div class="addr-pill">periop.dev / cases / sg-0031 / recovery</div>
+        <div class="cap-center"><div class="cap-chip">Nothing signed off gets left out.</div></div>
+      </div>
+
+      <!-- PROVENANCE P1 - claim shatter / lock + audio player (56.8-64.3) -->
+      <div id="prov1" class="clip" data-start="56.8" data-duration="7.5" data-track-index="23" style="position:absolute; inset:0; z-index:5;">
+        <div id="claim-bad" class="claim-card">
+          <div class="claim-txt">"Patient took apixaban Tuesday."</div>
+          <div class="src src-bad">no source</div>
+        </div>
+        <div id="claim-good" class="claim-card">
+          <div class="claim-txt">"Patient took apixaban Tuesday."</div>
+          <div style="font-family:var(--font-display); font-weight:600; font-size:15px; letter-spacing:0.06em; text-transform:uppercase; color:var(--positive);">Interview · 02:14</div>
+          <div class="aplayer">
+            <div class="pbtn"><svg viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></div>
+            <div class="wave2" id="apwave"><span style="height:40%"></span><span style="height:66%"></span><span style="height:88%"></span><span style="height:52%"></span><span style="height:74%"></span><span style="height:96%"></span><span style="height:60%"></span><span style="height:82%"></span><span style="height:46%"></span><span style="height:70%"></span><span style="height:90%"></span><span style="height:54%"></span><span style="height:78%"></span><span style="height:64%"></span><span style="height:100%"></span><span style="height:48%"></span><span style="height:72%"></span><span style="height:58%"></span><span style="height:86%"></span><span style="height:42%"></span><span style="height:68%"></span><span style="height:94%"></span><span style="height:56%"></span><span style="height:80%"></span><span style="height:50%"></span><span style="height:76%"></span><span style="height:62%"></span><span style="height:84%"></span><div class="phead" id="ap-head"></div></div>
+            <div class="atime">02:14</div>
+          </div>
+        </div>
+        <div id="p1-cap" class="prov-cap">A claim cannot exist without a citation.</div>
+      </div>
+
+      <!-- PROVENANCE P2 - radial ring (64.3-69.3) -->
+      <div id="prov2" class="scene clip" data-start="64.3" data-duration="5" data-track-index="24">
+        <div id="ring-wrap" class="ring-wrap">
+          <svg width="340" height="340" viewBox="0 0 300 300">
+            <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(30,43,250,0.10)" stroke-width="16"/>
+            <circle id="ring-prog" cx="150" cy="150" r="130" fill="none" stroke="#1e2bfa" stroke-width="16" stroke-linecap="round" stroke-dasharray="817" transform="rotate(-90 150 150)"/>
+          </svg>
+          <div id="ring-num" class="ring-num">0%</div>
+        </div>
+        <div id="p2-cap" class="headline">Every claim traces to its source.</div>
+      </div>
+
+      <!-- CLOSE C1 - codespace inset (69.3-74.8) -->
+      <div id="close-glow" class="close-glow clip" data-start="69.3" data-duration="5.5" data-track-index="25"></div>
+      <img id="close-img" class="clip" src="assets/codespace.png" data-start="69.3" data-duration="5.5" data-track-index="26" />
+      <div id="close-frame" class="overlay clip" data-start="69.3" data-duration="5.5" data-track-index="27" style="z-index:4;">
+        <div class="frame-box" style="z-index:4;"><div class="chrome-bar"><div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div></div></div>
+        <div class="addr-pill">github.com / tijoseymathew / periop-companion</div>
+        <div class="cap-center"><div class="cap-chip">One click to run. Powered by NVIDIA NIMs.</div></div>
+      </div>
+
+      <!-- CLOSE end - wordmark + url + fine print (74.8-80) -->
+      <div id="close-end" class="scene clip" data-start="74.8" data-duration="5.2" data-track-index="28">
+        <div id="e-word" class="wordmark"><span class="p">PeriOp</span> Companion</div>
+        <div id="e-line" class="accent-line"></div>
+        <div id="e-url" class="e-url">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 2.5-.34c.85 0 1.71.12 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+          github.com/tijoseymathew/periop-companion
+        </div>
+        <div id="e-fine" class="e-fine">Fully synthetic data · no PHI · documentation support only - not a medical device.</div>
+      </div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const E = "expo.out";
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#progress .fill", { scaleX: 0 }, { scaleX: 1, duration: 80, ease: "none" }, 0);
+
+      /* COLD OPEN A (0-4.5) */
+      tl.from("#a-head", { opacity: 0, y: 28, duration: 0.55, ease: E }, 0.15);
+      tl.from("#a-c1", { opacity: 0, y: 44, duration: 0.5, ease: E }, 0.3);
+      tl.from("#a-c2", { opacity: 0, y: 44, duration: 0.5, ease: E }, 0.42);
+      tl.from("#a-c3", { opacity: 0, y: 44, duration: 0.5, ease: E }, 0.54);
+
+      /* COLD OPEN B (4.5-9.3) */
+      tl.from("#b-head", { opacity: 0, y: 28, duration: 0.5, ease: E }, 4.6);
+      tl.from("#b-chip1", { opacity: 0, x: 340, y: 60, scale: 0.7, duration: 0.65, ease: E }, 4.8);
+      tl.from("#b-chip2", { opacity: 0, x: 0, y: -90, scale: 0.7, duration: 0.65, ease: E }, 4.92);
+      tl.from("#b-chip3", { opacity: 0, x: -340, y: 60, scale: 0.7, duration: 0.65, ease: E }, 5.04);
+
+      /* COLD OPEN C bars (9.3-11.8) */
+      tl.from("#c-head", { opacity: 0, y: 20, duration: 0.4, ease: E }, 9.4);
+      tl.from(".c-row", { opacity: 0, y: 22, duration: 0.4, ease: E, stagger: 0.07 }, 9.5);
+      tl.from("#c-f1", { scaleX: 0, duration: 0.6, ease: E }, 9.6);
+      tl.from("#c-f2", { scaleX: 0, duration: 0.6, ease: E }, 9.7);
+      tl.from("#c-f3", { scaleX: 0, duration: 0.6, ease: E }, 9.8);
+      tl.from("#c-f4", { scaleX: 0, duration: 0.6, ease: E }, 9.9);
+
+      /* COLD OPEN C counter (11.8-14.3) */
+      tl.from("#c2-num", { opacity: 0, scale: 0.82, duration: 0.45, ease: E }, 11.85);
+      const cnt = { v: 0 };
+      const numEl = document.getElementById("c2-num");
+      tl.to(cnt, { v: 130, duration: 0.85, ease: "power2.out", onUpdate: () => { numEl.textContent = "≈" + Math.round(cnt.v); } }, 11.9);
+      tl.from("#c2-sup", { opacity: 0, y: 18, duration: 0.5, ease: E }, 12.15);
+
+      /* TURN title (14.3-18.8) */
+      tl.from("#t-word", { opacity: 0, y: 32, duration: 0.6, ease: E }, 14.5);
+      tl.from("#t-line", { scaleX: 0, duration: 0.6, ease: E }, 14.9);
+      tl.from("#t-sub", { opacity: 0, y: 18, duration: 0.5, ease: E }, 15.1);
+
+      /* WALKTHROUGH frame in (18.8) */
+      tl.from("#wk-glow", { opacity: 0, duration: 0.6, ease: E }, 18.8);
+      tl.from("#wk-frame .frame-box", { opacity: 0, scale: 0.94, duration: 0.55, ease: E, transformOrigin: "50% 50%" }, 18.8);
+
+      /* per-stage: wide establish fades in, panels/label reveal; hard cut to tight at t+2.2 */
+      const stages = [
+        { id: "#ov-preop", wide: "#vid-preop-wide", t: 18.8 },
+        { id: "#ov-intraop", wide: "#vid-intraop-wide", t: 31.8 },
+        { id: "#ov-postop", wide: "#vid-postop-wide", t: 44.3 },
+      ];
+      stages.forEach(({ id, wide, t }) => {
+        tl.from(wide, { opacity: 0, duration: 0.4, ease: E }, t);
+        tl.from(id + " .stage-head", { opacity: 0, y: -14, duration: 0.5, ease: E }, t + 0.2);
+        tl.from(id + " .io-panel .io-h", { opacity: 0, duration: 0.45, ease: E }, t + 0.35);
+        tl.from(id + " .io-panel.left .io-card", { opacity: 0, x: -24, duration: 0.45, ease: E, stagger: 0.1 }, t + 0.5);
+        tl.from(id + " .io-panel.right .io-card", { opacity: 0, x: 24, duration: 0.45, ease: E, stagger: 0.1 }, t + 0.6);
+        tl.from(id + " .addr-pill", { opacity: 0, y: -8, duration: 0.45, ease: E }, t + 0.35);
+        tl.from(id + " .cap-chip", { opacity: 0, y: 16, scale: 0.92, duration: 0.5, ease: E }, t + 2.6);
+      });
+
+      /* PROVENANCE P1 (56.8-64.3) */
+      tl.from("#claim-bad", { opacity: 0, y: 28, duration: 0.5, ease: E }, 57.0);
+      tl.from("#p1-cap", { opacity: 0, y: 18, duration: 0.5, ease: E }, 57.3);
+      tl.to("#claim-bad", { keyframes: { x: [0, -6, 6, -6, 6, -3, 3, 0] }, duration: 0.5, ease: "none" }, 58.0);
+      tl.to("#claim-bad", { opacity: 0, scale: 0.9, duration: 0.4, ease: E }, 58.7);
+      tl.fromTo("#claim-good", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, 59.1);
+      tl.fromTo("#ap-head", { x: 8 }, { x: 438, duration: 4.0, ease: "none" }, 59.8);
+
+      /* PROVENANCE P2 (64.3-69.3) */
+      tl.from("#ring-wrap", { opacity: 0, y: 24, duration: 0.5, ease: E }, 64.5);
+      tl.fromTo("#ring-prog", { strokeDashoffset: 817 }, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" }, 64.8);
+      const ring = { v: 0 };
+      const ringEl = document.getElementById("ring-num");
+      tl.to(ring, { v: 100, duration: 1.2, ease: "power2.out", onUpdate: () => { ringEl.textContent = Math.round(ring.v) + "%"; } }, 64.8);
+      tl.from("#p2-cap", { opacity: 0, y: 18, duration: 0.5, ease: E }, 65.1);
+
+      /* CLOSE C1 (69.3-74.8) */
+      tl.from("#close-glow", { opacity: 0, duration: 0.6, ease: E }, 69.3);
+      tl.from("#close-frame .frame-box", { opacity: 0, scale: 0.94, duration: 0.55, ease: E, transformOrigin: "50% 50%" }, 69.3);
+      tl.from("#close-img", { opacity: 0, duration: 0.5, ease: E }, 69.4);
+      tl.from("#close-frame .addr-pill", { opacity: 0, y: -8, duration: 0.5, ease: E }, 69.7);
+      tl.from("#close-frame .cap-chip", { opacity: 0, y: 16, scale: 0.92, duration: 0.5, ease: E }, 69.9);
+
+      /* CLOSE end (74.8-80) */
+      tl.from("#e-word", { opacity: 0, y: 32, duration: 0.6, ease: E }, 75.0);
+      tl.from("#e-line", { scaleX: 0, duration: 0.6, ease: E }, 75.4);
+      tl.from("#e-url", { opacity: 0, y: 18, duration: 0.5, ease: E }, 75.6);
+      tl.from("#e-fine", { opacity: 0, duration: 0.7, ease: E }, 77.6);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
