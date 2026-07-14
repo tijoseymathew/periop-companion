@@ -19,6 +19,12 @@ evaluated with the **NVIDIA NeMo Agent Toolkit (NAT)**, powered by **NVIDIA NIMs
 
 📖 **[Full documentation →](https://tijoseymathew.github.io/periop-companion/)**
 
+**[🎥 Watch the demo video ▶](https://youtu.be/8sC0SnpUbCA)**
+
+<a href="https://youtu.be/8sC0SnpUbCA" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/8sC0SnpUbCA/maxresdefault.jpg" alt="▶ Play the PeriOp Companion demo video on YouTube" width="640">
+</a>
+
 ## Try it in your browser
 
 One click runs the full app — API + review UI — in the browser. No GPU. With
@@ -66,6 +72,22 @@ batch**, byte-identical ledgers.
 set, so a claim cannot exist without a citation. Click a claim in the review UI
 and it plays the exact audio clip `(t0 → t1)` or highlights the cited document
 chunk.
+
+## Agent skills
+
+Working on this repo with a coding agent? Six signed, scanned agent skills
+([Agent Skills spec](https://agentskills.io/specification), following
+[NVIDIA's verified-skills pattern](https://docs.nvidia.com/skills/)) teach it
+to deploy the app, modify the backend and front-end, generate synthetic
+cases, run the evaluation, and drive the provider workflow:
+
+```bash
+npx skills add tijoseymathew/periop-companion
+```
+
+From a clone, `npx skills add . --agent claude-code` installs them locally.
+Each ships a skill card and a Sigstore signature — see
+**[Agent skills →](https://tijoseymathew.github.io/periop-companion/skills/)**.
 
 Read more: **[Architecture](https://tijoseymathew.github.io/periop-companion/architecture/)** ·
 **[ADK orchestration](https://tijoseymathew.github.io/periop-companion/adk-orchestration/)** ·

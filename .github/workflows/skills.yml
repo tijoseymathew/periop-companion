@@ -1,0 +1,162 @@
+# Trust pipeline for the agent skills in .agents/skills/ — the verified-skills
+# pattern from docs.nvidia.com/skills applied under this repo's own identity:
+# scan (SkillSpector) on every change, sign (OpenSSF model-signing, Sigstore
+# keyless) on main. Verification instructions live in each skill-card.md and
+# docs/skills.md.
+name: skills
+
+on:
+  pull_request:
+    paths:
+      - ".agents/skills/**"
+      - ".github/workflows/skills.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".agents/skills/**"
+      - ".github/workflows/skills.yml"
+
+concurrency:
+  group: skills-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    name: SkillSpector scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write # SARIF upload to code scanning
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install SkillSpector
+        run: uv tool install git+https://github.com/NVIDIA/skillspector.git
+
+      - name: Scan each skill
+        # Static checks only (--no-llm): deterministic, keyless CI. Exit 1 =
+        # risk_score > 50 (DO_NOT_INSTALL) fails the gate; markdown reports
+        # are kept as artifacts either way.
+        run: |
+          mkdir -p skillspector-reports/sarif
+          status=0
+          for dir in .agents/skills/*/; do
+            name=$(basename "$dir")
+            echo "::group::scan $name"
+            skillspector scan "$dir" --no-llm --format sarif \
+              --output "skillspector-reports/sarif/$name.sarif" || status=$?
+            skillspector scan "$dir" --no-llm --format markdown \
+              --output "skillspector-reports/$name.md" || true
+            echo "::endgroup::"
+          done
+          exit $status
+
+      - name: Merge per-skill SARIF into a single run
+        # Code scanning no longer combines multiple SARIF runs uploaded
+        # under one category (github.blog/changelog/2025-07-21-code-scanning
+        # -will-stop-combining-multiple-sarif-runs...). skillspector emits
+        # one run per skill, each with artifactLocation.uri relative to the
+        # scanned skill dir (e.g. "SKILL.md") — those also collide across
+        # skills once merged, so rewrite them to repo-relative paths before
+        # combining into the single run the Action now requires.
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob
+          import json
+          import os
+
+          sarif_dir = "skillspector-reports/sarif"
+          merged = None
+          seen_rule_ids = set()
+
+          for path in sorted(glob.glob(f"{sarif_dir}/*.sarif")):
+              skill = os.path.splitext(os.path.basename(path))[0]
+              with open(path) as f:
+                  doc = json.load(f)
+              run = doc["runs"][0]
+
+              for result in run.get("results", []):
+                  for loc in result.get("locations", []):
+                      art = loc["physicalLocation"]["artifactLocation"]
+                      art["uri"] = f".agents/skills/{skill}/{art['uri']}"
+
+              if merged is None:
+                  merged = doc
+                  merged["runs"][0]["results"] = []
+                  merged["runs"][0]["tool"]["driver"]["rules"] = []
+
+              for rule in run["tool"]["driver"].get("rules", []):
+                  if rule["id"] not in seen_rule_ids:
+                      seen_rule_ids.add(rule["id"])
+                      merged["runs"][0]["tool"]["driver"]["rules"].append(rule)
+
+              merged["runs"][0]["results"].extend(run.get("results", []))
+
+          if merged is not None:
+              with open("skillspector-reports/skillspector.sarif", "w") as f:
+                  json.dump(merged, f)
+          PY
+
+      - name: Upload SARIF to code scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: skillspector-reports/skillspector.sarif
+          category: skillspector
+
+      - name: Upload scan reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skillspector-reports
+          path: skillspector-reports/
+
+  sign:
+    name: Sign skills (Sigstore keyless)
+    needs: scan
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit the .sig files back
+      id-token: write # Sigstore keyless: Fulcio cert from the workflow's OIDC token
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install model-signing
+        run: pip install model-signing
+
+      - name: Sign each skill directory
+        # Detached OMS bundle per skill; the sig file is excluded from its own
+        # payload. Consumers verify with:
+        #   model_signing verify sigstore <dir> --signature <dir>/skill.oms.sig \
+        #     --identity "https://github.com/${{ github.repository }}/.github/workflows/skills.yml@refs/heads/main" \
+        #     --identity_provider https://token.actions.githubusercontent.com
+        run: |
+          for dir in .agents/skills/*/; do
+            name=$(basename "$dir")
+            echo "::group::sign $name"
+            model_signing sign sigstore "$dir" \
+              --signature "${dir}skill.oms.sig" \
+              --ignore-paths "${dir}skill.oms.sig"
+            echo "::endgroup::"
+          done
+
+      - name: Commit signatures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .agents/skills/*/skill.oms.sig
+          if git diff --cached --quiet; then
+            echo "signatures unchanged"
+          else
+            git commit -m "chore(skills): refresh Sigstore signatures [skip ci]"
+            git push
+          fi

@@ -1,0 +1,99 @@
+{
+  "case_id": "sg-0031",
+  "persona_uuid": "e7a1c9d4b2f6401a9e3d7c5b1a2f4e60",
+  "surgery": "Hemiarthroplasty for displaced left neck-of-femur fracture",
+  "urgency": "emergency",
+  "anesthesia_plan": "Spinal anesthesia with sedation, converted intra-operatively to general anesthesia with endotracheal intubation after an inadequate block",
+  "asa_ps": 3,
+  "comorbidities": [
+    "Atrial fibrillation on anticoagulation",
+    "Ischaemic heart disease, prior PCI with stent 2021",
+    "Chronic kidney disease stage 3"
+  ],
+  "medications": [
+    {
+      "name": "Apixaban",
+      "dose": "5mg",
+      "frequency": "Twice daily",
+      "active": true
+    },
+    {
+      "name": "Bisoprolol",
+      "dose": "2.5mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "40mg",
+      "frequency": "Once daily",
+      "active": true
+    },
+    {
+      "name": "Furosemide",
+      "dose": "20mg",
+      "frequency": "Once daily",
+      "active": false
+    }
+  ],
+  "allergies": [
+    "Penicillin — rash"
+  ],
+  "defect": {
+    "kind": "record_patient_conflict",
+    "record_states": "Nursing admission note records last apixaban dose as 'three days ago', within the recommended hold window for neuraxial anaesthesia",
+    "truth": "His daughter reveals he actually took his apixaban dose yesterday morning — only about fourteen hours before surgery, not three days ago as recorded — because he got confused about which day it was",
+    "gold_question": "Can you confirm exactly when the last apixaban dose was taken — the date and roughly what time?"
+  },
+  "distractors": [
+    {
+      "description": "Right total knee replacement in 2019, uncomplicated recovery",
+      "why_irrelevant": "Resolved orthopaedic history unrelated to the current fracture or anaesthetic risk"
+    },
+    {
+      "description": "Childhood asthma, none since his teenage years",
+      "why_irrelevant": "Resolved decades ago, no current respiratory symptoms or medication"
+    },
+    {
+      "description": "Cataract surgery under local anaesthesia in 2021, uncomplicated",
+      "why_irrelevant": "Minor day surgery with no bearing on this admission"
+    }
+  ],
+  "records": {
+    "medications": [
+      {
+        "name": "Apixaban",
+        "dose": "5mg",
+        "frequency": "Twice daily",
+        "active": true
+      },
+      {
+        "name": "Bisoprolol",
+        "dose": "2.5mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Atorvastatin",
+        "dose": "40mg",
+        "frequency": "Once daily",
+        "active": true
+      },
+      {
+        "name": "Furosemide",
+        "dose": "20mg",
+        "frequency": "Once daily",
+        "active": false
+      }
+    ],
+    "allergies": [
+      "Penicillin — rash"
+    ],
+    "past_history": [
+      "Right total knee replacement in 2019, uncomplicated recovery",
+      "Childhood asthma, none since his teenage years",
+      "Cataract surgery under local anaesthesia in 2021, uncomplicated"
+    ],
+    "prior_anesthesia": "Spinal anaesthesia for right total knee replacement in 2019, uneventful, no complications."
+  }
+}

@@ -9,6 +9,56 @@ question judge (finding 4). It was **re-run from scratch on 2026-07-13** — the
 committed file is now that resample; the next section records it and its
 comparison to the prior run.
 
+## 2026-07-13 — ASR eval (`eval_asr.py`), first full 30-case run
+
+First time this eval has been run to completion and journaled (the ASR/KER
+metrics live in `src/periop/evals/metrics.py` and `scripts/eval_asr.py`
+per spec §6, but no prior run made it into this file). Live
+`parakeet-1-1b-ctc-en-us` (ASR) and `magpie-tts-multilingual` (TTS), n=1 per
+case, all 30 cases. Cases sg-0006..sg-0030 needed their TTS audio re-rendered
+first (`render_audio.py --force`) — the wavs on disk predated the 2026-07-11
+dataset scale-up's scripts, exactly the staleness the earlier ADK-native
+entry below warned about; sg-0001..0005 audio was already current.
+
+| Metric (n=30) | mean | median | read |
+|---|---|---|---|
+| intraop_ker, boosted | 0.138 | 0.000 | word-boosting works |
+| intraop_ker, unboosted | 0.618 | 0.600 | baseline is bad |
+| preop speaker_attribution_accuracy | 0.978 | 0.999 | ceiling except one outlier |
+| postop speaker_attribution_accuracy | 0.955 | 0.998 | ceiling except one outlier |
+| preop-interview ker | 0.247 | 0.000 | noisy, see denominator note |
+| postop-interview ker | 0.222 | 0.000 | noisy, see denominator note |
+
+**Headline: clinical-term word-boosting on the intra-op voice notes works, and
+works consistently.** Boosted KER improved over unboosted in 29/30 cases (1
+tied, 0 regressed), mean KER 0.618 → 0.138 (Δ −0.479 mean; per-case delta
+ranges from 0 to −0.90). This is the spec §6 A/B the eval exists to answer,
+and the lexicon-dense intra-op notes give it a healthy denominator (2–7
+`ANESTHESIA_LEXICON` terms present in reference per case) — this is a real
+signal, not noise.
+
+**Diarization is at ceiling except one clear outlier.** Both interview
+speaker-attribution medians sit at ~0.998–0.999, in line with
+provenance-coverage-style ceiling metrics elsewhere in this file. **sg-0005's
+postop-interview scored 0.0852** (vs. 0.94 on its own preop-interview and
+0.94–1.00 on every other case's postop-interview) — time-weighted overlap
+that low reads as a diarizer speaker-label swap for that segment, not a
+partial-credit miss. Flagged for a follow-up listen; not investigated
+further here since it costs no extra live-NIM time to defer.
+
+**Interview KER (preop/postop) is not a usable signal at this n — denominator
+problem, same shape as this file's `distractor_leakage` caveat.** Unlike the
+intra-op notes, the two interview scripts are mostly small talk: 20/30 preop
+and 24/30 postop cases have 0–1 lexicon terms in the reference text at all
+(full per-case term counts: preop terms in {0,1,2,3,4,7}, postop terms in
+{0,1,3}). A KER of 0.5 or 1.0 there is one term right or wrong, not a
+trend — the 0.247/0.222 means are not comparable to the intra-op 0.138/0.618
+pair and shouldn't be read as "worse ASR on interviews."
+
+**Operational note:** no structured-output flakes here (this eval doesn't
+touch the reasoning NIMs) — every case succeeded on the first pass. Report:
+`evals/asr_report.json`.
+
 ## 2026-07-13 — 30-case re-run of the committed config (same-config resample)
 
 The full eval was re-run from scratch (`run_eval.py --rerun`, live

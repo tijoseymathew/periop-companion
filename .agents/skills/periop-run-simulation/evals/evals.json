@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "skill": "periop-run-simulation",
+  "description": "Agent-runnable tasks with checkable success criteria. Run each task in a fresh session with only this skill installed. Generation tasks spend live model time.",
+  "tasks": [
+    {
+      "id": "sim-extend-dataset",
+      "prompt": "Generate two new synthetic cases without touching the existing thirty.",
+      "requires": { "api_key": true, "tools": ["uv"] },
+      "success_criteria": [
+        "Runs scripts/generate_cases.py with --start 31 --n 2 (extension, not overwrite)",
+        "Resulting bundles sg-0031 and sg-0032 contain design.json, records/, scripts/, gold/gold.json",
+        "Does not attempt audio rendering unless PERIOP_TTS_BASE_URL is configured",
+        "Verifies each design.json declares exactly one defect and at least one distractor"
+      ]
+    },
+    {
+      "id": "sim-resume-interrupted",
+      "prompt": "Case generation was interrupted by a rate limit halfway through sg-0033. Finish it.",
+      "requires": { "api_key": true, "tools": ["uv"] },
+      "success_criteria": [
+        "Re-runs the same generate_cases.py invocation rather than deleting the partial bundle",
+        "Explains that finished pieces are skipped-if-present",
+        "Bundle ends complete with gold/gold.json present"
+      ]
+    },
+    {
+      "id": "sim-review-bundle",
+      "prompt": "Check whether case sg-0001's bundle is internally consistent before we trust it in evals.",
+      "requires": { "api_key": false, "tools": ["uv"] },
+      "success_criteria": [
+        "Renders or reads the bundle (scripts/render_review.py or direct file reads)",
+        "Cross-checks the declared defect against the records pack and the gold_question",
+        "Confirms distractors from design.json do not appear as gold claims",
+        "Reports findings without editing the bundle"
+      ]
+    }
+  ]
+}

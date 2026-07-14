@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "skill": "periop-deploy",
+  "description": "Agent-runnable tasks with checkable success criteria. Run each task in a fresh session with only this skill installed.",
+  "tasks": [
+    {
+      "id": "deploy-stub-docker",
+      "prompt": "Deploy PeriOp Companion locally with Docker in keyless demo mode and confirm it is serving.",
+      "requires": { "api_key": false, "tools": ["docker"] },
+      "success_criteria": [
+        "Builds the image from the repo-root Dockerfile and runs it publishing port 7860 with no NGC_API_KEY",
+        "Boot log shows 'STUB demo mode'",
+        "GET http://localhost:7860/ returns the SPA HTML",
+        "Does not commit any .env or bake a key into the image"
+      ]
+    },
+    {
+      "id": "deploy-bare-local",
+      "prompt": "Run PeriOp Companion directly on this machine (no container) in demo mode.",
+      "requires": { "api_key": false, "tools": ["uv", "node"] },
+      "success_criteria": [
+        "Runs uv sync and builds ui/ (npm ci && npm run build) before starting the API",
+        "Starts with PERIOP_STUB_RUNNER=1 via python -m periop.api",
+        "App responds on http://localhost:8000 with the review UI"
+      ]
+    },
+    {
+      "id": "deploy-switch-to-live",
+      "prompt": "I have an NVIDIA API key. Switch my running stub deployment to live generation.",
+      "requires": { "api_key": true },
+      "success_criteria": [
+        "Puts the key in the environment or .env as NGC_API_KEY (never committed)",
+        "Removes/unsets any PERIOP_STUB_RUNNER=1 override rather than leaving it to shadow the key",
+        "Restarts the process and confirms the boot log shows LIVE mode",
+        "Warns that live stage runs take minutes and must not be killed mid-stream"
+      ]
+    }
+  ]
+}

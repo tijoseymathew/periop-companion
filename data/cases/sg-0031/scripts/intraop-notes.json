@@ -1,0 +1,344 @@
+{
+  "notes": [
+    {
+      "t": "09:00",
+      "text": "spinal anaesthesia performed at L3 L4 level, clear CSF on first attempt"
+    },
+    {
+      "t": "09:01",
+      "text": "hyperbaric bupivacaine twelve point five milligrams intrathecal with fentanyl twenty five micrograms"
+    },
+    {
+      "t": "09:03",
+      "text": "sedation started, midazolam one milligram"
+    },
+    {
+      "t": "09:05",
+      "text": "block level checked, T10 sensory level achieved, patient comfortable"
+    },
+    {
+      "t": "09:20",
+      "text": "block patchy on the surgical side, patient reporting sharp discomfort at the incision"
+    },
+    {
+      "t": "09:22",
+      "text": "topping up sedation, propofol infusion started at fifty micrograms per kilogram per minute"
+    },
+    {
+      "t": "09:25",
+      "text": "patient still uncomfortable despite top up, converting to general anaesthesia"
+    },
+    {
+      "t": "09:26",
+      "text": "induction propofol one hundred milligrams, fentanyl fifty micrograms"
+    },
+    {
+      "t": "09:27",
+      "text": "rocuronium fifty milligrams for muscle relaxation"
+    },
+    {
+      "t": "09:28",
+      "text": "size seven endotracheal tube placed, grade one view, tube secured"
+    },
+    {
+      "t": "09:45",
+      "text": "blood pressure down to seventy over forty, giving phenylephrine one hundred micrograms"
+    },
+    {
+      "t": "09:47",
+      "text": "estimated blood loss now four hundred milliliters, second eighteen gauge line placed in the right hand"
+    },
+    {
+      "t": "09:50",
+      "text": "starting one unit packed red cells for the blood loss"
+    },
+    {
+      "t": "09:58",
+      "text": "blood pressure recovering to one hundred five over sixty five after the transfusion"
+    },
+    {
+      "t": "10:20",
+      "text": "surgery closing, reversal neostigmine two point five milligrams with glycopyrrolate point four milligrams"
+    },
+    {
+      "t": "10:23",
+      "text": "extubated, breathing spontaneously, oxygen saturation ninety eight percent on room air"
+    },
+    {
+      "t": "10:25",
+      "text": "total estimated blood loss five hundred milliliters, one unit packed cells given, patient stable for recovery"
+    }
+  ],
+  "events": [
+    {
+      "t": "09:00",
+      "category": "event",
+      "value": "Spinal anaesthesia performed at L3-L4, single attempt, clear CSF",
+      "units": null,
+      "provenance": [
+        "voice_notes#0"
+      ]
+    },
+    {
+      "t": "09:01",
+      "category": "agent",
+      "value": "bupivacaine (hyperbaric, intrathecal)",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "09:01",
+      "category": "dose",
+      "value": "12.5",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "09:01",
+      "category": "agent",
+      "value": "fentanyl (intrathecal)",
+      "units": null,
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "09:01",
+      "category": "dose",
+      "value": "25",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#1"
+      ]
+    },
+    {
+      "t": "09:03",
+      "category": "agent",
+      "value": "midazolam",
+      "units": null,
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "09:03",
+      "category": "dose",
+      "value": "1",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#2"
+      ]
+    },
+    {
+      "t": "09:05",
+      "category": "event",
+      "value": "T10 sensory block level achieved, patient comfortable",
+      "units": null,
+      "provenance": [
+        "voice_notes#3"
+      ]
+    },
+    {
+      "t": "09:20",
+      "category": "event",
+      "value": "Block patchy on surgical side, patient reports discomfort at incision",
+      "units": null,
+      "provenance": [
+        "voice_notes#4"
+      ]
+    },
+    {
+      "t": "09:22",
+      "category": "agent",
+      "value": "propofol infusion",
+      "units": null,
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "09:22",
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms/kg/min",
+      "provenance": [
+        "voice_notes#5"
+      ]
+    },
+    {
+      "t": "09:25",
+      "category": "event",
+      "value": "Converted to general anaesthesia due to inadequate block",
+      "units": null,
+      "provenance": [
+        "voice_notes#6"
+      ]
+    },
+    {
+      "t": "09:26",
+      "category": "agent",
+      "value": "propofol (induction)",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "09:26",
+      "category": "dose",
+      "value": "100",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "09:26",
+      "category": "agent",
+      "value": "fentanyl",
+      "units": null,
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "09:26",
+      "category": "dose",
+      "value": "50",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#7"
+      ]
+    },
+    {
+      "t": "09:27",
+      "category": "agent",
+      "value": "rocuronium",
+      "units": null,
+      "provenance": [
+        "voice_notes#8"
+      ]
+    },
+    {
+      "t": "09:27",
+      "category": "dose",
+      "value": "50",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#8"
+      ]
+    },
+    {
+      "t": "09:28",
+      "category": "airway",
+      "value": "Size 7 endotracheal tube placed, grade 1 view, secured",
+      "units": null,
+      "provenance": [
+        "voice_notes#9"
+      ]
+    },
+    {
+      "t": "09:45",
+      "category": "event",
+      "value": "Blood pressure dropped to 70/40",
+      "units": null,
+      "provenance": [
+        "voice_notes#10"
+      ]
+    },
+    {
+      "t": "09:45",
+      "category": "agent",
+      "value": "phenylephrine",
+      "units": null,
+      "provenance": [
+        "voice_notes#10"
+      ]
+    },
+    {
+      "t": "09:45",
+      "category": "dose",
+      "value": "100",
+      "units": "micrograms",
+      "provenance": [
+        "voice_notes#10"
+      ]
+    },
+    {
+      "t": "09:47",
+      "category": "event",
+      "value": "Estimated blood loss 400 mL",
+      "units": null,
+      "provenance": [
+        "voice_notes#11"
+      ]
+    },
+    {
+      "t": "09:47",
+      "category": "line",
+      "value": "Second 18G IV cannula placed in right hand",
+      "units": null,
+      "provenance": [
+        "voice_notes#11"
+      ]
+    },
+    {
+      "t": "09:50",
+      "category": "fluid",
+      "value": "Packed red cells, 1 unit, started",
+      "units": null,
+      "provenance": [
+        "voice_notes#12"
+      ]
+    },
+    {
+      "t": "09:58",
+      "category": "event",
+      "value": "Blood pressure recovered to 105/65 after transfusion",
+      "units": null,
+      "provenance": [
+        "voice_notes#13"
+      ]
+    },
+    {
+      "t": "10:20",
+      "category": "agent",
+      "value": "neostigmine with glycopyrrolate (reversal)",
+      "units": null,
+      "provenance": [
+        "voice_notes#14"
+      ]
+    },
+    {
+      "t": "10:20",
+      "category": "dose",
+      "value": "2.5",
+      "units": "milligrams",
+      "provenance": [
+        "voice_notes#14"
+      ]
+    },
+    {
+      "t": "10:23",
+      "category": "airway",
+      "value": "Extubated, breathing spontaneously, SpO2 98% on room air",
+      "units": null,
+      "provenance": [
+        "voice_notes#15"
+      ]
+    },
+    {
+      "t": "10:25",
+      "category": "event",
+      "value": "Total estimated blood loss 500 mL, 1 unit packed cells given, stable for recovery",
+      "units": null,
+      "provenance": [
+        "voice_notes#16"
+      ]
+    }
+  ]
+}

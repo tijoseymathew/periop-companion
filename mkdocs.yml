@@ -77,4 +77,5 @@ nav:
   - Front-end (React SPA): frontend.md
   - Run in your browser: deploy.md
   - Self-hosted NIMs: selfhosted.md
+  - Agent skills: skills.md
   - Attribution: attribution.md

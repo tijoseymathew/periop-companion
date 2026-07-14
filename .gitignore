@@ -3,14 +3,23 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-# TTS-rendered audio is large (~8.5 MB/case); regenerate with
-# scripts/render_audio.py — the *.segments.json gold manifests are committed
+# TTS-rendered audio is large (~8.5 MB/case) and regenerable with
+# scripts/render_audio.py. Timing manifests are meaningless without their
+# paired wav, which is never committed, so neither is tracked.
 data/cases/*/audio/*.wav
+data/cases/*/audio/*.segments.json
 # raw profiler traces carry full prompt/response text; commit the distilled
 # reports in evals/profile/ instead
 evals/profile/all_requests_profiler_traces.json
 evals/profile/workflow_output.json
+# .claude/ is local session state (incl. the .claude/skills symlinks used for
+# in-clone discovery) — never committed.
 .claude/
+# .agents/skills/ holds committed agent skills. Re-include them past any
+# user-global ".agents/*" ignore; keep warren (machine-local Telegram wiring) out.
+!.agents/
+!.agents/**
+.agents/skills/warren/
 skills-lock.json
 # mkdocs build output
 site/

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skill": "periop-run-evaluation",
+  "description": "Agent-runnable tasks with checkable success criteria. Run each task in a fresh session with only this skill installed. Pipeline tasks spend live model time.",
+  "tasks": [
+    {
+      "id": "eval-single-case",
+      "prompt": "Evaluate the pipeline on case sg-0001 only and report its metrics.",
+      "requires": { "api_key": true, "tools": ["uv"] },
+      "success_criteria": [
+        "Runs scripts/run_eval.py --only sg-0001, not a full run",
+        "Reports the per-case metrics from evals/report.json",
+        "Cautions that single-case judge metrics sit inside documented noise bands"
+      ]
+    },
+    {
+      "id": "eval-rescore-cheaply",
+      "prompt": "We changed the LLM judge prompt. Re-score the existing outputs without regenerating anything.",
+      "requires": { "api_key": true, "tools": ["uv"] },
+      "success_criteria": [
+        "Runs scripts/run_eval.py WITHOUT --rerun (scoring works from cached outputs)",
+        "Explains that --rerun would regenerate all pipeline outputs at full model cost"
+      ]
+    },
+    {
+      "id": "eval-interpret-drop",
+      "prompt": "extraction_f1 dropped from 0.52 to 0.43 on a fresh full run with no code changes. Is the pipeline broken?",
+      "requires": { "api_key": false },
+      "success_criteria": [
+        "Consults evals/README.md (the journal) before concluding",
+        "Identifies extraction_f1's documented per-case swing (±0.3–0.5) and the 2026-07-13 same-config resample showing exactly this move",
+        "Checks that gap_recall and provenance coverage held before declaring noise",
+        "Recommends a resample rather than a revert"
+      ]
+    },
+    {
+      "id": "eval-journal-discipline",
+      "prompt": "You just finished a full eval run. What must happen before the results are used anywhere?",
+      "requires": { "api_key": false },
+      "success_criteria": [
+        "Appends a dated entry to evals/README.md with config, prev/new/Δ table, and a signal-vs-noise verdict",
+        "Notes any IssueAnticipator flake retries in the operational note",
+        "Treats an unjournaled report.json overwrite as forbidden"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Good morning uncle, I'm Dr Lim from anaesthesia. I just want to go through a few things before your hip operation. Is it okay if your daughter helps answer some questions too?"
+    },
+    {
+      "speaker": "CAREGIVER",
+      "text": "Yes doctor, I'm his daughter, I can help translate if needed."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you. Can you tell me what happened, how did the fall happen?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "I slipped in the bathroom yesterday evening lah, my hip very pain, cannot stand up after that."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "I'm sorry to hear that. Now, your chart says you're on apixaban for your heart rhythm — that's a blood thinner. This is important: when exactly was the last time you took it? Can you confirm the date and roughly what time?"
+    },
+    {
+      "speaker": "CAREGIVER",
+      "text": "Actually doctor, I need to correct the nursing note — it says three days ago but that's not right."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Aiyah, I got confused which day it was lah, everything mixed up after the fall."
+    },
+    {
+      "speaker": "CAREGIVER",
+      "text": "He actually took his apixaban yesterday morning, so that's only about fourteen hours before surgery, not three days ago like it says in the records. I saw him take it myself before we came to the hospital."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Thank you for catching that, that changes our plan — we may need to avoid spinal injection this close to the last dose, or manage it very carefully. Any allergies I should know about?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Penicillin, I get rash last time in hospital."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Noted, no penicillin. Any other medications — for your heart, or your kidneys?"
+    },
+    {
+      "speaker": "CAREGIVER",
+      "text": "Bisoprolol for his heart rate, atorvastatin for cholesterol. He used to take furosemide for fluid but the polyclinic stopped that about six months ago."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Understood. And when did you last eat or drink?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Nothing since last night's dinner, maybe seven something."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good, that's within our fasting window. Have you had anaesthesia before?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Yes, for my other knee in 2019, spinal jab only, no problem that time."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good to know. We'll aim for a similar spinal approach today if the timing allows, with sedation, and I'll explain the back-up plan in case we need to convert to a full general anaesthetic."
+    }
+  ]
+}

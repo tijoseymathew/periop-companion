@@ -1,0 +1,52 @@
+{
+  "turns": [
+    {
+      "speaker": "PROVIDER",
+      "text": "Hi uncle, you're in the recovery area now, the operation is done. How are you feeling?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "A bit groggy, but the hip pain is better than before lah."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good. On a scale of zero to ten, how bad is the pain right now?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Maybe four, not too bad."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "We'll give you something for that. Any nausea or feeling like you want to vomit?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No nausea, just thirsty."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's fine, small sips only for now. Any trouble breathing, or your throat feeling sore?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Throat a bit scratchy, but breathing okay."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "That's expected, you had a breathing tube in during the operation since we had to switch to a full general anaesthetic partway through. Do you remember anything from during the surgery?"
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "No, nothing at all, next thing I know I'm here."
+    },
+    {
+      "speaker": "PROVIDER",
+      "text": "Good, that's what we want. We'll keep a close eye on your blood pressure and kidney function overnight given your history, and we'll restart your apixaban carefully once the surgical team clears it."
+    },
+    {
+      "speaker": "PATIENT",
+      "text": "Okay doctor, thank you."
+    }
+  ]
+}
