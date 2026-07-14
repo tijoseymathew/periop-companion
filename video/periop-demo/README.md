@@ -23,8 +23,10 @@ HTML-to-video framework. Thanks to the HyperFrames team.
   timing, framework-owned `<video>` playback cropped per scene via `clip-path`).
 - `assets/` — the live-NIM `sg-0031` recordings (`preop`, `intraop`, `postop`)
   and the GitHub Codespaces screenshot used in the closing CTA.
-- `renders/periop-demo.mp4` — the rendered 1920×1080 · 30 fps · 80 s output.
 - `demo-video-script.md` (one level up) — the shot-by-shot brief.
+- `renders/` — gitignored. Render output is a reproducible build artifact, not
+  tracked; run the command below to produce `renders/periop-demo.mp4` locally
+  (1920×1080 · 30 fps · 80 s).
 
 ## Rebuild
 

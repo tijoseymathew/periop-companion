@@ -1,9 +1,8 @@
 # dependencies
 node_modules/
 
-# render intermediates (the final renders/*.mp4 is kept)
-renders/work-*/
-renders/*.tmp
+# render output — reproducible via `npm run render`, not tracked
+renders/
 
 # build-phase snapshots
 snapshots/
