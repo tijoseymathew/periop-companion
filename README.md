@@ -19,7 +19,11 @@ evaluated with the **NVIDIA NeMo Agent Toolkit (NAT)**, powered by **NVIDIA NIMs
 
 📖 **[Full documentation →](https://tijoseymathew.github.io/periop-companion/)**
 
-[![Watch the demo video](https://img.youtube.com/vi/8sC0SnpUbCA/maxresdefault.jpg)](https://youtu.be/8sC0SnpUbCA)
+**[🎥 Watch the demo video ▶](https://youtu.be/8sC0SnpUbCA)**
+
+<a href="https://youtu.be/8sC0SnpUbCA" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/8sC0SnpUbCA/maxresdefault.jpg" alt="▶ Play the PeriOp Companion demo video on YouTube" width="640">
+</a>
 
 ## Try it in your browser
 
